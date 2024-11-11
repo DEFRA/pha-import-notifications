@@ -39,7 +39,7 @@ public class ExamplePersistence(IMongoDbClientFactory connectionFactory, ILogger
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to insert {example}", example);
+            _logger.LogError(e, "Failed to insert {Example}", example);
             return false;
         }
     }
