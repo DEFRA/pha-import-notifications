@@ -1,6 +1,6 @@
+using System.Diagnostics.CodeAnalysis;
 using Serilog.Core;
 using Serilog.Events;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PhaImportNotifications.Utils.Logging;
 
@@ -15,11 +15,11 @@ public class LogLevelMapper : ILogEventEnricher
         var logLevel = logEvent.Level switch
         {
             LogEventLevel.Information => "info",
-            LogEventLevel.Debug       => "debug",
-            LogEventLevel.Error       => "error",
-            LogEventLevel.Fatal       => "fatal",
-            LogEventLevel.Warning     => "warn",
-            _                         => "all"
+            LogEventLevel.Debug => "debug",
+            LogEventLevel.Error => "error",
+            LogEventLevel.Fatal => "fatal",
+            LogEventLevel.Warning => "warn",
+            _ => "all",
         };
 
         logEvent.AddOrUpdateProperty(propertyFactory.CreateProperty("log.level", logLevel));

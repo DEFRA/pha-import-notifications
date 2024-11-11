@@ -17,5 +17,5 @@ public class ExampleModel
 
     public int? Counter { get; set; } = 0;
 
-   public DateTime? Created { get; set; } = DateTime.UtcNow;
+    public DateTime? Created { get; set; } = DateTime.UtcNow;
 }

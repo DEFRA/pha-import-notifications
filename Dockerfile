@@ -11,25 +11,36 @@ RUN apt update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Build stage image
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY . .
-WORKDIR "/src"
+COPY PhaImportNotifications/PhaImportNotifications.csproj PhaImportNotifications/PhaImportNotifications.csproj
+COPY PhaImportNotifications.Test/PhaImportNotifications.Test.csproj PhaImportNotifications.Test/PhaImportNotifications.Test.csproj
+COPY PhaImportNotifications.sln PhaImportNotifications.sln
 
-# unit test and code coverage
-RUN dotnet test PhaImportNotifications.Test
+RUN dotnet restore
+
+COPY PhaImportNotifications PhaImportNotifications
+COPY PhaImportNotifications.Test PhaImportNotifications.Test
+
+ENV PATH="$PATH:/root/.dotnet/tools"
+COPY .csharpierrc .csharpierrc
+RUN dotnet tool install csharpier -g && \
+    dotnet csharpier --check .
+
+RUN dotnet test --no-restore PhaImportNotifications.Test
 
 FROM build AS publish
-RUN dotnet publish PhaImportNotifications -c Release -o /app/publish /p:UseAppHost=false
 
+RUN dotnet publish PhaImportNotifications -c Release -o /app/publish /p:UseAppHost=false
 
 ENV ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
 
-# Final production image
 FROM base AS final
+
 WORKDIR /app
+
 COPY --from=publish /app/publish .
+
 EXPOSE 8085
 ENTRYPOINT ["dotnet", "PhaImportNotifications.dll"]

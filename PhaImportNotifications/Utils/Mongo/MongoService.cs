@@ -1,5 +1,5 @@
-using MongoDB.Driver;
 using System.Diagnostics.CodeAnalysis;
+using MongoDB.Driver;
 
 namespace PhaImportNotifications.Utils.Mongo;
 
@@ -22,16 +22,18 @@ public abstract class MongoService<T>
 
     protected abstract List<CreateIndexModel<T>> DefineIndexes(IndexKeysDefinitionBuilder<T> builder);
 
-   protected void EnsureIndexes()
+    protected void EnsureIndexes()
     {
         var builder = Builders<T>.IndexKeys;
         var indexes = DefineIndexes(builder);
-        if (indexes.Count == 0) return;
+        if (indexes.Count == 0)
+            return;
 
         _logger.LogInformation(
             "Ensuring index is created if it does not exist for collection {CollectionNamespaceCollectionName} in DB {DatabaseDatabaseNamespace}",
             Collection.CollectionNamespace.CollectionName,
-            Collection.Database.DatabaseNamespace);
+            Collection.Database.DatabaseNamespace
+        );
         Collection.Indexes.CreateMany(indexes);
     }
 }

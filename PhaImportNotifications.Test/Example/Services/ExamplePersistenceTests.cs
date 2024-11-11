@@ -1,89 +1,74 @@
-using MongoDB.Driver;
-using PhaImportNotifications.Utils.Mongo;
+using FluentAssertions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using NSubstitute;
 using PhaImportNotifications.Example.Models;
 using PhaImportNotifications.Example.Services;
-using FluentAssertions;
-using MongoDB.Bson;
+using PhaImportNotifications.Utils.Mongo;
 
 namespace PhaImportNotifications.Test.Example.Services;
 
 public class ExamplePersistenceTests
 {
+    private readonly IMongoDbClientFactory _conFactoryMock = Substitute.For<IMongoDbClientFactory>();
+    private readonly IMongoCollection<ExampleModel> _collectionMock = Substitute.For<IMongoCollection<ExampleModel>>();
+    private readonly IMongoDatabase _databaseMock = Substitute.For<IMongoDatabase>();
+    private readonly CollectionNamespace _collectionNamespace = new("test", "example");
 
-   private readonly IMongoDbClientFactory _conFactoryMock = Substitute.For<IMongoDbClientFactory>();
-   private readonly IMongoCollection<ExampleModel> _collectionMock = Substitute.For<IMongoCollection<ExampleModel>>();
-   private readonly IMongoDatabase _databaseMock = Substitute.For<IMongoDatabase>();
-   private readonly CollectionNamespace _collectionNamespace = new("test", "example");
+    private readonly ExamplePersistence _persistence;
 
-   private readonly ExamplePersistence _persistence;
+    public ExamplePersistenceTests()
+    {
+        _collectionMock.CollectionNamespace.Returns(_collectionNamespace);
+        _collectionMock.Database.Returns(_databaseMock);
+        _databaseMock.DatabaseNamespace.Returns(new DatabaseNamespace("test"));
+        _conFactoryMock.GetClient().Returns(Substitute.For<IMongoClient>());
+        _conFactoryMock.GetCollection<ExampleModel>("example").Returns(_collectionMock);
 
-   public ExamplePersistenceTests()
-   {
-      _collectionMock
-            .CollectionNamespace
-            .Returns(_collectionNamespace);
-      _collectionMock
-            .Database
-            .Returns(_databaseMock);
-      _databaseMock
-         .DatabaseNamespace
-         .Returns(new DatabaseNamespace("test"));
-      _conFactoryMock
-         .GetClient()
-         .Returns(Substitute.For<IMongoClient>());
-      _conFactoryMock
-         .GetCollection<ExampleModel>("example")
-         .Returns(_collectionMock);
+        _persistence = new ExamplePersistence(_conFactoryMock, NullLoggerFactory.Instance);
+    }
 
-      _persistence = new ExamplePersistence(_conFactoryMock, NullLoggerFactory.Instance);
-   }
+    [Fact]
+    public async Task CreateAsyncOk()
+    {
+        _collectionMock.InsertOneAsync(Arg.Any<ExampleModel>()).Returns(Task.CompletedTask);
 
-   [Fact]
-   public async Task CreateAsyncOk()
-   {
-      _collectionMock
-          .InsertOneAsync(Arg.Any<ExampleModel>())
-          .Returns(Task.CompletedTask);
+        var example = new ExampleModel()
+        {
+            Id = new ObjectId(),
+            Value = "some value",
+            Name = "Test",
+            Counter = 0,
+        };
+        var result = await _persistence.CreateAsync(example);
+        result.Should().BeTrue();
+    }
 
-      var example = new ExampleModel()
-      {
-         Id = new ObjectId(),
-         Value = "some value",
-         Name = "Test",
-         Counter = 0
-      };
-      var result = await _persistence.CreateAsync(example);
-      result.Should().BeTrue();
-   }
+    [Fact]
+    public async Task CreateAsyncLogError()
+    {
+        var loggerFactoryMock = Substitute.For<ILoggerFactory>();
+        var logMock = Substitute.For<ILogger<ExamplePersistence>>();
+        loggerFactoryMock.CreateLogger<ExamplePersistence>().Returns(logMock);
 
-   [Fact]
-   public async Task CreateAsyncLogError()
-   {
+        _collectionMock
+            .InsertOneAsync(Arg.Any<ExampleModel>())
+            .Returns(Task.FromException<ExampleModel>(new Exception()));
 
-      var loggerFactoryMock = Substitute.For<ILoggerFactory>();
-      var logMock = Substitute.For<ILogger<ExamplePersistence>>();
-      loggerFactoryMock.CreateLogger<ExamplePersistence>().Returns(logMock);
+        var persistence = new ExamplePersistence(_conFactoryMock, loggerFactoryMock);
 
-      _collectionMock
-          .InsertOneAsync(Arg.Any<ExampleModel>())
-          .Returns(Task.FromException<ExampleModel>(new Exception()));
+        var example = new ExampleModel()
+        {
+            Id = new ObjectId(),
+            Value = "some value",
+            Name = "Test",
+            Counter = 0,
+        };
 
-      var persistence = new ExamplePersistence(_conFactoryMock, loggerFactoryMock);
+        var result = await persistence.CreateAsync(example);
 
-      var example = new ExampleModel()
-      {
-         Id = new ObjectId(),
-         Value = "some value",
-         Name = "Test",
-         Counter = 0
-      };
-
-      var result = await persistence.CreateAsync(example);
-
-      result.Should().BeFalse();
-   }
-
+        result.Should().BeFalse();
+    }
 }
