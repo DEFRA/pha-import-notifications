@@ -4,14 +4,13 @@ namespace PhaImportNotifications.Test.Config;
 
 public class EnvironmentTest
 {
+    [Fact]
+    public void IsNotDevModeByDefault()
+    {
+        var _builder = WebApplication.CreateBuilder();
 
-   [Fact]
-   public void IsNotDevModeByDefault()
-   {
-      var _builder = WebApplication.CreateBuilder();
+        var isDev = PhaImportNotifications.Config.Environment.IsDevMode(_builder);
 
-      var isDev = PhaImportNotifications.Config.Environment.IsDevMode(_builder);
-
-      Assert.False(isDev);
-   }
+        Assert.False(isDev);
+    }
 }

@@ -1,114 +1,96 @@
-using PhaImportNotifications.Utils.Http;
-using NSubstitute;
-using Microsoft.Extensions.Logging.Abstractions;
-using FluentAssertions;
-using Serilog.Core;
 using Elastic.CommonSchema;
+using FluentAssertions;
+using Microsoft.Extensions.Logging.Abstractions;
+using NSubstitute;
+using PhaImportNotifications.Utils.Http;
 using Serilog;
+using Serilog.Core;
 
 namespace PhaImportNotifications.Test.Utils.Http;
 
 public class ProxyTest
 {
+    private readonly Logger logger = new LoggerConfiguration().CreateLogger();
 
-   private readonly Logger logger = new LoggerConfiguration().CreateLogger();
+    private readonly string proxyUri = "http://user:password@localhost:8080";
+    private readonly string localProxy = "http://localhost:8080/";
+    private readonly string localhost = "http://localhost/";
 
-   private readonly string proxyUri = "http://user:password@localhost:8080";
-   private readonly string localProxy = "http://localhost:8080/";
-   private readonly string localhost = "http://localhost/";
+    public ProxyTest() { }
 
-   public ProxyTest()
-   {
-   }
+    [Fact]
+    public void ExtractProxyCredentials()
+    {
+        var proxy = new System.Net.WebProxy { BypassProxyOnLocal = true };
 
-   [Fact]
-   public void ExtractProxyCredentials()
-   {
+        Proxy.ConfigureProxy(proxy, proxyUri, logger);
 
-      var proxy = new System.Net.WebProxy
-      {
-         BypassProxyOnLocal = true
-      };
+        var credentials = proxy.Credentials?.GetCredential(new System.Uri(proxyUri), "Basic");
 
-      Proxy.ConfigureProxy(proxy, proxyUri, logger);
+        credentials?.UserName.Should().Be("user");
+        credentials?.Password.Should().Be("password");
+    }
 
-      var credentials = proxy.Credentials?.GetCredential(new System.Uri(proxyUri), "Basic");
+    [Fact]
+    public void ExtractProxyEmptyCredentials()
+    {
+        var noPasswordUri = "http://user@localhost:8080";
 
-      credentials?.UserName.Should().Be("user");
-      credentials?.Password.Should().Be("password");
-   }
+        var proxy = new System.Net.WebProxy { BypassProxyOnLocal = true };
 
-   [Fact]
-   public void ExtractProxyEmptyCredentials()
-   {
-      var noPasswordUri = "http://user@localhost:8080";
+        Proxy.ConfigureProxy(proxy, noPasswordUri, logger);
 
-      var proxy = new System.Net.WebProxy
-      {
-         BypassProxyOnLocal = true
-      };
+        proxy.Credentials.Should().BeNull();
+    }
 
-      Proxy.ConfigureProxy(proxy, noPasswordUri, logger);
+    [Fact]
+    public void ExtractProxyUri()
+    {
+        var proxy = new System.Net.WebProxy { BypassProxyOnLocal = true };
 
-      proxy.Credentials.Should().BeNull();
-   }
+        Proxy.ConfigureProxy(proxy, proxyUri, logger);
+        proxy.Address.Should().NotBeNull();
+        proxy.Address?.AbsoluteUri.Should().Be(localProxy);
+    }
 
-   [Fact]
-   public void ExtractProxyUri()
-   {
+    [Fact]
+    public void CreateProxyFromUri()
+    {
+        var proxy = Proxy.CreateProxy(proxyUri, logger);
 
-      var proxy = new System.Net.WebProxy
-      {
-         BypassProxyOnLocal = true
-      };
+        proxy.Address.Should().NotBeNull();
+        proxy.Address?.AbsoluteUri.Should().Be(localProxy);
+    }
 
-      Proxy.ConfigureProxy(proxy, proxyUri, logger);
-      proxy.Address.Should().NotBeNull();
-      proxy.Address?.AbsoluteUri.Should().Be(localProxy);
-   }
+    [Fact]
+    public void CreateNoProxyFromEmptyUri()
+    {
+        var proxy = Proxy.CreateProxy(null, logger);
 
-   [Fact]
-   public void CreateProxyFromUri()
-   {
+        proxy.Address.Should().BeNull();
+    }
 
-      var proxy = Proxy.CreateProxy(proxyUri, logger);
+    [Fact]
+    public void ProxyShouldBypassLocal()
+    {
+        var proxy = Proxy.CreateProxy(proxyUri, logger);
 
-      proxy.Address.Should().NotBeNull();
-      proxy.Address?.AbsoluteUri.Should().Be(localProxy);
-   }
+        proxy.BypassProxyOnLocal.Should().BeTrue();
+        proxy.IsBypassed(new Uri(localhost)).Should().BeTrue();
+        proxy.IsBypassed(new Uri("https://defra.gov.uk")).Should().BeFalse();
+    }
 
-   [Fact]
-   public void CreateNoProxyFromEmptyUri()
-   {
-      var proxy = Proxy.CreateProxy(null, logger);
+    [Fact]
+    public void HandlerShouldHaveProxy()
+    {
+        var handler = Proxy.CreateHttpClientHandler(proxyUri, logger);
 
-      proxy.Address.Should().BeNull();
-   }
-
-   [Fact]
-   public void ProxyShouldBypassLocal()
-   {
-
-      var proxy = Proxy.CreateProxy(proxyUri, logger);
-
-      proxy.BypassProxyOnLocal.Should().BeTrue();
-      proxy.IsBypassed(new Uri(localhost)).Should().BeTrue();
-      proxy.IsBypassed(new Uri("https://defra.gov.uk")).Should().BeFalse();
-   }
-
-   [Fact]
-   public void HandlerShouldHaveProxy()
-   {
-      var handler = Proxy.CreateHttpClientHandler(proxyUri, logger);
-
-      handler.Proxy.Should().NotBeNull();
-      handler.UseProxy.Should().BeTrue();
-      handler.Proxy?.Credentials.Should().NotBeNull();
-      handler.Proxy?.GetProxy(new Uri(localhost)).Should().NotBeNull();
-      handler.Proxy?.GetProxy(new Uri("http://google.com")).Should().NotBeNull();
-      handler.Proxy?.GetProxy(new Uri(localhost))?.AbsoluteUri.Should().Be(localhost);
-      handler.Proxy?.GetProxy(new Uri("http://google.com"))?.AbsoluteUri.Should().Be(localProxy);
-   }
-
-
+        handler.Proxy.Should().NotBeNull();
+        handler.UseProxy.Should().BeTrue();
+        handler.Proxy?.Credentials.Should().NotBeNull();
+        handler.Proxy?.GetProxy(new Uri(localhost)).Should().NotBeNull();
+        handler.Proxy?.GetProxy(new Uri("http://google.com")).Should().NotBeNull();
+        handler.Proxy?.GetProxy(new Uri(localhost))?.AbsoluteUri.Should().Be(localhost);
+        handler.Proxy?.GetProxy(new Uri("http://google.com"))?.AbsoluteUri.Should().Be(localProxy);
+    }
 }

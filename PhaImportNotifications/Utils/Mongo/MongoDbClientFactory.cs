@@ -1,15 +1,14 @@
+using System.Diagnostics.CodeAnalysis;
 using MongoDB.Bson.Serialization.Conventions;
 using MongoDB.Driver;
-using System.Diagnostics.CodeAnalysis;
 
 namespace PhaImportNotifications.Utils.Mongo;
 
 [ExcludeFromCodeCoverage]
-
 public class MongoDbClientFactory : IMongoDbClientFactory
 {
     private readonly IMongoDatabase _mongoDatabase;
-   private readonly MongoClient _client;
+    private readonly MongoClient _client;
 
     public MongoDbClientFactory(string? connectionString, string databaseName)
     {
@@ -28,7 +27,6 @@ public class MongoDbClientFactory : IMongoDbClientFactory
 
     public IMongoClient CreateClient()
     {
-
         return _client;
     }
 
@@ -41,5 +39,4 @@ public class MongoDbClientFactory : IMongoDbClientFactory
     {
         return _client;
     }
-
 }
