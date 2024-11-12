@@ -1,12 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using PhaImportNotifications.Example.Models;
 using PhaImportNotifications.Example.Services;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace PhaImportNotifications.Example.Endpoints;
 
 [ExcludeFromCodeCoverage]
+[SwaggerTag("Example endpoints")]
 public static class ExampleEndpoints
 {
     public static void UseExampleEndpoints(this IEndpointRouteBuilder app)
@@ -22,6 +25,7 @@ public static class ExampleEndpoints
         app.MapDelete("example/{name}", Delete);
     }
 
+    [HttpPost]
     private static async Task<IResult> Create(
         ExampleModel example,
         IExamplePersistence examplePersistence,
@@ -41,6 +45,7 @@ public static class ExampleEndpoints
         return Results.Created($"/example/{example.Name}", example);
     }
 
+    [HttpGet]
     private static async Task<IResult> GetAll(IExamplePersistence examplePersistence, string? searchTerm)
     {
         if (searchTerm is not null && !string.IsNullOrWhiteSpace(searchTerm))
@@ -53,12 +58,17 @@ public static class ExampleEndpoints
         return Results.Ok(matches);
     }
 
-    private static async Task<IResult> GetByName(string name, IExamplePersistence examplePersistence)
+    [HttpGet]
+    private static async Task<IResult> GetByName(
+        [FromRoute, SwaggerParameter("The name to fetch", Required = true)] string name,
+        IExamplePersistence examplePersistence
+    )
     {
         var example = await examplePersistence.GetByExampleName(name);
         return example is not null ? Results.Ok(example) : Results.NotFound();
     }
 
+    [HttpPut]
     private static async Task<IResult> Update(
         string name,
         ExampleModel example,
@@ -75,6 +85,7 @@ public static class ExampleEndpoints
         return updated ? Results.Ok(example) : Results.NotFound();
     }
 
+    [HttpDelete]
     private static async Task<IResult> Delete(string name, IExamplePersistence examplePersistence)
     {
         var deleted = await examplePersistence.DeleteAsync(name);

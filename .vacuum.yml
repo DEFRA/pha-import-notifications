@@ -1,0 +1,4 @@
+extends: [[spectral:oas, recommended], [vacuum:owasp, all]]
+rules:
+  oas3-missing-example: false
+  operation-tag-defined: false # To revisit
