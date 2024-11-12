@@ -1,15 +1,17 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using FluentValidation;
-using PhaImportNotifications.Example.Endpoints;
-using PhaImportNotifications.Example.Services;
+using Microsoft.OpenApi.Models;
+using PhaImportNotifications.Endpoints;
+using PhaImportNotifications.SwashbuckleFilters;
 using PhaImportNotifications.Utils;
 using PhaImportNotifications.Utils.Http;
 using PhaImportNotifications.Utils.Logging;
 using PhaImportNotifications.Utils.Mongo;
 using Serilog;
 using Serilog.Core;
-
-//-------- Configure the WebApplication builder------------------//
+using Swashbuckle.AspNetCore.ReDoc;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 var app = CreateWebApplication(args);
 await app.RunAsync();
@@ -17,78 +19,114 @@ await app.RunAsync();
 [ExcludeFromCodeCoverage]
 static WebApplication CreateWebApplication(string[] args)
 {
-    var _builder = WebApplication.CreateBuilder(args);
+    var builder = WebApplication.CreateBuilder(args);
 
-    ConfigureWebApplication(_builder);
+    ConfigureWebApplication(builder);
 
-    var _app = BuildWebApplication(_builder);
-
-    return _app;
+    return BuildWebApplication(builder);
 }
 
 [ExcludeFromCodeCoverage]
-static void ConfigureWebApplication(WebApplicationBuilder _builder)
+static void ConfigureWebApplication(WebApplicationBuilder builder)
 {
-    _builder.Configuration.AddEnvironmentVariables();
+    builder.Configuration.AddEnvironmentVariables();
 
-    var logger = ConfigureLogging(_builder);
+    var logger = ConfigureLogging(builder);
 
     // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
-    _builder.Services.AddCustomTrustStore(logger);
+    builder.Services.AddCustomTrustStore(logger);
 
-    ConfigureMongoDb(_builder);
+    ConfigureMongoDb(builder);
+    ConfigureEndpoints(builder);
 
-    ConfigureEndpoints(_builder);
-
-    _builder.Services.AddHttpClient();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen(c =>
+    {
+        c.AddServer(
+            new OpenApiServer
+            {
+                Description = "The Open Government Licence (OGL) Version 3",
+                Url = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3",
+            }
+        );
+        c.CustomOperationIds(apiDesc => apiDesc.TryGetMethodInfo(out var methodInfo) ? methodInfo.Name : null);
+        c.EnableAnnotations();
+        c.IncludeXmlComments(Assembly.GetExecutingAssembly());
+        c.OperationFilter<AddSwashbuckleErrorResponses>();
+        c.OperationFilter<AddSwashbuckleHeaders>();
+        c.SwaggerDoc(
+            "v1",
+            new OpenApiInfo
+            {
+                Description = "TBC",
+                Contact = new OpenApiContact
+                {
+                    Email = "tbc@defra.gov.uk",
+                    Name = "DEFRA",
+                    Url = new Uri(
+                        "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs"
+                    ),
+                },
+                Title = "PHA Import Notifications",
+                Version = "v1",
+            }
+        );
+    });
+    builder.Services.AddHttpClient();
 
     // calls outside the platform should be done using the named 'proxy' http client.
-    _builder.Services.AddHttpProxyClient(logger);
+    builder.Services.AddHttpProxyClient(logger);
 
-    _builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+    builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 }
 
 [ExcludeFromCodeCoverage]
-static Logger ConfigureLogging(WebApplicationBuilder _builder)
+static Logger ConfigureLogging(WebApplicationBuilder builder)
 {
-    _builder.Logging.ClearProviders();
+    builder.Logging.ClearProviders();
     var logger = new LoggerConfiguration()
-        .ReadFrom.Configuration(_builder.Configuration)
+        .ReadFrom.Configuration(builder.Configuration)
         .Enrich.With<LogLevelMapper>()
         .CreateLogger();
-    _builder.Logging.AddSerilog(logger);
+    builder.Logging.AddSerilog(logger);
     logger.Information("Starting application");
     return logger;
 }
 
 [ExcludeFromCodeCoverage]
-static void ConfigureMongoDb(WebApplicationBuilder _builder)
+static void ConfigureMongoDb(WebApplicationBuilder builder)
 {
-    _builder.Services.AddSingleton<IMongoDbClientFactory>(_ => new MongoDbClientFactory(
-        _builder.Configuration.GetValue<string>("Mongo:DatabaseUri")!,
-        _builder.Configuration.GetValue<string>("Mongo:DatabaseName")!
+    builder.Services.AddSingleton<IMongoDbClientFactory>(_ => new MongoDbClientFactory(
+        builder.Configuration.GetValue<string>("Mongo:DatabaseUri")!,
+        builder.Configuration.GetValue<string>("Mongo:DatabaseName")!
     ));
 }
 
 [ExcludeFromCodeCoverage]
-static void ConfigureEndpoints(WebApplicationBuilder _builder)
+static void ConfigureEndpoints(WebApplicationBuilder builder)
 {
-    // our Example service, remove before deploying!
-    _builder.Services.AddSingleton<IExamplePersistence, ExamplePersistence>();
-
-    _builder.Services.AddHealthChecks();
+    builder.Services.AddHealthChecks();
 }
 
 [ExcludeFromCodeCoverage]
-static WebApplication BuildWebApplication(WebApplicationBuilder _builder)
+static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 {
-    var app = _builder.Build();
+    var app = builder.Build();
 
-    app.UseRouting();
     app.MapHealthChecks("/health");
+    app.UsePhaEndpoints();
 
-    // Example module, remove before deploying!
-    app.UseExampleEndpoints();
+    app.UseSwagger(options =>
+    {
+        options.RouteTemplate = "/.well-known/openapi/{documentName}/openapi.json";
+    });
+    app.UseReDoc(options =>
+    {
+        options.ConfigObject = new ConfigObject { ExpandResponses = "200" };
+        options.DocumentTitle = "PHA Import Notifications";
+        options.RoutePrefix = "redoc";
+        options.SpecUrl = "/.well-known/openapi/v1/openapi.json";
+    });
 
     return app;
 }

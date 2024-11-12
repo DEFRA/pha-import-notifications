@@ -267,3 +267,5 @@ __pycache__/
 
 library.db
 .envrc
+
+openapi.json
