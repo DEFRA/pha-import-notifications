@@ -24,7 +24,7 @@ WORKDIR /src
 
 ENV PATH="$PATH:/root/.dotnet/tools"
 RUN dotnet tool install -g csharpier && \
-    dotnet tool install -g Swashbuckle.AspNetCore.Cli
+    dotnet tool install -g Swashbuckle.AspNetCore.Cli --version 6.9.0
  
 COPY .csharpierrc .csharpierrc
 COPY .vacuum.yml .vacuum.yml
