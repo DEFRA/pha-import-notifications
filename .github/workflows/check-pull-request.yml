@@ -25,10 +25,7 @@ jobs:
             8.0
       - run: dotnet test
       - name: Build
-        uses: DEFRA/cdp-build-action/build@main
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push: false
+        uses: DEFRA/cdp-build-action/check-pr@main
   sonarcloud-scan:
     name: CDP SonarCloud Scan
     uses: ./.github/workflows/sonarcloud.yml
