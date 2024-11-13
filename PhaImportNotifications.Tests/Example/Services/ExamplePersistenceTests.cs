@@ -8,7 +8,7 @@ using PhaImportNotifications.Example.Models;
 using PhaImportNotifications.Example.Services;
 using PhaImportNotifications.Utils.Mongo;
 
-namespace PhaImportNotifications.Test.Example.Services;
+namespace PhaImportNotifications.Tests.Example.Services;
 
 public class ExamplePersistenceTests
 {
