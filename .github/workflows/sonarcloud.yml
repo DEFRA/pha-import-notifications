@@ -1,4 +1,4 @@
-name: Publish Hot Fix
+name: CDP SonarCloud Scan
 
 on:
   workflow_call:
