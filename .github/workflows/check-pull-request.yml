@@ -24,7 +24,7 @@ jobs:
           dotnet-version: |
             8.0
       - run: dotnet test
-      - name: Build
+      - name: Docker
         uses: DEFRA/cdp-build-action/check-pr@main
   sonarcloud-scan:
     name: CDP SonarCloud Scan
