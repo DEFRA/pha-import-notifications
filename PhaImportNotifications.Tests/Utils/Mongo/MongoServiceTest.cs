@@ -9,8 +9,6 @@ namespace PhaImportNotifications.Tests.Utils.Mongo
     public class MongoServiceTests
     {
         private readonly IMongoDbClientFactory _connectionFactoryMock;
-        private readonly ILoggerFactory _loggerFactoryMock;
-        private readonly IMongoClient _clientMock;
         private readonly IMongoCollection<TestModel> _collectionMock;
 
         private readonly TestMongoService _service;
@@ -18,8 +16,6 @@ namespace PhaImportNotifications.Tests.Utils.Mongo
         public MongoServiceTests()
         {
             _connectionFactoryMock = Substitute.For<IMongoDbClientFactory>();
-            _loggerFactoryMock = Substitute.For<ILoggerFactory>();
-            _clientMock = Substitute.For<IMongoClient>();
             _collectionMock = Substitute.For<IMongoCollection<TestModel>>();
 
             _connectionFactoryMock.GetClient().Returns(Substitute.For<IMongoClient>());
