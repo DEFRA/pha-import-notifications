@@ -1,5 +1,5 @@
 dependencies:
-	dotnet tool install -g Swashbuckle.AspNetCore.Cli
+	dotnet tool install -g Swashbuckle.AspNetCore.Cli --version 6.9.0
 
 lint-openapi-spec: dependencies
 	dotnet build -c Release --no-restore
