@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace PhaImportNotifications.Endpoints;
+namespace Api.Endpoints;
 
 public static class PhaEndpoints
 {

@@ -1,6 +1,6 @@
 ﻿{
   "profiles": {
-    "PhaImportNotifications": {
+    "Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,

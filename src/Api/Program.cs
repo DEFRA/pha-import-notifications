@@ -1,10 +1,10 @@
 using System.Reflection;
+using Api.Endpoints;
+using Api.SwashbuckleFilters;
+using Api.Utils;
+using Api.Utils.Http;
+using Api.Utils.Logging;
 using Microsoft.OpenApi.Models;
-using PhaImportNotifications.Endpoints;
-using PhaImportNotifications.SwashbuckleFilters;
-using PhaImportNotifications.Utils;
-using PhaImportNotifications.Utils.Http;
-using PhaImportNotifications.Utils.Logging;
 using Serilog;
 using Serilog.Core;
 using Swashbuckle.AspNetCore.ReDoc;
@@ -127,7 +127,7 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 }
 
 #pragma warning disable S2094
-namespace PhaImportNotifications
+namespace Api
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public partial class Program;

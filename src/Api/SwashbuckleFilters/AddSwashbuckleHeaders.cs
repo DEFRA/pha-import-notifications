@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace PhaImportNotifications.SwashbuckleFilters;
+namespace Api.SwashbuckleFilters;
 
 [ExcludeFromCodeCoverage]
 public class AddSwashbuckleHeaders : IOperationFilter
