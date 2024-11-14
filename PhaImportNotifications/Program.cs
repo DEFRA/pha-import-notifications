@@ -1,22 +1,33 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using FluentValidation;
 using Microsoft.OpenApi.Models;
 using PhaImportNotifications.Endpoints;
 using PhaImportNotifications.SwashbuckleFilters;
 using PhaImportNotifications.Utils;
 using PhaImportNotifications.Utils.Http;
 using PhaImportNotifications.Utils.Logging;
-using PhaImportNotifications.Utils.Mongo;
 using Serilog;
 using Serilog.Core;
 using Swashbuckle.AspNetCore.ReDoc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-var app = CreateWebApplication(args);
-await app.RunAsync();
+Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
-[ExcludeFromCodeCoverage]
+try
+{
+    var app = CreateWebApplication(args);
+    await app.RunAsync();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application start-up failed");
+}
+finally
+{
+    await Log.CloseAndFlushAsync();
+}
+
+return;
+
 static WebApplication CreateWebApplication(string[] args)
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +37,6 @@ static WebApplication CreateWebApplication(string[] args)
     return BuildWebApplication(builder);
 }
 
-[ExcludeFromCodeCoverage]
 static void ConfigureWebApplication(WebApplicationBuilder builder)
 {
     builder.Configuration.AddEnvironmentVariables();
@@ -36,9 +46,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
     builder.Services.AddCustomTrustStore(logger);
 
-    ConfigureMongoDb(builder);
-    ConfigureEndpoints(builder);
-
+    builder.Services.AddHealthChecks();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(c =>
     {
@@ -78,47 +86,31 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);
-
-    builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 }
 
-[ExcludeFromCodeCoverage]
 static Logger ConfigureLogging(WebApplicationBuilder builder)
 {
     builder.Logging.ClearProviders();
+
     var logger = new LoggerConfiguration()
         .ReadFrom.Configuration(builder.Configuration)
         .Enrich.With<LogLevelMapper>()
         .Enrich.WithProperty("service.version", Environment.GetEnvironmentVariable("SERVICE_VERSION"))
         .CreateLogger();
+
     builder.Logging.AddSerilog(logger);
+
     logger.Information("Starting application");
+
     return logger;
 }
 
-[ExcludeFromCodeCoverage]
-static void ConfigureMongoDb(WebApplicationBuilder builder)
-{
-    builder.Services.AddSingleton<IMongoDbClientFactory>(_ => new MongoDbClientFactory(
-        builder.Configuration.GetValue<string>("Mongo:DatabaseUri")!,
-        builder.Configuration.GetValue<string>("Mongo:DatabaseName")!
-    ));
-}
-
-[ExcludeFromCodeCoverage]
-static void ConfigureEndpoints(WebApplicationBuilder builder)
-{
-    builder.Services.AddHealthChecks();
-}
-
-[ExcludeFromCodeCoverage]
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 {
     var app = builder.Build();
 
     app.MapHealthChecks("/health");
     app.UsePhaEndpoints();
-
     app.UseSwagger(options =>
     {
         options.RouteTemplate = "/.well-known/openapi/{documentName}/openapi.json";
@@ -133,3 +125,11 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 
     return app;
 }
+
+#pragma warning disable S2094
+namespace PhaImportNotifications
+{
+    // ReSharper disable once ClassNeverInstantiated.Global
+    public partial class Program;
+}
+#pragma warning restore S2094
