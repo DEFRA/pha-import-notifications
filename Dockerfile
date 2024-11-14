@@ -29,30 +29,30 @@ RUN dotnet tool install -g csharpier && \
 COPY .csharpierrc .csharpierrc
 COPY .vacuum.yml .vacuum.yml
 
-COPY Api/Api.csproj Api/Api.csproj
-COPY Api.Tests/Api.Tests.csproj Api.Tests/Api.Tests.csproj
-COPY Api.IntegrationTests/Api.IntegrationTests.csproj Api.IntegrationTests/Api.IntegrationTests.csproj
+COPY src/Api/Api.csproj src/Api/Api.csproj
+COPY tests/Api.Tests/Api.Tests.csproj tests/Api.Tests/Api.Tests.csproj
+COPY tests/Api.IntegrationTests/Api.IntegrationTests.csproj tests/Api.IntegrationTests/Api.IntegrationTests.csproj
 COPY Defra.PhaImportNotifications.sln Defra.PhaImportNotifications.sln
 COPY Directory.Build.props Directory.Build.props
 
 RUN dotnet restore
 
-COPY Api Api
-COPY Api.Tests Api.Tests
-COPY Api.IntegrationTests Api.IntegrationTests
+COPY src/Api src/Api
+COPY tests/Api.Tests tests/Api.Tests
+COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
 RUN dotnet csharpier --check . 
 
 RUN dotnet build --no-restore -c Release
-RUN swagger tofile --output openapi.json ./Api/bin/Release/net8.0/Defra.PhaImportNotifications.Api.dll v1
+RUN swagger tofile --output openapi.json ./src/Api/bin/Release/net8.0/Defra.PhaImportNotifications.Api.dll v1
 RUN vacuum lint -d -r .vacuum.yml openapi.json
 
-RUN dotnet test --no-restore Api.Tests
-RUN dotnet test --no-restore Api.IntegrationTests
+RUN dotnet test --no-restore tests/Api.Tests
+RUN dotnet test --no-restore tests/Api.IntegrationTests
 
 FROM build AS publish
 
-RUN dotnet publish Api -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish src/Api -c Release -o /app/publish /p:UseAppHost=false
 
 ENV ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
 
