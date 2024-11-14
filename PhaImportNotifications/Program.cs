@@ -1,13 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using FluentValidation;
 using Microsoft.OpenApi.Models;
 using PhaImportNotifications.Endpoints;
 using PhaImportNotifications.SwashbuckleFilters;
 using PhaImportNotifications.Utils;
 using PhaImportNotifications.Utils.Http;
 using PhaImportNotifications.Utils.Logging;
-using PhaImportNotifications.Utils.Mongo;
 using Serilog;
 using Serilog.Core;
 using Swashbuckle.AspNetCore.ReDoc;
@@ -36,7 +34,6 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
     builder.Services.AddCustomTrustStore(logger);
 
-    ConfigureMongoDb(builder);
     ConfigureEndpoints(builder);
 
     builder.Services.AddEndpointsApiExplorer();
@@ -78,8 +75,6 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);
-
-    builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 }
 
 [ExcludeFromCodeCoverage]
@@ -94,15 +89,6 @@ static Logger ConfigureLogging(WebApplicationBuilder builder)
     builder.Logging.AddSerilog(logger);
     logger.Information("Starting application");
     return logger;
-}
-
-[ExcludeFromCodeCoverage]
-static void ConfigureMongoDb(WebApplicationBuilder builder)
-{
-    builder.Services.AddSingleton<IMongoDbClientFactory>(_ => new MongoDbClientFactory(
-        builder.Configuration.GetValue<string>("Mongo:DatabaseUri")!,
-        builder.Configuration.GetValue<string>("Mongo:DatabaseName")!
-    ));
 }
 
 [ExcludeFromCodeCoverage]
