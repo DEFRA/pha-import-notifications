@@ -33,6 +33,7 @@ COPY PhaImportNotifications/PhaImportNotifications.csproj PhaImportNotifications
 COPY PhaImportNotifications.Tests/PhaImportNotifications.Tests.csproj PhaImportNotifications.Tests/PhaImportNotifications.Tests.csproj
 COPY PhaImportNotifications.IntegrationTests/PhaImportNotifications.IntegrationTests.csproj PhaImportNotifications.IntegrationTests/PhaImportNotifications.IntegrationTests.csproj
 COPY PhaImportNotifications.sln PhaImportNotifications.sln
+COPY Directory.Build.props Directory.Build.props
 
 RUN dotnet restore
 
