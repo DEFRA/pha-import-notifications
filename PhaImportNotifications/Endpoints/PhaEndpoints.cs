@@ -29,7 +29,3 @@ public static class PhaEndpoints
         public string Response { get; } = "Hello World";
     }
 }
-
-#pragma warning disable S2094
-public class Program;
-#pragma warning restore S2094

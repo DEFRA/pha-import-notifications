@@ -119,3 +119,11 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 
     return app;
 }
+
+#pragma warning disable S2094
+namespace PhaImportNotifications
+{
+    // ReSharper disable once ClassNeverInstantiated.Global
+    public partial class Program;
+}
+#pragma warning restore S2094
