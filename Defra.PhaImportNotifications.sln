@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhaImportNotifications", "PhaImportNotifications\PhaImportNotifications.csproj", "{7D935959-D3BE-4EDC-BAEC-541C72741633}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{7D935959-D3BE-4EDC-BAEC-541C72741633}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhaImportNotifications.Tests", "PhaImportNotifications.Tests\PhaImportNotifications.Tests.csproj", "{5CB86A4A-162D-4A20-9403-5BB89D671BF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Tests", "Api.Tests\Api.Tests.csproj", "{5CB86A4A-162D-4A20-9403-5BB89D671BF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhaImportNotifications.IntegrationTests", "PhaImportNotifications.IntegrationTests\PhaImportNotifications.IntegrationTests.csproj", "{56EAAD32-D182-432C-9607-C36E38BA4973}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.IntegrationTests", "Api.IntegrationTests\Api.IntegrationTests.csproj", "{56EAAD32-D182-432C-9607-C36E38BA4973}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

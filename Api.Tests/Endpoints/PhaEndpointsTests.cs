@@ -1,7 +1,7 @@
+using Api.Endpoints;
 using FluentAssertions;
-using PhaImportNotifications.Endpoints;
 
-namespace PhaImportNotifications.Tests.Endpoints;
+namespace Api.Tests.Endpoints;
 
 public class PhaEndpointsTests
 {

@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using Serilog.Core;
 
-namespace PhaImportNotifications.Utils.Http;
+namespace Api.Utils.Http;
 
 public static class Proxy
 {

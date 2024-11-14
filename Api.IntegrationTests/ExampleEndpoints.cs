@@ -1,9 +1,9 @@
 using System.Net.Http.Json;
+using Api.Endpoints;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
-using PhaImportNotifications.Endpoints;
 
-namespace PhaImportNotifications.IntegrationTests;
+namespace Api.IntegrationTests;
 
 public class ExampleEndpoints(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>>
 {
