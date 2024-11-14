@@ -91,13 +91,17 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 static Logger ConfigureLogging(WebApplicationBuilder builder)
 {
     builder.Logging.ClearProviders();
+
     var logger = new LoggerConfiguration()
         .ReadFrom.Configuration(builder.Configuration)
         .Enrich.With<LogLevelMapper>()
         .Enrich.WithProperty("service.version", Environment.GetEnvironmentVariable("SERVICE_VERSION"))
         .CreateLogger();
+
     builder.Logging.AddSerilog(logger);
+
     logger.Information("Starting application");
+
     return logger;
 }
 
@@ -107,7 +111,6 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 
     app.MapHealthChecks("/health");
     app.UsePhaEndpoints();
-
     app.UseSwagger(options =>
     {
         options.RouteTemplate = "/.well-known/openapi/{documentName}/openapi.json";
