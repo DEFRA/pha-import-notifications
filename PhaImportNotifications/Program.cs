@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Microsoft.OpenApi.Models;
 using PhaImportNotifications.Endpoints;
@@ -14,7 +13,6 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 var app = CreateWebApplication(args);
 await app.RunAsync();
 
-[ExcludeFromCodeCoverage]
 static WebApplication CreateWebApplication(string[] args)
 {
     var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +22,6 @@ static WebApplication CreateWebApplication(string[] args)
     return BuildWebApplication(builder);
 }
 
-[ExcludeFromCodeCoverage]
 static void ConfigureWebApplication(WebApplicationBuilder builder)
 {
     builder.Configuration.AddEnvironmentVariables();
@@ -77,7 +74,6 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     builder.Services.AddHttpProxyClient(logger);
 }
 
-[ExcludeFromCodeCoverage]
 static Logger ConfigureLogging(WebApplicationBuilder builder)
 {
     builder.Logging.ClearProviders();
@@ -91,13 +87,11 @@ static Logger ConfigureLogging(WebApplicationBuilder builder)
     return logger;
 }
 
-[ExcludeFromCodeCoverage]
 static void ConfigureEndpoints(WebApplicationBuilder builder)
 {
     builder.Services.AddHealthChecks();
 }
 
-[ExcludeFromCodeCoverage]
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 {
     var app = builder.Build();
