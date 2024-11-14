@@ -64,7 +64,9 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
                     Email = "tbc@defra.gov.uk",
                     Name = "DEFRA",
                     Url = new Uri(
+#pragma warning disable S1075
                         "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs"
+#pragma warning restore S1075
                     ),
                 },
                 Title = "PHA Import Notifications",

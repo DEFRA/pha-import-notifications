@@ -1,7 +1,7 @@
 using FluentAssertions;
 using PhaImportNotifications.Endpoints;
 
-namespace PhaImportNotifications.Test.Endpoints;
+namespace PhaImportNotifications.Tests.Endpoints;
 
 public class PhaEndpointsTests
 {

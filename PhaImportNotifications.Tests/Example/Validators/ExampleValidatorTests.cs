@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using PhaImportNotifications.Example.Models;
 using PhaImportNotifications.Example.Validators;
 
-namespace PhaImportNotifications.Test.Example.Validators;
+namespace PhaImportNotifications.Tests.Example.Validators;
 
 public class ExampleValidatorTests
 {

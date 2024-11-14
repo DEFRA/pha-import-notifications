@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 
-namespace PhaImportNotifications.Test.Config;
+namespace PhaImportNotifications.Tests.Config;
 
 public class EnvironmentTest
 {

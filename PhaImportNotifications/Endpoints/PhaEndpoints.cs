@@ -30,4 +30,6 @@ public static class PhaEndpoints
     }
 }
 
+#pragma warning disable S2094
 public class Program;
+#pragma warning restore S2094

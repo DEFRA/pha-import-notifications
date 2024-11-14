@@ -1,12 +1,9 @@
-using Elastic.CommonSchema;
 using FluentAssertions;
-using Microsoft.Extensions.Logging.Abstractions;
-using NSubstitute;
 using PhaImportNotifications.Utils.Http;
 using Serilog;
 using Serilog.Core;
 
-namespace PhaImportNotifications.Test.Utils.Http;
+namespace PhaImportNotifications.Tests.Utils.Http;
 
 public class ProxyTest
 {
