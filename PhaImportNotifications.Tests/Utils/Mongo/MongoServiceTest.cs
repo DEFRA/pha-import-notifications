@@ -33,20 +33,20 @@ namespace PhaImportNotifications.Tests.Utils.Mongo
         [Fact]
         public void EnsureIndexes_CreatesIndexes_WhenIndexesAreDefined()
         {
-            var _indexes = new List<CreateIndexModel<TestModel>>()
+            var indexes = new List<CreateIndexModel<TestModel>>()
             {
                 new CreateIndexModel<TestModel>(Builders<TestModel>.IndexKeys.Ascending(x => x.Name)),
             };
-            _service.setIndexes(_indexes);
+            _service.SetIndexes(indexes);
             _service.RunEnsureIndexes();
 
-            _collectionMock.Received(1).Indexes.CreateMany(_indexes);
+            _collectionMock.Received(1).Indexes.CreateMany(indexes);
         }
 
         [Fact]
         public void EnsureIndexes_DoesNotCreateIndexes_WhenIndexesAreNotDefined()
         {
-            _service.setIndexes(new List<CreateIndexModel<TestModel>>());
+            _service.SetIndexes(new List<CreateIndexModel<TestModel>>());
             _service.RunEnsureIndexes();
 
             _collectionMock.DidNotReceive().Indexes.CreateMany(Arg.Any<IEnumerable<CreateIndexModel<TestModel>>>());
@@ -59,13 +59,13 @@ namespace PhaImportNotifications.Tests.Utils.Mongo
 
         public interface ITestMongoService
         {
-            public List<CreateIndexModel<TestModel>> getIndexes();
-            public void setIndexes(List<CreateIndexModel<TestModel>> indexes);
+            public List<CreateIndexModel<TestModel>> GetIndexes();
+            public void SetIndexes(List<CreateIndexModel<TestModel>> indexes);
         }
 
         private class TestMongoService : MongoService<TestModel>, ITestMongoService
         {
-            protected List<CreateIndexModel<TestModel>> _indexes = new List<CreateIndexModel<TestModel>>();
+            protected List<CreateIndexModel<TestModel>> Indexes = new List<CreateIndexModel<TestModel>>();
 
             public TestMongoService(
                 IMongoDbClientFactory connectionFactory,
@@ -74,25 +74,25 @@ namespace PhaImportNotifications.Tests.Utils.Mongo
             )
                 : base(connectionFactory, collectionName, loggerFactory) { }
 
-            public List<CreateIndexModel<TestModel>> getIndexes()
+            public List<CreateIndexModel<TestModel>> GetIndexes()
             {
-                return _indexes;
+                return Indexes;
             }
 
-            public void setIndexes(List<CreateIndexModel<TestModel>> indexes)
+            public void SetIndexes(List<CreateIndexModel<TestModel>> indexes)
             {
-                this._indexes = indexes;
+                this.Indexes = indexes;
             }
 
             protected override List<CreateIndexModel<TestModel>> DefineIndexes(
                 IndexKeysDefinitionBuilder<TestModel> builder
             )
             {
-                if (getIndexes() == null)
+                if (GetIndexes() == null)
                 {
                     throw new System.Exception("Indexes not defined");
                 }
-                return getIndexes();
+                return GetIndexes();
             }
 
             public void RunEnsureIndexes()

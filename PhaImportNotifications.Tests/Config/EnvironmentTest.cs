@@ -7,9 +7,9 @@ public class EnvironmentTest
     [Fact]
     public void IsNotDevModeByDefault()
     {
-        var _builder = WebApplication.CreateBuilder();
+        var builder = WebApplication.CreateBuilder();
 
-        var isDev = PhaImportNotifications.Config.Environment.IsDevMode(_builder);
+        var isDev = PhaImportNotifications.Config.Environment.IsDevMode(builder);
 
         Assert.False(isDev);
     }

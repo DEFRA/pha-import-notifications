@@ -39,7 +39,7 @@ public class ExamplePersistence(IMongoDbClientFactory connectionFactory, ILogger
         }
         catch (Exception e)
         {
-            _logger.LogError(e, "Failed to insert {Example}", example);
+            Logger.LogError(e, "Failed to insert {Example}", example);
             return false;
         }
     }
@@ -48,7 +48,7 @@ public class ExamplePersistence(IMongoDbClientFactory connectionFactory, ILogger
     public async Task<ExampleModel?> GetByExampleName(string name)
     {
         var result = await Collection.Find(b => b.Name == name).FirstOrDefaultAsync();
-        _logger.LogInformation("Searching for {Name}, found {Result}", name, result);
+        Logger.LogInformation("Searching for {Name}, found {Result}", name, result);
         return result;
     }
 
