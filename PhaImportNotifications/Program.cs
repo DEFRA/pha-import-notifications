@@ -10,8 +10,23 @@ using Serilog.Core;
 using Swashbuckle.AspNetCore.ReDoc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-var app = CreateWebApplication(args);
-await app.RunAsync();
+Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
+
+try
+{
+    var app = CreateWebApplication(args);
+    await app.RunAsync();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application start-up failed");
+}
+finally
+{
+    await Log.CloseAndFlushAsync();
+}
+
+return;
 
 static WebApplication CreateWebApplication(string[] args)
 {
