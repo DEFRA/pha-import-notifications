@@ -46,8 +46,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
     builder.Services.AddCustomTrustStore(logger);
 
-    ConfigureEndpoints(builder);
-
+    builder.Services.AddHealthChecks();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(c =>
     {
@@ -100,11 +99,6 @@ static Logger ConfigureLogging(WebApplicationBuilder builder)
     builder.Logging.AddSerilog(logger);
     logger.Information("Starting application");
     return logger;
-}
-
-static void ConfigureEndpoints(WebApplicationBuilder builder)
-{
-    builder.Services.AddHealthChecks();
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)
