@@ -19,13 +19,13 @@ WORKDIR /tmp/vacuum
 RUN wget "https://github.com/daveshanley/vacuum/releases/download/v${VACUUM_VERSION}/vacuum_${VACUUM_VERSION}_linux_x86_64.tar.gz" -q -O vacuum.tar.gz && \
     tar zxvf "vacuum.tar.gz" && \
     mv vacuum /usr/bin/vacuum
- 
+
 WORKDIR /src
 
 ENV PATH="$PATH:/root/.dotnet/tools"
-RUN dotnet tool install -g csharpier && \
+RUN dotnet tool install -g --allow-roll-forward csharpier && \
     dotnet tool install -g Swashbuckle.AspNetCore.Cli
- 
+
 COPY .csharpierrc .csharpierrc
 COPY .vacuum.yml .vacuum.yml
 
@@ -44,10 +44,10 @@ COPY tests/Api.Tests tests/Api.Tests
 
 COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
-RUN dotnet csharpier --check . 
+RUN dotnet csharpier --check .
 
 RUN dotnet build --no-restore -c Release
-RUN swagger tofile --output openapi.json ./src/Api/bin/Release/net8.0/Defra.PhaImportNotifications.Api.dll v1
+RUN swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
 
 # RUN vacuum lint -d -r .vacuum.yml openapi.json
 
