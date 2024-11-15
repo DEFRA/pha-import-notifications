@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Trade.ImportNotification.Contract;
 
 namespace PhaImportNotifications.Endpoints;
 
@@ -12,7 +11,7 @@ public static class ImportNotificationUpdatesEndpoint
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(ImportNotification), 200)]
+    [ProducesResponseType(typeof(object), 200)]
     private static Task<IResult> Get([FromRoute] string referenceNumber)
     {
         return Task.FromResult(Results.Ok());
