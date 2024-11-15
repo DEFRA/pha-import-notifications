@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: |
-            8.0
+            9.0
       - run: dotnet test
       - name: Docker
         uses: DEFRA/cdp-build-action/check-pr@main
