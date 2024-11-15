@@ -1,0 +1,3661 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CDMS Public API",
+    "version": "v0.1"
+  },
+  "paths": {
+    "/mgmt/collections": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mgmt/collections/drop": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mgmt/environment": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mgmt/status": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mgmt/proxy/set": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mgmt/proxy/unset": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/import-notifications": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "syncPeriod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SyncPeriod"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncNotificationsCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/clearance-requests": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "syncPeriod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SyncPeriod"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncClearanceRequestsCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/gmrs": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "syncPeriod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SyncPeriod"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncGmrsCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/decisions": {
+      "post": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncDecisionsCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/queue-counts": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/sync-jobs": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/sync-job/{jobId}": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "import-notifications": {
+      "description": "Notification Operations",
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "description": "Get Notifications",
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotificationResourceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccompanyingDocument": {
+        "type": "object",
+        "properties": {
+          "documentType": {
+            "$ref": "#/components/schemas/AccompanyingDocumentDocumentTypeEnum"
+          },
+          "documentReference": {
+            "type": "string",
+            "description": "Additional document reference",
+            "nullable": true
+          },
+          "documentIssuedOn": {
+            "type": "string",
+            "description": "Additional document issue date",
+            "format": "date-time",
+            "nullable": true
+          },
+          "attachmentId": {
+            "type": "string",
+            "description": "The UUID used for the uploaded file in blob storage",
+            "nullable": true
+          },
+          "attachmentFilename": {
+            "type": "string",
+            "description": "The original filename of the uploaded file",
+            "nullable": true
+          },
+          "attachmentContentType": {
+            "type": "string",
+            "description": "The MIME type of the uploaded file",
+            "nullable": true
+          },
+          "uploadUserId": {
+            "type": "string",
+            "description": "The UUID for the user that uploaded the file",
+            "nullable": true
+          },
+          "uploadOrganisationId": {
+            "type": "string",
+            "description": "The UUID for the organisation that the upload user is associated with",
+            "nullable": true
+          },
+          "externalReference": {
+            "$ref": "#/components/schemas/ExternalReference"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AccompanyingDocumentDocumentTypeEnum": {
+        "enum": [
+          "AirWaybill",
+          "BillOfLading",
+          "CargoManifest",
+          "CatchCertificate",
+          "CommercialDocument",
+          "CommercialInvoice",
+          "ConformityCertificate",
+          "ContainerManifest",
+          "CustomsDeclaration",
+          "Docom",
+          "HealthCertificate",
+          "HeatTreatmentCertificate",
+          "ImportPermit",
+          "InspectionCertificate",
+          "Itahc",
+          "JourneyLog",
+          "LaboratorySamplingResultsForAflatoxin",
+          "LatestVeterinaryHealthCertificate",
+          "LetterOfAuthority",
+          "LicenseOrAuthorisation",
+          "MycotoxinCertification",
+          "OriginCertificate",
+          "Other",
+          "PhytosanitaryCertificate",
+          "ProcessingStatement",
+          "ProofOfStorage",
+          "RailwayBill",
+          "SeaWaybill",
+          "VeterinaryHealthCertificate",
+          "ListOfIngredients",
+          "PackingList",
+          "RoadConsignmentNote"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "street": {
+            "type": "string",
+            "description": "Street",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "description": "City",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "Country",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "Postal Code",
+            "nullable": true
+          },
+          "addressLine1": {
+            "type": "string",
+            "description": "1st line of address",
+            "nullable": true
+          },
+          "addressLine2": {
+            "type": "string",
+            "description": "2nd line of address",
+            "nullable": true
+          },
+          "addressLine3": {
+            "type": "string",
+            "description": "3rd line of address",
+            "nullable": true
+          },
+          "postalZipCode": {
+            "type": "string",
+            "description": "Post / zip code",
+            "nullable": true
+          },
+          "countryIsoCode": {
+            "type": "string",
+            "description": "country 2-digits ISO code",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address",
+            "nullable": true
+          },
+          "ukTelephone": {
+            "type": "string",
+            "description": "UK phone number",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "description": "Telephone number",
+            "nullable": true
+          },
+          "internationalTelephone": {
+            "$ref": "#/components/schemas/InternationalTelephone"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Applicant": {
+        "type": "object",
+        "properties": {
+          "laboratory": {
+            "type": "string",
+            "description": "Name of laboratory",
+            "nullable": true
+          },
+          "laboratoryAddress": {
+            "type": "string",
+            "description": "Laboratory address",
+            "nullable": true
+          },
+          "laboratoryIdentification": {
+            "type": "string",
+            "description": "Laboratory identification",
+            "nullable": true
+          },
+          "laboratoryPhoneNumber": {
+            "type": "string",
+            "description": "Laboratory phone number",
+            "nullable": true
+          },
+          "laboratoryEmail": {
+            "type": "string",
+            "description": "Laboratory email",
+            "nullable": true
+          },
+          "sampleBatchNumber": {
+            "type": "string",
+            "description": "Sample batch number",
+            "nullable": true
+          },
+          "analysisType": {
+            "$ref": "#/components/schemas/ApplicantAnalysisTypeEnum"
+          },
+          "numberOfSamples": {
+            "type": "integer",
+            "description": "Number of samples analysed",
+            "format": "int32",
+            "nullable": true
+          },
+          "sampleType": {
+            "type": "string",
+            "description": "Type of sample",
+            "nullable": true
+          },
+          "conservationOfSample": {
+            "$ref": "#/components/schemas/ApplicantConservationOfSampleEnum"
+          },
+          "inspector": {
+            "$ref": "#/components/schemas/Inspector"
+          },
+          "sampledOn": {
+            "type": "string",
+            "description": "DateTime",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplicantAnalysisTypeEnum": {
+        "enum": [
+          "InitialAnalysis",
+          "CounterAnalysis",
+          "SecondExpertAnalysis"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ApplicantConservationOfSampleEnum": {
+        "enum": [
+          "Ambient",
+          "Chilled",
+          "Frozen"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ApprovedEstablishment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of approved establishment",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "Country of approved establishment",
+            "nullable": true
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Types of approved establishment",
+            "nullable": true
+          },
+          "approvalNumber": {
+            "type": "string",
+            "description": "Approval number",
+            "nullable": true
+          },
+          "section": {
+            "type": "string",
+            "description": "Section of approved establishment",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuditDiffEntry": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "nullable": true
+          },
+          "op": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuditEntry": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdSource": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdLocal": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "diff": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuditDiffEntry"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BillingInformation": {
+        "type": "object",
+        "properties": {
+          "isConfirmed": {
+            "type": "boolean",
+            "description": "Indicates whether user has confirmed their billing information",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "description": "Billing email address",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Billing phone number",
+            "nullable": true
+          },
+          "contactName": {
+            "type": "string",
+            "description": "Billing Contact Name",
+            "nullable": true
+          },
+          "postalAddress": {
+            "$ref": "#/components/schemas/PostalAddress"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CatchCertificateAttachment": {
+        "type": "object",
+        "properties": {
+          "attachmentId": {
+            "type": "string",
+            "description": "The UUID of the uploaded catch certificate file in blob storage",
+            "nullable": true
+          },
+          "numberOfCatchCertificates": {
+            "type": "integer",
+            "description": "The total number of catch certificates on the attachment",
+            "format": "int32",
+            "nullable": true
+          },
+          "catchCertificateDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatchCertificateDetails"
+            },
+            "description": "List of catch certificate details",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CatchCertificateDetails": {
+        "type": "object",
+        "properties": {
+          "catchCertificateId": {
+            "type": "string",
+            "description": "The UUID of the catch certificate",
+            "nullable": true
+          },
+          "catchCertificateReference": {
+            "type": "string",
+            "description": "Catch certificate reference",
+            "nullable": true
+          },
+          "issuedOn": {
+            "type": "string",
+            "description": "Catch certificate date of issue",
+            "format": "date-time",
+            "nullable": true
+          },
+          "flagState": {
+            "type": "string",
+            "description": "Catch certificate flag state of catching vessel(s)",
+            "nullable": true
+          },
+          "species": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of species imported under this catch certificate",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CatchCertificates": {
+        "type": "object",
+        "properties": {
+          "certificateNumber": {
+            "type": "string",
+            "description": "The catch certificate number",
+            "nullable": true
+          },
+          "weight": {
+            "type": "number",
+            "description": "The catch certificate weight number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChedppNotAcceptableReason": {
+        "type": "object",
+        "properties": {
+          "reason": {
+            "$ref": "#/components/schemas/ChedppNotAcceptableReasonReasonEnum"
+          },
+          "commodityOrPackage": {
+            "$ref": "#/components/schemas/ChedppNotAcceptableReasonCommodityOrPackageEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChedppNotAcceptableReasonCommodityOrPackageEnum": {
+        "enum": [
+          "C",
+          "P",
+          "Cp"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ChedppNotAcceptableReasonReasonEnum": {
+        "enum": [
+          "DocPhmdm",
+          "DocPhmdii",
+          "DocPa",
+          "DocPic",
+          "DocPill",
+          "DocPed",
+          "DocPmod",
+          "DocPfi",
+          "DocPnol",
+          "DocPcne",
+          "DocPadm",
+          "DocPadi",
+          "DocPpni",
+          "DocPf",
+          "DocPo",
+          "DocNcevd",
+          "DocNcpqefi",
+          "DocNcpqebec",
+          "DocNcts",
+          "DocNco",
+          "DocOrii",
+          "DocOrsr",
+          "OriOrrnu",
+          "PhyOrpp",
+          "PhyOrho",
+          "PhyIs",
+          "PhyOrsr",
+          "OthCnl",
+          "OthO"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Commodities": {
+        "type": "object",
+        "properties": {
+          "gmsDeclarationAccepted": {
+            "type": "boolean",
+            "description": "Flag to record when the GMS declaration has been accepted",
+            "nullable": true
+          },
+          "consignedCountryInChargeGroup": {
+            "type": "boolean",
+            "description": "Flag to record whether the consigned country is in an ipaffs charge group",
+            "nullable": true
+          },
+          "totalGrossWeight": {
+            "type": "number",
+            "description": "The total gross weight of the consignment.  It must be bigger than the total net weight of the commodities",
+            "format": "double",
+            "nullable": true
+          },
+          "totalNetWeight": {
+            "type": "number",
+            "description": "The total net weight of the commodities within this consignment",
+            "format": "double",
+            "nullable": true
+          },
+          "totalGrossVolume": {
+            "type": "number",
+            "description": "The total gross volume of the commodities within this consignment",
+            "format": "double",
+            "nullable": true
+          },
+          "totalGrossVolumeUnit": {
+            "type": "string",
+            "description": "Unit used for specifying total gross volume of this consignment (litres or metres cubed)",
+            "nullable": true
+          },
+          "numberOfPackages": {
+            "type": "integer",
+            "description": "The total number of packages within this consignment",
+            "format": "int32",
+            "nullable": true
+          },
+          "temperature": {
+            "type": "string",
+            "description": "Temperature (type) of commodity",
+            "nullable": true
+          },
+          "numberOfAnimals": {
+            "type": "integer",
+            "description": "The total number of animals within this consignment",
+            "format": "int32",
+            "nullable": true
+          },
+          "includeNonAblactedAnimals": {
+            "type": "boolean",
+            "description": "Does consignment contain ablacted animals",
+            "nullable": true
+          },
+          "countryOfOrigin": {
+            "type": "string",
+            "description": "Consignments country of origin",
+            "nullable": true
+          },
+          "countryOfOriginIsPodCountry": {
+            "type": "boolean",
+            "description": "Flag to record whether country of origin is a temporary PoD country",
+            "nullable": true
+          },
+          "isLowRiskArticle72Country": {
+            "type": "boolean",
+            "description": "Flag to record whether country of origin is a low risk article 72 country",
+            "nullable": true
+          },
+          "regionOfOrigin": {
+            "type": "string",
+            "description": "Region of country",
+            "nullable": true
+          },
+          "consignedCountry": {
+            "type": "string",
+            "description": "Country from where commodity was sent",
+            "nullable": true
+          },
+          "animalsCertifiedAs": {
+            "type": "string",
+            "description": "Certification of animals (Breeding, slaughter etc.)",
+            "nullable": true
+          },
+          "commodityIntendedFor": {
+            "$ref": "#/components/schemas/CommoditiesCommodityIntendedForEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommoditiesCommodityIntendedForEnum": {
+        "enum": [
+          "Human",
+          "Feedingstuff",
+          "Further",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CommodityComplement": {
+        "type": "object",
+        "properties": {
+          "uniqueComplementId": {
+            "type": "string",
+            "description": "UUID used to match commodityComplement to its complementParameter set. CHEDPP only",
+            "nullable": true
+          },
+          "commodityDescription": {
+            "type": "string",
+            "description": "Description of the commodity",
+            "nullable": true
+          },
+          "commodityId": {
+            "type": "string",
+            "description": "The unique commodity ID",
+            "nullable": true
+          },
+          "complementId": {
+            "type": "integer",
+            "description": "Identifier of complement chosen from speciesFamily,speciesClass and speciesType'. This is also used to link to the complementParameterSet",
+            "format": "int32",
+            "nullable": true
+          },
+          "complementName": {
+            "type": "string",
+            "description": "Represents the lowest granularity - either type, class, family or species name - for the commodity selected.  This is also used to drive behaviour for EU Import journeys",
+            "nullable": true
+          },
+          "eppoCode": {
+            "type": "string",
+            "description": "EPPO Code related to plant commodities and wood packaging",
+            "nullable": true
+          },
+          "isWoodPackaging": {
+            "type": "boolean",
+            "description": "(Deprecated in IMTA-11832) Is this commodity wood packaging?",
+            "nullable": true
+          },
+          "speciesId": {
+            "type": "string",
+            "description": "The species ID of the commodity that is imported. Not every commodity has a species ID. This is also used to link to the complementParameterSet. The species ID can change over time",
+            "nullable": true
+          },
+          "speciesName": {
+            "type": "string",
+            "description": "Species name",
+            "nullable": true
+          },
+          "speciesNomination": {
+            "type": "string",
+            "description": "Species nomination",
+            "nullable": true
+          },
+          "speciesTypeName": {
+            "type": "string",
+            "description": "Species type name",
+            "nullable": true
+          },
+          "speciesType": {
+            "type": "string",
+            "description": "Species type identifier of commodity",
+            "nullable": true
+          },
+          "speciesClassName": {
+            "type": "string",
+            "description": "Species class name",
+            "nullable": true
+          },
+          "speciesClass": {
+            "type": "string",
+            "description": "Species class identifier of commodity",
+            "nullable": true
+          },
+          "speciesFamilyName": {
+            "type": "string",
+            "description": "Species family name of commodity",
+            "nullable": true
+          },
+          "speciesFamily": {
+            "type": "string",
+            "description": "Species family identifier of commodity",
+            "nullable": true
+          },
+          "speciesCommonName": {
+            "type": "string",
+            "description": "Species common name of commodity for IMP notification simple commodity selection",
+            "nullable": true
+          },
+          "isCdsMatched": {
+            "type": "boolean",
+            "description": "Has commodity been matched with corresponding CDS declaration",
+            "nullable": true
+          },
+          "additionalData": {
+            "type": "object",
+            "additionalProperties": { },
+            "description": "",
+            "nullable": true
+          },
+          "riskAssesment": {
+            "$ref": "#/components/schemas/CommodityRiskResult"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InspectionCheck"
+            },
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommodityRiskResult": {
+        "type": "object",
+        "properties": {
+          "riskDecision": {
+            "$ref": "#/components/schemas/CommodityRiskResultRiskDecisionEnum"
+          },
+          "exitRiskDecision": {
+            "$ref": "#/components/schemas/CommodityRiskResultExitRiskDecisionEnum"
+          },
+          "hmiDecision": {
+            "$ref": "#/components/schemas/CommodityRiskResultHmiDecisionEnum"
+          },
+          "phsiDecision": {
+            "$ref": "#/components/schemas/CommodityRiskResultPhsiDecisionEnum"
+          },
+          "phsiClassification": {
+            "$ref": "#/components/schemas/CommodityRiskResultPhsiClassificationEnum"
+          },
+          "phsi": {
+            "$ref": "#/components/schemas/Phsi"
+          },
+          "uniqueId": {
+            "type": "string",
+            "description": "UUID used to match to the complement parameter set",
+            "nullable": true
+          },
+          "eppoCode": {
+            "type": "string",
+            "description": "EPPO Code for the species",
+            "nullable": true
+          },
+          "variety": {
+            "type": "string",
+            "description": "Name or ID of the variety",
+            "nullable": true
+          },
+          "isWoody": {
+            "type": "boolean",
+            "description": "Whether or not a plant is woody",
+            "nullable": true
+          },
+          "indoorOutdoor": {
+            "type": "string",
+            "description": "Indoor or Outdoor for a plant",
+            "nullable": true
+          },
+          "propagation": {
+            "type": "string",
+            "description": "Whether the propagation is considered a Plant, Bulb, Seed or None",
+            "nullable": true
+          },
+          "phsiRuleType": {
+            "type": "string",
+            "description": "Rule type for PHSI checks",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CommodityRiskResultExitRiskDecisionEnum": {
+        "enum": [
+          "Required",
+          "Notrequired",
+          "Inconclusive"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CommodityRiskResultHmiDecisionEnum": {
+        "enum": [
+          "Required",
+          "Notrequired"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CommodityRiskResultPhsiClassificationEnum": {
+        "enum": [
+          "Mandatory",
+          "Reduced",
+          "Controlled"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CommodityRiskResultPhsiDecisionEnum": {
+        "enum": [
+          "Required",
+          "Notrequired"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CommodityRiskResultRiskDecisionEnum": {
+        "enum": [
+          "Required",
+          "Notrequired",
+          "Inconclusive",
+          "ReenforcedCheck"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "CommonUserCharge": {
+        "type": "object",
+        "properties": {
+          "wasSentToTradeCharge": {
+            "type": "boolean",
+            "description": "Indicates whether the last applicable change was successfully send over the interface to Trade Charge",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ComplementParameterSet": {
+        "type": "object",
+        "properties": {
+          "uniqueComplementId": {
+            "type": "string",
+            "description": "UUID used to match commodityComplement to its complementParameter set. CHEDPP only",
+            "nullable": true
+          },
+          "complementId": {
+            "type": "integer",
+            "description": "",
+            "format": "int32",
+            "nullable": true
+          },
+          "speciesId": {
+            "type": "string",
+            "description": "",
+            "nullable": true
+          },
+          "keyDataPairs": {
+            "type": "object",
+            "additionalProperties": { },
+            "description": "",
+            "nullable": true
+          },
+          "catchCertificates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatchCertificates"
+            },
+            "description": "Catch certificate details",
+            "nullable": true
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Identifiers"
+            },
+            "description": "Data used to identify the complements inside an IMP consignment",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConsignmentCheck": {
+        "type": "object",
+        "properties": {
+          "euStandard": {
+            "type": "string",
+            "description": "Does it conform EU standards",
+            "nullable": true
+          },
+          "additionalGuarantees": {
+            "type": "string",
+            "description": "Result of additional guarantees",
+            "nullable": true
+          },
+          "documentCheckResult": {
+            "type": "string",
+            "description": "Result of document check",
+            "nullable": true
+          },
+          "nationalRequirements": {
+            "type": "string",
+            "description": "Result of national requirements check",
+            "nullable": true
+          },
+          "identityCheckDone": {
+            "type": "boolean",
+            "description": "Was identity check done",
+            "nullable": true
+          },
+          "identityCheckType": {
+            "$ref": "#/components/schemas/ConsignmentCheckIdentityCheckTypeEnum"
+          },
+          "identityCheckResult": {
+            "type": "string",
+            "description": "Result of identity check",
+            "nullable": true
+          },
+          "identityCheckNotDoneReason": {
+            "$ref": "#/components/schemas/ConsignmentCheckIdentityCheckNotDoneReasonEnum"
+          },
+          "physicalCheckDone": {
+            "type": "boolean",
+            "description": "Was physical check done",
+            "nullable": true
+          },
+          "physicalCheckResult": {
+            "type": "string",
+            "description": "Result of physical check",
+            "nullable": true
+          },
+          "physicalCheckNotDoneReason": {
+            "$ref": "#/components/schemas/ConsignmentCheckPhysicalCheckNotDoneReasonEnum"
+          },
+          "physicalCheckOtherText": {
+            "type": "string",
+            "description": "Other reason to not do physical check",
+            "nullable": true
+          },
+          "welfareCheck": {
+            "type": "string",
+            "description": "Welfare check",
+            "nullable": true
+          },
+          "numberOfAnimalsChecked": {
+            "type": "integer",
+            "description": "Number of animals checked",
+            "format": "int32",
+            "nullable": true
+          },
+          "laboratoryCheckDone": {
+            "type": "boolean",
+            "description": "Were laboratory tests done",
+            "nullable": true
+          },
+          "laboratoryCheckResult": {
+            "type": "string",
+            "description": "Result of laboratory tests",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConsignmentCheckIdentityCheckNotDoneReasonEnum": {
+        "enum": [
+          "ReducedChecksRegime",
+          "NotRequired"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ConsignmentCheckIdentityCheckTypeEnum": {
+        "enum": [
+          "SealCheck",
+          "FullIdentityCheck",
+          "NotDone"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ConsignmentCheckPhysicalCheckNotDoneReasonEnum": {
+        "enum": [
+          "ReducedChecksRegime",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ContactDetails": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of designated contact",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "description": "Telephone number of designated contact",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of designated contact",
+            "nullable": true
+          },
+          "agent": {
+            "type": "string",
+            "description": "Name of agent representing designated contact",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Control": {
+        "type": "object",
+        "properties": {
+          "feedbackInformation": {
+            "$ref": "#/components/schemas/FeedbackInformation"
+          },
+          "detailsOnReExport": {
+            "$ref": "#/components/schemas/DetailsOnReExport"
+          },
+          "officialInspector": {
+            "$ref": "#/components/schemas/OfficialInspector"
+          },
+          "consignmentLeave": {
+            "$ref": "#/components/schemas/ControlConsignmentLeaveEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ControlAuthority": {
+        "type": "object",
+        "properties": {
+          "officialVeterinarian": {
+            "$ref": "#/components/schemas/OfficialVeterinarian"
+          },
+          "customsReferenceNo": {
+            "type": "string",
+            "description": "Customs reference number",
+            "nullable": true
+          },
+          "containerResealed": {
+            "type": "boolean",
+            "description": "Were containers resealed?",
+            "nullable": true
+          },
+          "newSealNumber": {
+            "type": "string",
+            "description": "When the containers are resealed they need new seal numbers",
+            "nullable": true
+          },
+          "iuuFishingReference": {
+            "type": "string",
+            "description": "Illegal, Unreported and Unregulated (IUU) fishing reference number",
+            "nullable": true
+          },
+          "iuuCheckRequired": {
+            "type": "boolean",
+            "description": "Was Illegal, Unreported and Unregulated (IUU) check required",
+            "nullable": true
+          },
+          "iuuOption": {
+            "$ref": "#/components/schemas/ControlAuthorityIuuOptionEnum"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ControlAuthorityIuuOptionEnum": {
+        "enum": [
+          "Iuuok",
+          "Iuuna",
+          "IUUNotCompliant"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ControlConsignmentLeaveEnum": {
+        "enum": [
+          "Yes",
+          "No",
+          "ItHasBeenDestroyed"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Decision": {
+        "type": "object",
+        "properties": {
+          "consignmentAcceptable": {
+            "type": "boolean",
+            "description": "Is consignment acceptable or not",
+            "nullable": true
+          },
+          "notAcceptableAction": {
+            "$ref": "#/components/schemas/DecisionNotAcceptableActionEnum"
+          },
+          "notAcceptableActionDestructionReason": {
+            "$ref": "#/components/schemas/DecisionNotAcceptableActionDestructionReasonEnum"
+          },
+          "notAcceptableActionEntryRefusalReason": {
+            "$ref": "#/components/schemas/DecisionNotAcceptableActionEntryRefusalReasonEnum"
+          },
+          "notAcceptableActionQuarantineImposedReason": {
+            "$ref": "#/components/schemas/DecisionNotAcceptableActionQuarantineImposedReasonEnum"
+          },
+          "notAcceptableActionSpecialTreatmentReason": {
+            "$ref": "#/components/schemas/DecisionNotAcceptableActionSpecialTreatmentReasonEnum"
+          },
+          "notAcceptableActionIndustrialProcessingReason": {
+            "$ref": "#/components/schemas/DecisionNotAcceptableActionIndustrialProcessingReasonEnum"
+          },
+          "notAcceptableActionReDispatchReason": {
+            "$ref": "#/components/schemas/DecisionNotAcceptableActionReDispatchReasonEnum"
+          },
+          "notAcceptableActionUseForOtherPurposesReason": {
+            "$ref": "#/components/schemas/DecisionNotAcceptableActionUseForOtherPurposesReasonEnum"
+          },
+          "notAcceptableDestructionReason": {
+            "type": "string",
+            "description": "Filled when notAcceptableAction is equal to destruction",
+            "nullable": true
+          },
+          "notAcceptableActionOtherReason": {
+            "type": "string",
+            "description": "Filled when notAcceptableAction is equal to other",
+            "nullable": true
+          },
+          "notAcceptableActionByDate": {
+            "type": "string",
+            "description": "Filled when consignmentAcceptable is set to false",
+            "format": "date",
+            "nullable": true
+          },
+          "chedppNotAcceptableReasons": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChedppNotAcceptableReason"
+            },
+            "description": "List of details for individual chedpp not acceptable reasons",
+            "nullable": true
+          },
+          "notAcceptableReasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "If the consignment was not accepted what was the reason",
+            "nullable": true
+          },
+          "notAcceptableCountry": {
+            "type": "string",
+            "description": "2 digits ISO code of country (not acceptable country can be empty)",
+            "nullable": true
+          },
+          "notAcceptableEstablishment": {
+            "type": "string",
+            "description": "Filled if consignmentAcceptable is set to false",
+            "nullable": true
+          },
+          "notAcceptableOtherReason": {
+            "type": "string",
+            "description": "Filled if consignmentAcceptable is set to false",
+            "nullable": true
+          },
+          "detailsOfControlledDestinations": {
+            "$ref": "#/components/schemas/Party"
+          },
+          "specificWarehouseNonConformingConsignment": {
+            "$ref": "#/components/schemas/DecisionSpecificWarehouseNonConformingConsignmentEnum"
+          },
+          "temporaryDeadline": {
+            "type": "string",
+            "description": "Deadline when consignment has to leave borders",
+            "nullable": true
+          },
+          "decisionEnum": {
+            "$ref": "#/components/schemas/DecisionDecisionEnum"
+          },
+          "freeCirculationPurpose": {
+            "$ref": "#/components/schemas/DecisionFreeCirculationPurposeEnum"
+          },
+          "definitiveImportPurpose": {
+            "$ref": "#/components/schemas/DecisionDefinitiveImportPurposeEnum"
+          },
+          "ifChanneledOption": {
+            "$ref": "#/components/schemas/DecisionIfChanneledOptionEnum"
+          },
+          "customWarehouseRegisteredNumber": {
+            "type": "string",
+            "description": "Custom warehouse registered number",
+            "nullable": true
+          },
+          "freeWarehouseRegisteredNumber": {
+            "type": "string",
+            "description": "Free warehouse registered number",
+            "nullable": true
+          },
+          "shipName": {
+            "type": "string",
+            "description": "Ship name",
+            "nullable": true
+          },
+          "shipPortOfExit": {
+            "type": "string",
+            "description": "Port of exit",
+            "nullable": true
+          },
+          "shipSupplierRegisteredNumber": {
+            "type": "string",
+            "description": "Ship supplier registered number",
+            "nullable": true
+          },
+          "transhipmentBip": {
+            "type": "string",
+            "description": "Transhipment BIP",
+            "nullable": true
+          },
+          "transhipmentThirdCountry": {
+            "type": "string",
+            "description": "Transhipment third country",
+            "nullable": true
+          },
+          "transitExitBip": {
+            "type": "string",
+            "description": "Transit exit BIP",
+            "nullable": true
+          },
+          "transitThirdCountry": {
+            "type": "string",
+            "description": "Transit third country",
+            "nullable": true
+          },
+          "transitDestinationThirdCountry": {
+            "type": "string",
+            "description": "Transit destination third country",
+            "nullable": true
+          },
+          "temporaryExitBip": {
+            "type": "string",
+            "description": "Temporary exit BIP",
+            "nullable": true
+          },
+          "horseReentry": {
+            "type": "string",
+            "description": "Horse re-entry",
+            "nullable": true
+          },
+          "transhipmentEuOrThirdCountry": {
+            "type": "string",
+            "description": "Is it transshipped to EU or third country (values EU / country name)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DecisionDecisionEnum": {
+        "enum": [
+          "NonAcceptable",
+          "AcceptableForInternalMarket",
+          "AcceptableIfChanneled",
+          "AcceptableForTranshipment",
+          "AcceptableForTransit",
+          "AcceptableForTemporaryImport",
+          "AcceptableForSpecificWarehouse",
+          "AcceptableForPrivateImport",
+          "AcceptableForTransfer",
+          "HorseReEntry"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionDefinitiveImportPurposeEnum": {
+        "enum": [
+          "Slaughter",
+          "Approvedbodies",
+          "Quarantine"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionFreeCirculationPurposeEnum": {
+        "enum": [
+          "AnimalFeedingStuff",
+          "HumanConsumption",
+          "PharmaceuticalUse",
+          "TechnicalUse",
+          "FurtherProcess",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionIfChanneledOptionEnum": {
+        "enum": [
+          "Article8",
+          "Article15"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionNotAcceptableActionDestructionReasonEnum": {
+        "enum": [
+          "ContaminatedProducts",
+          "InterceptedPart",
+          "PackagingMaterial",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionNotAcceptableActionEntryRefusalReasonEnum": {
+        "enum": [
+          "ContaminatedProducts",
+          "InterceptedPart",
+          "PackagingMaterial",
+          "MeansOfTransport",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionNotAcceptableActionEnum": {
+        "enum": [
+          "Slaughter",
+          "Reexport",
+          "Euthanasia",
+          "Redispatching",
+          "Destruction",
+          "Transformation",
+          "Other",
+          "EntryRefusal",
+          "QuarantineImposed",
+          "SpecialTreatment",
+          "IndustrialProcessing",
+          "ReDispatch",
+          "UseForOtherPurposes"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionNotAcceptableActionIndustrialProcessingReasonEnum": {
+        "enum": [
+          "ContaminatedProducts",
+          "InterceptedPart",
+          "PackagingMaterial",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionNotAcceptableActionQuarantineImposedReasonEnum": {
+        "enum": [
+          "ContaminatedProducts",
+          "InterceptedPart",
+          "PackagingMaterial",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionNotAcceptableActionReDispatchReasonEnum": {
+        "enum": [
+          "ContaminatedProducts",
+          "InterceptedPart",
+          "PackagingMaterial",
+          "MeansOfTransport",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionNotAcceptableActionSpecialTreatmentReasonEnum": {
+        "enum": [
+          "ContaminatedProducts",
+          "InterceptedPart",
+          "PackagingMaterial",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionNotAcceptableActionUseForOtherPurposesReasonEnum": {
+        "enum": [
+          "ContaminatedProducts",
+          "InterceptedPart",
+          "PackagingMaterial",
+          "MeansOfTransport",
+          "Other"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DecisionSpecificWarehouseNonConformingConsignmentEnum": {
+        "enum": [
+          "CustomWarehouse",
+          "FreeZoneOrFreeWarehouse",
+          "ShipSupplier",
+          "Ship"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "DetailsOnReExport": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Date of re-export",
+            "format": "date-time",
+            "nullable": true
+          },
+          "meansOfTransportNo": {
+            "type": "string",
+            "description": "Number of vehicle",
+            "nullable": true
+          },
+          "transportType": {
+            "$ref": "#/components/schemas/DetailsOnReExportTransportTypeEnum"
+          },
+          "document": {
+            "type": "string",
+            "description": "Document issued for re-export",
+            "nullable": true
+          },
+          "countryOfReDispatching": {
+            "type": "string",
+            "description": "Two letter ISO code for country of re-dispatching",
+            "nullable": true
+          },
+          "exitBip": {
+            "type": "string",
+            "description": "Exit BIP (where consignment will leave the country)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetailsOnReExportTransportTypeEnum": {
+        "enum": [
+          "Rail",
+          "Plane",
+          "Ship",
+          "Road",
+          "Other",
+          "CShipRoad",
+          "CShipRail"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EconomicOperator": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of this organisation",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/EconomicOperatorTypeEnum"
+          },
+          "status": {
+            "$ref": "#/components/schemas/EconomicOperatorStatusEnum"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Name of organisation",
+            "nullable": true
+          },
+          "individualName": {
+            "type": "string",
+            "description": "Individual name",
+            "nullable": true
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "approvalNumber": {
+            "type": "string",
+            "description": "Approval Number which identifies an Economic Operator unambiguously per type of organisation per country.",
+            "nullable": true
+          },
+          "otherIdentifier": {
+            "type": "string",
+            "description": "Optional Business General Number, often named Aggregation Code, which identifies an Economic Operator.",
+            "nullable": true
+          },
+          "tracesId": {
+            "type": "integer",
+            "description": "Traces Id of the economic operator generated by IPAFFS",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EconomicOperatorStatusEnum": {
+        "enum": [
+          "Approved",
+          "Nonapproved",
+          "Suspended"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "EconomicOperatorTypeEnum": {
+        "enum": [
+          "Consignee",
+          "Destination",
+          "Exporter",
+          "Importer",
+          "Charity",
+          "CommercialTransporter",
+          "CommercialTransporterUserAdded",
+          "PrivateTransporter",
+          "TemporaryAddress",
+          "PremisesOfOrigin",
+          "OrganisationBranchAddress",
+          "Packer",
+          "Pod"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ExternalReference": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "$ref": "#/components/schemas/ExternalReferenceSystemEnum"
+          },
+          "reference": {
+            "type": "string",
+            "description": "Reference which is added to the notification when either sent to the downstream system or received from it",
+            "nullable": true
+          },
+          "exactMatch": {
+            "type": "boolean",
+            "description": "Details whether there's an exact match between the external source and IPAFFS data",
+            "nullable": true
+          },
+          "verifiedByImporter": {
+            "type": "boolean",
+            "description": "Details whether an importer has verified the data from an external source",
+            "nullable": true
+          },
+          "verifiedByInspector": {
+            "type": "boolean",
+            "description": "Details whether an inspector has verified the data from an external source",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExternalReferenceSystemEnum": {
+        "enum": [
+          "Ecert",
+          "Ephyto",
+          "Enotification",
+          "Ncts"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "FeedbackInformation": {
+        "type": "object",
+        "properties": {
+          "authorityType": {
+            "$ref": "#/components/schemas/FeedbackInformationAuthorityTypeEnum"
+          },
+          "consignmentArrival": {
+            "type": "boolean",
+            "description": "Did the consignment arrive",
+            "nullable": true
+          },
+          "consignmentConformity": {
+            "type": "boolean",
+            "description": "Does the consignment conform",
+            "nullable": true
+          },
+          "consignmentNoArrivalReason": {
+            "type": "string",
+            "description": "Reason for consignment not arriving at the entry point",
+            "nullable": true
+          },
+          "destructionDate": {
+            "type": "string",
+            "description": "Date of consignment destruction",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FeedbackInformationAuthorityTypeEnum": {
+        "enum": [
+          "Exitbip",
+          "Finalbip",
+          "Localvetunit",
+          "Inspunit"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "IdentificationDetails": {
+        "type": "object",
+        "properties": {
+          "identificationDetail": {
+            "type": "string",
+            "description": "Identification detail",
+            "nullable": true
+          },
+          "identificationDescription": {
+            "type": "string",
+            "description": "Identification description",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Identifiers": {
+        "type": "object",
+        "properties": {
+          "speciesNumber": {
+            "type": "integer",
+            "description": "Number used to identify which item the identifiers are related to",
+            "format": "int32",
+            "nullable": true
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "List of identifiers and their keys",
+            "nullable": true
+          },
+          "isPlaceOfDestinationThePermanentAddress": {
+            "type": "boolean",
+            "description": "Is the place of destination the permanent address?",
+            "nullable": true
+          },
+          "permanentAddress": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImpactOfTransportOnAnimals": {
+        "type": "object",
+        "properties": {
+          "numberOfDeadAnimals": {
+            "type": "integer",
+            "description": "Number of dead animals specified by units",
+            "format": "int32",
+            "nullable": true
+          },
+          "numberOfDeadAnimalsUnit": {
+            "type": "string",
+            "description": "Unit used for specifying number of dead animals (percent or units)",
+            "nullable": true
+          },
+          "numberOfUnfitAnimals": {
+            "type": "integer",
+            "description": "Number of unfit animals",
+            "format": "int32",
+            "nullable": true
+          },
+          "numberOfUnfitAnimalsUnit": {
+            "type": "string",
+            "description": "Unit used for specifying number of unfit animals (percent or units)",
+            "nullable": true
+          },
+          "numberOfBirthOrAbortion": {
+            "type": "integer",
+            "description": "Number of births or abortions (unit)",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImportNotification": {
+        "type": "object",
+        "properties": {
+          "_Etag": {
+            "type": "string",
+            "nullable": true
+          },
+          "auditEntries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuditEntry"
+            },
+            "nullable": true
+          },
+          "relationships": {
+            "$ref": "#/components/schemas/NotificationTdmRelationships"
+          },
+          "commoditiesSummary": {
+            "$ref": "#/components/schemas/Commodities"
+          },
+          "commodities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommodityComplement"
+            },
+            "nullable": true
+          },
+          "_Ts": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "_PointOfEntry": {
+            "type": "string",
+            "nullable": true
+          },
+          "_PointOfEntryControlPoint": {
+            "type": "string",
+            "nullable": true
+          },
+          "_MatchReference": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ipaffsId": {
+            "type": "integer",
+            "description": "The IPAFFS ID number for this notification.",
+            "format": "int32",
+            "nullable": true
+          },
+          "etag": {
+            "type": "string",
+            "description": "The etag for this notification.",
+            "nullable": true
+          },
+          "externalReferences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExternalReference"
+            },
+            "description": "List of external references, which relate to downstream services",
+            "nullable": true
+          },
+          "referenceNumber": {
+            "type": "string",
+            "description": "Reference number of the notification",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "description": "Current version of the notification",
+            "format": "int32",
+            "nullable": true
+          },
+          "lastUpdated": {
+            "type": "string",
+            "description": "Date when the notification was last updated.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lastUpdatedBy": {
+            "$ref": "#/components/schemas/UserInformation"
+          },
+          "importNotificationType": {
+            "$ref": "#/components/schemas/ImportNotificationTypeEnum"
+          },
+          "replaces": {
+            "type": "string",
+            "description": "Reference number of notification that was replaced by this one",
+            "nullable": true
+          },
+          "replacedBy": {
+            "type": "string",
+            "description": "Reference number of notification that replaced this one",
+            "nullable": true
+          },
+          "status": {
+            "$ref": "#/components/schemas/ImportNotificationStatusEnum"
+          },
+          "splitConsignment": {
+            "$ref": "#/components/schemas/SplitConsignment"
+          },
+          "childNotification": {
+            "type": "boolean",
+            "description": "Is this notification a child of a split consignment?",
+            "nullable": true
+          },
+          "riskAssessment": {
+            "$ref": "#/components/schemas/RiskAssessmentResult"
+          },
+          "journeyRiskCategorisation": {
+            "$ref": "#/components/schemas/JourneyRiskCategorisationResult"
+          },
+          "isHighRiskEuImport": {
+            "type": "boolean",
+            "description": "Is this notification a high risk notification from the EU/EEA?",
+            "nullable": true
+          },
+          "partOne": {
+            "$ref": "#/components/schemas/PartOne"
+          },
+          "decisionBy": {
+            "$ref": "#/components/schemas/UserInformation"
+          },
+          "decisionDate": {
+            "type": "string",
+            "description": "Date when the notification was validated or rejected",
+            "nullable": true
+          },
+          "partTwo": {
+            "$ref": "#/components/schemas/PartTwo"
+          },
+          "partThree": {
+            "$ref": "#/components/schemas/PartThree"
+          },
+          "officialVeterinarian": {
+            "type": "string",
+            "description": "Official veterinarian",
+            "nullable": true
+          },
+          "consignmentValidations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationMessageCode"
+            },
+            "description": "Validation messages for whole notification",
+            "nullable": true
+          },
+          "agencyOrganisationId": {
+            "type": "string",
+            "description": "Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation",
+            "nullable": true
+          },
+          "riskDecisionLockingTime": {
+            "type": "string",
+            "description": "Date and Time when risk decision was locked",
+            "nullable": true
+          },
+          "isRiskDecisionLocked": {
+            "type": "boolean",
+            "description": "is the risk decision locked?",
+            "nullable": true
+          },
+          "isBulkUploadInProgress": {
+            "type": "boolean",
+            "description": "Boolean flag that indicates whether a bulk upload is in progress",
+            "nullable": true
+          },
+          "requestId": {
+            "type": "string",
+            "description": "Request UUID to trace bulk upload",
+            "nullable": true
+          },
+          "isCdsFullMatched": {
+            "type": "boolean",
+            "description": "Have all commodities been matched with corresponding CDS declaration(s)",
+            "nullable": true
+          },
+          "chedTypeVersion": {
+            "type": "integer",
+            "description": "The version of the ched type the notification was created with",
+            "format": "int32",
+            "nullable": true
+          },
+          "isGMRMatched": {
+            "type": "boolean",
+            "description": "Indicates whether a CHED has been matched with a GVMS GMR via DMP",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImportNotificationStatusEnum": {
+        "enum": [
+          "Draft",
+          "Submitted",
+          "Validated",
+          "Rejected",
+          "InProgress",
+          "Amend",
+          "Modify",
+          "Replaced",
+          "Cancelled",
+          "Deleted",
+          "PartiallyRejected",
+          "SplitConsignment"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "ImportNotificationTypeEnum": {
+        "enum": [
+          "Cveda",
+          "Cvedp",
+          "Chedpp",
+          "Ced",
+          "Imp"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "InspectionCheck": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/InspectionCheckTypeEnum"
+          },
+          "status": {
+            "$ref": "#/components/schemas/InspectionCheckStatusEnum"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Reason for the status if applicable",
+            "nullable": true
+          },
+          "otherReason": {
+            "type": "string",
+            "description": "Other reason text when selected reason is 'Other'",
+            "nullable": true
+          },
+          "isSelectedForChecks": {
+            "type": "boolean",
+            "description": "Has commodity been selected for checks?",
+            "nullable": true
+          },
+          "hasChecksComplete": {
+            "type": "boolean",
+            "description": "Has commodity completed this type of check",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InspectionCheckStatusEnum": {
+        "enum": [
+          "ToDo",
+          "Compliant",
+          "AutoCleared",
+          "NonCompliant",
+          "NotInspected",
+          "ToBeInspected",
+          "Hold"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "InspectionCheckTypeEnum": {
+        "enum": [
+          "PhsiDocument",
+          "PhsiIdentity",
+          "PhsiPhysical",
+          "Hmi"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "InspectionOverride": {
+        "type": "object",
+        "properties": {
+          "originalDecision": {
+            "type": "string",
+            "description": "Original inspection decision",
+            "nullable": true
+          },
+          "overriddenOn": {
+            "type": "string",
+            "description": "The time the risk decision is overridden",
+            "format": "date-time",
+            "nullable": true
+          },
+          "overriddenBy": {
+            "$ref": "#/components/schemas/UserInformation"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Inspector": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of inspector",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number of inspector",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of inspector",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InternationalTelephone": {
+        "type": "object",
+        "properties": {
+          "countryCode": {
+            "type": "string",
+            "description": "Country code of phone number",
+            "nullable": true
+          },
+          "subscriberNumber": {
+            "type": "string",
+            "description": "Phone number",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JourneyRiskCategorisationResult": {
+        "type": "object",
+        "properties": {
+          "riskLevel": {
+            "$ref": "#/components/schemas/JourneyRiskCategorisationResultRiskLevelEnum"
+          },
+          "riskLevelMethod": {
+            "$ref": "#/components/schemas/JourneyRiskCategorisationResultRiskLevelMethodEnum"
+          },
+          "riskLevelDateTime": {
+            "type": "string",
+            "description": "The date and time the risk level has been set for a notification",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JourneyRiskCategorisationResultRiskLevelEnum": {
+        "enum": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "JourneyRiskCategorisationResultRiskLevelMethodEnum": {
+        "enum": [
+          "System",
+          "User"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "LaboratoryTestResult": {
+        "type": "object",
+        "properties": {
+          "sampleUseByDate": {
+            "type": "string",
+            "description": "When sample was used",
+            "nullable": true
+          },
+          "releasedOn": {
+            "type": "string",
+            "description": "When it was released",
+            "format": "date-time",
+            "nullable": true
+          },
+          "laboratoryTestMethod": {
+            "type": "string",
+            "description": "Laboratory test method",
+            "nullable": true
+          },
+          "results": {
+            "type": "string",
+            "description": "Result of test",
+            "nullable": true
+          },
+          "conclusion": {
+            "$ref": "#/components/schemas/LaboratoryTestResultConclusionEnum"
+          },
+          "labTestCreatedOn": {
+            "type": "string",
+            "description": "Date of lab test created in IPAFFS",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LaboratoryTestResultConclusionEnum": {
+        "enum": [
+          "Satisfactory",
+          "NotSatisfactory",
+          "NotInterpretable",
+          "Pending"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "LaboratoryTests": {
+        "type": "object",
+        "properties": {
+          "testedOn": {
+            "type": "string",
+            "description": "Date of tests",
+            "format": "date-time",
+            "nullable": true
+          },
+          "testReason": {
+            "$ref": "#/components/schemas/LaboratoryTestsTestReasonEnum"
+          },
+          "singleLaboratoryTests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SingleLaboratoryTest"
+            },
+            "description": "List of details of individual tests performed or to be performed",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LaboratoryTestsTestReasonEnum": {
+        "enum": [
+          "Random",
+          "Suspicious",
+          "ReEnforced",
+          "IntensifiedControls",
+          "Required",
+          "LatentInfectionSampling"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "MeansOfTransport": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/MeansOfTransportTypeEnum"
+          },
+          "document": {
+            "type": "string",
+            "description": "Document for transport",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of transport",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MeansOfTransportTypeEnum": {
+        "enum": [
+          "Aeroplane",
+          "RoadVehicle",
+          "RailwayWagon",
+          "Ship",
+          "Other",
+          "RoadVehicleAeroplane",
+          "ShipRailwayWagon",
+          "ShipRoadVehicle"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "NominatedContact": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of nominated contact",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of nominated contact",
+            "nullable": true
+          },
+          "telephone": {
+            "type": "string",
+            "description": "Telephone number of nominated contact",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificationResourceResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/ImportNotification"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificationTdmRelationships": {
+        "type": "object",
+        "properties": {
+          "movements": {
+            "$ref": "#/components/schemas/TdmRelationshipObject"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OfficialInspector": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "description": "First name of inspector",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of inspector",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email of inspector",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number of inspector",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "description": "Fax number of inspector",
+            "nullable": true
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "signed": {
+            "type": "string",
+            "description": "Date of sign",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OfficialVeterinarian": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "description": "First name of official veterinarian",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of official veterinarian",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address of official veterinarian",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number of official veterinarian",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "description": "Fax number of official veterinarian",
+            "nullable": true
+          },
+          "signed": {
+            "type": "string",
+            "description": "Date of sign",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PartOne": {
+        "type": "object",
+        "properties": {
+          "typeOfImp": {
+            "$ref": "#/components/schemas/PartOneTypeOfImpEnum"
+          },
+          "personResponsible": {
+            "$ref": "#/components/schemas/Party"
+          },
+          "customsReferenceNumber": {
+            "type": "string",
+            "description": "Customs reference number",
+            "nullable": true
+          },
+          "containsWoodPackaging": {
+            "type": "boolean",
+            "description": "(Deprecated in IMTA-11832) Does the consignment contain wood packaging?",
+            "nullable": true
+          },
+          "consignmentArrived": {
+            "type": "boolean",
+            "description": "Has the consignment arrived at the BCP?",
+            "nullable": true
+          },
+          "consignor": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "consignorTwo": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "packer": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "consignee": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "importer": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "placeOfDestination": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "pod": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "placeOfOriginHarvest": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "additionalPermanentAddresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EconomicOperator"
+            },
+            "description": "List of additional permanent addresses",
+            "nullable": true
+          },
+          "cphNumber": {
+            "type": "string",
+            "description": "Charity Parish Holding number",
+            "nullable": true
+          },
+          "importingFromCharity": {
+            "type": "boolean",
+            "description": "Is the importer importing from a charity?",
+            "nullable": true
+          },
+          "isPlaceOfDestinationThePermanentAddress": {
+            "type": "boolean",
+            "description": "Is the place of destination the permanent address?",
+            "nullable": true
+          },
+          "isCatchCertificateRequired": {
+            "type": "boolean",
+            "description": "Is this catch certificate required?",
+            "nullable": true
+          },
+          "isGvmsRoute": {
+            "type": "boolean",
+            "description": "Is GVMS route?",
+            "nullable": true
+          },
+          "purpose": {
+            "$ref": "#/components/schemas/Purpose"
+          },
+          "pointOfEntry": {
+            "type": "string",
+            "description": "Either a Border-Inspection-Post or Designated-Point-Of-Entry, e.g. GBFXT1",
+            "nullable": true
+          },
+          "pointOfEntryControlPoint": {
+            "type": "string",
+            "description": "A control point at the point of entry",
+            "nullable": true
+          },
+          "meansOfTransport": {
+            "$ref": "#/components/schemas/MeansOfTransport"
+          },
+          "transporter": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "transporterDetailsRequired": {
+            "type": "boolean",
+            "description": "Are transporter details required for this consignment",
+            "nullable": true
+          },
+          "meansOfTransportFromEntryPoint": {
+            "$ref": "#/components/schemas/MeansOfTransport"
+          },
+          "estimatedJourneyTimeInMinutes": {
+            "type": "number",
+            "description": "Estimated journey time in minutes to point of entry",
+            "format": "double",
+            "nullable": true
+          },
+          "responsibleForTransport": {
+            "type": "string",
+            "description": "(Deprecated in IMTA-12139) Person who is responsible for transport",
+            "nullable": true
+          },
+          "veterinaryInformation": {
+            "$ref": "#/components/schemas/VeterinaryInformation"
+          },
+          "importerLocalReferenceNumber": {
+            "type": "string",
+            "description": "Reference number added by the importer",
+            "nullable": true
+          },
+          "route": {
+            "$ref": "#/components/schemas/Route"
+          },
+          "sealsContainers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SealContainer"
+            },
+            "description": "Array that contains pair of seal number and container number",
+            "nullable": true
+          },
+          "submissionDate": {
+            "type": "string",
+            "description": "Date and time when the notification was submitted",
+            "format": "date-time",
+            "nullable": true
+          },
+          "submittedBy": {
+            "$ref": "#/components/schemas/UserInformation"
+          },
+          "consignmentValidations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationMessageCode"
+            },
+            "description": "Validation messages for whole notification",
+            "nullable": true
+          },
+          "complexCommoditySelected": {
+            "type": "boolean",
+            "description": "Was complex commodity selected. Indicating if importer provided commodity code.",
+            "nullable": true
+          },
+          "portOfEntry": {
+            "type": "string",
+            "description": "Entry port for EU Import notification.",
+            "nullable": true
+          },
+          "portOfExit": {
+            "type": "string",
+            "description": "Exit Port for EU Import Notification.",
+            "nullable": true
+          },
+          "exitedPortOfOn": {
+            "type": "string",
+            "description": "Date of Port Exit for EU Import Notification.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "contactDetails": {
+            "$ref": "#/components/schemas/ContactDetails"
+          },
+          "nominatedContacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NominatedContact"
+            },
+            "description": "List of nominated contacts to receive text and email notifications",
+            "nullable": true
+          },
+          "originalEstimatedDateTime": {
+            "type": "string",
+            "description": "Original estimated date time of arrival",
+            "format": "date-time",
+            "nullable": true
+          },
+          "billingInformation": {
+            "$ref": "#/components/schemas/BillingInformation"
+          },
+          "isChargeable": {
+            "type": "boolean",
+            "description": "Indicates whether CUC applies to the notification",
+            "nullable": true
+          },
+          "wasChargeable": {
+            "type": "boolean",
+            "description": "Indicates whether CUC previously applied to the notification",
+            "nullable": true
+          },
+          "commonUserCharge": {
+            "$ref": "#/components/schemas/CommonUserCharge"
+          },
+          "provideCtcMrn": {
+            "$ref": "#/components/schemas/PartOneProvideCtcMrnEnum"
+          },
+          "arrivedOn": {
+            "type": "string",
+            "description": "DateTime",
+            "format": "date-time",
+            "nullable": true
+          },
+          "departedOn": {
+            "type": "string",
+            "description": "DateTime",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PartOneProvideCtcMrnEnum": {
+        "enum": [
+          "Yes",
+          "YesAddLater",
+          "No"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PartOneTypeOfImpEnum": {
+        "enum": [
+          "A",
+          "P",
+          "D"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PartThree": {
+        "type": "object",
+        "properties": {
+          "controlStatus": {
+            "$ref": "#/components/schemas/PartThreeControlStatusEnum"
+          },
+          "control": {
+            "$ref": "#/components/schemas/Control"
+          },
+          "consignmentValidations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationMessageCode"
+            },
+            "description": "Validation messages for Part 3 - Control",
+            "nullable": true
+          },
+          "sealCheckRequired": {
+            "type": "boolean",
+            "description": "Is the seal check required",
+            "nullable": true
+          },
+          "sealCheck": {
+            "$ref": "#/components/schemas/SealCheck"
+          },
+          "sealCheckOverride": {
+            "$ref": "#/components/schemas/InspectionOverride"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PartThreeControlStatusEnum": {
+        "enum": [
+          "Required",
+          "Completed"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PartTwo": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "$ref": "#/components/schemas/Decision"
+          },
+          "consignmentCheck": {
+            "$ref": "#/components/schemas/ConsignmentCheck"
+          },
+          "impactOfTransportOnAnimals": {
+            "$ref": "#/components/schemas/ImpactOfTransportOnAnimals"
+          },
+          "laboratoryTestsRequired": {
+            "type": "boolean",
+            "description": "Are laboratory tests required",
+            "nullable": true
+          },
+          "laboratoryTests": {
+            "$ref": "#/components/schemas/LaboratoryTests"
+          },
+          "resealedContainersIncluded": {
+            "type": "boolean",
+            "description": "Are the containers resealed",
+            "nullable": true
+          },
+          "resealedContainers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "(Deprecated - To be removed as part of IMTA-6256) Resealed containers information details",
+            "nullable": true
+          },
+          "resealedContainersMappings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SealContainer"
+            },
+            "description": "Resealed containers information details",
+            "nullable": true
+          },
+          "controlAuthority": {
+            "$ref": "#/components/schemas/ControlAuthority"
+          },
+          "controlledDestination": {
+            "$ref": "#/components/schemas/EconomicOperator"
+          },
+          "bipLocalReferenceNumber": {
+            "type": "string",
+            "description": "Local reference number at BIP",
+            "nullable": true
+          },
+          "signedOnBehalfOf": {
+            "type": "string",
+            "description": "Part 2 - Sometimes other user can sign decision on behalf of another user",
+            "nullable": true
+          },
+          "onwardTransportation": {
+            "type": "string",
+            "description": "Onward transportation",
+            "nullable": true
+          },
+          "consignmentValidations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationMessageCode"
+            },
+            "description": "Validation messages for Part 2 - Decision",
+            "nullable": true
+          },
+          "checkedOn": {
+            "type": "string",
+            "description": "User entered date when the checks were completed",
+            "format": "date-time",
+            "nullable": true
+          },
+          "accompanyingDocuments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccompanyingDocument"
+            },
+            "description": "Accompanying documents",
+            "nullable": true
+          },
+          "phsiAutoCleared": {
+            "type": "boolean",
+            "description": "Have the PHSI regulated commodities been auto cleared?",
+            "nullable": true
+          },
+          "hmiAutoCleared": {
+            "type": "boolean",
+            "description": "Have the HMI regulated commodities been auto cleared?",
+            "nullable": true
+          },
+          "inspectionRequired": {
+            "type": "string",
+            "description": "Inspection required",
+            "nullable": true
+          },
+          "inspectionOverride": {
+            "$ref": "#/components/schemas/InspectionOverride"
+          },
+          "autoClearedOn": {
+            "type": "string",
+            "description": "Date of autoclearance",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Party": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "IPAFFS ID of party",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of party",
+            "nullable": true
+          },
+          "companyId": {
+            "type": "string",
+            "description": "Company ID",
+            "nullable": true
+          },
+          "contactId": {
+            "type": "string",
+            "description": "Contact ID (B2C)",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Company name",
+            "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Addresses",
+            "nullable": true
+          },
+          "county": {
+            "type": "string",
+            "description": "County",
+            "nullable": true
+          },
+          "postCode": {
+            "type": "string",
+            "description": "Post code of party",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "description": "Country of party",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "description": "City",
+            "nullable": true
+          },
+          "tracesId": {
+            "type": "integer",
+            "description": "TRACES ID",
+            "format": "int32",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/PartyTypeEnum"
+          },
+          "approvalNumber": {
+            "type": "string",
+            "description": "Approval number",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number of party",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "description": "Fax number of party",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Email number of party",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PartyTypeEnum": {
+        "enum": [
+          "CommercialTransporter",
+          "PrivateTransporter"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "Phsi": {
+        "type": "object",
+        "properties": {
+          "documentCheck": {
+            "type": "boolean",
+            "description": "Whether or not a documentary check is required for PHSI",
+            "nullable": true
+          },
+          "identityCheck": {
+            "type": "boolean",
+            "description": "Whether or not an identity check is required for PHSI",
+            "nullable": true
+          },
+          "physicalCheck": {
+            "type": "boolean",
+            "description": "Whether or not a physical check is required for PHSI",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PostalAddress": {
+        "type": "object",
+        "properties": {
+          "addressLine1": {
+            "type": "string",
+            "description": "1st line of address",
+            "nullable": true
+          },
+          "addressLine2": {
+            "type": "string",
+            "description": "2nd line of address",
+            "nullable": true
+          },
+          "addressLine3": {
+            "type": "string",
+            "description": "3rd line of address",
+            "nullable": true
+          },
+          "addressLine4": {
+            "type": "string",
+            "description": "4th line of address",
+            "nullable": true
+          },
+          "county": {
+            "type": "string",
+            "description": "3rd line of address",
+            "nullable": true
+          },
+          "cityOrTown": {
+            "type": "string",
+            "description": "City or town name",
+            "nullable": true
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "Post code",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Purpose": {
+        "type": "object",
+        "properties": {
+          "conformsToEU": {
+            "type": "boolean",
+            "description": "Does consignment conforms to UK laws",
+            "nullable": true
+          },
+          "internalMarketPurpose": {
+            "$ref": "#/components/schemas/PurposeInternalMarketPurposeEnum"
+          },
+          "thirdCountryTranshipment": {
+            "type": "string",
+            "description": "Country that consignment is transshipped through",
+            "nullable": true
+          },
+          "forNonConforming": {
+            "$ref": "#/components/schemas/PurposeForNonConformingEnum"
+          },
+          "regNumber": {
+            "type": "string",
+            "description": "There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number.",
+            "nullable": true
+          },
+          "shipName": {
+            "type": "string",
+            "description": "Ship name",
+            "nullable": true
+          },
+          "shipPort": {
+            "type": "string",
+            "description": "Destination Ship port",
+            "nullable": true
+          },
+          "exitBip": {
+            "type": "string",
+            "description": "Exit Border Inspection Post",
+            "nullable": true
+          },
+          "thirdCountry": {
+            "type": "string",
+            "description": "Country to which consignment is transited",
+            "nullable": true
+          },
+          "transitThirdCountries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Countries that consignment is transited through",
+            "nullable": true
+          },
+          "forImportOrAdmission": {
+            "$ref": "#/components/schemas/PurposeForImportOrAdmissionEnum"
+          },
+          "exitDate": {
+            "type": "string",
+            "description": "Exit date when import or admission",
+            "format": "date",
+            "nullable": true
+          },
+          "finalBip": {
+            "type": "string",
+            "description": "Final Border Inspection Post",
+            "nullable": true
+          },
+          "purposeGroup": {
+            "$ref": "#/components/schemas/PurposePurposeGroupEnum"
+          },
+          "estimatedArrivedAtPortOfExit": {
+            "type": "string",
+            "description": "DateTime",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PurposeForImportOrAdmissionEnum": {
+        "enum": [
+          "DefinitiveImport",
+          "HorsesReEntry",
+          "TemporaryAdmissionHorses"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PurposeForNonConformingEnum": {
+        "enum": [
+          "CustomsWarehouse",
+          "FreeZoneOrFreeWarehouse",
+          "ShipSupplier",
+          "Ship"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PurposeInternalMarketPurposeEnum": {
+        "enum": [
+          "AnimalFeedingStuff",
+          "HumanConsumption",
+          "PharmaceuticalUse",
+          "TechnicalUse",
+          "Other",
+          "CommercialSale",
+          "CommercialSaleOrChangeOfOwnership",
+          "Rescue",
+          "Breeding",
+          "Research",
+          "RacingOrCompetition",
+          "ApprovedPremisesOrBody",
+          "CompanionAnimalNotForResaleOrRehoming",
+          "Production",
+          "Slaughter",
+          "Fattening",
+          "GameRestocking",
+          "RegisteredHorses"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PurposePurposeGroupEnum": {
+        "enum": [
+          "ForImport",
+          "ForNONConformingConsignments",
+          "ForTranshipmentTo",
+          "ForTransitTo3rdCountry",
+          "ForReImport",
+          "ForPrivateImport",
+          "ForTransferTo",
+          "ForImportReConformityCheck",
+          "ForImportNonInternalMarket"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "RelationshipDataItem": {
+        "type": "object",
+        "properties": {
+          "matched": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "links": {
+            "$ref": "#/components/schemas/ResourceLink"
+          },
+          "sourceItem": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "destinationItem": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "matchingLevel": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RelationshipLinks": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "nullable": true
+          },
+          "related": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResourceLink": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RiskAssessmentResult": {
+        "type": "object",
+        "properties": {
+          "commodityResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommodityRiskResult"
+            },
+            "description": "List of risk assessed commodities",
+            "nullable": true
+          },
+          "assessedOn": {
+            "type": "string",
+            "description": "Date and time of assessment",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Route": {
+        "type": "object",
+        "properties": {
+          "transitingStates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SealCheck": {
+        "type": "object",
+        "properties": {
+          "satisfactory": {
+            "type": "boolean",
+            "description": "Is seal check satisfactory",
+            "nullable": true
+          },
+          "reason": {
+            "type": "string",
+            "description": "reason for not satisfactory",
+            "nullable": true
+          },
+          "officialInspector": {
+            "$ref": "#/components/schemas/OfficialInspector"
+          },
+          "checkedOn": {
+            "type": "string",
+            "description": "date and time of seal check",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SealContainer": {
+        "type": "object",
+        "properties": {
+          "sealNumber": {
+            "type": "string",
+            "description": "",
+            "nullable": true
+          },
+          "containerNumber": {
+            "type": "string",
+            "description": "",
+            "nullable": true
+          },
+          "officialSeal": {
+            "type": "boolean",
+            "description": "",
+            "nullable": true
+          },
+          "resealedSealNumber": {
+            "type": "string",
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SingleLaboratoryTest": {
+        "type": "object",
+        "properties": {
+          "commodityCode": {
+            "type": "string",
+            "description": "Commodity code for which lab test was ordered",
+            "nullable": true
+          },
+          "speciesId": {
+            "type": "integer",
+            "description": "Species id of commodity for which lab test was ordered",
+            "format": "int32",
+            "nullable": true
+          },
+          "tracesId": {
+            "type": "integer",
+            "description": "TRACES ID",
+            "format": "int32",
+            "nullable": true
+          },
+          "testName": {
+            "type": "string",
+            "description": "Test name",
+            "nullable": true
+          },
+          "applicant": {
+            "$ref": "#/components/schemas/Applicant"
+          },
+          "laboratoryTestResult": {
+            "$ref": "#/components/schemas/LaboratoryTestResult"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SplitConsignment": {
+        "type": "object",
+        "properties": {
+          "validReferenceNumber": {
+            "type": "string",
+            "description": "Reference number of the valid split consignment",
+            "nullable": true
+          },
+          "rejectedReferenceNumber": {
+            "type": "string",
+            "description": "Reference number of the rejected split consignment",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncClearanceRequestsCommand": {
+        "type": "object",
+        "properties": {
+          "syncPeriod": {
+            "$ref": "#/components/schemas/SyncPeriod"
+          },
+          "rootFolder": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncDecisionsCommand": {
+        "type": "object",
+        "properties": {
+          "syncPeriod": {
+            "$ref": "#/components/schemas/SyncPeriod"
+          },
+          "rootFolder": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncGmrsCommand": {
+        "type": "object",
+        "properties": {
+          "syncPeriod": {
+            "$ref": "#/components/schemas/SyncPeriod"
+          },
+          "rootFolder": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncNotificationsCommand": {
+        "type": "object",
+        "properties": {
+          "syncPeriod": {
+            "$ref": "#/components/schemas/SyncPeriod"
+          },
+          "rootFolder": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncPeriod": {
+        "enum": [
+          "Today",
+          "LastMonth",
+          "ThisMonth",
+          "All"
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TdmRelationshipObject": {
+        "type": "object",
+        "properties": {
+          "matched": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "links": {
+            "$ref": "#/components/schemas/RelationshipLinks"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RelationshipDataItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserInformation": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "description": "Display name",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "description": "User ID",
+            "nullable": true
+          },
+          "isControlUser": {
+            "type": "boolean",
+            "description": "Is this user a control",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValidationMessageCode": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Field",
+            "nullable": true
+          },
+          "code": {
+            "type": "string",
+            "description": "Code",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VeterinaryInformation": {
+        "type": "object",
+        "properties": {
+          "establishmentsOfOriginExternalReference": {
+            "$ref": "#/components/schemas/ExternalReference"
+          },
+          "establishmentsOfOrigins": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApprovedEstablishment"
+            },
+            "description": "List of establishments which were approved by UK to issue veterinary documents",
+            "nullable": true
+          },
+          "veterinaryDocument": {
+            "type": "string",
+            "description": "Veterinary document identification",
+            "nullable": true
+          },
+          "veterinaryDocumentIssuedOn": {
+            "type": "string",
+            "description": "Veterinary document issue date",
+            "format": "date",
+            "nullable": true
+          },
+          "accompanyingDocumentNumbers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Additional documents",
+            "nullable": true
+          },
+          "accompanyingDocuments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccompanyingDocument"
+            },
+            "description": "Accompanying documents",
+            "nullable": true
+          },
+          "catchCertificateAttachments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatchCertificateAttachment"
+            },
+            "description": "Catch certificate attachments",
+            "nullable": true
+          },
+          "identificationDetails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IdentificationDetails"
+            },
+            "description": "Details helpful for identification",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

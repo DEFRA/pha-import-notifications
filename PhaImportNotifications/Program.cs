@@ -115,6 +115,7 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 
     app.MapHealthChecks("/health");
     app.UsePhaEndpoints();
+    app.UseImportNotificationEndpoints();
 
     app.UseSwagger(options =>
     {
