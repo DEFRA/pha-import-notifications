@@ -38,7 +38,7 @@ foreach (var (schemaName, schema) in objects)
             CreateUsing("System.ComponentModel"))
         .AddMembers(@class);
     
-    await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.cs", false);
+    await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
     
     ns.NormalizeWhitespace()
         .WithTrailingTrivia(ElasticCarriageReturnLineFeed)
