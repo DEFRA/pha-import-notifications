@@ -26,7 +26,7 @@ public static class ImportNotificationUpdatesEndpoint
                 {
                     Records =
                     [
-                        new() { Links = new() { ImportNotification = new Uri("import-notifications/CHED123/") } },
+                        new() { Links = new() { ImportNotification = new Uri("import-notifications/CHED1234/") } },
                     ],
                     CurrentPage = 0,
                     TotalPages = 1,
