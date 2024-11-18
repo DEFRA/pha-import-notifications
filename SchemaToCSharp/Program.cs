@@ -12,7 +12,7 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 // Stop up out of execution path : {solutionPath}/SchemaToCSharp/bin/Debug/net8.0
 const string solutionPath = "../../../../";
-const string outputPath = $"{solutionPath}Trade.ImportNotification.Contract/";
+const string outputPath = $"{solutionPath}src/Trade.ImportNotification.Contract/";
 const string inputPath = $"{solutionPath}SchemaToCSharp/cdms-public-openapi-v0.1.json";
 
 var stream = new FileStream(inputPath, FileMode.Open);
@@ -40,7 +40,9 @@ foreach (var (schemaName, schema) in objects)
     
     await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.cs", false);
     
-    ns.NormalizeWhitespace().WriteTo(streamWriter);
+    ns.NormalizeWhitespace()
+        .WithTrailingTrivia(ElasticCarriageReturnLineFeed)
+        .WriteTo(streamWriter);
 }
 
 Console.WriteLine("Done");
