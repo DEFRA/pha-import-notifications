@@ -19,7 +19,7 @@ public static class ImportNotificationEndpoint
     {
         return Task.FromResult(Results.Ok());
     }
-    
+
     [HttpGet]
     [SwaggerOperation(Summary = "Get Import Notification Attachment")]
     [ProducesResponseType(typeof(ImportNotificationResponse), 200)]
@@ -27,16 +27,7 @@ public static class ImportNotificationEndpoint
     {
         return Task.FromResult(Results.Ok());
     }
-    
-    [SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty")]
-    public class ImportNotificationResponse : ImportNotification 
-    {
-        
-    }
-    
 
-    
-    
-  
-    
+    [SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty")]
+    public class ImportNotificationResponse : ImportNotification { }
 }

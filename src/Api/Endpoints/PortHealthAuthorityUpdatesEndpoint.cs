@@ -7,19 +7,18 @@ public static class ImportNotificationUpdatesEndpoint
 {
     public static void UseImportNotificationUpdatesEndpoint(this IEndpointRouteBuilder app)
     {
-       app.MapGet("import-notifications-updates/{portHealthAuthority}/", GetAllUpdated);
+        app.MapGet("import-notifications-updates/{portHealthAuthority}/", GetAllUpdated);
     }
 
-   
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponse<UpdatedImportNotification>), 200)]
-    
     private static Task<IResult> GetAllUpdated(
         [FromRoute] string portHealthAuthority,
-        [FromQuery] int  page,
-        [FromQuery] int  limit,
+        [FromQuery] int page,
+        [FromQuery] int limit,
         [FromQuery] DateTime from,
-        [FromQuery] DateTime to)
+        [FromQuery] DateTime to
+    )
     {
         return Task.FromResult(Results.Ok());
     }
