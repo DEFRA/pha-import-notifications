@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Tests", "tests\Api.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.IntegrationTests", "tests\Api.IntegrationTests\Api.IntegrationTests.csproj", "{B84524DF-0CCC-40DB-94CD-937843AF89AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trade.ImportNotification.Contract", "Trade.ImportNotification.Contract\Trade.ImportNotification.Contract.csproj", "{8871DE0A-5EF3-493B-A156-586DD2E97D07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trade.ImportNotification.Contract", "src\Trade.ImportNotification.Contract\Trade.ImportNotification.Contract.csproj", "{8871DE0A-5EF3-493B-A156-586DD2E97D07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
