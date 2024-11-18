@@ -1,6 +1,5 @@
-using System.Reflection;
 using Api.Endpoints;
-using Api.SwashbuckleFilters;
+using Api.OpenApi;
 using Api.Utils;
 using Api.Utils.Http;
 using Api.Utils.Logging;
@@ -8,7 +7,6 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Core;
 using Swashbuckle.AspNetCore.ReDoc;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
@@ -48,39 +46,44 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 
     builder.Services.AddHealthChecks();
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen(c =>
+    builder.Services.AddOpenApi(options =>
     {
-        c.AddServer(
-            new OpenApiServer
+        options.AddDocumentTransformer(
+            (document, _, _) =>
             {
-                Description = "The Open Government Licence (OGL) Version 3",
-                Url = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3",
-            }
-        );
-        c.CustomOperationIds(apiDesc => apiDesc.TryGetMethodInfo(out var methodInfo) ? methodInfo.Name : null);
-        c.EnableAnnotations();
-        c.IncludeXmlComments(Assembly.GetExecutingAssembly());
-        c.OperationFilter<AddSwashbuckleErrorResponses>();
-        c.OperationFilter<AddSwashbuckleHeaders>();
-        c.SwaggerDoc(
-            "v1",
-            new OpenApiInfo
-            {
-                Description = "TBC",
-                Contact = new OpenApiContact
+                document.Info = new OpenApiInfo
                 {
-                    Email = "tbc@defra.gov.uk",
-                    Name = "DEFRA",
-                    Url = new Uri(
+                    Description = "TBC",
+                    Contact = new OpenApiContact
+                    {
+                        Email = "tbc@defra.gov.uk",
+                        Name = "DEFRA",
+                        Url = new Uri(
 #pragma warning disable S1075
-                        "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs"
+                            "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs"
 #pragma warning restore S1075
-                    ),
-                },
-                Title = "PHA Import Notifications",
-                Version = "v1",
+                        ),
+                    },
+                    Title = "PHA Import Notifications",
+                    Version = "v1",
+                };
+
+                document.Servers = new List<OpenApiServer>
+                {
+                    new()
+                    {
+                        Description = "The Open Government Licence (OGL) Version 3",
+                        Url = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3",
+                    },
+                };
+
+                return Task.CompletedTask;
             }
         );
+
+        options.AddOperationTransformer<ErrorResponsesTransformer>();
+        options.AddOperationTransformer<HeadersTransformer>();
+        options.AddSchemaTransformer<XmlDocsSchemaTransformer>();
     });
     builder.Services.AddHttpClient();
 
@@ -110,14 +113,11 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
     var app = builder.Build();
 
     app.MapHealthChecks("/health");
-    app.UsePhaEndpoints();
+    app.MapPhaEndpoints();
     app.UseImportNotificationEndpoints();
     app.UseImportNotificationUpdatesEndpoint();
 
-    app.UseSwagger(options =>
-    {
-        options.RouteTemplate = "/.well-known/openapi/{documentName}/openapi.json";
-    });
+    app.MapOpenApi("/.well-known/openapi/{documentName}/openapi.json");
     app.UseReDoc(options =>
     {
         options.ConfigObject = new ConfigObject { ExpandResponses = "200" };

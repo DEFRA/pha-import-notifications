@@ -1,0 +1,282 @@
+﻿{
+  openapi: 3.0.1,
+  info: {
+    title: PHA Import Notifications,
+    description: TBC,
+    contact: {
+      name: DEFRA,
+      url: https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs,
+      email: tbc@defra.gov.uk
+    },
+    version: v1
+  },
+  servers: [
+    {
+      url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3,
+      description: The Open Government Licence (OGL) Version 3
+    }
+  ],
+  paths: {
+    /hello/world: {
+      get: {
+        tags: [
+          Example Endpoints
+        ],
+        summary: Hello World,
+        description: An endpoint for hello world,
+        operationId: HelloWorld,
+        responses: {
+          200: {
+            description: OK,
+            headers: {
+              Retry-After: {
+                description: How long to wait in seconds before retrying HelloWorld: 200,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              },
+              X-RateLimit-Limit: {
+                description: Remaining API request rate limit for HelloWorld: 200,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 100
+              },
+              X-RateLimit-Reset: {
+                description: Number of seconds until the quota resets for HelloWorld: 200,
+                schema: {
+                  maximum: 86400,
+                  minimum: 0,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              }
+            },
+            content: {
+              application/json: {
+                schema: {
+                  $ref: #/components/schemas/HelloWorldResponse
+                }
+              }
+            }
+          },
+          400: {
+            description: Bad Request,
+            headers: {
+              Retry-After: {
+                description: How long to wait in seconds before retrying HelloWorld: 400,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              },
+              X-RateLimit-Limit: {
+                description: Remaining API request rate limit for HelloWorld: 400,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 100
+              },
+              X-RateLimit-Reset: {
+                description: Number of seconds until the quota resets for HelloWorld: 400,
+                schema: {
+                  maximum: 86400,
+                  minimum: 0,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              }
+            },
+            content: {
+              text/plain: {
+                schema: {
+                  enum: [
+                    Bad Request
+                  ],
+                  type: string,
+                  example: Bad Request
+                }
+              }
+            }
+          },
+          401: {
+            description: Unauthorized,
+            headers: {
+              Retry-After: {
+                description: How long to wait in seconds before retrying HelloWorld: 401,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              },
+              X-RateLimit-Limit: {
+                description: Remaining API request rate limit for HelloWorld: 401,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 100
+              },
+              X-RateLimit-Reset: {
+                description: Number of seconds until the quota resets for HelloWorld: 401,
+                schema: {
+                  maximum: 86400,
+                  minimum: 0,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              }
+            },
+            content: {
+              text/plain: {
+                schema: {
+                  enum: [
+                    Unauthorized
+                  ],
+                  type: string,
+                  example: Unauthorized
+                }
+              }
+            }
+          },
+          429: {
+            description: Too Many Requests,
+            headers: {
+              Retry-After: {
+                description: How long to wait in seconds before retrying HelloWorld: 429,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              },
+              X-RateLimit-Limit: {
+                description: Remaining API request rate limit for HelloWorld: 429,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 100
+              },
+              X-RateLimit-Reset: {
+                description: Number of seconds until the quota resets for HelloWorld: 429,
+                schema: {
+                  maximum: 86400,
+                  minimum: 0,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              }
+            },
+            content: {
+              text/plain: {
+                schema: {
+                  enum: [
+                    Too Many Requests
+                  ],
+                  type: string,
+                  example: Too Many Requests
+                }
+              }
+            }
+          },
+          500: {
+            description: Internal Server Error,
+            headers: {
+              Retry-After: {
+                description: How long to wait in seconds before retrying HelloWorld: 500,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              },
+              X-RateLimit-Limit: {
+                description: Remaining API request rate limit for HelloWorld: 500,
+                schema: {
+                  maximum: 99999,
+                  minimum: 1,
+                  type: integer,
+                  format: int64
+                },
+                example: 100
+              },
+              X-RateLimit-Reset: {
+                description: Number of seconds until the quota resets for HelloWorld: 500,
+                schema: {
+                  maximum: 86400,
+                  minimum: 0,
+                  type: integer,
+                  format: int64
+                },
+                example: 60
+              }
+            },
+            content: {
+              text/plain: {
+                schema: {
+                  enum: [
+                    Internal Server Error
+                  ],
+                  type: string,
+                  example: Internal Server Error
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  components: {
+    schemas: {
+      HelloWorldResponse: {
+        type: object,
+        properties: {
+          response: {
+            maxLength: 11,
+            minLength: 0,
+            pattern: ^Hello World$,
+            type: string,
+            description: A string consisting of Hello World,
+            nullable: true
+          }
+        },
+        description: The hello world response
+      }
+    }
+  },
+  tags: [
+    {
+      name: Example Endpoints
+    }
+  ]
+}

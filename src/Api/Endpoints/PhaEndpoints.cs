@@ -1,31 +1,35 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace Api.Endpoints;
 
 public static class PhaEndpoints
 {
-    public static void UsePhaEndpoints(this IEndpointRouteBuilder app)
+    public static void MapPhaEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapGet("hello/world", HelloWorld).WithTags("Example Endpoints");
+        app.MapGet("hello/world", HelloWorld)
+            .WithName("HelloWorld")
+            .WithTags("Example Endpoints")
+            .WithDescription("An endpoint for hello world")
+            .WithSummary("Hello World")
+            .Produces<HelloWorldResponse>();
     }
 
     [HttpGet]
-    [SwaggerOperation(Description = "An endpoint for hello world", Summary = "Hello World")]
-    [SwaggerResponse(200, "Returns Hello World", typeof(HelloWorldResponse))]
     public static HelloWorldResponse HelloWorld()
     {
         return new HelloWorldResponse();
     }
 
-    [SwaggerSchema("The hello world response")]
+    /// <summary>
+    /// The hello world response
+    /// </summary>
     public class HelloWorldResponse
     {
+        /// <summary>A string consisting of Hello World</summary>
         /// <example>Hello World</example>
         [StringLength(11)]
         [RegularExpression("^Hello World$")]
-        [SwaggerSchema("A string consisting of Hello World")]
         public string Response { get; } = "Hello World";
     }
 }

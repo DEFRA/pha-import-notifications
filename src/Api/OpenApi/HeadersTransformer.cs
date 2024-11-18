@@ -1,24 +1,17 @@
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace Api.SwashbuckleFilters;
+namespace Api.OpenApi;
 
-[ExcludeFromCodeCoverage]
-public class AddSwashbuckleHeaders : IOperationFilter
+public class HeadersTransformer : IOpenApiOperationTransformer
 {
-    public void Apply(OpenApiOperation operation, OperationFilterContext context)
+    public Task TransformAsync(
+        OpenApiOperation operation,
+        OpenApiOperationTransformerContext context,
+        CancellationToken cancellationToken
+    )
     {
-        var actionAttributes = context
-            .MethodInfo?.DeclaringType?.GetCustomAttributes(true)
-            .Union(context.MethodInfo.GetCustomAttributes(true))
-            .OfType<HttpMethodAttribute>();
-
-        if (actionAttributes == null || !actionAttributes.Any())
-            return;
-
         foreach (var (statusCode, _) in operation.Responses)
         {
             operation
@@ -77,5 +70,7 @@ public class AddSwashbuckleHeaders : IOperationFilter
                     }
                 );
         }
+
+        return Task.CompletedTask;
     }
 }
