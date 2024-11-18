@@ -15,18 +15,22 @@ public static class ImportNotificationUpdatesEndpoint
     public static Task<IResult> GetAllUpdated(
         [FromRoute] string portHealthAuthority,
         [FromQuery] int page,
-        [FromQuery] int limit,
+        [FromQuery] int pageSize,
         [FromQuery] DateTime from,
         [FromQuery] DateTime to
     )
     {
         return Task.FromResult(
             Results.Ok(
-                new PagedResponse<UpdatedImportNotification>()
+                new PagedResponse<UpdatedImportNotification>
                 {
+                    Records =
+                    [
+                        new() { Links = new() { ImportNotification = new Uri("import-notifications/CHED123/") } },
+                    ],
                     CurrentPage = 0,
-                    TotalPages = 0,
-                    TotalRecords = 0,
+                    TotalPages = 1,
+                    TotalRecords = 1,
                 }
             )
         );
