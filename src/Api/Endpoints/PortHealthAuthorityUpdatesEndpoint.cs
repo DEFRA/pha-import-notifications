@@ -1,8 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc;
-using Trade.ImportNotification.Contract;
-using Trade.ImportNotification.Contract.CustomsMovements;
-using Trade.ImportNotification.Contract.GoodsMovements;
 using Trade.ImportNotification.Contract.UpdatedImportNotifications;
 
 namespace Api.Endpoints;

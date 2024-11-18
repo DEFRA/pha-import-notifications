@@ -1,8 +1,4 @@
 namespace Trade.ImportNotification.Contract.UpdatedImportNotifications;
-
-
-
-
     
 public class UpdatedImportNotification
 {

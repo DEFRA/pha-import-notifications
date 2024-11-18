@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Trade.ImportNotification.Contract\Trade.ImportNotification.Contract.csproj" />
+    <ProjectReference Include="..\Trade.ImportNotification.Contract\Trade.ImportNotification.Contract.csproj" />
   </ItemGroup>
 
 </Project>

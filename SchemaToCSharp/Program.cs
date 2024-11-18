@@ -1,9 +1,14 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
+
+#pragma warning disable CS8321 // Local function is declared but never used
+#pragma warning disable S1172
+#pragma warning disable S6608
 
 // Stop up out of execution path : {solutionPath}/SchemaToCSharp/bin/Debug/net8.0
 const string solutionPath = "../../../../";
@@ -60,7 +65,6 @@ static TypeSyntax CreateArrayPropertyType(OpenApiSchema schema)
 {
     return ParseTypeName("Array");
 }
-
 
 static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) => 
     CreateProperty(name, CreatePropertyType(schema), schema.Description);
