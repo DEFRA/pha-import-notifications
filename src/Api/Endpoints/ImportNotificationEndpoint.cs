@@ -15,19 +15,11 @@ public static class ImportNotificationEndpoint
     [HttpGet]
     [SwaggerOperation(Summary = "Get Import Notification")]
     [ProducesResponseType(typeof(ImportNotificationResponse), 200)]
-    private static Task<IResult> Get([FromRoute] string referenceNumber)
+    public static Task<IResult> Get([FromRoute] string referenceNumber)
     {
-        return Task.FromResult(Results.Ok());
-    }
-
-    [HttpGet]
-    [SwaggerOperation(Summary = "Get Import Notification Attachment")]
-    [ProducesResponseType(typeof(ImportNotificationResponse), 200)]
-    private static Task<IResult> GetAttachment([FromRoute] string referenceNumber, [FromRoute] string attachmentId)
-    {
-        return Task.FromResult(Results.Ok());
+        return Task.FromResult(Results.Ok(new ImportNotificationResponse()));
     }
 
     [SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty")]
-    public class ImportNotificationResponse : ImportNotification { }
+    public class ImportNotificationResponse : ImportNotification;
 }

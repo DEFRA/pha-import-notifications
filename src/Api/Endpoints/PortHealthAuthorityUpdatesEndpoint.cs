@@ -12,7 +12,7 @@ public static class ImportNotificationUpdatesEndpoint
 
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponse<UpdatedImportNotification>), 200)]
-    private static Task<IResult> GetAllUpdated(
+    public static Task<IResult> GetAllUpdated(
         [FromRoute] string portHealthAuthority,
         [FromQuery] int page,
         [FromQuery] int limit,
@@ -20,7 +20,16 @@ public static class ImportNotificationUpdatesEndpoint
         [FromQuery] DateTime to
     )
     {
-        return Task.FromResult(Results.Ok());
+        return Task.FromResult(
+            Results.Ok(
+                new PagedResponse<UpdatedImportNotification>()
+                {
+                    CurrentPage = 0,
+                    TotalPages = 0,
+                    TotalRecords = 0,
+                }
+            )
+        );
     }
 
     public class PagedResponse<T>
