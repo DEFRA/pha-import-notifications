@@ -10,10 +10,10 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 #pragma warning disable S1172
 #pragma warning disable S6608
 
-// Stop up out of execution path : {solutionPath}/SchemaToCSharp/bin/Debug/net8.0
-const string solutionPath = "../../../../";
+// Stop up out of execution path : {solutionPath}/tools/SchemaToCSharp/bin/Debug/net8.0
+const string solutionPath = "../../../../../";
 const string outputPath = $"{solutionPath}src/Trade.ImportNotification.Contract/";
-const string inputPath = $"{solutionPath}SchemaToCSharp/cdms-public-openapi-v0.1.json";
+const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
 
 var stream = new FileStream(inputPath, FileMode.Open);
 var namespaceDeclaration = NamespaceDeclaration(ParseName("Trade.ImportNotification.Contract"));
