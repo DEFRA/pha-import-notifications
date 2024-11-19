@@ -19,7 +19,7 @@ public class AddSwashbuckleHeaders : IOperationFilter
         if (actionAttributes == null || !actionAttributes.Any())
             return;
 
-        foreach (var (statusCode, response) in operation.Responses)
+        foreach (var (statusCode, _) in operation.Responses)
         {
             operation
                 .Responses[statusCode]
