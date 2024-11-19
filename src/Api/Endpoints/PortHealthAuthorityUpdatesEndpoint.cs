@@ -17,7 +17,8 @@ public static class ImportNotificationUpdatesEndpoint
         [FromQuery] int page,
         [FromQuery] int pageSize,
         [FromQuery] DateTime from,
-        [FromQuery] DateTime to
+        [FromQuery] DateTime to,
+        HttpContext httpContext
     )
     {
         return Task.FromResult(
@@ -26,7 +27,15 @@ public static class ImportNotificationUpdatesEndpoint
                 {
                     Records =
                     [
-                        new() { Links = new() { ImportNotification = new Uri("import-notifications/CHED1234/") } },
+                        new()
+                        {
+                            Links = new()
+                            {
+                                ImportNotification = new Uri(
+                                    $"http://{httpContext.Request.Host}/import-notifications/CHED1234/"
+                                ),
+                            },
+                        },
                     ],
                     CurrentPage = 0,
                     TotalPages = 1,
