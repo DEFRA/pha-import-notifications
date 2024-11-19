@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Tests", "tests\Api.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.IntegrationTests", "tests\Api.IntegrationTests\Api.IntegrationTests.csproj", "{B84524DF-0CCC-40DB-94CD-937843AF89AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trade.ImportNotification.Contract", "src\Trade.ImportNotification.Contract\Trade.ImportNotification.Contract.csproj", "{8871DE0A-5EF3-493B-A156-586DD2E97D07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,10 +36,15 @@ Global
 		{B84524DF-0CCC-40DB-94CD-937843AF89AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B84524DF-0CCC-40DB-94CD-937843AF89AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B84524DF-0CCC-40DB-94CD-937843AF89AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8871DE0A-5EF3-493B-A156-586DD2E97D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8871DE0A-5EF3-493B-A156-586DD2E97D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8871DE0A-5EF3-493B-A156-586DD2E97D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8871DE0A-5EF3-493B-A156-586DD2E97D07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{58EC57C3-1655-4970-AEA3-C0109F2883A2} = {6B3D3CE2-DEFF-45CA-AC63-99366312500F}
 		{C9ABFAB0-BFF7-4F31-88FD-EA424BBFC561} = {D621A358-E740-415E-B6A1-F53501B23D2E}
 		{B84524DF-0CCC-40DB-94CD-937843AF89AE} = {D621A358-E740-415E-B6A1-F53501B23D2E}
+		{8871DE0A-5EF3-493B-A156-586DD2E97D07} = {6B3D3CE2-DEFF-45CA-AC63-99366312500F}
 	EndGlobalSection
 EndGlobal

@@ -20,4 +20,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.ReDoc" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Trade.ImportNotification.Contract\Trade.ImportNotification.Contract.csproj" />
+  </ItemGroup>
+
 </Project>

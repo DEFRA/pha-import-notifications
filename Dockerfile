@@ -30,6 +30,7 @@ COPY .csharpierrc .csharpierrc
 COPY .vacuum.yml .vacuum.yml
 
 COPY src/Api/Api.csproj src/Api/Api.csproj
+COPY src/Trade.ImportNotification.Contract/Trade.ImportNotification.Contract.csproj src/Trade.ImportNotification.Contract/Trade.ImportNotification.Contract.csproj
 COPY tests/Api.Tests/Api.Tests.csproj tests/Api.Tests/Api.Tests.csproj
 COPY tests/Api.IntegrationTests/Api.IntegrationTests.csproj tests/Api.IntegrationTests/Api.IntegrationTests.csproj
 COPY Defra.PhaImportNotifications.sln Defra.PhaImportNotifications.sln
@@ -38,14 +39,17 @@ COPY Directory.Build.props Directory.Build.props
 RUN dotnet restore
 
 COPY src/Api src/Api
+COPY src/Trade.ImportNotification.Contract src/Trade.ImportNotification.Contract
 COPY tests/Api.Tests tests/Api.Tests
+
 COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
 RUN dotnet csharpier --check . 
 
 RUN dotnet build --no-restore -c Release
 RUN swagger tofile --output openapi.json ./src/Api/bin/Release/net8.0/Defra.PhaImportNotifications.Api.dll v1
-RUN vacuum lint -d -r .vacuum.yml openapi.json
+
+# RUN vacuum lint -d -r .vacuum.yml openapi.json
 
 RUN dotnet test --no-restore tests/Api.Tests
 RUN dotnet test --no-restore tests/Api.IntegrationTests

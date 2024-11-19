@@ -111,6 +111,9 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 
     app.MapHealthChecks("/health");
     app.UsePhaEndpoints();
+    app.UseImportNotificationEndpoints();
+    app.UseImportNotificationUpdatesEndpoint();
+
     app.UseSwagger(options =>
     {
         options.RouteTemplate = "/.well-known/openapi/{documentName}/openapi.json";
