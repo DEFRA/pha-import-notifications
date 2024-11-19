@@ -18,49 +18,43 @@ const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openap
 var stream = new FileStream(inputPath, FileMode.Open);
 var namespaceDeclaration = NamespaceDeclaration(ParseName("Trade.ImportNotification.Contract"));
 
-var openApiDocument = new OpenApiStreamReader()
-     .Read(stream, out var diagnostic);
+var openApiDocument = new OpenApiStreamReader().Read(stream, out var diagnostic);
 
-diagnostic.Errors.ToList()
-    .ForEach(e => Console.WriteLine(e.Message));
+diagnostic.Errors.ToList().ForEach(e => Console.WriteLine(e.Message));
 
 var objects = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "object").ToList();
 
 foreach (var (schemaName, schema) in objects)
 {
     var properties = schema.Properties.Select(p => CreatePropertyFrom(p.Key, p.Value));
-    var @class = CreateClass(schemaName)
-        .AddMembers(properties.ToArray<MemberDeclarationSyntax>());
-    
+    var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
+
     var ns = namespaceDeclaration
-        .AddUsings(
-            CreateUsing("System.Text.Json.Serialization"), 
-            CreateUsing("System.ComponentModel"))
+        .AddUsings(CreateUsing("System.Text.Json.Serialization"), CreateUsing("System.ComponentModel"))
         .AddMembers(@class);
-    
+
     await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
-    
-    ns.NormalizeWhitespace()
-        .WithTrailingTrivia(ElasticCarriageReturnLineFeed)
-        .WriteTo(streamWriter);
+
+    ns.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
 }
 
 Console.WriteLine("Done");
 
 return;
 
-static TypeSyntax CreatePropertyType(OpenApiSchema schema) => schema.Type switch
-{
-    "string" => ParseTypeName("string"),
-    "integer" => ParseTypeName("int"),
-    "number" => ParseTypeName("decimal"),
-    "boolean" => ParseTypeName("bool"),
-    "object" => CreateObjectPropertyType(schema),
-    "array" => CreateArrayPropertyType(schema),
-    _ => ParseTypeName("object")
-};
+static TypeSyntax CreatePropertyType(OpenApiSchema schema) =>
+    schema.Type switch
+    {
+        "string" => ParseTypeName("string"),
+        "integer" => ParseTypeName("int"),
+        "number" => ParseTypeName("decimal"),
+        "boolean" => ParseTypeName("bool"),
+        "object" => CreateObjectPropertyType(schema),
+        "array" => CreateArrayPropertyType(schema),
+        _ => ParseTypeName("object"),
+    };
 
-static TypeSyntax CreateObjectPropertyType(OpenApiSchema schema) => 
+static TypeSyntax CreateObjectPropertyType(OpenApiSchema schema) =>
     ParseTypeName(schema.Reference?.ReferenceV3?.Split("/").Last() ?? "object");
 
 static TypeSyntax CreateArrayPropertyType(OpenApiSchema schema)
@@ -68,7 +62,7 @@ static TypeSyntax CreateArrayPropertyType(OpenApiSchema schema)
     return ParseTypeName("Array");
 }
 
-static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) => 
+static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) =>
     CreateProperty(name, CreatePropertyType(schema), schema.Description);
 
 static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description) =>
@@ -76,29 +70,30 @@ static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSynt
         .AddModifiers(Token(SyntaxKind.PublicKeyword))
         .AddAttributeLists(
             CreateSimpleAttributeList("JsonPropertyName", name),
-            CreateSimpleAttributeList("Description", description))
+            CreateSimpleAttributeList("Description", description)
+        )
         .AddAccessorListAccessors(CreateGetterAndSetter());
 
 static AccessorDeclarationSyntax[] CreateGetterAndSetter() =>
-[
-    AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
-    AccessorDeclaration(SyntaxKind.SetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken))
-];
-        
-static ClassDeclarationSyntax CreateClass(string name) => ClassDeclaration(Identifier(name))
-        .AddModifiers(Token(SyntaxKind.PublicKeyword));
+    [
+        AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
+        AccessorDeclaration(SyntaxKind.SetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
+    ];
+
+static ClassDeclarationSyntax CreateClass(string name) =>
+    ClassDeclaration(Identifier(name)).AddModifiers(Token(SyntaxKind.PublicKeyword));
 
 static UsingDirectiveSyntax CreateUsing(string fqn) => UsingDirective(ParseName(fqn));
 
-static ClassDeclarationSyntax CreateEnum(string name) => ClassDeclaration(Identifier(name))
-    .AddModifiers(Token(SyntaxKind.PublicKeyword));
+static ClassDeclarationSyntax CreateEnum(string name) =>
+    ClassDeclaration(Identifier(name)).AddModifiers(Token(SyntaxKind.PublicKeyword));
 
 static AttributeListSyntax CreateSimpleAttributeList(string type, string arg1) =>
     AttributeList(SingletonSeparatedList(CreateSimpleAttribute(type, arg1)));
 
-static AttributeSyntax CreateSimpleAttribute(string type, string arg1) => Attribute(ParseName(type))
-    .WithArgumentList(ParseAttributeArgumentList($"(\"{arg1}\")"));
-    
+static AttributeSyntax CreateSimpleAttribute(string type, string arg1) =>
+    Attribute(ParseName(type)).WithArgumentList(ParseAttributeArgumentList($"(\"{arg1}\")"));
+
 static string CapitalizeFirstLetter(string s)
 {
     if (string.IsNullOrEmpty(s))

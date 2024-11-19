@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Microsoft.AspNetCore.Mvc;
 using Trade.ImportNotification.Contract.UpdatedImportNotifications;
 
@@ -5,15 +6,18 @@ namespace Api.Endpoints;
 
 public static class ImportNotificationUpdatesEndpoint
 {
-    public static void UseImportNotificationUpdatesEndpoint(this IEndpointRouteBuilder app)
+    public static void MapImportNotificationUpdatesEndpoint(this IEndpointRouteBuilder app)
     {
-        app.MapGet("import-notifications-updates/{portHealthAuthority}/", GetAllUpdated);
+        app.MapGet("import-notifications-updates/{portHealthAuthority}/", GetAllUpdated)
+            .WithName("ImportNotificationsUpdatesByReferenceNumber")
+            .WithSummary("Get Import Notification Updates")
+            .WithDescription("Get an Import Notification Updates by port health authority")
+            .Produces<PagedResponse<UpdatedImportNotification>>();
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(PagedResponse<UpdatedImportNotification>), 200)]
     public static Task<IResult> GetAllUpdated(
-        [FromRoute] string portHealthAuthority,
+        [FromRoute] [Description("The port health authority with format XYZ")] string portHealthAuthority,
         [FromQuery] int page,
         [FromQuery] int pageSize,
         [FromQuery] DateTime from,
