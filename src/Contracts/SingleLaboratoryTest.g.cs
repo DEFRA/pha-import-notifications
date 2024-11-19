@@ -7,24 +7,24 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("commodityCode")]
         [Description("Commodity code for which lab test was ordered")]
-        public string CommodityCode { get; set; }
+        public string CommodityCode { get; init; }
 
         [JsonPropertyName("speciesId")]
         [Description("Species id of commodity for which lab test was ordered")]
-        public int SpeciesId { get; set; }
+        public int SpeciesId { get; init; }
 
         [JsonPropertyName("tracesId")]
         [Description("TRACES ID")]
-        public int TracesId { get; set; }
+        public int TracesId { get; init; }
 
         [JsonPropertyName("testName")]
         [Description("Test name")]
-        public string TestName { get; set; }
+        public string TestName { get; init; }
 
         [JsonPropertyName("applicant")]
-        public Applicant Applicant { get; set; }
+        public Applicant Applicant { get; init; }
 
         [JsonPropertyName("laboratoryTestResult")]
-        public LaboratoryTestResult LaboratoryTestResult { get; set; }
+        public LaboratoryTestResult LaboratoryTestResult { get; init; }
     }
 }

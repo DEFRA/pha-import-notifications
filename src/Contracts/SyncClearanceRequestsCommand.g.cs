@@ -6,15 +6,15 @@ namespace Defra.PhaImportNotifications.Contracts
     public class SyncClearanceRequestsCommand
     {
         [JsonPropertyName("syncPeriod")]
-        public int SyncPeriod { get; set; }
+        public int SyncPeriod { get; init; }
 
         [JsonPropertyName("rootFolder")]
-        public string RootFolder { get; set; }
+        public string RootFolder { get; init; }
 
         [JsonPropertyName("jobId")]
-        public string JobId { get; set; }
+        public string JobId { get; init; }
 
         [JsonPropertyName("description")]
-        public string Description { get; set; }
+        public string Description { get; init; }
     }
 }

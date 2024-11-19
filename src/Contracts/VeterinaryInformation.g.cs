@@ -6,34 +6,34 @@ namespace Defra.PhaImportNotifications.Contracts
     public class VeterinaryInformation
     {
         [JsonPropertyName("establishmentsOfOriginExternalReference")]
-        public ExternalReference EstablishmentsOfOriginExternalReference { get; set; }
+        public ExternalReference EstablishmentsOfOriginExternalReference { get; init; }
 
         [JsonPropertyName("establishmentsOfOrigins")]
         [Description("List of establishments which were approved by UK to issue veterinary documents")]
-        public Array EstablishmentsOfOrigins { get; set; }
+        public Array EstablishmentsOfOrigins { get; init; }
 
         [JsonPropertyName("veterinaryDocument")]
         [Description("Veterinary document identification")]
-        public string VeterinaryDocument { get; set; }
+        public string VeterinaryDocument { get; init; }
 
         [JsonPropertyName("veterinaryDocumentIssuedOn")]
         [Description("Veterinary document issue date")]
-        public string VeterinaryDocumentIssuedOn { get; set; }
+        public string VeterinaryDocumentIssuedOn { get; init; }
 
         [JsonPropertyName("accompanyingDocumentNumbers")]
         [Description("Additional documents")]
-        public Array AccompanyingDocumentNumbers { get; set; }
+        public Array AccompanyingDocumentNumbers { get; init; }
 
         [JsonPropertyName("accompanyingDocuments")]
         [Description("Accompanying documents")]
-        public Array AccompanyingDocuments { get; set; }
+        public Array AccompanyingDocuments { get; init; }
 
         [JsonPropertyName("catchCertificateAttachments")]
         [Description("Catch certificate attachments")]
-        public Array CatchCertificateAttachments { get; set; }
+        public Array CatchCertificateAttachments { get; init; }
 
         [JsonPropertyName("identificationDetails")]
         [Description("Details helpful for identification")]
-        public Array IdentificationDetails { get; set; }
+        public Array IdentificationDetails { get; init; }
     }
 }

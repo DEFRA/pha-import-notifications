@@ -7,18 +7,18 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("name")]
         [Description("Name of designated contact")]
-        public string Name { get; set; }
+        public string Name { get; init; }
 
         [JsonPropertyName("telephone")]
         [Description("Telephone number of designated contact")]
-        public string Telephone { get; set; }
+        public string Telephone { get; init; }
 
         [JsonPropertyName("email")]
         [Description("Email address of designated contact")]
-        public string Email { get; set; }
+        public string Email { get; init; }
 
         [JsonPropertyName("agent")]
         [Description("Name of agent representing designated contact")]
-        public string Agent { get; set; }
+        public string Agent { get; init; }
     }
 }

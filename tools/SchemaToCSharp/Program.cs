@@ -82,7 +82,7 @@ static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSynt
 static AccessorDeclarationSyntax[] CreateGetterAndSetter() =>
     [
         AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
-        AccessorDeclaration(SyntaxKind.SetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
+        AccessorDeclaration(SyntaxKind.InitAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
     ];
 
 static ClassDeclarationSyntax CreateClass(string name) =>

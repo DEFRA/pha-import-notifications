@@ -6,12 +6,12 @@ namespace Defra.PhaImportNotifications.Contracts
     public class TdmRelationshipObject
     {
         [JsonPropertyName("matched")]
-        public bool Matched { get; set; }
+        public bool Matched { get; init; }
 
         [JsonPropertyName("links")]
-        public RelationshipLinks Links { get; set; }
+        public RelationshipLinks Links { get; init; }
 
         [JsonPropertyName("data")]
-        public Array Data { get; set; }
+        public Array Data { get; init; }
     }
 }

@@ -6,12 +6,12 @@ namespace Defra.PhaImportNotifications.Contracts
     public class AuditDiffEntry
     {
         [JsonPropertyName("path")]
-        public string Path { get; set; }
+        public string Path { get; init; }
 
         [JsonPropertyName("op")]
-        public string Op { get; set; }
+        public string Op { get; init; }
 
         [JsonPropertyName("value")]
-        public object Value { get; set; }
+        public object Value { get; init; }
     }
 }

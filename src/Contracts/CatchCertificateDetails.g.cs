@@ -7,22 +7,22 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("catchCertificateId")]
         [Description("The UUID of the catch certificate")]
-        public string CatchCertificateId { get; set; }
+        public string CatchCertificateId { get; init; }
 
         [JsonPropertyName("catchCertificateReference")]
         [Description("Catch certificate reference")]
-        public string CatchCertificateReference { get; set; }
+        public string CatchCertificateReference { get; init; }
 
         [JsonPropertyName("issuedOn")]
         [Description("Catch certificate date of issue")]
-        public string IssuedOn { get; set; }
+        public string IssuedOn { get; init; }
 
         [JsonPropertyName("flagState")]
         [Description("Catch certificate flag state of catching vessel(s)")]
-        public string FlagState { get; set; }
+        public string FlagState { get; init; }
 
         [JsonPropertyName("species")]
         [Description("List of species imported under this catch certificate")]
-        public Array Species { get; set; }
+        public Array Species { get; init; }
     }
 }

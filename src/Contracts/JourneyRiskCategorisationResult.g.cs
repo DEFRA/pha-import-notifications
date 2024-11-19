@@ -6,13 +6,13 @@ namespace Defra.PhaImportNotifications.Contracts
     public class JourneyRiskCategorisationResult
     {
         [JsonPropertyName("riskLevel")]
-        public int RiskLevel { get; set; }
+        public int RiskLevel { get; init; }
 
         [JsonPropertyName("riskLevelMethod")]
-        public int RiskLevelMethod { get; set; }
+        public int RiskLevelMethod { get; init; }
 
         [JsonPropertyName("riskLevelDateTime")]
         [Description("The date and time the risk level has been set for a notification")]
-        public string RiskLevelDateTime { get; set; }
+        public string RiskLevelDateTime { get; init; }
     }
 }

@@ -6,49 +6,49 @@ namespace Defra.PhaImportNotifications.Contracts
     public class CommodityRiskResult
     {
         [JsonPropertyName("riskDecision")]
-        public int RiskDecision { get; set; }
+        public int RiskDecision { get; init; }
 
         [JsonPropertyName("exitRiskDecision")]
-        public int ExitRiskDecision { get; set; }
+        public int ExitRiskDecision { get; init; }
 
         [JsonPropertyName("hmiDecision")]
-        public int HmiDecision { get; set; }
+        public int HmiDecision { get; init; }
 
         [JsonPropertyName("phsiDecision")]
-        public int PhsiDecision { get; set; }
+        public int PhsiDecision { get; init; }
 
         [JsonPropertyName("phsiClassification")]
-        public int PhsiClassification { get; set; }
+        public int PhsiClassification { get; init; }
 
         [JsonPropertyName("phsi")]
-        public Phsi Phsi { get; set; }
+        public Phsi Phsi { get; init; }
 
         [JsonPropertyName("uniqueId")]
         [Description("UUID used to match to the complement parameter set")]
-        public string UniqueId { get; set; }
+        public string UniqueId { get; init; }
 
         [JsonPropertyName("eppoCode")]
         [Description("EPPO Code for the species")]
-        public string EppoCode { get; set; }
+        public string EppoCode { get; init; }
 
         [JsonPropertyName("variety")]
         [Description("Name or ID of the variety")]
-        public string Variety { get; set; }
+        public string Variety { get; init; }
 
         [JsonPropertyName("isWoody")]
         [Description("Whether or not a plant is woody")]
-        public bool IsWoody { get; set; }
+        public bool IsWoody { get; init; }
 
         [JsonPropertyName("indoorOutdoor")]
         [Description("Indoor or Outdoor for a plant")]
-        public string IndoorOutdoor { get; set; }
+        public string IndoorOutdoor { get; init; }
 
         [JsonPropertyName("propagation")]
         [Description("Whether the propagation is considered a Plant, Bulb, Seed or None")]
-        public string Propagation { get; set; }
+        public string Propagation { get; init; }
 
         [JsonPropertyName("phsiRuleType")]
         [Description("Rule type for PHSI checks")]
-        public string PhsiRuleType { get; set; }
+        public string PhsiRuleType { get; init; }
     }
 }

@@ -7,14 +7,14 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("documentCheck")]
         [Description("Whether or not a documentary check is required for PHSI")]
-        public bool DocumentCheck { get; set; }
+        public bool DocumentCheck { get; init; }
 
         [JsonPropertyName("identityCheck")]
         [Description("Whether or not an identity check is required for PHSI")]
-        public bool IdentityCheck { get; set; }
+        public bool IdentityCheck { get; init; }
 
         [JsonPropertyName("physicalCheck")]
         [Description("Whether or not a physical check is required for PHSI")]
-        public bool PhysicalCheck { get; set; }
+        public bool PhysicalCheck { get; init; }
     }
 }

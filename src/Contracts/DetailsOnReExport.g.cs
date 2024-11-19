@@ -7,25 +7,25 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("date")]
         [Description("Date of re-export")]
-        public string Date { get; set; }
+        public string Date { get; init; }
 
         [JsonPropertyName("meansOfTransportNo")]
         [Description("Number of vehicle")]
-        public string MeansOfTransportNo { get; set; }
+        public string MeansOfTransportNo { get; init; }
 
         [JsonPropertyName("transportType")]
-        public int TransportType { get; set; }
+        public int TransportType { get; init; }
 
         [JsonPropertyName("document")]
         [Description("Document issued for re-export")]
-        public string Document { get; set; }
+        public string Document { get; init; }
 
         [JsonPropertyName("countryOfReDispatching")]
         [Description("Two letter ISO code for country of re-dispatching")]
-        public string CountryOfReDispatching { get; set; }
+        public string CountryOfReDispatching { get; init; }
 
         [JsonPropertyName("exitBip")]
         [Description("Exit BIP (where consignment will leave the country)")]
-        public string ExitBip { get; set; }
+        public string ExitBip { get; init; }
     }
 }

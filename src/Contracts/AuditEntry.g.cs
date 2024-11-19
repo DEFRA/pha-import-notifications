@@ -6,24 +6,24 @@ namespace Defra.PhaImportNotifications.Contracts
     public class AuditEntry
     {
         [JsonPropertyName("id")]
-        public string Id { get; set; }
+        public string Id { get; init; }
 
         [JsonPropertyName("version")]
-        public int Version { get; set; }
+        public int Version { get; init; }
 
         [JsonPropertyName("createdBy")]
-        public string CreatedBy { get; set; }
+        public string CreatedBy { get; init; }
 
         [JsonPropertyName("createdSource")]
-        public string CreatedSource { get; set; }
+        public string CreatedSource { get; init; }
 
         [JsonPropertyName("createdLocal")]
-        public string CreatedLocal { get; set; }
+        public string CreatedLocal { get; init; }
 
         [JsonPropertyName("status")]
-        public string Status { get; set; }
+        public string Status { get; init; }
 
         [JsonPropertyName("diff")]
-        public Array Diff { get; set; }
+        public Array Diff { get; init; }
     }
 }

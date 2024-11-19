@@ -7,17 +7,17 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("satisfactory")]
         [Description("Is seal check satisfactory")]
-        public bool Satisfactory { get; set; }
+        public bool Satisfactory { get; init; }
 
         [JsonPropertyName("reason")]
         [Description("reason for not satisfactory")]
-        public string Reason { get; set; }
+        public string Reason { get; init; }
 
         [JsonPropertyName("officialInspector")]
-        public OfficialInspector OfficialInspector { get; set; }
+        public OfficialInspector OfficialInspector { get; init; }
 
         [JsonPropertyName("checkedOn")]
         [Description("date and time of seal check")]
-        public string CheckedOn { get; set; }
+        public string CheckedOn { get; init; }
     }
 }
