@@ -15,7 +15,7 @@ public class ImportNotificationUpdatesEndpointTests
             10,
             DateTime.Now,
             DateTime.Now,
-            new DefaultHttpContext() { Request = { Host = new HostString("localhost") } }
+            new DefaultHttpContext() { Request = { Host = new HostString("localhost"), Scheme = "http" } }
         );
         result.Should().NotBeNull();
     }

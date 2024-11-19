@@ -32,7 +32,7 @@ public static class ImportNotificationUpdatesEndpoint
                             Links = new()
                             {
                                 ImportNotification = new Uri(
-                                    $"http://{httpContext.Request.Host}/import-notifications/CHED1234/"
+                                    $"{httpContext.Request.Scheme}://{httpContext.Request.Host}/import-notifications/CHED1234/"
                                 ),
                             },
                         },
