@@ -1,13 +1,13 @@
-using Api.Endpoints;
-using Api.OpenApi;
-using Api.Utils;
-using Api.Utils.Http;
-using Api.Utils.Logging;
+using Defra.PhaImportNotifications.Api.Endpoints;
+using Defra.PhaImportNotifications.Api.OpenApi;
+using Defra.PhaImportNotifications.Api.Utils;
+using Defra.PhaImportNotifications.Api.Utils.Http;
+using Defra.PhaImportNotifications.Api.Utils.Logging;
+using Defra.PhaImportNotifications.Contracts;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Core;
 using Swashbuckle.AspNetCore.ReDoc;
-using Trade.ImportNotification.Contract;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
@@ -132,7 +132,7 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 }
 
 #pragma warning disable S2094
-namespace Api
+namespace Defra.PhaImportNotifications.Api
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public partial class Program;

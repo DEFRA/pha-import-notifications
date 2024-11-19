@@ -1,8 +1,8 @@
 using System.ComponentModel;
+using Defra.PhaImportNotifications.Contracts.UpdatedImportNotifications;
 using Microsoft.AspNetCore.Mvc;
-using Trade.ImportNotification.Contract.UpdatedImportNotifications;
 
-namespace Api.Endpoints;
+namespace Defra.PhaImportNotifications.Api.Endpoints;
 
 public static class ImportNotificationUpdatesEndpoint
 {

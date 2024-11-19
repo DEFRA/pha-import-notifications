@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using Serilog.Core;
 
-namespace Api.Utils.Http;
+namespace Defra.PhaImportNotifications.Api.Utils.Http;
 
 public static class Proxy
 {
