@@ -41,6 +41,7 @@ RUN dotnet restore
 COPY src/Api src/Api
 COPY src/Trade.ImportNotification.Contract src/Trade.ImportNotification.Contract
 COPY tests/Api.Tests tests/Api.Tests
+
 COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
 RUN dotnet csharpier --check . 
