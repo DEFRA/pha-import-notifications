@@ -10,8 +10,8 @@ public static class PhaEndpoints
         app.MapGet("hello/world", HelloWorld)
             .WithName("HelloWorld")
             .WithTags("Example Endpoints")
-            .WithDescription("An endpoint for hello world")
             .WithSummary("Hello World")
+            .WithDescription("An endpoint for hello world")
             .Produces<HelloWorldResponse>();
     }
 

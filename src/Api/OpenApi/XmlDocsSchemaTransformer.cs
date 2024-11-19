@@ -10,11 +10,11 @@ namespace Api.OpenApi;
 
 /// <summary>
 /// Taken from https://github.com/martincostello/aspnetcore-openapi/blob/main/src/TodoApp/OpenApi/AspNetCore/AddSchemaDescriptionsTransformer.cs
-/// This version includes fix for nested type names.
+/// This version includes fix for nested type names and can be used for types from different assemblies.
 /// </summary>
-public class XmlDocsSchemaTransformer : IOpenApiSchemaTransformer
+public class XmlDocsSchemaTransformer<T> : IOpenApiSchemaTransformer
 {
-    private static readonly Assembly s_thisAssembly = typeof(XmlDocsSchemaTransformer).Assembly;
+    private static readonly Assembly s_thisAssembly = typeof(T).Assembly;
     private readonly ConcurrentDictionary<string, string?> _descriptions = [];
     private XPathNavigator? _navigator;
 

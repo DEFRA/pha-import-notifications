@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Core;
 using Swashbuckle.AspNetCore.ReDoc;
+using Trade.ImportNotification.Contract;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
@@ -83,7 +84,8 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 
         options.AddOperationTransformer<ErrorResponsesTransformer>();
         options.AddOperationTransformer<HeadersTransformer>();
-        options.AddSchemaTransformer<XmlDocsSchemaTransformer>();
+        options.AddSchemaTransformer<XmlDocsSchemaTransformer<Program>>();
+        options.AddSchemaTransformer<XmlDocsSchemaTransformer<ImportNotification>>();
     });
     builder.Services.AddHttpClient();
 
@@ -114,8 +116,8 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 
     app.MapHealthChecks("/health");
     app.MapPhaEndpoints();
-    app.UseImportNotificationEndpoints();
-    app.UseImportNotificationUpdatesEndpoint();
+    app.MapImportNotificationEndpoints();
+    app.MapImportNotificationUpdatesEndpoint();
 
     app.MapOpenApi("/.well-known/openapi/{documentName}/openapi.json");
     app.UseReDoc(options =>
