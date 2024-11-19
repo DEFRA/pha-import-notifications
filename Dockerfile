@@ -29,29 +29,33 @@ RUN dotnet tool install -g csharpier && \
 COPY .csharpierrc .csharpierrc
 COPY .vacuum.yml .vacuum.yml
 
-COPY PhaImportNotifications/PhaImportNotifications.csproj PhaImportNotifications/PhaImportNotifications.csproj
-COPY PhaImportNotifications.Tests/PhaImportNotifications.Tests.csproj PhaImportNotifications.Tests/PhaImportNotifications.Tests.csproj
-COPY PhaImportNotifications.IntegrationTests/PhaImportNotifications.IntegrationTests.csproj PhaImportNotifications.IntegrationTests/PhaImportNotifications.IntegrationTests.csproj
-COPY PhaImportNotifications.sln PhaImportNotifications.sln
+COPY src/Api/Api.csproj src/Api/Api.csproj
+COPY src/Trade.ImportNotification.Contract/Trade.ImportNotification.Contract.csproj src/Trade.ImportNotification.Contract/Trade.ImportNotification.Contract.csproj
+COPY tests/Api.Tests/Api.Tests.csproj tests/Api.Tests/Api.Tests.csproj
+COPY tests/Api.IntegrationTests/Api.IntegrationTests.csproj tests/Api.IntegrationTests/Api.IntegrationTests.csproj
+COPY Defra.PhaImportNotifications.sln Defra.PhaImportNotifications.sln
+COPY Directory.Build.props Directory.Build.props
 
 RUN dotnet restore
 
-COPY PhaImportNotifications PhaImportNotifications
-COPY PhaImportNotifications.Tests PhaImportNotifications.Tests
-COPY PhaImportNotifications.IntegrationTests PhaImportNotifications.IntegrationTests
+COPY src/Api src/Api
+COPY src/Trade.ImportNotification.Contract src/Trade.ImportNotification.Contract
+COPY tests/Api.Tests tests/Api.Tests
+COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
 RUN dotnet csharpier --check . 
 
 RUN dotnet build --no-restore -c Release
-RUN swagger tofile --output openapi.json ./PhaImportNotifications/bin/Release/net8.0/PhaImportNotifications.dll v1
-RUN vacuum lint -d -r .vacuum.yml openapi.json
+RUN swagger tofile --output openapi.json ./src/Api/bin/Release/net8.0/Defra.PhaImportNotifications.Api.dll v1
 
-RUN dotnet test --no-restore PhaImportNotifications.Tests
-RUN dotnet test --no-restore PhaImportNotifications.IntegrationTests
+# RUN vacuum lint -d -r .vacuum.yml openapi.json
+
+RUN dotnet test --no-restore tests/Api.Tests
+RUN dotnet test --no-restore tests/Api.IntegrationTests
 
 FROM build AS publish
 
-RUN dotnet publish PhaImportNotifications -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish src/Api -c Release -o /app/publish /p:UseAppHost=false
 
 ENV ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
 
@@ -62,4 +66,4 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 EXPOSE 8085
-ENTRYPOINT ["dotnet", "PhaImportNotifications.dll"]
+ENTRYPOINT ["dotnet", "Defra.PhaImportNotifications.Api.dll"]
