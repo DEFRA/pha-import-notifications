@@ -27,7 +27,9 @@ Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
 foreach (var (schemaName, schema) in objects)
 {
-    var properties = schema.Properties.Select(p => CreatePropertyFrom(p.Key, p.Value));
+    var properties = schema
+        .Properties.Where(p => !p.Key.StartsWith('_'))
+        .Select(p => CreatePropertyFrom(p.Key, p.Value));
     var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
 
     var ns = namespaceDeclaration

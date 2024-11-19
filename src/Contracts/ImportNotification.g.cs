@@ -5,9 +5,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
     public class ImportNotification
     {
-        [JsonPropertyName("_Etag")]
-        public string _Etag { get; init; }
-
         [JsonPropertyName("auditEntries")]
         public Array AuditEntries { get; init; }
 
@@ -19,18 +16,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("commodities")]
         public Array Commodities { get; init; }
-
-        [JsonPropertyName("_Ts")]
-        public DateTime _Ts { get; init; }
-
-        [JsonPropertyName("_PointOfEntry")]
-        public string _PointOfEntry { get; init; }
-
-        [JsonPropertyName("_PointOfEntryControlPoint")]
-        public string _PointOfEntryControlPoint { get; init; }
-
-        [JsonPropertyName("_MatchReference")]
-        public int _MatchReference { get; init; }
 
         [JsonPropertyName("ipaffsId")]
         [Description("The IPAFFS ID number for this notification.")]
