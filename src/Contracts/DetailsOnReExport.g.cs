@@ -7,7 +7,7 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("date")]
         [Description("Date of re-export")]
-        public string Date { get; init; }
+        public DateTime Date { get; init; }
 
         [JsonPropertyName("meansOfTransportNo")]
         [Description("Number of vehicle")]

@@ -57,7 +57,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("checkedOn")]
         [Description("User entered date when the checks were completed")]
-        public string CheckedOn { get; init; }
+        public DateTime CheckedOn { get; init; }
 
         [JsonPropertyName("accompanyingDocuments")]
         [Description("Accompanying documents")]
@@ -80,6 +80,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("autoClearedOn")]
         [Description("Date of autoclearance")]
-        public string AutoClearedOn { get; init; }
+        public DateTime AutoClearedOn { get; init; }
     }
 }

@@ -48,6 +48,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("sampledOn")]
         [Description("DateTime")]
-        public string SampledOn { get; init; }
+        public DateTime SampledOn { get; init; }
     }
 }

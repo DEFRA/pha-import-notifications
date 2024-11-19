@@ -11,7 +11,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("overriddenOn")]
         [Description("The time the risk decision is overridden")]
-        public string OverriddenOn { get; init; }
+        public DateTime OverriddenOn { get; init; }
 
         [JsonPropertyName("overriddenBy")]
         public UserInformation OverriddenBy { get; init; }

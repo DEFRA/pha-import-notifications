@@ -13,6 +13,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("riskLevelDateTime")]
         [Description("The date and time the risk level has been set for a notification")]
-        public string RiskLevelDateTime { get; init; }
+        public DateTime RiskLevelDateTime { get; init; }
     }
 }

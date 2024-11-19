@@ -11,6 +11,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("assessedOn")]
         [Description("Date and time of assessment")]
-        public string AssessedOn { get; init; }
+        public DateTime AssessedOn { get; init; }
     }
 }

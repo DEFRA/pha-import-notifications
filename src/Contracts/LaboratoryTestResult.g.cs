@@ -11,7 +11,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("releasedOn")]
         [Description("When it was released")]
-        public string ReleasedOn { get; init; }
+        public DateTime ReleasedOn { get; init; }
 
         [JsonPropertyName("laboratoryTestMethod")]
         [Description("Laboratory test method")]
@@ -26,6 +26,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("labTestCreatedOn")]
         [Description("Date of lab test created in IPAFFS")]
-        public string LabTestCreatedOn { get; init; }
+        public DateTime LabTestCreatedOn { get; init; }
     }
 }

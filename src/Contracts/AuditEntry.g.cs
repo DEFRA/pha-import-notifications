@@ -15,10 +15,10 @@ namespace Defra.PhaImportNotifications.Contracts
         public string CreatedBy { get; init; }
 
         [JsonPropertyName("createdSource")]
-        public string CreatedSource { get; init; }
+        public DateTime CreatedSource { get; init; }
 
         [JsonPropertyName("createdLocal")]
-        public string CreatedLocal { get; init; }
+        public DateTime CreatedLocal { get; init; }
 
         [JsonPropertyName("status")]
         public string Status { get; init; }

@@ -15,7 +15,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("issuedOn")]
         [Description("Catch certificate date of issue")]
-        public string IssuedOn { get; init; }
+        public DateTime IssuedOn { get; init; }
 
         [JsonPropertyName("flagState")]
         [Description("Catch certificate flag state of catching vessel(s)")]

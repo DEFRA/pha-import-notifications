@@ -119,7 +119,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("submissionDate")]
         [Description("Date and time when the notification was submitted")]
-        public string SubmissionDate { get; init; }
+        public DateTime SubmissionDate { get; init; }
 
         [JsonPropertyName("submittedBy")]
         public UserInformation SubmittedBy { get; init; }
@@ -142,7 +142,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("exitedPortOfOn")]
         [Description("Date of Port Exit for EU Import Notification.")]
-        public string ExitedPortOfOn { get; init; }
+        public DateTime ExitedPortOfOn { get; init; }
 
         [JsonPropertyName("contactDetails")]
         public ContactDetails ContactDetails { get; init; }
@@ -153,7 +153,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("originalEstimatedDateTime")]
         [Description("Original estimated date time of arrival")]
-        public string OriginalEstimatedDateTime { get; init; }
+        public DateTime OriginalEstimatedDateTime { get; init; }
 
         [JsonPropertyName("billingInformation")]
         public BillingInformation BillingInformation { get; init; }
@@ -174,10 +174,10 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("arrivedOn")]
         [Description("DateTime")]
-        public string ArrivedOn { get; init; }
+        public DateTime ArrivedOn { get; init; }
 
         [JsonPropertyName("departedOn")]
         [Description("DateTime")]
-        public string DepartedOn { get; init; }
+        public DateTime DepartedOn { get; init; }
     }
 }

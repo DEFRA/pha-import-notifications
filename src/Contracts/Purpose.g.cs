@@ -59,6 +59,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("estimatedArrivedAtPortOfExit")]
         [Description("DateTime")]
-        public string EstimatedArrivedAtPortOfExit { get; init; }
+        public DateTime EstimatedArrivedAtPortOfExit { get; init; }
     }
 }

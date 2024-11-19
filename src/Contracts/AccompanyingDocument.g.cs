@@ -14,7 +14,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("documentIssuedOn")]
         [Description("Additional document issue date")]
-        public string DocumentIssuedOn { get; init; }
+        public DateTime DocumentIssuedOn { get; init; }
 
         [JsonPropertyName("attachmentId")]
         [Description("The UUID used for the uploaded file in blob storage")]

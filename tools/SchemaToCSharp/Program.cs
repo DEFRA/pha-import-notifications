@@ -46,7 +46,7 @@ return;
 static TypeSyntax CreatePropertyType(OpenApiSchema schema) =>
     schema.Type switch
     {
-        "string" => ParseTypeName("string"),
+        "string" => schema.Format == "date-time" ? ParseTypeName("DateTime") : ParseTypeName("string"),
         "integer" => ParseTypeName("int"),
         "number" => ParseTypeName("decimal"),
         "boolean" => ParseTypeName("bool"),

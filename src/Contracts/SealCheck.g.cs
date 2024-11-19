@@ -18,6 +18,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("checkedOn")]
         [Description("date and time of seal check")]
-        public string CheckedOn { get; init; }
+        public DateTime CheckedOn { get; init; }
     }
 }

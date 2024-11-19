@@ -21,7 +21,7 @@ namespace Defra.PhaImportNotifications.Contracts
         public Array Commodities { get; init; }
 
         [JsonPropertyName("_Ts")]
-        public string _Ts { get; init; }
+        public DateTime _Ts { get; init; }
 
         [JsonPropertyName("_PointOfEntry")]
         public string _PointOfEntry { get; init; }
@@ -54,7 +54,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("lastUpdated")]
         [Description("Date when the notification was last updated.")]
-        public string LastUpdated { get; init; }
+        public DateTime LastUpdated { get; init; }
 
         [JsonPropertyName("lastUpdatedBy")]
         public UserInformation LastUpdatedBy { get; init; }
