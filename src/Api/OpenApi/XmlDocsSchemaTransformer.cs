@@ -6,7 +6,7 @@ using System.Xml.XPath;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
 
-namespace Api.OpenApi;
+namespace Defra.PhaImportNotifications.Api.OpenApi;
 
 /// <summary>
 /// Taken from https://github.com/martincostello/aspnetcore-openapi/blob/main/src/TodoApp/OpenApi/AspNetCore/AddSchemaDescriptionsTransformer.cs

@@ -1,9 +1,9 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Trade.ImportNotification.Contract;
 
-namespace Api.Endpoints;
+namespace Defra.PhaImportNotifications.Api.Endpoints;
 
 public static class ImportNotificationEndpoint
 {

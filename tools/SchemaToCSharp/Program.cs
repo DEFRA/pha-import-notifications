@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.OpenApi.Models;
@@ -12,17 +11,19 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 // Stop up out of execution path : {solutionPath}/tools/SchemaToCSharp/bin/Debug/net8.0
 const string solutionPath = "../../../../../";
-const string outputPath = $"{solutionPath}src/Trade.ImportNotification.Contract/";
+const string outputPath = $"{solutionPath}src/Contracts/";
 const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
 
 var stream = new FileStream(inputPath, FileMode.Open);
-var namespaceDeclaration = NamespaceDeclaration(ParseName("Trade.ImportNotification.Contract"));
+var namespaceDeclaration = NamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
 
 var openApiDocument = new OpenApiStreamReader().Read(stream, out var diagnostic);
 
 diagnostic.Errors.ToList().ForEach(e => Console.WriteLine(e.Message));
 
 var objects = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "object").ToList();
+
+Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
 foreach (var (schemaName, schema) in objects)
 {

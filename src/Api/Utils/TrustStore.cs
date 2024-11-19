@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Serilog.Core;
 
-namespace Api.Utils;
+namespace Defra.PhaImportNotifications.Api.Utils;
 
 [ExcludeFromCodeCoverage]
 public static class TrustStore

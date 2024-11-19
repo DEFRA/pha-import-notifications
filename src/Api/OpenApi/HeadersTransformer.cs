@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
-namespace Api.OpenApi;
+namespace Defra.PhaImportNotifications.Api.OpenApi;
 
 public class HeadersTransformer : IOpenApiOperationTransformer
 {

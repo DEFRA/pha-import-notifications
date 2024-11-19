@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Endpoints;
+namespace Defra.PhaImportNotifications.Api.Endpoints;
 
 public static class PhaEndpoints
 {

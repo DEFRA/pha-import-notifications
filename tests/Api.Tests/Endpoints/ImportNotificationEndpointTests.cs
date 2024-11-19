@@ -1,7 +1,7 @@
-using Api.Endpoints;
+using Defra.PhaImportNotifications.Api.Endpoints;
 using FluentAssertions;
 
-namespace Api.Tests.Endpoints;
+namespace Defra.PhaImportNotifications.Api.Tests.Endpoints;
 
 public class ImportNotificationEndpointTests
 {

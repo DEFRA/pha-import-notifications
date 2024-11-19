@@ -1,3 +1,4 @@
+using Defra.PhaImportNotifications.Api;
 using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace Api.IntegrationTests;
