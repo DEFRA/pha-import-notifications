@@ -11,7 +11,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("numberOfDeadAnimalsUnit")]
         [Description("Unit used for specifying number of dead animals (percent or units)")]
-        public string[] NumberOfDeadAnimalsUnit { get; set; }
+        public string NumberOfDeadAnimalsUnit { get; set; }
 
         [JsonPropertyName("numberOfUnfitAnimals")]
         [Description("Number of unfit animals")]
@@ -19,7 +19,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("numberOfUnfitAnimalsUnit")]
         [Description("Unit used for specifying number of unfit animals (percent or units)")]
-        public string[] NumberOfUnfitAnimalsUnit { get; set; }
+        public string NumberOfUnfitAnimalsUnit { get; set; }
 
         [JsonPropertyName("numberOfBirthOrAbortion")]
         [Description("Number of births or abortions (unit)")]

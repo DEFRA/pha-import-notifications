@@ -11,11 +11,11 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("type")]
         [Description("")]
-        public string[] Type { get; set; }
+        public string Type { get; set; }
 
         [JsonPropertyName("id")]
         [Description("")]
-        public string[] Id { get; set; }
+        public string Id { get; set; }
 
         [JsonPropertyName("links")]
         [Description("")]

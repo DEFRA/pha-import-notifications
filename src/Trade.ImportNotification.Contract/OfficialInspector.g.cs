@@ -7,23 +7,23 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("firstName")]
         [Description("First name of inspector")]
-        public string[] FirstName { get; set; }
+        public string FirstName { get; set; }
 
         [JsonPropertyName("lastName")]
         [Description("Last name of inspector")]
-        public string[] LastName { get; set; }
+        public string LastName { get; set; }
 
         [JsonPropertyName("email")]
         [Description("Email of inspector")]
-        public string[] Email { get; set; }
+        public string Email { get; set; }
 
         [JsonPropertyName("phone")]
         [Description("Phone number of inspector")]
-        public string[] Phone { get; set; }
+        public string Phone { get; set; }
 
         [JsonPropertyName("fax")]
         [Description("Fax number of inspector")]
-        public string[] Fax { get; set; }
+        public string Fax { get; set; }
 
         [JsonPropertyName("address")]
         [Description("")]
@@ -31,6 +31,6 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("signed")]
         [Description("Date of sign")]
-        public string[] Signed { get; set; }
+        public string Signed { get; set; }
     }
 }

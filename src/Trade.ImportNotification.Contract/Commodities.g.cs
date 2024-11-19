@@ -27,7 +27,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("totalGrossVolumeUnit")]
         [Description("Unit used for specifying total gross volume of this consignment (litres or metres cubed)")]
-        public string[] TotalGrossVolumeUnit { get; set; }
+        public string TotalGrossVolumeUnit { get; set; }
 
         [JsonPropertyName("numberOfPackages")]
         [Description("The total number of packages within this consignment")]
@@ -35,7 +35,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("temperature")]
         [Description("Temperature (type) of commodity")]
-        public string[] Temperature { get; set; }
+        public string Temperature { get; set; }
 
         [JsonPropertyName("numberOfAnimals")]
         [Description("The total number of animals within this consignment")]
@@ -47,7 +47,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("countryOfOrigin")]
         [Description("Consignments country of origin")]
-        public string[] CountryOfOrigin { get; set; }
+        public string CountryOfOrigin { get; set; }
 
         [JsonPropertyName("countryOfOriginIsPodCountry")]
         [Description("Flag to record whether country of origin is a temporary PoD country")]
@@ -59,15 +59,15 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("regionOfOrigin")]
         [Description("Region of country")]
-        public string[] RegionOfOrigin { get; set; }
+        public string RegionOfOrigin { get; set; }
 
         [JsonPropertyName("consignedCountry")]
         [Description("Country from where commodity was sent")]
-        public string[] ConsignedCountry { get; set; }
+        public string ConsignedCountry { get; set; }
 
         [JsonPropertyName("animalsCertifiedAs")]
         [Description("Certification of animals (Breeding, slaughter etc.)")]
-        public string[] AnimalsCertifiedAs { get; set; }
+        public string AnimalsCertifiedAs { get; set; }
 
         [JsonPropertyName("commodityIntendedFor")]
         [Description("")]

@@ -7,7 +7,7 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("_Etag")]
         [Description("")]
-        public string[] _Etag { get; set; }
+        public string _Etag { get; set; }
 
         [JsonPropertyName("auditEntries")]
         [Description("")]
@@ -27,15 +27,15 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("_Ts")]
         [Description("")]
-        public string[] _Ts { get; set; }
+        public string _Ts { get; set; }
 
         [JsonPropertyName("_PointOfEntry")]
         [Description("")]
-        public string[] _PointOfEntry { get; set; }
+        public string _PointOfEntry { get; set; }
 
         [JsonPropertyName("_PointOfEntryControlPoint")]
         [Description("")]
-        public string[] _PointOfEntryControlPoint { get; set; }
+        public string _PointOfEntryControlPoint { get; set; }
 
         [JsonPropertyName("_MatchReference")]
         [Description("")]
@@ -47,7 +47,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("etag")]
         [Description("The etag for this notification.")]
-        public string[] Etag { get; set; }
+        public string Etag { get; set; }
 
         [JsonPropertyName("externalReferences")]
         [Description("List of external references, which relate to downstream services")]
@@ -55,7 +55,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("referenceNumber")]
         [Description("Reference number of the notification")]
-        public string[] ReferenceNumber { get; set; }
+        public string ReferenceNumber { get; set; }
 
         [JsonPropertyName("version")]
         [Description("Current version of the notification")]
@@ -63,7 +63,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("lastUpdated")]
         [Description("Date when the notification was last updated.")]
-        public string[] LastUpdated { get; set; }
+        public string LastUpdated { get; set; }
 
         [JsonPropertyName("lastUpdatedBy")]
         [Description("")]
@@ -75,11 +75,11 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("replaces")]
         [Description("Reference number of notification that was replaced by this one")]
-        public string[] Replaces { get; set; }
+        public string Replaces { get; set; }
 
         [JsonPropertyName("replacedBy")]
         [Description("Reference number of notification that replaced this one")]
-        public string[] ReplacedBy { get; set; }
+        public string ReplacedBy { get; set; }
 
         [JsonPropertyName("status")]
         [Description("")]
@@ -115,7 +115,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("decisionDate")]
         [Description("Date when the notification was validated or rejected")]
-        public string[] DecisionDate { get; set; }
+        public string DecisionDate { get; set; }
 
         [JsonPropertyName("partTwo")]
         [Description("")]
@@ -127,7 +127,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("officialVeterinarian")]
         [Description("Official veterinarian")]
-        public string[] OfficialVeterinarian { get; set; }
+        public string OfficialVeterinarian { get; set; }
 
         [JsonPropertyName("consignmentValidations")]
         [Description("Validation messages for whole notification")]
@@ -135,11 +135,11 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("agencyOrganisationId")]
         [Description("Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation")]
-        public string[] AgencyOrganisationId { get; set; }
+        public string AgencyOrganisationId { get; set; }
 
         [JsonPropertyName("riskDecisionLockingTime")]
         [Description("Date and Time when risk decision was locked")]
-        public string[] RiskDecisionLockingTime { get; set; }
+        public string RiskDecisionLockingTime { get; set; }
 
         [JsonPropertyName("isRiskDecisionLocked")]
         [Description("is the risk decision locked?")]
@@ -151,7 +151,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("requestId")]
         [Description("Request UUID to trace bulk upload")]
-        public string[] RequestId { get; set; }
+        public string RequestId { get; set; }
 
         [JsonPropertyName("isCdsFullMatched")]
         [Description("Have all commodities been matched with corresponding CDS declaration(s)")]

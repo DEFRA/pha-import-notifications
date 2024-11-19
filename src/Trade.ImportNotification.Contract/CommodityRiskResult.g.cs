@@ -31,15 +31,15 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("uniqueId")]
         [Description("UUID used to match to the complement parameter set")]
-        public string[] UniqueId { get; set; }
+        public string UniqueId { get; set; }
 
         [JsonPropertyName("eppoCode")]
         [Description("EPPO Code for the species")]
-        public string[] EppoCode { get; set; }
+        public string EppoCode { get; set; }
 
         [JsonPropertyName("variety")]
         [Description("Name or ID of the variety")]
-        public string[] Variety { get; set; }
+        public string Variety { get; set; }
 
         [JsonPropertyName("isWoody")]
         [Description("Whether or not a plant is woody")]
@@ -47,14 +47,14 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("indoorOutdoor")]
         [Description("Indoor or Outdoor for a plant")]
-        public string[] IndoorOutdoor { get; set; }
+        public string IndoorOutdoor { get; set; }
 
         [JsonPropertyName("propagation")]
         [Description("Whether the propagation is considered a Plant, Bulb, Seed or None")]
-        public string[] Propagation { get; set; }
+        public string Propagation { get; set; }
 
         [JsonPropertyName("phsiRuleType")]
         [Description("Rule type for PHSI checks")]
-        public string[] PhsiRuleType { get; set; }
+        public string PhsiRuleType { get; set; }
     }
 }

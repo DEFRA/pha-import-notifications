@@ -7,7 +7,7 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("attachmentId")]
         [Description("The UUID of the uploaded catch certificate file in blob storage")]
-        public string[] AttachmentId { get; set; }
+        public string AttachmentId { get; set; }
 
         [JsonPropertyName("numberOfCatchCertificates")]
         [Description("The total number of catch certificates on the attachment")]

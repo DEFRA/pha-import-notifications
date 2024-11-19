@@ -7,7 +7,7 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("certificateNumber")]
         [Description("The catch certificate number")]
-        public string[] CertificateNumber { get; set; }
+        public string CertificateNumber { get; set; }
 
         [JsonPropertyName("weight")]
         [Description("The catch certificate weight number")]

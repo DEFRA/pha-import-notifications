@@ -15,7 +15,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("customsReferenceNumber")]
         [Description("Customs reference number")]
-        public string[] CustomsReferenceNumber { get; set; }
+        public string CustomsReferenceNumber { get; set; }
 
         [JsonPropertyName("containsWoodPackaging")]
         [Description("(Deprecated in IMTA-11832) Does the consignment contain wood packaging?")]
@@ -63,7 +63,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("cphNumber")]
         [Description("Charity Parish Holding number")]
-        public string[] CphNumber { get; set; }
+        public string CphNumber { get; set; }
 
         [JsonPropertyName("importingFromCharity")]
         [Description("Is the importer importing from a charity?")]
@@ -87,11 +87,11 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("pointOfEntry")]
         [Description("Either a Border-Inspection-Post or Designated-Point-Of-Entry, e.g. GBFXT1")]
-        public string[] PointOfEntry { get; set; }
+        public string PointOfEntry { get; set; }
 
         [JsonPropertyName("pointOfEntryControlPoint")]
         [Description("A control point at the point of entry")]
-        public string[] PointOfEntryControlPoint { get; set; }
+        public string PointOfEntryControlPoint { get; set; }
 
         [JsonPropertyName("meansOfTransport")]
         [Description("")]
@@ -115,7 +115,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("responsibleForTransport")]
         [Description("(Deprecated in IMTA-12139) Person who is responsible for transport")]
-        public string[] ResponsibleForTransport { get; set; }
+        public string ResponsibleForTransport { get; set; }
 
         [JsonPropertyName("veterinaryInformation")]
         [Description("")]
@@ -123,7 +123,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("importerLocalReferenceNumber")]
         [Description("Reference number added by the importer")]
-        public string[] ImporterLocalReferenceNumber { get; set; }
+        public string ImporterLocalReferenceNumber { get; set; }
 
         [JsonPropertyName("route")]
         [Description("")]
@@ -135,7 +135,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("submissionDate")]
         [Description("Date and time when the notification was submitted")]
-        public string[] SubmissionDate { get; set; }
+        public string SubmissionDate { get; set; }
 
         [JsonPropertyName("submittedBy")]
         [Description("")]
@@ -151,15 +151,15 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("portOfEntry")]
         [Description("Entry port for EU Import notification.")]
-        public string[] PortOfEntry { get; set; }
+        public string PortOfEntry { get; set; }
 
         [JsonPropertyName("portOfExit")]
         [Description("Exit Port for EU Import Notification.")]
-        public string[] PortOfExit { get; set; }
+        public string PortOfExit { get; set; }
 
         [JsonPropertyName("exitedPortOfOn")]
         [Description("Date of Port Exit for EU Import Notification.")]
-        public string[] ExitedPortOfOn { get; set; }
+        public string ExitedPortOfOn { get; set; }
 
         [JsonPropertyName("contactDetails")]
         [Description("")]
@@ -171,7 +171,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("originalEstimatedDateTime")]
         [Description("Original estimated date time of arrival")]
-        public string[] OriginalEstimatedDateTime { get; set; }
+        public string OriginalEstimatedDateTime { get; set; }
 
         [JsonPropertyName("billingInformation")]
         [Description("")]
@@ -195,10 +195,10 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("arrivedOn")]
         [Description("DateTime")]
-        public string[] ArrivedOn { get; set; }
+        public string ArrivedOn { get; set; }
 
         [JsonPropertyName("departedOn")]
         [Description("DateTime")]
-        public string[] DepartedOn { get; set; }
+        public string DepartedOn { get; set; }
     }
 }

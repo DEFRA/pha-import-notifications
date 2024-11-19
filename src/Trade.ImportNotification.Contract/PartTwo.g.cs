@@ -47,15 +47,15 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("bipLocalReferenceNumber")]
         [Description("Local reference number at BIP")]
-        public string[] BipLocalReferenceNumber { get; set; }
+        public string BipLocalReferenceNumber { get; set; }
 
         [JsonPropertyName("signedOnBehalfOf")]
         [Description("Part 2 - Sometimes other user can sign decision on behalf of another user")]
-        public string[] SignedOnBehalfOf { get; set; }
+        public string SignedOnBehalfOf { get; set; }
 
         [JsonPropertyName("onwardTransportation")]
         [Description("Onward transportation")]
-        public string[] OnwardTransportation { get; set; }
+        public string OnwardTransportation { get; set; }
 
         [JsonPropertyName("consignmentValidations")]
         [Description("Validation messages for Part 2 - Decision")]
@@ -63,7 +63,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("checkedOn")]
         [Description("User entered date when the checks were completed")]
-        public string[] CheckedOn { get; set; }
+        public string CheckedOn { get; set; }
 
         [JsonPropertyName("accompanyingDocuments")]
         [Description("Accompanying documents")]
@@ -79,7 +79,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("inspectionRequired")]
         [Description("Inspection required")]
-        public string[] InspectionRequired { get; set; }
+        public string InspectionRequired { get; set; }
 
         [JsonPropertyName("inspectionOverride")]
         [Description("")]
@@ -87,6 +87,6 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("autoClearedOn")]
         [Description("Date of autoclearance")]
-        public string[] AutoClearedOn { get; set; }
+        public string AutoClearedOn { get; set; }
     }
 }

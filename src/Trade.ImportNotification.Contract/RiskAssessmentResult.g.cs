@@ -11,6 +11,6 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("assessedOn")]
         [Description("Date and time of assessment")]
-        public string[] AssessedOn { get; set; }
+        public string AssessedOn { get; set; }
     }
 }

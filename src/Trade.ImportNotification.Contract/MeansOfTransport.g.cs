@@ -11,10 +11,10 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("document")]
         [Description("Document for transport")]
-        public string[] Document { get; set; }
+        public string Document { get; set; }
 
         [JsonPropertyName("id")]
         [Description("ID of transport")]
-        public string[] Id { get; set; }
+        public string Id { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("reference")]
         [Description("Reference which is added to the notification when either sent to the downstream system or received from it")]
-        public string[] Reference { get; set; }
+        public string Reference { get; set; }
 
         [JsonPropertyName("exactMatch")]
         [Description("Details whether there's an exact match between the external source and IPAFFS data")]

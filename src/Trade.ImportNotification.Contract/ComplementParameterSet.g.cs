@@ -7,7 +7,7 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("uniqueComplementId")]
         [Description("UUID used to match commodityComplement to its complementParameter set. CHEDPP only")]
-        public string[] UniqueComplementId { get; set; }
+        public string UniqueComplementId { get; set; }
 
         [JsonPropertyName("complementId")]
         [Description("")]
@@ -15,7 +15,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("speciesId")]
         [Description("")]
-        public string[] SpeciesId { get; set; }
+        public string SpeciesId { get; set; }
 
         [JsonPropertyName("keyDataPairs")]
         [Description("")]

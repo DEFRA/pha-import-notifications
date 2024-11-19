@@ -15,11 +15,11 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("reason")]
         [Description("Reason for the status if applicable")]
-        public string[] Reason { get; set; }
+        public string Reason { get; set; }
 
         [JsonPropertyName("otherReason")]
         [Description("Other reason text when selected reason is 'Other'")]
-        public string[] OtherReason { get; set; }
+        public string OtherReason { get; set; }
 
         [JsonPropertyName("isSelectedForChecks")]
         [Description("Has commodity been selected for checks?")]

@@ -7,19 +7,19 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("euStandard")]
         [Description("Does it conform EU standards")]
-        public string[] EuStandard { get; set; }
+        public string EuStandard { get; set; }
 
         [JsonPropertyName("additionalGuarantees")]
         [Description("Result of additional guarantees")]
-        public string[] AdditionalGuarantees { get; set; }
+        public string AdditionalGuarantees { get; set; }
 
         [JsonPropertyName("documentCheckResult")]
         [Description("Result of document check")]
-        public string[] DocumentCheckResult { get; set; }
+        public string DocumentCheckResult { get; set; }
 
         [JsonPropertyName("nationalRequirements")]
         [Description("Result of national requirements check")]
-        public string[] NationalRequirements { get; set; }
+        public string NationalRequirements { get; set; }
 
         [JsonPropertyName("identityCheckDone")]
         [Description("Was identity check done")]
@@ -31,7 +31,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("identityCheckResult")]
         [Description("Result of identity check")]
-        public string[] IdentityCheckResult { get; set; }
+        public string IdentityCheckResult { get; set; }
 
         [JsonPropertyName("identityCheckNotDoneReason")]
         [Description("")]
@@ -43,7 +43,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("physicalCheckResult")]
         [Description("Result of physical check")]
-        public string[] PhysicalCheckResult { get; set; }
+        public string PhysicalCheckResult { get; set; }
 
         [JsonPropertyName("physicalCheckNotDoneReason")]
         [Description("")]
@@ -51,11 +51,11 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("physicalCheckOtherText")]
         [Description("Other reason to not do physical check")]
-        public string[] PhysicalCheckOtherText { get; set; }
+        public string PhysicalCheckOtherText { get; set; }
 
         [JsonPropertyName("welfareCheck")]
         [Description("Welfare check")]
-        public string[] WelfareCheck { get; set; }
+        public string WelfareCheck { get; set; }
 
         [JsonPropertyName("numberOfAnimalsChecked")]
         [Description("Number of animals checked")]
@@ -67,6 +67,6 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("laboratoryCheckResult")]
         [Description("Result of laboratory tests")]
-        public string[] LaboratoryCheckResult { get; set; }
+        public string LaboratoryCheckResult { get; set; }
     }
 }

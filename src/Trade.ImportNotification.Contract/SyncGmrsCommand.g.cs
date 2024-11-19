@@ -11,14 +11,14 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("rootFolder")]
         [Description("")]
-        public string[] RootFolder { get; set; }
+        public string RootFolder { get; set; }
 
         [JsonPropertyName("jobId")]
         [Description("")]
-        public string[] JobId { get; set; }
+        public string JobId { get; set; }
 
         [JsonPropertyName("description")]
         [Description("")]
-        public string[] Description { get; set; }
+        public string Description { get; set; }
     }
 }

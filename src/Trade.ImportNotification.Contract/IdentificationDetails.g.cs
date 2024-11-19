@@ -7,10 +7,10 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("identificationDetail")]
         [Description("Identification detail")]
-        public string[] IdentificationDetail { get; set; }
+        public string IdentificationDetail { get; set; }
 
         [JsonPropertyName("identificationDescription")]
         [Description("Identification description")]
-        public string[] IdentificationDescription { get; set; }
+        public string IdentificationDescription { get; set; }
     }
 }

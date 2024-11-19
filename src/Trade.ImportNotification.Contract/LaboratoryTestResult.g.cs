@@ -7,19 +7,19 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("sampleUseByDate")]
         [Description("When sample was used")]
-        public string[] SampleUseByDate { get; set; }
+        public string SampleUseByDate { get; set; }
 
         [JsonPropertyName("releasedOn")]
         [Description("When it was released")]
-        public string[] ReleasedOn { get; set; }
+        public string ReleasedOn { get; set; }
 
         [JsonPropertyName("laboratoryTestMethod")]
         [Description("Laboratory test method")]
-        public string[] LaboratoryTestMethod { get; set; }
+        public string LaboratoryTestMethod { get; set; }
 
         [JsonPropertyName("results")]
         [Description("Result of test")]
-        public string[] Results { get; set; }
+        public string Results { get; set; }
 
         [JsonPropertyName("conclusion")]
         [Description("")]
@@ -27,6 +27,6 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("labTestCreatedOn")]
         [Description("Date of lab test created in IPAFFS")]
-        public string[] LabTestCreatedOn { get; set; }
+        public string LabTestCreatedOn { get; set; }
     }
 }

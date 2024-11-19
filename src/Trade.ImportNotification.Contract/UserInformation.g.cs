@@ -7,11 +7,11 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("displayName")]
         [Description("Display name")]
-        public string[] DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         [JsonPropertyName("userId")]
         [Description("User ID")]
-        public string[] UserId { get; set; }
+        public string UserId { get; set; }
 
         [JsonPropertyName("isControlUser")]
         [Description("Is this user a control")]

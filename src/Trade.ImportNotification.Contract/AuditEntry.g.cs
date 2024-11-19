@@ -7,7 +7,7 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("id")]
         [Description("")]
-        public string[] Id { get; set; }
+        public string Id { get; set; }
 
         [JsonPropertyName("version")]
         [Description("")]
@@ -15,19 +15,19 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("createdBy")]
         [Description("")]
-        public string[] CreatedBy { get; set; }
+        public string CreatedBy { get; set; }
 
         [JsonPropertyName("createdSource")]
         [Description("")]
-        public string[] CreatedSource { get; set; }
+        public string CreatedSource { get; set; }
 
         [JsonPropertyName("createdLocal")]
         [Description("")]
-        public string[] CreatedLocal { get; set; }
+        public string CreatedLocal { get; set; }
 
         [JsonPropertyName("status")]
         [Description("")]
-        public string[] Status { get; set; }
+        public string Status { get; set; }
 
         [JsonPropertyName("diff")]
         [Description("")]

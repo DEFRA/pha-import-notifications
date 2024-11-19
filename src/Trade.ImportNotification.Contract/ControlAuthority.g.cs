@@ -11,7 +11,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("customsReferenceNo")]
         [Description("Customs reference number")]
-        public string[] CustomsReferenceNo { get; set; }
+        public string CustomsReferenceNo { get; set; }
 
         [JsonPropertyName("containerResealed")]
         [Description("Were containers resealed?")]
@@ -19,11 +19,11 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("newSealNumber")]
         [Description("When the containers are resealed they need new seal numbers")]
-        public string[] NewSealNumber { get; set; }
+        public string NewSealNumber { get; set; }
 
         [JsonPropertyName("iuuFishingReference")]
         [Description("Illegal, Unreported and Unregulated (IUU) fishing reference number")]
-        public string[] IuuFishingReference { get; set; }
+        public string IuuFishingReference { get; set; }
 
         [JsonPropertyName("iuuCheckRequired")]
         [Description("Was Illegal, Unreported and Unregulated (IUU) check required")]

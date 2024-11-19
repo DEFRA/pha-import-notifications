@@ -7,7 +7,7 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("testedOn")]
         [Description("Date of tests")]
-        public string[] TestedOn { get; set; }
+        public string TestedOn { get; set; }
 
         [JsonPropertyName("testReason")]
         [Description("")]

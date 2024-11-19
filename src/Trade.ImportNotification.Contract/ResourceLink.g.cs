@@ -7,6 +7,6 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("self")]
         [Description("")]
-        public string[] Self { get; set; }
+        public string Self { get; set; }
     }
 }

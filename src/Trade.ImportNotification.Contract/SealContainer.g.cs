@@ -7,11 +7,11 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("sealNumber")]
         [Description("")]
-        public string[] SealNumber { get; set; }
+        public string SealNumber { get; set; }
 
         [JsonPropertyName("containerNumber")]
         [Description("")]
-        public string[] ContainerNumber { get; set; }
+        public string ContainerNumber { get; set; }
 
         [JsonPropertyName("officialSeal")]
         [Description("")]
@@ -19,6 +19,6 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("resealedSealNumber")]
         [Description("")]
-        public string[] ResealedSealNumber { get; set; }
+        public string ResealedSealNumber { get; set; }
     }
 }

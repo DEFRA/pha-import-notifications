@@ -7,10 +7,10 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("countryCode")]
         [Description("Country code of phone number")]
-        public string[] CountryCode { get; set; }
+        public string CountryCode { get; set; }
 
         [JsonPropertyName("subscriberNumber")]
         [Description("Phone number")]
-        public string[] SubscriberNumber { get; set; }
+        public string SubscriberNumber { get; set; }
     }
 }

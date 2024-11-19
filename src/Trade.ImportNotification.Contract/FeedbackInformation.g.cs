@@ -19,10 +19,10 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("consignmentNoArrivalReason")]
         [Description("Reason for consignment not arriving at the entry point")]
-        public string[] ConsignmentNoArrivalReason { get; set; }
+        public string ConsignmentNoArrivalReason { get; set; }
 
         [JsonPropertyName("destructionDate")]
         [Description("Date of consignment destruction")]
-        public string[] DestructionDate { get; set; }
+        public string DestructionDate { get; set; }
     }
 }

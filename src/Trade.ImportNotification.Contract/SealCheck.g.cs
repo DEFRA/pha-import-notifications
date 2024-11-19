@@ -11,7 +11,7 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("reason")]
         [Description("reason for not satisfactory")]
-        public string[] Reason { get; set; }
+        public string Reason { get; set; }
 
         [JsonPropertyName("officialInspector")]
         [Description("")]
@@ -19,6 +19,6 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("checkedOn")]
         [Description("date and time of seal check")]
-        public string[] CheckedOn { get; set; }
+        public string CheckedOn { get; set; }
     }
 }

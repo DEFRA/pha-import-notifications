@@ -15,6 +15,6 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("riskLevelDateTime")]
         [Description("The date and time the risk level has been set for a notification")]
-        public string[] RiskLevelDateTime { get; set; }
+        public string RiskLevelDateTime { get; set; }
     }
 }

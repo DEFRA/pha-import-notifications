@@ -7,18 +7,18 @@ namespace Trade.ImportNotification.Contract
     {
         [JsonPropertyName("name")]
         [Description("Name of designated contact")]
-        public string[] Name { get; set; }
+        public string Name { get; set; }
 
         [JsonPropertyName("telephone")]
         [Description("Telephone number of designated contact")]
-        public string[] Telephone { get; set; }
+        public string Telephone { get; set; }
 
         [JsonPropertyName("email")]
         [Description("Email address of designated contact")]
-        public string[] Email { get; set; }
+        public string Email { get; set; }
 
         [JsonPropertyName("agent")]
         [Description("Name of agent representing designated contact")]
-        public string[] Agent { get; set; }
+        public string Agent { get; set; }
     }
 }

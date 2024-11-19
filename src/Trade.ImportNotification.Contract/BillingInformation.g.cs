@@ -11,15 +11,15 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("emailAddress")]
         [Description("Billing email address")]
-        public string[] EmailAddress { get; set; }
+        public string EmailAddress { get; set; }
 
         [JsonPropertyName("phoneNumber")]
         [Description("Billing phone number")]
-        public string[] PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [JsonPropertyName("contactName")]
         [Description("Billing Contact Name")]
-        public string[] ContactName { get; set; }
+        public string ContactName { get; set; }
 
         [JsonPropertyName("postalAddress")]
         [Description("")]

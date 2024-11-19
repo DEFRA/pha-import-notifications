@@ -15,11 +15,11 @@ namespace Trade.ImportNotification.Contract
 
         [JsonPropertyName("veterinaryDocument")]
         [Description("Veterinary document identification")]
-        public string[] VeterinaryDocument { get; set; }
+        public string VeterinaryDocument { get; set; }
 
         [JsonPropertyName("veterinaryDocumentIssuedOn")]
         [Description("Veterinary document issue date")]
-        public string[] VeterinaryDocumentIssuedOn { get; set; }
+        public string VeterinaryDocumentIssuedOn { get; set; }
 
         [JsonPropertyName("accompanyingDocumentNumbers")]
         [Description("Additional documents")]
