@@ -26,7 +26,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string Fax { get; set; }
 
         [JsonPropertyName("address")]
-        [Description("")]
         public Address Address { get; set; }
 
         [JsonPropertyName("signed")]

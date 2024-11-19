@@ -10,7 +10,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool ConformsToEU { get; set; }
 
         [JsonPropertyName("internalMarketPurpose")]
-        [Description("")]
         public int InternalMarketPurpose { get; set; }
 
         [JsonPropertyName("thirdCountryTranshipment")]
@@ -18,7 +17,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string ThirdCountryTranshipment { get; set; }
 
         [JsonPropertyName("forNonConforming")]
-        [Description("")]
         public int ForNonConforming { get; set; }
 
         [JsonPropertyName("regNumber")]
@@ -46,7 +44,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public Array TransitThirdCountries { get; set; }
 
         [JsonPropertyName("forImportOrAdmission")]
-        [Description("")]
         public int ForImportOrAdmission { get; set; }
 
         [JsonPropertyName("exitDate")]
@@ -58,7 +55,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string FinalBip { get; set; }
 
         [JsonPropertyName("purposeGroup")]
-        [Description("")]
         public int PurposeGroup { get; set; }
 
         [JsonPropertyName("estimatedArrivedAtPortOfExit")]

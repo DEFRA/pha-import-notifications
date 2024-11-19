@@ -10,7 +10,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string TestedOn { get; set; }
 
         [JsonPropertyName("testReason")]
-        [Description("")]
         public int TestReason { get; set; }
 
         [JsonPropertyName("singleLaboratoryTests")]

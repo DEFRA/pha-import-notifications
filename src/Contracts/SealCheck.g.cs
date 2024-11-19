@@ -14,7 +14,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string Reason { get; set; }
 
         [JsonPropertyName("officialInspector")]
-        [Description("")]
         public OfficialInspector OfficialInspector { get; set; }
 
         [JsonPropertyName("checkedOn")]

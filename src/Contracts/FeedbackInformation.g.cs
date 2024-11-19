@@ -6,7 +6,6 @@ namespace Defra.PhaImportNotifications.Contracts
     public class FeedbackInformation
     {
         [JsonPropertyName("authorityType")]
-        [Description("")]
         public int AuthorityType { get; set; }
 
         [JsonPropertyName("consignmentArrival")]

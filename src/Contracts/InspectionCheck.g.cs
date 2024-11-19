@@ -6,11 +6,9 @@ namespace Defra.PhaImportNotifications.Contracts
     public class InspectionCheck
     {
         [JsonPropertyName("type")]
-        [Description("")]
         public int Type { get; set; }
 
         [JsonPropertyName("status")]
-        [Description("")]
         public int Status { get; set; }
 
         [JsonPropertyName("reason")]

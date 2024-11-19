@@ -6,7 +6,6 @@ namespace Defra.PhaImportNotifications.Contracts
     public class VeterinaryInformation
     {
         [JsonPropertyName("establishmentsOfOriginExternalReference")]
-        [Description("")]
         public ExternalReference EstablishmentsOfOriginExternalReference { get; set; }
 
         [JsonPropertyName("establishmentsOfOrigins")]

@@ -6,19 +6,15 @@ namespace Defra.PhaImportNotifications.Contracts
     public class SyncGmrsCommand
     {
         [JsonPropertyName("syncPeriod")]
-        [Description("")]
         public int SyncPeriod { get; set; }
 
         [JsonPropertyName("rootFolder")]
-        [Description("")]
         public string RootFolder { get; set; }
 
         [JsonPropertyName("jobId")]
-        [Description("")]
         public string JobId { get; set; }
 
         [JsonPropertyName("description")]
-        [Description("")]
         public string Description { get; set; }
     }
 }

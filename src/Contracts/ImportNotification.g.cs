@@ -6,39 +6,30 @@ namespace Defra.PhaImportNotifications.Contracts
     public class ImportNotification
     {
         [JsonPropertyName("_Etag")]
-        [Description("")]
         public string _Etag { get; set; }
 
         [JsonPropertyName("auditEntries")]
-        [Description("")]
         public Array AuditEntries { get; set; }
 
         [JsonPropertyName("relationships")]
-        [Description("")]
         public NotificationTdmRelationships Relationships { get; set; }
 
         [JsonPropertyName("commoditiesSummary")]
-        [Description("")]
         public Commodities CommoditiesSummary { get; set; }
 
         [JsonPropertyName("commodities")]
-        [Description("")]
         public Array Commodities { get; set; }
 
         [JsonPropertyName("_Ts")]
-        [Description("")]
         public string _Ts { get; set; }
 
         [JsonPropertyName("_PointOfEntry")]
-        [Description("")]
         public string _PointOfEntry { get; set; }
 
         [JsonPropertyName("_PointOfEntryControlPoint")]
-        [Description("")]
         public string _PointOfEntryControlPoint { get; set; }
 
         [JsonPropertyName("_MatchReference")]
-        [Description("")]
         public int _MatchReference { get; set; }
 
         [JsonPropertyName("ipaffsId")]
@@ -66,11 +57,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public string LastUpdated { get; set; }
 
         [JsonPropertyName("lastUpdatedBy")]
-        [Description("")]
         public UserInformation LastUpdatedBy { get; set; }
 
         [JsonPropertyName("importNotificationType")]
-        [Description("")]
         public int ImportNotificationType { get; set; }
 
         [JsonPropertyName("replaces")]
@@ -82,11 +71,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public string ReplacedBy { get; set; }
 
         [JsonPropertyName("status")]
-        [Description("")]
         public int Status { get; set; }
 
         [JsonPropertyName("splitConsignment")]
-        [Description("")]
         public SplitConsignment SplitConsignment { get; set; }
 
         [JsonPropertyName("childNotification")]
@@ -94,11 +81,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool ChildNotification { get; set; }
 
         [JsonPropertyName("riskAssessment")]
-        [Description("")]
         public RiskAssessmentResult RiskAssessment { get; set; }
 
         [JsonPropertyName("journeyRiskCategorisation")]
-        [Description("")]
         public JourneyRiskCategorisationResult JourneyRiskCategorisation { get; set; }
 
         [JsonPropertyName("isHighRiskEuImport")]
@@ -106,11 +91,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool IsHighRiskEuImport { get; set; }
 
         [JsonPropertyName("partOne")]
-        [Description("")]
         public PartOne PartOne { get; set; }
 
         [JsonPropertyName("decisionBy")]
-        [Description("")]
         public UserInformation DecisionBy { get; set; }
 
         [JsonPropertyName("decisionDate")]
@@ -118,11 +101,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public string DecisionDate { get; set; }
 
         [JsonPropertyName("partTwo")]
-        [Description("")]
         public PartTwo PartTwo { get; set; }
 
         [JsonPropertyName("partThree")]
-        [Description("")]
         public PartThree PartThree { get; set; }
 
         [JsonPropertyName("officialVeterinarian")]

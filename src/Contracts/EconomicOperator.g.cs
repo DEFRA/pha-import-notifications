@@ -10,11 +10,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public string Id { get; set; }
 
         [JsonPropertyName("type")]
-        [Description("")]
         public int Type { get; set; }
 
         [JsonPropertyName("status")]
-        [Description("")]
         public int Status { get; set; }
 
         [JsonPropertyName("companyName")]
@@ -26,7 +24,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string IndividualName { get; set; }
 
         [JsonPropertyName("address")]
-        [Description("")]
         public Address Address { get; set; }
 
         [JsonPropertyName("approvalNumber")]

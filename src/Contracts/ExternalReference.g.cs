@@ -6,7 +6,6 @@ namespace Defra.PhaImportNotifications.Contracts
     public class ExternalReference
     {
         [JsonPropertyName("system")]
-        [Description("")]
         public int System { get; set; }
 
         [JsonPropertyName("reference")]

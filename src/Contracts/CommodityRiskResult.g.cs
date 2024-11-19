@@ -6,27 +6,21 @@ namespace Defra.PhaImportNotifications.Contracts
     public class CommodityRiskResult
     {
         [JsonPropertyName("riskDecision")]
-        [Description("")]
         public int RiskDecision { get; set; }
 
         [JsonPropertyName("exitRiskDecision")]
-        [Description("")]
         public int ExitRiskDecision { get; set; }
 
         [JsonPropertyName("hmiDecision")]
-        [Description("")]
         public int HmiDecision { get; set; }
 
         [JsonPropertyName("phsiDecision")]
-        [Description("")]
         public int PhsiDecision { get; set; }
 
         [JsonPropertyName("phsiClassification")]
-        [Description("")]
         public int PhsiClassification { get; set; }
 
         [JsonPropertyName("phsi")]
-        [Description("")]
         public Phsi Phsi { get; set; }
 
         [JsonPropertyName("uniqueId")]

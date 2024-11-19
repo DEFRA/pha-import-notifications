@@ -30,7 +30,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string SampleBatchNumber { get; set; }
 
         [JsonPropertyName("analysisType")]
-        [Description("")]
         public int AnalysisType { get; set; }
 
         [JsonPropertyName("numberOfSamples")]
@@ -42,11 +41,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public string SampleType { get; set; }
 
         [JsonPropertyName("conservationOfSample")]
-        [Description("")]
         public int ConservationOfSample { get; set; }
 
         [JsonPropertyName("inspector")]
-        [Description("")]
         public Inspector Inspector { get; set; }
 
         [JsonPropertyName("sampledOn")]

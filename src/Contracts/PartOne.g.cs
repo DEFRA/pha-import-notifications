@@ -6,11 +6,9 @@ namespace Defra.PhaImportNotifications.Contracts
     public class PartOne
     {
         [JsonPropertyName("typeOfImp")]
-        [Description("")]
         public int TypeOfImp { get; set; }
 
         [JsonPropertyName("personResponsible")]
-        [Description("")]
         public Party PersonResponsible { get; set; }
 
         [JsonPropertyName("customsReferenceNumber")]
@@ -26,35 +24,27 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool ConsignmentArrived { get; set; }
 
         [JsonPropertyName("consignor")]
-        [Description("")]
         public EconomicOperator Consignor { get; set; }
 
         [JsonPropertyName("consignorTwo")]
-        [Description("")]
         public EconomicOperator ConsignorTwo { get; set; }
 
         [JsonPropertyName("packer")]
-        [Description("")]
         public EconomicOperator Packer { get; set; }
 
         [JsonPropertyName("consignee")]
-        [Description("")]
         public EconomicOperator Consignee { get; set; }
 
         [JsonPropertyName("importer")]
-        [Description("")]
         public EconomicOperator Importer { get; set; }
 
         [JsonPropertyName("placeOfDestination")]
-        [Description("")]
         public EconomicOperator PlaceOfDestination { get; set; }
 
         [JsonPropertyName("pod")]
-        [Description("")]
         public EconomicOperator Pod { get; set; }
 
         [JsonPropertyName("placeOfOriginHarvest")]
-        [Description("")]
         public EconomicOperator PlaceOfOriginHarvest { get; set; }
 
         [JsonPropertyName("additionalPermanentAddresses")]
@@ -82,7 +72,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool IsGvmsRoute { get; set; }
 
         [JsonPropertyName("purpose")]
-        [Description("")]
         public Purpose Purpose { get; set; }
 
         [JsonPropertyName("pointOfEntry")]
@@ -94,11 +83,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public string PointOfEntryControlPoint { get; set; }
 
         [JsonPropertyName("meansOfTransport")]
-        [Description("")]
         public MeansOfTransport MeansOfTransport { get; set; }
 
         [JsonPropertyName("transporter")]
-        [Description("")]
         public EconomicOperator Transporter { get; set; }
 
         [JsonPropertyName("transporterDetailsRequired")]
@@ -106,7 +93,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool TransporterDetailsRequired { get; set; }
 
         [JsonPropertyName("meansOfTransportFromEntryPoint")]
-        [Description("")]
         public MeansOfTransport MeansOfTransportFromEntryPoint { get; set; }
 
         [JsonPropertyName("estimatedJourneyTimeInMinutes")]
@@ -118,7 +104,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string ResponsibleForTransport { get; set; }
 
         [JsonPropertyName("veterinaryInformation")]
-        [Description("")]
         public VeterinaryInformation VeterinaryInformation { get; set; }
 
         [JsonPropertyName("importerLocalReferenceNumber")]
@@ -126,7 +111,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string ImporterLocalReferenceNumber { get; set; }
 
         [JsonPropertyName("route")]
-        [Description("")]
         public Route Route { get; set; }
 
         [JsonPropertyName("sealsContainers")]
@@ -138,7 +122,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string SubmissionDate { get; set; }
 
         [JsonPropertyName("submittedBy")]
-        [Description("")]
         public UserInformation SubmittedBy { get; set; }
 
         [JsonPropertyName("consignmentValidations")]
@@ -162,7 +145,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string ExitedPortOfOn { get; set; }
 
         [JsonPropertyName("contactDetails")]
-        [Description("")]
         public ContactDetails ContactDetails { get; set; }
 
         [JsonPropertyName("nominatedContacts")]
@@ -174,7 +156,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string OriginalEstimatedDateTime { get; set; }
 
         [JsonPropertyName("billingInformation")]
-        [Description("")]
         public BillingInformation BillingInformation { get; set; }
 
         [JsonPropertyName("isChargeable")]
@@ -186,11 +167,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool WasChargeable { get; set; }
 
         [JsonPropertyName("commonUserCharge")]
-        [Description("")]
         public CommonUserCharge CommonUserCharge { get; set; }
 
         [JsonPropertyName("provideCtcMrn")]
-        [Description("")]
         public int ProvideCtcMrn { get; set; }
 
         [JsonPropertyName("arrivedOn")]

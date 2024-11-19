@@ -10,15 +10,12 @@ namespace Defra.PhaImportNotifications.Contracts
         public string UniqueComplementId { get; set; }
 
         [JsonPropertyName("complementId")]
-        [Description("")]
         public int ComplementId { get; set; }
 
         [JsonPropertyName("speciesId")]
-        [Description("")]
         public string SpeciesId { get; set; }
 
         [JsonPropertyName("keyDataPairs")]
-        [Description("")]
         public object KeyDataPairs { get; set; }
 
         [JsonPropertyName("catchCertificates")]

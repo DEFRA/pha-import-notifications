@@ -6,7 +6,6 @@ namespace Defra.PhaImportNotifications.Contracts
     public class AccompanyingDocument
     {
         [JsonPropertyName("documentType")]
-        [Description("")]
         public int DocumentType { get; set; }
 
         [JsonPropertyName("documentReference")]
@@ -38,7 +37,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string UploadOrganisationId { get; set; }
 
         [JsonPropertyName("externalReference")]
-        [Description("")]
         public ExternalReference ExternalReference { get; set; }
     }
 }

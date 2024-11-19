@@ -18,7 +18,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool IsPlaceOfDestinationThePermanentAddress { get; set; }
 
         [JsonPropertyName("permanentAddress")]
-        [Description("")]
         public EconomicOperator PermanentAddress { get; set; }
     }
 }

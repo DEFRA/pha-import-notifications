@@ -26,7 +26,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool IdentityCheckDone { get; set; }
 
         [JsonPropertyName("identityCheckType")]
-        [Description("")]
         public int IdentityCheckType { get; set; }
 
         [JsonPropertyName("identityCheckResult")]
@@ -34,7 +33,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string IdentityCheckResult { get; set; }
 
         [JsonPropertyName("identityCheckNotDoneReason")]
-        [Description("")]
         public int IdentityCheckNotDoneReason { get; set; }
 
         [JsonPropertyName("physicalCheckDone")]
@@ -46,7 +44,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string PhysicalCheckResult { get; set; }
 
         [JsonPropertyName("physicalCheckNotDoneReason")]
-        [Description("")]
         public int PhysicalCheckNotDoneReason { get; set; }
 
         [JsonPropertyName("physicalCheckOtherText")]

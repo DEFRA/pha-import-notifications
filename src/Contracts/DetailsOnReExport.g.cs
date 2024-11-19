@@ -14,7 +14,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string MeansOfTransportNo { get; set; }
 
         [JsonPropertyName("transportType")]
-        [Description("")]
         public int TransportType { get; set; }
 
         [JsonPropertyName("document")]

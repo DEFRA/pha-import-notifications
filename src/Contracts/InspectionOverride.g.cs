@@ -14,7 +14,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string OverriddenOn { get; set; }
 
         [JsonPropertyName("overriddenBy")]
-        [Description("")]
         public UserInformation OverriddenBy { get; set; }
     }
 }

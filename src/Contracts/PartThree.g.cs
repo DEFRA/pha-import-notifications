@@ -6,11 +6,9 @@ namespace Defra.PhaImportNotifications.Contracts
     public class PartThree
     {
         [JsonPropertyName("controlStatus")]
-        [Description("")]
         public int ControlStatus { get; set; }
 
         [JsonPropertyName("control")]
-        [Description("")]
         public Control Control { get; set; }
 
         [JsonPropertyName("consignmentValidations")]
@@ -22,11 +20,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool SealCheckRequired { get; set; }
 
         [JsonPropertyName("sealCheck")]
-        [Description("")]
         public SealCheck SealCheck { get; set; }
 
         [JsonPropertyName("sealCheckOverride")]
-        [Description("")]
         public InspectionOverride SealCheckOverride { get; set; }
     }
 }

@@ -6,15 +6,12 @@ namespace Defra.PhaImportNotifications.Contracts
     public class PartTwo
     {
         [JsonPropertyName("decision")]
-        [Description("")]
         public Decision Decision { get; set; }
 
         [JsonPropertyName("consignmentCheck")]
-        [Description("")]
         public ConsignmentCheck ConsignmentCheck { get; set; }
 
         [JsonPropertyName("impactOfTransportOnAnimals")]
-        [Description("")]
         public ImpactOfTransportOnAnimals ImpactOfTransportOnAnimals { get; set; }
 
         [JsonPropertyName("laboratoryTestsRequired")]
@@ -22,7 +19,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool LaboratoryTestsRequired { get; set; }
 
         [JsonPropertyName("laboratoryTests")]
-        [Description("")]
         public LaboratoryTests LaboratoryTests { get; set; }
 
         [JsonPropertyName("resealedContainersIncluded")]
@@ -38,11 +34,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public Array ResealedContainersMappings { get; set; }
 
         [JsonPropertyName("controlAuthority")]
-        [Description("")]
         public ControlAuthority ControlAuthority { get; set; }
 
         [JsonPropertyName("controlledDestination")]
-        [Description("")]
         public EconomicOperator ControlledDestination { get; set; }
 
         [JsonPropertyName("bipLocalReferenceNumber")]
@@ -82,7 +76,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string InspectionRequired { get; set; }
 
         [JsonPropertyName("inspectionOverride")]
-        [Description("")]
         public InspectionOverride InspectionOverride { get; set; }
 
         [JsonPropertyName("autoClearedOn")]

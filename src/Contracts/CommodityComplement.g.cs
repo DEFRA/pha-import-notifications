@@ -78,15 +78,12 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool IsCdsMatched { get; set; }
 
         [JsonPropertyName("additionalData")]
-        [Description("")]
         public object AdditionalData { get; set; }
 
         [JsonPropertyName("riskAssesment")]
-        [Description("")]
         public CommodityRiskResult RiskAssesment { get; set; }
 
         [JsonPropertyName("checks")]
-        [Description("")]
         public Array Checks { get; set; }
     }
 }

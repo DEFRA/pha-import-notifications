@@ -66,14 +66,18 @@ static TypeSyntax CreateArrayPropertyType(OpenApiSchema schema)
 static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) =>
     CreateProperty(name, CreatePropertyType(schema), schema.Description);
 
-static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description) =>
-    PropertyDeclaration(typeSyntax, CapitalizeFirstLetter(name))
+static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description)
+{
+    var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };
+
+    if (!string.IsNullOrEmpty(description))
+        attributes.Add(CreateSimpleAttributeList("Description", description));
+
+    return PropertyDeclaration(typeSyntax, CapitalizeFirstLetter(name))
         .AddModifiers(Token(SyntaxKind.PublicKeyword))
-        .AddAttributeLists(
-            CreateSimpleAttributeList("JsonPropertyName", name),
-            CreateSimpleAttributeList("Description", description)
-        )
+        .AddAttributeLists(attributes.ToArray())
         .AddAccessorListAccessors(CreateGetterAndSetter());
+}
 
 static AccessorDeclarationSyntax[] CreateGetterAndSetter() =>
     [

@@ -22,7 +22,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string ContactName { get; set; }
 
         [JsonPropertyName("postalAddress")]
-        [Description("")]
         public PostalAddress PostalAddress { get; set; }
     }
 }

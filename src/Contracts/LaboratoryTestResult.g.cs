@@ -22,7 +22,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string Results { get; set; }
 
         [JsonPropertyName("conclusion")]
-        [Description("")]
         public int Conclusion { get; set; }
 
         [JsonPropertyName("labTestCreatedOn")]

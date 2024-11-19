@@ -22,11 +22,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public string TestName { get; set; }
 
         [JsonPropertyName("applicant")]
-        [Description("")]
         public Applicant Applicant { get; set; }
 
         [JsonPropertyName("laboratoryTestResult")]
-        [Description("")]
         public LaboratoryTestResult LaboratoryTestResult { get; set; }
     }
 }

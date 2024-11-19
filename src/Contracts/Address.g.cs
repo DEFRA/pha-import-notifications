@@ -54,7 +54,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string Telephone { get; set; }
 
         [JsonPropertyName("internationalTelephone")]
-        [Description("")]
         public InternationalTelephone InternationalTelephone { get; set; }
     }
 }

@@ -6,7 +6,6 @@ namespace Defra.PhaImportNotifications.Contracts
     public class ResourceLink
     {
         [JsonPropertyName("self")]
-        [Description("")]
         public string Self { get; set; }
     }
 }

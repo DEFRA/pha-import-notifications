@@ -6,11 +6,9 @@ namespace Defra.PhaImportNotifications.Contracts
     public class ChedppNotAcceptableReason
     {
         [JsonPropertyName("reason")]
-        [Description("")]
         public int Reason { get; set; }
 
         [JsonPropertyName("commodityOrPackage")]
-        [Description("")]
         public int CommodityOrPackage { get; set; }
     }
 }

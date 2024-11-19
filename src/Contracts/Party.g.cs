@@ -50,7 +50,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public int TracesId { get; set; }
 
         [JsonPropertyName("type")]
-        [Description("")]
         public int Type { get; set; }
 
         [JsonPropertyName("approvalNumber")]

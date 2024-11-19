@@ -10,35 +10,27 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool ConsignmentAcceptable { get; set; }
 
         [JsonPropertyName("notAcceptableAction")]
-        [Description("")]
         public int NotAcceptableAction { get; set; }
 
         [JsonPropertyName("notAcceptableActionDestructionReason")]
-        [Description("")]
         public int NotAcceptableActionDestructionReason { get; set; }
 
         [JsonPropertyName("notAcceptableActionEntryRefusalReason")]
-        [Description("")]
         public int NotAcceptableActionEntryRefusalReason { get; set; }
 
         [JsonPropertyName("notAcceptableActionQuarantineImposedReason")]
-        [Description("")]
         public int NotAcceptableActionQuarantineImposedReason { get; set; }
 
         [JsonPropertyName("notAcceptableActionSpecialTreatmentReason")]
-        [Description("")]
         public int NotAcceptableActionSpecialTreatmentReason { get; set; }
 
         [JsonPropertyName("notAcceptableActionIndustrialProcessingReason")]
-        [Description("")]
         public int NotAcceptableActionIndustrialProcessingReason { get; set; }
 
         [JsonPropertyName("notAcceptableActionReDispatchReason")]
-        [Description("")]
         public int NotAcceptableActionReDispatchReason { get; set; }
 
         [JsonPropertyName("notAcceptableActionUseForOtherPurposesReason")]
-        [Description("")]
         public int NotAcceptableActionUseForOtherPurposesReason { get; set; }
 
         [JsonPropertyName("notAcceptableDestructionReason")]
@@ -74,11 +66,9 @@ namespace Defra.PhaImportNotifications.Contracts
         public string NotAcceptableOtherReason { get; set; }
 
         [JsonPropertyName("detailsOfControlledDestinations")]
-        [Description("")]
         public Party DetailsOfControlledDestinations { get; set; }
 
         [JsonPropertyName("specificWarehouseNonConformingConsignment")]
-        [Description("")]
         public int SpecificWarehouseNonConformingConsignment { get; set; }
 
         [JsonPropertyName("temporaryDeadline")]
@@ -86,19 +76,15 @@ namespace Defra.PhaImportNotifications.Contracts
         public string TemporaryDeadline { get; set; }
 
         [JsonPropertyName("decisionEnum")]
-        [Description("")]
         public int DecisionEnum { get; set; }
 
         [JsonPropertyName("freeCirculationPurpose")]
-        [Description("")]
         public int FreeCirculationPurpose { get; set; }
 
         [JsonPropertyName("definitiveImportPurpose")]
-        [Description("")]
         public int DefinitiveImportPurpose { get; set; }
 
         [JsonPropertyName("ifChanneledOption")]
-        [Description("")]
         public int IfChanneledOption { get; set; }
 
         [JsonPropertyName("customWarehouseRegisteredNumber")]
