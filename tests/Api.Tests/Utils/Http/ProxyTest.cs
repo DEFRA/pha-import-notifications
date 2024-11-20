@@ -1,9 +1,9 @@
-using Api.Utils.Http;
+using Defra.PhaImportNotifications.Api.Utils.Http;
 using FluentAssertions;
 using Serilog;
 using Serilog.Core;
 
-namespace Api.Tests.Utils.Http;
+namespace Defra.PhaImportNotifications.Api.Tests.Utils.Http;
 
 public class ProxyTest
 {

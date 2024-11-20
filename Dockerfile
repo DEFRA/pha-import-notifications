@@ -1,5 +1,5 @@
 ﻿# Base dotnet image
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -12,25 +12,24 @@ RUN apt update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 ARG VACUUM_VERSION=0.14.2
 WORKDIR /tmp/vacuum
 RUN wget "https://github.com/daveshanley/vacuum/releases/download/v${VACUUM_VERSION}/vacuum_${VACUUM_VERSION}_linux_x86_64.tar.gz" -q -O vacuum.tar.gz && \
     tar zxvf "vacuum.tar.gz" && \
     mv vacuum /usr/bin/vacuum
- 
+
 WORKDIR /src
 
 ENV PATH="$PATH:/root/.dotnet/tools"
-RUN dotnet tool install -g csharpier && \
-    dotnet tool install -g Swashbuckle.AspNetCore.Cli
- 
+RUN dotnet tool install -g --allow-roll-forward csharpier
+
 COPY .csharpierrc .csharpierrc
 COPY .vacuum.yml .vacuum.yml
 
 COPY src/Api/Api.csproj src/Api/Api.csproj
-COPY src/Trade.ImportNotification.Contract/Trade.ImportNotification.Contract.csproj src/Trade.ImportNotification.Contract/Trade.ImportNotification.Contract.csproj
+COPY src/Contracts/Contracts.csproj src/Contracts/Contracts.csproj
 COPY tests/Api.Tests/Api.Tests.csproj tests/Api.Tests/Api.Tests.csproj
 COPY tests/Api.IntegrationTests/Api.IntegrationTests.csproj tests/Api.IntegrationTests/Api.IntegrationTests.csproj
 COPY Defra.PhaImportNotifications.sln Defra.PhaImportNotifications.sln
@@ -39,15 +38,14 @@ COPY Directory.Build.props Directory.Build.props
 RUN dotnet restore
 
 COPY src/Api src/Api
-COPY src/Trade.ImportNotification.Contract src/Trade.ImportNotification.Contract
+COPY src/Contracts src/Contracts
 COPY tests/Api.Tests tests/Api.Tests
 
 COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
-RUN dotnet csharpier --check . 
+RUN dotnet csharpier --check .
 
 RUN dotnet build --no-restore -c Release
-RUN swagger tofile --output openapi.json ./src/Api/bin/Release/net8.0/Defra.PhaImportNotifications.Api.dll v1
 
 # RUN vacuum lint -d -r .vacuum.yml openapi.json
 

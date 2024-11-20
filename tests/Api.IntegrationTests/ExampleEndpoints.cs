@@ -1,9 +1,9 @@
 using System.Net.Http.Json;
-using Api.Endpoints;
+using Defra.PhaImportNotifications.Api.Endpoints;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace Api.IntegrationTests;
+namespace Defra.PhaImportNotifications.Api.IntegrationTests;
 
 public class ExampleEndpoints(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>>
 {
@@ -12,6 +12,7 @@ public class ExampleEndpoints(WebApplicationFactory<Program> factory) : IClassFi
     {
         var client = factory.CreateClient();
         var result = await client.GetFromJsonAsync<PhaEndpoints.HelloWorldResponse>("/hello/world");
+
         result.Should().BeEquivalentTo(new PhaEndpoints.HelloWorldResponse());
     }
 }

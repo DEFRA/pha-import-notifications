@@ -13,38 +13,34 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 // Step up out of execution path : {solutionPath}/tools/SchemaToCSharp/bin/Debug/net8.0
 const string solutionPath = "../../../../../";
-const string outputPath = $"{solutionPath}src/Trade.ImportNotification.Contract/";
+const string outputPath = $"{solutionPath}src/Contracts/";
 const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
 
 var stream = new FileStream(inputPath, FileMode.Open);
-var namespaceDeclaration = NamespaceDeclaration(ParseName("Trade.ImportNotification.Contract"));
+var namespaceDeclaration = NamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
 
-var openApiDocument = new OpenApiStreamReader()
-     .Read(stream, out var diagnostic);
+var openApiDocument = new OpenApiStreamReader().Read(stream, out var diagnostic);
 
-diagnostic.Errors.ToList()
-    .ForEach(e => Console.WriteLine(e.Message));
+diagnostic.Errors.ToList().ForEach(e => Console.WriteLine(e.Message));
 
 var objects = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "object").ToList();
 
+Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
+
 foreach (var (schemaName, schema) in objects)
 {
-    var properties = schema.Properties.Select(p => CreatePropertyFrom(p.Key, p.Value));
-    var @class = CreateClass(schemaName)
-        .AddMembers(properties.ToArray<MemberDeclarationSyntax>());
-    
+    var properties = schema
+        .Properties.Where(p => !p.Key.StartsWith('_'))
+        .Select(p => CreatePropertyFrom(p.Key, p.Value));
+    var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
+
     var ns = namespaceDeclaration
-        .AddUsings(
-            CreateUsing("System.Text.Json.Serialization"), 
-            CreateUsing("System.ComponentModel"))
+        .AddUsings(CreateUsing("System.Text.Json.Serialization"), CreateUsing("System.ComponentModel"))
         .AddMembers(@class);
-    
-    
+
     await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
-    
-    ns.NormalizeWhitespace()
-        .WithTrailingTrivia(ElasticCarriageReturnLineFeed)
-        .WriteTo(streamWriter);
+
+    ns.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
 }
 
 var enums = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "integer").ToList();
@@ -74,7 +70,7 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 {
     var typeName = schema.Type switch
     {
-        "string" => "string",
+        "string" => schema.Format == "date-time" ? "DateTime" : "string",
         "integer" => RefTypeName(schema, "int"),
         "number" => "decimal",
         "boolean" => "bool",
@@ -89,27 +85,32 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 static string RefTypeName(OpenApiSchema schema, string defaultTypeName) => 
     schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName;
 
-static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) => 
+static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) =>
     CreateProperty(name, CreatePropertyType(schema) , schema.Description);
 
 static EnumMemberDeclarationSyntax CreateEnumValue(string name) => 
     EnumMemberDeclaration(name);
 
-static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description) =>
-    PropertyDeclaration(typeSyntax, CapitalizeFirstLetter(name))
+static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description)
+{
+    var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };
+
+    if (!string.IsNullOrEmpty(description))
+        attributes.Add(CreateSimpleAttributeList("Description", description));
+
+    return PropertyDeclaration(typeSyntax, CapitalizeFirstLetter(name))
         .WithAdditionalAnnotations()
         .AddModifiers(Token(SyntaxKind.PublicKeyword))
-        .AddAttributeLists(
-            CreateSimpleAttributeList("JsonPropertyName", name),
-            CreateSimpleAttributeList("Description", description))
+        .AddAttributeLists(attributes.ToArray())
         .AddAccessorListAccessors(CreateGetterAndSetter());
+}
 
 static AccessorDeclarationSyntax[] CreateGetterAndSetter() =>
-[
-    AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
-    AccessorDeclaration(SyntaxKind.SetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken))
-];
-        
+    [
+        AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
+        AccessorDeclaration(SyntaxKind.InitAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
+    ];
+
 static ClassDeclarationSyntax CreateClass(string name) => ClassDeclaration(Identifier(name))
     .AddModifiers(Token(SyntaxKind.PublicKeyword));
 
@@ -121,9 +122,9 @@ static EnumDeclarationSyntax CreateEnum(string name) => EnumDeclaration(name)
 static AttributeListSyntax CreateSimpleAttributeList(string type, string arg1) =>
     AttributeList(SingletonSeparatedList(CreateSimpleAttribute(type, arg1)));
 
-static AttributeSyntax CreateSimpleAttribute(string type, string arg1) => Attribute(ParseName(type))
-    .WithArgumentList(ParseAttributeArgumentList($"(\"{arg1}\")"));
-    
+static AttributeSyntax CreateSimpleAttribute(string type, string arg1) =>
+    Attribute(ParseName(type)).WithArgumentList(ParseAttributeArgumentList($"(\"{arg1}\")"));
+
 static string CapitalizeFirstLetter(string s)
 {
     if (string.IsNullOrEmpty(s))

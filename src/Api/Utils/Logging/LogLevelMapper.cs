@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Serilog.Core;
 using Serilog.Events;
 
-namespace Api.Utils.Logging;
+namespace Defra.PhaImportNotifications.Api.Utils.Logging;
 
 /**
  * Maps log levels from the C# default 'Information' etc to the node style 'info'.
