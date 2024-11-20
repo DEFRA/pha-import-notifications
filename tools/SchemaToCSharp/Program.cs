@@ -27,7 +27,9 @@ Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
 foreach (var (schemaName, schema) in objects)
 {
-    var properties = schema.Properties.Select(p => CreatePropertyFrom(p.Key, p.Value));
+    var properties = schema
+        .Properties.Where(p => !p.Key.StartsWith('_'))
+        .Select(p => CreatePropertyFrom(p.Key, p.Value));
     var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
 
     var ns = namespaceDeclaration
@@ -46,7 +48,7 @@ return;
 static TypeSyntax CreatePropertyType(OpenApiSchema schema) =>
     schema.Type switch
     {
-        "string" => ParseTypeName("string"),
+        "string" => schema.Format == "date-time" ? ParseTypeName("DateTime") : ParseTypeName("string"),
         "integer" => ParseTypeName("int"),
         "number" => ParseTypeName("decimal"),
         "boolean" => ParseTypeName("bool"),
@@ -66,19 +68,23 @@ static TypeSyntax CreateArrayPropertyType(OpenApiSchema schema)
 static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) =>
     CreateProperty(name, CreatePropertyType(schema), schema.Description);
 
-static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description) =>
-    PropertyDeclaration(typeSyntax, CapitalizeFirstLetter(name))
+static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description)
+{
+    var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };
+
+    if (!string.IsNullOrEmpty(description))
+        attributes.Add(CreateSimpleAttributeList("Description", description));
+
+    return PropertyDeclaration(typeSyntax, CapitalizeFirstLetter(name))
         .AddModifiers(Token(SyntaxKind.PublicKeyword))
-        .AddAttributeLists(
-            CreateSimpleAttributeList("JsonPropertyName", name),
-            CreateSimpleAttributeList("Description", description)
-        )
+        .AddAttributeLists(attributes.ToArray())
         .AddAccessorListAccessors(CreateGetterAndSetter());
+}
 
 static AccessorDeclarationSyntax[] CreateGetterAndSetter() =>
     [
         AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
-        AccessorDeclaration(SyntaxKind.SetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
+        AccessorDeclaration(SyntaxKind.InitAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
     ];
 
 static ClassDeclarationSyntax CreateClass(string name) =>

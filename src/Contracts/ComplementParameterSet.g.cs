@@ -7,26 +7,23 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("uniqueComplementId")]
         [Description("UUID used to match commodityComplement to its complementParameter set. CHEDPP only")]
-        public string UniqueComplementId { get; set; }
+        public string UniqueComplementId { get; init; }
 
         [JsonPropertyName("complementId")]
-        [Description("")]
-        public int ComplementId { get; set; }
+        public int ComplementId { get; init; }
 
         [JsonPropertyName("speciesId")]
-        [Description("")]
-        public string SpeciesId { get; set; }
+        public string SpeciesId { get; init; }
 
         [JsonPropertyName("keyDataPairs")]
-        [Description("")]
-        public object KeyDataPairs { get; set; }
+        public object KeyDataPairs { get; init; }
 
         [JsonPropertyName("catchCertificates")]
         [Description("Catch certificate details")]
-        public Array CatchCertificates { get; set; }
+        public Array CatchCertificates { get; init; }
 
         [JsonPropertyName("identifiers")]
         [Description("Data used to identify the complements inside an IMP consignment")]
-        public Array Identifiers { get; set; }
+        public Array Identifiers { get; init; }
     }
 }

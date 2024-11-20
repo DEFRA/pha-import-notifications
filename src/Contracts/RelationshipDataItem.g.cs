@@ -6,31 +6,24 @@ namespace Defra.PhaImportNotifications.Contracts
     public class RelationshipDataItem
     {
         [JsonPropertyName("matched")]
-        [Description("")]
-        public bool Matched { get; set; }
+        public bool Matched { get; init; }
 
         [JsonPropertyName("type")]
-        [Description("")]
-        public string Type { get; set; }
+        public string Type { get; init; }
 
         [JsonPropertyName("id")]
-        [Description("")]
-        public string Id { get; set; }
+        public string Id { get; init; }
 
         [JsonPropertyName("links")]
-        [Description("")]
-        public ResourceLink Links { get; set; }
+        public ResourceLink Links { get; init; }
 
         [JsonPropertyName("sourceItem")]
-        [Description("")]
-        public int SourceItem { get; set; }
+        public int SourceItem { get; init; }
 
         [JsonPropertyName("destinationItem")]
-        [Description("")]
-        public int DestinationItem { get; set; }
+        public int DestinationItem { get; init; }
 
         [JsonPropertyName("matchingLevel")]
-        [Description("")]
-        public int MatchingLevel { get; set; }
+        public int MatchingLevel { get; init; }
     }
 }

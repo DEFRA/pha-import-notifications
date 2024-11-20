@@ -7,150 +7,136 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("consignmentAcceptable")]
         [Description("Is consignment acceptable or not")]
-        public bool ConsignmentAcceptable { get; set; }
+        public bool ConsignmentAcceptable { get; init; }
 
         [JsonPropertyName("notAcceptableAction")]
-        [Description("")]
-        public int NotAcceptableAction { get; set; }
+        public int NotAcceptableAction { get; init; }
 
         [JsonPropertyName("notAcceptableActionDestructionReason")]
-        [Description("")]
-        public int NotAcceptableActionDestructionReason { get; set; }
+        public int NotAcceptableActionDestructionReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionEntryRefusalReason")]
-        [Description("")]
-        public int NotAcceptableActionEntryRefusalReason { get; set; }
+        public int NotAcceptableActionEntryRefusalReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionQuarantineImposedReason")]
-        [Description("")]
-        public int NotAcceptableActionQuarantineImposedReason { get; set; }
+        public int NotAcceptableActionQuarantineImposedReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionSpecialTreatmentReason")]
-        [Description("")]
-        public int NotAcceptableActionSpecialTreatmentReason { get; set; }
+        public int NotAcceptableActionSpecialTreatmentReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionIndustrialProcessingReason")]
-        [Description("")]
-        public int NotAcceptableActionIndustrialProcessingReason { get; set; }
+        public int NotAcceptableActionIndustrialProcessingReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionReDispatchReason")]
-        [Description("")]
-        public int NotAcceptableActionReDispatchReason { get; set; }
+        public int NotAcceptableActionReDispatchReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionUseForOtherPurposesReason")]
-        [Description("")]
-        public int NotAcceptableActionUseForOtherPurposesReason { get; set; }
+        public int NotAcceptableActionUseForOtherPurposesReason { get; init; }
 
         [JsonPropertyName("notAcceptableDestructionReason")]
         [Description("Filled when notAcceptableAction is equal to destruction")]
-        public string NotAcceptableDestructionReason { get; set; }
+        public string NotAcceptableDestructionReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionOtherReason")]
         [Description("Filled when notAcceptableAction is equal to other")]
-        public string NotAcceptableActionOtherReason { get; set; }
+        public string NotAcceptableActionOtherReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionByDate")]
         [Description("Filled when consignmentAcceptable is set to false")]
-        public string NotAcceptableActionByDate { get; set; }
+        public string NotAcceptableActionByDate { get; init; }
 
         [JsonPropertyName("chedppNotAcceptableReasons")]
         [Description("List of details for individual chedpp not acceptable reasons")]
-        public Array ChedppNotAcceptableReasons { get; set; }
+        public Array ChedppNotAcceptableReasons { get; init; }
 
         [JsonPropertyName("notAcceptableReasons")]
         [Description("If the consignment was not accepted what was the reason")]
-        public Array NotAcceptableReasons { get; set; }
+        public Array NotAcceptableReasons { get; init; }
 
         [JsonPropertyName("notAcceptableCountry")]
         [Description("2 digits ISO code of country (not acceptable country can be empty)")]
-        public string NotAcceptableCountry { get; set; }
+        public string NotAcceptableCountry { get; init; }
 
         [JsonPropertyName("notAcceptableEstablishment")]
         [Description("Filled if consignmentAcceptable is set to false")]
-        public string NotAcceptableEstablishment { get; set; }
+        public string NotAcceptableEstablishment { get; init; }
 
         [JsonPropertyName("notAcceptableOtherReason")]
         [Description("Filled if consignmentAcceptable is set to false")]
-        public string NotAcceptableOtherReason { get; set; }
+        public string NotAcceptableOtherReason { get; init; }
 
         [JsonPropertyName("detailsOfControlledDestinations")]
-        [Description("")]
-        public Party DetailsOfControlledDestinations { get; set; }
+        public Party DetailsOfControlledDestinations { get; init; }
 
         [JsonPropertyName("specificWarehouseNonConformingConsignment")]
-        [Description("")]
-        public int SpecificWarehouseNonConformingConsignment { get; set; }
+        public int SpecificWarehouseNonConformingConsignment { get; init; }
 
         [JsonPropertyName("temporaryDeadline")]
         [Description("Deadline when consignment has to leave borders")]
-        public string TemporaryDeadline { get; set; }
+        public string TemporaryDeadline { get; init; }
 
         [JsonPropertyName("decisionEnum")]
-        [Description("")]
-        public int DecisionEnum { get; set; }
+        public int DecisionEnum { get; init; }
 
         [JsonPropertyName("freeCirculationPurpose")]
-        [Description("")]
-        public int FreeCirculationPurpose { get; set; }
+        public int FreeCirculationPurpose { get; init; }
 
         [JsonPropertyName("definitiveImportPurpose")]
-        [Description("")]
-        public int DefinitiveImportPurpose { get; set; }
+        public int DefinitiveImportPurpose { get; init; }
 
         [JsonPropertyName("ifChanneledOption")]
-        [Description("")]
-        public int IfChanneledOption { get; set; }
+        public int IfChanneledOption { get; init; }
 
         [JsonPropertyName("customWarehouseRegisteredNumber")]
         [Description("Custom warehouse registered number")]
-        public string CustomWarehouseRegisteredNumber { get; set; }
+        public string CustomWarehouseRegisteredNumber { get; init; }
 
         [JsonPropertyName("freeWarehouseRegisteredNumber")]
         [Description("Free warehouse registered number")]
-        public string FreeWarehouseRegisteredNumber { get; set; }
+        public string FreeWarehouseRegisteredNumber { get; init; }
 
         [JsonPropertyName("shipName")]
         [Description("Ship name")]
-        public string ShipName { get; set; }
+        public string ShipName { get; init; }
 
         [JsonPropertyName("shipPortOfExit")]
         [Description("Port of exit")]
-        public string ShipPortOfExit { get; set; }
+        public string ShipPortOfExit { get; init; }
 
         [JsonPropertyName("shipSupplierRegisteredNumber")]
         [Description("Ship supplier registered number")]
-        public string ShipSupplierRegisteredNumber { get; set; }
+        public string ShipSupplierRegisteredNumber { get; init; }
 
         [JsonPropertyName("transhipmentBip")]
         [Description("Transhipment BIP")]
-        public string TranshipmentBip { get; set; }
+        public string TranshipmentBip { get; init; }
 
         [JsonPropertyName("transhipmentThirdCountry")]
         [Description("Transhipment third country")]
-        public string TranshipmentThirdCountry { get; set; }
+        public string TranshipmentThirdCountry { get; init; }
 
         [JsonPropertyName("transitExitBip")]
         [Description("Transit exit BIP")]
-        public string TransitExitBip { get; set; }
+        public string TransitExitBip { get; init; }
 
         [JsonPropertyName("transitThirdCountry")]
         [Description("Transit third country")]
-        public string TransitThirdCountry { get; set; }
+        public string TransitThirdCountry { get; init; }
 
         [JsonPropertyName("transitDestinationThirdCountry")]
         [Description("Transit destination third country")]
-        public string TransitDestinationThirdCountry { get; set; }
+        public string TransitDestinationThirdCountry { get; init; }
 
         [JsonPropertyName("temporaryExitBip")]
         [Description("Temporary exit BIP")]
-        public string TemporaryExitBip { get; set; }
+        public string TemporaryExitBip { get; init; }
 
         [JsonPropertyName("horseReentry")]
         [Description("Horse re-entry")]
-        public string HorseReentry { get; set; }
+        public string HorseReentry { get; init; }
 
         [JsonPropertyName("transhipmentEuOrThirdCountry")]
         [Description("Is it transshipped to EU or third country (values EU / country name)")]
-        public string TranshipmentEuOrThirdCountry { get; set; }
+        public string TranshipmentEuOrThirdCountry { get; init; }
     }
 }

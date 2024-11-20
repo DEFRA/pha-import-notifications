@@ -7,26 +7,25 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("sampleUseByDate")]
         [Description("When sample was used")]
-        public string SampleUseByDate { get; set; }
+        public string SampleUseByDate { get; init; }
 
         [JsonPropertyName("releasedOn")]
         [Description("When it was released")]
-        public string ReleasedOn { get; set; }
+        public DateTime ReleasedOn { get; init; }
 
         [JsonPropertyName("laboratoryTestMethod")]
         [Description("Laboratory test method")]
-        public string LaboratoryTestMethod { get; set; }
+        public string LaboratoryTestMethod { get; init; }
 
         [JsonPropertyName("results")]
         [Description("Result of test")]
-        public string Results { get; set; }
+        public string Results { get; init; }
 
         [JsonPropertyName("conclusion")]
-        [Description("")]
-        public int Conclusion { get; set; }
+        public int Conclusion { get; init; }
 
         [JsonPropertyName("labTestCreatedOn")]
         [Description("Date of lab test created in IPAFFS")]
-        public string LabTestCreatedOn { get; set; }
+        public DateTime LabTestCreatedOn { get; init; }
     }
 }

@@ -6,11 +6,9 @@ namespace Defra.PhaImportNotifications.Contracts
     public class RelationshipLinks
     {
         [JsonPropertyName("self")]
-        [Description("")]
-        public string Self { get; set; }
+        public string Self { get; init; }
 
         [JsonPropertyName("related")]
-        [Description("")]
-        public string Related { get; set; }
+        public string Related { get; init; }
     }
 }

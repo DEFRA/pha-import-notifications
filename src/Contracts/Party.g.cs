@@ -7,66 +7,65 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("id")]
         [Description("IPAFFS ID of party")]
-        public string Id { get; set; }
+        public string Id { get; init; }
 
         [JsonPropertyName("name")]
         [Description("Name of party")]
-        public string Name { get; set; }
+        public string Name { get; init; }
 
         [JsonPropertyName("companyId")]
         [Description("Company ID")]
-        public string CompanyId { get; set; }
+        public string CompanyId { get; init; }
 
         [JsonPropertyName("contactId")]
         [Description("Contact ID (B2C)")]
-        public string ContactId { get; set; }
+        public string ContactId { get; init; }
 
         [JsonPropertyName("companyName")]
         [Description("Company name")]
-        public string CompanyName { get; set; }
+        public string CompanyName { get; init; }
 
         [JsonPropertyName("addresses")]
         [Description("Addresses")]
-        public Array Addresses { get; set; }
+        public Array Addresses { get; init; }
 
         [JsonPropertyName("county")]
         [Description("County")]
-        public string County { get; set; }
+        public string County { get; init; }
 
         [JsonPropertyName("postCode")]
         [Description("Post code of party")]
-        public string PostCode { get; set; }
+        public string PostCode { get; init; }
 
         [JsonPropertyName("country")]
         [Description("Country of party")]
-        public string Country { get; set; }
+        public string Country { get; init; }
 
         [JsonPropertyName("city")]
         [Description("City")]
-        public string City { get; set; }
+        public string City { get; init; }
 
         [JsonPropertyName("tracesId")]
         [Description("TRACES ID")]
-        public int TracesId { get; set; }
+        public int TracesId { get; init; }
 
         [JsonPropertyName("type")]
-        [Description("")]
-        public int Type { get; set; }
+        public int Type { get; init; }
 
         [JsonPropertyName("approvalNumber")]
         [Description("Approval number")]
-        public string ApprovalNumber { get; set; }
+        public string ApprovalNumber { get; init; }
 
         [JsonPropertyName("phone")]
         [Description("Phone number of party")]
-        public string Phone { get; set; }
+        public string Phone { get; init; }
 
         [JsonPropertyName("fax")]
         [Description("Fax number of party")]
-        public string Fax { get; set; }
+        public string Fax { get; init; }
 
         [JsonPropertyName("email")]
         [Description("Email number of party")]
-        public string Email { get; set; }
+        public string Email { get; init; }
     }
 }

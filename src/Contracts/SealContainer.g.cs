@@ -6,19 +6,15 @@ namespace Defra.PhaImportNotifications.Contracts
     public class SealContainer
     {
         [JsonPropertyName("sealNumber")]
-        [Description("")]
-        public string SealNumber { get; set; }
+        public string SealNumber { get; init; }
 
         [JsonPropertyName("containerNumber")]
-        [Description("")]
-        public string ContainerNumber { get; set; }
+        public string ContainerNumber { get; init; }
 
         [JsonPropertyName("officialSeal")]
-        [Description("")]
-        public bool OfficialSeal { get; set; }
+        public bool OfficialSeal { get; init; }
 
         [JsonPropertyName("resealedSealNumber")]
-        [Description("")]
-        public string ResealedSealNumber { get; set; }
+        public string ResealedSealNumber { get; init; }
     }
 }

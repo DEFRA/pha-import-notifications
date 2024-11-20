@@ -7,14 +7,13 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("testedOn")]
         [Description("Date of tests")]
-        public string TestedOn { get; set; }
+        public DateTime TestedOn { get; init; }
 
         [JsonPropertyName("testReason")]
-        [Description("")]
-        public int TestReason { get; set; }
+        public int TestReason { get; init; }
 
         [JsonPropertyName("singleLaboratoryTests")]
         [Description("List of details of individual tests performed or to be performed")]
-        public Array SingleLaboratoryTests { get; set; }
+        public Array SingleLaboratoryTests { get; init; }
     }
 }
