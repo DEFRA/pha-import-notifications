@@ -48,18 +48,13 @@ var enums = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "integ
 foreach (var (schemaName, schema) in enums)
 {
     var values = schema.Enum.Select(v => CreateEnumValue((v as OpenApiString)!.Value));
-    var @enum = CreateEnum(schemaName)
-        .AddMembers(values.ToArray());
-    
-    var ns = namespaceDeclaration
-        .AddMembers(@enum);
-    
+    var @enum = CreateEnum(schemaName).AddMembers(values.ToArray());
+
+    var ns = namespaceDeclaration.AddMembers(@enum);
+
     await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
-    
-    
-    ns.NormalizeWhitespace()
-        .WithTrailingTrivia(ElasticCarriageReturnLineFeed)
-        .WriteTo(streamWriter);
+
+    ns.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
 }
 
 Console.WriteLine("Done");
@@ -76,20 +71,19 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
         "boolean" => "bool",
         "object" => RefTypeName(schema, schema.Type),
         "array" => RefTypeName(schema.Items, schema.Items.Type),
-        _ => "object"
+        _ => "object",
     };
-    
+
     return ParseTypeName(schema.Type == "array" ? $"List<{typeName}>" : typeName);
 }
 
-static string RefTypeName(OpenApiSchema schema, string defaultTypeName) => 
+static string RefTypeName(OpenApiSchema schema, string defaultTypeName) =>
     schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName;
 
 static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) =>
-    CreateProperty(name, CreatePropertyType(schema) , schema.Description);
+    CreateProperty(name, CreatePropertyType(schema), schema.Description);
 
-static EnumMemberDeclarationSyntax CreateEnumValue(string name) => 
-    EnumMemberDeclaration(name);
+static EnumMemberDeclarationSyntax CreateEnumValue(string name) => EnumMemberDeclaration(name);
 
 static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description)
 {
@@ -111,13 +105,13 @@ static AccessorDeclarationSyntax[] CreateGetterAndSetter() =>
         AccessorDeclaration(SyntaxKind.InitAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
     ];
 
-static ClassDeclarationSyntax CreateClass(string name) => ClassDeclaration(Identifier(name))
-    .AddModifiers(Token(SyntaxKind.PublicKeyword));
+static ClassDeclarationSyntax CreateClass(string name) =>
+    ClassDeclaration(Identifier(name)).AddModifiers(Token(SyntaxKind.PublicKeyword));
 
 static UsingDirectiveSyntax CreateUsing(string fqn) => UsingDirective(ParseName(fqn));
 
-static EnumDeclarationSyntax CreateEnum(string name) => EnumDeclaration(name)
-    .AddModifiers(Token(SyntaxKind.PublicKeyword));
+static EnumDeclarationSyntax CreateEnum(string name) =>
+    EnumDeclaration(name).AddModifiers(Token(SyntaxKind.PublicKeyword));
 
 static AttributeListSyntax CreateSimpleAttributeList(string type, string arg1) =>
     AttributeList(SingletonSeparatedList(CreateSimpleAttribute(type, arg1)));

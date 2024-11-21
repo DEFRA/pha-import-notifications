@@ -34,4 +34,11 @@
     <ProjectReference Include="..\Testing\Testing.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="OpenApi\OpenApiTests.OpenApi_VerifyAsExpected.verified.txt">
+      <ParentFile>OpenApiTests</ParentFile>
+      <DependentUpon>OpenApiTests.cs</DependentUpon>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -11,7 +11,7 @@ using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests;
+namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
 public class ImportNotificationUpdatesEndpointTests : EndpointTestBase<Program>, IClassFixture<WireMockContext>
 {

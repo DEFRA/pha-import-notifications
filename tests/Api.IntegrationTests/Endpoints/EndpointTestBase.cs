@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests;
+namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
 public class EndpointTestBase<T> : IClassFixture<WebApplicationFactory<T>>
     where T : class
