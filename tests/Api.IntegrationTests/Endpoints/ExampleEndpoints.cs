@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
-public class ExampleEndpoints(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>>
+public class ExampleEndpoints(WebApplicationFactory<Program> factory) : EndpointTestBase<Program>(factory)
 {
     [Fact]
     public async Task GetHelloWorldReturnsHelloWorld()
     {
-        var client = factory.CreateClient();
+        var client = CreateClient();
+
         var result = await client.GetFromJsonAsync<Api.Endpoints.ExampleEndpoints.HelloWorldResponse>("/hello/world");
 
         result.Should().BeEquivalentTo(new Api.Endpoints.ExampleEndpoints.HelloWorldResponse());
