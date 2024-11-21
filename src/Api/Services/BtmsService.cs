@@ -12,4 +12,9 @@ public class BtmsService(HttpClient httpClient) : IBtmsService
 
         return new List<ImportNotification>();
     }
+
+    public Task<ImportNotification?> GetImportNotification(
+        string referenceNumber,
+        CancellationToken cancellationToken
+    ) => throw new NotImplementedException();
 }

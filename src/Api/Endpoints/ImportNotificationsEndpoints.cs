@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,11 +19,17 @@ public static class ImportNotificationsEndpoints
     }
 
     [HttpGet]
-    private static Task<IResult> Get([FromRoute] [Description("Reference number")] string referenceNumber)
+    private static async Task<IResult> Get(
+        [FromRoute] [Description("Reference number")] string referenceNumber,
+        [FromServices] IBtmsService btmsService,
+        CancellationToken cancellationToken
+    )
     {
-        return Task.FromResult(Results.Ok(new ImportNotificationResponse()));
+        var notification = await btmsService.GetImportNotification(referenceNumber, cancellationToken);
+
+        return notification is not null ? Results.Ok(notification) : Results.NotFound();
     }
 
     [SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty")]
-    public class ImportNotificationResponse : ImportNotification;
+    private sealed class ImportNotificationResponse : ImportNotification;
 }

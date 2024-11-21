@@ -12,4 +12,9 @@ public class StubBtmsService : IBtmsService
                 new() { ReferenceNumber = "CHED5678" },
             }
         );
+
+    public Task<ImportNotification?> GetImportNotification(
+        string referenceNumber,
+        CancellationToken cancellationToken
+    ) => Task.FromResult<ImportNotification?>(new ImportNotification { ReferenceNumber = referenceNumber });
 }

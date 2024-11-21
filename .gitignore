@@ -269,3 +269,5 @@ library.db
 .envrc
 
 openapi.json
+
+*.received.*
