@@ -4,6 +4,6 @@ namespace Defra.PhaImportNotifications.Api.Services;
 
 public interface IBtmsService
 {
-    Task<IReadOnlyList<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken);
+    Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken);
     Task<ImportNotification?> GetImportNotification(string referenceNumber, CancellationToken cancellationToken);
 }

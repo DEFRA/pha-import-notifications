@@ -4,8 +4,8 @@ namespace Defra.PhaImportNotifications.Api.Services;
 
 public class StubBtmsService : IBtmsService
 {
-    public Task<IReadOnlyList<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken) =>
-        Task.FromResult<IReadOnlyList<ImportNotification>>(
+    public Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken) =>
+        Task.FromResult<IEnumerable<ImportNotification>>(
             new List<ImportNotification>
             {
                 new() { ReferenceNumber = "CHED1234" },

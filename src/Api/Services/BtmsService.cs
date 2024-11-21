@@ -4,7 +4,7 @@ namespace Defra.PhaImportNotifications.Api.Services;
 
 public class BtmsService(HttpClient httpClient) : IBtmsService
 {
-    public async Task<IReadOnlyList<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken)
+    public async Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken)
     {
         var response = await httpClient.GetAsync("api/import-notifications", cancellationToken);
 
