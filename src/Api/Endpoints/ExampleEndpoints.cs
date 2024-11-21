@@ -16,7 +16,7 @@ public static class ExampleEndpoints
     }
 
     [HttpGet]
-    public static HelloWorldResponse HelloWorld()
+    private static HelloWorldResponse HelloWorld()
     {
         return new HelloWorldResponse();
     }

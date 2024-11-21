@@ -17,7 +17,7 @@ public static class ImportNotificationEndpoint
     }
 
     [HttpGet]
-    public static Task<IResult> Get([FromRoute] [Description("Reference number")] string referenceNumber)
+    private static Task<IResult> Get([FromRoute] [Description("Reference number")] string referenceNumber)
     {
         return Task.FromResult(Results.Ok(new ImportNotificationResponse()));
     }
