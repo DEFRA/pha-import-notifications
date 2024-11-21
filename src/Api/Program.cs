@@ -1,9 +1,12 @@
+using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.OpenApi;
+using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Http;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Core;
@@ -88,6 +91,17 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         options.AddSchemaTransformer<XmlDocsSchemaTransformer<ImportNotification>>();
     });
     builder.Services.AddHttpClient();
+    builder.Services.AddOptions<CdmsOptions>().BindConfiguration("Cdms").ValidateDataAnnotations().ValidateOnStart();
+    builder
+        .Services.AddHttpClient<ICdmsService, CdmsService>(
+            (sp, httpClient) =>
+            {
+                var options = sp.GetRequiredService<IOptions<CdmsOptions>>().Value;
+                httpClient.BaseAddress = new Uri(options.BaseUrl);
+            }
+        )
+        // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
+        .AddStandardResilienceHandler();
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);

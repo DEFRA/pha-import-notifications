@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Contracts.UpdatedImportNotifications;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,36 +17,38 @@ public static class ImportNotificationUpdatesEndpoint
     }
 
     [HttpGet]
-    public static Task<IResult> GetAllUpdated(
+    private static async Task<IResult> GetAllUpdated(
         [FromRoute] [Description("The port health authority with format XYZ")] string portHealthAuthority,
         [FromQuery] int page,
         [FromQuery] int pageSize,
         [FromQuery] DateTime from,
         [FromQuery] DateTime to,
-        HttpContext httpContext
+        HttpContext httpContext,
+        [FromServices] ICdmsService cdmsService,
+        CancellationToken cancellationToken
     )
     {
-        return Task.FromResult(
-            Results.Ok(
-                new PagedResponse<UpdatedImportNotification>
-                {
-                    Records =
-                    [
-                        new()
+        await cdmsService.GetImportNotifications(cancellationToken);
+
+        return Results.Ok(
+            new PagedResponse<UpdatedImportNotification>
+            {
+                Records =
+                [
+                    new()
+                    {
+                        Links = new()
                         {
-                            Links = new()
-                            {
-                                ImportNotification = new Uri(
-                                    $"{httpContext.Request.Scheme}://{httpContext.Request.Host}/import-notifications/CHED1234/"
-                                ),
-                            },
+                            ImportNotification = new Uri(
+                                $"{httpContext.Request.Scheme}://{httpContext.Request.Host}/import-notifications/CHED1234/"
+                            ),
                         },
-                    ],
-                    CurrentPage = 0,
-                    TotalPages = 1,
-                    TotalRecords = 1,
-                }
-            )
+                    },
+                ],
+                CurrentPage = 0,
+                TotalPages = 1,
+                TotalRecords = 1,
+            }
         );
     }
 

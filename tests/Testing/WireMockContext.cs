@@ -1,6 +1,6 @@
 using WireMock.Server;
 
-namespace Defra.PhaImportNotifications.Api.Tests;
+namespace Defra.PhaImportNotifications.Testing;
 
 public sealed class WireMockContext : IDisposable
 {
