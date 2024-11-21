@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using Defra.PhaImportNotifications.Contracts;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
+[ExcludeFromCodeCoverage]
 public class StubBtmsService : IBtmsService
 {
     public Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken) =>

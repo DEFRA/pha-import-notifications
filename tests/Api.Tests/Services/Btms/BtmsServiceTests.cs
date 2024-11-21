@@ -34,4 +34,12 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
 
         await act.Should().ThrowAsync<Exception>();
     }
+
+    [Fact]
+    public async Task GetImportNotification_Throws()
+    {
+        var act = () => Subject.GetImportNotification("CHED1234", default);
+
+        await act.Should().ThrowAsync<NotImplementedException>();
+    }
 }
