@@ -3,12 +3,12 @@ using FluentAssertions;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Endpoints;
 
-public class PhaEndpointsTests
+public class ExampleEndpointsTests
 {
     [Fact]
     public void GetHelloWorldReturnsHelloWorld()
     {
-        var result = PhaEndpoints.HelloWorld();
-        result.Should().BeEquivalentTo(new PhaEndpoints.HelloWorldResponse());
+        var result = ExampleEndpoints.HelloWorld();
+        result.Should().BeEquivalentTo(new ExampleEndpoints.HelloWorldResponse());
     }
 }

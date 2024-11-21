@@ -11,8 +11,8 @@ public class ExampleEndpoints(WebApplicationFactory<Program> factory) : IClassFi
     public async Task GetHelloWorldReturnsHelloWorld()
     {
         var client = factory.CreateClient();
-        var result = await client.GetFromJsonAsync<PhaEndpoints.HelloWorldResponse>("/hello/world");
+        var result = await client.GetFromJsonAsync<Endpoints.ExampleEndpoints.HelloWorldResponse>("/hello/world");
 
-        result.Should().BeEquivalentTo(new PhaEndpoints.HelloWorldResponse());
+        result.Should().BeEquivalentTo(new Endpoints.ExampleEndpoints.HelloWorldResponse());
     }
 }

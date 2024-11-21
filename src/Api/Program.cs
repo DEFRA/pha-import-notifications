@@ -129,7 +129,7 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
     var app = builder.Build();
 
     app.MapHealthChecks("/health");
-    app.MapPhaEndpoints();
+    app.MapExampleEndpoints();
     app.MapImportNotificationEndpoints();
     app.MapImportNotificationUpdatesEndpoint();
 
