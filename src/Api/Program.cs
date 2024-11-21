@@ -48,6 +48,8 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
     builder.Services.AddCustomTrustStore(logger);
 
+    // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
+    builder.Services.ConfigureHttpClientDefaults(options => options.AddStandardResilienceHandler());
     builder.Services.AddHealthChecks();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddOpenApi(options =>
@@ -92,16 +94,13 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     });
     builder.Services.AddHttpClient();
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateDataAnnotations().ValidateOnStart();
-    builder
-        .Services.AddHttpClient<IBtmsService, BtmsService>(
-            (sp, httpClient) =>
-            {
-                var options = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
-                httpClient.BaseAddress = new Uri(options.BaseUrl);
-            }
-        )
-        // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
-        .AddStandardResilienceHandler();
+    builder.Services.AddHttpClient<IBtmsService, BtmsService>(
+        (sp, httpClient) =>
+        {
+            var options = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
+            httpClient.BaseAddress = new Uri(options.BaseUrl);
+        }
+    );
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);
