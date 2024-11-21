@@ -792,6 +792,55 @@
   },
   components: {
     schemas: {
+      AccompanyingDocument: {
+        type: object,
+        properties: {
+          documentType: {
+            $ref: #/components/schemas/AccompanyingDocumentDocumentTypeEnum
+          },
+          documentReference: {
+            type: string,
+            description: Additional document reference,
+            nullable: true
+          },
+          documentIssuedOn: {
+            type: string,
+            description: Additional document issue date,
+            format: date-time
+          },
+          attachmentId: {
+            type: string,
+            description: The UUID used for the uploaded file in blob storage,
+            nullable: true
+          },
+          attachmentFilename: {
+            type: string,
+            description: The original filename of the uploaded file,
+            nullable: true
+          },
+          attachmentContentType: {
+            type: string,
+            description: The MIME type of the uploaded file,
+            nullable: true
+          },
+          uploadUserId: {
+            type: string,
+            description: The UUID for the user that uploaded the file,
+            nullable: true
+          },
+          uploadOrganisationId: {
+            type: string,
+            description: The UUID for the organisation that the upload user is associated with,
+            nullable: true
+          },
+          externalReference: {
+            $ref: #/components/schemas/ExternalReference2
+          }
+        }
+      },
+      AccompanyingDocumentDocumentTypeEnum: {
+        type: integer
+      },
       Address: {
         type: object,
         properties: {
@@ -930,6 +979,159 @@
         },
         nullable: true
       },
+      Applicant: {
+        type: object,
+        properties: {
+          laboratory: {
+            type: string,
+            description: Name of laboratory,
+            nullable: true
+          },
+          laboratoryAddress: {
+            type: string,
+            description: Laboratory address,
+            nullable: true
+          },
+          laboratoryIdentification: {
+            type: string,
+            description: Laboratory identification,
+            nullable: true
+          },
+          laboratoryPhoneNumber: {
+            type: string,
+            description: Laboratory phone number,
+            nullable: true
+          },
+          laboratoryEmail: {
+            type: string,
+            description: Laboratory email,
+            nullable: true
+          },
+          sampleBatchNumber: {
+            type: string,
+            description: Sample batch number,
+            nullable: true
+          },
+          analysisType: {
+            $ref: #/components/schemas/ApplicantAnalysisTypeEnum
+          },
+          numberOfSamples: {
+            type: integer,
+            description: Number of samples analysed,
+            format: int32
+          },
+          sampleType: {
+            type: string,
+            description: Type of sample,
+            nullable: true
+          },
+          conservationOfSample: {
+            $ref: #/components/schemas/ApplicantConservationOfSampleEnum
+          },
+          inspector: {
+            $ref: #/components/schemas/Inspector
+          },
+          sampledOn: {
+            type: string,
+            description: DateTime,
+            format: date-time
+          }
+        },
+        nullable: true
+      },
+      ApplicantAnalysisTypeEnum: {
+        type: integer
+      },
+      ApplicantConservationOfSampleEnum: {
+        type: integer
+      },
+      ApprovedEstablishment: {
+        type: object,
+        properties: {
+          id: {
+            type: string,
+            description: ID,
+            nullable: true
+          },
+          name: {
+            type: string,
+            description: Name of approved establishment,
+            nullable: true
+          },
+          country: {
+            type: string,
+            description: Country of approved establishment,
+            nullable: true
+          },
+          types: {
+            type: array,
+            items: {
+              type: string
+            },
+            description: Types of approved establishment,
+            nullable: true
+          },
+          approvalNumber: {
+            type: string,
+            description: Approval number,
+            nullable: true
+          },
+          section: {
+            type: string,
+            description: Section of approved establishment,
+            nullable: true
+          }
+        }
+      },
+      AuditDiffEntry: {
+        type: object,
+        properties: {
+          path: {
+            type: string,
+            nullable: true
+          },
+          op: {
+            type: string,
+            nullable: true
+          }
+        }
+      },
+      AuditEntry: {
+        type: object,
+        properties: {
+          id: {
+            type: string,
+            nullable: true
+          },
+          version: {
+            type: integer,
+            format: int32
+          },
+          createdBy: {
+            type: string,
+            nullable: true
+          },
+          createdSource: {
+            type: string,
+            format: date-time
+          },
+          createdLocal: {
+            type: string,
+            format: date-time
+          },
+          status: {
+            type: string,
+            nullable: true
+          },
+          diff: {
+            type: array,
+            items: {
+              $ref: #/components/schemas/AuditDiffEntry
+            },
+            nullable: true
+          }
+        }
+      },
       BillingInformation: {
         type: object,
         properties: {
@@ -957,6 +1159,79 @@
           }
         },
         nullable: true
+      },
+      CatchCertificateAttachment: {
+        type: object,
+        properties: {
+          attachmentId: {
+            type: string,
+            description: The UUID of the uploaded catch certificate file in blob storage,
+            nullable: true
+          },
+          numberOfCatchCertificates: {
+            type: integer,
+            description: The total number of catch certificates on the attachment,
+            format: int32
+          },
+          catchCertificateDetails: {
+            type: array,
+            items: {
+              $ref: #/components/schemas/CatchCertificateDetails
+            },
+            description: List of catch certificate details,
+            nullable: true
+          }
+        }
+      },
+      CatchCertificateDetails: {
+        type: object,
+        properties: {
+          catchCertificateId: {
+            type: string,
+            description: The UUID of the catch certificate,
+            nullable: true
+          },
+          catchCertificateReference: {
+            type: string,
+            description: Catch certificate reference,
+            nullable: true
+          },
+          issuedOn: {
+            type: string,
+            description: Catch certificate date of issue,
+            format: date-time
+          },
+          flagState: {
+            type: string,
+            description: Catch certificate flag state of catching vessel(s),
+            nullable: true
+          },
+          species: {
+            type: array,
+            items: {
+              type: string
+            },
+            description: List of species imported under this catch certificate,
+            nullable: true
+          }
+        }
+      },
+      ChedppNotAcceptableReason: {
+        type: object,
+        properties: {
+          reason: {
+            $ref: #/components/schemas/ChedppNotAcceptableReasonReasonEnum
+          },
+          commodityOrPackage: {
+            $ref: #/components/schemas/ChedppNotAcceptableReasonCommodityOrPackageEnum
+          }
+        }
+      },
+      ChedppNotAcceptableReasonCommodityOrPackageEnum: {
+        type: integer
+      },
+      ChedppNotAcceptableReasonReasonEnum: {
+        type: integer
       },
       Commodities: {
         type: object,
@@ -1037,11 +1312,246 @@
             nullable: true
           },
           commodityIntendedFor: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/CommoditiesCommodityIntendedForEnum
           }
         },
         nullable: true
+      },
+      CommoditiesCommodityIntendedForEnum: {
+        type: integer
+      },
+      CommodityComplement: {
+        type: object,
+        properties: {
+          uniqueComplementId: {
+            type: string,
+            description: UUID used to match commodityComplement to its complementParameter set. CHEDPP only,
+            nullable: true
+          },
+          commodityDescription: {
+            type: string,
+            description: Description of the commodity,
+            nullable: true
+          },
+          commodityId: {
+            type: string,
+            description: The unique commodity ID,
+            nullable: true
+          },
+          complementId: {
+            type: integer,
+            description: Identifier of complement chosen from speciesFamily,speciesClass and speciesType'. This is also used to link to the complementParameterSet,
+            format: int32
+          },
+          complementName: {
+            type: string,
+            description: Represents the lowest granularity - either type, class, family or species name - for the commodity selected.  This is also used to drive behaviour for EU Import journeys,
+            nullable: true
+          },
+          eppoCode: {
+            type: string,
+            description: EPPO Code related to plant commodities and wood packaging,
+            nullable: true
+          },
+          isWoodPackaging: {
+            type: boolean,
+            description: (Deprecated in IMTA-11832) Is this commodity wood packaging?
+          },
+          speciesId: {
+            type: string,
+            description: The species ID of the commodity that is imported. Not every commodity has a species ID. This is also used to link to the complementParameterSet. The species ID can change over time,
+            nullable: true
+          },
+          speciesName: {
+            type: string,
+            description: Species name,
+            nullable: true
+          },
+          speciesNomination: {
+            type: string,
+            description: Species nomination,
+            nullable: true
+          },
+          speciesTypeName: {
+            type: string,
+            description: Species type name,
+            nullable: true
+          },
+          speciesType: {
+            type: string,
+            description: Species type identifier of commodity,
+            nullable: true
+          },
+          speciesClassName: {
+            type: string,
+            description: Species class name,
+            nullable: true
+          },
+          speciesClass: {
+            type: string,
+            description: Species class identifier of commodity,
+            nullable: true
+          },
+          speciesFamilyName: {
+            type: string,
+            description: Species family name of commodity,
+            nullable: true
+          },
+          speciesFamily: {
+            type: string,
+            description: Species family identifier of commodity,
+            nullable: true
+          },
+          speciesCommonName: {
+            type: string,
+            description: Species common name of commodity for IMP notification simple commodity selection,
+            nullable: true
+          },
+          isCdsMatched: {
+            type: boolean,
+            description: Has commodity been matched with corresponding CDS declaration
+          },
+          riskAssesment: {
+            $ref: #/components/schemas/CommodityRiskResult
+          },
+          checks: {
+            type: array,
+            items: {
+              $ref: #/components/schemas/InspectionCheck
+            },
+            nullable: true
+          }
+        }
+      },
+      CommodityRiskResult: {
+        type: object,
+        properties: {
+          riskDecision: {
+            $ref: #/components/schemas/CommodityRiskResultRiskDecisionEnum
+          },
+          exitRiskDecision: {
+            $ref: #/components/schemas/CommodityRiskResultExitRiskDecisionEnum
+          },
+          hmiDecision: {
+            $ref: #/components/schemas/CommodityRiskResultHmiDecisionEnum
+          },
+          phsiDecision: {
+            $ref: #/components/schemas/CommodityRiskResultPhsiDecisionEnum
+          },
+          phsiClassification: {
+            $ref: #/components/schemas/CommodityRiskResultPhsiClassificationEnum
+          },
+          phsi: {
+            $ref: #/components/schemas/Phsi
+          },
+          uniqueId: {
+            type: string,
+            description: UUID used to match to the complement parameter set,
+            nullable: true
+          },
+          eppoCode: {
+            type: string,
+            description: EPPO Code for the species,
+            nullable: true
+          },
+          variety: {
+            type: string,
+            description: Name or ID of the variety,
+            nullable: true
+          },
+          isWoody: {
+            type: boolean,
+            description: Whether or not a plant is woody
+          },
+          indoorOutdoor: {
+            type: string,
+            description: Indoor or Outdoor for a plant,
+            nullable: true
+          },
+          propagation: {
+            type: string,
+            description: Whether the propagation is considered a Plant, Bulb, Seed or None,
+            nullable: true
+          },
+          phsiRuleType: {
+            type: string,
+            description: Rule type for PHSI checks,
+            nullable: true
+          }
+        },
+        nullable: true
+      },
+      CommodityRiskResult2: {
+        type: object,
+        properties: {
+          riskDecision: {
+            $ref: #/components/schemas/CommodityRiskResultRiskDecisionEnum
+          },
+          exitRiskDecision: {
+            $ref: #/components/schemas/CommodityRiskResultExitRiskDecisionEnum
+          },
+          hmiDecision: {
+            $ref: #/components/schemas/CommodityRiskResultHmiDecisionEnum
+          },
+          phsiDecision: {
+            $ref: #/components/schemas/CommodityRiskResultPhsiDecisionEnum
+          },
+          phsiClassification: {
+            $ref: #/components/schemas/CommodityRiskResultPhsiClassificationEnum
+          },
+          phsi: {
+            $ref: #/components/schemas/#/properties/commodities/items/properties/riskAssesment/properties/phsi
+          },
+          uniqueId: {
+            type: string,
+            description: UUID used to match to the complement parameter set,
+            nullable: true
+          },
+          eppoCode: {
+            type: string,
+            description: EPPO Code for the species,
+            nullable: true
+          },
+          variety: {
+            type: string,
+            description: Name or ID of the variety,
+            nullable: true
+          },
+          isWoody: {
+            type: boolean,
+            description: Whether or not a plant is woody
+          },
+          indoorOutdoor: {
+            type: string,
+            description: Indoor or Outdoor for a plant,
+            nullable: true
+          },
+          propagation: {
+            type: string,
+            description: Whether the propagation is considered a Plant, Bulb, Seed or None,
+            nullable: true
+          },
+          phsiRuleType: {
+            type: string,
+            description: Rule type for PHSI checks,
+            nullable: true
+          }
+        }
+      },
+      CommodityRiskResultExitRiskDecisionEnum: {
+        type: integer
+      },
+      CommodityRiskResultHmiDecisionEnum: {
+        type: integer
+      },
+      CommodityRiskResultPhsiClassificationEnum: {
+        type: integer
+      },
+      CommodityRiskResultPhsiDecisionEnum: {
+        type: integer
+      },
+      CommodityRiskResultRiskDecisionEnum: {
+        type: integer
       },
       CommonUserCharge: {
         type: object,
@@ -1081,8 +1591,7 @@
             description: Was identity check done
           },
           identityCheckType: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/ConsignmentCheckIdentityCheckTypeEnum
           },
           identityCheckResult: {
             type: string,
@@ -1090,8 +1599,7 @@
             nullable: true
           },
           identityCheckNotDoneReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/ConsignmentCheckIdentityCheckNotDoneReasonEnum
           },
           physicalCheckDone: {
             type: boolean,
@@ -1103,8 +1611,7 @@
             nullable: true
           },
           physicalCheckNotDoneReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/ConsignmentCheckPhysicalCheckNotDoneReasonEnum
           },
           physicalCheckOtherText: {
             type: string,
@@ -1132,6 +1639,15 @@
           }
         },
         nullable: true
+      },
+      ConsignmentCheckIdentityCheckNotDoneReasonEnum: {
+        type: integer
+      },
+      ConsignmentCheckIdentityCheckTypeEnum: {
+        type: integer
+      },
+      ConsignmentCheckPhysicalCheckNotDoneReasonEnum: {
+        type: integer
       },
       ContactDetails: {
         type: object,
@@ -1172,8 +1688,7 @@
             $ref: #/components/schemas/OfficialInspector
           },
           consignmentLeave: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/ControlConsignmentLeaveEnum
           }
         },
         nullable: true
@@ -1208,11 +1723,16 @@
             description: Was Illegal, Unreported and Unregulated (IUU) check required
           },
           iuuOption: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/ControlAuthorityIuuOptionEnum
           }
         },
         nullable: true
+      },
+      ControlAuthorityIuuOptionEnum: {
+        type: integer
+      },
+      ControlConsignmentLeaveEnum: {
+        type: integer
       },
       Decision: {
         type: object,
@@ -1222,36 +1742,28 @@
             description: Is consignment acceptable or not
           },
           notAcceptableAction: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionNotAcceptableActionEnum
           },
           notAcceptableActionDestructionReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionNotAcceptableActionDestructionReasonEnum
           },
           notAcceptableActionEntryRefusalReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionNotAcceptableActionEntryRefusalReasonEnum
           },
           notAcceptableActionQuarantineImposedReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionNotAcceptableActionQuarantineImposedReasonEnum
           },
           notAcceptableActionSpecialTreatmentReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionNotAcceptableActionSpecialTreatmentReasonEnum
           },
           notAcceptableActionIndustrialProcessingReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionNotAcceptableActionIndustrialProcessingReasonEnum
           },
           notAcceptableActionReDispatchReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionNotAcceptableActionReDispatchReasonEnum
           },
           notAcceptableActionUseForOtherPurposesReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionNotAcceptableActionUseForOtherPurposesReasonEnum
           },
           notAcceptableDestructionReason: {
             type: string,
@@ -1270,11 +1782,17 @@
           },
           chedppNotAcceptableReasons: {
             type: array,
+            items: {
+              $ref: #/components/schemas/ChedppNotAcceptableReason
+            },
             description: List of details for individual chedpp not acceptable reasons,
             nullable: true
           },
           notAcceptableReasons: {
             type: array,
+            items: {
+              type: string
+            },
             description: If the consignment was not accepted what was the reason,
             nullable: true
           },
@@ -1297,8 +1815,7 @@
             $ref: #/components/schemas/Party2
           },
           specificWarehouseNonConformingConsignment: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionSpecificWarehouseNonConformingConsignmentEnum
           },
           temporaryDeadline: {
             type: string,
@@ -1306,20 +1823,16 @@
             nullable: true
           },
           decisionEnum: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionDecisionEnum
           },
           freeCirculationPurpose: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionFreeCirculationPurposeEnum
           },
           definitiveImportPurpose: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionDefinitiveImportPurposeEnum
           },
           ifChanneledOption: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DecisionIfChanneledOptionEnum
           },
           customWarehouseRegisteredNumber: {
             type: string,
@@ -1389,6 +1902,45 @@
         },
         nullable: true
       },
+      DecisionDecisionEnum: {
+        type: integer
+      },
+      DecisionDefinitiveImportPurposeEnum: {
+        type: integer
+      },
+      DecisionFreeCirculationPurposeEnum: {
+        type: integer
+      },
+      DecisionIfChanneledOptionEnum: {
+        type: integer
+      },
+      DecisionNotAcceptableActionDestructionReasonEnum: {
+        type: integer
+      },
+      DecisionNotAcceptableActionEntryRefusalReasonEnum: {
+        type: integer
+      },
+      DecisionNotAcceptableActionEnum: {
+        type: integer
+      },
+      DecisionNotAcceptableActionIndustrialProcessingReasonEnum: {
+        type: integer
+      },
+      DecisionNotAcceptableActionQuarantineImposedReasonEnum: {
+        type: integer
+      },
+      DecisionNotAcceptableActionReDispatchReasonEnum: {
+        type: integer
+      },
+      DecisionNotAcceptableActionSpecialTreatmentReasonEnum: {
+        type: integer
+      },
+      DecisionNotAcceptableActionUseForOtherPurposesReasonEnum: {
+        type: integer
+      },
+      DecisionSpecificWarehouseNonConformingConsignmentEnum: {
+        type: integer
+      },
       DetailsOnReExport: {
         type: object,
         properties: {
@@ -1403,8 +1955,7 @@
             nullable: true
           },
           transportType: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/DetailsOnReExportTransportTypeEnum
           },
           document: {
             type: string,
@@ -1424,6 +1975,9 @@
         },
         nullable: true
       },
+      DetailsOnReExportTransportTypeEnum: {
+        type: integer
+      },
       EconomicOperator: {
         type: object,
         properties: {
@@ -1433,12 +1987,10 @@
             nullable: true
           },
           type: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/EconomicOperatorTypeEnum
           },
           status: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/EconomicOperatorStatusEnum
           },
           companyName: {
             type: string,
@@ -1480,12 +2032,10 @@
             nullable: true
           },
           type: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/EconomicOperatorTypeEnum
           },
           status: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/EconomicOperatorStatusEnum
           },
           companyName: {
             type: string,
@@ -1518,12 +2068,86 @@
         },
         nullable: true
       },
+      EconomicOperator3: {
+        type: object,
+        properties: {
+          id: {
+            type: string,
+            description: The unique identifier of this organisation,
+            nullable: true
+          },
+          type: {
+            $ref: #/components/schemas/EconomicOperatorTypeEnum
+          },
+          status: {
+            $ref: #/components/schemas/EconomicOperatorStatusEnum
+          },
+          companyName: {
+            type: string,
+            description: Name of organisation,
+            nullable: true
+          },
+          individualName: {
+            type: string,
+            description: Individual name,
+            nullable: true
+          },
+          address: {
+            $ref: #/components/schemas/#/properties/partOne/properties/consignor/properties/address
+          },
+          approvalNumber: {
+            type: string,
+            description: Approval Number which identifies an Economic Operator unambiguously per type of organisation per country.,
+            nullable: true
+          },
+          otherIdentifier: {
+            type: string,
+            description: Optional Business General Number, often named Aggregation Code, which identifies an Economic Operator.,
+            nullable: true
+          },
+          tracesId: {
+            type: integer,
+            description: Traces Id of the economic operator generated by IPAFFS,
+            format: int32
+          }
+        }
+      },
+      EconomicOperatorStatusEnum: {
+        type: integer
+      },
+      EconomicOperatorTypeEnum: {
+        type: integer
+      },
       ExternalReference: {
         type: object,
         properties: {
           system: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/ExternalReferenceSystemEnum
+          },
+          reference: {
+            type: string,
+            description: Reference which is added to the notification when either sent to the downstream system or received from it,
+            nullable: true
+          },
+          exactMatch: {
+            type: boolean,
+            description: Details whether there's an exact match between the external source and IPAFFS data
+          },
+          verifiedByImporter: {
+            type: boolean,
+            description: Details whether an importer has verified the data from an external source
+          },
+          verifiedByInspector: {
+            type: boolean,
+            description: Details whether an inspector has verified the data from an external source
+          }
+        }
+      },
+      ExternalReference2: {
+        type: object,
+        properties: {
+          system: {
+            $ref: #/components/schemas/ExternalReferenceSystemEnum
           },
           reference: {
             type: string,
@@ -1545,12 +2169,14 @@
         },
         nullable: true
       },
+      ExternalReferenceSystemEnum: {
+        type: integer
+      },
       FeedbackInformation: {
         type: object,
         properties: {
           authorityType: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/FeedbackInformationAuthorityTypeEnum
           },
           consignmentArrival: {
             type: boolean,
@@ -1573,6 +2199,9 @@
         },
         nullable: true
       },
+      FeedbackInformationAuthorityTypeEnum: {
+        type: integer
+      },
       HelloWorldResponse: {
         type: object,
         properties: {
@@ -1586,6 +2215,21 @@
           }
         },
         description: The hello world response
+      },
+      IdentificationDetails: {
+        type: object,
+        properties: {
+          identificationDetail: {
+            type: string,
+            description: Identification detail,
+            nullable: true
+          },
+          identificationDescription: {
+            type: string,
+            description: Identification description,
+            nullable: true
+          }
+        }
       },
       ImpactOfTransportOnAnimals: {
         type: object,
@@ -1634,6 +2278,9 @@
         properties: {
           auditEntries: {
             type: array,
+            items: {
+              $ref: #/components/schemas/AuditEntry
+            },
             nullable: true
           },
           relationships: {
@@ -1644,6 +2291,9 @@
           },
           commodities: {
             type: array,
+            items: {
+              $ref: #/components/schemas/CommodityComplement
+            },
             nullable: true
           },
           ipaffsId: {
@@ -1658,6 +2308,9 @@
           },
           externalReferences: {
             type: array,
+            items: {
+              $ref: #/components/schemas/ExternalReference
+            },
             description: List of external references, which relate to downstream services,
             nullable: true
           },
@@ -1680,8 +2333,7 @@
             $ref: #/components/schemas/UserInformation
           },
           importNotificationType: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/ImportNotificationTypeEnum
           },
           replaces: {
             type: string,
@@ -1694,8 +2346,7 @@
             nullable: true
           },
           status: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/ImportNotificationStatusEnum
           },
           splitConsignment: {
             $ref: #/components/schemas/SplitConsignment
@@ -1738,6 +2389,9 @@
           },
           consignmentValidations: {
             type: array,
+            items: {
+              $ref: #/components/schemas/#/properties/partOne/properties/consignmentValidations/items
+            },
             description: Validation messages for whole notification,
             nullable: true
           },
@@ -1779,6 +2433,47 @@
           }
         }
       },
+      ImportNotificationStatusEnum: {
+        type: integer
+      },
+      ImportNotificationTypeEnum: {
+        type: integer
+      },
+      InspectionCheck: {
+        type: object,
+        properties: {
+          type: {
+            $ref: #/components/schemas/InspectionCheckTypeEnum
+          },
+          status: {
+            $ref: #/components/schemas/InspectionCheckStatusEnum
+          },
+          reason: {
+            type: string,
+            description: Reason for the status if applicable,
+            nullable: true
+          },
+          otherReason: {
+            type: string,
+            description: Other reason text when selected reason is 'Other',
+            nullable: true
+          },
+          isSelectedForChecks: {
+            type: boolean,
+            description: Has commodity been selected for checks?
+          },
+          hasChecksComplete: {
+            type: boolean,
+            description: Has commodity completed this type of check
+          }
+        }
+      },
+      InspectionCheckStatusEnum: {
+        type: integer
+      },
+      InspectionCheckTypeEnum: {
+        type: integer
+      },
       InspectionOverride: {
         type: object,
         properties: {
@@ -1817,6 +2512,27 @@
         },
         nullable: true
       },
+      Inspector: {
+        type: object,
+        properties: {
+          name: {
+            type: string,
+            description: Name of inspector,
+            nullable: true
+          },
+          phone: {
+            type: string,
+            description: Phone number of inspector,
+            nullable: true
+          },
+          email: {
+            type: string,
+            description: Email address of inspector,
+            nullable: true
+          }
+        },
+        nullable: true
+      },
       InternationalTelephone: {
         type: object,
         properties: {
@@ -1837,12 +2553,10 @@
         type: object,
         properties: {
           riskLevel: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/JourneyRiskCategorisationResultRiskLevelEnum
           },
           riskLevelMethod: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/JourneyRiskCategorisationResultRiskLevelMethodEnum
           },
           riskLevelDateTime: {
             type: string,
@@ -1851,6 +2565,49 @@
           }
         },
         nullable: true
+      },
+      JourneyRiskCategorisationResultRiskLevelEnum: {
+        type: integer
+      },
+      JourneyRiskCategorisationResultRiskLevelMethodEnum: {
+        type: integer
+      },
+      LaboratoryTestResult: {
+        type: object,
+        properties: {
+          sampleUseByDate: {
+            type: string,
+            description: When sample was used,
+            nullable: true
+          },
+          releasedOn: {
+            type: string,
+            description: When it was released,
+            format: date-time
+          },
+          laboratoryTestMethod: {
+            type: string,
+            description: Laboratory test method,
+            nullable: true
+          },
+          results: {
+            type: string,
+            description: Result of test,
+            nullable: true
+          },
+          conclusion: {
+            $ref: #/components/schemas/LaboratoryTestResultConclusionEnum
+          },
+          labTestCreatedOn: {
+            type: string,
+            description: Date of lab test created in IPAFFS,
+            format: date-time
+          }
+        },
+        nullable: true
+      },
+      LaboratoryTestResultConclusionEnum: {
+        type: integer
       },
       LaboratoryTests: {
         type: object,
@@ -1861,23 +2618,27 @@
             format: date-time
           },
           testReason: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/LaboratoryTestsTestReasonEnum
           },
           singleLaboratoryTests: {
             type: array,
+            items: {
+              $ref: #/components/schemas/SingleLaboratoryTest
+            },
             description: List of details of individual tests performed or to be performed,
             nullable: true
           }
         },
         nullable: true
       },
+      LaboratoryTestsTestReasonEnum: {
+        type: integer
+      },
       MeansOfTransport: {
         type: object,
         properties: {
           type: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/MeansOfTransportTypeEnum
           },
           document: {
             type: string,
@@ -1891,6 +2652,29 @@
           }
         },
         nullable: true
+      },
+      MeansOfTransportTypeEnum: {
+        type: integer
+      },
+      NominatedContact: {
+        type: object,
+        properties: {
+          name: {
+            type: string,
+            description: Name of nominated contact,
+            nullable: true
+          },
+          email: {
+            type: string,
+            description: Email address of nominated contact,
+            nullable: true
+          },
+          telephone: {
+            type: string,
+            description: Telephone number of nominated contact,
+            nullable: true
+          }
+        }
       },
       NotificationTdmRelationships: {
         type: object,
@@ -2042,8 +2826,7 @@
         type: object,
         properties: {
           typeOfImp: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PartOneTypeOfImpEnum
           },
           personResponsible: {
             $ref: #/components/schemas/Party
@@ -2087,6 +2870,9 @@
           },
           additionalPermanentAddresses: {
             type: array,
+            items: {
+              $ref: #/components/schemas/EconomicOperator3
+            },
             description: List of additional permanent addresses,
             nullable: true
           },
@@ -2160,6 +2946,9 @@
           },
           sealsContainers: {
             type: array,
+            items: {
+              $ref: #/components/schemas/SealContainer
+            },
             description: Array that contains pair of seal number and container number,
             nullable: true
           },
@@ -2173,6 +2962,9 @@
           },
           consignmentValidations: {
             type: array,
+            items: {
+              $ref: #/components/schemas/ValidationMessageCode
+            },
             description: Validation messages for whole notification,
             nullable: true
           },
@@ -2200,6 +2992,9 @@
           },
           nominatedContacts: {
             type: array,
+            items: {
+              $ref: #/components/schemas/NominatedContact
+            },
             description: List of nominated contacts to receive text and email notifications,
             nullable: true
           },
@@ -2223,8 +3018,7 @@
             $ref: #/components/schemas/CommonUserCharge
           },
           provideCtcMrn: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PartOneProvideCtcMrnEnum
           },
           arrivedOn: {
             type: string,
@@ -2239,18 +3033,26 @@
         },
         nullable: true
       },
+      PartOneProvideCtcMrnEnum: {
+        type: integer
+      },
+      PartOneTypeOfImpEnum: {
+        type: integer
+      },
       PartThree: {
         type: object,
         properties: {
           controlStatus: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PartThreeControlStatusEnum
           },
           control: {
             $ref: #/components/schemas/Control
           },
           consignmentValidations: {
             type: array,
+            items: {
+              $ref: #/components/schemas/#/properties/partOne/properties/consignmentValidations/items
+            },
             description: Validation messages for Part 3 - Control,
             nullable: true
           },
@@ -2266,6 +3068,9 @@
           }
         },
         nullable: true
+      },
+      PartThreeControlStatusEnum: {
+        type: integer
       },
       PartTwo: {
         type: object,
@@ -2292,11 +3097,17 @@
           },
           resealedContainers: {
             type: array,
+            items: {
+              type: string
+            },
             description: (Deprecated - To be removed as part of IMTA-6256) Resealed containers information details,
             nullable: true
           },
           resealedContainersMappings: {
             type: array,
+            items: {
+              $ref: #/components/schemas/#/properties/partOne/properties/sealsContainers/items
+            },
             description: Resealed containers information details,
             nullable: true
           },
@@ -2323,6 +3134,9 @@
           },
           consignmentValidations: {
             type: array,
+            items: {
+              $ref: #/components/schemas/#/properties/partOne/properties/consignmentValidations/items
+            },
             description: Validation messages for Part 2 - Decision,
             nullable: true
           },
@@ -2333,6 +3147,9 @@
           },
           accompanyingDocuments: {
             type: array,
+            items: {
+              $ref: #/components/schemas/#/properties/partOne/properties/veterinaryInformation/properties/accompanyingDocuments/items
+            },
             description: Accompanying documents,
             nullable: true
           },
@@ -2390,6 +3207,9 @@
           },
           addresses: {
             type: array,
+            items: {
+              type: string
+            },
             description: Addresses,
             nullable: true
           },
@@ -2419,8 +3239,7 @@
             format: int32
           },
           type: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PartyTypeEnum
           },
           approvalNumber: {
             type: string,
@@ -2502,8 +3321,7 @@
             format: int32
           },
           type: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PartyTypeEnum
           },
           approvalNumber: {
             type: string,
@@ -2524,6 +3342,27 @@
             type: string,
             description: Email number of party,
             nullable: true
+          }
+        },
+        nullable: true
+      },
+      PartyTypeEnum: {
+        type: integer
+      },
+      Phsi: {
+        type: object,
+        properties: {
+          documentCheck: {
+            type: boolean,
+            description: Whether or not a documentary check is required for PHSI
+          },
+          identityCheck: {
+            type: boolean,
+            description: Whether or not an identity check is required for PHSI
+          },
+          physicalCheck: {
+            type: boolean,
+            description: Whether or not a physical check is required for PHSI
           }
         },
         nullable: true
@@ -2577,8 +3416,7 @@
             description: Does consignment conforms to UK laws
           },
           internalMarketPurpose: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PurposeInternalMarketPurposeEnum
           },
           thirdCountryTranshipment: {
             type: string,
@@ -2586,8 +3424,7 @@
             nullable: true
           },
           forNonConforming: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PurposeForNonConformingEnum
           },
           regNumber: {
             type: string,
@@ -2616,12 +3453,14 @@
           },
           transitThirdCountries: {
             type: array,
+            items: {
+              type: string
+            },
             description: Countries that consignment is transited through,
             nullable: true
           },
           forImportOrAdmission: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PurposeForImportOrAdmissionEnum
           },
           exitDate: {
             type: string,
@@ -2634,8 +3473,7 @@
             nullable: true
           },
           purposeGroup: {
-            type: integer,
-            format: int32
+            $ref: #/components/schemas/PurposePurposeGroupEnum
           },
           estimatedArrivedAtPortOfExit: {
             type: string,
@@ -2644,6 +3482,49 @@
           }
         },
         nullable: true
+      },
+      PurposeForImportOrAdmissionEnum: {
+        type: integer
+      },
+      PurposeForNonConformingEnum: {
+        type: integer
+      },
+      PurposeInternalMarketPurposeEnum: {
+        type: integer
+      },
+      PurposePurposeGroupEnum: {
+        type: integer
+      },
+      RelationshipDataItem: {
+        type: object,
+        properties: {
+          matched: {
+            type: boolean
+          },
+          type: {
+            type: string,
+            nullable: true
+          },
+          id: {
+            type: string,
+            nullable: true
+          },
+          links: {
+            $ref: #/components/schemas/ResourceLink
+          },
+          sourceItem: {
+            type: integer,
+            format: int32
+          },
+          destinationItem: {
+            type: integer,
+            format: int32
+          },
+          matchingLevel: {
+            type: integer,
+            format: int32
+          }
+        }
       },
       RelationshipLinks: {
         type: object,
@@ -2659,11 +3540,24 @@
         },
         nullable: true
       },
+      ResourceLink: {
+        type: object,
+        properties: {
+          self: {
+            type: string,
+            nullable: true
+          }
+        },
+        nullable: true
+      },
       RiskAssessmentResult: {
         type: object,
         properties: {
           commodityResults: {
             type: array,
+            items: {
+              $ref: #/components/schemas/CommodityRiskResult2
+            },
             description: List of risk assessed commodities,
             nullable: true
           },
@@ -2680,6 +3574,9 @@
         properties: {
           transitingStates: {
             type: array,
+            items: {
+              type: string
+            },
             nullable: true
           }
         },
@@ -2708,6 +3605,57 @@
         },
         nullable: true
       },
+      SealContainer: {
+        type: object,
+        properties: {
+          sealNumber: {
+            type: string,
+            nullable: true
+          },
+          containerNumber: {
+            type: string,
+            nullable: true
+          },
+          officialSeal: {
+            type: boolean
+          },
+          resealedSealNumber: {
+            type: string,
+            nullable: true
+          }
+        }
+      },
+      SingleLaboratoryTest: {
+        type: object,
+        properties: {
+          commodityCode: {
+            type: string,
+            description: Commodity code for which lab test was ordered,
+            nullable: true
+          },
+          speciesId: {
+            type: integer,
+            description: Species id of commodity for which lab test was ordered,
+            format: int32
+          },
+          tracesId: {
+            type: integer,
+            description: TRACES ID,
+            format: int32
+          },
+          testName: {
+            type: string,
+            description: Test name,
+            nullable: true
+          },
+          applicant: {
+            $ref: #/components/schemas/Applicant
+          },
+          laboratoryTestResult: {
+            $ref: #/components/schemas/LaboratoryTestResult
+          }
+        }
+      },
       SplitConsignment: {
         type: object,
         properties: {
@@ -2735,6 +3683,9 @@
           },
           data: {
             type: array,
+            items: {
+              $ref: #/components/schemas/RelationshipDataItem
+            },
             nullable: true
           }
         },
@@ -2768,14 +3719,32 @@
         },
         nullable: true
       },
+      ValidationMessageCode: {
+        type: object,
+        properties: {
+          field: {
+            type: string,
+            description: Field,
+            nullable: true
+          },
+          code: {
+            type: string,
+            description: Code,
+            nullable: true
+          }
+        }
+      },
       VeterinaryInformation: {
         type: object,
         properties: {
           establishmentsOfOriginExternalReference: {
-            $ref: #/components/schemas/ExternalReference
+            $ref: #/components/schemas/ExternalReference2
           },
           establishmentsOfOrigins: {
             type: array,
+            items: {
+              $ref: #/components/schemas/ApprovedEstablishment
+            },
             description: List of establishments which were approved by UK to issue veterinary documents,
             nullable: true
           },
@@ -2791,21 +3760,33 @@
           },
           accompanyingDocumentNumbers: {
             type: array,
+            items: {
+              type: string
+            },
             description: Additional documents,
             nullable: true
           },
           accompanyingDocuments: {
             type: array,
+            items: {
+              $ref: #/components/schemas/AccompanyingDocument
+            },
             description: Accompanying documents,
             nullable: true
           },
           catchCertificateAttachments: {
             type: array,
+            items: {
+              $ref: #/components/schemas/CatchCertificateAttachment
+            },
             description: Catch certificate attachments,
             nullable: true
           },
           identificationDetails: {
             type: array,
+            items: {
+              $ref: #/components/schemas/IdentificationDetails
+            },
             description: Details helpful for identification,
             nullable: true
           }

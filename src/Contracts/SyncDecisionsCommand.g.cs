@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts
     public class SyncDecisionsCommand
     {
         [JsonPropertyName("syncPeriod")]
-        public int SyncPeriod { get; init; }
+        public SyncPeriod SyncPeriod { get; init; }
 
         [JsonPropertyName("rootFolder")]
         public string RootFolder { get; init; }

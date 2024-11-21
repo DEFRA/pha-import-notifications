@@ -15,6 +15,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public OfficialInspector OfficialInspector { get; init; }
 
         [JsonPropertyName("consignmentLeave")]
-        public int ConsignmentLeave { get; init; }
+        public ControlConsignmentLeaveEnum ConsignmentLeave { get; init; }
     }
 }

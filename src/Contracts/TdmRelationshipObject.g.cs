@@ -12,6 +12,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public RelationshipLinks Links { get; init; }
 
         [JsonPropertyName("data")]
-        public Array Data { get; init; }
+        public List<RelationshipDataItem> Data { get; init; }
     }
 }

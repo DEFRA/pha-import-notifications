@@ -27,11 +27,11 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("resealedContainers")]
         [Description("(Deprecated - To be removed as part of IMTA-6256) Resealed containers information details")]
-        public Array ResealedContainers { get; init; }
+        public List<string> ResealedContainers { get; init; }
 
         [JsonPropertyName("resealedContainersMappings")]
         [Description("Resealed containers information details")]
-        public Array ResealedContainersMappings { get; init; }
+        public List<SealContainer> ResealedContainersMappings { get; init; }
 
         [JsonPropertyName("controlAuthority")]
         public ControlAuthority ControlAuthority { get; init; }
@@ -53,7 +53,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("consignmentValidations")]
         [Description("Validation messages for Part 2 - Decision")]
-        public Array ConsignmentValidations { get; init; }
+        public List<ValidationMessageCode> ConsignmentValidations { get; init; }
 
         [JsonPropertyName("checkedOn")]
         [Description("User entered date when the checks were completed")]
@@ -61,7 +61,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("accompanyingDocuments")]
         [Description("Accompanying documents")]
-        public Array AccompanyingDocuments { get; init; }
+        public List<AccompanyingDocument> AccompanyingDocuments { get; init; }
 
         [JsonPropertyName("phsiAutoCleared")]
         [Description("Have the PHSI regulated commodities been auto cleared?")]

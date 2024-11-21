@@ -22,7 +22,7 @@ namespace Defra.PhaImportNotifications.Contracts
         public string Results { get; init; }
 
         [JsonPropertyName("conclusion")]
-        public int Conclusion { get; init; }
+        public LaboratoryTestResultConclusionEnum Conclusion { get; init; }
 
         [JsonPropertyName("labTestCreatedOn")]
         [Description("Date of lab test created in IPAFFS")]

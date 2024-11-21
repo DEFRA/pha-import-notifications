@@ -20,10 +20,10 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("catchCertificates")]
         [Description("Catch certificate details")]
-        public Array CatchCertificates { get; init; }
+        public List<CatchCertificates> CatchCertificates { get; init; }
 
         [JsonPropertyName("identifiers")]
         [Description("Data used to identify the complements inside an IMP consignment")]
-        public Array Identifiers { get; init; }
+        public List<Identifiers> Identifiers { get; init; }
     }
 }

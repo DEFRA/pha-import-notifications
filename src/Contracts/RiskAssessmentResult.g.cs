@@ -7,7 +7,7 @@ namespace Defra.PhaImportNotifications.Contracts
     {
         [JsonPropertyName("commodityResults")]
         [Description("List of risk assessed commodities")]
-        public Array CommodityResults { get; init; }
+        public List<CommodityRiskResult> CommodityResults { get; init; }
 
         [JsonPropertyName("assessedOn")]
         [Description("Date and time of assessment")]

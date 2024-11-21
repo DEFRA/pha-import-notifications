@@ -29,6 +29,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool IuuCheckRequired { get; init; }
 
         [JsonPropertyName("iuuOption")]
-        public int IuuOption { get; init; }
+        public ControlAuthorityIuuOptionEnum IuuOption { get; init; }
     }
 }

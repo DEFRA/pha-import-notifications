@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts
     public class ExternalReference
     {
         [JsonPropertyName("system")]
-        public int System { get; init; }
+        public ExternalReferenceSystemEnum System { get; init; }
 
         [JsonPropertyName("reference")]
         [Description("Reference which is added to the notification when either sent to the downstream system or received from it")]

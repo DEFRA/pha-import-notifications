@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts
     public class ImportNotification
     {
         [JsonPropertyName("auditEntries")]
-        public Array AuditEntries { get; init; }
+        public List<AuditEntry> AuditEntries { get; init; }
 
         [JsonPropertyName("relationships")]
         public NotificationTdmRelationships Relationships { get; init; }
@@ -15,7 +15,7 @@ namespace Defra.PhaImportNotifications.Contracts
         public Commodities CommoditiesSummary { get; init; }
 
         [JsonPropertyName("commodities")]
-        public Array Commodities { get; init; }
+        public List<CommodityComplement> Commodities { get; init; }
 
         [JsonPropertyName("ipaffsId")]
         [Description("The IPAFFS ID number for this notification.")]
@@ -27,7 +27,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("externalReferences")]
         [Description("List of external references, which relate to downstream services")]
-        public Array ExternalReferences { get; init; }
+        public List<ExternalReference> ExternalReferences { get; init; }
 
         [JsonPropertyName("referenceNumber")]
         [Description("Reference number of the notification")]
@@ -45,7 +45,7 @@ namespace Defra.PhaImportNotifications.Contracts
         public UserInformation LastUpdatedBy { get; init; }
 
         [JsonPropertyName("importNotificationType")]
-        public int ImportNotificationType { get; init; }
+        public ImportNotificationTypeEnum ImportNotificationType { get; init; }
 
         [JsonPropertyName("replaces")]
         [Description("Reference number of notification that was replaced by this one")]
@@ -56,7 +56,7 @@ namespace Defra.PhaImportNotifications.Contracts
         public string ReplacedBy { get; init; }
 
         [JsonPropertyName("status")]
-        public int Status { get; init; }
+        public ImportNotificationStatusEnum Status { get; init; }
 
         [JsonPropertyName("splitConsignment")]
         public SplitConsignment SplitConsignment { get; init; }
@@ -97,7 +97,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("consignmentValidations")]
         [Description("Validation messages for whole notification")]
-        public Array ConsignmentValidations { get; init; }
+        public List<ValidationMessageCode> ConsignmentValidations { get; init; }
 
         [JsonPropertyName("agencyOrganisationId")]
         [Description("Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation")]

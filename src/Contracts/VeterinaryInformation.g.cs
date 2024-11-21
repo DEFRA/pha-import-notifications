@@ -10,7 +10,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("establishmentsOfOrigins")]
         [Description("List of establishments which were approved by UK to issue veterinary documents")]
-        public Array EstablishmentsOfOrigins { get; init; }
+        public List<ApprovedEstablishment> EstablishmentsOfOrigins { get; init; }
 
         [JsonPropertyName("veterinaryDocument")]
         [Description("Veterinary document identification")]
@@ -22,18 +22,18 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("accompanyingDocumentNumbers")]
         [Description("Additional documents")]
-        public Array AccompanyingDocumentNumbers { get; init; }
+        public List<string> AccompanyingDocumentNumbers { get; init; }
 
         [JsonPropertyName("accompanyingDocuments")]
         [Description("Accompanying documents")]
-        public Array AccompanyingDocuments { get; init; }
+        public List<AccompanyingDocument> AccompanyingDocuments { get; init; }
 
         [JsonPropertyName("catchCertificateAttachments")]
         [Description("Catch certificate attachments")]
-        public Array CatchCertificateAttachments { get; init; }
+        public List<CatchCertificateAttachment> CatchCertificateAttachments { get; init; }
 
         [JsonPropertyName("identificationDetails")]
         [Description("Details helpful for identification")]
-        public Array IdentificationDetails { get; init; }
+        public List<IdentificationDetails> IdentificationDetails { get; init; }
     }
 }

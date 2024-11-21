@@ -19,7 +19,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("types")]
         [Description("Types of approved establishment")]
-        public Array Types { get; init; }
+        public List<string> Types { get; init; }
 
         [JsonPropertyName("approvalNumber")]
         [Description("Approval number")]

@@ -23,6 +23,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("species")]
         [Description("List of species imported under this catch certificate")]
-        public Array Species { get; init; }
+        public List<string> Species { get; init; }
     }
 }

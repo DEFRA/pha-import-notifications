@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts
     public class AccompanyingDocument
     {
         [JsonPropertyName("documentType")]
-        public int DocumentType { get; init; }
+        public AccompanyingDocumentDocumentTypeEnum DocumentType { get; init; }
 
         [JsonPropertyName("documentReference")]
         [Description("Additional document reference")]

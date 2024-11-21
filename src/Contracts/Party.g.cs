@@ -27,7 +27,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("addresses")]
         [Description("Addresses")]
-        public Array Addresses { get; init; }
+        public List<string> Addresses { get; init; }
 
         [JsonPropertyName("county")]
         [Description("County")]
@@ -50,7 +50,7 @@ namespace Defra.PhaImportNotifications.Contracts
         public int TracesId { get; init; }
 
         [JsonPropertyName("type")]
-        public int Type { get; init; }
+        public PartyTypeEnum Type { get; init; }
 
         [JsonPropertyName("approvalNumber")]
         [Description("Approval number")]

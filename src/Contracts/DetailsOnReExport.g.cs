@@ -14,7 +14,7 @@ namespace Defra.PhaImportNotifications.Contracts
         public string MeansOfTransportNo { get; init; }
 
         [JsonPropertyName("transportType")]
-        public int TransportType { get; init; }
+        public DetailsOnReExportTransportTypeEnum TransportType { get; init; }
 
         [JsonPropertyName("document")]
         [Description("Document issued for re-export")]

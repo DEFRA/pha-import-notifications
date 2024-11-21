@@ -10,28 +10,28 @@ namespace Defra.PhaImportNotifications.Contracts
         public bool ConsignmentAcceptable { get; init; }
 
         [JsonPropertyName("notAcceptableAction")]
-        public int NotAcceptableAction { get; init; }
+        public DecisionNotAcceptableActionEnum NotAcceptableAction { get; init; }
 
         [JsonPropertyName("notAcceptableActionDestructionReason")]
-        public int NotAcceptableActionDestructionReason { get; init; }
+        public DecisionNotAcceptableActionDestructionReasonEnum NotAcceptableActionDestructionReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionEntryRefusalReason")]
-        public int NotAcceptableActionEntryRefusalReason { get; init; }
+        public DecisionNotAcceptableActionEntryRefusalReasonEnum NotAcceptableActionEntryRefusalReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionQuarantineImposedReason")]
-        public int NotAcceptableActionQuarantineImposedReason { get; init; }
+        public DecisionNotAcceptableActionQuarantineImposedReasonEnum NotAcceptableActionQuarantineImposedReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionSpecialTreatmentReason")]
-        public int NotAcceptableActionSpecialTreatmentReason { get; init; }
+        public DecisionNotAcceptableActionSpecialTreatmentReasonEnum NotAcceptableActionSpecialTreatmentReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionIndustrialProcessingReason")]
-        public int NotAcceptableActionIndustrialProcessingReason { get; init; }
+        public DecisionNotAcceptableActionIndustrialProcessingReasonEnum NotAcceptableActionIndustrialProcessingReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionReDispatchReason")]
-        public int NotAcceptableActionReDispatchReason { get; init; }
+        public DecisionNotAcceptableActionReDispatchReasonEnum NotAcceptableActionReDispatchReason { get; init; }
 
         [JsonPropertyName("notAcceptableActionUseForOtherPurposesReason")]
-        public int NotAcceptableActionUseForOtherPurposesReason { get; init; }
+        public DecisionNotAcceptableActionUseForOtherPurposesReasonEnum NotAcceptableActionUseForOtherPurposesReason { get; init; }
 
         [JsonPropertyName("notAcceptableDestructionReason")]
         [Description("Filled when notAcceptableAction is equal to destruction")]
@@ -47,11 +47,11 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("chedppNotAcceptableReasons")]
         [Description("List of details for individual chedpp not acceptable reasons")]
-        public Array ChedppNotAcceptableReasons { get; init; }
+        public List<ChedppNotAcceptableReason> ChedppNotAcceptableReasons { get; init; }
 
         [JsonPropertyName("notAcceptableReasons")]
         [Description("If the consignment was not accepted what was the reason")]
-        public Array NotAcceptableReasons { get; init; }
+        public List<string> NotAcceptableReasons { get; init; }
 
         [JsonPropertyName("notAcceptableCountry")]
         [Description("2 digits ISO code of country (not acceptable country can be empty)")]
@@ -69,23 +69,23 @@ namespace Defra.PhaImportNotifications.Contracts
         public Party DetailsOfControlledDestinations { get; init; }
 
         [JsonPropertyName("specificWarehouseNonConformingConsignment")]
-        public int SpecificWarehouseNonConformingConsignment { get; init; }
+        public DecisionSpecificWarehouseNonConformingConsignmentEnum SpecificWarehouseNonConformingConsignment { get; init; }
 
         [JsonPropertyName("temporaryDeadline")]
         [Description("Deadline when consignment has to leave borders")]
         public string TemporaryDeadline { get; init; }
 
         [JsonPropertyName("decisionEnum")]
-        public int DecisionEnum { get; init; }
+        public DecisionDecisionEnum DecisionEnum { get; init; }
 
         [JsonPropertyName("freeCirculationPurpose")]
-        public int FreeCirculationPurpose { get; init; }
+        public DecisionFreeCirculationPurposeEnum FreeCirculationPurpose { get; init; }
 
         [JsonPropertyName("definitiveImportPurpose")]
-        public int DefinitiveImportPurpose { get; init; }
+        public DecisionDefinitiveImportPurposeEnum DefinitiveImportPurpose { get; init; }
 
         [JsonPropertyName("ifChanneledOption")]
-        public int IfChanneledOption { get; init; }
+        public DecisionIfChanneledOptionEnum IfChanneledOption { get; init; }
 
         [JsonPropertyName("customWarehouseRegisteredNumber")]
         [Description("Custom warehouse registered number")]

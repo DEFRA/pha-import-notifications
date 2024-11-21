@@ -10,10 +10,10 @@ namespace Defra.PhaImportNotifications.Contracts
         public string Id { get; init; }
 
         [JsonPropertyName("type")]
-        public int Type { get; init; }
+        public EconomicOperatorTypeEnum Type { get; init; }
 
         [JsonPropertyName("status")]
-        public int Status { get; init; }
+        public EconomicOperatorStatusEnum Status { get; init; }
 
         [JsonPropertyName("companyName")]
         [Description("Name of organisation")]

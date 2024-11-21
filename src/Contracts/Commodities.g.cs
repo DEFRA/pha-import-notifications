@@ -70,6 +70,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string AnimalsCertifiedAs { get; init; }
 
         [JsonPropertyName("commodityIntendedFor")]
-        public int CommodityIntendedFor { get; init; }
+        public CommoditiesCommodityIntendedForEnum CommodityIntendedFor { get; init; }
     }
 }

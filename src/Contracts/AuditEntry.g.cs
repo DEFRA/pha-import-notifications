@@ -24,6 +24,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public string Status { get; init; }
 
         [JsonPropertyName("diff")]
-        public Array Diff { get; init; }
+        public List<AuditDiffEntry> Diff { get; init; }
     }
 }

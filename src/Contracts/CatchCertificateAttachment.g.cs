@@ -15,6 +15,6 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("catchCertificateDetails")]
         [Description("List of catch certificate details")]
-        public Array CatchCertificateDetails { get; init; }
+        public List<CatchCertificateDetails> CatchCertificateDetails { get; init; }
     }
 }

@@ -84,6 +84,6 @@ namespace Defra.PhaImportNotifications.Contracts
         public CommodityRiskResult RiskAssesment { get; init; }
 
         [JsonPropertyName("checks")]
-        public Array Checks { get; init; }
+        public List<InspectionCheck> Checks { get; init; }
     }
 }

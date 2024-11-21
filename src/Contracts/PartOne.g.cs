@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts
     public class PartOne
     {
         [JsonPropertyName("typeOfImp")]
-        public int TypeOfImp { get; init; }
+        public PartOneTypeOfImpEnum TypeOfImp { get; init; }
 
         [JsonPropertyName("personResponsible")]
         public Party PersonResponsible { get; init; }
@@ -49,7 +49,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("additionalPermanentAddresses")]
         [Description("List of additional permanent addresses")]
-        public Array AdditionalPermanentAddresses { get; init; }
+        public List<EconomicOperator> AdditionalPermanentAddresses { get; init; }
 
         [JsonPropertyName("cphNumber")]
         [Description("Charity Parish Holding number")]
@@ -115,7 +115,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("sealsContainers")]
         [Description("Array that contains pair of seal number and container number")]
-        public Array SealsContainers { get; init; }
+        public List<SealContainer> SealsContainers { get; init; }
 
         [JsonPropertyName("submissionDate")]
         [Description("Date and time when the notification was submitted")]
@@ -126,7 +126,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("consignmentValidations")]
         [Description("Validation messages for whole notification")]
-        public Array ConsignmentValidations { get; init; }
+        public List<ValidationMessageCode> ConsignmentValidations { get; init; }
 
         [JsonPropertyName("complexCommoditySelected")]
         [Description("Was complex commodity selected. Indicating if importer provided commodity code.")]
@@ -149,7 +149,7 @@ namespace Defra.PhaImportNotifications.Contracts
 
         [JsonPropertyName("nominatedContacts")]
         [Description("List of nominated contacts to receive text and email notifications")]
-        public Array NominatedContacts { get; init; }
+        public List<NominatedContact> NominatedContacts { get; init; }
 
         [JsonPropertyName("originalEstimatedDateTime")]
         [Description("Original estimated date time of arrival")]
@@ -170,7 +170,7 @@ namespace Defra.PhaImportNotifications.Contracts
         public CommonUserCharge CommonUserCharge { get; init; }
 
         [JsonPropertyName("provideCtcMrn")]
-        public int ProvideCtcMrn { get; init; }
+        public PartOneProvideCtcMrnEnum ProvideCtcMrn { get; init; }
 
         [JsonPropertyName("arrivedOn")]
         [Description("DateTime")]

@@ -10,10 +10,10 @@ namespace Defra.PhaImportNotifications.Contracts
         public DateTime TestedOn { get; init; }
 
         [JsonPropertyName("testReason")]
-        public int TestReason { get; init; }
+        public LaboratoryTestsTestReasonEnum TestReason { get; init; }
 
         [JsonPropertyName("singleLaboratoryTests")]
         [Description("List of details of individual tests performed or to be performed")]
-        public Array SingleLaboratoryTests { get; init; }
+        public List<SingleLaboratoryTest> SingleLaboratoryTests { get; init; }
     }
 }
