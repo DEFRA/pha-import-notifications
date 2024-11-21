@@ -8,6 +8,8 @@ using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Http;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -59,6 +61,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         options.SerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
         options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
+    builder.Services.AddProblemDetails();
     builder.Services.AddHealthChecks();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddOpenApi(options =>
@@ -149,6 +152,42 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
         options.RoutePrefix = "redoc";
         options.SpecUrl = "/.well-known/openapi/v1/openapi.json";
     });
+
+    app.UseStatusCodePages();
+    app.UseExceptionHandler(
+        new ExceptionHandlerOptions
+        {
+            AllowStatusCode404Response = true,
+            ExceptionHandler = async context =>
+            {
+                var exceptionHandlerFeature = context.Features.Get<IExceptionHandlerFeature>();
+                var error = exceptionHandlerFeature?.Error;
+                string? detail = null;
+
+                if (error is BadHttpRequestException badHttpRequestException)
+                {
+                    context.Response.StatusCode = badHttpRequestException.StatusCode;
+                    detail = badHttpRequestException.Message;
+                }
+
+                if (context.RequestServices.GetRequiredService<IProblemDetailsService>() is { } problemDetailsService)
+                {
+                    await problemDetailsService.WriteAsync(
+                        new ProblemDetailsContext
+                        {
+                            HttpContext = context,
+                            AdditionalMetadata = exceptionHandlerFeature?.Endpoint?.Metadata,
+                            ProblemDetails = { Status = context.Response.StatusCode, Detail = detail },
+                        }
+                    );
+                }
+                else if (ReasonPhrases.GetReasonPhrase(context.Response.StatusCode) is { } reasonPhrase)
+                {
+                    await context.Response.WriteAsync(reasonPhrase);
+                }
+            },
+        }
+    );
 
     return app;
 }
