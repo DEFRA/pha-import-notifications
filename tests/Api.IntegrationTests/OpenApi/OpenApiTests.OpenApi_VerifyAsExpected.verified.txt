@@ -258,7 +258,7 @@
     /import-notifications/{referenceNumber}: {
       get: {
         tags: [
-          ImportNotificationEndpoint
+          Import Notifications
         ],
         summary: Get Import Notification,
         description: Get an Import Notification by reference number,
@@ -507,7 +507,7 @@
     /import-notifications-updates/{portHealthAuthority}: {
       get: {
         tags: [
-          ImportNotificationUpdatesEndpoint
+          Import Notifications Updates
         ],
         summary: Get Import Notification Updates,
         description: Get an Import Notification Updates by port health authority,
@@ -4147,10 +4147,10 @@
       name: Example Endpoints
     },
     {
-      name: ImportNotificationEndpoint
+      name: Import Notifications
     },
     {
-      name: ImportNotificationUpdatesEndpoint
+      name: Import Notifications Updates
     }
   ]
 }

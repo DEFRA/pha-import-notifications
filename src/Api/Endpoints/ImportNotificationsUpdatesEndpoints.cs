@@ -5,12 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints;
 
-public static class ImportNotificationUpdatesEndpoint
+public static class ImportNotificationsUpdatesEndpoints
 {
-    public static void MapImportNotificationUpdatesEndpoint(this IEndpointRouteBuilder app)
+    public static void MapImportNotificationsUpdatesEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("import-notifications-updates/{portHealthAuthority}/", GetAllUpdated)
             .WithName("ImportNotificationsUpdatesByReferenceNumber")
+            .WithTags("Import Notifications Updates")
             .WithSummary("Get Import Notification Updates")
             .WithDescription("Get an Import Notification Updates by port health authority")
             .Produces<PagedResponse<UpdatedImportNotification>>();

@@ -141,8 +141,8 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 
     app.MapHealthChecks("/health");
     app.MapExampleEndpoints();
-    app.MapImportNotificationEndpoints();
-    app.MapImportNotificationUpdatesEndpoint();
+    app.MapImportNotificationsEndpoints();
+    app.MapImportNotificationsUpdatesEndpoints();
 
     app.MapOpenApi("/.well-known/openapi/{documentName}/openapi.json");
     app.UseReDoc(options =>

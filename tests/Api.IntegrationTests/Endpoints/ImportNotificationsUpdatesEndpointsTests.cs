@@ -13,12 +13,12 @@ using WireMock.Server;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
-public class ImportNotificationUpdatesEndpointTests : EndpointTestBase<Program>, IClassFixture<WireMockContext>
+public class ImportNotificationsUpdatesEndpointsTests : EndpointTestBase<Program>, IClassFixture<WireMockContext>
 {
     private WireMockServer WireMock { get; }
     private HttpClient HttpClient { get; }
 
-    public ImportNotificationUpdatesEndpointTests(WebApplicationFactory<Program> factory, WireMockContext context)
+    public ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Program> factory, WireMockContext context)
         : base(factory)
     {
         WireMock = context.Server;
@@ -37,7 +37,7 @@ public class ImportNotificationUpdatesEndpointTests : EndpointTestBase<Program>,
             .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status200OK));
 
         var result =
-            await client.GetFromJsonAsync<ImportNotificationUpdatesEndpoint.PagedResponse<UpdatedImportNotification>>(
+            await client.GetFromJsonAsync<ImportNotificationsUpdatesEndpoints.PagedResponse<UpdatedImportNotification>>(
                 "import-notifications-updates/pha?page=1&pageSize=1&from=2024-11-20&to=2024-11-20"
             );
 
