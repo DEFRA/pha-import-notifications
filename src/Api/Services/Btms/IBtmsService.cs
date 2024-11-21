@@ -1,6 +1,6 @@
 using Defra.PhaImportNotifications.Contracts;
 
-namespace Defra.PhaImportNotifications.Api.Services;
+namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
 public interface IBtmsService
 {

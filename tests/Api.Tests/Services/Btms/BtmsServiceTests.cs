@@ -1,11 +1,11 @@
-using Defra.PhaImportNotifications.Api.Services;
+using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Services;
+namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
 
 public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(context)
 {

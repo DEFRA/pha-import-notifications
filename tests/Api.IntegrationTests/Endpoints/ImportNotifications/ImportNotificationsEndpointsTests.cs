@@ -1,10 +1,10 @@
-using Defra.PhaImportNotifications.Api.Services;
+using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
+namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
 public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> factory)
     : EndpointTestBase<Program>(factory)

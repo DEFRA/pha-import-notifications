@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.OpenApi;
-using Defra.PhaImportNotifications.Api.Services;
+using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Http;
 using Defra.PhaImportNotifications.Api.Utils.Logging;

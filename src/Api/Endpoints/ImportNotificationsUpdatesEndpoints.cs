@@ -1,5 +1,5 @@
 using System.ComponentModel;
-using Defra.PhaImportNotifications.Api.Services;
+using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts.UpdatedImportNotifications;
 using Microsoft.AspNetCore.Mvc;
 
