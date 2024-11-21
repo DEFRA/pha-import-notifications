@@ -24,7 +24,6 @@ public static class ImportNotificationsUpdatesEndpoints
         [FromQuery] int pageSize,
         [FromQuery] DateTime from,
         [FromQuery] DateTime to,
-        HttpContext httpContext,
         [FromServices] IBtmsService btmsService,
         CancellationToken cancellationToken
     )
@@ -49,7 +48,7 @@ public static class ImportNotificationsUpdatesEndpoints
         );
     }
 
-    public class PagedResponse<T>
+    private sealed class PagedResponse<T>
     {
         public IEnumerable<T> Records { get; set; } = [];
         public int TotalRecords { get; set; }
