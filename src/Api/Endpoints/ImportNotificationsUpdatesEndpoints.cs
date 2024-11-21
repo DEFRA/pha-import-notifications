@@ -29,23 +29,19 @@ public static class ImportNotificationsUpdatesEndpoints
         CancellationToken cancellationToken
     )
     {
-        await btmsService.GetImportNotifications(cancellationToken);
+        var notifications = await btmsService.GetImportNotifications(cancellationToken);
+        var links = notifications.Select(x => new UpdatedImportNotification
+        {
+            Links = new ImportNotificationLinks
+            {
+                ImportNotification = new Uri($"/import-notifications/{x.ReferenceNumber}"),
+            },
+        });
 
         return Results.Ok(
             new PagedResponse<UpdatedImportNotification>
             {
-                Records =
-                [
-                    new()
-                    {
-                        Links = new()
-                        {
-                            ImportNotification = new Uri(
-                                $"{httpContext.Request.Scheme}://{httpContext.Request.Host}/import-notifications/CHED1234/"
-                            ),
-                        },
-                    },
-                ],
+                Records = links,
                 CurrentPage = 0,
                 TotalPages = 1,
                 TotalRecords = 1,
@@ -55,7 +51,7 @@ public static class ImportNotificationsUpdatesEndpoints
 
     public class PagedResponse<T>
     {
-        public List<T> Records { get; set; } = new();
+        public IEnumerable<T> Records { get; set; } = [];
         public int TotalRecords { get; set; }
         public int CurrentPage { get; set; }
         public int TotalPages { get; set; }

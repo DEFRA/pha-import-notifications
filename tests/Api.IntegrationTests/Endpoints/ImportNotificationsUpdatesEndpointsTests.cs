@@ -1,53 +1,36 @@
-using System.Net.Http.Json;
-using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.Services;
-using Defra.PhaImportNotifications.Contracts.UpdatedImportNotifications;
-using Defra.PhaImportNotifications.Testing;
-using FluentAssertions;
-using Microsoft.AspNetCore.Http;
+using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using WireMock.RequestBuilders;
-using WireMock.ResponseBuilders;
-using WireMock.Server;
+using NSubstitute;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
-public class ImportNotificationsUpdatesEndpointsTests : EndpointTestBase<Program>, IClassFixture<WireMockContext>
+public class ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Program> factory)
+    : EndpointTestBase<Program>(factory)
 {
-    private WireMockServer WireMock { get; }
-    private HttpClient HttpClient { get; }
-
-    public ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Program> factory, WireMockContext context)
-        : base(factory)
-    {
-        WireMock = context.Server;
-        WireMock.Reset();
-
-        HttpClient = context.HttpClient;
-    }
+    private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
 
     [Fact]
     public async Task GetAllUpdated_ShouldSucceed()
     {
         var client = CreateClient();
 
-        WireMock
-            .Given(Request.Create().WithPath("/api/import-notifications").UsingGet())
-            .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status200OK));
+        MockBtmsService
+            .GetImportNotifications(Arg.Any<CancellationToken>())
+            .Returns(new List<ImportNotification> { new() { ReferenceNumber = "mock1" } });
 
-        var result =
-            await client.GetFromJsonAsync<ImportNotificationsUpdatesEndpoints.PagedResponse<UpdatedImportNotification>>(
-                "import-notifications-updates/pha?page=1&pageSize=1&from=2024-11-20&to=2024-11-20"
-            );
+        var response = await client.GetStringAsync(
+            "import-notifications-updates/pha?page=1&pageSize=1&from=2024-11-20&to=2024-11-20"
+        );
 
-        result.Should().NotBeNull();
+        await Verify(response);
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)
     {
         base.ConfigureTestServices(services);
 
-        services.AddTransient<IBtmsService>(_ => new BtmsService(HttpClient));
+        services.AddTransient<IBtmsService>(_ => MockBtmsService);
     }
 }

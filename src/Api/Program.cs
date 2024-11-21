@@ -113,6 +113,8 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
             httpClient.BaseAddress = new Uri(options.BaseUrl);
         }
     );
+    // Temp stub so we return a bit of data (for now)
+    builder.Services.AddTransient<IBtmsService, StubBtmsService>();
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);
