@@ -839,7 +839,40 @@
         }
       },
       AccompanyingDocumentDocumentTypeEnum: {
-        type: integer
+        enum: [
+          AirWaybill,
+          BillOfLading,
+          CargoManifest,
+          CatchCertificate,
+          CommercialDocument,
+          CommercialInvoice,
+          ConformityCertificate,
+          ContainerManifest,
+          CustomsDeclaration,
+          Docom,
+          HealthCertificate,
+          HeatTreatmentCertificate,
+          ImportPermit,
+          InspectionCertificate,
+          Itahc,
+          JourneyLog,
+          LaboratorySamplingResultsForAflatoxin,
+          LatestVeterinaryHealthCertificate,
+          LetterOfAuthority,
+          LicenseOrAuthorisation,
+          MycotoxinCertification,
+          OriginCertificate,
+          Other,
+          PhytosanitaryCertificate,
+          ProcessingStatement,
+          ProofOfStorage,
+          RailwayBill,
+          SeaWaybill,
+          VeterinaryHealthCertificate,
+          ListOfIngredients,
+          PackingList,
+          RoadConsignmentNote
+        ]
       },
       Address: {
         type: object,
@@ -1040,10 +1073,18 @@
         nullable: true
       },
       ApplicantAnalysisTypeEnum: {
-        type: integer
+        enum: [
+          InitialAnalysis,
+          CounterAnalysis,
+          SecondExpertAnalysis
+        ]
       },
       ApplicantConservationOfSampleEnum: {
-        type: integer
+        enum: [
+          Ambient,
+          Chilled,
+          Frozen
+        ]
       },
       ApprovedEstablishment: {
         type: object,
@@ -1228,10 +1269,44 @@
         }
       },
       ChedppNotAcceptableReasonCommodityOrPackageEnum: {
-        type: integer
+        enum: [
+          C,
+          P,
+          Cp
+        ]
       },
       ChedppNotAcceptableReasonReasonEnum: {
-        type: integer
+        enum: [
+          DocPhmdm,
+          DocPhmdii,
+          DocPa,
+          DocPic,
+          DocPill,
+          DocPed,
+          DocPmod,
+          DocPfi,
+          DocPnol,
+          DocPcne,
+          DocPadm,
+          DocPadi,
+          DocPpni,
+          DocPf,
+          DocPo,
+          DocNcevd,
+          DocNcpqefi,
+          DocNcpqebec,
+          DocNcts,
+          DocNco,
+          DocOrii,
+          DocOrsr,
+          OriOrrnu,
+          PhyOrpp,
+          PhyOrho,
+          PhyIs,
+          PhyOrsr,
+          OthCnl,
+          OthO
+        ]
       },
       Commodities: {
         type: object,
@@ -1318,7 +1393,12 @@
         nullable: true
       },
       CommoditiesCommodityIntendedForEnum: {
-        type: integer
+        enum: [
+          Human,
+          Feedingstuff,
+          Further,
+          Other
+        ]
       },
       CommodityComplement: {
         type: object,
@@ -1539,19 +1619,38 @@
         }
       },
       CommodityRiskResultExitRiskDecisionEnum: {
-        type: integer
+        enum: [
+          Required,
+          Notrequired,
+          Inconclusive
+        ]
       },
       CommodityRiskResultHmiDecisionEnum: {
-        type: integer
+        enum: [
+          Required,
+          Notrequired
+        ]
       },
       CommodityRiskResultPhsiClassificationEnum: {
-        type: integer
+        enum: [
+          Mandatory,
+          Reduced,
+          Controlled
+        ]
       },
       CommodityRiskResultPhsiDecisionEnum: {
-        type: integer
+        enum: [
+          Required,
+          Notrequired
+        ]
       },
       CommodityRiskResultRiskDecisionEnum: {
-        type: integer
+        enum: [
+          Required,
+          Notrequired,
+          Inconclusive,
+          ReenforcedCheck
+        ]
       },
       CommonUserCharge: {
         type: object,
@@ -1641,13 +1740,23 @@
         nullable: true
       },
       ConsignmentCheckIdentityCheckNotDoneReasonEnum: {
-        type: integer
+        enum: [
+          ReducedChecksRegime,
+          NotRequired
+        ]
       },
       ConsignmentCheckIdentityCheckTypeEnum: {
-        type: integer
+        enum: [
+          SealCheck,
+          FullIdentityCheck,
+          NotDone
+        ]
       },
       ConsignmentCheckPhysicalCheckNotDoneReasonEnum: {
-        type: integer
+        enum: [
+          ReducedChecksRegime,
+          Other
+        ]
       },
       ContactDetails: {
         type: object,
@@ -1729,10 +1838,18 @@
         nullable: true
       },
       ControlAuthorityIuuOptionEnum: {
-        type: integer
+        enum: [
+          Iuuok,
+          Iuuna,
+          IUUNotCompliant
+        ]
       },
       ControlConsignmentLeaveEnum: {
-        type: integer
+        enum: [
+          Yes,
+          No,
+          ItHasBeenDestroyed
+        ]
       },
       Decision: {
         type: object,
@@ -1903,43 +2020,125 @@
         nullable: true
       },
       DecisionDecisionEnum: {
-        type: integer
+        enum: [
+          NonAcceptable,
+          AcceptableForInternalMarket,
+          AcceptableIfChanneled,
+          AcceptableForTranshipment,
+          AcceptableForTransit,
+          AcceptableForTemporaryImport,
+          AcceptableForSpecificWarehouse,
+          AcceptableForPrivateImport,
+          AcceptableForTransfer,
+          HorseReEntry
+        ]
       },
       DecisionDefinitiveImportPurposeEnum: {
-        type: integer
+        enum: [
+          Slaughter,
+          Approvedbodies,
+          Quarantine
+        ]
       },
       DecisionFreeCirculationPurposeEnum: {
-        type: integer
+        enum: [
+          AnimalFeedingStuff,
+          HumanConsumption,
+          PharmaceuticalUse,
+          TechnicalUse,
+          FurtherProcess,
+          Other
+        ]
       },
       DecisionIfChanneledOptionEnum: {
-        type: integer
+        enum: [
+          Article8,
+          Article15
+        ]
       },
       DecisionNotAcceptableActionDestructionReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          Other
+        ]
       },
       DecisionNotAcceptableActionEntryRefusalReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          MeansOfTransport,
+          Other
+        ]
       },
       DecisionNotAcceptableActionEnum: {
-        type: integer
+        enum: [
+          Slaughter,
+          Reexport,
+          Euthanasia,
+          Redispatching,
+          Destruction,
+          Transformation,
+          Other,
+          EntryRefusal,
+          QuarantineImposed,
+          SpecialTreatment,
+          IndustrialProcessing,
+          ReDispatch,
+          UseForOtherPurposes
+        ]
       },
       DecisionNotAcceptableActionIndustrialProcessingReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          Other
+        ]
       },
       DecisionNotAcceptableActionQuarantineImposedReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          Other
+        ]
       },
       DecisionNotAcceptableActionReDispatchReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          MeansOfTransport,
+          Other
+        ]
       },
       DecisionNotAcceptableActionSpecialTreatmentReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          Other
+        ]
       },
       DecisionNotAcceptableActionUseForOtherPurposesReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          MeansOfTransport,
+          Other
+        ]
       },
       DecisionSpecificWarehouseNonConformingConsignmentEnum: {
-        type: integer
+        enum: [
+          CustomWarehouse,
+          FreeZoneOrFreeWarehouse,
+          ShipSupplier,
+          Ship
+        ]
       },
       DetailsOnReExport: {
         type: object,
@@ -1976,7 +2175,15 @@
         nullable: true
       },
       DetailsOnReExportTransportTypeEnum: {
-        type: integer
+        enum: [
+          Rail,
+          Plane,
+          Ship,
+          Road,
+          Other,
+          CShipRoad,
+          CShipRail
+        ]
       },
       EconomicOperator: {
         type: object,
@@ -2113,10 +2320,28 @@
         }
       },
       EconomicOperatorStatusEnum: {
-        type: integer
+        enum: [
+          Approved,
+          Nonapproved,
+          Suspended
+        ]
       },
       EconomicOperatorTypeEnum: {
-        type: integer
+        enum: [
+          Consignee,
+          Destination,
+          Exporter,
+          Importer,
+          Charity,
+          CommercialTransporter,
+          CommercialTransporterUserAdded,
+          PrivateTransporter,
+          TemporaryAddress,
+          PremisesOfOrigin,
+          OrganisationBranchAddress,
+          Packer,
+          Pod
+        ]
       },
       ExternalReference: {
         type: object,
@@ -2170,7 +2395,12 @@
         nullable: true
       },
       ExternalReferenceSystemEnum: {
-        type: integer
+        enum: [
+          Ecert,
+          Ephyto,
+          Enotification,
+          Ncts
+        ]
       },
       FeedbackInformation: {
         type: object,
@@ -2200,7 +2430,12 @@
         nullable: true
       },
       FeedbackInformationAuthorityTypeEnum: {
-        type: integer
+        enum: [
+          Exitbip,
+          Finalbip,
+          Localvetunit,
+          Inspunit
+        ]
       },
       HelloWorldResponse: {
         type: object,
@@ -2434,10 +2669,29 @@
         }
       },
       ImportNotificationStatusEnum: {
-        type: integer
+        enum: [
+          Draft,
+          Submitted,
+          Validated,
+          Rejected,
+          InProgress,
+          Amend,
+          Modify,
+          Replaced,
+          Cancelled,
+          Deleted,
+          PartiallyRejected,
+          SplitConsignment
+        ]
       },
       ImportNotificationTypeEnum: {
-        type: integer
+        enum: [
+          Cveda,
+          Cvedp,
+          Chedpp,
+          Ced,
+          Imp
+        ]
       },
       InspectionCheck: {
         type: object,
@@ -2469,10 +2723,23 @@
         }
       },
       InspectionCheckStatusEnum: {
-        type: integer
+        enum: [
+          ToDo,
+          Compliant,
+          AutoCleared,
+          NonCompliant,
+          NotInspected,
+          ToBeInspected,
+          Hold
+        ]
       },
       InspectionCheckTypeEnum: {
-        type: integer
+        enum: [
+          PhsiDocument,
+          PhsiIdentity,
+          PhsiPhysical,
+          Hmi
+        ]
       },
       InspectionOverride: {
         type: object,
@@ -2567,10 +2834,17 @@
         nullable: true
       },
       JourneyRiskCategorisationResultRiskLevelEnum: {
-        type: integer
+        enum: [
+          High,
+          Medium,
+          Low
+        ]
       },
       JourneyRiskCategorisationResultRiskLevelMethodEnum: {
-        type: integer
+        enum: [
+          System,
+          User
+        ]
       },
       LaboratoryTestResult: {
         type: object,
@@ -2607,7 +2881,12 @@
         nullable: true
       },
       LaboratoryTestResultConclusionEnum: {
-        type: integer
+        enum: [
+          Satisfactory,
+          NotSatisfactory,
+          NotInterpretable,
+          Pending
+        ]
       },
       LaboratoryTests: {
         type: object,
@@ -2632,7 +2911,14 @@
         nullable: true
       },
       LaboratoryTestsTestReasonEnum: {
-        type: integer
+        enum: [
+          Random,
+          Suspicious,
+          ReEnforced,
+          IntensifiedControls,
+          Required,
+          LatentInfectionSampling
+        ]
       },
       MeansOfTransport: {
         type: object,
@@ -2654,7 +2940,16 @@
         nullable: true
       },
       MeansOfTransportTypeEnum: {
-        type: integer
+        enum: [
+          Aeroplane,
+          RoadVehicle,
+          RailwayWagon,
+          Ship,
+          Other,
+          RoadVehicleAeroplane,
+          ShipRailwayWagon,
+          ShipRoadVehicle
+        ]
       },
       NominatedContact: {
         type: object,
@@ -3034,10 +3329,18 @@
         nullable: true
       },
       PartOneProvideCtcMrnEnum: {
-        type: integer
+        enum: [
+          Yes,
+          YesAddLater,
+          No
+        ]
       },
       PartOneTypeOfImpEnum: {
-        type: integer
+        enum: [
+          A,
+          P,
+          D
+        ]
       },
       PartThree: {
         type: object,
@@ -3070,7 +3373,10 @@
         nullable: true
       },
       PartThreeControlStatusEnum: {
-        type: integer
+        enum: [
+          Required,
+          Completed
+        ]
       },
       PartTwo: {
         type: object,
@@ -3347,7 +3653,10 @@
         nullable: true
       },
       PartyTypeEnum: {
-        type: integer
+        enum: [
+          CommercialTransporter,
+          PrivateTransporter
+        ]
       },
       Phsi: {
         type: object,
@@ -3484,16 +3793,54 @@
         nullable: true
       },
       PurposeForImportOrAdmissionEnum: {
-        type: integer
+        enum: [
+          DefinitiveImport,
+          HorsesReEntry,
+          TemporaryAdmissionHorses
+        ]
       },
       PurposeForNonConformingEnum: {
-        type: integer
+        enum: [
+          CustomsWarehouse,
+          FreeZoneOrFreeWarehouse,
+          ShipSupplier,
+          Ship
+        ]
       },
       PurposeInternalMarketPurposeEnum: {
-        type: integer
+        enum: [
+          AnimalFeedingStuff,
+          HumanConsumption,
+          PharmaceuticalUse,
+          TechnicalUse,
+          Other,
+          CommercialSale,
+          CommercialSaleOrChangeOfOwnership,
+          Rescue,
+          Breeding,
+          Research,
+          RacingOrCompetition,
+          ApprovedPremisesOrBody,
+          CompanionAnimalNotForResaleOrRehoming,
+          Production,
+          Slaughter,
+          Fattening,
+          GameRestocking,
+          RegisteredHorses
+        ]
       },
       PurposePurposeGroupEnum: {
-        type: integer
+        enum: [
+          ForImport,
+          ForNONConformingConsignments,
+          ForTranshipmentTo,
+          ForTransitTo3rdCountry,
+          ForReImport,
+          ForPrivateImport,
+          ForTransferTo,
+          ForImportReConformityCheck,
+          ForImportNonInternalMarket
+        ]
       },
       RelationshipDataItem: {
         type: object,

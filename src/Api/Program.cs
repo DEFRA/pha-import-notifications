@@ -1,3 +1,5 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.OpenApi;
@@ -50,6 +52,13 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 
     // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
     builder.Services.ConfigureHttpClientDefaults(options => options.AddStandardResilienceHandler());
+    builder.Services.ConfigureHttpJsonOptions(options =>
+    {
+        options.SerializerOptions.PropertyNameCaseInsensitive = true;
+        options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.SerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
+        options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
     builder.Services.AddHealthChecks();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddOpenApi(options =>
