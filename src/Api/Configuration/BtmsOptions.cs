@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Defra.PhaImportNotifications.Api.Configuration;
 
-public class CdmsOptions
+public class BtmsOptions
 {
     [Required]
     public required string BaseUrl { get; init; }

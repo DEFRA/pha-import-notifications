@@ -2,7 +2,7 @@ using Defra.PhaImportNotifications.Contracts;
 
 namespace Defra.PhaImportNotifications.Api.Services;
 
-public class CdmsService(HttpClient httpClient) : ICdmsService
+public class BtmsService(HttpClient httpClient) : IBtmsService
 {
     public async Task<IReadOnlyList<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken)
     {

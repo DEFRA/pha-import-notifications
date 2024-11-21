@@ -24,11 +24,11 @@ public static class ImportNotificationUpdatesEndpoint
         [FromQuery] DateTime from,
         [FromQuery] DateTime to,
         HttpContext httpContext,
-        [FromServices] ICdmsService cdmsService,
+        [FromServices] IBtmsService btmsService,
         CancellationToken cancellationToken
     )
     {
-        await cdmsService.GetImportNotifications(cancellationToken);
+        await btmsService.GetImportNotifications(cancellationToken);
 
         return Results.Ok(
             new PagedResponse<UpdatedImportNotification>

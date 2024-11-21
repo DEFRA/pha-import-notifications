@@ -7,9 +7,9 @@ using WireMock.ResponseBuilders;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services;
 
-public class CdmsServiceTests(WireMockContext context) : WireMockTestBase(context)
+public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(context)
 {
-    private CdmsService Subject { get; } = new(context.HttpClient);
+    private BtmsService Subject { get; } = new(context.HttpClient);
 
     [Fact]
     public async Task GetImportNotifications_WhenOk_ShouldSucceed()

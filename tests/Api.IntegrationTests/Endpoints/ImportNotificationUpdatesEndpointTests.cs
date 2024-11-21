@@ -48,6 +48,6 @@ public class ImportNotificationUpdatesEndpointTests : EndpointTestBase<Program>,
     {
         base.ConfigureTestServices(services);
 
-        services.AddTransient<ICdmsService>(_ => new CdmsService(HttpClient));
+        services.AddTransient<IBtmsService>(_ => new BtmsService(HttpClient));
     }
 }

@@ -91,12 +91,12 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         options.AddSchemaTransformer<XmlDocsSchemaTransformer<ImportNotification>>();
     });
     builder.Services.AddHttpClient();
-    builder.Services.AddOptions<CdmsOptions>().BindConfiguration("Cdms").ValidateDataAnnotations().ValidateOnStart();
+    builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateDataAnnotations().ValidateOnStart();
     builder
-        .Services.AddHttpClient<ICdmsService, CdmsService>(
+        .Services.AddHttpClient<IBtmsService, BtmsService>(
             (sp, httpClient) =>
             {
-                var options = sp.GetRequiredService<IOptions<CdmsOptions>>().Value;
+                var options = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
                 httpClient.BaseAddress = new Uri(options.BaseUrl);
             }
         )
