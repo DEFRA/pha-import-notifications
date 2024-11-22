@@ -12,8 +12,7 @@
   },
   servers: [
     {
-      url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3,
-      description: The Open Government Licence (OGL) Version 3
+      url: https://localhost
     }
   ],
   paths: {
