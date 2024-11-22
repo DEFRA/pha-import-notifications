@@ -1,7 +1,5 @@
 extends: [[spectral:oas, recommended], [vacuum:owasp, all]]
 rules:
-  oas3-missing-example: false
-  operation-tag-defined: true # To revisit
   # We do not need to set an arbitrary limit for an array
   # https://quobix.com/vacuum/rules/owasp/owasp-array-limit/
   owasp-array-limit: false
