@@ -12,4 +12,13 @@ public class OpenApiTests(WebApplicationFactory<Program> factory) : IClassFixtur
 
         await VerifyJson(response);
     }
+
+    [Fact]
+    public async Task Redoc_VerifyAsExpected()
+    {
+        var client = factory.CreateClient();
+        var response = await client.GetAsync("/redoc/index.html");
+
+        await Verify(response);
+    }
 }
