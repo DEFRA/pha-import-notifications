@@ -40,38 +40,6 @@
         responses: {
           200: {
             description: OK,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsByReferenceNumber: 200,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsByReferenceNumber: 200,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsByReferenceNumber: 200,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               application/json: {
                 schema: {
@@ -198,38 +166,6 @@
         responses: {
           200: {
             description: OK,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsUpdatesByReferenceNumber: 200,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsUpdatesByReferenceNumber: 200,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsUpdatesByReferenceNumber: 200,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               application/json: {
                 schema: {

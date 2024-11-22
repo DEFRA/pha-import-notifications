@@ -93,7 +93,6 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         );
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
         c.IncludeXmlComments(typeof(ImportNotification).Assembly);
-        c.OperationFilter<ResponseHeadersFilter>();
         c.OperationFilter<ErrorResponseFilter>();
         c.SchemaFilter<DescriptionSchemaFilter>();
         c.SwaggerDoc(
