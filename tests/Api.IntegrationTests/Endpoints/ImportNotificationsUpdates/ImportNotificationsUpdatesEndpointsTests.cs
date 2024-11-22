@@ -20,9 +20,7 @@ public class ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Prog
             .GetImportNotifications(Arg.Any<CancellationToken>())
             .Returns(new List<ImportNotification> { new() { ReferenceNumber = "mock1" } });
 
-        var response = await client.GetStringAsync(
-            "import-notifications-updates/pha?page=1&pageSize=1&from=2024-11-20&to=2024-11-20"
-        );
+        var response = await client.GetStringAsync("import-notifications-updates/pha?from=2024-11-20");
 
         await Verify(response);
     }

@@ -42,7 +42,7 @@
             content: {
               application/json: {
                 schema: {
-                  $ref: #/components/schemas/ImportNotificationResponse
+                  $ref: #/components/schemas/ImportNotificationsResponse
                 }
               }
             }
@@ -112,52 +112,57 @@
           Import Notifications Updates
         ],
         summary: Get Import Notification Updates,
-        description: Get an Import Notification Updates by port health authority,
+        description: Get all import notifications by port health authority that have been updated between the time period specified,
         operationId: ImportNotificationsUpdatesByReferenceNumber,
         parameters: [
           {
             name: portHealthAuthority,
             in: path,
-            description: The port health authority with format XYZ,
+            description: The port health authority with format TBC,
             required: true,
             schema: {
               type: string,
-              description: The port health authority with format XYZ
+              description: The port health authority with format TBC
             }
           },
           {
             name: page,
             in: query,
-            required: true,
+            description: Allows a specific page to be requested, default is 1,
             schema: {
               type: integer,
+              description: Allows a specific page to be requested, default is 1,
               format: int32
             }
           },
           {
             name: pageSize,
             in: query,
-            required: true,
+            description: Allows a page size to be requested, default is 100,
             schema: {
               type: integer,
+              description: Allows a page size to be requested, default is 100,
               format: int32
             }
           },
           {
             name: from,
             in: query,
+            description: Filter import notifications updated after this date and time. Format is ISO 8601-1:2019,
             required: true,
             schema: {
               type: string,
+              description: Filter import notifications updated after this date and time. Format is ISO 8601-1:2019,
               format: date-time
             }
           },
           {
             name: to,
             in: query,
-            required: true,
+            description: Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. time of request. If the time period between from and to is greater than 24 hours then the request will be invalid.,
             schema: {
               type: string,
+              description: Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. time of request. If the time period between from and to is greater than 24 hours then the request will be invalid.,
               format: date-time
             }
           }
@@ -1746,7 +1751,34 @@
         },
         additionalProperties: false
       },
-      ImportNotificationResponse: {
+      ImportNotificationStatusEnum: {
+        enum: [
+          Draft,
+          Submitted,
+          Validated,
+          Rejected,
+          InProgress,
+          Amend,
+          Modify,
+          Replaced,
+          Cancelled,
+          Deleted,
+          PartiallyRejected,
+          SplitConsignment
+        ],
+        type: string
+      },
+      ImportNotificationTypeEnum: {
+        enum: [
+          Cveda,
+          Cvedp,
+          Chedpp,
+          Ced,
+          Imp
+        ],
+        type: string
+      },
+      ImportNotificationsResponse: {
         type: object,
         properties: {
           auditEntries: {
@@ -1906,33 +1938,6 @@
           }
         },
         additionalProperties: false
-      },
-      ImportNotificationStatusEnum: {
-        enum: [
-          Draft,
-          Submitted,
-          Validated,
-          Rejected,
-          InProgress,
-          Amend,
-          Modify,
-          Replaced,
-          Cancelled,
-          Deleted,
-          PartiallyRejected,
-          SplitConsignment
-        ],
-        type: string
-      },
-      ImportNotificationTypeEnum: {
-        enum: [
-          Cveda,
-          Cvedp,
-          Chedpp,
-          Ced,
-          Imp
-        ],
-        type: string
       },
       InspectionCheck: {
         type: object,
