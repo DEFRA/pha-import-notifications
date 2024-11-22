@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints;
 
-public static class PhaEndpoints
+public static class ExampleEndpoints
 {
-    public static void MapPhaEndpoints(this IEndpointRouteBuilder app)
+    public static void MapExampleEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("hello/world", HelloWorld)
             .WithName("HelloWorld")
@@ -16,7 +16,7 @@ public static class PhaEndpoints
     }
 
     [HttpGet]
-    public static HelloWorldResponse HelloWorld()
+    private static HelloWorldResponse HelloWorld()
     {
         return new HelloWorldResponse();
     }
