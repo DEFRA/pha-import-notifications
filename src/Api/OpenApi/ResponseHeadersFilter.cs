@@ -1,18 +1,25 @@
-using Microsoft.AspNetCore.OpenApi;
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Defra.PhaImportNotifications.Api.OpenApi;
 
-public class HeadersTransformer : IOpenApiOperationTransformer
+[ExcludeFromCodeCoverage]
+public class ResponseHeadersFilter : IOperationFilter
 {
-    public Task TransformAsync(
-        OpenApiOperation operation,
-        OpenApiOperationTransformerContext context,
-        CancellationToken cancellationToken
-    )
+    public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
-        foreach (var (statusCode, _) in operation.Responses)
+        var actionAttributes = context
+            .MethodInfo?.DeclaringType?.GetCustomAttributes(true)
+            .Union(context.MethodInfo.GetCustomAttributes(true))
+            .OfType<HttpMethodAttribute>();
+
+        if (actionAttributes == null || !actionAttributes.Any())
+            return;
+
+        foreach (var (statusCode, response) in operation.Responses)
         {
             operation
                 .Responses[statusCode]
@@ -32,7 +39,6 @@ public class HeadersTransformer : IOpenApiOperationTransformer
                         },
                     }
                 );
-
             operation
                 .Responses[statusCode]
                 .Headers.Add(
@@ -50,7 +56,6 @@ public class HeadersTransformer : IOpenApiOperationTransformer
                         },
                     }
                 );
-
             operation
                 .Responses[statusCode]
                 .Headers.Add(
@@ -70,7 +75,5 @@ public class HeadersTransformer : IOpenApiOperationTransformer
                     }
                 );
         }
-
-        return Task.CompletedTask;
     }
 }

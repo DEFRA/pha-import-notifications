@@ -1,32 +1,31 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Mime;
-using Microsoft.AspNetCore.OpenApi;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Defra.PhaImportNotifications.Api.OpenApi;
 
-public class ErrorResponsesTransformer : IOpenApiOperationTransformer
+[ExcludeFromCodeCoverage]
+public class ErrorResponseFilter : IOperationFilter
 {
     private const string StringType = "string";
 
-    public Task TransformAsync(
-        OpenApiOperation operation,
-        OpenApiOperationTransformerContext context,
-        CancellationToken cancellationToken
-    )
+    public void Apply(OpenApiOperation operation, OperationFilterContext context)
     {
-        operation.Responses.Add(StatusCodes.Status400BadRequest.ToString(), CreateGenericResponse("Bad Request"));
-        operation.Responses.Add(StatusCodes.Status401Unauthorized.ToString(), CreateGenericResponse("Unauthorized"));
-        operation.Responses.Add(
-            StatusCodes.Status429TooManyRequests.ToString(),
-            CreateGenericResponse("Too Many Requests")
-        );
-        operation.Responses.Add(
-            StatusCodes.Status500InternalServerError.ToString(),
-            CreateGenericResponse("Internal Server Error")
-        );
+        var actionAttributes = context
+            .MethodInfo?.DeclaringType?.GetCustomAttributes(true)
+            .Union(context.MethodInfo.GetCustomAttributes(true))
+            .OfType<HttpMethodAttribute>();
 
-        return Task.CompletedTask;
+        if (actionAttributes == null || !actionAttributes.Any())
+            return;
+
+        operation.Responses.Add("400", CreateGenericResponse("Bad Request"));
+        operation.Responses.Add("401", CreateGenericResponse("Unauthorized"));
+        operation.Responses.Add("429", CreateGenericResponse("Too Many Requests"));
+        operation.Responses.Add("500", CreateGenericResponse("Internal Server Error"));
     }
 
     private static OpenApiResponse CreateGenericResponse(string responseText)
