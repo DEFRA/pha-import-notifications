@@ -1,8 +1,6 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum CommodityRiskResultPhsiDecisionEnum
 {
-    public enum CommodityRiskResultPhsiDecisionEnum
-    {
-        Required,
-        Notrequired
-    }
+    Required,
+    Notrequired
 }

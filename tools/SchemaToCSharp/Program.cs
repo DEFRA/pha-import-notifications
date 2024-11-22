@@ -17,7 +17,6 @@ const string outputPath = $"{solutionPath}src/Contracts/";
 const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
 
 var stream = new FileStream(inputPath, FileMode.Open);
-var namespaceDeclaration = NamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
 
 var openApiDocument = new OpenApiStreamReader().Read(stream, out var diagnostic);
 
@@ -27,20 +26,27 @@ var objects = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "obj
 
 Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
+var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
+
 foreach (var (schemaName, schema) in objects)
 {
     var properties = schema
         .Properties.Where(p => !p.Key.StartsWith('_'))
-        .Select(p => CreatePropertyFrom(p.Key, p.Value));
+        .Select(p => CreateProperty(p.Key, p.Value));
     var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
 
-    var ns = namespaceDeclaration
-        .AddUsings(CreateUsing("System.Text.Json.Serialization"), CreateUsing("System.ComponentModel"))
+    var x = WarningDirectiveTrivia(true).Update();
+    
+    var file = CompilationUnit()
+        .AddExterns(x)
+        .AddUsings(CreateUsing("System.Text.Json.Serialization"),CreateUsing("System.ComponentModel"))
+        .AddMembers(namespaceDeclaration)
         .AddMembers(@class);
+    
 
     await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
 
-    ns.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
+    file.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
 }
 
 var enums = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "integer").ToList();
@@ -50,7 +56,7 @@ foreach (var (schemaName, schema) in enums)
     var values = schema.Enum.Select(v => CreateEnumValue((v as OpenApiString)!.Value));
     var @enum = CreateEnum(schemaName)
         .AddMembers(values.ToArray());
-    
+
     var ns = namespaceDeclaration
         .AddMembers(@enum);
     
@@ -85,22 +91,31 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 static string RefTypeName(OpenApiSchema schema, string defaultTypeName) => 
     schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName;
 
-static PropertyDeclarationSyntax CreatePropertyFrom(string name, OpenApiSchema schema) =>
-    CreateProperty(name, CreatePropertyType(schema) , schema.Description);
-
 static EnumMemberDeclarationSyntax CreateEnumValue(string name) => 
     EnumMemberDeclaration(name);
 
-static PropertyDeclarationSyntax CreateProperty(string name, TypeSyntax typeSyntax, string description)
+static PropertyDeclarationSyntax CreateProperty(string name, OpenApiSchema schema)
 {
+    var typeSyntax = CreatePropertyType(schema);
+    var modifiers = new List<SyntaxToken> { Token(SyntaxKind.PublicKeyword) };
+    
+    if (schema.Nullable)
+    {
+        typeSyntax = NullableType(typeSyntax);
+    }
+    else
+    {
+        modifiers.Add(Token(SyntaxKind.RequiredKeyword));
+    }
+
     var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };
 
+    var description = schema.Description;
     if (!string.IsNullOrEmpty(description))
         attributes.Add(CreateSimpleAttributeList("Description", description));
 
     return PropertyDeclaration(typeSyntax, CapitalizeFirstLetter(name))
-        .WithAdditionalAnnotations()
-        .AddModifiers(Token(SyntaxKind.PublicKeyword))
+        .AddModifiers(modifiers.ToArray())
         .AddAttributeLists(attributes.ToArray())
         .AddAccessorListAccessors(CreateGetterAndSetter());
 }

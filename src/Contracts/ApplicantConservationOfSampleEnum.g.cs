@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ApplicantConservationOfSampleEnum
 {
-    public enum ApplicantConservationOfSampleEnum
-    {
-        Ambient,
-        Chilled,
-        Frozen
-    }
+    Ambient,
+    Chilled,
+    Frozen
 }

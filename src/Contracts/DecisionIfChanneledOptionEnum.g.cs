@@ -1,8 +1,6 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum DecisionIfChanneledOptionEnum
 {
-    public enum DecisionIfChanneledOptionEnum
-    {
-        Article8,
-        Article15
-    }
+    Article8,
+    Article15
 }

@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum PurposeForImportOrAdmissionEnum
 {
-    public enum PurposeForImportOrAdmissionEnum
-    {
-        DefinitiveImport,
-        HorsesReEntry,
-        TemporaryAdmissionHorses
-    }
+    DefinitiveImport,
+    HorsesReEntry,
+    TemporaryAdmissionHorses
 }

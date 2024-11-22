@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum PartOneProvideCtcMrnEnum
 {
-    public enum PartOneProvideCtcMrnEnum
-    {
-        Yes,
-        YesAddLater,
-        No
-    }
+    Yes,
+    YesAddLater,
+    No
 }

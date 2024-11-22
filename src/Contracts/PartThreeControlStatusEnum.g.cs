@@ -1,8 +1,6 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum PartThreeControlStatusEnum
 {
-    public enum PartThreeControlStatusEnum
-    {
-        Required,
-        Completed
-    }
+    Required,
+    Completed
 }

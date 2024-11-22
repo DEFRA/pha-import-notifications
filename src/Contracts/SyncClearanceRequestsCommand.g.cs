@@ -1,20 +1,18 @@
-namespace Defra.PhaImportNotifications.Contracts
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class SyncClearanceRequestsCommand
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("syncPeriod")]
+    public required SyncPeriod SyncPeriod { get; init; }
 
-    public class SyncClearanceRequestsCommand
-    {
-        [JsonPropertyName("syncPeriod")]
-        public SyncPeriod SyncPeriod { get; init; }
+    [JsonPropertyName("rootFolder")]
+    public string? RootFolder { get; init; }
 
-        [JsonPropertyName("rootFolder")]
-        public string RootFolder { get; init; }
+    [JsonPropertyName("jobId")]
+    public required string JobId { get; init; }
 
-        [JsonPropertyName("jobId")]
-        public string JobId { get; init; }
-
-        [JsonPropertyName("description")]
-        public string Description { get; init; }
-    }
+    [JsonPropertyName("description")]
+    public string? Description { get; init; }
 }

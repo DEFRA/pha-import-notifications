@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum JourneyRiskCategorisationResultRiskLevelEnum
 {
-    public enum JourneyRiskCategorisationResultRiskLevelEnum
-    {
-        High,
-        Medium,
-        Low
-    }
+    High,
+    Medium,
+    Low
 }

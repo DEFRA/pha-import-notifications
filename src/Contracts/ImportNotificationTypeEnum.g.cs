@@ -1,11 +1,9 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ImportNotificationTypeEnum
 {
-    public enum ImportNotificationTypeEnum
-    {
-        Cveda,
-        Cvedp,
-        Chedpp,
-        Ced,
-        Imp
-    }
+    Cveda,
+    Cvedp,
+    Chedpp,
+    Ced,
+    Imp
 }

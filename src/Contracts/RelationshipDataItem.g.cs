@@ -1,29 +1,27 @@
-namespace Defra.PhaImportNotifications.Contracts
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class RelationshipDataItem
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("matched")]
+    public bool? Matched { get; init; }
 
-    public class RelationshipDataItem
-    {
-        [JsonPropertyName("matched")]
-        public bool Matched { get; init; }
+    [JsonPropertyName("type")]
+    public string? Type { get; init; }
 
-        [JsonPropertyName("type")]
-        public string Type { get; init; }
+    [JsonPropertyName("id")]
+    public string? Id { get; init; }
 
-        [JsonPropertyName("id")]
-        public string Id { get; init; }
+    [JsonPropertyName("links")]
+    public required ResourceLink Links { get; init; }
 
-        [JsonPropertyName("links")]
-        public ResourceLink Links { get; init; }
+    [JsonPropertyName("sourceItem")]
+    public int? SourceItem { get; init; }
 
-        [JsonPropertyName("sourceItem")]
-        public int SourceItem { get; init; }
+    [JsonPropertyName("destinationItem")]
+    public int? DestinationItem { get; init; }
 
-        [JsonPropertyName("destinationItem")]
-        public int DestinationItem { get; init; }
-
-        [JsonPropertyName("matchingLevel")]
-        public int MatchingLevel { get; init; }
-    }
+    [JsonPropertyName("matchingLevel")]
+    public int? MatchingLevel { get; init; }
 }

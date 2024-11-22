@@ -1,19 +1,17 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum EconomicOperatorTypeEnum
 {
-    public enum EconomicOperatorTypeEnum
-    {
-        Consignee,
-        Destination,
-        Exporter,
-        Importer,
-        Charity,
-        CommercialTransporter,
-        CommercialTransporterUserAdded,
-        PrivateTransporter,
-        TemporaryAddress,
-        PremisesOfOrigin,
-        OrganisationBranchAddress,
-        Packer,
-        Pod
-    }
+    Consignee,
+    Destination,
+    Exporter,
+    Importer,
+    Charity,
+    CommercialTransporter,
+    CommercialTransporterUserAdded,
+    PrivateTransporter,
+    TemporaryAddress,
+    PremisesOfOrigin,
+    OrganisationBranchAddress,
+    Packer,
+    Pod
 }

@@ -1,12 +1,10 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum LaboratoryTestsTestReasonEnum
 {
-    public enum LaboratoryTestsTestReasonEnum
-    {
-        Random,
-        Suspicious,
-        ReEnforced,
-        IntensifiedControls,
-        Required,
-        LatentInfectionSampling
-    }
+    Random,
+    Suspicious,
+    ReEnforced,
+    IntensifiedControls,
+    Required,
+    LatentInfectionSampling
 }

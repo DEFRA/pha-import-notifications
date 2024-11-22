@@ -1,29 +1,27 @@
-namespace Defra.PhaImportNotifications.Contracts
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class ComplementParameterSet
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("uniqueComplementId")]
+    [Description("UUID used to match commodityComplement to its complementParameter set. CHEDPP only")]
+    public string? UniqueComplementId { get; init; }
 
-    public class ComplementParameterSet
-    {
-        [JsonPropertyName("uniqueComplementId")]
-        [Description("UUID used to match commodityComplement to its complementParameter set. CHEDPP only")]
-        public string UniqueComplementId { get; init; }
+    [JsonPropertyName("complementId")]
+    public int? ComplementId { get; init; }
 
-        [JsonPropertyName("complementId")]
-        public int ComplementId { get; init; }
+    [JsonPropertyName("speciesId")]
+    public string? SpeciesId { get; init; }
 
-        [JsonPropertyName("speciesId")]
-        public string SpeciesId { get; init; }
+    [JsonPropertyName("keyDataPairs")]
+    public object? KeyDataPairs { get; init; }
 
-        [JsonPropertyName("keyDataPairs")]
-        public object KeyDataPairs { get; init; }
+    [JsonPropertyName("catchCertificates")]
+    [Description("Catch certificate details")]
+    public List<CatchCertificates>? CatchCertificates { get; init; }
 
-        [JsonPropertyName("catchCertificates")]
-        [Description("Catch certificate details")]
-        public List<CatchCertificates> CatchCertificates { get; init; }
-
-        [JsonPropertyName("identifiers")]
-        [Description("Data used to identify the complements inside an IMP consignment")]
-        public List<Identifiers> Identifiers { get; init; }
-    }
+    [JsonPropertyName("identifiers")]
+    [Description("Data used to identify the complements inside an IMP consignment")]
+    public List<Identifiers>? Identifiers { get; init; }
 }

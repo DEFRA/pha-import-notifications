@@ -1,18 +1,16 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ImportNotificationStatusEnum
 {
-    public enum ImportNotificationStatusEnum
-    {
-        Draft,
-        Submitted,
-        Validated,
-        Rejected,
-        InProgress,
-        Amend,
-        Modify,
-        Replaced,
-        Cancelled,
-        Deleted,
-        PartiallyRejected,
-        SplitConsignment
-    }
+    Draft,
+    Submitted,
+    Validated,
+    Rejected,
+    InProgress,
+    Amend,
+    Modify,
+    Replaced,
+    Cancelled,
+    Deleted,
+    PartiallyRejected,
+    SplitConsignment
 }

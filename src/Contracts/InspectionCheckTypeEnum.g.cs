@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum InspectionCheckTypeEnum
 {
-    public enum InspectionCheckTypeEnum
-    {
-        PhsiDocument,
-        PhsiIdentity,
-        PhsiPhysical,
-        Hmi
-    }
+    PhsiDocument,
+    PhsiIdentity,
+    PhsiPhysical,
+    Hmi
 }

@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum DecisionNotAcceptableActionQuarantineImposedReasonEnum
 {
-    public enum DecisionNotAcceptableActionQuarantineImposedReasonEnum
-    {
-        ContaminatedProducts,
-        InterceptedPart,
-        PackagingMaterial,
-        Other
-    }
+    ContaminatedProducts,
+    InterceptedPart,
+    PackagingMaterial,
+    Other
 }

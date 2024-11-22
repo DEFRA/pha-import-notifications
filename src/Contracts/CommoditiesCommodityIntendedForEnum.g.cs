@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum CommoditiesCommodityIntendedForEnum
 {
-    public enum CommoditiesCommodityIntendedForEnum
-    {
-        Human,
-        Feedingstuff,
-        Further,
-        Other
-    }
+    Human,
+    Feedingstuff,
+    Further,
+    Other
 }

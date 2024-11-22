@@ -1,16 +1,14 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum DecisionDecisionEnum
 {
-    public enum DecisionDecisionEnum
-    {
-        NonAcceptable,
-        AcceptableForInternalMarket,
-        AcceptableIfChanneled,
-        AcceptableForTranshipment,
-        AcceptableForTransit,
-        AcceptableForTemporaryImport,
-        AcceptableForSpecificWarehouse,
-        AcceptableForPrivateImport,
-        AcceptableForTransfer,
-        HorseReEntry
-    }
+    NonAcceptable,
+    AcceptableForInternalMarket,
+    AcceptableIfChanneled,
+    AcceptableForTranshipment,
+    AcceptableForTransit,
+    AcceptableForTemporaryImport,
+    AcceptableForSpecificWarehouse,
+    AcceptableForPrivateImport,
+    AcceptableForTransfer,
+    HorseReEntry
 }

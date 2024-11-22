@@ -1,13 +1,11 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum DetailsOnReExportTransportTypeEnum
 {
-    public enum DetailsOnReExportTransportTypeEnum
-    {
-        Rail,
-        Plane,
-        Ship,
-        Road,
-        Other,
-        CShipRoad,
-        CShipRail
-    }
+    Rail,
+    Plane,
+    Ship,
+    Road,
+    Other,
+    CShipRoad,
+    CShipRail
 }

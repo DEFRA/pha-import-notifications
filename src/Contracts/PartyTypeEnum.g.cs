@@ -1,8 +1,6 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum PartyTypeEnum
 {
-    public enum PartyTypeEnum
-    {
-        CommercialTransporter,
-        PrivateTransporter
-    }
+    CommercialTransporter,
+    PrivateTransporter
 }

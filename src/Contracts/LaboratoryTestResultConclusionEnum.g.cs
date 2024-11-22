@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum LaboratoryTestResultConclusionEnum
 {
-    public enum LaboratoryTestResultConclusionEnum
-    {
-        Satisfactory,
-        NotSatisfactory,
-        NotInterpretable,
-        Pending
-    }
+    Satisfactory,
+    NotSatisfactory,
+    NotInterpretable,
+    Pending
 }

@@ -1,11 +1,9 @@
-namespace Defra.PhaImportNotifications.Contracts
-{
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+using System.Text.Json.Serialization;
+using System.ComponentModel;
 
-    public class NotificationTdmRelationships
-    {
-        [JsonPropertyName("movements")]
-        public TdmRelationshipObject Movements { get; init; }
-    }
+namespace Defra.PhaImportNotifications.Contracts;
+public class NotificationTdmRelationships
+{
+    [JsonPropertyName("movements")]
+    public required TdmRelationshipObject Movements { get; init; }
 }

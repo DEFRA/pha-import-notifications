@@ -1,11 +1,9 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum DecisionNotAcceptableActionEntryRefusalReasonEnum
 {
-    public enum DecisionNotAcceptableActionEntryRefusalReasonEnum
-    {
-        ContaminatedProducts,
-        InterceptedPart,
-        PackagingMaterial,
-        MeansOfTransport,
-        Other
-    }
+    ContaminatedProducts,
+    InterceptedPart,
+    PackagingMaterial,
+    MeansOfTransport,
+    Other
 }

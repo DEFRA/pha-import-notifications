@@ -1,16 +1,14 @@
-namespace Defra.PhaImportNotifications.Contracts
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class IdentificationDetails
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("identificationDetail")]
+    [Description("Identification detail")]
+    public string? IdentificationDetail { get; init; }
 
-    public class IdentificationDetails
-    {
-        [JsonPropertyName("identificationDetail")]
-        [Description("Identification detail")]
-        public string IdentificationDetail { get; init; }
-
-        [JsonPropertyName("identificationDescription")]
-        [Description("Identification description")]
-        public string IdentificationDescription { get; init; }
-    }
+    [JsonPropertyName("identificationDescription")]
+    [Description("Identification description")]
+    public string? IdentificationDescription { get; init; }
 }

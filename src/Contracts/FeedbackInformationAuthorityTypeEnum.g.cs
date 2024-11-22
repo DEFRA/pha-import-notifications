@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum FeedbackInformationAuthorityTypeEnum
 {
-    public enum FeedbackInformationAuthorityTypeEnum
-    {
-        Exitbip,
-        Finalbip,
-        Localvetunit,
-        Inspunit
-    }
+    Exitbip,
+    Finalbip,
+    Localvetunit,
+    Inspunit
 }

@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ControlAuthorityIuuOptionEnum
 {
-    public enum ControlAuthorityIuuOptionEnum
-    {
-        Iuuok,
-        Iuuna,
-        IUUNotCompliant
-    }
+    Iuuok,
+    Iuuna,
+    IUUNotCompliant
 }
