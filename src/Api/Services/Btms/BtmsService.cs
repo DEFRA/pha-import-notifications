@@ -1,16 +1,17 @@
+using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Contracts;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
 public class BtmsService(HttpClient httpClient) : IBtmsService
 {
+    private readonly JsonApiClient _jsonApiClient = new(httpClient);
+
     public async Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken)
     {
-        var response = await httpClient.GetAsync("api/import-notifications", cancellationToken);
+        var result = await _jsonApiClient.Get("api/import-notifications", cancellationToken);
 
-        response.EnsureSuccessStatusCode();
-
-        return new List<ImportNotification>();
+        return JsonApiClient.GetResourceList<ImportNotification>(result);
     }
 
     public Task<ImportNotification?> GetImportNotification(
