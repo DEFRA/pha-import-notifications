@@ -1,7 +1,10 @@
+using System.Net;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
+using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using NSubstitute;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
@@ -12,7 +15,7 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
     private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
 
     [Fact]
-    public async Task GetAllUpdated_ShouldSucceed()
+    public async Task GetAllUpdated_WhenFound_ShouldSucceed()
     {
         var client = CreateClient();
 
@@ -23,6 +26,18 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
         var response = await client.GetStringAsync("import-notifications/mock1");
 
         await Verify(response);
+
+        JsonConvert.DeserializeObject<ImportNotification>(response).Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task GetAllUpdated_WhenNotFound_ShouldNotBeFound()
+    {
+        var client = CreateClient();
+
+        var response = await client.GetAsync("import-notifications/mock1");
+
+        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)
