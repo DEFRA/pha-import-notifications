@@ -1710,17 +1710,6 @@
         },
         additionalProperties: false
       },
-      ImportNotificationLinks: {
-        type: object,
-        properties: {
-          importNotification: {
-            type: string,
-            format: uri,
-            nullable: true
-          }
-        },
-        additionalProperties: false
-      },
       ImportNotificationStatusEnum: {
         enum: [
           Draft,
@@ -3138,10 +3127,21 @@
         additionalProperties: false
       },
       UpdatedImportNotification: {
+        required: [
+          uri
+        ],
         type: object,
         properties: {
-          links: {
-            $ref: #/components/schemas/ImportNotificationLinks
+          lastUpdated: {
+            type: string,
+            description: Last updated date. Format is ISO 8601-1:2019,
+            format: date-time
+          },
+          uri: {
+            type: string,
+            description: Relative path to import notification,
+            format: uri,
+            nullable: true
           }
         },
         additionalProperties: false
@@ -3154,18 +3154,22 @@
             items: {
               $ref: #/components/schemas/UpdatedImportNotification
             },
+            description: Records for current page,
             nullable: true
           },
           totalRecords: {
             type: integer,
+            description: Total records across all pages,
             format: int32
           },
           currentPage: {
             type: integer,
+            description: Current page,
             format: int32
           },
           totalPages: {
             type: integer,
+            description: Total number of pages,
             format: int32
           }
         },

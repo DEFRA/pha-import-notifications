@@ -10,8 +10,16 @@ public class StubBtmsService : IBtmsService
         Task.FromResult<IEnumerable<ImportNotification>>(
             new List<ImportNotification>
             {
-                new() { ReferenceNumber = "CHED1234" },
-                new() { ReferenceNumber = "CHED5678" },
+                new()
+                {
+                    ReferenceNumber = "CHED1234",
+                    LastUpdated = new DateTime(2024, 11, 24, 23, 59, 30, DateTimeKind.Utc),
+                },
+                new()
+                {
+                    ReferenceNumber = "CHED5678",
+                    LastUpdated = new DateTime(2024, 11, 24, 23, 59, 59, DateTimeKind.Utc),
+                },
             }
         );
 

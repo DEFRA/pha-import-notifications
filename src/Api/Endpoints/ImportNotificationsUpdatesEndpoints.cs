@@ -1,6 +1,5 @@
 using System.ComponentModel;
 using Defra.PhaImportNotifications.Api.Services.Btms;
-using Defra.PhaImportNotifications.Contracts.UpdatedImportNotifications;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints;
@@ -39,18 +38,16 @@ public static class ImportNotificationsUpdatesEndpoints
     )
     {
         var notifications = await btmsService.GetImportNotifications(cancellationToken);
-        var links = notifications.Select(x => new UpdatedImportNotification
+        var records = notifications.Select(x => new UpdatedImportNotification
         {
-            Links = new ImportNotificationLinks
-            {
-                ImportNotification = new Uri($"/import-notifications/{x.ReferenceNumber}"),
-            },
+            LastUpdated = x.LastUpdated,
+            Uri = new Uri($"/import-notifications/{x.ReferenceNumber}"),
         });
 
         return Results.Ok(
             new PagedResponse<UpdatedImportNotification>
             {
-                Records = links,
+                Records = records,
                 CurrentPage = 0,
                 TotalPages = 1,
                 TotalRecords = 1,
