@@ -9,6 +9,10 @@ public static class ImportNotificationsUpdatesEndpoints
 {
     public static void MapImportNotificationsUpdatesEndpoints(this IEndpointRouteBuilder app)
     {
+        // Question: do we want versioning in our path at all?
+        // e.g. we start with /v1/import-notifications-updates etc...
+        // or v1 is implied and v2 can be added if ever needed
+
         app.MapGet("import-notifications-updates/{portHealthAuthority}/", Get)
             .WithName("ImportNotificationsUpdatesByReferenceNumber")
             .WithTags("Import Notifications Updates")
