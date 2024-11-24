@@ -16,7 +16,11 @@ public static class ImportNotificationsUpdatesEndpoints
             .WithDescription(
                 "Get all import notifications by port health authority that have been updated between the time period specified"
             )
-            .Produces<PagedResponse<UpdatedImportNotification>>();
+            .Produces<PagedResponse<UpdatedImportNotification>>()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status429TooManyRequests)
+            .ProducesProblem(StatusCodes.Status500InternalServerError);
     }
 
     [HttpGet]

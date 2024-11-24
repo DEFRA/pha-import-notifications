@@ -87,7 +87,6 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         c.AddServer(new OpenApiServer { Url = "https://localhost" });
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
         c.IncludeXmlComments(typeof(ImportNotification).Assembly);
-        c.OperationFilter<ErrorResponseFilter>();
         c.SchemaFilter<DescriptionSchemaFilter>();
         c.SwaggerDoc(
             "v1",

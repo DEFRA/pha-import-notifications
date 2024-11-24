@@ -15,7 +15,11 @@ public static class ImportNotificationsEndpoints
             .WithTags("Import Notifications")
             .WithSummary("Get Import Notification")
             .WithDescription("Get an Import Notification by reference number")
-            .Produces<ImportNotificationsResponse>();
+            .Produces<ImportNotificationsResponse>()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status429TooManyRequests)
+            .ProducesProblem(StatusCodes.Status500InternalServerError);
     }
 
     [HttpGet]
