@@ -128,21 +128,23 @@
           {
             name: page,
             in: query,
-            description: Allows a specific page to be requested, default is 1,
+            description: Allows a specific page to be requested,
             schema: {
               type: integer,
-              description: Allows a specific page to be requested, default is 1,
-              format: int32
+              description: Allows a specific page to be requested,
+              format: int32,
+              default: 1
             }
           },
           {
             name: pageSize,
             in: query,
-            description: Allows a page size to be requested, default is 100,
+            description: Allows a page size to be requested,
             schema: {
               type: integer,
-              description: Allows a page size to be requested, default is 100,
-              format: int32
+              description: Allows a page size to be requested,
+              format: int32,
+              default: 100
             }
           },
           {
