@@ -21,6 +21,9 @@ public static class ImportNotificationsUpdatesEndpoints
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status429TooManyRequests)
             .ProducesProblem(StatusCodes.Status500InternalServerError);
+
+        // Will add things like RequireRateLimiting("policyname") and RequireAuthorization()
+        // to the above to include additional information in the generated open API spec
     }
 
     [HttpGet]
