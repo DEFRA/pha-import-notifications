@@ -2,7 +2,7 @@ using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints;
 
-internal sealed record PagedResponse<T>
+internal sealed class PagedResponse<T>
 {
     [Description("Records for current page")]
     public IEnumerable<T> Records { get; init; } = [];

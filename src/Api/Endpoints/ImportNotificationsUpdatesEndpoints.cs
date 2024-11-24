@@ -56,7 +56,7 @@ public static class ImportNotificationsUpdatesEndpoints
     }
 
     // ReSharper disable once ClassNeverInstantiated.Local
-    private sealed record UpdatedImportNotificationRequest
+    private sealed class UpdatedImportNotificationRequest
     {
         [Description("Allows a specific page to be requested")]
         [DefaultValue(1)]
