@@ -1,7 +1,6 @@
-using Defra.PhaImportNotifications.Api;
 using Microsoft.AspNetCore.Mvc.Testing;
 
-namespace Api.IntegrationTests;
+namespace Defra.PhaImportNotifications.Api.IntegrationTests.OpenApi;
 
 public class OpenApiTests(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>>
 {
@@ -12,5 +11,14 @@ public class OpenApiTests(WebApplicationFactory<Program> factory) : IClassFixtur
         var response = await client.GetStringAsync("/.well-known/openapi/v1/openapi.json");
 
         await VerifyJson(response);
+    }
+
+    [Fact]
+    public async Task Redoc_VerifyAsExpected()
+    {
+        var client = factory.CreateClient();
+        var response = await client.GetAsync("/redoc/index.html");
+
+        await Verify(response);
     }
 }

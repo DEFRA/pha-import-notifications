@@ -1,13 +1,24 @@
+using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
+using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.OpenApi;
+using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Http;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Core;
 using Swashbuckle.AspNetCore.ReDoc;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
@@ -40,54 +51,82 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 {
     builder.Configuration.AddEnvironmentVariables();
 
+    var generatingOpenApiFromCli = Assembly.GetEntryAssembly()?.GetName().Name == "dotnet-swagger";
+
     var logger = ConfigureLogging(builder);
 
     // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
     builder.Services.AddCustomTrustStore(logger);
 
+    // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
+    builder.Services.ConfigureHttpClientDefaults(options => options.AddStandardResilienceHandler());
+    builder.Services.ConfigureHttpJsonOptions(options =>
+    {
+        options.SerializerOptions.PropertyNameCaseInsensitive = true;
+        options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.SerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
+        options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+    // This is needed for Swashbuckle and Minimal APIs
+    builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+    {
+        options.SerializerOptions.PropertyNameCaseInsensitive = true;
+        options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.SerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
+        options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+    builder.Services.TryAddTransient<ISerializerDataContractResolver>(sp => new JsonSerializerDataContractResolver(
+        sp.GetRequiredService<IOptions<Microsoft.AspNetCore.Http.Json.JsonOptions>>().Value.SerializerOptions
+    ));
+    // /This is needed for Swashbuckle and Minimal APIs
+    builder.Services.AddProblemDetails();
     builder.Services.AddHealthChecks();
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddOpenApi(options =>
+    builder.Services.AddSwaggerGen(c =>
     {
-        options.AddDocumentTransformer(
-            (document, _, _) =>
+        c.AddServer(
+            new OpenApiServer
             {
-                document.Info = new OpenApiInfo
-                {
-                    Description = "TBC",
-                    Contact = new OpenApiContact
-                    {
-                        Email = "tbc@defra.gov.uk",
-                        Name = "DEFRA",
-                        Url = new Uri(
-#pragma warning disable S1075
-                            "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs"
-#pragma warning restore S1075
-                        ),
-                    },
-                    Title = "PHA Import Notifications",
-                    Version = "v1",
-                };
-
-                document.Servers = new List<OpenApiServer>
-                {
-                    new()
-                    {
-                        Description = "The Open Government Licence (OGL) Version 3",
-                        Url = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3",
-                    },
-                };
-
-                return Task.CompletedTask;
+                Description = "The Open Government Licence (OGL) Version 3",
+                Url = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3",
             }
         );
-
-        options.AddOperationTransformer<ErrorResponsesTransformer>();
-        options.AddOperationTransformer<HeadersTransformer>();
-        options.AddSchemaTransformer<XmlDocsSchemaTransformer<Program>>();
-        options.AddSchemaTransformer<XmlDocsSchemaTransformer<ImportNotification>>();
+        c.IncludeXmlComments(Assembly.GetExecutingAssembly());
+        c.IncludeXmlComments(typeof(ImportNotification).Assembly);
+        c.OperationFilter<ResponseHeadersFilter>();
+        c.OperationFilter<ErrorResponseFilter>();
+        c.SchemaFilter<DescriptionSchemaFilter>();
+        c.SwaggerDoc(
+            "v1",
+            new OpenApiInfo
+            {
+                Description = "TBC",
+                Contact = new OpenApiContact
+                {
+                    Email = "tbc@defra.gov.uk",
+                    Name = "DEFRA",
+                    Url = new Uri(
+#pragma warning disable S1075
+                        "https://www.gov.uk/government/organisations/department-for-environment-food-rural-affairs"
+#pragma warning restore S1075
+                    ),
+                },
+                Title = "PHA Import Notifications",
+                Version = "v1",
+            }
+        );
     });
     builder.Services.AddHttpClient();
+    builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
+    builder.Services.AddHttpClient<IBtmsService, BtmsService>(
+        (sp, httpClient) =>
+        {
+            var options = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
+            httpClient.BaseAddress = new Uri(options.BaseUrl);
+        }
+    );
+    // Temp stub so we return a bit of data (for now)
+    builder.Services.AddTransient<IBtmsService, StubBtmsService>();
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);
@@ -115,11 +154,14 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
     var app = builder.Build();
 
     app.MapHealthChecks("/health");
-    app.MapPhaEndpoints();
-    app.MapImportNotificationEndpoints();
-    app.MapImportNotificationUpdatesEndpoint();
+    app.MapExampleEndpoints();
+    app.MapImportNotificationsEndpoints();
+    app.MapImportNotificationsUpdatesEndpoints();
 
-    app.MapOpenApi("/.well-known/openapi/{documentName}/openapi.json");
+    app.UseSwagger(options =>
+    {
+        options.RouteTemplate = "/.well-known/openapi/{documentName}/openapi.json";
+    });
     app.UseReDoc(options =>
     {
         options.ConfigObject = new ConfigObject { ExpandResponses = "200" };
@@ -127,6 +169,42 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
         options.RoutePrefix = "redoc";
         options.SpecUrl = "/.well-known/openapi/v1/openapi.json";
     });
+
+    app.UseStatusCodePages();
+    app.UseExceptionHandler(
+        new ExceptionHandlerOptions
+        {
+            AllowStatusCode404Response = true,
+            ExceptionHandler = async context =>
+            {
+                var exceptionHandlerFeature = context.Features.Get<IExceptionHandlerFeature>();
+                var error = exceptionHandlerFeature?.Error;
+                string? detail = null;
+
+                if (error is BadHttpRequestException badHttpRequestException)
+                {
+                    context.Response.StatusCode = badHttpRequestException.StatusCode;
+                    detail = badHttpRequestException.Message;
+                }
+
+                if (context.RequestServices.GetRequiredService<IProblemDetailsService>() is { } problemDetailsService)
+                {
+                    await problemDetailsService.WriteAsync(
+                        new ProblemDetailsContext
+                        {
+                            HttpContext = context,
+                            AdditionalMetadata = exceptionHandlerFeature?.Endpoint?.Metadata,
+                            ProblemDetails = { Status = context.Response.StatusCode, Detail = detail },
+                        }
+                    );
+                }
+                else if (ReasonPhrases.GetReasonPhrase(context.Response.StatusCode) is { } reasonPhrase)
+                {
+                    await context.Response.WriteAsync(reasonPhrase);
+                }
+            },
+        }
+    );
 
     return app;
 }

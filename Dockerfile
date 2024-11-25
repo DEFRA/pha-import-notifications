@@ -23,13 +23,15 @@ RUN wget "https://github.com/daveshanley/vacuum/releases/download/v${VACUUM_VERS
 WORKDIR /src
 
 ENV PATH="$PATH:/root/.dotnet/tools"
-RUN dotnet tool install -g --allow-roll-forward csharpier
+RUN dotnet tool install -g --allow-roll-forward csharpier && \
+    dotnet tool install -g Swashbuckle.AspNetCore.Cli
 
 COPY .csharpierrc .csharpierrc
 COPY .vacuum.yml .vacuum.yml
 
 COPY src/Api/Api.csproj src/Api/Api.csproj
 COPY src/Contracts/Contracts.csproj src/Contracts/Contracts.csproj
+COPY tests/Testing/Testing.csproj tests/Testing/Testing.csproj
 COPY tests/Api.Tests/Api.Tests.csproj tests/Api.Tests/Api.Tests.csproj
 COPY tests/Api.IntegrationTests/Api.IntegrationTests.csproj tests/Api.IntegrationTests/Api.IntegrationTests.csproj
 COPY Defra.PhaImportNotifications.sln Defra.PhaImportNotifications.sln
@@ -39,14 +41,14 @@ RUN dotnet restore
 
 COPY src/Api src/Api
 COPY src/Contracts src/Contracts
+COPY tests/Testing tests/Testing
 COPY tests/Api.Tests tests/Api.Tests
-
 COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
 RUN dotnet csharpier --check .
 
 RUN dotnet build --no-restore -c Release
-
+RUN swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
 # RUN vacuum lint -d -r .vacuum.yml openapi.json
 
 RUN dotnet test --no-restore tests/Api.Tests

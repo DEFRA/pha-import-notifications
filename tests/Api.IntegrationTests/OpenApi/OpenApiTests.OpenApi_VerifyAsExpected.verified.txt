@@ -17,248 +17,10 @@
     }
   ],
   paths: {
-    /hello/world: {
-      get: {
-        tags: [
-          Example Endpoints
-        ],
-        summary: Hello World,
-        description: An endpoint for hello world,
-        operationId: HelloWorld,
-        responses: {
-          200: {
-            description: OK,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying HelloWorld: 200,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for HelloWorld: 200,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for HelloWorld: 200,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
-            content: {
-              application/json: {
-                schema: {
-                  $ref: #/components/schemas/HelloWorldResponse
-                }
-              }
-            }
-          },
-          400: {
-            description: Bad Request,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying HelloWorld: 400,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for HelloWorld: 400,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for HelloWorld: 400,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
-            content: {
-              text/plain: {
-                schema: {
-                  enum: [
-                    Bad Request
-                  ],
-                  type: string,
-                  example: Bad Request
-                }
-              }
-            }
-          },
-          401: {
-            description: Unauthorized,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying HelloWorld: 401,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for HelloWorld: 401,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for HelloWorld: 401,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
-            content: {
-              text/plain: {
-                schema: {
-                  enum: [
-                    Unauthorized
-                  ],
-                  type: string,
-                  example: Unauthorized
-                }
-              }
-            }
-          },
-          429: {
-            description: Too Many Requests,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying HelloWorld: 429,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for HelloWorld: 429,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for HelloWorld: 429,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
-            content: {
-              text/plain: {
-                schema: {
-                  enum: [
-                    Too Many Requests
-                  ],
-                  type: string,
-                  example: Too Many Requests
-                }
-              }
-            }
-          },
-          500: {
-            description: Internal Server Error,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying HelloWorld: 500,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for HelloWorld: 500,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for HelloWorld: 500,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
-            content: {
-              text/plain: {
-                schema: {
-                  enum: [
-                    Internal Server Error
-                  ],
-                  type: string,
-                  example: Internal Server Error
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     /import-notifications/{referenceNumber}: {
       get: {
         tags: [
-          ImportNotificationEndpoint
+          Import Notifications
         ],
         summary: Get Import Notification,
         description: Get an Import Notification by reference number,
@@ -270,7 +32,8 @@
             description: Reference number,
             required: true,
             schema: {
-              type: string
+              type: string,
+              description: Reference number
             }
           }
         ],
@@ -319,38 +82,6 @@
           },
           400: {
             description: Bad Request,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsByReferenceNumber: 400,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsByReferenceNumber: 400,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsByReferenceNumber: 400,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               text/plain: {
                 schema: {
@@ -365,38 +96,6 @@
           },
           401: {
             description: Unauthorized,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsByReferenceNumber: 401,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsByReferenceNumber: 401,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsByReferenceNumber: 401,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               text/plain: {
                 schema: {
@@ -411,38 +110,6 @@
           },
           429: {
             description: Too Many Requests,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsByReferenceNumber: 429,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsByReferenceNumber: 429,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsByReferenceNumber: 429,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               text/plain: {
                 schema: {
@@ -457,38 +124,6 @@
           },
           500: {
             description: Internal Server Error,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsByReferenceNumber: 500,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsByReferenceNumber: 500,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsByReferenceNumber: 500,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               text/plain: {
                 schema: {
@@ -507,7 +142,7 @@
     /import-notifications-updates/{portHealthAuthority}: {
       get: {
         tags: [
-          ImportNotificationUpdatesEndpoint
+          Import Notifications Updates
         ],
         summary: Get Import Notification Updates,
         description: Get an Import Notification Updates by port health authority,
@@ -519,7 +154,8 @@
             description: The port health authority with format XYZ,
             required: true,
             schema: {
-              type: string
+              type: string,
+              description: The port health authority with format XYZ
             }
           },
           {
@@ -597,45 +233,13 @@
             content: {
               application/json: {
                 schema: {
-                  $ref: #/components/schemas/PagedResponseOfUpdatedImportNotification
+                  $ref: #/components/schemas/UpdatedImportNotificationPagedResponse
                 }
               }
             }
           },
           400: {
             description: Bad Request,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsUpdatesByReferenceNumber: 400,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsUpdatesByReferenceNumber: 400,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsUpdatesByReferenceNumber: 400,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               text/plain: {
                 schema: {
@@ -650,38 +254,6 @@
           },
           401: {
             description: Unauthorized,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsUpdatesByReferenceNumber: 401,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsUpdatesByReferenceNumber: 401,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsUpdatesByReferenceNumber: 401,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               text/plain: {
                 schema: {
@@ -696,38 +268,6 @@
           },
           429: {
             description: Too Many Requests,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsUpdatesByReferenceNumber: 429,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsUpdatesByReferenceNumber: 429,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsUpdatesByReferenceNumber: 429,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               text/plain: {
                 schema: {
@@ -742,38 +282,6 @@
           },
           500: {
             description: Internal Server Error,
-            headers: {
-              Retry-After: {
-                description: How long to wait in seconds before retrying ImportNotificationsUpdatesByReferenceNumber: 500,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              },
-              X-RateLimit-Limit: {
-                description: Remaining API request rate limit for ImportNotificationsUpdatesByReferenceNumber: 500,
-                schema: {
-                  maximum: 99999,
-                  minimum: 1,
-                  type: integer,
-                  format: int64
-                },
-                example: 100
-              },
-              X-RateLimit-Reset: {
-                description: Number of seconds until the quota resets for ImportNotificationsUpdatesByReferenceNumber: 500,
-                schema: {
-                  maximum: 86400,
-                  minimum: 0,
-                  type: integer,
-                  format: int64
-                },
-                example: 60
-              }
-            },
             content: {
               text/plain: {
                 schema: {
@@ -841,10 +349,45 @@
           externalReference: {
             $ref: #/components/schemas/ExternalReference
           }
-        }
+        },
+        additionalProperties: false
       },
       AccompanyingDocumentDocumentTypeEnum: {
-        type: integer
+        enum: [
+          AirWaybill,
+          BillOfLading,
+          CargoManifest,
+          CatchCertificate,
+          CommercialDocument,
+          CommercialInvoice,
+          ConformityCertificate,
+          ContainerManifest,
+          CustomsDeclaration,
+          Docom,
+          HealthCertificate,
+          HeatTreatmentCertificate,
+          ImportPermit,
+          InspectionCertificate,
+          Itahc,
+          JourneyLog,
+          LaboratorySamplingResultsForAflatoxin,
+          LatestVeterinaryHealthCertificate,
+          LetterOfAuthority,
+          LicenseOrAuthorisation,
+          MycotoxinCertification,
+          OriginCertificate,
+          Other,
+          PhytosanitaryCertificate,
+          ProcessingStatement,
+          ProofOfStorage,
+          RailwayBill,
+          SeaWaybill,
+          VeterinaryHealthCertificate,
+          ListOfIngredients,
+          PackingList,
+          RoadConsignmentNote
+        ],
+        type: string
       },
       Address: {
         required: [
@@ -916,77 +459,11 @@
             $ref: #/components/schemas/InternationalTelephone
           }
         }
-      },
-      Address2: {
         required: [
           internationalTelephone
         ],
-        type: object,
-        properties: {
-          street: {
-            type: string,
-            description: Street,
-            nullable: true
-          },
-          city: {
-            type: string,
-            description: City,
-            nullable: true
-          },
-          country: {
-            type: string,
-            description: Country,
-            nullable: true
-          },
-          postalCode: {
-            type: string,
-            description: Postal Code,
-            nullable: true
-          },
-          addressLine1: {
-            type: string,
-            description: 1st line of address,
-            nullable: true
-          },
-          addressLine2: {
-            type: string,
-            description: 2nd line of address,
-            nullable: true
-          },
-          addressLine3: {
-            type: string,
-            description: 3rd line of address,
-            nullable: true
-          },
-          postalZipCode: {
-            type: string,
-            description: Post / zip code,
-            nullable: true
-          },
-          countryIsoCode: {
-            type: string,
-            description: country 2-digits ISO code,
-            nullable: true
-          },
-          email: {
-            type: string,
-            description: Email address,
-            nullable: true
-          },
-          ukTelephone: {
-            type: string,
-            description: UK phone number,
-            nullable: true
-          },
-          telephone: {
-            type: string,
-            description: Telephone number,
-            nullable: true
-          },
-          internationalTelephone: {
-            $ref: #/components/schemas/#/properties/partOne/properties/consignor/properties/address/properties/internationalTelephone
-          }
-        }
+        additionalProperties: false
+        },
       },
       Applicant: {
         required: [
@@ -1053,12 +530,23 @@
             nullable: true
           }
         }
+        nullable: true
       },
       ApplicantAnalysisTypeEnum: {
-        type: integer
+        enum: [
+          InitialAnalysis,
+          CounterAnalysis,
+          SecondExpertAnalysis
+        ],
+        type: string
       },
       ApplicantConservationOfSampleEnum: {
-        type: integer
+        enum: [
+          Ambient,
+          Chilled,
+          Frozen
+        ],
+        type: string
       },
       ApprovedEstablishment: {
         type: object,
@@ -1096,7 +584,8 @@
             description: Section of approved establishment,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       AuditDiffEntry: {
         type: object,
@@ -1108,8 +597,12 @@
           op: {
             type: string,
             nullable: true
+          },
+          value: {
+            nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       AuditEntry: {
         required: [
@@ -1150,7 +643,8 @@
             },
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       BillingInformation: {
         required: [
@@ -1182,6 +676,7 @@
             $ref: #/components/schemas/PostalAddress
           }
         }
+        nullable: true
       },
       CatchCertificateAttachment: {
         type: object,
@@ -1205,7 +700,8 @@
             description: List of catch certificate details,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       CatchCertificateDetails: {
         type: object,
@@ -1239,7 +735,8 @@
             description: List of species imported under this catch certificate,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       ChedppNotAcceptableReason: {
         required: [
@@ -1254,13 +751,50 @@
           commodityOrPackage: {
             $ref: #/components/schemas/ChedppNotAcceptableReasonCommodityOrPackageEnum
           }
-        }
+        },
+        additionalProperties: false
       },
       ChedppNotAcceptableReasonCommodityOrPackageEnum: {
-        type: integer
+        enum: [
+          C,
+          P,
+          Cp
+        ],
+        type: string
       },
       ChedppNotAcceptableReasonReasonEnum: {
-        type: integer
+        enum: [
+          DocPhmdm,
+          DocPhmdii,
+          DocPa,
+          DocPic,
+          DocPill,
+          DocPed,
+          DocPmod,
+          DocPfi,
+          DocPnol,
+          DocPcne,
+          DocPadm,
+          DocPadi,
+          DocPpni,
+          DocPf,
+          DocPo,
+          DocNcevd,
+          DocNcpqefi,
+          DocNcpqebec,
+          DocNcts,
+          DocNco,
+          DocOrii,
+          DocOrsr,
+          OriOrrnu,
+          PhyOrpp,
+          PhyOrho,
+          PhyIs,
+          PhyOrsr,
+          OthCnl,
+          OthO
+        ],
+        type: string
       },
       Commodities: {
         required: [
@@ -1357,9 +891,16 @@
             $ref: #/components/schemas/CommoditiesCommodityIntendedForEnum
           }
         }
+        nullable: true
       },
       CommoditiesCommodityIntendedForEnum: {
-        type: integer
+        enum: [
+          Human,
+          Feedingstuff,
+          Further,
+          Other
+        ],
+        type: string
       },
       CommodityComplement: {
         required: [
@@ -1458,6 +999,9 @@
             description: Has commodity been matched with corresponding CDS declaration,
             nullable: true
           },
+          additionalData: {
+            nullable: true
+          },
           riskAssesment: {
             $ref: #/components/schemas/CommodityRiskResult
           },
@@ -1468,7 +1012,8 @@
             },
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       CommodityRiskResult: {
         required: [
@@ -1535,8 +1080,6 @@
             nullable: true
           }
         }
-      },
-      CommodityRiskResult2: {
         required: [
           riskDecision,
           exitRiskDecision,
@@ -1545,77 +1088,48 @@
           phsiClassification,
           phsi
         ],
-        type: object,
-        properties: {
-          riskDecision: {
-            $ref: #/components/schemas/CommodityRiskResultRiskDecisionEnum
-          },
-          exitRiskDecision: {
-            $ref: #/components/schemas/CommodityRiskResultExitRiskDecisionEnum
-          },
-          hmiDecision: {
-            $ref: #/components/schemas/CommodityRiskResultHmiDecisionEnum
-          },
-          phsiDecision: {
-            $ref: #/components/schemas/CommodityRiskResultPhsiDecisionEnum
-          },
-          phsiClassification: {
-            $ref: #/components/schemas/CommodityRiskResultPhsiClassificationEnum
-          },
-          phsi: {
-            $ref: #/components/schemas/#/properties/commodities/items/properties/riskAssesment/properties/phsi
-          },
-          uniqueId: {
-            type: string,
-            description: UUID used to match to the complement parameter set,
+        additionalProperties: false
+            description: Whether or not a plant is woody
             nullable: true
-          },
-          eppoCode: {
-            type: string,
-            description: EPPO Code for the species,
-            nullable: true
-          },
-          variety: {
-            type: string,
-            description: Name or ID of the variety,
-            nullable: true
-          },
-          isWoody: {
-            type: boolean,
-            description: Whether or not a plant is woody,
-            nullable: true
-          },
-          indoorOutdoor: {
-            type: string,
-            description: Indoor or Outdoor for a plant,
-            nullable: true
-          },
-          propagation: {
-            type: string,
-            description: Whether the propagation is considered a Plant, Bulb, Seed or None,
-            nullable: true
-          },
-          phsiRuleType: {
-            type: string,
-            description: Rule type for PHSI checks,
-            nullable: true
-          }
-        }
       },
       CommodityRiskResultExitRiskDecisionEnum: {
-        type: integer
+        enum: [
+          Required,
+          Notrequired,
+          Inconclusive
+        ],
+        type: string
       },
       CommodityRiskResultHmiDecisionEnum: {
-        type: integer
+        enum: [
+          Required,
+          Notrequired
+        ],
+        type: string
       },
       CommodityRiskResultPhsiClassificationEnum: {
-        type: integer
+        enum: [
+          Mandatory,
+          Reduced,
+          Controlled
+        ],
+        type: string
       },
       CommodityRiskResultPhsiDecisionEnum: {
-        type: integer
+        enum: [
+          Required,
+          Notrequired
+        ],
+        type: string
       },
       CommodityRiskResultRiskDecisionEnum: {
-        type: integer
+        enum: [
+          Required,
+          Notrequired,
+          Inconclusive,
+          ReenforcedCheck
+        ],
+        type: string
       },
       CommonUserCharge: {
         type: object,
@@ -1626,6 +1140,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       ConsignmentCheck: {
         required: [
@@ -1711,15 +1226,29 @@
             nullable: true
           }
         }
+        nullable: true
       },
       ConsignmentCheckIdentityCheckNotDoneReasonEnum: {
-        type: integer
+        enum: [
+          ReducedChecksRegime,
+          NotRequired
+        ],
+        type: string
       },
       ConsignmentCheckIdentityCheckTypeEnum: {
-        type: integer
+        enum: [
+          SealCheck,
+          FullIdentityCheck,
+          NotDone
+        ],
+        type: string
       },
       ConsignmentCheckPhysicalCheckNotDoneReasonEnum: {
-        type: integer
+        enum: [
+          ReducedChecksRegime,
+          Other
+        ],
+        type: string
       },
       ContactDetails: {
         type: object,
@@ -1745,6 +1274,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       Control: {
         required: [
@@ -1768,6 +1298,7 @@
             $ref: #/components/schemas/ControlConsignmentLeaveEnum
           }
         }
+        nullable: true
       },
       ControlAuthority: {
         required: [
@@ -1808,12 +1339,23 @@
             $ref: #/components/schemas/ControlAuthorityIuuOptionEnum
           }
         }
+        nullable: true
       },
       ControlAuthorityIuuOptionEnum: {
-        type: integer
+        enum: [
+          Iuuok,
+          Iuuna,
+          IUUNotCompliant
+        ],
+        type: string
       },
       ControlConsignmentLeaveEnum: {
-        type: integer
+        enum: [
+          Yes,
+          No,
+          ItHasBeenDestroyed
+        ],
+        type: string
       },
       Decision: {
         required: [
@@ -1910,7 +1452,7 @@
             nullable: true
           },
           detailsOfControlledDestinations: {
-            $ref: #/components/schemas/Party2
+            $ref: #/components/schemas/Party
           },
           specificWarehouseNonConformingConsignment: {
             $ref: #/components/schemas/DecisionSpecificWarehouseNonConformingConsignmentEnum
@@ -1998,45 +1540,141 @@
             nullable: true
           }
         }
+        nullable: true
       },
       DecisionDecisionEnum: {
-        type: integer
+        enum: [
+          NonAcceptable,
+          AcceptableForInternalMarket,
+          AcceptableIfChanneled,
+          AcceptableForTranshipment,
+          AcceptableForTransit,
+          AcceptableForTemporaryImport,
+          AcceptableForSpecificWarehouse,
+          AcceptableForPrivateImport,
+          AcceptableForTransfer,
+          HorseReEntry
+        ],
+        type: string
       },
       DecisionDefinitiveImportPurposeEnum: {
-        type: integer
+        enum: [
+          Slaughter,
+          Approvedbodies,
+          Quarantine
+        ],
+        type: string
       },
       DecisionFreeCirculationPurposeEnum: {
-        type: integer
+        enum: [
+          AnimalFeedingStuff,
+          HumanConsumption,
+          PharmaceuticalUse,
+          TechnicalUse,
+          FurtherProcess,
+          Other
+        ],
+        type: string
       },
       DecisionIfChanneledOptionEnum: {
-        type: integer
+        enum: [
+          Article8,
+          Article15
+        ],
+        type: string
       },
       DecisionNotAcceptableActionDestructionReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          Other
+        ],
+        type: string
       },
       DecisionNotAcceptableActionEntryRefusalReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          MeansOfTransport,
+          Other
+        ],
+        type: string
       },
       DecisionNotAcceptableActionEnum: {
-        type: integer
+        enum: [
+          Slaughter,
+          Reexport,
+          Euthanasia,
+          Redispatching,
+          Destruction,
+          Transformation,
+          Other,
+          EntryRefusal,
+          QuarantineImposed,
+          SpecialTreatment,
+          IndustrialProcessing,
+          ReDispatch,
+          UseForOtherPurposes
+        ],
+        type: string
       },
       DecisionNotAcceptableActionIndustrialProcessingReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          Other
+        ],
+        type: string
       },
       DecisionNotAcceptableActionQuarantineImposedReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          Other
+        ],
+        type: string
       },
       DecisionNotAcceptableActionReDispatchReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          MeansOfTransport,
+          Other
+        ],
+        type: string
       },
       DecisionNotAcceptableActionSpecialTreatmentReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          Other
+        ],
+        type: string
       },
       DecisionNotAcceptableActionUseForOtherPurposesReasonEnum: {
-        type: integer
+        enum: [
+          ContaminatedProducts,
+          InterceptedPart,
+          PackagingMaterial,
+          MeansOfTransport,
+          Other
+        ],
+        type: string
       },
       DecisionSpecificWarehouseNonConformingConsignmentEnum: {
-        type: integer
+        enum: [
+          CustomWarehouse,
+          FreeZoneOrFreeWarehouse,
+          ShipSupplier,
+          Ship
+        ],
+        type: string
       },
       DetailsOnReExport: {
         required: [
@@ -2074,9 +1712,19 @@
             nullable: true
           }
         }
+        nullable: true
       },
       DetailsOnReExportTransportTypeEnum: {
-        type: integer
+        enum: [
+          Rail,
+          Plane,
+          Ship,
+          Road,
+          Other,
+          CShipRoad,
+          CShipRail
+        ],
+        type: string
       },
       EconomicOperator: {
         required: [
@@ -2127,62 +1775,38 @@
             nullable: true
           }
         }
-      },
-      EconomicOperator2: {
         required: [
           type,
           status,
           address
         ],
-        type: object,
-        properties: {
-          id: {
-            type: string,
-            description: The unique identifier of this organisation,
-            nullable: true
-          },
-          type: {
-            $ref: #/components/schemas/EconomicOperatorTypeEnum
-          },
-          status: {
-            $ref: #/components/schemas/EconomicOperatorStatusEnum
-          },
-          companyName: {
-            type: string,
-            description: Name of organisation,
-            nullable: true
-          },
-          individualName: {
-            type: string,
-            description: Individual name,
-            nullable: true
-          },
-          address: {
-            $ref: #/components/schemas/#/properties/partOne/properties/consignor/properties/address
-          },
-          approvalNumber: {
-            type: string,
-            description: Approval Number which identifies an Economic Operator unambiguously per type of organisation per country.,
-            nullable: true
-          },
-          otherIdentifier: {
-            type: string,
-            description: Optional Business General Number, often named Aggregation Code, which identifies an Economic Operator.,
-            nullable: true
-          },
-          tracesId: {
-            type: integer,
-            description: Traces Id of the economic operator generated by IPAFFS,
-            format: int32,
-            nullable: true
-          }
-        }
-      },
+        additionalProperties: false
+            format: int32
       EconomicOperatorStatusEnum: {
-        type: integer
+        enum: [
+          Approved,
+          Nonapproved,
+          Suspended
+        ],
+        type: string
       },
       EconomicOperatorTypeEnum: {
-        type: integer
+        enum: [
+          Consignee,
+          Destination,
+          Exporter,
+          Importer,
+          Charity,
+          CommercialTransporter,
+          CommercialTransporterUserAdded,
+          PrivateTransporter,
+          TemporaryAddress,
+          PremisesOfOrigin,
+          OrganisationBranchAddress,
+          Packer,
+          Pod
+        ],
+        type: string
       },
       ExternalReference: {
         required: [
@@ -2201,22 +1825,21 @@
           exactMatch: {
             type: boolean,
             description: Details whether there's an exact match between the external source and IPAFFS data,
+            description: Details whether an importer has verified the data from an external source
             nullable: true
-          },
-          verifiedByImporter: {
-            type: boolean,
-            description: Details whether an importer has verified the data from an external source,
+        additionalProperties: false
+            description: Details whether an inspector has verified the data from an external source
             nullable: true
-          },
-          verifiedByInspector: {
-            type: boolean,
-            description: Details whether an inspector has verified the data from an external source,
-            nullable: true
-          }
-        }
+        },
       },
       ExternalReferenceSystemEnum: {
-        type: integer
+        enum: [
+          Ecert,
+          Ephyto,
+          Enotification,
+          Ncts
+        ],
+        type: string
       },
       FeedbackInformation: {
         required: [
@@ -2248,23 +1871,16 @@
             nullable: true
           }
         }
+        nullable: true
       },
       FeedbackInformationAuthorityTypeEnum: {
-        type: integer
-      },
-      HelloWorldResponse: {
-        type: object,
-        properties: {
-          response: {
-            maxLength: 11,
-            minLength: 0,
-            pattern: ^Hello World$,
-            type: string,
-            description: A string consisting of Hello World,
-            nullable: true
-          }
-        },
-        description: The hello world response
+        enum: [
+          Exitbip,
+          Finalbip,
+          Localvetunit,
+          Inspunit
+        ],
+        type: string
       },
       IdentificationDetails: {
         type: object,
@@ -2279,7 +1895,8 @@
             description: Identification description,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       ImpactOfTransportOnAnimals: {
         type: object,
@@ -2313,6 +1930,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       ImportNotificationLinks: {
         type: object,
@@ -2323,7 +1941,7 @@
             nullable: true
           }
         },
-        nullable: true
+        additionalProperties: false
       },
       ImportNotificationResponse: {
         required: [
@@ -2461,7 +2079,7 @@
           consignmentValidations: {
             type: array,
             items: {
-              $ref: #/components/schemas/#/properties/partOne/properties/consignmentValidations/items
+              $ref: #/components/schemas/ValidationMessageCode
             },
             description: Validation messages for whole notification,
             nullable: true
@@ -2507,13 +2125,35 @@
             description: Indicates whether a CHED has been matched with a GVMS GMR via DMP,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       ImportNotificationStatusEnum: {
-        type: integer
+        enum: [
+          Draft,
+          Submitted,
+          Validated,
+          Rejected,
+          InProgress,
+          Amend,
+          Modify,
+          Replaced,
+          Cancelled,
+          Deleted,
+          PartiallyRejected,
+          SplitConsignment
+        ],
+        type: string
       },
       ImportNotificationTypeEnum: {
-        type: integer
+        enum: [
+          Cveda,
+          Cvedp,
+          Chedpp,
+          Ced,
+          Imp
+        ],
+        type: string
       },
       InspectionCheck: {
         required: [
@@ -2548,13 +2188,29 @@
             description: Has commodity completed this type of check,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       InspectionCheckStatusEnum: {
-        type: integer
+        enum: [
+          ToDo,
+          Compliant,
+          AutoCleared,
+          NonCompliant,
+          NotInspected,
+          ToBeInspected,
+          Hold
+        ],
+        type: string
       },
       InspectionCheckTypeEnum: {
-        type: integer
+        enum: [
+          PhsiDocument,
+          PhsiIdentity,
+          PhsiPhysical,
+          Hmi
+        ],
+        type: string
       },
       InspectionOverride: {
         required: [
@@ -2577,28 +2233,13 @@
             $ref: #/components/schemas/UserInformation
           }
         }
-      },
-      InspectionOverride2: {
         required: [
           overriddenBy
         ],
-        type: object,
-        properties: {
-          originalDecision: {
-            type: string,
-            description: Original inspection decision,
+        additionalProperties: false
+            format: date-time
             nullable: true
-          },
-          overriddenOn: {
-            type: string,
-            description: The time the risk decision is overridden,
-            format: date-time,
-            nullable: true
-          },
-          overriddenBy: {
-            $ref: #/components/schemas/#/properties/partTwo/properties/inspectionOverride/properties/overriddenBy
-          }
-        }
+        },
       },
       Inspector: {
         type: object,
@@ -2619,6 +2260,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       InternationalTelephone: {
         type: object,
@@ -2634,6 +2276,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       JourneyRiskCategorisationResult: {
         required: [
@@ -2655,12 +2298,22 @@
             nullable: true
           }
         }
+        nullable: true
       },
       JourneyRiskCategorisationResultRiskLevelEnum: {
-        type: integer
+        enum: [
+          High,
+          Medium,
+          Low
+        ],
+        type: string
       },
       JourneyRiskCategorisationResultRiskLevelMethodEnum: {
-        type: integer
+        enum: [
+          System,
+          User
+        ],
+        type: string
       },
       LaboratoryTestResult: {
         required: [
@@ -2699,9 +2352,16 @@
             nullable: true
           }
         }
+        nullable: true
       },
       LaboratoryTestResultConclusionEnum: {
-        type: integer
+        enum: [
+          Satisfactory,
+          NotSatisfactory,
+          NotInterpretable,
+          Pending
+        ],
+        type: string
       },
       LaboratoryTests: {
         required: [
@@ -2727,9 +2387,18 @@
             nullable: true
           }
         }
+        nullable: true
       },
       LaboratoryTestsTestReasonEnum: {
-        type: integer
+        enum: [
+          Random,
+          Suspicious,
+          ReEnforced,
+          IntensifiedControls,
+          Required,
+          LatentInfectionSampling
+        ],
+        type: string
       },
       MeansOfTransport: {
         required: [
@@ -2751,9 +2420,20 @@
             nullable: true
           }
         }
+        nullable: true
       },
       MeansOfTransportTypeEnum: {
-        type: integer
+        enum: [
+          Aeroplane,
+          RoadVehicle,
+          RailwayWagon,
+          Ship,
+          Other,
+          RoadVehicleAeroplane,
+          ShipRailwayWagon,
+          ShipRoadVehicle
+        ],
+        type: string
       },
       NominatedContact: {
         type: object,
@@ -2773,7 +2453,8 @@
             description: Telephone number of nominated contact,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       NotificationTdmRelationships: {
         required: [
@@ -2785,6 +2466,7 @@
             $ref: #/components/schemas/TdmRelationshipObject
           }
         }
+        nullable: true
       },
       OfficialInspector: {
         required: [
@@ -2818,7 +2500,7 @@
             nullable: true
           },
           address: {
-            $ref: #/components/schemas/Address2
+            $ref: #/components/schemas/Address
           },
           signed: {
             type: string,
@@ -2826,47 +2508,11 @@
             nullable: true
           }
         }
-      },
-      OfficialInspector2: {
         required: [
           address
         ],
-        type: object,
-        properties: {
-          firstName: {
-            type: string,
-            description: First name of inspector,
-            nullable: true
-          },
-          lastName: {
-            type: string,
-            description: Last name of inspector,
-            nullable: true
-          },
-          email: {
-            type: string,
-            description: Email of inspector,
-            nullable: true
-          },
-          phone: {
-            type: string,
-            description: Phone number of inspector,
-            nullable: true
-          },
-          fax: {
-            type: string,
-            description: Fax number of inspector,
-            nullable: true
-          },
-          address: {
-            $ref: #/components/schemas/#/properties/partThree/properties/control/properties/officialInspector/properties/address
-          },
-          signed: {
-            type: string,
-            description: Date of sign,
-            nullable: true
-          }
-        }
+        additionalProperties: false
+        },
       },
       OfficialVeterinarian: {
         type: object,
@@ -2902,29 +2548,7 @@
             nullable: true
           }
         }
-      },
-      PagedResponseOfUpdatedImportNotification: {
-        type: object,
-        properties: {
-          records: {
-            type: array,
-            items: {
-              $ref: #/components/schemas/UpdatedImportNotification
-            }
-          },
-          totalRecords: {
-            type: integer,
-            format: int32
-          },
-          currentPage: {
-            type: integer,
-            format: int32
-          },
-          totalPages: {
-            type: integer,
-            format: int32
-          }
-        }
+        additionalProperties: false
       },
       PartOne: {
         required: [
@@ -2977,30 +2601,30 @@
             $ref: #/components/schemas/EconomicOperator
           },
           consignorTwo: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           packer: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           consignee: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           importer: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           placeOfDestination: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           pod: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           placeOfOriginHarvest: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           additionalPermanentAddresses: {
             type: array,
             items: {
-              $ref: #/components/schemas/EconomicOperator2
+              $ref: #/components/schemas/EconomicOperator3
             },
             description: List of additional permanent addresses,
             nullable: true
@@ -3047,7 +2671,7 @@
             $ref: #/components/schemas/MeansOfTransport
           },
           transporter: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           transporterDetailsRequired: {
             type: boolean,
@@ -3174,12 +2798,23 @@
             nullable: true
           }
         }
+        nullable: true
       },
       PartOneProvideCtcMrnEnum: {
-        type: integer
+        enum: [
+          Yes,
+          YesAddLater,
+          No
+        ],
+        type: string
       },
       PartOneTypeOfImpEnum: {
-        type: integer
+        enum: [
+          A,
+          P,
+          D
+        ],
+        type: string
       },
       PartThree: {
         required: [
@@ -3199,7 +2834,7 @@
           consignmentValidations: {
             type: array,
             items: {
-              $ref: #/components/schemas/#/properties/partOne/properties/consignmentValidations/items
+              $ref: #/components/schemas/ValidationMessageCode
             },
             description: Validation messages for Part 3 - Control,
             nullable: true
@@ -3213,12 +2848,17 @@
             $ref: #/components/schemas/SealCheck
           },
           sealCheckOverride: {
-            $ref: #/components/schemas/InspectionOverride2
+            $ref: #/components/schemas/InspectionOverride
           }
         }
+        nullable: true
       },
       PartThreeControlStatusEnum: {
-        type: integer
+        enum: [
+          Required,
+          Completed
+        ],
+        type: string
       },
       PartTwo: {
         required: [
@@ -3265,7 +2905,7 @@
           resealedContainersMappings: {
             type: array,
             items: {
-              $ref: #/components/schemas/#/properties/partOne/properties/sealsContainers/items
+              $ref: #/components/schemas/SealContainer
             },
             description: Resealed containers information details,
             nullable: true
@@ -3274,7 +2914,7 @@
             $ref: #/components/schemas/ControlAuthority
           },
           controlledDestination: {
-            $ref: #/components/schemas/EconomicOperator2
+            $ref: #/components/schemas/EconomicOperator
           },
           bipLocalReferenceNumber: {
             type: string,
@@ -3294,7 +2934,7 @@
           consignmentValidations: {
             type: array,
             items: {
-              $ref: #/components/schemas/#/properties/partOne/properties/consignmentValidations/items
+              $ref: #/components/schemas/ValidationMessageCode
             },
             description: Validation messages for Part 2 - Decision,
             nullable: true
@@ -3308,7 +2948,7 @@
           accompanyingDocuments: {
             type: array,
             items: {
-              $ref: #/components/schemas/#/properties/partOne/properties/veterinaryInformation/properties/accompanyingDocuments/items
+              $ref: #/components/schemas/AccompanyingDocument
             },
             description: Accompanying documents,
             nullable: true
@@ -3338,6 +2978,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       Party: {
         required: [
@@ -3428,94 +3069,20 @@
             nullable: true
           }
         }
-      },
-      Party2: {
         required: [
           type
         ],
-        type: object,
-        properties: {
-          id: {
-            type: string,
-            description: IPAFFS ID of party,
+        additionalProperties: false
+            format: int32
             nullable: true
-          },
-          name: {
-            type: string,
-            description: Name of party,
-            nullable: true
-          },
-          companyId: {
-            type: string,
-            description: Company ID,
-            nullable: true
-          },
-          contactId: {
-            type: string,
-            description: Contact ID (B2C),
-            nullable: true
-          },
-          companyName: {
-            type: string,
-            description: Company name,
-            nullable: true
-          },
-          addresses: {
-            $ref: #/components/schemas/#/properties/partOne/properties/personResponsible/properties/addresses
-          },
-          county: {
-            type: string,
-            description: County,
-            nullable: true
-          },
-          postCode: {
-            type: string,
-            description: Post code of party,
-            nullable: true
-          },
-          country: {
-            type: string,
-            description: Country of party,
-            nullable: true
-          },
-          city: {
-            type: string,
-            description: City,
-            nullable: true
-          },
-          tracesId: {
-            type: integer,
-            description: TRACES ID,
-            format: int32,
-            nullable: true
-          },
-          type: {
-            $ref: #/components/schemas/PartyTypeEnum
-          },
-          approvalNumber: {
-            type: string,
-            description: Approval number,
-            nullable: true
-          },
-          phone: {
-            type: string,
-            description: Phone number of party,
-            nullable: true
-          },
-          fax: {
-            type: string,
-            description: Fax number of party,
-            nullable: true
-          },
-          email: {
-            type: string,
-            description: Email number of party,
-            nullable: true
-          }
-        }
+        },
       },
       PartyTypeEnum: {
-        type: integer
+        enum: [
+          CommercialTransporter,
+          PrivateTransporter
+        ],
+        type: string
       },
       Phsi: {
         type: object,
@@ -3536,6 +3103,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       PostalAddress: {
         type: object,
@@ -3576,6 +3144,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       Purpose: {
         required: [
@@ -3658,18 +3227,61 @@
             nullable: true
           }
         }
+        nullable: true
       },
       PurposeForImportOrAdmissionEnum: {
-        type: integer
+        enum: [
+          DefinitiveImport,
+          HorsesReEntry,
+          TemporaryAdmissionHorses
+        ],
+        type: string
       },
       PurposeForNonConformingEnum: {
-        type: integer
+        enum: [
+          CustomsWarehouse,
+          FreeZoneOrFreeWarehouse,
+          ShipSupplier,
+          Ship
+        ],
+        type: string
       },
       PurposeInternalMarketPurposeEnum: {
-        type: integer
+        enum: [
+          AnimalFeedingStuff,
+          HumanConsumption,
+          PharmaceuticalUse,
+          TechnicalUse,
+          Other,
+          CommercialSale,
+          CommercialSaleOrChangeOfOwnership,
+          Rescue,
+          Breeding,
+          Research,
+          RacingOrCompetition,
+          ApprovedPremisesOrBody,
+          CompanionAnimalNotForResaleOrRehoming,
+          Production,
+          Slaughter,
+          Fattening,
+          GameRestocking,
+          RegisteredHorses
+        ],
+        type: string
       },
       PurposePurposeGroupEnum: {
-        type: integer
+        enum: [
+          ForImport,
+          ForNONConformingConsignments,
+          ForTranshipmentTo,
+          ForTransitTo3rdCountry,
+          ForReImport,
+          ForPrivateImport,
+          ForTransferTo,
+          ForImportReConformityCheck,
+          ForImportNonInternalMarket
+        ],
+        type: string
       },
       RelationshipDataItem: {
         required: [
@@ -3707,7 +3319,8 @@
             format: int32,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       RelationshipLinks: {
         type: object,
@@ -3721,6 +3334,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       ResourceLink: {
         type: object,
@@ -3730,6 +3344,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       RiskAssessmentResult: {
         type: object,
@@ -3737,7 +3352,7 @@
           commodityResults: {
             type: array,
             items: {
-              $ref: #/components/schemas/CommodityRiskResult2
+              $ref: #/components/schemas/CommodityRiskResult
             },
             description: List of risk assessed commodities,
             nullable: true
@@ -3749,6 +3364,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       Route: {
         type: object,
@@ -3761,6 +3377,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       SealCheck: {
         required: [
@@ -3779,7 +3396,7 @@
             nullable: true
           },
           officialInspector: {
-            $ref: #/components/schemas/OfficialInspector2
+            $ref: #/components/schemas/OfficialInspector
           },
           checkedOn: {
             type: string,
@@ -3788,6 +3405,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       SealContainer: {
         type: object,
@@ -3808,7 +3426,8 @@
             type: string,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       SingleLaboratoryTest: {
         required: [
@@ -3845,7 +3464,8 @@
           laboratoryTestResult: {
             $ref: #/components/schemas/LaboratoryTestResult
           }
-        }
+        },
+        additionalProperties: false
       },
       SplitConsignment: {
         type: object,
@@ -3861,6 +3481,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       TdmRelationshipObject: {
         required: [
@@ -3883,6 +3504,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       UpdatedImportNotification: {
         type: object,
@@ -3890,7 +3512,33 @@
           links: {
             $ref: #/components/schemas/ImportNotificationLinks
           }
-        }
+        },
+        additionalProperties: false
+      },
+      UpdatedImportNotificationPagedResponse: {
+        type: object,
+        properties: {
+          records: {
+            type: array,
+            items: {
+              $ref: #/components/schemas/UpdatedImportNotification
+            },
+            nullable: true
+          },
+          totalRecords: {
+            type: integer,
+            format: int32
+          },
+          currentPage: {
+            type: integer,
+            format: int32
+          },
+          totalPages: {
+            type: integer,
+            format: int32
+          }
+        },
+        additionalProperties: false
       },
       UserInformation: {
         type: object,
@@ -3911,6 +3559,7 @@
             nullable: true
           }
         }
+        nullable: true
       },
       ValidationMessageCode: {
         type: object,
@@ -3925,7 +3574,8 @@
             description: Code,
             nullable: true
           }
-        }
+        },
+        additionalProperties: false
       },
       VeterinaryInformation: {
         required: [
@@ -3987,18 +3637,8 @@
             nullable: true
           }
         }
+        nullable: true
       }
     }
-  },
-  tags: [
-    {
-      name: Example Endpoints
-    },
-    {
-      name: ImportNotificationEndpoint
-    },
-    {
-      name: ImportNotificationUpdatesEndpoint
-    }
-  ]
+  }
 }

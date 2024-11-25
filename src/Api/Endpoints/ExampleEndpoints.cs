@@ -3,20 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints;
 
-public static class PhaEndpoints
+public static class ExampleEndpoints
 {
-    public static void MapPhaEndpoints(this IEndpointRouteBuilder app)
+    public static void MapExampleEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapGet("hello/world", HelloWorld)
-            .WithName("HelloWorld")
-            .WithTags("Example Endpoints")
-            .WithSummary("Hello World")
-            .WithDescription("An endpoint for hello world")
-            .Produces<HelloWorldResponse>();
+        app.MapGet("hello/world", HelloWorld).ExcludeFromDescription();
     }
 
     [HttpGet]
-    public static HelloWorldResponse HelloWorld()
+    private static HelloWorldResponse HelloWorld()
     {
         return new HelloWorldResponse();
     }
