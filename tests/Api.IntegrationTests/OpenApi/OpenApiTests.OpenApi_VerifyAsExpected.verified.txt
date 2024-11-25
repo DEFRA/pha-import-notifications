@@ -93,7 +93,7 @@
     /import-notifications-updates/{portHealthAuthority}: {
       get: {
         tags: [
-          Import Notifications Updates
+          Import Notifications
         ],
         summary: Get Import Notification Updates,
         description: Get all import notifications by port health authority that have been updated between the time period specified,
@@ -3128,6 +3128,7 @@
       },
       UpdatedImportNotification: {
         required: [
+          lastUpdated,
           uri
         ],
         type: object,
@@ -3141,12 +3142,18 @@
             type: string,
             description: Relative path to import notification,
             format: uri,
-            nullable: true
+            example: /import-notifications/referenceNumber
           }
         },
         additionalProperties: false
       },
       UpdatedImportNotificationPagedResponse: {
+        required: [
+          currentPage,
+          records,
+          totalPages,
+          totalRecords
+        ],
         type: object,
         properties: {
           records: {
@@ -3154,8 +3161,7 @@
             items: {
               $ref: #/components/schemas/UpdatedImportNotification
             },
-            description: Records for current page,
-            nullable: true
+            description: Records for current page
           },
           totalRecords: {
             type: integer,
@@ -3271,5 +3277,19 @@
         additionalProperties: false
       }
     }
-  }
+  },
+  tags: [
+    {
+      name: Import Notifications,
+      description: Get updated import notifications for a PHA
+    }
+  ],
+  x-tagGroups: [
+    {
+      name: Endpoints,
+      tags: [
+        Import Notifications
+      ]
+    }
+  ]
 }
