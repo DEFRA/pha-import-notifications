@@ -1,7 +1,10 @@
+using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
+using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using NSubstitute;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotificationsUpdates;
@@ -18,13 +21,22 @@ public class ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Prog
 
         MockBtmsService
             .GetImportNotifications(Arg.Any<CancellationToken>())
-            .Returns(new List<ImportNotification> { new() { ReferenceNumber = "mock1" } });
+            .Returns(
+                new List<ImportNotification>
+                {
+                    new()
+                    {
+                        ReferenceNumber = "mock1",
+                        LastUpdated = new DateTime(2024, 11, 24, 23, 59, 59, DateTimeKind.Utc),
+                    },
+                }
+            );
 
-        var response = await client.GetStringAsync(
-            "import-notifications-updates/pha?page=1&pageSize=1&from=2024-11-20&to=2024-11-20"
-        );
+        var response = await client.GetStringAsync("import-notifications-updates/pha?from=2024-11-20");
 
         await Verify(response);
+
+        JsonConvert.DeserializeObject<PagedResponse<UpdatedImportNotification>>(response).Should().NotBeNull();
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)
