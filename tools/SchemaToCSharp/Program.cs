@@ -100,7 +100,7 @@ static PropertyDeclarationSyntax CreateProperty(string name, OpenApiSchema schem
     }
     else
     {
-        //modifiers.Add(Token(SyntaxKind.RequiredKeyword));
+        modifiers.Add(Token(SyntaxKind.RequiredKeyword));
     }
 
     var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };

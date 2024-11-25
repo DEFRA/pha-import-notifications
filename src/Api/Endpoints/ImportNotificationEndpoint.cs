@@ -19,7 +19,7 @@ public static class ImportNotificationEndpoint
     [HttpGet]
     public static Task<IResult> Get([FromRoute] [Description("Reference number")] string referenceNumber)
     {
-        return Task.FromResult(Results.Ok(new ImportNotificationResponse()));
+        return Task.FromResult(Results.Ok());
     }
 
     [SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty")]

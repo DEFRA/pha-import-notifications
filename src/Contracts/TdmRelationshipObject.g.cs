@@ -6,11 +6,11 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class TdmRelationshipObject
 {
     [JsonPropertyName("matched")]
-    public bool? Matched { get; set; }
+    public bool? Matched { get; init; }
 
     [JsonPropertyName("links")]
-    public RelationshipLinks Links { get; set; }
+    public required RelationshipLinks Links { get; init; }
 
     [JsonPropertyName("data")]
-    public List<RelationshipDataItem>? Data { get; set; }
+    public List<RelationshipDataItem>? Data { get; init; }
 }

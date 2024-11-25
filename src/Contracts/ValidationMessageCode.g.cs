@@ -7,9 +7,9 @@ public class ValidationMessageCode
 {
     [JsonPropertyName("field")]
     [Description("Field")]
-    public string? Field { get; set; }
+    public string? Field { get; init; }
 
     [JsonPropertyName("code")]
     [Description("Code")]
-    public string? Code { get; set; }
+    public string? Code { get; init; }
 }

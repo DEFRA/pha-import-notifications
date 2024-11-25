@@ -7,9 +7,9 @@ public class CatchCertificates
 {
     [JsonPropertyName("certificateNumber")]
     [Description("The catch certificate number")]
-    public string? CertificateNumber { get; set; }
+    public string? CertificateNumber { get; init; }
 
     [JsonPropertyName("weight")]
     [Description("The catch certificate weight number")]
-    public decimal? Weight { get; set; }
+    public decimal? Weight { get; init; }
 }

@@ -7,13 +7,13 @@ public class UserInformation
 {
     [JsonPropertyName("displayName")]
     [Description("Display name")]
-    public string? DisplayName { get; set; }
+    public string? DisplayName { get; init; }
 
     [JsonPropertyName("userId")]
     [Description("User ID")]
-    public string? UserId { get; set; }
+    public string? UserId { get; init; }
 
     [JsonPropertyName("isControlUser")]
     [Description("Is this user a control")]
-    public bool? IsControlUser { get; set; }
+    public bool? IsControlUser { get; init; }
 }

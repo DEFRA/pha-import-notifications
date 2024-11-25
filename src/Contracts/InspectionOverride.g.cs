@@ -7,12 +7,12 @@ public class InspectionOverride
 {
     [JsonPropertyName("originalDecision")]
     [Description("Original inspection decision")]
-    public string? OriginalDecision { get; set; }
+    public string? OriginalDecision { get; init; }
 
     [JsonPropertyName("overriddenOn")]
     [Description("The time the risk decision is overridden")]
-    public DateTime? OverriddenOn { get; set; }
+    public DateTime? OverriddenOn { get; init; }
 
     [JsonPropertyName("overriddenBy")]
-    public UserInformation OverriddenBy { get; set; }
+    public required UserInformation OverriddenBy { get; init; }
 }

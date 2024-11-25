@@ -793,6 +793,10 @@
   components: {
     schemas: {
       AccompanyingDocument: {
+        required: [
+          documentType,
+          externalReference
+        ],
         type: object,
         properties: {
           documentType: {
@@ -806,7 +810,8 @@
           documentIssuedOn: {
             type: string,
             description: Additional document issue date,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           attachmentId: {
             type: string,
@@ -834,7 +839,7 @@
             nullable: true
           },
           externalReference: {
-            $ref: #/components/schemas/ExternalReference2
+            $ref: #/components/schemas/ExternalReference
           }
         }
       },
@@ -842,6 +847,9 @@
         type: integer
       },
       Address: {
+        required: [
+          internationalTelephone
+        ],
         type: object,
         properties: {
           street: {
@@ -907,10 +915,12 @@
           internationalTelephone: {
             $ref: #/components/schemas/InternationalTelephone
           }
-        },
-        nullable: true
+        }
       },
       Address2: {
+        required: [
+          internationalTelephone
+        ],
         type: object,
         properties: {
           street: {
@@ -976,10 +986,14 @@
           internationalTelephone: {
             $ref: #/components/schemas/#/properties/partOne/properties/consignor/properties/address/properties/internationalTelephone
           }
-        },
-        nullable: true
+        }
       },
       Applicant: {
+        required: [
+          analysisType,
+          conservationOfSample,
+          inspector
+        ],
         type: object,
         properties: {
           laboratory: {
@@ -1018,7 +1032,8 @@
           numberOfSamples: {
             type: integer,
             description: Number of samples analysed,
-            format: int32
+            format: int32,
+            nullable: true
           },
           sampleType: {
             type: string,
@@ -1034,10 +1049,10 @@
           sampledOn: {
             type: string,
             description: DateTime,
-            format: date-time
+            format: date-time,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       ApplicantAnalysisTypeEnum: {
         type: integer
@@ -1097,6 +1112,10 @@
         }
       },
       AuditEntry: {
+        required: [
+          version,
+          createdLocal
+        ],
         type: object,
         properties: {
           id: {
@@ -1113,7 +1132,8 @@
           },
           createdSource: {
             type: string,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           createdLocal: {
             type: string,
@@ -1133,11 +1153,15 @@
         }
       },
       BillingInformation: {
+        required: [
+          postalAddress
+        ],
         type: object,
         properties: {
           isConfirmed: {
             type: boolean,
-            description: Indicates whether user has confirmed their billing information
+            description: Indicates whether user has confirmed their billing information,
+            nullable: true
           },
           emailAddress: {
             type: string,
@@ -1157,8 +1181,7 @@
           postalAddress: {
             $ref: #/components/schemas/PostalAddress
           }
-        },
-        nullable: true
+        }
       },
       CatchCertificateAttachment: {
         type: object,
@@ -1171,7 +1194,8 @@
           numberOfCatchCertificates: {
             type: integer,
             description: The total number of catch certificates on the attachment,
-            format: int32
+            format: int32,
+            nullable: true
           },
           catchCertificateDetails: {
             type: array,
@@ -1199,7 +1223,8 @@
           issuedOn: {
             type: string,
             description: Catch certificate date of issue,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           flagState: {
             type: string,
@@ -1217,6 +1242,10 @@
         }
       },
       ChedppNotAcceptableReason: {
+        required: [
+          reason,
+          commodityOrPackage
+        ],
         type: object,
         properties: {
           reason: {
@@ -1234,30 +1263,38 @@
         type: integer
       },
       Commodities: {
+        required: [
+          commodityIntendedFor
+        ],
         type: object,
         properties: {
           gmsDeclarationAccepted: {
             type: boolean,
-            description: Flag to record when the GMS declaration has been accepted
+            description: Flag to record when the GMS declaration has been accepted,
+            nullable: true
           },
           consignedCountryInChargeGroup: {
             type: boolean,
-            description: Flag to record whether the consigned country is in an ipaffs charge group
+            description: Flag to record whether the consigned country is in an ipaffs charge group,
+            nullable: true
           },
           totalGrossWeight: {
             type: number,
             description: The total gross weight of the consignment.  It must be bigger than the total net weight of the commodities,
-            format: double
+            format: double,
+            nullable: true
           },
           totalNetWeight: {
             type: number,
             description: The total net weight of the commodities within this consignment,
-            format: double
+            format: double,
+            nullable: true
           },
           totalGrossVolume: {
             type: number,
             description: The total gross volume of the commodities within this consignment,
-            format: double
+            format: double,
+            nullable: true
           },
           totalGrossVolumeUnit: {
             type: string,
@@ -1267,7 +1304,8 @@
           numberOfPackages: {
             type: integer,
             description: The total number of packages within this consignment,
-            format: int32
+            format: int32,
+            nullable: true
           },
           temperature: {
             type: string,
@@ -1277,11 +1315,13 @@
           numberOfAnimals: {
             type: integer,
             description: The total number of animals within this consignment,
-            format: int32
+            format: int32,
+            nullable: true
           },
           includeNonAblactedAnimals: {
             type: boolean,
-            description: Does consignment contain ablacted animals
+            description: Does consignment contain ablacted animals,
+            nullable: true
           },
           countryOfOrigin: {
             type: string,
@@ -1290,11 +1330,13 @@
           },
           countryOfOriginIsPodCountry: {
             type: boolean,
-            description: Flag to record whether country of origin is a temporary PoD country
+            description: Flag to record whether country of origin is a temporary PoD country,
+            nullable: true
           },
           isLowRiskArticle72Country: {
             type: boolean,
-            description: Flag to record whether country of origin is a low risk article 72 country
+            description: Flag to record whether country of origin is a low risk article 72 country,
+            nullable: true
           },
           regionOfOrigin: {
             type: string,
@@ -1314,13 +1356,15 @@
           commodityIntendedFor: {
             $ref: #/components/schemas/CommoditiesCommodityIntendedForEnum
           }
-        },
-        nullable: true
+        }
       },
       CommoditiesCommodityIntendedForEnum: {
         type: integer
       },
       CommodityComplement: {
+        required: [
+          riskAssesment
+        ],
         type: object,
         properties: {
           uniqueComplementId: {
@@ -1341,7 +1385,8 @@
           complementId: {
             type: integer,
             description: Identifier of complement chosen from speciesFamily,speciesClass and speciesType'. This is also used to link to the complementParameterSet,
-            format: int32
+            format: int32,
+            nullable: true
           },
           complementName: {
             type: string,
@@ -1355,7 +1400,8 @@
           },
           isWoodPackaging: {
             type: boolean,
-            description: (Deprecated in IMTA-11832) Is this commodity wood packaging?
+            description: (Deprecated in IMTA-11832) Is this commodity wood packaging?,
+            nullable: true
           },
           speciesId: {
             type: string,
@@ -1409,7 +1455,8 @@
           },
           isCdsMatched: {
             type: boolean,
-            description: Has commodity been matched with corresponding CDS declaration
+            description: Has commodity been matched with corresponding CDS declaration,
+            nullable: true
           },
           riskAssesment: {
             $ref: #/components/schemas/CommodityRiskResult
@@ -1424,6 +1471,14 @@
         }
       },
       CommodityRiskResult: {
+        required: [
+          riskDecision,
+          exitRiskDecision,
+          hmiDecision,
+          phsiDecision,
+          phsiClassification,
+          phsi
+        ],
         type: object,
         properties: {
           riskDecision: {
@@ -1461,7 +1516,8 @@
           },
           isWoody: {
             type: boolean,
-            description: Whether or not a plant is woody
+            description: Whether or not a plant is woody,
+            nullable: true
           },
           indoorOutdoor: {
             type: string,
@@ -1478,10 +1534,17 @@
             description: Rule type for PHSI checks,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       CommodityRiskResult2: {
+        required: [
+          riskDecision,
+          exitRiskDecision,
+          hmiDecision,
+          phsiDecision,
+          phsiClassification,
+          phsi
+        ],
         type: object,
         properties: {
           riskDecision: {
@@ -1519,7 +1582,8 @@
           },
           isWoody: {
             type: boolean,
-            description: Whether or not a plant is woody
+            description: Whether or not a plant is woody,
+            nullable: true
           },
           indoorOutdoor: {
             type: string,
@@ -1558,12 +1622,17 @@
         properties: {
           wasSentToTradeCharge: {
             type: boolean,
-            description: Indicates whether the last applicable change was successfully send over the interface to Trade Charge
+            description: Indicates whether the last applicable change was successfully send over the interface to Trade Charge,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       ConsignmentCheck: {
+        required: [
+          identityCheckType,
+          identityCheckNotDoneReason,
+          physicalCheckNotDoneReason
+        ],
         type: object,
         properties: {
           euStandard: {
@@ -1588,7 +1657,8 @@
           },
           identityCheckDone: {
             type: boolean,
-            description: Was identity check done
+            description: Was identity check done,
+            nullable: true
           },
           identityCheckType: {
             $ref: #/components/schemas/ConsignmentCheckIdentityCheckTypeEnum
@@ -1603,7 +1673,8 @@
           },
           physicalCheckDone: {
             type: boolean,
-            description: Was physical check done
+            description: Was physical check done,
+            nullable: true
           },
           physicalCheckResult: {
             type: string,
@@ -1626,19 +1697,20 @@
           numberOfAnimalsChecked: {
             type: integer,
             description: Number of animals checked,
-            format: int32
+            format: int32,
+            nullable: true
           },
           laboratoryCheckDone: {
             type: boolean,
-            description: Were laboratory tests done
+            description: Were laboratory tests done,
+            nullable: true
           },
           laboratoryCheckResult: {
             type: string,
             description: Result of laboratory tests,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       ConsignmentCheckIdentityCheckNotDoneReasonEnum: {
         type: integer
@@ -1672,10 +1744,15 @@
             description: Name of agent representing designated contact,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       Control: {
+        required: [
+          feedbackInformation,
+          detailsOnReExport,
+          officialInspector,
+          consignmentLeave
+        ],
         type: object,
         properties: {
           feedbackInformation: {
@@ -1690,10 +1767,13 @@
           consignmentLeave: {
             $ref: #/components/schemas/ControlConsignmentLeaveEnum
           }
-        },
-        nullable: true
+        }
       },
       ControlAuthority: {
+        required: [
+          officialVeterinarian,
+          iuuOption
+        ],
         type: object,
         properties: {
           officialVeterinarian: {
@@ -1706,7 +1786,8 @@
           },
           containerResealed: {
             type: boolean,
-            description: Were containers resealed?
+            description: Were containers resealed?,
+            nullable: true
           },
           newSealNumber: {
             type: string,
@@ -1720,13 +1801,13 @@
           },
           iuuCheckRequired: {
             type: boolean,
-            description: Was Illegal, Unreported and Unregulated (IUU) check required
+            description: Was Illegal, Unreported and Unregulated (IUU) check required,
+            nullable: true
           },
           iuuOption: {
             $ref: #/components/schemas/ControlAuthorityIuuOptionEnum
           }
-        },
-        nullable: true
+        }
       },
       ControlAuthorityIuuOptionEnum: {
         type: integer
@@ -1735,11 +1816,28 @@
         type: integer
       },
       Decision: {
+        required: [
+          notAcceptableAction,
+          notAcceptableActionDestructionReason,
+          notAcceptableActionEntryRefusalReason,
+          notAcceptableActionQuarantineImposedReason,
+          notAcceptableActionSpecialTreatmentReason,
+          notAcceptableActionIndustrialProcessingReason,
+          notAcceptableActionReDispatchReason,
+          notAcceptableActionUseForOtherPurposesReason,
+          detailsOfControlledDestinations,
+          specificWarehouseNonConformingConsignment,
+          decisionEnum,
+          freeCirculationPurpose,
+          definitiveImportPurpose,
+          ifChanneledOption
+        ],
         type: object,
         properties: {
           consignmentAcceptable: {
             type: boolean,
-            description: Is consignment acceptable or not
+            description: Is consignment acceptable or not,
+            nullable: true
           },
           notAcceptableAction: {
             $ref: #/components/schemas/DecisionNotAcceptableActionEnum
@@ -1899,8 +1997,7 @@
             description: Is it transshipped to EU or third country (values EU / country name),
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       DecisionDecisionEnum: {
         type: integer
@@ -1942,12 +2039,16 @@
         type: integer
       },
       DetailsOnReExport: {
+        required: [
+          transportType
+        ],
         type: object,
         properties: {
           date: {
             type: string,
             description: Date of re-export,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           meansOfTransportNo: {
             type: string,
@@ -1972,13 +2073,17 @@
             description: Exit BIP (where consignment will leave the country),
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       DetailsOnReExportTransportTypeEnum: {
         type: integer
       },
       EconomicOperator: {
+        required: [
+          type,
+          status,
+          address
+        ],
         type: object,
         properties: {
           id: {
@@ -2018,12 +2123,17 @@
           tracesId: {
             type: integer,
             description: Traces Id of the economic operator generated by IPAFFS,
-            format: int32
+            format: int32,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       EconomicOperator2: {
+        required: [
+          type,
+          status,
+          address
+        ],
         type: object,
         properties: {
           id: {
@@ -2063,52 +2173,8 @@
           tracesId: {
             type: integer,
             description: Traces Id of the economic operator generated by IPAFFS,
-            format: int32
-          }
-        },
-        nullable: true
-      },
-      EconomicOperator3: {
-        type: object,
-        properties: {
-          id: {
-            type: string,
-            description: The unique identifier of this organisation,
+            format: int32,
             nullable: true
-          },
-          type: {
-            $ref: #/components/schemas/EconomicOperatorTypeEnum
-          },
-          status: {
-            $ref: #/components/schemas/EconomicOperatorStatusEnum
-          },
-          companyName: {
-            type: string,
-            description: Name of organisation,
-            nullable: true
-          },
-          individualName: {
-            type: string,
-            description: Individual name,
-            nullable: true
-          },
-          address: {
-            $ref: #/components/schemas/#/properties/partOne/properties/consignor/properties/address
-          },
-          approvalNumber: {
-            type: string,
-            description: Approval Number which identifies an Economic Operator unambiguously per type of organisation per country.,
-            nullable: true
-          },
-          otherIdentifier: {
-            type: string,
-            description: Optional Business General Number, often named Aggregation Code, which identifies an Economic Operator.,
-            nullable: true
-          },
-          tracesId: {
-            type: integer,
-            description: Traces Id of the economic operator generated by IPAFFS,
-            format: int32
           }
         }
       },
@@ -2119,6 +2185,9 @@
         type: integer
       },
       ExternalReference: {
+        required: [
+          system
+        ],
         type: object,
         properties: {
           system: {
@@ -2131,48 +2200,28 @@
           },
           exactMatch: {
             type: boolean,
-            description: Details whether there's an exact match between the external source and IPAFFS data
+            description: Details whether there's an exact match between the external source and IPAFFS data,
+            nullable: true
           },
           verifiedByImporter: {
             type: boolean,
-            description: Details whether an importer has verified the data from an external source
+            description: Details whether an importer has verified the data from an external source,
+            nullable: true
           },
           verifiedByInspector: {
             type: boolean,
-            description: Details whether an inspector has verified the data from an external source
+            description: Details whether an inspector has verified the data from an external source,
+            nullable: true
           }
         }
-      },
-      ExternalReference2: {
-        type: object,
-        properties: {
-          system: {
-            $ref: #/components/schemas/ExternalReferenceSystemEnum
-          },
-          reference: {
-            type: string,
-            description: Reference which is added to the notification when either sent to the downstream system or received from it,
-            nullable: true
-          },
-          exactMatch: {
-            type: boolean,
-            description: Details whether there's an exact match between the external source and IPAFFS data
-          },
-          verifiedByImporter: {
-            type: boolean,
-            description: Details whether an importer has verified the data from an external source
-          },
-          verifiedByInspector: {
-            type: boolean,
-            description: Details whether an inspector has verified the data from an external source
-          }
-        },
-        nullable: true
       },
       ExternalReferenceSystemEnum: {
         type: integer
       },
       FeedbackInformation: {
+        required: [
+          authorityType
+        ],
         type: object,
         properties: {
           authorityType: {
@@ -2180,11 +2229,13 @@
           },
           consignmentArrival: {
             type: boolean,
-            description: Did the consignment arrive
+            description: Did the consignment arrive,
+            nullable: true
           },
           consignmentConformity: {
             type: boolean,
-            description: Does the consignment conform
+            description: Does the consignment conform,
+            nullable: true
           },
           consignmentNoArrivalReason: {
             type: string,
@@ -2196,8 +2247,7 @@
             description: Date of consignment destruction,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       FeedbackInformationAuthorityTypeEnum: {
         type: integer
@@ -2237,7 +2287,8 @@
           numberOfDeadAnimals: {
             type: integer,
             description: Number of dead animals specified by units,
-            format: int32
+            format: int32,
+            nullable: true
           },
           numberOfDeadAnimalsUnit: {
             type: string,
@@ -2247,7 +2298,8 @@
           numberOfUnfitAnimals: {
             type: integer,
             description: Number of unfit animals,
-            format: int32
+            format: int32,
+            nullable: true
           },
           numberOfUnfitAnimalsUnit: {
             type: string,
@@ -2257,10 +2309,10 @@
           numberOfBirthOrAbortion: {
             type: integer,
             description: Number of births or abortions (unit),
-            format: int32
+            format: int32,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       ImportNotificationLinks: {
         type: object,
@@ -2274,6 +2326,20 @@
         nullable: true
       },
       ImportNotificationResponse: {
+        required: [
+          relationships,
+          commoditiesSummary,
+          lastUpdatedBy,
+          importNotificationType,
+          status,
+          splitConsignment,
+          riskAssessment,
+          journeyRiskCategorisation,
+          partOne,
+          decisionBy,
+          partTwo,
+          partThree
+        ],
         type: object,
         properties: {
           auditEntries: {
@@ -2299,7 +2365,8 @@
           ipaffsId: {
             type: integer,
             description: The IPAFFS ID number for this notification.,
-            format: int32
+            format: int32,
+            nullable: true
           },
           etag: {
             type: string,
@@ -2322,12 +2389,14 @@
           version: {
             type: integer,
             description: Current version of the notification,
-            format: int32
+            format: int32,
+            nullable: true
           },
           lastUpdated: {
             type: string,
             description: Date when the notification was last updated.,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           lastUpdatedBy: {
             $ref: #/components/schemas/UserInformation
@@ -2353,7 +2422,8 @@
           },
           childNotification: {
             type: boolean,
-            description: Is this notification a child of a split consignment?
+            description: Is this notification a child of a split consignment?,
+            nullable: true
           },
           riskAssessment: {
             $ref: #/components/schemas/RiskAssessmentResult
@@ -2363,7 +2433,8 @@
           },
           isHighRiskEuImport: {
             type: boolean,
-            description: Is this notification a high risk notification from the EU/EEA?
+            description: Is this notification a high risk notification from the EU/EEA?,
+            nullable: true
           },
           partOne: {
             $ref: #/components/schemas/PartOne
@@ -2407,11 +2478,13 @@
           },
           isRiskDecisionLocked: {
             type: boolean,
-            description: is the risk decision locked?
+            description: is the risk decision locked?,
+            nullable: true
           },
           isBulkUploadInProgress: {
             type: boolean,
-            description: Boolean flag that indicates whether a bulk upload is in progress
+            description: Boolean flag that indicates whether a bulk upload is in progress,
+            nullable: true
           },
           requestId: {
             type: string,
@@ -2420,16 +2493,19 @@
           },
           isCdsFullMatched: {
             type: boolean,
-            description: Have all commodities been matched with corresponding CDS declaration(s)
+            description: Have all commodities been matched with corresponding CDS declaration(s),
+            nullable: true
           },
           chedTypeVersion: {
             type: integer,
             description: The version of the ched type the notification was created with,
-            format: int32
+            format: int32,
+            nullable: true
           },
           isGMRMatched: {
             type: boolean,
-            description: Indicates whether a CHED has been matched with a GVMS GMR via DMP
+            description: Indicates whether a CHED has been matched with a GVMS GMR via DMP,
+            nullable: true
           }
         }
       },
@@ -2440,6 +2516,10 @@
         type: integer
       },
       InspectionCheck: {
+        required: [
+          type,
+          status
+        ],
         type: object,
         properties: {
           type: {
@@ -2460,11 +2540,13 @@
           },
           isSelectedForChecks: {
             type: boolean,
-            description: Has commodity been selected for checks?
+            description: Has commodity been selected for checks?,
+            nullable: true
           },
           hasChecksComplete: {
             type: boolean,
-            description: Has commodity completed this type of check
+            description: Has commodity completed this type of check,
+            nullable: true
           }
         }
       },
@@ -2475,6 +2557,9 @@
         type: integer
       },
       InspectionOverride: {
+        required: [
+          overriddenBy
+        ],
         type: object,
         properties: {
           originalDecision: {
@@ -2485,15 +2570,18 @@
           overriddenOn: {
             type: string,
             description: The time the risk decision is overridden,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           overriddenBy: {
             $ref: #/components/schemas/UserInformation
           }
-        },
-        nullable: true
+        }
       },
       InspectionOverride2: {
+        required: [
+          overriddenBy
+        ],
         type: object,
         properties: {
           originalDecision: {
@@ -2504,13 +2592,13 @@
           overriddenOn: {
             type: string,
             description: The time the risk decision is overridden,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           overriddenBy: {
             $ref: #/components/schemas/#/properties/partTwo/properties/inspectionOverride/properties/overriddenBy
           }
-        },
-        nullable: true
+        }
       },
       Inspector: {
         type: object,
@@ -2530,8 +2618,7 @@
             description: Email address of inspector,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       InternationalTelephone: {
         type: object,
@@ -2546,10 +2633,13 @@
             description: Phone number,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       JourneyRiskCategorisationResult: {
+        required: [
+          riskLevel,
+          riskLevelMethod
+        ],
         type: object,
         properties: {
           riskLevel: {
@@ -2561,10 +2651,10 @@
           riskLevelDateTime: {
             type: string,
             description: The date and time the risk level has been set for a notification,
-            format: date-time
+            format: date-time,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       JourneyRiskCategorisationResultRiskLevelEnum: {
         type: integer
@@ -2573,6 +2663,9 @@
         type: integer
       },
       LaboratoryTestResult: {
+        required: [
+          conclusion
+        ],
         type: object,
         properties: {
           sampleUseByDate: {
@@ -2583,7 +2676,8 @@
           releasedOn: {
             type: string,
             description: When it was released,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           laboratoryTestMethod: {
             type: string,
@@ -2601,21 +2695,25 @@
           labTestCreatedOn: {
             type: string,
             description: Date of lab test created in IPAFFS,
-            format: date-time
+            format: date-time,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       LaboratoryTestResultConclusionEnum: {
         type: integer
       },
       LaboratoryTests: {
+        required: [
+          testReason
+        ],
         type: object,
         properties: {
           testedOn: {
             type: string,
             description: Date of tests,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           testReason: {
             $ref: #/components/schemas/LaboratoryTestsTestReasonEnum
@@ -2628,13 +2726,15 @@
             description: List of details of individual tests performed or to be performed,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       LaboratoryTestsTestReasonEnum: {
         type: integer
       },
       MeansOfTransport: {
+        required: [
+          type
+        ],
         type: object,
         properties: {
           type: {
@@ -2650,8 +2750,7 @@
             description: ID of transport,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       MeansOfTransportTypeEnum: {
         type: integer
@@ -2677,15 +2776,20 @@
         }
       },
       NotificationTdmRelationships: {
+        required: [
+          movements
+        ],
         type: object,
         properties: {
           movements: {
             $ref: #/components/schemas/TdmRelationshipObject
           }
-        },
-        nullable: true
+        }
       },
       OfficialInspector: {
+        required: [
+          address
+        ],
         type: object,
         properties: {
           firstName: {
@@ -2721,10 +2825,12 @@
             description: Date of sign,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       OfficialInspector2: {
+        required: [
+          address
+        ],
         type: object,
         properties: {
           firstName: {
@@ -2760,8 +2866,7 @@
             description: Date of sign,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       OfficialVeterinarian: {
         type: object,
@@ -2796,8 +2901,7 @@
             description: Date of sign,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       PagedResponseOfUpdatedImportNotification: {
         type: object,
@@ -2823,6 +2927,29 @@
         }
       },
       PartOne: {
+        required: [
+          typeOfImp,
+          personResponsible,
+          consignor,
+          consignorTwo,
+          packer,
+          consignee,
+          importer,
+          placeOfDestination,
+          pod,
+          placeOfOriginHarvest,
+          purpose,
+          meansOfTransport,
+          transporter,
+          meansOfTransportFromEntryPoint,
+          veterinaryInformation,
+          route,
+          submittedBy,
+          contactDetails,
+          billingInformation,
+          commonUserCharge,
+          provideCtcMrn
+        ],
         type: object,
         properties: {
           typeOfImp: {
@@ -2838,11 +2965,13 @@
           },
           containsWoodPackaging: {
             type: boolean,
-            description: (Deprecated in IMTA-11832) Does the consignment contain wood packaging?
+            description: (Deprecated in IMTA-11832) Does the consignment contain wood packaging?,
+            nullable: true
           },
           consignmentArrived: {
             type: boolean,
-            description: Has the consignment arrived at the BCP?
+            description: Has the consignment arrived at the BCP?,
+            nullable: true
           },
           consignor: {
             $ref: #/components/schemas/EconomicOperator
@@ -2871,7 +3000,7 @@
           additionalPermanentAddresses: {
             type: array,
             items: {
-              $ref: #/components/schemas/EconomicOperator3
+              $ref: #/components/schemas/EconomicOperator2
             },
             description: List of additional permanent addresses,
             nullable: true
@@ -2883,19 +3012,23 @@
           },
           importingFromCharity: {
             type: boolean,
-            description: Is the importer importing from a charity?
+            description: Is the importer importing from a charity?,
+            nullable: true
           },
           isPlaceOfDestinationThePermanentAddress: {
             type: boolean,
-            description: Is the place of destination the permanent address?
+            description: Is the place of destination the permanent address?,
+            nullable: true
           },
           isCatchCertificateRequired: {
             type: boolean,
-            description: Is this catch certificate required?
+            description: Is this catch certificate required?,
+            nullable: true
           },
           isGvmsRoute: {
             type: boolean,
-            description: Is GVMS route?
+            description: Is GVMS route?,
+            nullable: true
           },
           purpose: {
             $ref: #/components/schemas/Purpose
@@ -2918,7 +3051,8 @@
           },
           transporterDetailsRequired: {
             type: boolean,
-            description: Are transporter details required for this consignment
+            description: Are transporter details required for this consignment,
+            nullable: true
           },
           meansOfTransportFromEntryPoint: {
             $ref: #/components/schemas/MeansOfTransport
@@ -2926,7 +3060,8 @@
           estimatedJourneyTimeInMinutes: {
             type: number,
             description: Estimated journey time in minutes to point of entry,
-            format: double
+            format: double,
+            nullable: true
           },
           responsibleForTransport: {
             type: string,
@@ -2955,7 +3090,8 @@
           submissionDate: {
             type: string,
             description: Date and time when the notification was submitted,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           submittedBy: {
             $ref: #/components/schemas/UserInformation
@@ -2970,7 +3106,8 @@
           },
           complexCommoditySelected: {
             type: boolean,
-            description: Was complex commodity selected. Indicating if importer provided commodity code.
+            description: Was complex commodity selected. Indicating if importer provided commodity code.,
+            nullable: true
           },
           portOfEntry: {
             type: string,
@@ -2985,7 +3122,8 @@
           exitedPortOfOn: {
             type: string,
             description: Date of Port Exit for EU Import Notification.,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           contactDetails: {
             $ref: #/components/schemas/ContactDetails
@@ -3001,18 +3139,21 @@
           originalEstimatedDateTime: {
             type: string,
             description: Original estimated date time of arrival,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           billingInformation: {
             $ref: #/components/schemas/BillingInformation
           },
           isChargeable: {
             type: boolean,
-            description: Indicates whether CUC applies to the notification
+            description: Indicates whether CUC applies to the notification,
+            nullable: true
           },
           wasChargeable: {
             type: boolean,
-            description: Indicates whether CUC previously applied to the notification
+            description: Indicates whether CUC previously applied to the notification,
+            nullable: true
           },
           commonUserCharge: {
             $ref: #/components/schemas/CommonUserCharge
@@ -3023,15 +3164,16 @@
           arrivedOn: {
             type: string,
             description: DateTime,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           departedOn: {
             type: string,
             description: DateTime,
-            format: date-time
+            format: date-time,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       PartOneProvideCtcMrnEnum: {
         type: integer
@@ -3040,6 +3182,12 @@
         type: integer
       },
       PartThree: {
+        required: [
+          controlStatus,
+          control,
+          sealCheck,
+          sealCheckOverride
+        ],
         type: object,
         properties: {
           controlStatus: {
@@ -3058,7 +3206,8 @@
           },
           sealCheckRequired: {
             type: boolean,
-            description: Is the seal check required
+            description: Is the seal check required,
+            nullable: true
           },
           sealCheck: {
             $ref: #/components/schemas/SealCheck
@@ -3066,13 +3215,21 @@
           sealCheckOverride: {
             $ref: #/components/schemas/InspectionOverride2
           }
-        },
-        nullable: true
+        }
       },
       PartThreeControlStatusEnum: {
         type: integer
       },
       PartTwo: {
+        required: [
+          decision,
+          consignmentCheck,
+          impactOfTransportOnAnimals,
+          laboratoryTests,
+          controlAuthority,
+          controlledDestination,
+          inspectionOverride
+        ],
         type: object,
         properties: {
           decision: {
@@ -3086,14 +3243,16 @@
           },
           laboratoryTestsRequired: {
             type: boolean,
-            description: Are laboratory tests required
+            description: Are laboratory tests required,
+            nullable: true
           },
           laboratoryTests: {
             $ref: #/components/schemas/LaboratoryTests
           },
           resealedContainersIncluded: {
             type: boolean,
-            description: Are the containers resealed
+            description: Are the containers resealed,
+            nullable: true
           },
           resealedContainers: {
             type: array,
@@ -3143,7 +3302,8 @@
           checkedOn: {
             type: string,
             description: User entered date when the checks were completed,
-            format: date-time
+            format: date-time,
+            nullable: true
           },
           accompanyingDocuments: {
             type: array,
@@ -3155,11 +3315,13 @@
           },
           phsiAutoCleared: {
             type: boolean,
-            description: Have the PHSI regulated commodities been auto cleared?
+            description: Have the PHSI regulated commodities been auto cleared?,
+            nullable: true
           },
           hmiAutoCleared: {
             type: boolean,
-            description: Have the HMI regulated commodities been auto cleared?
+            description: Have the HMI regulated commodities been auto cleared?,
+            nullable: true
           },
           inspectionRequired: {
             type: string,
@@ -3172,12 +3334,15 @@
           autoClearedOn: {
             type: string,
             description: Date of autoclearance,
-            format: date-time
+            format: date-time,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       Party: {
+        required: [
+          type
+        ],
         type: object,
         properties: {
           id: {
@@ -3236,7 +3401,8 @@
           tracesId: {
             type: integer,
             description: TRACES ID,
-            format: int32
+            format: int32,
+            nullable: true
           },
           type: {
             $ref: #/components/schemas/PartyTypeEnum
@@ -3261,10 +3427,12 @@
             description: Email number of party,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       Party2: {
+        required: [
+          type
+        ],
         type: object,
         properties: {
           id: {
@@ -3318,7 +3486,8 @@
           tracesId: {
             type: integer,
             description: TRACES ID,
-            format: int32
+            format: int32,
+            nullable: true
           },
           type: {
             $ref: #/components/schemas/PartyTypeEnum
@@ -3343,8 +3512,7 @@
             description: Email number of party,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       PartyTypeEnum: {
         type: integer
@@ -3354,18 +3522,20 @@
         properties: {
           documentCheck: {
             type: boolean,
-            description: Whether or not a documentary check is required for PHSI
+            description: Whether or not a documentary check is required for PHSI,
+            nullable: true
           },
           identityCheck: {
             type: boolean,
-            description: Whether or not an identity check is required for PHSI
+            description: Whether or not an identity check is required for PHSI,
+            nullable: true
           },
           physicalCheck: {
             type: boolean,
-            description: Whether or not a physical check is required for PHSI
+            description: Whether or not a physical check is required for PHSI,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       PostalAddress: {
         type: object,
@@ -3405,15 +3575,21 @@
             description: Post code,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       Purpose: {
+        required: [
+          internalMarketPurpose,
+          forNonConforming,
+          forImportOrAdmission,
+          purposeGroup
+        ],
         type: object,
         properties: {
           conformsToEU: {
             type: boolean,
-            description: Does consignment conforms to UK laws
+            description: Does consignment conforms to UK laws,
+            nullable: true
           },
           internalMarketPurpose: {
             $ref: #/components/schemas/PurposeInternalMarketPurposeEnum
@@ -3478,10 +3654,10 @@
           estimatedArrivedAtPortOfExit: {
             type: string,
             description: DateTime,
-            format: date-time
+            format: date-time,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       PurposeForImportOrAdmissionEnum: {
         type: integer
@@ -3496,10 +3672,14 @@
         type: integer
       },
       RelationshipDataItem: {
+        required: [
+          links
+        ],
         type: object,
         properties: {
           matched: {
-            type: boolean
+            type: boolean,
+            nullable: true
           },
           type: {
             type: string,
@@ -3514,15 +3694,18 @@
           },
           sourceItem: {
             type: integer,
-            format: int32
+            format: int32,
+            nullable: true
           },
           destinationItem: {
             type: integer,
-            format: int32
+            format: int32,
+            nullable: true
           },
           matchingLevel: {
             type: integer,
-            format: int32
+            format: int32,
+            nullable: true
           }
         }
       },
@@ -3537,8 +3720,7 @@
             type: string,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       ResourceLink: {
         type: object,
@@ -3547,8 +3729,7 @@
             type: string,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       RiskAssessmentResult: {
         type: object,
@@ -3564,10 +3745,10 @@
           assessedOn: {
             type: string,
             description: Date and time of assessment,
-            format: date-time
+            format: date-time,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       Route: {
         type: object,
@@ -3579,15 +3760,18 @@
             },
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       SealCheck: {
+        required: [
+          officialInspector
+        ],
         type: object,
         properties: {
           satisfactory: {
             type: boolean,
-            description: Is seal check satisfactory
+            description: Is seal check satisfactory,
+            nullable: true
           },
           reason: {
             type: string,
@@ -3600,10 +3784,10 @@
           checkedOn: {
             type: string,
             description: date and time of seal check,
-            format: date-time
+            format: date-time,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       SealContainer: {
         type: object,
@@ -3617,7 +3801,8 @@
             nullable: true
           },
           officialSeal: {
-            type: boolean
+            type: boolean,
+            nullable: true
           },
           resealedSealNumber: {
             type: string,
@@ -3626,6 +3811,10 @@
         }
       },
       SingleLaboratoryTest: {
+        required: [
+          applicant,
+          laboratoryTestResult
+        ],
         type: object,
         properties: {
           commodityCode: {
@@ -3636,12 +3825,14 @@
           speciesId: {
             type: integer,
             description: Species id of commodity for which lab test was ordered,
-            format: int32
+            format: int32,
+            nullable: true
           },
           tracesId: {
             type: integer,
             description: TRACES ID,
-            format: int32
+            format: int32,
+            nullable: true
           },
           testName: {
             type: string,
@@ -3669,14 +3860,17 @@
             description: Reference number of the rejected split consignment,
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       TdmRelationshipObject: {
+        required: [
+          links
+        ],
         type: object,
         properties: {
           matched: {
-            type: boolean
+            type: boolean,
+            nullable: true
           },
           links: {
             $ref: #/components/schemas/RelationshipLinks
@@ -3688,8 +3882,7 @@
             },
             nullable: true
           }
-        },
-        nullable: true
+        }
       },
       UpdatedImportNotification: {
         type: object,
@@ -3714,10 +3907,10 @@
           },
           isControlUser: {
             type: boolean,
-            description: Is this user a control
+            description: Is this user a control,
+            nullable: true
           }
-        },
-        nullable: true
+        }
       },
       ValidationMessageCode: {
         type: object,
@@ -3735,10 +3928,13 @@
         }
       },
       VeterinaryInformation: {
+        required: [
+          establishmentsOfOriginExternalReference
+        ],
         type: object,
         properties: {
           establishmentsOfOriginExternalReference: {
-            $ref: #/components/schemas/ExternalReference2
+            $ref: #/components/schemas/ExternalReference
           },
           establishmentsOfOrigins: {
             type: array,
@@ -3790,8 +3986,7 @@
             description: Details helpful for identification,
             nullable: true
           }
-        },
-        nullable: true
+        }
       }
     }
   },

@@ -6,5 +6,5 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class Route
 {
     [JsonPropertyName("transitingStates")]
-    public List<string>? TransitingStates { get; set; }
+    public List<string>? TransitingStates { get; init; }
 }
