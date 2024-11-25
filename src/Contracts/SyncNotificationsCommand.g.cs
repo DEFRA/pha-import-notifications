@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -5,14 +6,14 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class SyncNotificationsCommand
 {
     [JsonPropertyName("syncPeriod")]
-    public required SyncPeriod SyncPeriod { get; init; }
+    public SyncPeriod SyncPeriod { get; set; }
 
     [JsonPropertyName("rootFolder")]
-    public string? RootFolder { get; init; }
+    public string? RootFolder { get; set; }
 
     [JsonPropertyName("jobId")]
-    public required string JobId { get; init; }
+    public string JobId { get; set; }
 
     [JsonPropertyName("description")]
-    public string? Description { get; init; }
+    public string? Description { get; set; }
 }

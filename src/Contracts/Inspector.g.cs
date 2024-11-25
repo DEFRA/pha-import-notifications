@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -6,13 +7,13 @@ public class Inspector
 {
     [JsonPropertyName("name")]
     [Description("Name of inspector")]
-    public string? Name { get; init; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("phone")]
     [Description("Phone number of inspector")]
-    public string? Phone { get; init; }
+    public string? Phone { get; set; }
 
     [JsonPropertyName("email")]
     [Description("Email address of inspector")]
-    public string? Email { get; init; }
+    public string? Email { get; set; }
 }

@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -6,24 +7,24 @@ public class DetailsOnReExport
 {
     [JsonPropertyName("date")]
     [Description("Date of re-export")]
-    public DateTime? Date { get; init; }
+    public DateTime? Date { get; set; }
 
     [JsonPropertyName("meansOfTransportNo")]
     [Description("Number of vehicle")]
-    public string? MeansOfTransportNo { get; init; }
+    public string? MeansOfTransportNo { get; set; }
 
     [JsonPropertyName("transportType")]
-    public required DetailsOnReExportTransportTypeEnum TransportType { get; init; }
+    public DetailsOnReExportTransportTypeEnum TransportType { get; set; }
 
     [JsonPropertyName("document")]
     [Description("Document issued for re-export")]
-    public string? Document { get; init; }
+    public string? Document { get; set; }
 
     [JsonPropertyName("countryOfReDispatching")]
     [Description("Two letter ISO code for country of re-dispatching")]
-    public string? CountryOfReDispatching { get; init; }
+    public string? CountryOfReDispatching { get; set; }
 
     [JsonPropertyName("exitBip")]
     [Description("Exit BIP (where consignment will leave the country)")]
-    public string? ExitBip { get; init; }
+    public string? ExitBip { get; set; }
 }

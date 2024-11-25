@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -5,177 +6,177 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class PartOne
 {
     [JsonPropertyName("typeOfImp")]
-    public required PartOneTypeOfImpEnum TypeOfImp { get; init; }
+    public PartOneTypeOfImpEnum TypeOfImp { get; set; }
 
     [JsonPropertyName("personResponsible")]
-    public required Party PersonResponsible { get; init; }
+    public Party PersonResponsible { get; set; }
 
     [JsonPropertyName("customsReferenceNumber")]
     [Description("Customs reference number")]
-    public string? CustomsReferenceNumber { get; init; }
+    public string? CustomsReferenceNumber { get; set; }
 
     [JsonPropertyName("containsWoodPackaging")]
     [Description("(Deprecated in IMTA-11832) Does the consignment contain wood packaging?")]
-    public bool? ContainsWoodPackaging { get; init; }
+    public bool? ContainsWoodPackaging { get; set; }
 
     [JsonPropertyName("consignmentArrived")]
     [Description("Has the consignment arrived at the BCP?")]
-    public bool? ConsignmentArrived { get; init; }
+    public bool? ConsignmentArrived { get; set; }
 
     [JsonPropertyName("consignor")]
-    public required EconomicOperator Consignor { get; init; }
+    public EconomicOperator Consignor { get; set; }
 
     [JsonPropertyName("consignorTwo")]
-    public required EconomicOperator ConsignorTwo { get; init; }
+    public EconomicOperator ConsignorTwo { get; set; }
 
     [JsonPropertyName("packer")]
-    public required EconomicOperator Packer { get; init; }
+    public EconomicOperator Packer { get; set; }
 
     [JsonPropertyName("consignee")]
-    public required EconomicOperator Consignee { get; init; }
+    public EconomicOperator Consignee { get; set; }
 
     [JsonPropertyName("importer")]
-    public required EconomicOperator Importer { get; init; }
+    public EconomicOperator Importer { get; set; }
 
     [JsonPropertyName("placeOfDestination")]
-    public required EconomicOperator PlaceOfDestination { get; init; }
+    public EconomicOperator PlaceOfDestination { get; set; }
 
     [JsonPropertyName("pod")]
-    public required EconomicOperator Pod { get; init; }
+    public EconomicOperator Pod { get; set; }
 
     [JsonPropertyName("placeOfOriginHarvest")]
-    public required EconomicOperator PlaceOfOriginHarvest { get; init; }
+    public EconomicOperator PlaceOfOriginHarvest { get; set; }
 
     [JsonPropertyName("additionalPermanentAddresses")]
     [Description("List of additional permanent addresses")]
-    public List<EconomicOperator>? AdditionalPermanentAddresses { get; init; }
+    public List<EconomicOperator>? AdditionalPermanentAddresses { get; set; }
 
     [JsonPropertyName("cphNumber")]
     [Description("Charity Parish Holding number")]
-    public string? CphNumber { get; init; }
+    public string? CphNumber { get; set; }
 
     [JsonPropertyName("importingFromCharity")]
     [Description("Is the importer importing from a charity?")]
-    public bool? ImportingFromCharity { get; init; }
+    public bool? ImportingFromCharity { get; set; }
 
     [JsonPropertyName("isPlaceOfDestinationThePermanentAddress")]
     [Description("Is the place of destination the permanent address?")]
-    public bool? IsPlaceOfDestinationThePermanentAddress { get; init; }
+    public bool? IsPlaceOfDestinationThePermanentAddress { get; set; }
 
     [JsonPropertyName("isCatchCertificateRequired")]
     [Description("Is this catch certificate required?")]
-    public bool? IsCatchCertificateRequired { get; init; }
+    public bool? IsCatchCertificateRequired { get; set; }
 
     [JsonPropertyName("isGvmsRoute")]
     [Description("Is GVMS route?")]
-    public bool? IsGvmsRoute { get; init; }
+    public bool? IsGvmsRoute { get; set; }
 
     [JsonPropertyName("purpose")]
-    public required Purpose Purpose { get; init; }
+    public Purpose Purpose { get; set; }
 
     [JsonPropertyName("pointOfEntry")]
     [Description("Either a Border-Inspection-Post or Designated-Point-Of-Entry, e.g. GBFXT1")]
-    public string? PointOfEntry { get; init; }
+    public string? PointOfEntry { get; set; }
 
     [JsonPropertyName("pointOfEntryControlPoint")]
     [Description("A control point at the point of entry")]
-    public string? PointOfEntryControlPoint { get; init; }
+    public string? PointOfEntryControlPoint { get; set; }
 
     [JsonPropertyName("meansOfTransport")]
-    public required MeansOfTransport MeansOfTransport { get; init; }
+    public MeansOfTransport MeansOfTransport { get; set; }
 
     [JsonPropertyName("transporter")]
-    public required EconomicOperator Transporter { get; init; }
+    public EconomicOperator Transporter { get; set; }
 
     [JsonPropertyName("transporterDetailsRequired")]
     [Description("Are transporter details required for this consignment")]
-    public bool? TransporterDetailsRequired { get; init; }
+    public bool? TransporterDetailsRequired { get; set; }
 
     [JsonPropertyName("meansOfTransportFromEntryPoint")]
-    public required MeansOfTransport MeansOfTransportFromEntryPoint { get; init; }
+    public MeansOfTransport MeansOfTransportFromEntryPoint { get; set; }
 
     [JsonPropertyName("estimatedJourneyTimeInMinutes")]
     [Description("Estimated journey time in minutes to point of entry")]
-    public decimal? EstimatedJourneyTimeInMinutes { get; init; }
+    public decimal? EstimatedJourneyTimeInMinutes { get; set; }
 
     [JsonPropertyName("responsibleForTransport")]
     [Description("(Deprecated in IMTA-12139) Person who is responsible for transport")]
-    public string? ResponsibleForTransport { get; init; }
+    public string? ResponsibleForTransport { get; set; }
 
     [JsonPropertyName("veterinaryInformation")]
-    public required VeterinaryInformation VeterinaryInformation { get; init; }
+    public VeterinaryInformation VeterinaryInformation { get; set; }
 
     [JsonPropertyName("importerLocalReferenceNumber")]
     [Description("Reference number added by the importer")]
-    public string? ImporterLocalReferenceNumber { get; init; }
+    public string? ImporterLocalReferenceNumber { get; set; }
 
     [JsonPropertyName("route")]
-    public required Route Route { get; init; }
+    public Route Route { get; set; }
 
     [JsonPropertyName("sealsContainers")]
     [Description("Array that contains pair of seal number and container number")]
-    public List<SealContainer>? SealsContainers { get; init; }
+    public List<SealContainer>? SealsContainers { get; set; }
 
     [JsonPropertyName("submissionDate")]
     [Description("Date and time when the notification was submitted")]
-    public DateTime? SubmissionDate { get; init; }
+    public DateTime? SubmissionDate { get; set; }
 
     [JsonPropertyName("submittedBy")]
-    public required UserInformation SubmittedBy { get; init; }
+    public UserInformation SubmittedBy { get; set; }
 
     [JsonPropertyName("consignmentValidations")]
     [Description("Validation messages for whole notification")]
-    public List<ValidationMessageCode>? ConsignmentValidations { get; init; }
+    public List<ValidationMessageCode>? ConsignmentValidations { get; set; }
 
     [JsonPropertyName("complexCommoditySelected")]
     [Description("Was complex commodity selected. Indicating if importer provided commodity code.")]
-    public bool? ComplexCommoditySelected { get; init; }
+    public bool? ComplexCommoditySelected { get; set; }
 
     [JsonPropertyName("portOfEntry")]
     [Description("Entry port for EU Import notification.")]
-    public string? PortOfEntry { get; init; }
+    public string? PortOfEntry { get; set; }
 
     [JsonPropertyName("portOfExit")]
     [Description("Exit Port for EU Import Notification.")]
-    public string? PortOfExit { get; init; }
+    public string? PortOfExit { get; set; }
 
     [JsonPropertyName("exitedPortOfOn")]
     [Description("Date of Port Exit for EU Import Notification.")]
-    public DateTime? ExitedPortOfOn { get; init; }
+    public DateTime? ExitedPortOfOn { get; set; }
 
     [JsonPropertyName("contactDetails")]
-    public required ContactDetails ContactDetails { get; init; }
+    public ContactDetails ContactDetails { get; set; }
 
     [JsonPropertyName("nominatedContacts")]
     [Description("List of nominated contacts to receive text and email notifications")]
-    public List<NominatedContact>? NominatedContacts { get; init; }
+    public List<NominatedContact>? NominatedContacts { get; set; }
 
     [JsonPropertyName("originalEstimatedDateTime")]
     [Description("Original estimated date time of arrival")]
-    public DateTime? OriginalEstimatedDateTime { get; init; }
+    public DateTime? OriginalEstimatedDateTime { get; set; }
 
     [JsonPropertyName("billingInformation")]
-    public required BillingInformation BillingInformation { get; init; }
+    public BillingInformation BillingInformation { get; set; }
 
     [JsonPropertyName("isChargeable")]
     [Description("Indicates whether CUC applies to the notification")]
-    public bool? IsChargeable { get; init; }
+    public bool? IsChargeable { get; set; }
 
     [JsonPropertyName("wasChargeable")]
     [Description("Indicates whether CUC previously applied to the notification")]
-    public bool? WasChargeable { get; init; }
+    public bool? WasChargeable { get; set; }
 
     [JsonPropertyName("commonUserCharge")]
-    public required CommonUserCharge CommonUserCharge { get; init; }
+    public CommonUserCharge CommonUserCharge { get; set; }
 
     [JsonPropertyName("provideCtcMrn")]
-    public required PartOneProvideCtcMrnEnum ProvideCtcMrn { get; init; }
+    public PartOneProvideCtcMrnEnum ProvideCtcMrn { get; set; }
 
     [JsonPropertyName("arrivedOn")]
     [Description("DateTime")]
-    public DateTime? ArrivedOn { get; init; }
+    public DateTime? ArrivedOn { get; set; }
 
     [JsonPropertyName("departedOn")]
     [Description("DateTime")]
-    public DateTime? DepartedOn { get; init; }
+    public DateTime? DepartedOn { get; set; }
 }

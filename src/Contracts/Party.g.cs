@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -6,64 +7,64 @@ public class Party
 {
     [JsonPropertyName("id")]
     [Description("IPAFFS ID of party")]
-    public string? Id { get; init; }
+    public string? Id { get; set; }
 
     [JsonPropertyName("name")]
     [Description("Name of party")]
-    public string? Name { get; init; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("companyId")]
     [Description("Company ID")]
-    public string? CompanyId { get; init; }
+    public string? CompanyId { get; set; }
 
     [JsonPropertyName("contactId")]
     [Description("Contact ID (B2C)")]
-    public string? ContactId { get; init; }
+    public string? ContactId { get; set; }
 
     [JsonPropertyName("companyName")]
     [Description("Company name")]
-    public string? CompanyName { get; init; }
+    public string? CompanyName { get; set; }
 
     [JsonPropertyName("addresses")]
     [Description("Addresses")]
-    public List<string>? Addresses { get; init; }
+    public List<string>? Addresses { get; set; }
 
     [JsonPropertyName("county")]
     [Description("County")]
-    public string? County { get; init; }
+    public string? County { get; set; }
 
     [JsonPropertyName("postCode")]
     [Description("Post code of party")]
-    public string? PostCode { get; init; }
+    public string? PostCode { get; set; }
 
     [JsonPropertyName("country")]
     [Description("Country of party")]
-    public string? Country { get; init; }
+    public string? Country { get; set; }
 
     [JsonPropertyName("city")]
     [Description("City")]
-    public string? City { get; init; }
+    public string? City { get; set; }
 
     [JsonPropertyName("tracesId")]
     [Description("TRACES ID")]
-    public int? TracesId { get; init; }
+    public int? TracesId { get; set; }
 
     [JsonPropertyName("type")]
-    public required PartyTypeEnum Type { get; init; }
+    public PartyTypeEnum Type { get; set; }
 
     [JsonPropertyName("approvalNumber")]
     [Description("Approval number")]
-    public string? ApprovalNumber { get; init; }
+    public string? ApprovalNumber { get; set; }
 
     [JsonPropertyName("phone")]
     [Description("Phone number of party")]
-    public string? Phone { get; init; }
+    public string? Phone { get; set; }
 
     [JsonPropertyName("fax")]
     [Description("Fax number of party")]
-    public string? Fax { get; init; }
+    public string? Fax { get; set; }
 
     [JsonPropertyName("email")]
     [Description("Email number of party")]
-    public string? Email { get; init; }
+    public string? Email { get; set; }
 }

@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -6,9 +7,9 @@ public class RiskAssessmentResult
 {
     [JsonPropertyName("commodityResults")]
     [Description("List of risk assessed commodities")]
-    public List<CommodityRiskResult>? CommodityResults { get; init; }
+    public List<CommodityRiskResult>? CommodityResults { get; set; }
 
     [JsonPropertyName("assessedOn")]
     [Description("Date and time of assessment")]
-    public DateTime? AssessedOn { get; init; }
+    public DateTime? AssessedOn { get; set; }
 }

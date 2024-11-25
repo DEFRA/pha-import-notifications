@@ -18,13 +18,9 @@ const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openap
 
 var stream = new FileStream(inputPath, FileMode.Open);
 
-var openApiDocument = new OpenApiStreamReader().Read(stream, out var diagnostic);
-
-diagnostic.Errors.ToList().ForEach(e => Console.WriteLine(e.Message));
+var openApiDocument = new OpenApiStreamReader().Read(stream, out _);
 
 var objects = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "object").ToList();
-
-Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
 var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
 
@@ -33,16 +29,16 @@ foreach (var (schemaName, schema) in objects)
     var properties = schema
         .Properties.Where(p => !p.Key.StartsWith('_'))
         .Select(p => CreateProperty(p.Key, p.Value));
-    var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
-
-    var x = WarningDirectiveTrivia(true).Update();
+    
+    var @class = CreateClass(schemaName)
+        .AddMembers(properties.ToArray<MemberDeclarationSyntax>());
     
     var file = CompilationUnit()
-        .AddExterns(x)
+        
         .AddUsings(CreateUsing("System.Text.Json.Serialization"),CreateUsing("System.ComponentModel"))
+        .WithLeadingTrivia(Trivia(NullableDirectiveTrivia(Token(SyntaxKind.EnableKeyword), true)))
         .AddMembers(namespaceDeclaration)
         .AddMembers(@class);
-    
 
     await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
 
@@ -61,7 +57,6 @@ foreach (var (schemaName, schema) in enums)
         .AddMembers(@enum);
     
     await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
-    
     
     ns.NormalizeWhitespace()
         .WithTrailingTrivia(ElasticCarriageReturnLineFeed)
@@ -105,7 +100,7 @@ static PropertyDeclarationSyntax CreateProperty(string name, OpenApiSchema schem
     }
     else
     {
-        modifiers.Add(Token(SyntaxKind.RequiredKeyword));
+        //modifiers.Add(Token(SyntaxKind.RequiredKeyword));
     }
 
     var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };

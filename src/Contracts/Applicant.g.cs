@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -6,46 +7,46 @@ public class Applicant
 {
     [JsonPropertyName("laboratory")]
     [Description("Name of laboratory")]
-    public string? Laboratory { get; init; }
+    public string? Laboratory { get; set; }
 
     [JsonPropertyName("laboratoryAddress")]
     [Description("Laboratory address")]
-    public string? LaboratoryAddress { get; init; }
+    public string? LaboratoryAddress { get; set; }
 
     [JsonPropertyName("laboratoryIdentification")]
     [Description("Laboratory identification")]
-    public string? LaboratoryIdentification { get; init; }
+    public string? LaboratoryIdentification { get; set; }
 
     [JsonPropertyName("laboratoryPhoneNumber")]
     [Description("Laboratory phone number")]
-    public string? LaboratoryPhoneNumber { get; init; }
+    public string? LaboratoryPhoneNumber { get; set; }
 
     [JsonPropertyName("laboratoryEmail")]
     [Description("Laboratory email")]
-    public string? LaboratoryEmail { get; init; }
+    public string? LaboratoryEmail { get; set; }
 
     [JsonPropertyName("sampleBatchNumber")]
     [Description("Sample batch number")]
-    public string? SampleBatchNumber { get; init; }
+    public string? SampleBatchNumber { get; set; }
 
     [JsonPropertyName("analysisType")]
-    public required ApplicantAnalysisTypeEnum AnalysisType { get; init; }
+    public ApplicantAnalysisTypeEnum AnalysisType { get; set; }
 
     [JsonPropertyName("numberOfSamples")]
     [Description("Number of samples analysed")]
-    public int? NumberOfSamples { get; init; }
+    public int? NumberOfSamples { get; set; }
 
     [JsonPropertyName("sampleType")]
     [Description("Type of sample")]
-    public string? SampleType { get; init; }
+    public string? SampleType { get; set; }
 
     [JsonPropertyName("conservationOfSample")]
-    public required ApplicantConservationOfSampleEnum ConservationOfSample { get; init; }
+    public ApplicantConservationOfSampleEnum ConservationOfSample { get; set; }
 
     [JsonPropertyName("inspector")]
-    public required Inspector Inspector { get; init; }
+    public Inspector Inspector { get; set; }
 
     [JsonPropertyName("sampledOn")]
     [Description("DateTime")]
-    public DateTime? SampledOn { get; init; }
+    public DateTime? SampledOn { get; set; }
 }

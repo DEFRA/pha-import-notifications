@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -5,11 +6,11 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class AuditDiffEntry
 {
     [JsonPropertyName("path")]
-    public string? Path { get; init; }
+    public string? Path { get; set; }
 
     [JsonPropertyName("op")]
-    public string? Op { get; init; }
+    public string? Op { get; set; }
 
     [JsonPropertyName("value")]
-    public object? Value { get; init; }
+    public object? Value { get; set; }
 }

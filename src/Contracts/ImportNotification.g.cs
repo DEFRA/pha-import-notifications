@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -5,128 +6,128 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class ImportNotification
 {
     [JsonPropertyName("auditEntries")]
-    public List<AuditEntry>? AuditEntries { get; init; }
+    public List<AuditEntry>? AuditEntries { get; set; }
 
     [JsonPropertyName("relationships")]
-    public required NotificationTdmRelationships Relationships { get; init; }
+    public NotificationTdmRelationships Relationships { get; set; }
 
     [JsonPropertyName("commoditiesSummary")]
-    public required Commodities CommoditiesSummary { get; init; }
+    public Commodities CommoditiesSummary { get; set; }
 
     [JsonPropertyName("commodities")]
-    public List<CommodityComplement>? Commodities { get; init; }
+    public List<CommodityComplement>? Commodities { get; set; }
 
     [JsonPropertyName("ipaffsId")]
     [Description("The IPAFFS ID number for this notification.")]
-    public int? IpaffsId { get; init; }
+    public int? IpaffsId { get; set; }
 
     [JsonPropertyName("etag")]
     [Description("The etag for this notification.")]
-    public string? Etag { get; init; }
+    public string? Etag { get; set; }
 
     [JsonPropertyName("externalReferences")]
     [Description("List of external references, which relate to downstream services")]
-    public List<ExternalReference>? ExternalReferences { get; init; }
+    public List<ExternalReference>? ExternalReferences { get; set; }
 
     [JsonPropertyName("referenceNumber")]
     [Description("Reference number of the notification")]
-    public string? ReferenceNumber { get; init; }
+    public string? ReferenceNumber { get; set; }
 
     [JsonPropertyName("version")]
     [Description("Current version of the notification")]
-    public int? Version { get; init; }
+    public int? Version { get; set; }
 
     [JsonPropertyName("lastUpdated")]
     [Description("Date when the notification was last updated.")]
-    public DateTime? LastUpdated { get; init; }
+    public DateTime? LastUpdated { get; set; }
 
     [JsonPropertyName("lastUpdatedBy")]
-    public required UserInformation LastUpdatedBy { get; init; }
+    public UserInformation LastUpdatedBy { get; set; }
 
     [JsonPropertyName("importNotificationType")]
-    public required ImportNotificationTypeEnum ImportNotificationType { get; init; }
+    public ImportNotificationTypeEnum ImportNotificationType { get; set; }
 
     [JsonPropertyName("replaces")]
     [Description("Reference number of notification that was replaced by this one")]
-    public string? Replaces { get; init; }
+    public string? Replaces { get; set; }
 
     [JsonPropertyName("replacedBy")]
     [Description("Reference number of notification that replaced this one")]
-    public string? ReplacedBy { get; init; }
+    public string? ReplacedBy { get; set; }
 
     [JsonPropertyName("status")]
-    public required ImportNotificationStatusEnum Status { get; init; }
+    public ImportNotificationStatusEnum Status { get; set; }
 
     [JsonPropertyName("splitConsignment")]
-    public required SplitConsignment SplitConsignment { get; init; }
+    public SplitConsignment SplitConsignment { get; set; }
 
     [JsonPropertyName("childNotification")]
     [Description("Is this notification a child of a split consignment?")]
-    public bool? ChildNotification { get; init; }
+    public bool? ChildNotification { get; set; }
 
     [JsonPropertyName("riskAssessment")]
-    public required RiskAssessmentResult RiskAssessment { get; init; }
+    public RiskAssessmentResult RiskAssessment { get; set; }
 
     [JsonPropertyName("journeyRiskCategorisation")]
-    public required JourneyRiskCategorisationResult JourneyRiskCategorisation { get; init; }
+    public JourneyRiskCategorisationResult JourneyRiskCategorisation { get; set; }
 
     [JsonPropertyName("isHighRiskEuImport")]
     [Description("Is this notification a high risk notification from the EU/EEA?")]
-    public bool? IsHighRiskEuImport { get; init; }
+    public bool? IsHighRiskEuImport { get; set; }
 
     [JsonPropertyName("partOne")]
-    public required PartOne PartOne { get; init; }
+    public PartOne PartOne { get; set; }
 
     [JsonPropertyName("decisionBy")]
-    public required UserInformation DecisionBy { get; init; }
+    public UserInformation DecisionBy { get; set; }
 
     [JsonPropertyName("decisionDate")]
     [Description("Date when the notification was validated or rejected")]
-    public string? DecisionDate { get; init; }
+    public string? DecisionDate { get; set; }
 
     [JsonPropertyName("partTwo")]
-    public required PartTwo PartTwo { get; init; }
+    public PartTwo PartTwo { get; set; }
 
     [JsonPropertyName("partThree")]
-    public required PartThree PartThree { get; init; }
+    public PartThree PartThree { get; set; }
 
     [JsonPropertyName("officialVeterinarian")]
     [Description("Official veterinarian")]
-    public string? OfficialVeterinarian { get; init; }
+    public string? OfficialVeterinarian { get; set; }
 
     [JsonPropertyName("consignmentValidations")]
     [Description("Validation messages for whole notification")]
-    public List<ValidationMessageCode>? ConsignmentValidations { get; init; }
+    public List<ValidationMessageCode>? ConsignmentValidations { get; set; }
 
     [JsonPropertyName("agencyOrganisationId")]
     [Description("Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation")]
-    public string? AgencyOrganisationId { get; init; }
+    public string? AgencyOrganisationId { get; set; }
 
     [JsonPropertyName("riskDecisionLockingTime")]
     [Description("Date and Time when risk decision was locked")]
-    public string? RiskDecisionLockingTime { get; init; }
+    public string? RiskDecisionLockingTime { get; set; }
 
     [JsonPropertyName("isRiskDecisionLocked")]
     [Description("is the risk decision locked?")]
-    public bool? IsRiskDecisionLocked { get; init; }
+    public bool? IsRiskDecisionLocked { get; set; }
 
     [JsonPropertyName("isBulkUploadInProgress")]
     [Description("Boolean flag that indicates whether a bulk upload is in progress")]
-    public bool? IsBulkUploadInProgress { get; init; }
+    public bool? IsBulkUploadInProgress { get; set; }
 
     [JsonPropertyName("requestId")]
     [Description("Request UUID to trace bulk upload")]
-    public string? RequestId { get; init; }
+    public string? RequestId { get; set; }
 
     [JsonPropertyName("isCdsFullMatched")]
     [Description("Have all commodities been matched with corresponding CDS declaration(s)")]
-    public bool? IsCdsFullMatched { get; init; }
+    public bool? IsCdsFullMatched { get; set; }
 
     [JsonPropertyName("chedTypeVersion")]
     [Description("The version of the ched type the notification was created with")]
-    public int? ChedTypeVersion { get; init; }
+    public int? ChedTypeVersion { get; set; }
 
     [JsonPropertyName("isGMRMatched")]
     [Description("Indicates whether a CHED has been matched with a GVMS GMR via DMP")]
-    public bool? IsGMRMatched { get; init; }
+    public bool? IsGMRMatched { get; set; }
 }

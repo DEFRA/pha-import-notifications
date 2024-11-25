@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -5,14 +6,14 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class Control
 {
     [JsonPropertyName("feedbackInformation")]
-    public required FeedbackInformation FeedbackInformation { get; init; }
+    public FeedbackInformation FeedbackInformation { get; set; }
 
     [JsonPropertyName("detailsOnReExport")]
-    public required DetailsOnReExport DetailsOnReExport { get; init; }
+    public DetailsOnReExport DetailsOnReExport { get; set; }
 
     [JsonPropertyName("officialInspector")]
-    public required OfficialInspector OfficialInspector { get; init; }
+    public OfficialInspector OfficialInspector { get; set; }
 
     [JsonPropertyName("consignmentLeave")]
-    public required ControlConsignmentLeaveEnum ConsignmentLeave { get; init; }
+    public ControlConsignmentLeaveEnum ConsignmentLeave { get; set; }
 }

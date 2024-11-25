@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -6,135 +7,135 @@ public class Decision
 {
     [JsonPropertyName("consignmentAcceptable")]
     [Description("Is consignment acceptable or not")]
-    public bool? ConsignmentAcceptable { get; init; }
+    public bool? ConsignmentAcceptable { get; set; }
 
     [JsonPropertyName("notAcceptableAction")]
-    public required DecisionNotAcceptableActionEnum NotAcceptableAction { get; init; }
+    public DecisionNotAcceptableActionEnum NotAcceptableAction { get; set; }
 
     [JsonPropertyName("notAcceptableActionDestructionReason")]
-    public required DecisionNotAcceptableActionDestructionReasonEnum NotAcceptableActionDestructionReason { get; init; }
+    public DecisionNotAcceptableActionDestructionReasonEnum NotAcceptableActionDestructionReason { get; set; }
 
     [JsonPropertyName("notAcceptableActionEntryRefusalReason")]
-    public required DecisionNotAcceptableActionEntryRefusalReasonEnum NotAcceptableActionEntryRefusalReason { get; init; }
+    public DecisionNotAcceptableActionEntryRefusalReasonEnum NotAcceptableActionEntryRefusalReason { get; set; }
 
     [JsonPropertyName("notAcceptableActionQuarantineImposedReason")]
-    public required DecisionNotAcceptableActionQuarantineImposedReasonEnum NotAcceptableActionQuarantineImposedReason { get; init; }
+    public DecisionNotAcceptableActionQuarantineImposedReasonEnum NotAcceptableActionQuarantineImposedReason { get; set; }
 
     [JsonPropertyName("notAcceptableActionSpecialTreatmentReason")]
-    public required DecisionNotAcceptableActionSpecialTreatmentReasonEnum NotAcceptableActionSpecialTreatmentReason { get; init; }
+    public DecisionNotAcceptableActionSpecialTreatmentReasonEnum NotAcceptableActionSpecialTreatmentReason { get; set; }
 
     [JsonPropertyName("notAcceptableActionIndustrialProcessingReason")]
-    public required DecisionNotAcceptableActionIndustrialProcessingReasonEnum NotAcceptableActionIndustrialProcessingReason { get; init; }
+    public DecisionNotAcceptableActionIndustrialProcessingReasonEnum NotAcceptableActionIndustrialProcessingReason { get; set; }
 
     [JsonPropertyName("notAcceptableActionReDispatchReason")]
-    public required DecisionNotAcceptableActionReDispatchReasonEnum NotAcceptableActionReDispatchReason { get; init; }
+    public DecisionNotAcceptableActionReDispatchReasonEnum NotAcceptableActionReDispatchReason { get; set; }
 
     [JsonPropertyName("notAcceptableActionUseForOtherPurposesReason")]
-    public required DecisionNotAcceptableActionUseForOtherPurposesReasonEnum NotAcceptableActionUseForOtherPurposesReason { get; init; }
+    public DecisionNotAcceptableActionUseForOtherPurposesReasonEnum NotAcceptableActionUseForOtherPurposesReason { get; set; }
 
     [JsonPropertyName("notAcceptableDestructionReason")]
     [Description("Filled when notAcceptableAction is equal to destruction")]
-    public string? NotAcceptableDestructionReason { get; init; }
+    public string? NotAcceptableDestructionReason { get; set; }
 
     [JsonPropertyName("notAcceptableActionOtherReason")]
     [Description("Filled when notAcceptableAction is equal to other")]
-    public string? NotAcceptableActionOtherReason { get; init; }
+    public string? NotAcceptableActionOtherReason { get; set; }
 
     [JsonPropertyName("notAcceptableActionByDate")]
     [Description("Filled when consignmentAcceptable is set to false")]
-    public string? NotAcceptableActionByDate { get; init; }
+    public string? NotAcceptableActionByDate { get; set; }
 
     [JsonPropertyName("chedppNotAcceptableReasons")]
     [Description("List of details for individual chedpp not acceptable reasons")]
-    public List<ChedppNotAcceptableReason>? ChedppNotAcceptableReasons { get; init; }
+    public List<ChedppNotAcceptableReason>? ChedppNotAcceptableReasons { get; set; }
 
     [JsonPropertyName("notAcceptableReasons")]
     [Description("If the consignment was not accepted what was the reason")]
-    public List<string>? NotAcceptableReasons { get; init; }
+    public List<string>? NotAcceptableReasons { get; set; }
 
     [JsonPropertyName("notAcceptableCountry")]
     [Description("2 digits ISO code of country (not acceptable country can be empty)")]
-    public string? NotAcceptableCountry { get; init; }
+    public string? NotAcceptableCountry { get; set; }
 
     [JsonPropertyName("notAcceptableEstablishment")]
     [Description("Filled if consignmentAcceptable is set to false")]
-    public string? NotAcceptableEstablishment { get; init; }
+    public string? NotAcceptableEstablishment { get; set; }
 
     [JsonPropertyName("notAcceptableOtherReason")]
     [Description("Filled if consignmentAcceptable is set to false")]
-    public string? NotAcceptableOtherReason { get; init; }
+    public string? NotAcceptableOtherReason { get; set; }
 
     [JsonPropertyName("detailsOfControlledDestinations")]
-    public required Party DetailsOfControlledDestinations { get; init; }
+    public Party DetailsOfControlledDestinations { get; set; }
 
     [JsonPropertyName("specificWarehouseNonConformingConsignment")]
-    public required DecisionSpecificWarehouseNonConformingConsignmentEnum SpecificWarehouseNonConformingConsignment { get; init; }
+    public DecisionSpecificWarehouseNonConformingConsignmentEnum SpecificWarehouseNonConformingConsignment { get; set; }
 
     [JsonPropertyName("temporaryDeadline")]
     [Description("Deadline when consignment has to leave borders")]
-    public string? TemporaryDeadline { get; init; }
+    public string? TemporaryDeadline { get; set; }
 
     [JsonPropertyName("decisionEnum")]
-    public required DecisionDecisionEnum DecisionEnum { get; init; }
+    public DecisionDecisionEnum DecisionEnum { get; set; }
 
     [JsonPropertyName("freeCirculationPurpose")]
-    public required DecisionFreeCirculationPurposeEnum FreeCirculationPurpose { get; init; }
+    public DecisionFreeCirculationPurposeEnum FreeCirculationPurpose { get; set; }
 
     [JsonPropertyName("definitiveImportPurpose")]
-    public required DecisionDefinitiveImportPurposeEnum DefinitiveImportPurpose { get; init; }
+    public DecisionDefinitiveImportPurposeEnum DefinitiveImportPurpose { get; set; }
 
     [JsonPropertyName("ifChanneledOption")]
-    public required DecisionIfChanneledOptionEnum IfChanneledOption { get; init; }
+    public DecisionIfChanneledOptionEnum IfChanneledOption { get; set; }
 
     [JsonPropertyName("customWarehouseRegisteredNumber")]
     [Description("Custom warehouse registered number")]
-    public string? CustomWarehouseRegisteredNumber { get; init; }
+    public string? CustomWarehouseRegisteredNumber { get; set; }
 
     [JsonPropertyName("freeWarehouseRegisteredNumber")]
     [Description("Free warehouse registered number")]
-    public string? FreeWarehouseRegisteredNumber { get; init; }
+    public string? FreeWarehouseRegisteredNumber { get; set; }
 
     [JsonPropertyName("shipName")]
     [Description("Ship name")]
-    public string? ShipName { get; init; }
+    public string? ShipName { get; set; }
 
     [JsonPropertyName("shipPortOfExit")]
     [Description("Port of exit")]
-    public string? ShipPortOfExit { get; init; }
+    public string? ShipPortOfExit { get; set; }
 
     [JsonPropertyName("shipSupplierRegisteredNumber")]
     [Description("Ship supplier registered number")]
-    public string? ShipSupplierRegisteredNumber { get; init; }
+    public string? ShipSupplierRegisteredNumber { get; set; }
 
     [JsonPropertyName("transhipmentBip")]
     [Description("Transhipment BIP")]
-    public string? TranshipmentBip { get; init; }
+    public string? TranshipmentBip { get; set; }
 
     [JsonPropertyName("transhipmentThirdCountry")]
     [Description("Transhipment third country")]
-    public string? TranshipmentThirdCountry { get; init; }
+    public string? TranshipmentThirdCountry { get; set; }
 
     [JsonPropertyName("transitExitBip")]
     [Description("Transit exit BIP")]
-    public string? TransitExitBip { get; init; }
+    public string? TransitExitBip { get; set; }
 
     [JsonPropertyName("transitThirdCountry")]
     [Description("Transit third country")]
-    public string? TransitThirdCountry { get; init; }
+    public string? TransitThirdCountry { get; set; }
 
     [JsonPropertyName("transitDestinationThirdCountry")]
     [Description("Transit destination third country")]
-    public string? TransitDestinationThirdCountry { get; init; }
+    public string? TransitDestinationThirdCountry { get; set; }
 
     [JsonPropertyName("temporaryExitBip")]
     [Description("Temporary exit BIP")]
-    public string? TemporaryExitBip { get; init; }
+    public string? TemporaryExitBip { get; set; }
 
     [JsonPropertyName("horseReentry")]
     [Description("Horse re-entry")]
-    public string? HorseReentry { get; init; }
+    public string? HorseReentry { get; set; }
 
     [JsonPropertyName("transhipmentEuOrThirdCountry")]
     [Description("Is it transshipped to EU or third country (values EU / country name)")]
-    public string? TranshipmentEuOrThirdCountry { get; init; }
+    public string? TranshipmentEuOrThirdCountry { get; set; }
 }

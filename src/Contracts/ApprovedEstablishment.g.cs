@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -6,25 +7,25 @@ public class ApprovedEstablishment
 {
     [JsonPropertyName("id")]
     [Description("ID")]
-    public string? Id { get; init; }
+    public string? Id { get; set; }
 
     [JsonPropertyName("name")]
     [Description("Name of approved establishment")]
-    public string? Name { get; init; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("country")]
     [Description("Country of approved establishment")]
-    public string? Country { get; init; }
+    public string? Country { get; set; }
 
     [JsonPropertyName("types")]
     [Description("Types of approved establishment")]
-    public List<string>? Types { get; init; }
+    public List<string>? Types { get; set; }
 
     [JsonPropertyName("approvalNumber")]
     [Description("Approval number")]
-    public string? ApprovalNumber { get; init; }
+    public string? ApprovalNumber { get; set; }
 
     [JsonPropertyName("section")]
     [Description("Section of approved establishment")]
-    public string? Section { get; init; }
+    public string? Section { get; set; }
 }

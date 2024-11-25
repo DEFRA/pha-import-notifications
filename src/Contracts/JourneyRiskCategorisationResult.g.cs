@@ -1,3 +1,4 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
 
@@ -5,12 +6,12 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class JourneyRiskCategorisationResult
 {
     [JsonPropertyName("riskLevel")]
-    public required JourneyRiskCategorisationResultRiskLevelEnum RiskLevel { get; init; }
+    public JourneyRiskCategorisationResultRiskLevelEnum RiskLevel { get; set; }
 
     [JsonPropertyName("riskLevelMethod")]
-    public required JourneyRiskCategorisationResultRiskLevelMethodEnum RiskLevelMethod { get; init; }
+    public JourneyRiskCategorisationResultRiskLevelMethodEnum RiskLevelMethod { get; set; }
 
     [JsonPropertyName("riskLevelDateTime")]
     [Description("The date and time the risk level has been set for a notification")]
-    public DateTime? RiskLevelDateTime { get; init; }
+    public DateTime? RiskLevelDateTime { get; set; }
 }

@@ -1,42 +1,41 @@
+#nullable enable
 using System.Text.Json.Serialization;
 using System.ComponentModel;
-#nullable enable
-
 
 namespace Defra.PhaImportNotifications.Contracts;
 public class AccompanyingDocument
 {
     [JsonPropertyName("documentType")]
-    public required AccompanyingDocumentDocumentTypeEnum DocumentType { get; init; }
+    public AccompanyingDocumentDocumentTypeEnum DocumentType { get; set; }
 
     [JsonPropertyName("documentReference")]
     [Description("Additional document reference")]
-    public string? DocumentReference { get; init; }
+    public string? DocumentReference { get; set; }
 
     [JsonPropertyName("documentIssuedOn")]
     [Description("Additional document issue date")]
-    public DateTime? DocumentIssuedOn { get; init; }
+    public DateTime? DocumentIssuedOn { get; set; }
 
     [JsonPropertyName("attachmentId")]
     [Description("The UUID used for the uploaded file in blob storage")]
-    public string? AttachmentId { get; init; }
+    public string? AttachmentId { get; set; }
 
     [JsonPropertyName("attachmentFilename")]
     [Description("The original filename of the uploaded file")]
-    public string? AttachmentFilename { get; init; }
+    public string? AttachmentFilename { get; set; }
 
     [JsonPropertyName("attachmentContentType")]
     [Description("The MIME type of the uploaded file")]
-    public string? AttachmentContentType { get; init; }
+    public string? AttachmentContentType { get; set; }
 
     [JsonPropertyName("uploadUserId")]
     [Description("The UUID for the user that uploaded the file")]
-    public string? UploadUserId { get; init; }
+    public string? UploadUserId { get; set; }
 
     [JsonPropertyName("uploadOrganisationId")]
     [Description("The UUID for the organisation that the upload user is associated with")]
-    public string? UploadOrganisationId { get; init; }
+    public string? UploadOrganisationId { get; set; }
 
     [JsonPropertyName("externalReference")]
-    public required ExternalReference ExternalReference { get; init; }
+    public ExternalReference ExternalReference { get; set; }
 }
