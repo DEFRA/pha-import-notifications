@@ -84,17 +84,9 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(c =>
     {
-        c.AddServer(
-            new OpenApiServer
-            {
-                Description = "The Open Government Licence (OGL) Version 3",
-                Url = "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3",
-            }
-        );
+        c.AddServer(new OpenApiServer { Url = "https://localhost" });
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
         c.IncludeXmlComments(typeof(ImportNotification).Assembly);
-        c.OperationFilter<ResponseHeadersFilter>();
-        c.OperationFilter<ErrorResponseFilter>();
         c.SchemaFilter<DescriptionSchemaFilter>();
         c.SwaggerDoc(
             "v1",

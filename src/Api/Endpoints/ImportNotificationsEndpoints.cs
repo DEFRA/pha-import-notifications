@@ -15,7 +15,11 @@ public static class ImportNotificationsEndpoints
             .WithTags("Import Notifications")
             .WithSummary("Get Import Notification")
             .WithDescription("Get an Import Notification by reference number")
-            .Produces<ImportNotificationResponse>();
+            .Produces<ImportNotificationsResponse>()
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status429TooManyRequests)
+            .ProducesProblem(StatusCodes.Status500InternalServerError);
     }
 
     [HttpGet]
@@ -31,5 +35,6 @@ public static class ImportNotificationsEndpoints
     }
 
     [SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty")]
-    private sealed class ImportNotificationResponse : ImportNotification;
+    // ReSharper disable once ClassNeverInstantiated.Local
+    private sealed class ImportNotificationsResponse : ImportNotification;
 }

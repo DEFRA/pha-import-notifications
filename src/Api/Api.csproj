@@ -9,6 +9,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="Defra.PhaImportNotifications.Api.IntegrationTests" />
+    <InternalsVisibleTo Include="Defra.PhaImportNotifications.Api.Tests" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Elastic.CommonSchema.Serilog" Version="8.12.2" />
