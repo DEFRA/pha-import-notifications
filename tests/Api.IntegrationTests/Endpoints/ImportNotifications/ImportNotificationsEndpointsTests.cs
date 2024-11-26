@@ -20,9 +20,7 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
     {
         var client = CreateClient();
 
-        MockBtmsService
-            .GetImportNotification("mock1", Arg.Any<CancellationToken>())
-            .ReturnsNull();
+        MockBtmsService.GetImportNotification("mock1", Arg.Any<CancellationToken>()).ReturnsNull();
 
         var response = await client.GetStringAsync("import-notifications/mock1");
 
@@ -44,7 +42,6 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
     protected override void ConfigureTestServices(IServiceCollection services)
     {
         base.ConfigureTestServices(services);
-
         services.AddTransient<IBtmsService>(_ => MockBtmsService);
     }
 }
