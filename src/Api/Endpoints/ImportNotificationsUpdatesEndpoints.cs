@@ -14,7 +14,7 @@ public static class ImportNotificationsUpdatesEndpoints
 
         app.MapGet("import-notifications-updates/{portHealthAuthority}/", Get)
             .WithName("ImportNotificationsUpdatesByReferenceNumber")
-            .WithTags("Import Notifications Updates")
+            .WithTags("Import Notifications")
             .WithSummary("Get Import Notification Updates")
             .WithDescription(
                 "Get all import notifications by port health authority that have been updated between the time period specified"

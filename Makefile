@@ -1,5 +1,5 @@
 dependencies:
-	dotnet tool install -g Swashbuckle.AspNetCore.Cli
+	dotnet tool restore
 
 generate-openapi-spec: dependencies
 	dotnet build -c Release --no-restore
