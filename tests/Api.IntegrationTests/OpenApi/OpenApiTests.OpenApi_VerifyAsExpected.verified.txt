@@ -16,24 +16,26 @@
     }
   ],
   paths: {
-    /import-notifications/{referenceNumber}: {
+    /import-notifications/{chedReferenceNumber}: {
       get: {
         tags: [
           Import Notifications
         ],
         summary: Get Import Notification,
-        description: Get an Import Notification by reference number,
-        operationId: ImportNotificationsByReferenceNumber,
+        description: Get an Import Notification by CHED Reference Number,
+        operationId: ImportNotificationsByChedReferenceNumber,
         parameters: [
           {
-            name: referenceNumber,
+            name: chedReferenceNumber,
             in: path,
-            description: Reference number,
+            description: CHED Reference Number,
             required: true,
             schema: {
+              pattern: ^CHED[A|D|P|PP]\.GB\.\d{4}\.\d{7}$,
               type: string,
-              description: Reference number
-            }
+              description: CHED Reference Number
+            },
+            example: CHEDA.GB.2024.1020304
           }
         ],
         responses: {
@@ -97,7 +99,7 @@
         ],
         summary: Get Import Notification Updates,
         description: Get all import notifications by port health authority that have been updated between the time period specified,
-        operationId: ImportNotificationsUpdatesByReferenceNumber,
+        operationId: ImportNotificationsUpdatesByPortHealthAuthority,
         parameters: [
           {
             name: portHealthAuthority,
@@ -3139,10 +3141,11 @@
             format: date-time
           },
           uri: {
+            minLength: 1,
+            pattern: ^/import-notifications/CHED[A|D|P|PP]\.GB\.\d{4}\.\d{7}$,
             type: string,
             description: Relative path to import notification,
-            format: uri,
-            example: /import-notifications/referenceNumber
+            example: /import-notifications/CHEDA.GB.2024.1020304
           }
         },
         additionalProperties: false
