@@ -13,7 +13,7 @@ public static class ImportNotificationsUpdatesEndpoints
         // or v1 is implied and v2 can be added if ever needed
 
         app.MapGet("import-notifications-updates/{portHealthAuthority}/", Get)
-            .WithName("ImportNotificationsUpdatesByReferenceNumber")
+            .WithName("ImportNotificationsUpdatesByPortHealthAuthority")
             .WithTags("Import Notifications")
             .WithSummary("Get Import Notification Updates")
             .WithDescription(

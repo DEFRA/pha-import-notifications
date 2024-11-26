@@ -9,7 +9,7 @@ internal sealed class UpdatedImportNotification
     [Required]
     public DateTime LastUpdated { get; init; }
 
-    /// <example>/import-notifications/referenceNumber</example>
+    /// <example>/import-notifications/CHEDA.GB.2024.1020304</example>
     [Description("Relative path to import notification")]
     [Required]
     public required Uri Uri { get; init; }

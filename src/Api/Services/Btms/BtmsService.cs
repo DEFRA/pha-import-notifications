@@ -14,7 +14,7 @@ public class BtmsService(HttpClient httpClient) : IBtmsService
     }
 
     public Task<ImportNotification?> GetImportNotification(
-        string referenceNumber,
+        string chedReferenceNumber,
         CancellationToken cancellationToken
     ) => throw new NotImplementedException();
 }
