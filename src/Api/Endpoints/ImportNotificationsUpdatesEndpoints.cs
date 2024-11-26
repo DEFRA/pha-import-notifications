@@ -13,7 +13,7 @@ public static class ImportNotificationsUpdatesEndpoints
         // or v1 is implied and v2 can be added if ever needed
 
         app.MapGet("import-notifications-updates/{portHealthAuthority}/", Get)
-            .WithName("ImportNotificationsUpdatesByReferenceNumber")
+            .WithName("ImportNotificationsUpdatesByPortHealthAuthority")
             .WithTags("Import Notifications")
             .WithSummary("Get Import Notification Updates")
             .WithDescription(
@@ -41,7 +41,7 @@ public static class ImportNotificationsUpdatesEndpoints
         var records = notifications.Select(x => new UpdatedImportNotification
         {
             LastUpdated = x.LastUpdated!.Value,
-            Uri = new Uri($"/import-notifications/{x.ReferenceNumber}"),
+            Uri = $"/import-notifications/{x.ReferenceNumber}",
         });
 
         return Results.Ok(

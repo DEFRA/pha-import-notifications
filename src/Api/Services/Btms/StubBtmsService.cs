@@ -7,10 +7,10 @@ namespace Defra.PhaImportNotifications.Api.Services.Btms;
 public class StubBtmsService : IBtmsService
 {
     public Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken) =>
-        Task.FromResult<IEnumerable<ImportNotification>>(new List<ImportNotification> { Capacity = 0 });
+        Task.FromResult<IEnumerable<ImportNotification>>(new List<ImportNotification>());
 
     public Task<ImportNotification?> GetImportNotification(
-        string referenceNumber,
+        string chedReferenceNumber,
         CancellationToken cancellationToken
     ) => Task.FromResult<ImportNotification?>(null);
 }
