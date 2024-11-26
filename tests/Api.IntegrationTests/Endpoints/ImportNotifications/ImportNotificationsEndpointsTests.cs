@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using NSubstitute;
+using NSubstitute.ReturnsExtensions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
@@ -21,7 +22,7 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
 
         MockBtmsService
             .GetImportNotification("mock1", Arg.Any<CancellationToken>())
-            .Returns(new ImportNotification { ReferenceNumber = "mock1" });
+            .ReturnsNull();
 
         var response = await client.GetStringAsync("import-notifications/mock1");
 

@@ -17,53 +17,49 @@ const string outputPath = $"{solutionPath}src/Contracts/";
 const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
 
 var stream = new FileStream(inputPath, FileMode.Open);
-
 var openApiDocument = new OpenApiStreamReader().Read(stream, out _);
-
-var objects = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "object").ToList();
 
 var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
 
-foreach (var (schemaName, schema) in objects)
+foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
 {
-    var properties = schema
-        .Properties.Where(p => !p.Key.StartsWith('_'))
-        .Select(p => CreateProperty(p.Key, p.Value));
-    
-    var @class = CreateClass(schemaName)
-        .AddMembers(properties.ToArray<MemberDeclarationSyntax>());
-    
-    var file = CompilationUnit()
-        
-        .AddUsings(CreateUsing("System.Text.Json.Serialization"),CreateUsing("System.ComponentModel"))
-        .WithLeadingTrivia(Trivia(NullableDirectiveTrivia(Token(SyntaxKind.EnableKeyword), true)))
-        .AddMembers(namespaceDeclaration)
-        .AddMembers(@class);
+    var syntax = schema.Type switch
+    {
+        "integer" => CreateEnumSyntax(),
+        "object" => CreateClassSyntax(),
+        _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type")
+    };
 
     await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
-
-    file.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
-}
-
-var enums = openApiDocument.Components.Schemas.Where(s => s.Value.Type == "integer").ToList();
-
-foreach (var (schemaName, schema) in enums)
-{
-    var values = schema.Enum.Select(v => CreateEnumValue((v as OpenApiString)!.Value));
-    var @enum = CreateEnum(schemaName)
-        .AddMembers(values.ToArray());
-
-    var ns = namespaceDeclaration
-        .AddMembers(@enum);
+    syntax.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
+    continue;
     
-    await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
-    
-    ns.NormalizeWhitespace()
-        .WithTrailingTrivia(ElasticCarriageReturnLineFeed)
-        .WriteTo(streamWriter);
-}
+    SyntaxNode CreateEnumSyntax()
+    {
+        var values = schema.Enum.Select(v => CreateEnumValue((v as OpenApiString)!.Value));
+        var @enum = CreateEnum(schemaName)
+            .AddMembers(values.ToArray());
 
-Console.WriteLine("Done");
+        return namespaceDeclaration
+            .AddMembers(@enum);
+    }
+    
+    SyntaxNode CreateClassSyntax()
+    {
+        var properties = schema
+            .Properties.Where(p => !p.Key.StartsWith('_'))
+            .Select(p => CreateProperty(p.Key, p.Value));
+    
+        var @class = CreateClass(schemaName)
+            .AddMembers(properties.ToArray<MemberDeclarationSyntax>());
+    
+        return CompilationUnit()
+            .AddUsings(CreateUsing("System.Text.Json.Serialization"),CreateUsing("System.ComponentModel"))
+            .WithLeadingTrivia(Trivia(NullableDirectiveTrivia(Token(SyntaxKind.EnableKeyword), true)))
+            .AddMembers(namespaceDeclaration)
+            .AddMembers(@class);
+    }
+}
 
 return;
 
@@ -109,17 +105,14 @@ static PropertyDeclarationSyntax CreateProperty(string name, OpenApiSchema schem
     if (!string.IsNullOrEmpty(description))
         attributes.Add(CreateSimpleAttributeList("Description", description));
 
-    return PropertyDeclaration(typeSyntax, CapitalizeFirstLetter(name))
+    return PropertyDeclaration(typeSyntax, CreatePropertyName(name))
         .AddModifiers(modifiers.ToArray())
         .AddAttributeLists(attributes.ToArray())
-        .AddAccessorListAccessors(CreateGetterAndSetter());
+        .AddAccessorListAccessors(
+            AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
+            AccessorDeclaration(SyntaxKind.InitAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken))
+        );
 }
-
-static AccessorDeclarationSyntax[] CreateGetterAndSetter() =>
-    [
-        AccessorDeclaration(SyntaxKind.GetAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
-        AccessorDeclaration(SyntaxKind.InitAccessorDeclaration).WithSemicolonToken(Token(SyntaxKind.SemicolonToken)),
-    ];
 
 static ClassDeclarationSyntax CreateClass(string name) => ClassDeclaration(Identifier(name))
     .AddModifiers(Token(SyntaxKind.PublicKeyword));
@@ -135,11 +128,4 @@ static AttributeListSyntax CreateSimpleAttributeList(string type, string arg1) =
 static AttributeSyntax CreateSimpleAttribute(string type, string arg1) =>
     Attribute(ParseName(type)).WithArgumentList(ParseAttributeArgumentList($"(\"{arg1}\")"));
 
-static string CapitalizeFirstLetter(string s)
-{
-    if (string.IsNullOrEmpty(s))
-        return s;
-    if (s.Length == 1)
-        return s.ToUpper();
-    return string.Concat(s.Remove(1).ToUpper(), s.AsSpan(1));
-}
+static string CreatePropertyName(string s) => char.ToUpper(s[0]) + s[1..];

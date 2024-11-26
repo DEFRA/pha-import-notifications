@@ -21,16 +21,7 @@ public class ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Prog
 
         MockBtmsService
             .GetImportNotifications(Arg.Any<CancellationToken>())
-            .Returns(
-                new List<ImportNotification>
-                {
-                    new()
-                    {
-                        ReferenceNumber = "mock1",
-                        LastUpdated = new DateTime(2024, 11, 24, 23, 59, 59, DateTimeKind.Utc),
-                    },
-                }
-            );
+            .Returns(new List<ImportNotification>());
 
         var response = await client.GetStringAsync("import-notifications-updates/pha?from=2024-11-20");
 

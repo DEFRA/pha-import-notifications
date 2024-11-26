@@ -368,12 +368,8 @@
           internationalTelephone: {
             $ref: #/components/schemas/InternationalTelephone
           }
-        }
-        required: [
-          internationalTelephone
-        ],
-        additionalProperties: false
         },
+        additionalProperties: false
       },
       Applicant: {
         required: [
@@ -439,8 +435,8 @@
             format: date-time,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ApplicantAnalysisTypeEnum: {
         enum: [
@@ -516,8 +512,8 @@
       },
       AuditEntry: {
         required: [
-          version,
-          createdLocal
+          createdLocal,
+          version
         ],
         type: object,
         properties: {
@@ -585,8 +581,8 @@
           postalAddress: {
             $ref: #/components/schemas/PostalAddress
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       CatchCertificateAttachment: {
         type: object,
@@ -650,8 +646,8 @@
       },
       ChedppNotAcceptableReason: {
         required: [
-          reason,
-          commodityOrPackage
+          commodityOrPackage,
+          reason
         ],
         type: object,
         properties: {
@@ -800,8 +796,8 @@
           commodityIntendedFor: {
             $ref: #/components/schemas/CommoditiesCommodityIntendedForEnum
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       CommoditiesCommodityIntendedForEnum: {
         enum: [
@@ -927,12 +923,12 @@
       },
       CommodityRiskResult: {
         required: [
-          riskDecision,
           exitRiskDecision,
           hmiDecision,
-          phsiDecision,
+          phsi,
           phsiClassification,
-          phsi
+          phsiDecision,
+          riskDecision
         ],
         type: object,
         properties: {
@@ -989,18 +985,8 @@
             description: Rule type for PHSI checks,
             nullable: true
           }
-        }
-        required: [
-          riskDecision,
-          exitRiskDecision,
-          hmiDecision,
-          phsiDecision,
-          phsiClassification,
-          phsi
-        ],
+        },
         additionalProperties: false
-            description: Whether or not a plant is woody
-            nullable: true
       },
       CommodityRiskResultExitRiskDecisionEnum: {
         enum: [
@@ -1049,13 +1035,13 @@
             description: Indicates whether the last applicable change was successfully send over the interface to Trade Charge,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ConsignmentCheck: {
         required: [
-          identityCheckType,
           identityCheckNotDoneReason,
+          identityCheckType,
           physicalCheckNotDoneReason
         ],
         type: object,
@@ -1135,8 +1121,8 @@
             description: Result of laboratory tests,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ConsignmentCheckIdentityCheckNotDoneReasonEnum: {
         enum: [
@@ -1183,15 +1169,15 @@
             description: Name of agent representing designated contact,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       Control: {
         required: [
-          feedbackInformation,
+          consignmentLeave,
           detailsOnReExport,
-          officialInspector,
-          consignmentLeave
+          feedbackInformation,
+          officialInspector
         ],
         type: object,
         properties: {
@@ -1207,13 +1193,13 @@
           consignmentLeave: {
             $ref: #/components/schemas/ControlConsignmentLeaveEnum
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ControlAuthority: {
         required: [
-          officialVeterinarian,
-          iuuOption
+          iuuOption,
+          officialVeterinarian
         ],
         type: object,
         properties: {
@@ -1248,8 +1234,8 @@
           iuuOption: {
             $ref: #/components/schemas/ControlAuthorityIuuOptionEnum
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ControlAuthorityIuuOptionEnum: {
         enum: [
@@ -1269,20 +1255,20 @@
       },
       Decision: {
         required: [
+          decisionEnum,
+          definitiveImportPurpose,
+          detailsOfControlledDestinations,
+          freeCirculationPurpose,
+          ifChanneledOption,
           notAcceptableAction,
           notAcceptableActionDestructionReason,
           notAcceptableActionEntryRefusalReason,
-          notAcceptableActionQuarantineImposedReason,
-          notAcceptableActionSpecialTreatmentReason,
           notAcceptableActionIndustrialProcessingReason,
+          notAcceptableActionQuarantineImposedReason,
           notAcceptableActionReDispatchReason,
+          notAcceptableActionSpecialTreatmentReason,
           notAcceptableActionUseForOtherPurposesReason,
-          detailsOfControlledDestinations,
-          specificWarehouseNonConformingConsignment,
-          decisionEnum,
-          freeCirculationPurpose,
-          definitiveImportPurpose,
-          ifChanneledOption
+          specificWarehouseNonConformingConsignment
         ],
         type: object,
         properties: {
@@ -1449,8 +1435,8 @@
             description: Is it transshipped to EU or third country (values EU / country name),
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       DecisionDecisionEnum: {
         enum: [
@@ -1621,8 +1607,8 @@
             description: Exit BIP (where consignment will leave the country),
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       DetailsOnReExportTransportTypeEnum: {
         enum: [
@@ -1638,9 +1624,9 @@
       },
       EconomicOperator: {
         required: [
-          type,
+          address,
           status,
-          address
+          type
         ],
         type: object,
         properties: {
@@ -1684,14 +1670,9 @@
             format: int32,
             nullable: true
           }
-        }
-        required: [
-          type,
-          status,
-          address
-        ],
+        },
         additionalProperties: false
-            format: int32
+      },
       EconomicOperatorStatusEnum: {
         enum: [
           Approved,
@@ -1735,12 +1716,20 @@
           exactMatch: {
             type: boolean,
             description: Details whether there's an exact match between the external source and IPAFFS data,
-            description: Details whether an importer has verified the data from an external source
             nullable: true
-        additionalProperties: false
-            description: Details whether an inspector has verified the data from an external source
+          },
+          verifiedByImporter: {
+            type: boolean,
+            description: Details whether an importer has verified the data from an external source,
             nullable: true
+          },
+          verifiedByInspector: {
+            type: boolean,
+            description: Details whether an inspector has verified the data from an external source,
+            nullable: true
+          }
         },
+        additionalProperties: false
       },
       ExternalReferenceSystemEnum: {
         enum: [
@@ -1780,8 +1769,8 @@
             description: Date of consignment destruction,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       FeedbackInformationAuthorityTypeEnum: {
         enum: [
@@ -1839,8 +1828,8 @@
             format: int32,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ImportNotificationStatusEnum: {
         enum: [
@@ -1859,23 +1848,6 @@
         ],
         type: string
       },
-<<<<<<< HEAD
-      ImportNotificationResponse: {
-        required: [
-          relationships,
-          commoditiesSummary,
-          lastUpdatedBy,
-          importNotificationType,
-          status,
-          splitConsignment,
-          riskAssessment,
-          journeyRiskCategorisation,
-          partOne,
-          decisionBy,
-          partTwo,
-          partThree
-        ],
-=======
       ImportNotificationTypeEnum: {
         enum: [
           Cveda,
@@ -1887,7 +1859,20 @@
         type: string
       },
       ImportNotificationsResponse: {
->>>>>>> 5a4e0ed1eb9f7501a52256bb25bc44c82a52c219
+        required: [
+          commoditiesSummary,
+          decisionBy,
+          importNotificationType,
+          journeyRiskCategorisation,
+          lastUpdatedBy,
+          partOne,
+          partThree,
+          partTwo,
+          relationships,
+          riskAssessment,
+          splitConsignment,
+          status
+        ],
         type: object,
         properties: {
           auditEntries: {
@@ -2060,8 +2045,8 @@
       },
       InspectionCheck: {
         required: [
-          type,
-          status
+          status,
+          type
         ],
         type: object,
         properties: {
@@ -2135,14 +2120,8 @@
           overriddenBy: {
             $ref: #/components/schemas/UserInformation
           }
-        }
-        required: [
-          overriddenBy
-        ],
-        additionalProperties: false
-            format: date-time
-            nullable: true
         },
+        additionalProperties: false
       },
       Inspector: {
         type: object,
@@ -2162,8 +2141,8 @@
             description: Email address of inspector,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       InternationalTelephone: {
         type: object,
@@ -2178,8 +2157,8 @@
             description: Phone number,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       JourneyRiskCategorisationResult: {
         required: [
@@ -2200,8 +2179,8 @@
             format: date-time,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       JourneyRiskCategorisationResultRiskLevelEnum: {
         enum: [
@@ -2254,8 +2233,8 @@
             format: date-time,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       LaboratoryTestResultConclusionEnum: {
         enum: [
@@ -2289,8 +2268,8 @@
             description: List of details of individual tests performed or to be performed,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       LaboratoryTestsTestReasonEnum: {
         enum: [
@@ -2322,8 +2301,8 @@
             description: ID of transport,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       MeansOfTransportTypeEnum: {
         enum: [
@@ -2368,8 +2347,8 @@
           movements: {
             $ref: #/components/schemas/TdmRelationshipObject
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       OfficialInspector: {
         required: [
@@ -2410,12 +2389,8 @@
             description: Date of sign,
             nullable: true
           }
-        }
-        required: [
-          address
-        ],
-        additionalProperties: false
         },
+        additionalProperties: false
       },
       OfficialVeterinarian: {
         type: object,
@@ -2450,32 +2425,32 @@
             description: Date of sign,
             nullable: true
           }
-        }
+        },
         additionalProperties: false
       },
       PartOne: {
         required: [
-          typeOfImp,
-          personResponsible,
-          consignor,
-          consignorTwo,
-          packer,
-          consignee,
-          importer,
-          placeOfDestination,
-          pod,
-          placeOfOriginHarvest,
-          purpose,
-          meansOfTransport,
-          transporter,
-          meansOfTransportFromEntryPoint,
-          veterinaryInformation,
-          route,
-          submittedBy,
-          contactDetails,
           billingInformation,
           commonUserCharge,
-          provideCtcMrn
+          consignee,
+          consignor,
+          consignorTwo,
+          contactDetails,
+          importer,
+          meansOfTransport,
+          meansOfTransportFromEntryPoint,
+          packer,
+          personResponsible,
+          placeOfDestination,
+          placeOfOriginHarvest,
+          pod,
+          provideCtcMrn,
+          purpose,
+          route,
+          submittedBy,
+          transporter,
+          typeOfImp,
+          veterinaryInformation
         ],
         type: object,
         properties: {
@@ -2527,7 +2502,7 @@
           additionalPermanentAddresses: {
             type: array,
             items: {
-              $ref: #/components/schemas/EconomicOperator3
+              $ref: #/components/schemas/EconomicOperator
             },
             description: List of additional permanent addresses,
             nullable: true
@@ -2700,8 +2675,8 @@
             format: date-time,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       PartOneProvideCtcMrnEnum: {
         enum: [
@@ -2721,8 +2696,8 @@
       },
       PartThree: {
         required: [
-          controlStatus,
           control,
+          controlStatus,
           sealCheck,
           sealCheckOverride
         ],
@@ -2753,8 +2728,8 @@
           sealCheckOverride: {
             $ref: #/components/schemas/InspectionOverride
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       PartThreeControlStatusEnum: {
         enum: [
@@ -2765,13 +2740,13 @@
       },
       PartTwo: {
         required: [
-          decision,
           consignmentCheck,
-          impactOfTransportOnAnimals,
-          laboratoryTests,
           controlAuthority,
           controlledDestination,
-          inspectionOverride
+          decision,
+          impactOfTransportOnAnimals,
+          inspectionOverride,
+          laboratoryTests
         ],
         type: object,
         properties: {
@@ -2880,8 +2855,8 @@
             format: date-time,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       Party: {
         required: [
@@ -2971,14 +2946,8 @@
             description: Email number of party,
             nullable: true
           }
-        }
-        required: [
-          type
-        ],
-        additionalProperties: false
-            format: int32
-            nullable: true
         },
+        additionalProperties: false
       },
       PartyTypeEnum: {
         enum: [
@@ -3005,8 +2974,8 @@
             description: Whether or not a physical check is required for PHSI,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       PostalAddress: {
         type: object,
@@ -3046,8 +3015,8 @@
             description: Post code,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ProblemDetails: {
         type: object,
@@ -3077,9 +3046,9 @@
       },
       Purpose: {
         required: [
-          internalMarketPurpose,
-          forNonConforming,
           forImportOrAdmission,
+          forNonConforming,
+          internalMarketPurpose,
           purposeGroup
         ],
         type: object,
@@ -3155,8 +3124,8 @@
             format: date-time,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       PurposeForImportOrAdmissionEnum: {
         enum: [
@@ -3262,8 +3231,8 @@
             type: string,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ResourceLink: {
         type: object,
@@ -3272,8 +3241,8 @@
             type: string,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       RiskAssessmentResult: {
         type: object,
@@ -3292,8 +3261,8 @@
             format: date-time,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       Route: {
         type: object,
@@ -3305,8 +3274,8 @@
             },
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       SealCheck: {
         required: [
@@ -3333,8 +3302,8 @@
             format: date-time,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       SealContainer: {
         type: object,
@@ -3409,8 +3378,8 @@
             description: Reference number of the rejected split consignment,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       TdmRelationshipObject: {
         required: [
@@ -3432,11 +3401,12 @@
             },
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       UpdatedImportNotification: {
         required: [
+          lastUpdated,
           uri
         ],
         type: object,
@@ -3502,8 +3472,8 @@
             description: Is this user a control,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       },
       ValidationMessageCode: {
         type: object,
@@ -3580,8 +3550,8 @@
             description: Details helpful for identification,
             nullable: true
           }
-        }
-        nullable: true
+        },
+        additionalProperties: false
       }
     }
   }
