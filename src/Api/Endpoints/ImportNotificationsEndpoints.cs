@@ -9,8 +9,6 @@ namespace Defra.PhaImportNotifications.Api.Endpoints;
 
 public static class ImportNotificationsEndpoints
 {
-    private const string ChedReferenceNumber = @"^CHED[A|D|P|PP]\.GB\.\d{4}\.\d{7}$";
-
     public static void MapImportNotificationsEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("import-notifications/{chedReferenceNumber}/", Get)
@@ -32,7 +30,7 @@ public static class ImportNotificationsEndpoints
     private static async Task<IResult> Get(
         [FromRoute]
         [Description("CHED Reference Number")]
-        [RegularExpression(ChedReferenceNumber)]
+        [RegularExpression($"^{Regexes.ChedReferenceNumber}$")]
             string chedReferenceNumber,
         [FromServices] IBtmsService btmsService,
         CancellationToken cancellationToken

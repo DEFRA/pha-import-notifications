@@ -41,7 +41,7 @@ public static class ImportNotificationsUpdatesEndpoints
         var records = notifications.Select(x => new UpdatedImportNotification
         {
             LastUpdated = x.LastUpdated,
-            Uri = new Uri($"/import-notifications/{x.ReferenceNumber}"),
+            Uri = $"/import-notifications/{x.ReferenceNumber}",
         });
 
         return Results.Ok(
