@@ -11,13 +11,13 @@ using Defra.PhaImportNotifications.Api.Utils.Http;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Core;
-using Swashbuckle.AspNetCore.ReDoc;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
@@ -68,7 +68,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
     // This is needed for Swashbuckle and Minimal APIs
-    builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+    builder.Services.Configure<JsonOptions>(options =>
     {
         options.SerializerOptions.PropertyNameCaseInsensitive = true;
         options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
@@ -76,7 +76,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
     builder.Services.TryAddTransient<ISerializerDataContractResolver>(sp => new JsonSerializerDataContractResolver(
-        sp.GetRequiredService<IOptions<Microsoft.AspNetCore.Http.Json.JsonOptions>>().Value.SerializerOptions
+        sp.GetRequiredService<IOptions<JsonOptions>>().Value.SerializerOptions
     ));
     // /This is needed for Swashbuckle and Minimal APIs
     builder.Services.AddProblemDetails();
@@ -87,6 +87,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         c.AddServer(new OpenApiServer { Url = "https://localhost" });
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
         c.IncludeXmlComments(typeof(ImportNotification).Assembly);
+        c.DocumentFilter<TagsDocumentFilter>();
         c.SchemaFilter<DescriptionSchemaFilter>();
         c.SwaggerDoc(
             "v1",
@@ -156,7 +157,7 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
     });
     app.UseReDoc(options =>
     {
-        options.ConfigObject = new ConfigObject { ExpandResponses = "200" };
+        options.ConfigObject.ExpandResponses = "200";
         options.DocumentTitle = "PHA Import Notifications";
         options.RoutePrefix = "redoc";
         options.SpecUrl = "/.well-known/openapi/v1/openapi.json";
@@ -180,7 +181,6 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
                 }
 
                 if (context.RequestServices.GetRequiredService<IProblemDetailsService>() is { } problemDetailsService)
-                {
                     await problemDetailsService.WriteAsync(
                         new ProblemDetailsContext
                         {
@@ -189,11 +189,8 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
                             ProblemDetails = { Status = context.Response.StatusCode, Detail = detail },
                         }
                     );
-                }
                 else if (ReasonPhrases.GetReasonPhrase(context.Response.StatusCode) is { } reasonPhrase)
-                {
                     await context.Response.WriteAsync(reasonPhrase);
-                }
             },
         }
     );
@@ -205,6 +202,6 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 namespace Defra.PhaImportNotifications.Api
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    public partial class Program;
+    public class Program;
 }
 #pragma warning restore S2094
