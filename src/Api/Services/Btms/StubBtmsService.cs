@@ -6,30 +6,11 @@ namespace Defra.PhaImportNotifications.Api.Services.Btms;
 [ExcludeFromCodeCoverage]
 public class StubBtmsService : IBtmsService
 {
-    public Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken)
-    {
-        return Task.FromResult<IEnumerable<ImportNotification>>(
-            new List<ImportNotification>
-            {
-                new()
-                {
-                    ReferenceNumber = "CHED1234",
-                    LastUpdated = new DateTime(2024, 11, 24, 23, 59, 30, DateTimeKind.Utc),
-                },
-                new()
-                {
-                    ReferenceNumber = "CHED5678",
-                    LastUpdated = new DateTime(2024, 11, 24, 23, 59, 59, DateTimeKind.Utc),
-                },
-            }
-        );
-    }
+    public Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken) =>
+        Task.FromResult<IEnumerable<ImportNotification>>(new List<ImportNotification>());
 
     public Task<ImportNotification?> GetImportNotification(
         string chedReferenceNumber,
         CancellationToken cancellationToken
-    )
-    {
-        return Task.FromResult<ImportNotification?>(new ImportNotification { ReferenceNumber = chedReferenceNumber });
-    }
+    ) => Task.FromResult<ImportNotification?>(null);
 }

@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum CommodityRiskResultExitRiskDecisionEnum
 {
-    public enum CommodityRiskResultExitRiskDecisionEnum
-    {
-        Required,
-        Notrequired,
-        Inconclusive
-    }
+    Required,
+    Notrequired,
+    Inconclusive
 }

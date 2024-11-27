@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum PurposeForNonConformingEnum
 {
-    public enum PurposeForNonConformingEnum
-    {
-        CustomsWarehouse,
-        FreeZoneOrFreeWarehouse,
-        ShipSupplier,
-        Ship
-    }
+    CustomsWarehouse,
+    FreeZoneOrFreeWarehouse,
+    ShipSupplier,
+    Ship
 }

@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ControlConsignmentLeaveEnum
 {
-    public enum ControlConsignmentLeaveEnum
-    {
-        Yes,
-        No,
-        ItHasBeenDestroyed
-    }
+    Yes,
+    No,
+    ItHasBeenDestroyed
 }

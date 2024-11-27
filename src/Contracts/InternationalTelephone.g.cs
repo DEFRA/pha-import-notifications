@@ -1,16 +1,15 @@
-namespace Defra.PhaImportNotifications.Contracts
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class InternationalTelephone
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("countryCode")]
+    [Description("Country code of phone number")]
+    public string? CountryCode { get; init; }
 
-    public class InternationalTelephone
-    {
-        [JsonPropertyName("countryCode")]
-        [Description("Country code of phone number")]
-        public string CountryCode { get; init; }
-
-        [JsonPropertyName("subscriberNumber")]
-        [Description("Phone number")]
-        public string SubscriberNumber { get; init; }
-    }
+    [JsonPropertyName("subscriberNumber")]
+    [Description("Phone number")]
+    public string? SubscriberNumber { get; init; }
 }

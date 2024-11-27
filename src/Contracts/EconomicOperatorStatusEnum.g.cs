@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum EconomicOperatorStatusEnum
 {
-    public enum EconomicOperatorStatusEnum
-    {
-        Approved,
-        Nonapproved,
-        Suspended
-    }
+    Approved,
+    Nonapproved,
+    Suspended
 }

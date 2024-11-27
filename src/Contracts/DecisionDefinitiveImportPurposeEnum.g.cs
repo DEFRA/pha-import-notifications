@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum DecisionDefinitiveImportPurposeEnum
 {
-    public enum DecisionDefinitiveImportPurposeEnum
-    {
-        Slaughter,
-        Approvedbodies,
-        Quarantine
-    }
+    Slaughter,
+    Approvedbodies,
+    Quarantine
 }

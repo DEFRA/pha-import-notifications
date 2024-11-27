@@ -1,16 +1,15 @@
-namespace Defra.PhaImportNotifications.Contracts
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class ValidationMessageCode
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("field")]
+    [Description("Field")]
+    public string? Field { get; init; }
 
-    public class ValidationMessageCode
-    {
-        [JsonPropertyName("field")]
-        [Description("Field")]
-        public string Field { get; init; }
-
-        [JsonPropertyName("code")]
-        [Description("Code")]
-        public string Code { get; init; }
-    }
+    [JsonPropertyName("code")]
+    [Description("Code")]
+    public string? Code { get; init; }
 }

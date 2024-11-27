@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ApplicantAnalysisTypeEnum
 {
-    public enum ApplicantAnalysisTypeEnum
-    {
-        InitialAnalysis,
-        CounterAnalysis,
-        SecondExpertAnalysis
-    }
+    InitialAnalysis,
+    CounterAnalysis,
+    SecondExpertAnalysis
 }

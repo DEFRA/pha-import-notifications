@@ -1,20 +1,19 @@
-namespace Defra.PhaImportNotifications.Contracts
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class Control
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("feedbackInformation")]
+    public required FeedbackInformation FeedbackInformation { get; init; }
 
-    public class Control
-    {
-        [JsonPropertyName("feedbackInformation")]
-        public FeedbackInformation FeedbackInformation { get; init; }
+    [JsonPropertyName("detailsOnReExport")]
+    public required DetailsOnReExport DetailsOnReExport { get; init; }
 
-        [JsonPropertyName("detailsOnReExport")]
-        public DetailsOnReExport DetailsOnReExport { get; init; }
+    [JsonPropertyName("officialInspector")]
+    public required OfficialInspector OfficialInspector { get; init; }
 
-        [JsonPropertyName("officialInspector")]
-        public OfficialInspector OfficialInspector { get; init; }
-
-        [JsonPropertyName("consignmentLeave")]
-        public ControlConsignmentLeaveEnum ConsignmentLeave { get; init; }
-    }
+    [JsonPropertyName("consignmentLeave")]
+    public required ControlConsignmentLeaveEnum ConsignmentLeave { get; init; }
 }

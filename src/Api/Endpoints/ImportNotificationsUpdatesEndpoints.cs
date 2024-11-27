@@ -40,7 +40,7 @@ public static class ImportNotificationsUpdatesEndpoints
         var notifications = await btmsService.GetImportNotifications(cancellationToken);
         var records = notifications.Select(x => new UpdatedImportNotification
         {
-            LastUpdated = x.LastUpdated,
+            LastUpdated = x.LastUpdated!.Value,
             Uri = $"/import-notifications/{x.ReferenceNumber}",
         });
 

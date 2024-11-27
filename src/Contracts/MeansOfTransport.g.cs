@@ -1,19 +1,18 @@
-namespace Defra.PhaImportNotifications.Contracts
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class MeansOfTransport
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("type")]
+    public required MeansOfTransportTypeEnum Type { get; init; }
 
-    public class MeansOfTransport
-    {
-        [JsonPropertyName("type")]
-        public MeansOfTransportTypeEnum Type { get; init; }
+    [JsonPropertyName("document")]
+    [Description("Document for transport")]
+    public string? Document { get; init; }
 
-        [JsonPropertyName("document")]
-        [Description("Document for transport")]
-        public string Document { get; init; }
-
-        [JsonPropertyName("id")]
-        [Description("ID of transport")]
-        public string Id { get; init; }
-    }
+    [JsonPropertyName("id")]
+    [Description("ID of transport")]
+    public string? Id { get; init; }
 }

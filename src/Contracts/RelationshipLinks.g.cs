@@ -1,14 +1,13 @@
-namespace Defra.PhaImportNotifications.Contracts
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class RelationshipLinks
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("self")]
+    public string? Self { get; init; }
 
-    public class RelationshipLinks
-    {
-        [JsonPropertyName("self")]
-        public string Self { get; init; }
-
-        [JsonPropertyName("related")]
-        public string Related { get; init; }
-    }
+    [JsonPropertyName("related")]
+    public string? Related { get; init; }
 }

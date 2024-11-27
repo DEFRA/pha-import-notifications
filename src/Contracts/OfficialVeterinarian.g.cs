@@ -1,32 +1,31 @@
-namespace Defra.PhaImportNotifications.Contracts
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class OfficialVeterinarian
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("firstName")]
+    [Description("First name of official veterinarian")]
+    public string? FirstName { get; init; }
 
-    public class OfficialVeterinarian
-    {
-        [JsonPropertyName("firstName")]
-        [Description("First name of official veterinarian")]
-        public string FirstName { get; init; }
+    [JsonPropertyName("lastName")]
+    [Description("Last name of official veterinarian")]
+    public string? LastName { get; init; }
 
-        [JsonPropertyName("lastName")]
-        [Description("Last name of official veterinarian")]
-        public string LastName { get; init; }
+    [JsonPropertyName("email")]
+    [Description("Email address of official veterinarian")]
+    public string? Email { get; init; }
 
-        [JsonPropertyName("email")]
-        [Description("Email address of official veterinarian")]
-        public string Email { get; init; }
+    [JsonPropertyName("phone")]
+    [Description("Phone number of official veterinarian")]
+    public string? Phone { get; init; }
 
-        [JsonPropertyName("phone")]
-        [Description("Phone number of official veterinarian")]
-        public string Phone { get; init; }
+    [JsonPropertyName("fax")]
+    [Description("Fax number of official veterinarian")]
+    public string? Fax { get; init; }
 
-        [JsonPropertyName("fax")]
-        [Description("Fax number of official veterinarian")]
-        public string Fax { get; init; }
-
-        [JsonPropertyName("signed")]
-        [Description("Date of sign")]
-        public string Signed { get; init; }
-    }
+    [JsonPropertyName("signed")]
+    [Description("Date of sign")]
+    public string? Signed { get; init; }
 }

@@ -1,14 +1,13 @@
-namespace Defra.PhaImportNotifications.Contracts
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
+
+namespace Defra.PhaImportNotifications.Contracts;
+public class ChedppNotAcceptableReason
 {
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+    [JsonPropertyName("reason")]
+    public required ChedppNotAcceptableReasonReasonEnum Reason { get; init; }
 
-    public class ChedppNotAcceptableReason
-    {
-        [JsonPropertyName("reason")]
-        public ChedppNotAcceptableReasonReasonEnum Reason { get; init; }
-
-        [JsonPropertyName("commodityOrPackage")]
-        public ChedppNotAcceptableReasonCommodityOrPackageEnum CommodityOrPackage { get; init; }
-    }
+    [JsonPropertyName("commodityOrPackage")]
+    public required ChedppNotAcceptableReasonCommodityOrPackageEnum CommodityOrPackage { get; init; }
 }

@@ -1,8 +1,6 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ConsignmentCheckPhysicalCheckNotDoneReasonEnum
 {
-    public enum ConsignmentCheckPhysicalCheckNotDoneReasonEnum
-    {
-        ReducedChecksRegime,
-        Other
-    }
+    ReducedChecksRegime,
+    Other
 }

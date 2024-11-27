@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ConsignmentCheckIdentityCheckTypeEnum
 {
-    public enum ConsignmentCheckIdentityCheckTypeEnum
-    {
-        SealCheck,
-        FullIdentityCheck,
-        NotDone
-    }
+    SealCheck,
+    FullIdentityCheck,
+    NotDone
 }

@@ -1,11 +1,10 @@
-namespace Defra.PhaImportNotifications.Contracts
-{
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
 
-    public class NotificationResourceResponse
-    {
-        [JsonPropertyName("data")]
-        public ImportNotification Data { get; init; }
-    }
+namespace Defra.PhaImportNotifications.Contracts;
+public class NotificationResourceResponse
+{
+    [JsonPropertyName("data")]
+    public required ImportNotification Data { get; init; }
 }

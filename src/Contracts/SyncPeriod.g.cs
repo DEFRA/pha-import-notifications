@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum SyncPeriod
 {
-    public enum SyncPeriod
-    {
-        Today,
-        LastMonth,
-        ThisMonth,
-        All
-    }
+    Today,
+    LastMonth,
+    ThisMonth,
+    All
 }

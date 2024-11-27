@@ -1,9 +1,7 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum PartOneTypeOfImpEnum
 {
-    public enum PartOneTypeOfImpEnum
-    {
-        A,
-        P,
-        D
-    }
+    A,
+    P,
+    D
 }

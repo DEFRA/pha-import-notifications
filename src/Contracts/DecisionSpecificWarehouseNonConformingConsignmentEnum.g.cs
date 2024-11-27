@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum DecisionSpecificWarehouseNonConformingConsignmentEnum
 {
-    public enum DecisionSpecificWarehouseNonConformingConsignmentEnum
-    {
-        CustomWarehouse,
-        FreeZoneOrFreeWarehouse,
-        ShipSupplier,
-        Ship
-    }
+    CustomWarehouse,
+    FreeZoneOrFreeWarehouse,
+    ShipSupplier,
+    Ship
 }

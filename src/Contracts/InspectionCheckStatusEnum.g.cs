@@ -1,13 +1,11 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum InspectionCheckStatusEnum
 {
-    public enum InspectionCheckStatusEnum
-    {
-        ToDo,
-        Compliant,
-        AutoCleared,
-        NonCompliant,
-        NotInspected,
-        ToBeInspected,
-        Hold
-    }
+    ToDo,
+    Compliant,
+    AutoCleared,
+    NonCompliant,
+    NotInspected,
+    ToBeInspected,
+    Hold
 }

@@ -1,11 +1,10 @@
-namespace Defra.PhaImportNotifications.Contracts
-{
-    using System.Text.Json.Serialization;
-    using System.ComponentModel;
+#nullable enable
+using System.Text.Json.Serialization;
+using System.ComponentModel;
 
-    public class ResourceLink
-    {
-        [JsonPropertyName("self")]
-        public string Self { get; init; }
-    }
+namespace Defra.PhaImportNotifications.Contracts;
+public class ResourceLink
+{
+    [JsonPropertyName("self")]
+    public string? Self { get; init; }
 }

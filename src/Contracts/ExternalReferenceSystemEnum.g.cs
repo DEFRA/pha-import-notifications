@@ -1,10 +1,8 @@
-namespace Defra.PhaImportNotifications.Contracts
+namespace Defra.PhaImportNotifications.Contracts;
+public enum ExternalReferenceSystemEnum
 {
-    public enum ExternalReferenceSystemEnum
-    {
-        Ecert,
-        Ephyto,
-        Enotification,
-        Ncts
-    }
+    Ecert,
+    Ephyto,
+    Enotification,
+    Ncts
 }
