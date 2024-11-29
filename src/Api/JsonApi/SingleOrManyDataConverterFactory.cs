@@ -69,7 +69,7 @@ public sealed class SingleOrManyDataConverterFactory : JsonConverterFactory
 
         public override void Write(Utf8JsonWriter writer, SingleOrManyData<T> value, JsonSerializerOptions options)
         {
-            WriteSubTree(writer, value.Value, options);
+            throw new NotImplementedException();
         }
     }
 }

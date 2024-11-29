@@ -16,23 +16,4 @@ public abstract class JsonObjectConverter<TObject> : JsonConverter<TObject>
 
         return JsonSerializer.Deserialize<TValue>(ref reader, options);
     }
-
-    protected static void WriteSubTree<TValue>(Utf8JsonWriter writer, TValue value, JsonSerializerOptions options)
-    {
-        ArgumentNullException.ThrowIfNull(options);
-
-        if (typeof(TValue) != typeof(object) && options.GetConverter(typeof(TValue)) is JsonConverter<TValue> converter)
-        {
-            converter.Write(writer, value, options);
-        }
-        else
-        {
-            JsonSerializer.Serialize(writer, value, options);
-        }
-    }
-
-    protected static JsonException GetEndOfStreamError()
-    {
-        return new JsonException("Unexpected end of JSON stream.");
-    }
 }
