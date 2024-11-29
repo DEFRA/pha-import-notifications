@@ -14,6 +14,18 @@ public class SyncNotificationsCommand
     [JsonPropertyName("jobId")]
     public required string JobId { get; init; }
 
+    [JsonPropertyName("timespan")]
+    public string? Timespan { get; init; }
+
     [JsonPropertyName("description")]
     public string? Description { get; init; }
+
+    [JsonPropertyName("chedTypes")]
+    public List<string>? ChedTypes { get; init; }
+
+    [JsonPropertyName("resource")]
+    public string? Resource { get; init; }
+
+    [JsonPropertyName("blobFiles")]
+    public List<string>? BlobFiles { get; init; }
 }

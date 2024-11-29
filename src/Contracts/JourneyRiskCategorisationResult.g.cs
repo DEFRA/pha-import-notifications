@@ -11,7 +11,7 @@ public class JourneyRiskCategorisationResult
     [JsonPropertyName("riskLevelMethod")]
     public required JourneyRiskCategorisationResultRiskLevelMethodEnum RiskLevelMethod { get; init; }
 
-    [JsonPropertyName("riskLevelDateTime")]
+    [JsonPropertyName("riskLevelSetFor")]
     [Description("The date and time the risk level has been set for a notification")]
-    public DateTime? RiskLevelDateTime { get; init; }
+    public DateTime? RiskLevelSetFor { get; init; }
 }

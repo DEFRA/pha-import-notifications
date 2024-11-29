@@ -117,9 +117,9 @@ public class PartOne
     [Description("Array that contains pair of seal number and container number")]
     public List<SealContainer>? SealsContainers { get; init; }
 
-    [JsonPropertyName("submissionDate")]
+    [JsonPropertyName("submittedOn")]
     [Description("Date and time when the notification was submitted")]
-    public DateTime? SubmissionDate { get; init; }
+    public DateTime? SubmittedOn { get; init; }
 
     [JsonPropertyName("submittedBy")]
     public required UserInformation SubmittedBy { get; init; }
@@ -151,9 +151,9 @@ public class PartOne
     [Description("List of nominated contacts to receive text and email notifications")]
     public List<NominatedContact>? NominatedContacts { get; init; }
 
-    [JsonPropertyName("originalEstimatedDateTime")]
+    [JsonPropertyName("originalEstimatedOn")]
     [Description("Original estimated date time of arrival")]
-    public DateTime? OriginalEstimatedDateTime { get; init; }
+    public DateTime? OriginalEstimatedOn { get; init; }
 
     [JsonPropertyName("billingInformation")]
     public required BillingInformation BillingInformation { get; init; }
@@ -172,9 +172,9 @@ public class PartOne
     [JsonPropertyName("provideCtcMrn")]
     public required PartOneProvideCtcMrnEnum ProvideCtcMrn { get; init; }
 
-    [JsonPropertyName("arrivedOn")]
+    [JsonPropertyName("arrivesAt")]
     [Description("DateTime")]
-    public DateTime? ArrivedOn { get; init; }
+    public DateTime? ArrivesAt { get; init; }
 
     [JsonPropertyName("departedOn")]
     [Description("DateTime")]
