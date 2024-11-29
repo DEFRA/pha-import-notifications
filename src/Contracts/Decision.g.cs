@@ -75,8 +75,8 @@ public class Decision
     [Description("Deadline when consignment has to leave borders")]
     public string? TemporaryDeadline { get; init; }
 
-    [JsonPropertyName("decisionEnum")]
-    public required DecisionDecisionEnum DecisionEnum { get; init; }
+    [JsonPropertyName("decision")]
+    public required DecisionDecisionEnum Decision { get; init; }
 
     [JsonPropertyName("freeCirculationPurpose")]
     public required DecisionFreeCirculationPurposeEnum FreeCirculationPurpose { get; init; }

@@ -9,9 +9,9 @@ public class LaboratoryTestResult
     [Description("When sample was used")]
     public string? SampleUseByDate { get; init; }
 
-    [JsonPropertyName("releasedOn")]
+    [JsonPropertyName("releasedDate")]
     [Description("When it was released")]
-    public DateTime? ReleasedOn { get; init; }
+    public DateTime? ReleasedDate { get; init; }
 
     [JsonPropertyName("laboratoryTestMethod")]
     [Description("Laboratory test method")]
@@ -24,7 +24,7 @@ public class LaboratoryTestResult
     [JsonPropertyName("conclusion")]
     public required LaboratoryTestResultConclusionEnum Conclusion { get; init; }
 
-    [JsonPropertyName("labTestCreatedOn")]
+    [JsonPropertyName("labTestCreatedDate")]
     [Description("Date of lab test created in IPAFFS")]
-    public DateTime? LabTestCreatedOn { get; init; }
+    public DateTime? LabTestCreatedDate { get; init; }
 }

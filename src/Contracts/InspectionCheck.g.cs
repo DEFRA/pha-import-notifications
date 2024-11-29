@@ -5,8 +5,8 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public class InspectionCheck
 {
-    [JsonPropertyName("type")]
-    public required InspectionCheckTypeEnum Type { get; init; }
+    [JsonPropertyName("ipaffsType")]
+    public required InspectionCheckTypeEnum IpaffsType { get; init; }
 
     [JsonPropertyName("status")]
     public required InspectionCheckStatusEnum Status { get; init; }

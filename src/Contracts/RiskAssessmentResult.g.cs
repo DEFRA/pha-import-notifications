@@ -9,7 +9,7 @@ public class RiskAssessmentResult
     [Description("List of risk assessed commodities")]
     public List<CommodityRiskResult>? CommodityResults { get; init; }
 
-    [JsonPropertyName("assessedOn")]
+    [JsonPropertyName("assessmentDateTime")]
     [Description("Date and time of assessment")]
-    public DateTime? AssessedOn { get; init; }
+    public DateTime? AssessmentDateTime { get; init; }
 }

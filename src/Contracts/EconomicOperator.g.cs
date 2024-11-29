@@ -5,12 +5,12 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public class EconomicOperator
 {
-    [JsonPropertyName("id")]
+    [JsonPropertyName("ipaffsId")]
     [Description("The unique identifier of this organisation")]
-    public string? Id { get; init; }
+    public string? IpaffsId { get; init; }
 
-    [JsonPropertyName("type")]
-    public required EconomicOperatorTypeEnum Type { get; init; }
+    [JsonPropertyName("ipaffsType")]
+    public required EconomicOperatorTypeEnum IpaffsType { get; init; }
 
     [JsonPropertyName("status")]
     public required EconomicOperatorStatusEnum Status { get; init; }

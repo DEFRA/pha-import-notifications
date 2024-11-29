@@ -55,9 +55,9 @@ public class PartTwo
     [Description("Validation messages for Part 2 - Decision")]
     public List<ValidationMessageCode>? ConsignmentValidations { get; init; }
 
-    [JsonPropertyName("checkedOn")]
+    [JsonPropertyName("checkDate")]
     [Description("User entered date when the checks were completed")]
-    public DateTime? CheckedOn { get; init; }
+    public string? CheckDate { get; init; }
 
     [JsonPropertyName("accompanyingDocuments")]
     [Description("Accompanying documents")]
@@ -78,7 +78,7 @@ public class PartTwo
     [JsonPropertyName("inspectionOverride")]
     public required InspectionOverride InspectionOverride { get; init; }
 
-    [JsonPropertyName("autoClearedOn")]
+    [JsonPropertyName("autoClearedDateTime")]
     [Description("Date of autoclearance")]
-    public DateTime? AutoClearedOn { get; init; }
+    public DateTime? AutoClearedDateTime { get; init; }
 }

@@ -5,9 +5,9 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public class LaboratoryTests
 {
-    [JsonPropertyName("testedOn")]
+    [JsonPropertyName("testDate")]
     [Description("Date of tests")]
-    public DateTime? TestedOn { get; init; }
+    public DateTime? TestDate { get; init; }
 
     [JsonPropertyName("testReason")]
     public required LaboratoryTestsTestReasonEnum TestReason { get; init; }

@@ -2,7 +2,7 @@ namespace Defra.PhaImportNotifications.Contracts;
 public enum CommodityRiskResultRiskDecisionEnum
 {
     Required,
-    Notrequired,
+    NotRequired,
     Inconclusive,
     ReenforcedCheck
 }

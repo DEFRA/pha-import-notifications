@@ -46,7 +46,11 @@ public class Applicant
     [JsonPropertyName("inspector")]
     public required Inspector Inspector { get; init; }
 
-    [JsonPropertyName("sampledOn")]
-    [Description("DateTime")]
-    public DateTime? SampledOn { get; init; }
+    [JsonPropertyName("sampleDate")]
+    [Description("Date the sample is taken")]
+    public string? SampleDate { get; init; }
+
+    [JsonPropertyName("sampleTime")]
+    [Description("Time the sample is taken")]
+    public string? SampleTime { get; init; }
 }

@@ -14,18 +14,21 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 // Step up out of execution path : {solutionPath}/tools/SchemaToCSharp/bin/Debug/net8.0
 const string solutionPath = "../../../../../";
 const string outputPath = $"{solutionPath}src/Contracts/";
-const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
+const string inputPath = $"{solutionPath}tools/SchemaToCSharp/tdm-public-openapi-v0.1.json";
 
 var stream = new FileStream(inputPath, FileMode.Open);
 var openApiDocument = new OpenApiStreamReader().Read(stream, out _);
 
 var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
 
-foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
+foreach (var (originalSchemaName, schema) in openApiDocument.Components.Schemas)
 {
+    var schemaName = RemoveIPAFFS(originalSchemaName);
+    
     var syntax = schema.Type switch
     {
         "integer" => CreateEnumSyntax(),
+        "string" => CreateEnumSyntax(),
         "object" => CreateClassSyntax(),
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
@@ -64,7 +67,7 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 {
     var typeName = schema.Type switch
     {
-        "string" => schema.Format == "date-time" ? "DateTime" : "string",
+        "string" => schema.Format == "date-time" ? "DateTime" : RefTypeName(schema, "string"),
         "integer" => RefTypeName(schema, "int"),
         "number" => "decimal",
         "boolean" => "bool",
@@ -77,9 +80,11 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 }
 
 static string RefTypeName(OpenApiSchema schema, string defaultTypeName) =>
-    schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName;
+    RemoveIPAFFS(schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName);
 
 static EnumMemberDeclarationSyntax CreateEnumValue(string name) => EnumMemberDeclaration(name);
+
+static string RemoveIPAFFS(string s) => s.Replace("Ipaffs", "");
 
 static PropertyDeclarationSyntax CreateProperty(string name, OpenApiSchema schema)
 {

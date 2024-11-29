@@ -5,6 +5,15 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public class CommodityComplement
 {
+    [JsonPropertyName("additionalData")]
+    public object? AdditionalData { get; init; }
+
+    [JsonPropertyName("riskAssesment")]
+    public required CommodityRiskResult RiskAssesment { get; init; }
+
+    [JsonPropertyName("checks")]
+    public List<InspectionCheck>? Checks { get; init; }
+
     [JsonPropertyName("uniqueComplementId")]
     [Description("UUID used to match commodityComplement to its complementParameter set. CHEDPP only")]
     public string? UniqueComplementId { get; init; }
@@ -76,13 +85,4 @@ public class CommodityComplement
     [JsonPropertyName("isCdsMatched")]
     [Description("Has commodity been matched with corresponding CDS declaration")]
     public bool? IsCdsMatched { get; init; }
-
-    [JsonPropertyName("additionalData")]
-    public object? AdditionalData { get; init; }
-
-    [JsonPropertyName("riskAssesment")]
-    public required CommodityRiskResult RiskAssesment { get; init; }
-
-    [JsonPropertyName("checks")]
-    public List<InspectionCheck>? Checks { get; init; }
 }

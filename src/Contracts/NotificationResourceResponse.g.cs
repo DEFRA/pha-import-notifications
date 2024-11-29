@@ -6,5 +6,5 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class NotificationResourceResponse
 {
     [JsonPropertyName("data")]
-    public required ImportNotification Data { get; init; }
+    public required NotificationResourceData Data { get; init; }
 }

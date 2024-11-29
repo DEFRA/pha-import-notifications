@@ -16,9 +16,9 @@ public class VeterinaryInformation
     [Description("Veterinary document identification")]
     public string? VeterinaryDocument { get; init; }
 
-    [JsonPropertyName("veterinaryDocumentIssuedOn")]
+    [JsonPropertyName("veterinaryDocumentIssueDate")]
     [Description("Veterinary document issue date")]
-    public string? VeterinaryDocumentIssuedOn { get; init; }
+    public string? VeterinaryDocumentIssueDate { get; init; }
 
     [JsonPropertyName("accompanyingDocumentNumbers")]
     [Description("Additional documents")]

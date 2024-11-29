@@ -5,9 +5,9 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public class ApprovedEstablishment
 {
-    [JsonPropertyName("id")]
+    [JsonPropertyName("ipaffsId")]
     [Description("ID")]
-    public string? Id { get; init; }
+    public string? IpaffsId { get; init; }
 
     [JsonPropertyName("name")]
     [Description("Name of approved establishment")]

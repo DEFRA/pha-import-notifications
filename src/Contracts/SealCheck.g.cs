@@ -16,7 +16,7 @@ public class SealCheck
     [JsonPropertyName("officialInspector")]
     public required OfficialInspector OfficialInspector { get; init; }
 
-    [JsonPropertyName("checkedOn")]
+    [JsonPropertyName("dateTimeOfCheck")]
     [Description("date and time of seal check")]
-    public DateTime? CheckedOn { get; init; }
+    public DateTime? DateTimeOfCheck { get; init; }
 }
