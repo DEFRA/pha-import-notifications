@@ -1,3 +1,4 @@
+using AutoFixture;
 using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
@@ -18,8 +19,20 @@ public class ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Prog
     public async Task Get_ShouldSucceed()
     {
         var client = CreateClient();
+        var fixture = new Fixture();
 
-        MockBtmsService.GetImportNotifications(Arg.Any<CancellationToken>()).Returns(new List<ImportNotification>());
+        MockBtmsService
+            .GetImportNotifications(Arg.Any<CancellationToken>())
+            .Returns(
+                new List<ImportNotification>
+                {
+                    fixture
+                        .Build<ImportNotification>()
+                        .With(x => x.ReferenceNumber, "ref")
+                        .With(x => x.Updated, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
+                        .Create(),
+                }
+            );
 
         var response = await client.GetStringAsync("import-notifications-updates/pha?from=2024-11-20");
 
