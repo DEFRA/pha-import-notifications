@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -67,6 +68,7 @@ public sealed class SingleOrManyDataConverterFactory : JsonConverterFactory
             return new SingleOrManyData<T>(data);
         }
 
+        [ExcludeFromCodeCoverage]
         public override void Write(Utf8JsonWriter writer, SingleOrManyData<T> value, JsonSerializerOptions options)
         {
             throw new NotImplementedException();
