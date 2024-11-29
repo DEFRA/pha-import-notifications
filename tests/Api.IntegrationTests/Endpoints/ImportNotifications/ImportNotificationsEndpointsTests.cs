@@ -16,7 +16,7 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
     private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
 
     [Fact(Skip = "Not implemented yet")]
-    public async Task GetAllUpdated_WhenFound_ShouldSucceed()
+    public async Task Get_WhenFound_ShouldSucceed()
     {
         var client = CreateClient();
 
@@ -30,7 +30,7 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
     }
 
     [Fact]
-    public async Task GetAllUpdated_WhenNotFound_ShouldNotBeFound()
+    public async Task Get_WhenNotFound_ShouldNotBeFound()
     {
         var client = CreateClient();
 

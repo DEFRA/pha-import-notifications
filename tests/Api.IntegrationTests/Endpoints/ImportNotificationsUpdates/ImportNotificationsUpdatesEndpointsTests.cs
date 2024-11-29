@@ -15,7 +15,7 @@ public class ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Prog
     private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
 
     [Fact]
-    public async Task GetAllUpdated_ShouldSucceed()
+    public async Task Get_ShouldSucceed()
     {
         var client = CreateClient();
 
