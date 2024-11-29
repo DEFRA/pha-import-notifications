@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Http.Headers;
 
 namespace Defra.PhaImportNotifications.Api.JsonApi;
@@ -16,6 +17,9 @@ public static class ServiceCollectionExtensions
                 httpClient.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/vnd.api+json")
                 );
+
+                if (httpClient.BaseAddress.Scheme.Equals("https", StringComparison.OrdinalIgnoreCase))
+                    httpClient.DefaultRequestVersion = HttpVersion.Version20;
             }
         );
     }

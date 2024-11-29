@@ -6,12 +6,14 @@ namespace Defra.PhaImportNotifications.Api.Tests.JsonApi;
 
 public class ServiceCollectionExtensionsTests
 {
-    [Fact]
-    public void AddJsonApiClient_AsExpected()
+    [Theory]
+    [InlineData("http://localhost", 1, 1)]
+    [InlineData("https://localhost", 2, 0)]
+    public void AddJsonApiClient_AsExpected(string baseAddress, int expectedMajor, int expectedMinor)
     {
         var services = new ServiceCollection();
 
-        services.AddJsonApiClient(sp => "http://localhost");
+        services.AddJsonApiClient(_ => baseAddress);
 
         using var serviceProvider = services.BuildServiceProvider();
 
@@ -20,7 +22,8 @@ public class ServiceCollectionExtensionsTests
         var httpClient = serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient("JsonApiClient");
 
         httpClient.Should().NotBeNull();
-        httpClient.BaseAddress.Should().Be(new Uri("http://localhost"));
+        httpClient.BaseAddress.Should().Be(new Uri(baseAddress));
         httpClient.DefaultRequestHeaders.Accept.Should().ContainSingle(x => x.MediaType == "application/vnd.api+json");
+        httpClient.DefaultRequestVersion.Should().Be(new Version(expectedMajor, expectedMinor));
     }
 }
