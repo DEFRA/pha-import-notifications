@@ -15,11 +15,6 @@ public readonly struct SingleOrManyData<T>
     // to ensure ManyValue never contains null items.
     where T : ResourceIdentifierObject, new()
 {
-    public object? Value => ManyValue != null ? ManyValue : SingleValue;
-
-    [JsonIgnore]
-    public bool IsAssigned { get; }
-
     [JsonIgnore]
     public T? SingleValue { get; }
 
@@ -28,8 +23,6 @@ public readonly struct SingleOrManyData<T>
 
     public SingleOrManyData(object? value)
     {
-        IsAssigned = true;
-
         if (value is IEnumerable<T> manyData)
         {
             ManyValue = manyData.ToList();

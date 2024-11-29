@@ -1,6 +1,6 @@
 # Json API
 
-Types and `System.Text.Json` converters taken from https://github.com/json-api-dotnet/JsonApiDotNetCore
+Types and `System.Text.Json` converters taken from https://github.com/json-api-dotnet/JsonApiDotNetCore with parts removed for code we do not need.
 
 We do not want to reference the entire package is it pulls in too many dependencies we don't need and increases our exposure to potential security vulnerabilities.
 
