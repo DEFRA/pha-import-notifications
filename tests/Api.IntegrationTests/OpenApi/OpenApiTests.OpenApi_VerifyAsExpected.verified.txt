@@ -3431,7 +3431,7 @@
         properties: {
           updated: {
             type: string,
-            description: Last updated date. Format is ISO 8601-1:2019,
+            description: Date last updated. Format is ISO 8601-1:2019,
             format: date-time
           },
           uri: {
