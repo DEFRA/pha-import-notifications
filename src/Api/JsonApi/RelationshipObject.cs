@@ -14,8 +14,4 @@ public sealed class RelationshipObject
     [JsonPropertyName("data")]
     // JsonIgnoreCondition is determined at runtime by WriteOnlyRelationshipObjectConverter.
     public SingleOrManyData<ResourceIdentifierObject> Data { get; set; }
-
-    [JsonPropertyName("meta")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public IDictionary<string, object?>? Meta { get; set; }
 }

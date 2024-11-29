@@ -10,7 +10,7 @@ public sealed class ResourceObject : ResourceIdentifierObject
     [JsonPropertyName("attributes")]
     [JsonPropertyOrder(1)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public IDictionary<string, object?>? Attributes { get; set; }
+    public IDictionary<string, object?> Attributes { get; set; } = new Dictionary<string, object?>();
 
     [JsonPropertyName("relationships")]
     [JsonPropertyOrder(2)]

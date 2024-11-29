@@ -10,9 +10,4 @@ public sealed class ResourceLinks
     [JsonPropertyName("self")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Self { get; set; }
-
-    internal bool HasValue()
-    {
-        return !string.IsNullOrEmpty(Self);
-    }
 }

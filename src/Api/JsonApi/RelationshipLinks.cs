@@ -14,9 +14,4 @@ public sealed class RelationshipLinks
     [JsonPropertyName("related")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Related { get; set; }
-
-    internal bool HasValue()
-    {
-        return !string.IsNullOrEmpty(Self) || !string.IsNullOrEmpty(Related);
-    }
 }

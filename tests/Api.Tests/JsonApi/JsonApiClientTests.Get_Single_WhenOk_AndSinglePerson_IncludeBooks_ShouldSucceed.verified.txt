@@ -1,0 +1,7 @@
+﻿[
+  {
+    Id: 1,
+    Title: Frankenstein,
+    PublishYear: 1818
+  }
+]

@@ -16,9 +16,4 @@ public abstract class ResourceIdentity
     [JsonPropertyOrder(-2)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Id { get; set; }
-
-    [JsonPropertyName("lid")]
-    [JsonPropertyOrder(-1)]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public string? Lid { get; set; }
 }

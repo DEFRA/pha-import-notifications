@@ -1,30 +1,31 @@
-using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Defra.PhaImportNotifications.Api.JsonApi;
 
-public class JsonApiClient
+public class JsonApiClient(HttpClient httpClient, ILogger<JsonApiClient> logger)
 {
-    private readonly HttpClient _httpClient;
-
-    private static readonly MediaTypeWithQualityHeaderValue s_contentType = new("application/vnd.api+json");
-
-    private static readonly JsonSerializerOptions s_options =
-        new(JsonSerializerDefaults.Web)
-        {
-            Converters = { new SingleOrManyDataConverterFactory(), new JsonStringEnumConverter() },
-        };
-
-    public JsonApiClient(HttpClient httpClient)
+    private static readonly JsonSerializerOptions s_options = new(JsonSerializerDefaults.Web)
     {
-        _httpClient = httpClient;
-        _httpClient.DefaultRequestHeaders.Accept.Add(s_contentType);
-    }
+        Converters = { new SingleOrManyDataConverterFactory(), new JsonStringEnumConverter() },
+    };
 
     public async Task<Document> Get(string requestUri, CancellationToken cancellationToken)
     {
-        var result = await _httpClient.GetFromJsonAsync<Document>(requestUri, s_options, cancellationToken);
+        var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+
+        using var response = await httpClient.SendAsync(
+            request,
+            HttpCompletionOption.ResponseHeadersRead,
+            cancellationToken
+        );
+
+        var result = await response.Content.ReadFromJsonAsync<Document>(s_options, cancellationToken);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            logger.LogWarning("Request failed {StatusCode} {Document}", response.StatusCode, result);
+        }
 
         if (result is null)
             throw new InvalidOperationException("Could not deserialize JSON");
@@ -32,27 +33,21 @@ public class JsonApiClient
         return result;
     }
 
-    public static T? GetResource<T>(Document document)
+    public static List<T> GetResourcesAs<T>(IList<ResourceObject> resources)
     {
-        if (document.Data.SingleValue is null)
-            return default;
+        var results = new List<T>();
 
-        return JsonSerializer.Deserialize<T>(
-            JsonSerializer.Serialize(document.Data.SingleValue.Attributes, s_options),
-            s_options
-        );
-    }
+        foreach (var data in resources)
+        {
+            var attributes = data.Attributes.ToDictionary();
+            attributes.Add(nameof(data.Id), data.Id);
 
-    public static IEnumerable<T> GetResourceList<T>(Document document)
-    {
-        if (document.Data.ManyValue is null)
-            return [];
+            var resource = JsonSerializer.Deserialize<T>(JsonSerializer.Serialize(attributes, s_options), s_options);
 
-        return document
-            .Data.ManyValue.Select(x => x.Attributes)
-            .Where(x => x != null)
-            .Select(x => JsonSerializer.Serialize(x, s_options))
-            .Select(x => JsonSerializer.Deserialize<T>(x, s_options))
-            .Where(x => !Equals(x, default(T)))!;
+            if (resource is not null)
+                results.Add(resource);
+        }
+
+        return results;
     }
 }

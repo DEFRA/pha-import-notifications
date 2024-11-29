@@ -32,8 +32,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Services\Btms\btms-single-import-notification.json">
+    <None Update="Services\**\*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="JsonApi\**\*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  
 </Project>

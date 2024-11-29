@@ -11,14 +11,6 @@ public sealed class TopLevelLinks
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Self { get; set; }
 
-    [JsonPropertyName("related")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public string? Related { get; set; }
-
-    [JsonPropertyName("describedby")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public string? DescribedBy { get; set; }
-
     [JsonPropertyName("first")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? First { get; set; }
@@ -34,15 +26,4 @@ public sealed class TopLevelLinks
     [JsonPropertyName("next")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? Next { get; set; }
-
-    internal bool HasValue()
-    {
-        return !string.IsNullOrEmpty(Self)
-            || !string.IsNullOrEmpty(Related)
-            || !string.IsNullOrEmpty(DescribedBy)
-            || !string.IsNullOrEmpty(First)
-            || !string.IsNullOrEmpty(Last)
-            || !string.IsNullOrEmpty(Prev)
-            || !string.IsNullOrEmpty(Next);
-    }
 }

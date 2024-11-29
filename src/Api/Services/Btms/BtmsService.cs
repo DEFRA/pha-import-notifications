@@ -3,15 +3,16 @@ using Defra.PhaImportNotifications.Contracts;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
-public class BtmsService(HttpClient httpClient) : IBtmsService
+public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
 {
-    private readonly JsonApiClient _jsonApiClient = new(httpClient);
-
     public async Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken)
     {
-        var result = await _jsonApiClient.Get("api/import-notifications", cancellationToken);
+        var document = await jsonApiClient.Get("api/import-notifications", cancellationToken);
 
-        return JsonApiClient.GetResourceList<ImportNotification>(result);
+        // This may return a document with errors so we need to check things like this when we integrate.
+        // It could also throw and do all the usual stuff.
+
+        return document.GetDataAsList<ImportNotification>();
     }
 
     public Task<ImportNotification?> GetImportNotification(

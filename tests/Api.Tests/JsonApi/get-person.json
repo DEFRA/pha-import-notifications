@@ -1,0 +1,23 @@
+{
+  "links": {
+    "self": "/api/people/1"
+  },
+  "data": {
+    "type": "people",
+    "id": "1",
+    "attributes": {
+      "name": "Mary Shelley"
+    },
+    "relationships": {
+      "books": {
+        "links": {
+          "self": "/api/people/1/relationships/books",
+          "related": "/api/people/1/books"
+        }
+      }
+    },
+    "links": {
+      "self": "/api/people/1"
+    }
+  }
+}
