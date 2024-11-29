@@ -5,6 +5,30 @@
     "version": "v0.1"
   },
   "paths": {
+    "/analytics/dashboard": {
+      "get": {
+        "tags": [
+          "AnalyticsEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/diagnostics/blob": {
+      "get": {
+        "tags": [
+          "DiagnosticEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/mgmt/collections": {
       "get": {
         "tags": [
@@ -53,10 +77,20 @@
         }
       }
     },
-    "/mgmt/proxy/set": {
+    "/mgmt/initialise": {
       "get": {
         "tags": [
           "ManagementEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "syncPeriod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SyncPeriod"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -65,10 +99,10 @@
         }
       }
     },
-    "/mgmt/proxy/unset": {
+    "/health": {
       "get": {
         "tags": [
-          "ManagementEndpoints"
+          "Program"
         ],
         "responses": {
           "200": {
@@ -237,7 +271,7 @@
         }
       }
     },
-    "/sync/sync-jobs": {
+    "/sync/jobs": {
       "get": {
         "tags": [
           "SyncEndpoints"
@@ -249,7 +283,19 @@
         }
       }
     },
-    "/sync/sync-job/{jobId}": {
+    "/sync/jobs/clear": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/jobs/{jobId}": {
       "get": {
         "tags": [
           "SyncEndpoints"
@@ -1969,6 +2015,19 @@
             "type": "string",
             "nullable": true
           },
+          "createdSource": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          },
           "auditEntries": {
             "type": "array",
             "items": {
@@ -2002,8 +2061,8 @@
             "nullable": true
           },
           "_MatchReference": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "ipaffsId": {
             "type": "integer",
@@ -2035,7 +2094,7 @@
             "format": "int32",
             "nullable": true
           },
-          "lastUpdated": {
+          "updatedSource": {
             "type": "string",
             "description": "Date when the notification was last updated.",
             "format": "date-time",
@@ -2114,9 +2173,10 @@
             "description": "Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation",
             "nullable": true
           },
-          "riskDecisionLockingTime": {
+          "riskDecisionLockedOn": {
             "type": "string",
             "description": "Date and Time when risk decision was locked",
+            "format": "date-time",
             "nullable": true
           },
           "isRiskDecisionLocked": {
@@ -2303,7 +2363,7 @@
           "riskLevelMethod": {
             "$ref": "#/components/schemas/JourneyRiskCategorisationResultRiskLevelMethodEnum"
           },
-          "riskLevelDateTime": {
+          "riskLevelSetFor": {
             "type": "string",
             "description": "The date and time the risk level has been set for a notification",
             "format": "date-time",
@@ -2695,7 +2755,7 @@
             "description": "Array that contains pair of seal number and container number",
             "nullable": true
           },
-          "submissionDate": {
+          "submittedOn": {
             "type": "string",
             "description": "Date and time when the notification was submitted",
             "format": "date-time",
@@ -2744,7 +2804,7 @@
             "description": "List of nominated contacts to receive text and email notifications",
             "nullable": true
           },
-          "originalEstimatedDateTime": {
+          "originalEstimatedOn": {
             "type": "string",
             "description": "Original estimated date time of arrival",
             "format": "date-time",
@@ -2769,7 +2829,7 @@
           "provideCtcMrn": {
             "$ref": "#/components/schemas/PartOneProvideCtcMrnEnum"
           },
-          "arrivedOn": {
+          "arrivesAt": {
             "type": "string",
             "description": "DateTime",
             "format": "date-time",
@@ -3179,7 +3239,7 @@
           "purposeGroup": {
             "$ref": "#/components/schemas/PurposePurposeGroupEnum"
           },
-          "estimatedArrivedAtPortOfExit": {
+          "estimatedArrivesAtPortOfExit": {
             "type": "string",
             "description": "DateTime",
             "format": "date-time",
@@ -3455,7 +3515,17 @@
             "type": "string",
             "format": "uuid"
           },
+          "timespan": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
           "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "resource": {
             "type": "string",
             "nullable": true,
             "readOnly": true
@@ -3477,7 +3547,17 @@
             "type": "string",
             "format": "uuid"
           },
+          "timespan": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
           "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "resource": {
             "type": "string",
             "nullable": true,
             "readOnly": true
@@ -3499,7 +3579,17 @@
             "type": "string",
             "format": "uuid"
           },
+          "timespan": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
           "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "resource": {
             "type": "string",
             "nullable": true,
             "readOnly": true
@@ -3521,10 +3611,34 @@
             "type": "string",
             "format": "uuid"
           },
+          "timespan": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
           "description": {
             "type": "string",
             "nullable": true,
             "readOnly": true
+          },
+          "chedTypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "resource": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "blobFiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

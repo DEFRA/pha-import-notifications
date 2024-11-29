@@ -1863,6 +1863,7 @@
       ImportNotificationsResponse: {
         required: [
           commoditiesSummary,
+          created,
           decisionBy,
           importNotificationType,
           journeyRiskCategorisation,
@@ -1873,10 +1874,24 @@
           relationships,
           riskAssessment,
           splitConsignment,
-          status
+          status,
+          updated
         ],
         type: object,
         properties: {
+          createdSource: {
+            type: string,
+            format: date-time,
+            nullable: true
+          },
+          created: {
+            type: string,
+            format: date-time
+          },
+          updated: {
+            type: string,
+            format: date-time
+          },
           auditEntries: {
             type: array,
             items: {
@@ -1927,7 +1942,7 @@
             format: int32,
             nullable: true
           },
-          lastUpdated: {
+          updatedSource: {
             type: string,
             description: Date when the notification was last updated.,
             format: date-time,
@@ -2006,9 +2021,10 @@
             description: Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation,
             nullable: true
           },
-          riskDecisionLockingTime: {
+          riskDecisionLockedOn: {
             type: string,
             description: Date and Time when risk decision was locked,
+            format: date-time,
             nullable: true
           },
           isRiskDecisionLocked: {
@@ -2175,7 +2191,7 @@
           riskLevelMethod: {
             $ref: #/components/schemas/JourneyRiskCategorisationResultRiskLevelMethodEnum
           },
-          riskLevelDateTime: {
+          riskLevelSetFor: {
             type: string,
             description: The date and time the risk level has been set for a notification,
             format: date-time,
@@ -2591,7 +2607,7 @@
             description: Array that contains pair of seal number and container number,
             nullable: true
           },
-          submissionDate: {
+          submittedOn: {
             type: string,
             description: Date and time when the notification was submitted,
             format: date-time,
@@ -2640,7 +2656,7 @@
             description: List of nominated contacts to receive text and email notifications,
             nullable: true
           },
-          originalEstimatedDateTime: {
+          originalEstimatedOn: {
             type: string,
             description: Original estimated date time of arrival,
             format: date-time,
@@ -2665,7 +2681,7 @@
           provideCtcMrn: {
             $ref: #/components/schemas/PartOneProvideCtcMrnEnum
           },
-          arrivedOn: {
+          arrivesAt: {
             type: string,
             description: DateTime,
             format: date-time,
@@ -3120,7 +3136,7 @@
           purposeGroup: {
             $ref: #/components/schemas/PurposePurposeGroupEnum
           },
-          estimatedArrivedAtPortOfExit: {
+          estimatedArrivesAtPortOfExit: {
             type: string,
             description: DateTime,
             format: date-time,
@@ -3408,14 +3424,14 @@
       },
       UpdatedImportNotification: {
         required: [
-          lastUpdated,
+          updated,
           uri
         ],
         type: object,
         properties: {
-          lastUpdated: {
+          updated: {
             type: string,
-            description: Last updated date. Format is ISO 8601-1:2019,
+            description: Date last updated. Format is ISO 8601-1:2019,
             format: date-time
           },
           uri: {

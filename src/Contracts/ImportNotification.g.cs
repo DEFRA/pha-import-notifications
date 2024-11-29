@@ -5,6 +5,15 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public class ImportNotification
 {
+    [JsonPropertyName("createdSource")]
+    public DateTime? CreatedSource { get; init; }
+
+    [JsonPropertyName("created")]
+    public required DateTime Created { get; init; }
+
+    [JsonPropertyName("updated")]
+    public required DateTime Updated { get; init; }
+
     [JsonPropertyName("auditEntries")]
     public List<AuditEntry>? AuditEntries { get; init; }
 
@@ -37,9 +46,9 @@ public class ImportNotification
     [Description("Current version of the notification")]
     public int? Version { get; init; }
 
-    [JsonPropertyName("lastUpdated")]
+    [JsonPropertyName("updatedSource")]
     [Description("Date when the notification was last updated.")]
-    public DateTime? LastUpdated { get; init; }
+    public DateTime? UpdatedSource { get; init; }
 
     [JsonPropertyName("lastUpdatedBy")]
     public required UserInformation LastUpdatedBy { get; init; }
@@ -103,9 +112,9 @@ public class ImportNotification
     [Description("Organisation id which the agent user belongs to, stored against each notification which has been raised on behalf of another organisation")]
     public string? AgencyOrganisationId { get; init; }
 
-    [JsonPropertyName("riskDecisionLockingTime")]
+    [JsonPropertyName("riskDecisionLockedOn")]
     [Description("Date and Time when risk decision was locked")]
-    public string? RiskDecisionLockingTime { get; init; }
+    public DateTime? RiskDecisionLockedOn { get; init; }
 
     [JsonPropertyName("isRiskDecisionLocked")]
     [Description("is the risk decision locked?")]

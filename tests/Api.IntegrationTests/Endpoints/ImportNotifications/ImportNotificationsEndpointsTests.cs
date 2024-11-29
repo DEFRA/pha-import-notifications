@@ -1,4 +1,5 @@
 using System.Net;
+using AutoFixture;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
 using FluentAssertions;
@@ -15,22 +16,27 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
 {
     private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
 
-    [Fact(Skip = "Not implemented yet")]
-    public async Task GetAllUpdated_WhenFound_ShouldSucceed()
+    [Fact]
+    public async Task Get_WhenFound_ShouldSucceed()
     {
         var client = CreateClient();
+        var fixture = new Fixture();
 
-        MockBtmsService.GetImportNotification("mock1", Arg.Any<CancellationToken>()).ReturnsNull();
+        MockBtmsService
+            .GetImportNotification("mock1", Arg.Any<CancellationToken>())
+            .Returns(fixture.Create<ImportNotification>());
 
         var response = await client.GetStringAsync("import-notifications/mock1");
 
-        await Verify(response);
+        // When we integrate, we will replace this with a Verify call working
+        // against a builder for ImportNotification that will be generating
+        // known scenarios
 
         JsonConvert.DeserializeObject<ImportNotification>(response).Should().NotBeNull();
     }
 
     [Fact]
-    public async Task GetAllUpdated_WhenNotFound_ShouldNotBeFound()
+    public async Task Get_WhenNotFound_ShouldNotBeFound()
     {
         var client = CreateClient();
 
@@ -42,6 +48,7 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
     protected override void ConfigureTestServices(IServiceCollection services)
     {
         base.ConfigureTestServices(services);
+
         services.AddTransient<IBtmsService>(_ => MockBtmsService);
     }
 }

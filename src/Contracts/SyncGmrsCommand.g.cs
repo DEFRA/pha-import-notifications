@@ -14,6 +14,12 @@ public class SyncGmrsCommand
     [JsonPropertyName("jobId")]
     public required string JobId { get; init; }
 
+    [JsonPropertyName("timespan")]
+    public string? Timespan { get; init; }
+
     [JsonPropertyName("description")]
     public string? Description { get; init; }
+
+    [JsonPropertyName("resource")]
+    public string? Resource { get; init; }
 }

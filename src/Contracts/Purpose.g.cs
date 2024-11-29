@@ -57,7 +57,7 @@ public class Purpose
     [JsonPropertyName("purposeGroup")]
     public required PurposePurposeGroupEnum PurposeGroup { get; init; }
 
-    [JsonPropertyName("estimatedArrivedAtPortOfExit")]
+    [JsonPropertyName("estimatedArrivesAtPortOfExit")]
     [Description("DateTime")]
-    public DateTime? EstimatedArrivedAtPortOfExit { get; init; }
+    public DateTime? EstimatedArrivesAtPortOfExit { get; init; }
 }
