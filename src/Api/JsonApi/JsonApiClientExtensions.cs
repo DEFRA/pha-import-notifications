@@ -23,7 +23,10 @@ public static class JsonApiClientExtensions
 
         var resources =
             document
-                .Included?.Where(x => x.Type == type && relationships.Any(y => y.Type == type && y.Id == x.Id))
+                .Included?.Where(included =>
+                    Equals(included.Type, type)
+                    && relationships.Any(y => Equals(y.Type, type) && Equals(y.Id, included.Id))
+                )
                 .ToList() ?? [];
 
         return JsonApiClient.GetResourcesAs<T>(resources);
@@ -36,14 +39,16 @@ public static class JsonApiClientExtensions
         if (document.Data.SingleValue is not null)
             resources = new List<ResourceObject> { document.Data.SingleValue };
 
-        var resource = resources.FirstOrDefault(x => x.Id == id.ToString());
+        var resource = resources.FirstOrDefault(x => Equals(x.Id, id));
 
         if (resource is null)
             return [];
 
         return resource
-                .Relationships?.FirstOrDefault(x => x.Key.Equals(type, StringComparison.OrdinalIgnoreCase))
+                .Relationships?.FirstOrDefault(x => Equals(x.Key, type))
                 .Value?.Data.ManyValue?.Where(x => x is { Type: not null, Id: not null })
                 .Select(x => new Relationship(x.Type!, x.Id!)) ?? [];
     }
+
+    private static bool Equals(string? x, string? y) => string.Equals(x, y, StringComparison.OrdinalIgnoreCase);
 }
