@@ -95,6 +95,10 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
         var books = document.GetIncludedAsList<Book<int>>("books", person.Id);
 
         await Verify(books);
+
+        books = document.GetIncludedAsList<Book<int>>("books", 999);
+
+        books.Should().BeEmpty();
     }
 
     [Fact]
@@ -175,6 +179,10 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
         var books = document.GetIncludedAsList<Book<int>>("books", person.Id);
 
         await Verify(books);
+
+        books = document.GetIncludedAsList<Book<int>>("books", 999);
+
+        books.Should().BeEmpty();
     }
 
     [Fact]
