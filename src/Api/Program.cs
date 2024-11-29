@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.Extensions;
+using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.OpenApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Api.Utils;
@@ -111,14 +112,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     });
     builder.Services.AddHttpClient();
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
-    builder.Services.AddHttpClient<IBtmsService, BtmsService>(
-        (sp, httpClient) =>
-        {
-            var options = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
-            httpClient.BaseAddress = new Uri(options.BaseUrl);
-        }
-    );
-    // Temp stub so we return a bit of data (for now)
+    builder.Services.AddJsonApiClient(sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BaseUrl);
     builder.Services.AddTransient<IBtmsService, StubBtmsService>();
 
     // calls outside the platform should be done using the named 'proxy' http client.

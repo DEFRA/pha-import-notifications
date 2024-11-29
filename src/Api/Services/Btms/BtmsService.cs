@@ -1,16 +1,18 @@
+using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Contracts;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
-public class BtmsService(HttpClient httpClient) : IBtmsService
+public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
 {
     public async Task<IEnumerable<ImportNotification>> GetImportNotifications(CancellationToken cancellationToken)
     {
-        var response = await httpClient.GetAsync("api/import-notifications", cancellationToken);
+        var document = await jsonApiClient.Get("api/import-notifications", cancellationToken);
 
-        response.EnsureSuccessStatusCode();
+        // This may return a document with errors so we need to check things like this when we integrate.
+        // It could also throw and do all the usual stuff.
 
-        return new List<ImportNotification>();
+        return document.GetDataAsList<ImportNotification>();
     }
 
     public Task<ImportNotification?> GetImportNotification(

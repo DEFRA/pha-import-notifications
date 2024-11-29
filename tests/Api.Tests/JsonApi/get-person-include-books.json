@@ -1,0 +1,50 @@
+{
+  "links": {
+    "self": "/api/people/1?include=books"
+  },
+  "data": {
+    "type": "people",
+    "id": "1",
+    "attributes": {
+      "name": "Mary Shelley"
+    },
+    "relationships": {
+      "books": {
+        "links": {
+          "self": "/api/people/1/relationships/books",
+          "related": "/api/people/1/books"
+        },
+        "data": [
+          {
+            "type": "books",
+            "id": "1"
+          }
+        ]
+      }
+    },
+    "links": {
+      "self": "/api/people/1"
+    }
+  },
+  "included": [
+    {
+      "type": "books",
+      "id": "1",
+      "attributes": {
+        "title": "Frankenstein",
+        "publishYear": 1818
+      },
+      "relationships": {
+        "author": {
+          "links": {
+            "self": "/api/books/1/relationships/author",
+            "related": "/api/books/1/author"
+          }
+        }
+      },
+      "links": {
+        "self": "/api/books/1"
+      }
+    }
+  ]
+}

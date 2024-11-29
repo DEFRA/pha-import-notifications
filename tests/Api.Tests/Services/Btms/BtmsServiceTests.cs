@@ -1,7 +1,9 @@
+using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging.Abstractions;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 
@@ -9,14 +11,34 @@ namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
 
 public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(context)
 {
-    private BtmsService Subject { get; } = new(context.HttpClient);
+    private BtmsService Subject { get; } =
+        new(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance));
 
     [Fact]
     public async Task GetImportNotifications_WhenOk_ShouldSucceed()
     {
         WireMock
             .Given(Request.Create().WithPath("/api/import-notifications").UsingGet())
-            .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status200OK));
+            .RespondWith(
+                Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyAsJson(new { Data = new { } })
+            );
+
+        var result = await Subject.GetImportNotifications(default);
+
+        result.Should().BeEmpty();
+    }
+
+    [Fact(Skip = "Not implemented yet")]
+    public async Task GetImportNotifications_WhenOk_AndReturnsSingleItem_ShouldSucceed()
+    {
+        WireMock
+            .Given(Request.Create().WithPath("/api/import-notifications").UsingGet())
+            .RespondWith(
+                Response
+                    .Create()
+                    .WithStatusCode(StatusCodes.Status200OK)
+                    .WithBodyFromFile("Services\\Btms\\btms-single-import-notification.json")
+            );
 
         var result = await Subject.GetImportNotifications(default);
 

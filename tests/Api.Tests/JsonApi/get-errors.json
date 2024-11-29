@@ -1,0 +1,22 @@
+{
+  "links": {
+    "self": "/api/people?filter=equas(name,%27Mary%20Shelley%27)"
+  },
+  "errors": [
+    {
+      "id": "6300efa9-7822-4e00-a895-03b7756201cb",
+      "status": "400",
+      "title": "The specified filter is invalid.",
+      "detail": "Filter function expected. Failed at position 1: ^equas(name,'Mary Shelley')",
+      "source": {
+        "parameter": "filter"
+      },
+      "meta": {
+        "stackTrace": [
+          "JsonApiDotNetCore.Errors.InvalidQueryStringParameterException: Exception of type 'JsonApiDotNetCore.Errors.InvalidQueryStringParameterException' was thrown.",
+          " ---> snipped."
+        ]
+      }
+    }
+  ]
+}

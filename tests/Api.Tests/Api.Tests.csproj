@@ -30,4 +30,14 @@
     <ProjectReference Include="..\..\src\Api\Api.csproj" />
     <ProjectReference Include="..\Testing\Testing.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Services\**\*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="JsonApi\**\*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
 </Project>
