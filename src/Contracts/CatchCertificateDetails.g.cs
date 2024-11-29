@@ -13,9 +13,9 @@ public class CatchCertificateDetails
     [Description("Catch certificate reference")]
     public string? CatchCertificateReference { get; init; }
 
-    [JsonPropertyName("issuedOn")]
+    [JsonPropertyName("dateOfIssue")]
     [Description("Catch certificate date of issue")]
-    public DateTime? IssuedOn { get; init; }
+    public DateTime? DateOfIssue { get; init; }
 
     [JsonPropertyName("flagState")]
     [Description("Catch certificate flag state of catching vessel(s)")]

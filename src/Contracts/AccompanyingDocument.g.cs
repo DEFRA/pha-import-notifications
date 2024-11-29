@@ -12,9 +12,9 @@ public class AccompanyingDocument
     [Description("Additional document reference")]
     public string? DocumentReference { get; init; }
 
-    [JsonPropertyName("documentIssuedOn")]
+    [JsonPropertyName("documentIssueDate")]
     [Description("Additional document issue date")]
-    public DateTime? DocumentIssuedOn { get; init; }
+    public DateTime? DocumentIssueDate { get; init; }
 
     [JsonPropertyName("attachmentId")]
     [Description("The UUID used for the uploaded file in blob storage")]

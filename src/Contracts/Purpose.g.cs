@@ -31,9 +31,9 @@ public class Purpose
     [Description("Destination Ship port")]
     public string? ShipPort { get; init; }
 
-    [JsonPropertyName("exitBip")]
+    [JsonPropertyName("exitBIP")]
     [Description("Exit Border Inspection Post")]
-    public string? ExitBip { get; init; }
+    public string? ExitBIP { get; init; }
 
     [JsonPropertyName("thirdCountry")]
     [Description("Country to which consignment is transited")]
@@ -50,14 +50,18 @@ public class Purpose
     [Description("Exit date when import or admission")]
     public string? ExitDate { get; init; }
 
-    [JsonPropertyName("finalBip")]
+    [JsonPropertyName("finalBIP")]
     [Description("Final Border Inspection Post")]
-    public string? FinalBip { get; init; }
+    public string? FinalBIP { get; init; }
 
     [JsonPropertyName("purposeGroup")]
     public required PurposePurposeGroupEnum PurposeGroup { get; init; }
 
-    [JsonPropertyName("estimatedArrivedAtPortOfExit")]
-    [Description("DateTime")]
-    public DateTime? EstimatedArrivedAtPortOfExit { get; init; }
+    [JsonPropertyName("estimatedArrivalDateAtPortOfExit")]
+    [Description("Estimated date at port of exit")]
+    public string? EstimatedArrivalDateAtPortOfExit { get; init; }
+
+    [JsonPropertyName("estimatedArrivalTimeAtPortOfExit")]
+    [Description("Estimated time at port of exit")]
+    public string? EstimatedArrivalTimeAtPortOfExit { get; init; }
 }

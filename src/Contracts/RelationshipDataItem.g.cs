@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class RelationshipDataItem
 {
     [JsonPropertyName("matched")]
-    public bool? Matched { get; init; }
+    public required bool Matched { get; init; }
 
     [JsonPropertyName("type")]
     public string? Type { get; init; }

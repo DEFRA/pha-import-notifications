@@ -82,6 +82,14 @@ public class PartOne
     [Description("A control point at the point of entry")]
     public string? PointOfEntryControlPoint { get; init; }
 
+    [JsonPropertyName("arrivalDate")]
+    [Description("Date when consignment arrives")]
+    public string? ArrivalDate { get; init; }
+
+    [JsonPropertyName("arrivalTime")]
+    [Description("Time (HH:MM) when consignment arrives")]
+    public string? ArrivalTime { get; init; }
+
     [JsonPropertyName("meansOfTransport")]
     public required MeansOfTransport MeansOfTransport { get; init; }
 
@@ -94,6 +102,14 @@ public class PartOne
 
     [JsonPropertyName("meansOfTransportFromEntryPoint")]
     public required MeansOfTransport MeansOfTransportFromEntryPoint { get; init; }
+
+    [JsonPropertyName("departureDate")]
+    [Description("Date of consignment departure")]
+    public string? DepartureDate { get; init; }
+
+    [JsonPropertyName("departureTime")]
+    [Description("Time (HH:MM) of consignment departure")]
+    public string? DepartureTime { get; init; }
 
     [JsonPropertyName("estimatedJourneyTimeInMinutes")]
     [Description("Estimated journey time in minutes to point of entry")]
@@ -140,9 +156,9 @@ public class PartOne
     [Description("Exit Port for EU Import Notification.")]
     public string? PortOfExit { get; init; }
 
-    [JsonPropertyName("exitedPortOfOn")]
+    [JsonPropertyName("portOfExitDate")]
     [Description("Date of Port Exit for EU Import Notification.")]
-    public DateTime? ExitedPortOfOn { get; init; }
+    public DateTime? PortOfExitDate { get; init; }
 
     [JsonPropertyName("contactDetails")]
     public required ContactDetails ContactDetails { get; init; }
@@ -171,12 +187,4 @@ public class PartOne
 
     [JsonPropertyName("provideCtcMrn")]
     public required PartOneProvideCtcMrnEnum ProvideCtcMrn { get; init; }
-
-    [JsonPropertyName("arrivedOn")]
-    [Description("DateTime")]
-    public DateTime? ArrivedOn { get; init; }
-
-    [JsonPropertyName("departedOn")]
-    [Description("DateTime")]
-    public DateTime? DepartedOn { get; init; }
 }

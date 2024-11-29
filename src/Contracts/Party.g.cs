@@ -5,7 +5,7 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public class Party
 {
-    [JsonPropertyName("id")]
+    [JsonPropertyName("ipaffsId")]
     [Description("IPAFFS ID of party")]
     public string? Id { get; init; }
 
@@ -49,7 +49,7 @@ public class Party
     [Description("TRACES ID")]
     public int? TracesId { get; init; }
 
-    [JsonPropertyName("type")]
+    [JsonPropertyName("ipaffsType")]
     public required PartyTypeEnum Type { get; init; }
 
     [JsonPropertyName("approvalNumber")]
