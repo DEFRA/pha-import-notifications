@@ -49,15 +49,6 @@ public sealed class SingleOrManyDataConverterFactory : JsonConverterFactory
                         hasCompletedToMany = true;
                         break;
                     }
-                    case JsonTokenType.Null:
-                    {
-                        if (isManyData)
-                        {
-                            objects.Add(new T());
-                        }
-
-                        break;
-                    }
                     case JsonTokenType.StartObject:
                     {
                         var resourceObject = ReadSubTree<T>(ref reader, options);
