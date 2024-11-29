@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class MeansOfTransport
 {
     [JsonPropertyName("ipaffsType")]
-    public required MeansOfTransportTypeEnum IpaffsType { get; init; }
+    public required MeansOfTransportTypeEnum Type { get; init; }
 
     [JsonPropertyName("document")]
     [Description("Document for transport")]
@@ -14,5 +14,5 @@ public class MeansOfTransport
 
     [JsonPropertyName("ipaffsId")]
     [Description("ID of transport")]
-    public string? IpaffsId { get; init; }
+    public string? Id { get; init; }
 }

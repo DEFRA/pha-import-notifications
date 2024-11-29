@@ -23,7 +23,7 @@ var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName("Defra.PhaIm
 
 foreach (var (originalSchemaName, schema) in openApiDocument.Components.Schemas)
 {
-    var schemaName = RemoveIPAFFS(originalSchemaName);
+    var typeName = CreateTypeName(originalSchemaName);
     
     var syntax = schema.Type switch
     {
@@ -33,14 +33,14 @@ foreach (var (originalSchemaName, schema) in openApiDocument.Components.Schemas)
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
 
-    await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
+    await using var streamWriter = new StreamWriter($"{outputPath}/{typeName}.g.cs", false);
     syntax.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
     continue;
 
     SyntaxNode CreateEnumSyntax()
     {
         var values = schema.Enum.Select(v => CreateEnumValue((v as OpenApiString)!.Value));
-        var @enum = CreateEnum(schemaName).AddMembers(values.ToArray());
+        var @enum = CreateEnum(typeName).AddMembers(values.ToArray());
 
         return namespaceDeclaration.AddMembers(@enum);
     }
@@ -51,7 +51,7 @@ foreach (var (originalSchemaName, schema) in openApiDocument.Components.Schemas)
             .Properties.Where(p => !p.Key.StartsWith('_'))
             .Select(p => CreateProperty(p.Key, p.Value));
 
-        var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
+        var @class = CreateClass(typeName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
 
         return CompilationUnit()
             .AddUsings(CreateUsing("System.Text.Json.Serialization"), CreateUsing("System.ComponentModel"))
@@ -80,11 +80,24 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 }
 
 static string RefTypeName(OpenApiSchema schema, string defaultTypeName) =>
-    RemoveIPAFFS(schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName);
+    CreateTypeName(schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName);
 
 static EnumMemberDeclarationSyntax CreateEnumValue(string name) => EnumMemberDeclaration(name);
 
-static string RemoveIPAFFS(string s) => s.Replace("Ipaffs", "");
+
+static string CreateTypeName(string s) => s switch
+{
+    "Notification" => "ImportNotification",
+    _ => RemoveIpaffs(s)
+};
+
+static string CreatePropertyName(string s)
+{
+    var clean = RemoveIpaffs(s);
+    return char.ToUpper(clean[0]) + clean[1..];
+}
+
+static string RemoveIpaffs(string s) => s.Replace("Ipaffs", "").Replace("ipaffs", "");
 
 static PropertyDeclarationSyntax CreateProperty(string name, OpenApiSchema schema)
 {
@@ -129,4 +142,4 @@ static AttributeListSyntax CreateSimpleAttributeList(string type, string arg1) =
 static AttributeSyntax CreateSimpleAttribute(string type, string arg1) =>
     Attribute(ParseName(type)).WithArgumentList(ParseAttributeArgumentList($"(\"{arg1}\")"));
 
-static string CreatePropertyName(string s) => char.ToUpper(s[0]) + s[1..];
+

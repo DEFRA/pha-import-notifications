@@ -76,7 +76,7 @@ public class Decision
     public string? TemporaryDeadline { get; init; }
 
     [JsonPropertyName("decision")]
-    public required DecisionDecisionEnum Decision { get; init; }
+    public required DecisionDecisionEnum DecisionX { get; init; }
 
     [JsonPropertyName("freeCirculationPurpose")]
     public required DecisionFreeCirculationPurposeEnum FreeCirculationPurpose { get; init; }

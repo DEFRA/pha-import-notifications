@@ -12,7 +12,7 @@ public class MovementResourceData
     public string? Id { get; init; }
 
     [JsonPropertyName("attributes")]
-    public required Notification Attributes { get; init; }
+    public required ImportNotification Attributes { get; init; }
 
     [JsonPropertyName("relationships")]
     public required MovementJsonApiTdmRelationships Relationships { get; init; }

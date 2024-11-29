@@ -7,10 +7,10 @@ public class EconomicOperator
 {
     [JsonPropertyName("ipaffsId")]
     [Description("The unique identifier of this organisation")]
-    public string? IpaffsId { get; init; }
+    public string? Id { get; init; }
 
     [JsonPropertyName("ipaffsType")]
-    public required EconomicOperatorTypeEnum IpaffsType { get; init; }
+    public required EconomicOperatorTypeEnum Type { get; init; }
 
     [JsonPropertyName("status")]
     public required EconomicOperatorStatusEnum Status { get; init; }

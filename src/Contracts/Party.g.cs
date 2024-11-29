@@ -7,7 +7,7 @@ public class Party
 {
     [JsonPropertyName("ipaffsId")]
     [Description("IPAFFS ID of party")]
-    public string? IpaffsId { get; init; }
+    public string? Id { get; init; }
 
     [JsonPropertyName("name")]
     [Description("Name of party")]
@@ -50,7 +50,7 @@ public class Party
     public int? TracesId { get; init; }
 
     [JsonPropertyName("ipaffsType")]
-    public required PartyTypeEnum IpaffsType { get; init; }
+    public required PartyTypeEnum Type { get; init; }
 
     [JsonPropertyName("approvalNumber")]
     [Description("Approval number")]

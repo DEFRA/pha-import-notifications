@@ -7,7 +7,7 @@ public class ApprovedEstablishment
 {
     [JsonPropertyName("ipaffsId")]
     [Description("ID")]
-    public string? IpaffsId { get; init; }
+    public string? Id { get; init; }
 
     [JsonPropertyName("name")]
     [Description("Name of approved establishment")]

@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class InspectionCheck
 {
     [JsonPropertyName("ipaffsType")]
-    public required InspectionCheckTypeEnum IpaffsType { get; init; }
+    public required InspectionCheckTypeEnum Type { get; init; }
 
     [JsonPropertyName("status")]
     public required InspectionCheckStatusEnum Status { get; init; }
