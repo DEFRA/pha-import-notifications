@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Microsoft.OpenApi.Readers;
+using SchemaToCSharp;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 #pragma warning disable CS8321 // Local function is declared but never used
@@ -15,6 +16,8 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 const string solutionPath = "../../../../../";
 const string outputPath = $"{solutionPath}src/Contracts/";
 const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
+
+Directory.GetFiles(outputPath, "*.cs").ToList().ForEach(File.Delete);
 
 var stream = new FileStream(inputPath, FileMode.Open);
 var openApiDocument = new OpenApiStreamReader().Read(stream, out _);
@@ -44,10 +47,7 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
 
     SyntaxNode CreateClassSyntax()
     {
-        var properties = schema
-            .Properties.Where(p => !p.Key.StartsWith('_'))
-            .Select(p => CreateProperty(p.Key, p.Value));
-
+        var properties = schema.Properties.Select(p => CreateProperty(schemaName, p.Key, p.Value));
         var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
 
         return CompilationUnit()
@@ -81,12 +81,13 @@ static string RefTypeName(OpenApiSchema schema, string defaultTypeName) =>
 
 static EnumMemberDeclarationSyntax CreateEnumValue(string name) => EnumMemberDeclaration(name);
 
-static PropertyDeclarationSyntax CreateProperty(string name, OpenApiSchema schema)
+static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, OpenApiSchema schema)
 {
     var typeSyntax = CreatePropertyType(schema);
     var modifiers = new List<SyntaxToken> { Token(SyntaxKind.PublicKeyword) };
+    var ignored = Ignored.Properties.TryGetValue(schemaName, out var properties) && properties.Contains(name);
 
-    if (schema.Nullable)
+    if (schema.Nullable || ignored)
     {
         typeSyntax = NullableType(typeSyntax);
     }
@@ -97,7 +98,19 @@ static PropertyDeclarationSyntax CreateProperty(string name, OpenApiSchema schem
 
     var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };
 
-    var description = schema.Description;
+    if (ignored)
+        attributes.Add(AttributeList(SingletonSeparatedList(Attribute(ParseName("JsonIgnore")))));
+
+    if (
+        !(
+            Meta.Descriptions.TryGetValue(schemaName, out var descriptions)
+            && descriptions.TryGetValue(name, out var description)
+        )
+    )
+    {
+        description = schema.Description;
+    }
+
     if (!string.IsNullOrEmpty(description))
         attributes.Add(CreateSimpleAttributeList("Description", description));
 

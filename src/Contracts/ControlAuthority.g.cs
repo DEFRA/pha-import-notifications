@@ -21,6 +21,7 @@ public class ControlAuthority
     public string? NewSealNumber { get; init; }
 
     [JsonPropertyName("iuuFishingReference")]
+    [JsonIgnore]
     [Description("Illegal, Unreported and Unregulated (IUU) fishing reference number")]
     public string? IuuFishingReference { get; init; }
 

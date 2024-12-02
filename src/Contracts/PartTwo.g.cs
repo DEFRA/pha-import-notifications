@@ -26,6 +26,7 @@ public class PartTwo
     public bool? ResealedContainersIncluded { get; init; }
 
     [JsonPropertyName("resealedContainers")]
+    [JsonIgnore]
     [Description("(Deprecated - To be removed as part of IMTA-6256) Resealed containers information details")]
     public List<string>? ResealedContainers { get; init; }
 
