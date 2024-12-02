@@ -3,6 +3,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.OpenApi;

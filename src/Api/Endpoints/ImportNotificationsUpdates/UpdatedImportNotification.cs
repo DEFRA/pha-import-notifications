@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Defra.PhaImportNotifications.Api.Endpoints;
+namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
 
 internal sealed class UpdatedImportNotification
 {
