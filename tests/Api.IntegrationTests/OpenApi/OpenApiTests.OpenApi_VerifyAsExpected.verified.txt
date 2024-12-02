@@ -31,7 +31,7 @@
             description: CHED Reference Number,
             required: true,
             schema: {
-              pattern: ^CHED[A|D|P|PP]\.GB\.\d{4}\.\d{7}$,
+              pattern: ^CHED(?:A|D|P|PP)\.GB\.\d{4}\.\d{7}$,
               type: string,
               description: CHED Reference Number
             },
@@ -3161,7 +3161,7 @@
           },
           uri: {
             minLength: 1,
-            pattern: ^/import-notifications/CHED[A|D|P|PP]\.GB\.\d{4}\.\d{7}$,
+            pattern: ^/import-notifications/CHED(?:A|D|P|PP)\.GB\.\d{4}\.\d{7}$,
             type: string,
             description: Relative path to import notification,
             example: /import-notifications/CHEDA.GB.2024.1020304

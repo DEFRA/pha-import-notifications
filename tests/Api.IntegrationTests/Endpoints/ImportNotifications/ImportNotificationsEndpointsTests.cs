@@ -23,10 +23,10 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
         var fixture = new Fixture();
 
         MockBtmsService
-            .GetImportNotification("mock1", Arg.Any<CancellationToken>())
+            .GetImportNotification("CHEDA.GB.2024.1234567", Arg.Any<CancellationToken>())
             .Returns(fixture.Create<ImportNotification>());
 
-        var response = await client.GetStringAsync("import-notifications/mock1");
+        var response = await client.GetStringAsync("import-notifications/CHEDA.GB.2024.1234567");
 
         // When we integrate, we will replace this with a Verify call working
         // against a builder for ImportNotification that will be generating
@@ -40,9 +40,20 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
     {
         var client = CreateClient();
 
-        var response = await client.GetAsync("import-notifications/mock1");
+        var response = await client.GetAsync("import-notifications/CHEDA.GB.2024.1234567");
 
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task Get_WhenInvalidChedReferenceNumber_ShouldBeBadRequest()
+    {
+        var client = CreateClient();
+
+        var response = await client.GetAsync("import-notifications/12345");
+
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        (await response.Content.ReadAsStringAsync()).Should().Contain("ChedReferenceNumber");
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)
