@@ -19,6 +19,7 @@ public class ComplementParameterSet
     public object? KeyDataPairs { get; init; }
 
     [JsonPropertyName("catchCertificates")]
+    [JsonIgnore]
     [Description("Catch certificate details")]
     public List<CatchCertificates>? CatchCertificates { get; init; }
 

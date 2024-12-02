@@ -36,10 +36,12 @@ public class CommodityRiskResult
     public string? Variety { get; init; }
 
     [JsonPropertyName("isWoody")]
+    [JsonIgnore]
     [Description("Whether or not a plant is woody")]
     public bool? IsWoody { get; init; }
 
     [JsonPropertyName("indoorOutdoor")]
+    [JsonIgnore]
     [Description("Indoor or Outdoor for a plant")]
     public string? IndoorOutdoor { get; init; }
 

@@ -6,16 +6,19 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class PartOne
 {
     [JsonPropertyName("typeOfImp")]
-    public required PartOneTypeOfImpEnum TypeOfImp { get; init; }
+    [JsonIgnore]
+    public PartOneTypeOfImpEnum? TypeOfImp { get; init; }
 
     [JsonPropertyName("personResponsible")]
     public required Party PersonResponsible { get; init; }
 
     [JsonPropertyName("customsReferenceNumber")]
+    [JsonIgnore]
     [Description("Customs reference number")]
     public string? CustomsReferenceNumber { get; init; }
 
     [JsonPropertyName("containsWoodPackaging")]
+    [JsonIgnore]
     [Description("(Deprecated in IMTA-11832) Does the consignment contain wood packaging?")]
     public bool? ContainsWoodPackaging { get; init; }
 
@@ -27,7 +30,8 @@ public class PartOne
     public required EconomicOperator Consignor { get; init; }
 
     [JsonPropertyName("consignorTwo")]
-    public required EconomicOperator ConsignorTwo { get; init; }
+    [JsonIgnore]
+    public EconomicOperator? ConsignorTwo { get; init; }
 
     [JsonPropertyName("packer")]
     public required EconomicOperator Packer { get; init; }
@@ -45,9 +49,11 @@ public class PartOne
     public required EconomicOperator Pod { get; init; }
 
     [JsonPropertyName("placeOfOriginHarvest")]
-    public required EconomicOperator PlaceOfOriginHarvest { get; init; }
+    [JsonIgnore]
+    public EconomicOperator? PlaceOfOriginHarvest { get; init; }
 
     [JsonPropertyName("additionalPermanentAddresses")]
+    [JsonIgnore]
     [Description("List of additional permanent addresses")]
     public List<EconomicOperator>? AdditionalPermanentAddresses { get; init; }
 
@@ -56,10 +62,12 @@ public class PartOne
     public string? CphNumber { get; init; }
 
     [JsonPropertyName("importingFromCharity")]
+    [JsonIgnore]
     [Description("Is the importer importing from a charity?")]
     public bool? ImportingFromCharity { get; init; }
 
     [JsonPropertyName("isPlaceOfDestinationThePermanentAddress")]
+    [JsonIgnore]
     [Description("Is the place of destination the permanent address?")]
     public bool? IsPlaceOfDestinationThePermanentAddress { get; init; }
 
@@ -100,6 +108,7 @@ public class PartOne
     public decimal? EstimatedJourneyTimeInMinutes { get; init; }
 
     [JsonPropertyName("responsibleForTransport")]
+    [JsonIgnore]
     [Description("(Deprecated in IMTA-12139) Person who is responsible for transport")]
     public string? ResponsibleForTransport { get; init; }
 
@@ -114,6 +123,7 @@ public class PartOne
     public required Route Route { get; init; }
 
     [JsonPropertyName("sealsContainers")]
+    [JsonIgnore]
     [Description("Array that contains pair of seal number and container number")]
     public List<SealContainer>? SealsContainers { get; init; }
 
@@ -129,6 +139,7 @@ public class PartOne
     public List<ValidationMessageCode>? ConsignmentValidations { get; init; }
 
     [JsonPropertyName("complexCommoditySelected")]
+    [JsonIgnore]
     [Description("Was complex commodity selected. Indicating if importer provided commodity code.")]
     public bool? ComplexCommoditySelected { get; init; }
 

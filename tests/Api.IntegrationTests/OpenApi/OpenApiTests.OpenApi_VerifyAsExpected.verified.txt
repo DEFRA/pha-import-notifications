@@ -495,65 +495,6 @@
         },
         additionalProperties: false
       },
-      AuditDiffEntry: {
-        type: object,
-        properties: {
-          path: {
-            type: string,
-            nullable: true
-          },
-          op: {
-            type: string,
-            nullable: true
-          },
-          value: {
-            nullable: true
-          }
-        },
-        additionalProperties: false
-      },
-      AuditEntry: {
-        required: [
-          createdLocal,
-          version
-        ],
-        type: object,
-        properties: {
-          id: {
-            type: string,
-            nullable: true
-          },
-          version: {
-            type: integer,
-            format: int32
-          },
-          createdBy: {
-            type: string,
-            nullable: true
-          },
-          createdSource: {
-            type: string,
-            format: date-time,
-            nullable: true
-          },
-          createdLocal: {
-            type: string,
-            format: date-time
-          },
-          status: {
-            type: string,
-            nullable: true
-          },
-          diff: {
-            type: array,
-            items: {
-              $ref: #/components/schemas/AuditDiffEntry
-            },
-            nullable: true
-          }
-        },
-        additionalProperties: false
-      },
       BillingInformation: {
         required: [
           postalAddress
@@ -967,16 +908,6 @@
             description: Name or ID of the variety,
             nullable: true
           },
-          isWoody: {
-            type: boolean,
-            description: Whether or not a plant is woody,
-            nullable: true
-          },
-          indoorOutdoor: {
-            type: string,
-            description: Indoor or Outdoor for a plant,
-            nullable: true
-          },
           propagation: {
             type: string,
             description: Whether the propagation is considered a Plant, Bulb, Seed or None,
@@ -1221,11 +1152,6 @@
           newSealNumber: {
             type: string,
             description: When the containers are resealed they need new seal numbers,
-            nullable: true
-          },
-          iuuFishingReference: {
-            type: string,
-            description: Illegal, Unreported and Unregulated (IUU) fishing reference number,
             nullable: true
           },
           iuuCheckRequired: {
@@ -1783,22 +1709,6 @@
         ],
         type: string
       },
-      IdentificationDetails: {
-        type: object,
-        properties: {
-          identificationDetail: {
-            type: string,
-            description: Identification detail,
-            nullable: true
-          },
-          identificationDescription: {
-            type: string,
-            description: Identification description,
-            nullable: true
-          }
-        },
-        additionalProperties: false
-      },
       ImpactOfTransportOnAnimals: {
         type: object,
         properties: {
@@ -1871,7 +1781,6 @@
           partOne,
           partThree,
           partTwo,
-          relationships,
           riskAssessment,
           splitConsignment,
           status,
@@ -1881,26 +1790,19 @@
         properties: {
           createdSource: {
             type: string,
+            description: Date when the notification was created in IPAFFS,
             format: date-time,
             nullable: true
           },
           created: {
             type: string,
+            description: Date when the notification was created,
             format: date-time
           },
           updated: {
             type: string,
+            description: Date when the notification was last updated,
             format: date-time
-          },
-          auditEntries: {
-            type: array,
-            items: {
-              $ref: #/components/schemas/AuditEntry
-            },
-            nullable: true
-          },
-          relationships: {
-            $ref: #/components/schemas/NotificationTdmRelationships
           },
           commoditiesSummary: {
             $ref: #/components/schemas/Commodities
@@ -1944,7 +1846,7 @@
           },
           updatedSource: {
             type: string,
-            description: Date when the notification was last updated.,
+            description: Date when the notification was last updated in IPAFFS,
             format: date-time,
             nullable: true
           },
@@ -2030,11 +1932,6 @@
           isRiskDecisionLocked: {
             type: boolean,
             description: is the risk decision locked?,
-            nullable: true
-          },
-          isBulkUploadInProgress: {
-            type: boolean,
-            description: Boolean flag that indicates whether a bulk upload is in progress,
             nullable: true
           },
           requestId: {
@@ -2356,18 +2253,6 @@
         },
         additionalProperties: false
       },
-      NotificationTdmRelationships: {
-        required: [
-          movements
-        ],
-        type: object,
-        properties: {
-          movements: {
-            $ref: #/components/schemas/TdmRelationshipObject
-          }
-        },
-        additionalProperties: false
-      },
       OfficialInspector: {
         required: [
           address
@@ -2452,7 +2337,6 @@
           commonUserCharge,
           consignee,
           consignor,
-          consignorTwo,
           contactDetails,
           importer,
           meansOfTransport,
@@ -2460,33 +2344,18 @@
           packer,
           personResponsible,
           placeOfDestination,
-          placeOfOriginHarvest,
           pod,
           provideCtcMrn,
           purpose,
           route,
           submittedBy,
           transporter,
-          typeOfImp,
           veterinaryInformation
         ],
         type: object,
         properties: {
-          typeOfImp: {
-            $ref: #/components/schemas/PartOneTypeOfImpEnum
-          },
           personResponsible: {
             $ref: #/components/schemas/Party
-          },
-          customsReferenceNumber: {
-            type: string,
-            description: Customs reference number,
-            nullable: true
-          },
-          containsWoodPackaging: {
-            type: boolean,
-            description: (Deprecated in IMTA-11832) Does the consignment contain wood packaging?,
-            nullable: true
           },
           consignmentArrived: {
             type: boolean,
@@ -2494,9 +2363,6 @@
             nullable: true
           },
           consignor: {
-            $ref: #/components/schemas/EconomicOperator
-          },
-          consignorTwo: {
             $ref: #/components/schemas/EconomicOperator
           },
           packer: {
@@ -2514,30 +2380,9 @@
           pod: {
             $ref: #/components/schemas/EconomicOperator
           },
-          placeOfOriginHarvest: {
-            $ref: #/components/schemas/EconomicOperator
-          },
-          additionalPermanentAddresses: {
-            type: array,
-            items: {
-              $ref: #/components/schemas/EconomicOperator
-            },
-            description: List of additional permanent addresses,
-            nullable: true
-          },
           cphNumber: {
             type: string,
             description: Charity Parish Holding number,
-            nullable: true
-          },
-          importingFromCharity: {
-            type: boolean,
-            description: Is the importer importing from a charity?,
-            nullable: true
-          },
-          isPlaceOfDestinationThePermanentAddress: {
-            type: boolean,
-            description: Is the place of destination the permanent address?,
             nullable: true
           },
           isCatchCertificateRequired: {
@@ -2583,11 +2428,6 @@
             format: double,
             nullable: true
           },
-          responsibleForTransport: {
-            type: string,
-            description: (Deprecated in IMTA-12139) Person who is responsible for transport,
-            nullable: true
-          },
           veterinaryInformation: {
             $ref: #/components/schemas/VeterinaryInformation
           },
@@ -2598,14 +2438,6 @@
           },
           route: {
             $ref: #/components/schemas/Route
-          },
-          sealsContainers: {
-            type: array,
-            items: {
-              $ref: #/components/schemas/SealContainer
-            },
-            description: Array that contains pair of seal number and container number,
-            nullable: true
           },
           submittedOn: {
             type: string,
@@ -2622,11 +2454,6 @@
               $ref: #/components/schemas/ValidationMessageCode
             },
             description: Validation messages for whole notification,
-            nullable: true
-          },
-          complexCommoditySelected: {
-            type: boolean,
-            description: Was complex commodity selected. Indicating if importer provided commodity code.,
             nullable: true
           },
           portOfEntry: {
@@ -2701,14 +2528,6 @@
           Yes,
           YesAddLater,
           No
-        ],
-        type: string
-      },
-      PartOneTypeOfImpEnum: {
-        enum: [
-          A,
-          P,
-          D
         ],
         type: string
       },
@@ -2788,14 +2607,6 @@
           resealedContainersIncluded: {
             type: boolean,
             description: Are the containers resealed,
-            nullable: true
-          },
-          resealedContainers: {
-            type: array,
-            items: {
-              type: string
-            },
-            description: (Deprecated - To be removed as part of IMTA-6256) Resealed containers information details,
             nullable: true
           },
           resealedContainersMappings: {
@@ -3199,69 +3010,6 @@
         ],
         type: string
       },
-      RelationshipDataItem: {
-        required: [
-          links
-        ],
-        type: object,
-        properties: {
-          matched: {
-            type: boolean,
-            nullable: true
-          },
-          type: {
-            type: string,
-            nullable: true
-          },
-          id: {
-            type: string,
-            nullable: true
-          },
-          links: {
-            $ref: #/components/schemas/ResourceLink
-          },
-          sourceItem: {
-            type: integer,
-            format: int32,
-            nullable: true
-          },
-          destinationItem: {
-            type: integer,
-            format: int32,
-            nullable: true
-          },
-          matchingLevel: {
-            type: integer,
-            format: int32,
-            nullable: true
-          }
-        },
-        additionalProperties: false
-      },
-      RelationshipLinks: {
-        type: object,
-        properties: {
-          self: {
-            type: string,
-            nullable: true
-          },
-          related: {
-            type: string,
-            nullable: true
-          }
-        },
-        additionalProperties: false
-      },
-      ResourceLink: {
-        type: object,
-        properties: {
-          self: {
-            type: string,
-            nullable: true
-          }
-        },
-        additionalProperties: false
-      },
       RiskAssessmentResult: {
         type: object,
         properties: {
@@ -3394,29 +3142,6 @@
           rejectedReferenceNumber: {
             type: string,
             description: Reference number of the rejected split consignment,
-            nullable: true
-          }
-        },
-        additionalProperties: false
-      },
-      TdmRelationshipObject: {
-        required: [
-          links
-        ],
-        type: object,
-        properties: {
-          matched: {
-            type: boolean,
-            nullable: true
-          },
-          links: {
-            $ref: #/components/schemas/RelationshipLinks
-          },
-          data: {
-            type: array,
-            items: {
-              $ref: #/components/schemas/RelationshipDataItem
-            },
             nullable: true
           }
         },
@@ -3564,14 +3289,6 @@
               $ref: #/components/schemas/CatchCertificateAttachment
             },
             description: Catch certificate attachments,
-            nullable: true
-          },
-          identificationDetails: {
-            type: array,
-            items: {
-              $ref: #/components/schemas/IdentificationDetails
-            },
-            description: Details helpful for identification,
             nullable: true
           }
         },

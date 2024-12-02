@@ -33,6 +33,7 @@ public class VeterinaryInformation
     public List<CatchCertificateAttachment>? CatchCertificateAttachments { get; init; }
 
     [JsonPropertyName("identificationDetails")]
+    [JsonIgnore]
     [Description("Details helpful for identification")]
     public List<IdentificationDetails>? IdentificationDetails { get; init; }
 }

@@ -5,26 +5,51 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public class ImportNotification
 {
+    [JsonPropertyName("_Etag")]
+    [JsonIgnore]
+    public string? _Etag { get; init; }
+
     [JsonPropertyName("createdSource")]
+    [Description("Date when the notification was created in IPAFFS")]
     public DateTime? CreatedSource { get; init; }
 
     [JsonPropertyName("created")]
+    [Description("Date when the notification was created")]
     public required DateTime Created { get; init; }
 
     [JsonPropertyName("updated")]
+    [Description("Date when the notification was last updated")]
     public required DateTime Updated { get; init; }
 
     [JsonPropertyName("auditEntries")]
+    [JsonIgnore]
     public List<AuditEntry>? AuditEntries { get; init; }
 
     [JsonPropertyName("relationships")]
-    public required NotificationTdmRelationships Relationships { get; init; }
+    [JsonIgnore]
+    public NotificationTdmRelationships? Relationships { get; init; }
 
     [JsonPropertyName("commoditiesSummary")]
     public required Commodities CommoditiesSummary { get; init; }
 
     [JsonPropertyName("commodities")]
     public List<CommodityComplement>? Commodities { get; init; }
+
+    [JsonPropertyName("_Ts")]
+    [JsonIgnore]
+    public DateTime? _Ts { get; init; }
+
+    [JsonPropertyName("_PointOfEntry")]
+    [JsonIgnore]
+    public string? _PointOfEntry { get; init; }
+
+    [JsonPropertyName("_PointOfEntryControlPoint")]
+    [JsonIgnore]
+    public string? _PointOfEntryControlPoint { get; init; }
+
+    [JsonPropertyName("_MatchReference")]
+    [JsonIgnore]
+    public string? _MatchReference { get; init; }
 
     [JsonPropertyName("ipaffsId")]
     [Description("The IPAFFS ID number for this notification.")]
@@ -47,7 +72,7 @@ public class ImportNotification
     public int? Version { get; init; }
 
     [JsonPropertyName("updatedSource")]
-    [Description("Date when the notification was last updated.")]
+    [Description("Date when the notification was last updated in IPAFFS")]
     public DateTime? UpdatedSource { get; init; }
 
     [JsonPropertyName("lastUpdatedBy")]
@@ -121,6 +146,7 @@ public class ImportNotification
     public bool? IsRiskDecisionLocked { get; init; }
 
     [JsonPropertyName("isBulkUploadInProgress")]
+    [JsonIgnore]
     [Description("Boolean flag that indicates whether a bulk upload is in progress")]
     public bool? IsBulkUploadInProgress { get; init; }
 
