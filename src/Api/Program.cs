@@ -112,7 +112,10 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     });
     builder.Services.AddHttpClient();
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
-    builder.Services.AddJsonApiClient(sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BaseUrl);
+    builder.Services.AddJsonApiClient(
+        sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BaseUrl,
+        sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BasicAuthCredential
+    );
     builder.Services.AddTransient<IBtmsService, StubBtmsService>();
 
     // calls outside the platform should be done using the named 'proxy' http client.
