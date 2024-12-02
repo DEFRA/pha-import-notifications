@@ -20,29 +20,15 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
         WireMock
             .Given(Request.Create().WithPath("/api/import-notifications").UsingGet())
             .RespondWith(
-                Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyAsJson(new { Data = new { } })
-            );
-
-        var result = await Subject.GetImportNotifications(default);
-
-        result.Should().BeEmpty();
-    }
-
-    [Fact(Skip = "Not implemented yet")]
-    public async Task GetImportNotifications_WhenOk_AndReturnsSingleItem_ShouldSucceed()
-    {
-        WireMock
-            .Given(Request.Create().WithPath("/api/import-notifications").UsingGet())
-            .RespondWith(
                 Response
                     .Create()
                     .WithStatusCode(StatusCodes.Status200OK)
-                    .WithBodyFromFile("Services\\Btms\\btms-single-import-notification.json")
+                    .WithBodyFromFile("Services\\Btms\\btms-import-notification-list.json")
             );
 
         var result = await Subject.GetImportNotifications(default);
 
-        result.Should().BeEmpty();
+        result.Should().HaveCount(10);
     }
 
     [Fact]
@@ -58,10 +44,31 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     }
 
     [Fact]
-    public async Task GetImportNotification_Throws()
+    public async Task GetImportNotification_WhenOk_ShouldSucceed()
     {
-        var act = () => Subject.GetImportNotification("CHED1234", default);
+        WireMock
+            .Given(Request.Create().WithPath("/api/import-notifications/CHED").UsingGet())
+            .RespondWith(
+                Response
+                    .Create()
+                    .WithStatusCode(StatusCodes.Status200OK)
+                    .WithBodyFromFile("Services\\Btms\\btms-import-notification-single.json")
+            );
 
-        await act.Should().ThrowAsync<NotImplementedException>();
+        var result = await Subject.GetImportNotification("CHED", default);
+
+        result.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task GetImportNotification_WhenError_ShouldFail()
+    {
+        WireMock
+            .Given(Request.Create().WithPath("/api/import-notifications/CHED").UsingGet())
+            .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status500InternalServerError));
+
+        var act = () => Subject.GetImportNotification("CHED", default);
+
+        await act.Should().ThrowAsync<Exception>();
     }
 }

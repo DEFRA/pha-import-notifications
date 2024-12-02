@@ -15,8 +15,16 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
         return document.GetDataAsList<ImportNotification>();
     }
 
-    public Task<ImportNotification?> GetImportNotification(
+    public async Task<ImportNotification?> GetImportNotification(
         string chedReferenceNumber,
         CancellationToken cancellationToken
-    ) => throw new NotImplementedException();
+    )
+    {
+        var document = await jsonApiClient.Get($"api/import-notifications/{chedReferenceNumber}", cancellationToken);
+
+        // This may return a document with errors so we need to check things like this when we integrate.
+        // It could also throw and do all the usual stuff.
+
+        return document.GetDataAs<ImportNotification>();
+    }
 }
