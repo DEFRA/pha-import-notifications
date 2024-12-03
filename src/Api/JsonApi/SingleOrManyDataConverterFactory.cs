@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace Defra.PhaImportNotifications.Api.JsonApi;
 
 /// <summary>
-/// Converts <see cref="SingleOrManyData{T}" /> to/from JSON.
+///     Converts <see cref="SingleOrManyData{T}" /> to/from JSON.
 /// </summary>
 public sealed class SingleOrManyDataConverterFactory : JsonConverterFactory
 {
@@ -18,14 +18,17 @@ public sealed class SingleOrManyDataConverterFactory : JsonConverterFactory
     }
 
     /// <inheritdoc />
-    public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+    public override System.Text.Json.Serialization.JsonConverter CreateConverter(
+        Type typeToConvert,
+        JsonSerializerOptions options
+    )
     {
         ArgumentNullException.ThrowIfNull(typeToConvert);
 
-        Type objectType = typeToConvert.GetGenericArguments()[0];
-        Type converterType = typeof(SingleOrManyDataConverter<>).MakeGenericType(objectType);
+        var objectType = typeToConvert.GetGenericArguments()[0];
+        var converterType = typeof(SingleOrManyDataConverter<>).MakeGenericType(objectType);
 
-        return (JsonConverter)Activator.CreateInstance(converterType)!;
+        return (System.Text.Json.Serialization.JsonConverter)Activator.CreateInstance(converterType)!;
     }
 
     private sealed class SingleOrManyDataConverter<T> : JsonObjectConverter<SingleOrManyData<T>>
@@ -38,8 +41,8 @@ public sealed class SingleOrManyDataConverterFactory : JsonConverterFactory
         )
         {
             List<T?> objects = [];
-            bool isManyData = false;
-            bool hasCompletedToMany = false;
+            var isManyData = false;
+            var hasCompletedToMany = false;
 
             do
             {
