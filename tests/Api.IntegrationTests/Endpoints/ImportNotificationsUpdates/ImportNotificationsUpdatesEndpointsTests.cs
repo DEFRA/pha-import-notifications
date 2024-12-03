@@ -1,12 +1,9 @@
 using AutoFixture;
-using Defra.PhaImportNotifications.Api.Endpoints;
-using Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
-using FluentAssertions;
+using Defra.PhaImportNotifications.Testing;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 using NSubstitute;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotificationsUpdates;
@@ -29,17 +26,15 @@ public class ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Prog
                 {
                     fixture
                         .Build<ImportNotification>()
-                        .With(x => x.ReferenceNumber, "ref")
+                        .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
                         .With(x => x.Updated, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
                         .Create(),
                 }
             );
 
-        var response = await client.GetStringAsync("import-notifications-updates/pha?from=2024-11-20");
+        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotificationsUpdates.Get());
 
-        await Verify(response);
-
-        JsonConvert.DeserializeObject<PagedResponse<UpdatedImportNotification>>(response).Should().NotBeNull();
+        await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)
