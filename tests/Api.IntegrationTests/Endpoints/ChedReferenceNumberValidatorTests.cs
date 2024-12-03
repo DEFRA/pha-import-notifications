@@ -7,10 +7,12 @@ public class ChedReferenceNumberValidatorTests
 {
     private ChedReferenceNumberValidator Subject { get; } = new();
 
-    [Fact]
-    public void Validate_WhenInvalid_ShouldError()
+    [Theory]
+    [InlineData("12345")]
+    [InlineData("cheda.GB.2024.1234567")]
+    public void Validate_WhenInvalid_ShouldError(string chedReferenceNumber)
     {
-        var result = Subject.TestValidate("12345");
+        var result = Subject.TestValidate(chedReferenceNumber);
 
         result.ShouldHaveValidationErrorFor("ChedReferenceNumber");
     }
