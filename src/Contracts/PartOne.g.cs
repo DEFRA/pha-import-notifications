@@ -7,10 +7,12 @@ public class PartOne
 {
     [JsonPropertyName("typeOfImp")]
     [JsonIgnore]
+    [Description("Used to indicate what type of EU Import the notification is - Live Animals, Product Of Animal Origin or High Risk Food Not Of Animal Origin")]
     public PartOneTypeOfImpEnum? TypeOfImp { get; init; }
 
     [JsonPropertyName("personResponsible")]
-    public required Party PersonResponsible { get; init; }
+    [Description("The individual who has submitted the notification")]
+    public Party? PersonResponsible { get; init; }
 
     [JsonPropertyName("customsReferenceNumber")]
     [JsonIgnore]
@@ -27,29 +29,37 @@ public class PartOne
     public bool? ConsignmentArrived { get; init; }
 
     [JsonPropertyName("consignor")]
-    public required EconomicOperator Consignor { get; init; }
+    [Description("Person or Company that sends shipment")]
+    public EconomicOperator? Consignor { get; init; }
 
     [JsonPropertyName("consignorTwo")]
     [JsonIgnore]
+    [Description("Person or Company that sends shipment")]
     public EconomicOperator? ConsignorTwo { get; init; }
 
     [JsonPropertyName("packer")]
-    public required EconomicOperator Packer { get; init; }
+    [Description("Person or Company that packs the shipment")]
+    public EconomicOperator? Packer { get; init; }
 
     [JsonPropertyName("consignee")]
-    public required EconomicOperator Consignee { get; init; }
+    [Description("Person or Company that receives shipment")]
+    public EconomicOperator? Consignee { get; init; }
 
     [JsonPropertyName("importer")]
-    public required EconomicOperator Importer { get; init; }
+    [Description("Person or Company that is importing the consignment")]
+    public EconomicOperator? Importer { get; init; }
 
     [JsonPropertyName("placeOfDestination")]
-    public required EconomicOperator PlaceOfDestination { get; init; }
+    [Description("Where the shipment is to be sent? For IMP minimum 48 hour accommodation/holding location.")]
+    public EconomicOperator? PlaceOfDestination { get; init; }
 
     [JsonPropertyName("pod")]
-    public required EconomicOperator Pod { get; init; }
+    [Description("A temporary place of destination for plants")]
+    public EconomicOperator? Pod { get; init; }
 
     [JsonPropertyName("placeOfOriginHarvest")]
     [JsonIgnore]
+    [Description("Place in which the animals or products originate")]
     public EconomicOperator? PlaceOfOriginHarvest { get; init; }
 
     [JsonPropertyName("additionalPermanentAddresses")]
@@ -80,7 +90,8 @@ public class PartOne
     public bool? IsGvmsRoute { get; init; }
 
     [JsonPropertyName("purpose")]
-    public required Purpose Purpose { get; init; }
+    [Description("Purpose of consignment details")]
+    public Purpose? Purpose { get; init; }
 
     [JsonPropertyName("pointOfEntry")]
     [Description("Either a Border-Inspection-Post or Designated-Point-Of-Entry, e.g. GBFXT1")]
@@ -91,17 +102,20 @@ public class PartOne
     public string? PointOfEntryControlPoint { get; init; }
 
     [JsonPropertyName("meansOfTransport")]
-    public required MeansOfTransport MeansOfTransport { get; init; }
+    [Description("How consignment is transported after BIP")]
+    public MeansOfTransport? MeansOfTransport { get; init; }
 
     [JsonPropertyName("transporter")]
-    public required EconomicOperator Transporter { get; init; }
+    [Description("Transporter of consignment details")]
+    public EconomicOperator? Transporter { get; init; }
 
     [JsonPropertyName("transporterDetailsRequired")]
     [Description("Are transporter details required for this consignment")]
     public bool? TransporterDetailsRequired { get; init; }
 
     [JsonPropertyName("meansOfTransportFromEntryPoint")]
-    public required MeansOfTransport MeansOfTransportFromEntryPoint { get; init; }
+    [Description("Transport to BIP")]
+    public MeansOfTransport? MeansOfTransportFromEntryPoint { get; init; }
 
     [JsonPropertyName("estimatedJourneyTimeInMinutes")]
     [Description("Estimated journey time in minutes to point of entry")]
@@ -113,14 +127,16 @@ public class PartOne
     public string? ResponsibleForTransport { get; init; }
 
     [JsonPropertyName("veterinaryInformation")]
-    public required VeterinaryInformation VeterinaryInformation { get; init; }
+    [Description("Part 1 - Holds the information related to veterinary checks and details")]
+    public VeterinaryInformation? VeterinaryInformation { get; init; }
 
     [JsonPropertyName("importerLocalReferenceNumber")]
     [Description("Reference number added by the importer")]
     public string? ImporterLocalReferenceNumber { get; init; }
 
     [JsonPropertyName("route")]
-    public required Route Route { get; init; }
+    [Description("Contains countries and transfer points that consignment is going through")]
+    public Route? Route { get; init; }
 
     [JsonPropertyName("sealsContainers")]
     [JsonIgnore]
@@ -132,7 +148,8 @@ public class PartOne
     public DateTime? SubmittedOn { get; init; }
 
     [JsonPropertyName("submittedBy")]
-    public required UserInformation SubmittedBy { get; init; }
+    [Description("Information about user who submitted notification")]
+    public UserInformation? SubmittedBy { get; init; }
 
     [JsonPropertyName("consignmentValidations")]
     [Description("Validation messages for whole notification")]
@@ -156,7 +173,8 @@ public class PartOne
     public DateTime? ExitedPortOfOn { get; init; }
 
     [JsonPropertyName("contactDetails")]
-    public required ContactDetails ContactDetails { get; init; }
+    [Description("Person to be contacted if there is an issue with the consignment")]
+    public ContactDetails? ContactDetails { get; init; }
 
     [JsonPropertyName("nominatedContacts")]
     [Description("List of nominated contacts to receive text and email notifications")]
@@ -167,7 +185,7 @@ public class PartOne
     public DateTime? OriginalEstimatedOn { get; init; }
 
     [JsonPropertyName("billingInformation")]
-    public required BillingInformation BillingInformation { get; init; }
+    public BillingInformation? BillingInformation { get; init; }
 
     [JsonPropertyName("isChargeable")]
     [Description("Indicates whether CUC applies to the notification")]
@@ -178,10 +196,11 @@ public class PartOne
     public bool? WasChargeable { get; init; }
 
     [JsonPropertyName("commonUserCharge")]
-    public required CommonUserCharge CommonUserCharge { get; init; }
+    public CommonUserCharge? CommonUserCharge { get; init; }
 
     [JsonPropertyName("provideCtcMrn")]
-    public required PartOneProvideCtcMrnEnum ProvideCtcMrn { get; init; }
+    [Description("When the NCTS MRN will be added for the Common Transit Convention (CTC)")]
+    public PartOneProvideCtcMrnEnum? ProvideCtcMrn { get; init; }
 
     [JsonPropertyName("arrivesAt")]
     [Description("DateTime")]

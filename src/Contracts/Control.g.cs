@@ -6,14 +6,18 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class Control
 {
     [JsonPropertyName("feedbackInformation")]
-    public required FeedbackInformation FeedbackInformation { get; init; }
+    [Description("Feedback information of Control")]
+    public FeedbackInformation? FeedbackInformation { get; init; }
 
     [JsonPropertyName("detailsOnReExport")]
-    public required DetailsOnReExport DetailsOnReExport { get; init; }
+    [Description("Details on re-export")]
+    public DetailsOnReExport? DetailsOnReExport { get; init; }
 
     [JsonPropertyName("officialInspector")]
-    public required OfficialInspector OfficialInspector { get; init; }
+    [Description("Official inspector")]
+    public OfficialInspector? OfficialInspector { get; init; }
 
     [JsonPropertyName("consignmentLeave")]
-    public required ControlConsignmentLeaveEnum ConsignmentLeave { get; init; }
+    [Description("Is the consignment leaving UK borders?")]
+    public ControlConsignmentLeaveEnum? ConsignmentLeave { get; init; }
 }

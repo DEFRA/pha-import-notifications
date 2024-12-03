@@ -6,7 +6,8 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class FeedbackInformation
 {
     [JsonPropertyName("authorityType")]
-    public required FeedbackInformationAuthorityTypeEnum AuthorityType { get; init; }
+    [Description("Type of authority")]
+    public FeedbackInformationAuthorityTypeEnum? AuthorityType { get; init; }
 
     [JsonPropertyName("consignmentArrival")]
     [Description("Did the consignment arrive")]

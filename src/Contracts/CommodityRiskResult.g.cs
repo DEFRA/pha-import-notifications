@@ -6,22 +6,28 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class CommodityRiskResult
 {
     [JsonPropertyName("riskDecision")]
-    public required CommodityRiskResultRiskDecisionEnum RiskDecision { get; init; }
+    [Description("CHED-A, CHED-D, CHED-P - what is the commodity complement risk decision")]
+    public CommodityRiskResultRiskDecisionEnum? RiskDecision { get; init; }
 
     [JsonPropertyName("exitRiskDecision")]
-    public required CommodityRiskResultExitRiskDecisionEnum ExitRiskDecision { get; init; }
+    [Description("Transit CHED - what is the commodity complement exit risk decision")]
+    public CommodityRiskResultExitRiskDecisionEnum? ExitRiskDecision { get; init; }
 
     [JsonPropertyName("hmiDecision")]
-    public required CommodityRiskResultHmiDecisionEnum HmiDecision { get; init; }
+    [Description("HMI decision required")]
+    public CommodityRiskResultHmiDecisionEnum? HmiDecision { get; init; }
 
     [JsonPropertyName("phsiDecision")]
-    public required CommodityRiskResultPhsiDecisionEnum PhsiDecision { get; init; }
+    [Description("PHSI decision required")]
+    public CommodityRiskResultPhsiDecisionEnum? PhsiDecision { get; init; }
 
     [JsonPropertyName("phsiClassification")]
-    public required CommodityRiskResultPhsiClassificationEnum PhsiClassification { get; init; }
+    [Description("PHSI classification")]
+    public CommodityRiskResultPhsiClassificationEnum? PhsiClassification { get; init; }
 
     [JsonPropertyName("phsi")]
-    public required Phsi Phsi { get; init; }
+    [Description("PHSI Decision Breakdown")]
+    public Phsi? Phsi { get; init; }
 
     [JsonPropertyName("uniqueId")]
     [Description("UUID used to match to the complement parameter set")]

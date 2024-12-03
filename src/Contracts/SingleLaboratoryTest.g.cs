@@ -22,8 +22,10 @@ public class SingleLaboratoryTest
     public string? TestName { get; init; }
 
     [JsonPropertyName("applicant")]
-    public required Applicant Applicant { get; init; }
+    [Description("Laboratory tests information details and information about laboratory")]
+    public Applicant? Applicant { get; init; }
 
     [JsonPropertyName("laboratoryTestResult")]
-    public required LaboratoryTestResult LaboratoryTestResult { get; init; }
+    [Description("Information about results of test")]
+    public LaboratoryTestResult? LaboratoryTestResult { get; init; }
 }

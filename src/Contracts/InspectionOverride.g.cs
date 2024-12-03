@@ -14,5 +14,6 @@ public class InspectionOverride
     public DateTime? OverriddenOn { get; init; }
 
     [JsonPropertyName("overriddenBy")]
-    public required UserInformation OverriddenBy { get; init; }
+    [Description("User entity who has manually overridden the inspection")]
+    public UserInformation? OverriddenBy { get; init; }
 }

@@ -10,10 +10,12 @@ public class EconomicOperator
     public string? Id { get; init; }
 
     [JsonPropertyName("type")]
-    public required EconomicOperatorTypeEnum Type { get; init; }
+    [Description("Type of organisation")]
+    public EconomicOperatorTypeEnum? Type { get; init; }
 
     [JsonPropertyName("status")]
-    public required EconomicOperatorStatusEnum Status { get; init; }
+    [Description("Status of organisation")]
+    public EconomicOperatorStatusEnum? Status { get; init; }
 
     [JsonPropertyName("companyName")]
     [Description("Name of organisation")]
@@ -24,7 +26,8 @@ public class EconomicOperator
     public string? IndividualName { get; init; }
 
     [JsonPropertyName("address")]
-    public required Address Address { get; init; }
+    [Description("Address of economic operator")]
+    public Address? Address { get; init; }
 
     [JsonPropertyName("approvalNumber")]
     [Description("Approval Number which identifies an Economic Operator unambiguously per type of organisation per country.")]

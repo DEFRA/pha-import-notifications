@@ -213,10 +213,6 @@
   components: {
     schemas: {
       AccompanyingDocument: {
-        required: [
-          documentType,
-          externalReference
-        ],
         type: object,
         properties: {
           documentType: {
@@ -302,9 +298,6 @@
         type: string
       },
       Address: {
-        required: [
-          internationalTelephone
-        ],
         type: object,
         properties: {
           street: {
@@ -374,11 +367,6 @@
         additionalProperties: false
       },
       Applicant: {
-        required: [
-          analysisType,
-          conservationOfSample,
-          inspector
-        ],
         type: object,
         properties: {
           laboratory: {
@@ -496,9 +484,6 @@
         additionalProperties: false
       },
       BillingInformation: {
-        required: [
-          postalAddress
-        ],
         type: object,
         properties: {
           isConfirmed: {
@@ -588,10 +573,6 @@
         additionalProperties: false
       },
       ChedppNotAcceptableReason: {
-        required: [
-          commodityOrPackage,
-          reason
-        ],
         type: object,
         properties: {
           reason: {
@@ -646,9 +627,6 @@
         type: string
       },
       Commodities: {
-        required: [
-          commodityIntendedFor
-        ],
         type: object,
         properties: {
           gmsDeclarationAccepted: {
@@ -752,9 +730,6 @@
         type: string
       },
       CommodityComplement: {
-        required: [
-          riskAssesment
-        ],
         type: object,
         properties: {
           uniqueComplementId: {
@@ -865,14 +840,6 @@
         additionalProperties: false
       },
       CommodityRiskResult: {
-        required: [
-          exitRiskDecision,
-          hmiDecision,
-          phsi,
-          phsiClassification,
-          phsiDecision,
-          riskDecision
-        ],
         type: object,
         properties: {
           riskDecision: {
@@ -972,11 +939,6 @@
         additionalProperties: false
       },
       ConsignmentCheck: {
-        required: [
-          identityCheckNotDoneReason,
-          identityCheckType,
-          physicalCheckNotDoneReason
-        ],
         type: object,
         properties: {
           euStandard: {
@@ -1106,12 +1068,6 @@
         additionalProperties: false
       },
       Control: {
-        required: [
-          consignmentLeave,
-          detailsOnReExport,
-          feedbackInformation,
-          officialInspector
-        ],
         type: object,
         properties: {
           feedbackInformation: {
@@ -1130,10 +1086,6 @@
         additionalProperties: false
       },
       ControlAuthority: {
-        required: [
-          iuuOption,
-          officialVeterinarian
-        ],
         type: object,
         properties: {
           officialVeterinarian: {
@@ -1182,22 +1134,6 @@
         type: string
       },
       Decision: {
-        required: [
-          decisionEnum,
-          definitiveImportPurpose,
-          detailsOfControlledDestinations,
-          freeCirculationPurpose,
-          ifChanneledOption,
-          notAcceptableAction,
-          notAcceptableActionDestructionReason,
-          notAcceptableActionEntryRefusalReason,
-          notAcceptableActionIndustrialProcessingReason,
-          notAcceptableActionQuarantineImposedReason,
-          notAcceptableActionReDispatchReason,
-          notAcceptableActionSpecialTreatmentReason,
-          notAcceptableActionUseForOtherPurposesReason,
-          specificWarehouseNonConformingConsignment
-        ],
         type: object,
         properties: {
           consignmentAcceptable: {
@@ -1501,9 +1437,6 @@
         type: string
       },
       DetailsOnReExport: {
-        required: [
-          transportType
-        ],
         type: object,
         properties: {
           date: {
@@ -1551,11 +1484,6 @@
         type: string
       },
       EconomicOperator: {
-        required: [
-          address,
-          status,
-          type
-        ],
         type: object,
         properties: {
           id: {
@@ -1628,9 +1556,6 @@
         type: string
       },
       ExternalReference: {
-        required: [
-          system
-        ],
         type: object,
         properties: {
           system: {
@@ -1669,9 +1594,6 @@
         type: string
       },
       FeedbackInformation: {
-        required: [
-          authorityType
-        ],
         type: object,
         properties: {
           authorityType: {
@@ -1772,18 +1694,7 @@
       },
       ImportNotificationsResponse: {
         required: [
-          commoditiesSummary,
           created,
-          decisionBy,
-          importNotificationType,
-          journeyRiskCategorisation,
-          lastUpdatedBy,
-          partOne,
-          partThree,
-          partTwo,
-          riskAssessment,
-          splitConsignment,
-          status,
           updated
         ],
         type: object,
@@ -1959,10 +1870,6 @@
         additionalProperties: false
       },
       InspectionCheck: {
-        required: [
-          status,
-          type
-        ],
         type: object,
         properties: {
           type: {
@@ -2016,9 +1923,6 @@
         type: string
       },
       InspectionOverride: {
-        required: [
-          overriddenBy
-        ],
         type: object,
         properties: {
           originalDecision: {
@@ -2076,10 +1980,6 @@
         additionalProperties: false
       },
       JourneyRiskCategorisationResult: {
-        required: [
-          riskLevel,
-          riskLevelMethod
-        ],
         type: object,
         properties: {
           riskLevel: {
@@ -2113,9 +2013,6 @@
         type: string
       },
       LaboratoryTestResult: {
-        required: [
-          conclusion
-        ],
         type: object,
         properties: {
           sampleUseByDate: {
@@ -2161,9 +2058,6 @@
         type: string
       },
       LaboratoryTests: {
-        required: [
-          testReason
-        ],
         type: object,
         properties: {
           testedOn: {
@@ -2198,9 +2092,6 @@
         type: string
       },
       MeansOfTransport: {
-        required: [
-          type
-        ],
         type: object,
         properties: {
           type: {
@@ -2254,9 +2145,6 @@
         additionalProperties: false
       },
       OfficialInspector: {
-        required: [
-          address
-        ],
         type: object,
         properties: {
           firstName: {
@@ -2332,26 +2220,6 @@
         additionalProperties: false
       },
       PartOne: {
-        required: [
-          billingInformation,
-          commonUserCharge,
-          consignee,
-          consignor,
-          contactDetails,
-          importer,
-          meansOfTransport,
-          meansOfTransportFromEntryPoint,
-          packer,
-          personResponsible,
-          placeOfDestination,
-          pod,
-          provideCtcMrn,
-          purpose,
-          route,
-          submittedBy,
-          transporter,
-          veterinaryInformation
-        ],
         type: object,
         properties: {
           personResponsible: {
@@ -2532,12 +2400,6 @@
         type: string
       },
       PartThree: {
-        required: [
-          control,
-          controlStatus,
-          sealCheck,
-          sealCheckOverride
-        ],
         type: object,
         properties: {
           controlStatus: {
@@ -2576,15 +2438,6 @@
         type: string
       },
       PartTwo: {
-        required: [
-          consignmentCheck,
-          controlAuthority,
-          controlledDestination,
-          decision,
-          impactOfTransportOnAnimals,
-          inspectionOverride,
-          laboratoryTests
-        ],
         type: object,
         properties: {
           decision: {
@@ -2688,9 +2541,6 @@
         additionalProperties: false
       },
       Party: {
-        required: [
-          type
-        ],
         type: object,
         properties: {
           id: {
@@ -2874,12 +2724,6 @@
         }
       },
       Purpose: {
-        required: [
-          forImportOrAdmission,
-          forNonConforming,
-          internalMarketPurpose,
-          purposeGroup
-        ],
         type: object,
         properties: {
           conformsToEU: {
@@ -3044,9 +2888,6 @@
         additionalProperties: false
       },
       SealCheck: {
-        required: [
-          officialInspector
-        ],
         type: object,
         properties: {
           satisfactory: {
@@ -3094,10 +2935,6 @@
         additionalProperties: false
       },
       SingleLaboratoryTest: {
-        required: [
-          applicant,
-          laboratoryTestResult
-        ],
         type: object,
         properties: {
           commodityCode: {
@@ -3241,9 +3078,6 @@
         additionalProperties: false
       },
       VeterinaryInformation: {
-        required: [
-          establishmentsOfOriginExternalReference
-        ],
         type: object,
         properties: {
           establishmentsOfOriginExternalReference: {

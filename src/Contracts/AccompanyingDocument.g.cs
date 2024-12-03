@@ -6,7 +6,8 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class AccompanyingDocument
 {
     [JsonPropertyName("documentType")]
-    public required AccompanyingDocumentDocumentTypeEnum DocumentType { get; init; }
+    [Description("Additional document type")]
+    public AccompanyingDocumentDocumentTypeEnum? DocumentType { get; init; }
 
     [JsonPropertyName("documentReference")]
     [Description("Additional document reference")]
@@ -37,5 +38,6 @@ public class AccompanyingDocument
     public string? UploadOrganisationId { get; init; }
 
     [JsonPropertyName("externalReference")]
-    public required ExternalReference ExternalReference { get; init; }
+    [Description("External reference of accompanying document, which relates to a downstream service")]
+    public ExternalReference? ExternalReference { get; init; }
 }

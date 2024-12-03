@@ -30,7 +30,7 @@ public class ImportNotification
     public NotificationTdmRelationships? Relationships { get; init; }
 
     [JsonPropertyName("commoditiesSummary")]
-    public required Commodities CommoditiesSummary { get; init; }
+    public Commodities? CommoditiesSummary { get; init; }
 
     [JsonPropertyName("commodities")]
     public List<CommodityComplement>? Commodities { get; init; }
@@ -76,10 +76,12 @@ public class ImportNotification
     public DateTime? UpdatedSource { get; init; }
 
     [JsonPropertyName("lastUpdatedBy")]
-    public required UserInformation LastUpdatedBy { get; init; }
+    [Description("User entity whose update was last")]
+    public UserInformation? LastUpdatedBy { get; init; }
 
     [JsonPropertyName("importNotificationType")]
-    public required ImportNotificationTypeEnum ImportNotificationType { get; init; }
+    [Description("The Type of notification that has been submitted")]
+    public ImportNotificationTypeEnum? ImportNotificationType { get; init; }
 
     [JsonPropertyName("replaces")]
     [Description("Reference number of notification that was replaced by this one")]
@@ -90,40 +92,47 @@ public class ImportNotification
     public string? ReplacedBy { get; init; }
 
     [JsonPropertyName("status")]
-    public required ImportNotificationStatusEnum Status { get; init; }
+    [Description("Current status of the notification. When created by an importer, the notification has the status 'SUBMITTED'. Before submission of the notification it has the status 'DRAFT'. When the BIP starts validation of the notification it has the status 'IN PROGRESS' Once the BIP validates the notification, it gets the status 'VALIDATED'. 'AMEND' is set when the Part-1 user is modifying the notification. 'MODIFY' is set when Part-2 user is modifying the notification. Replaced - When the notification is replaced by another notification. Rejected - Notification moves to Rejected status when rejected by a Part-2 user. ")]
+    public ImportNotificationStatusEnum? Status { get; init; }
 
     [JsonPropertyName("splitConsignment")]
-    public required SplitConsignment SplitConsignment { get; init; }
+    [Description("Present if the consignment has been split")]
+    public SplitConsignment? SplitConsignment { get; init; }
 
     [JsonPropertyName("childNotification")]
     [Description("Is this notification a child of a split consignment?")]
     public bool? ChildNotification { get; init; }
 
     [JsonPropertyName("riskAssessment")]
-    public required RiskAssessmentResult RiskAssessment { get; init; }
+    [Description("Result of risk assessment by the risk scorer")]
+    public RiskAssessmentResult? RiskAssessment { get; init; }
 
     [JsonPropertyName("journeyRiskCategorisation")]
-    public required JourneyRiskCategorisationResult JourneyRiskCategorisation { get; init; }
+    [Description("Details of the risk categorisation level for a notification")]
+    public JourneyRiskCategorisationResult? JourneyRiskCategorisation { get; init; }
 
     [JsonPropertyName("isHighRiskEuImport")]
     [Description("Is this notification a high risk notification from the EU/EEA?")]
     public bool? IsHighRiskEuImport { get; init; }
 
     [JsonPropertyName("partOne")]
-    public required PartOne PartOne { get; init; }
+    public PartOne? PartOne { get; init; }
 
     [JsonPropertyName("decisionBy")]
-    public required UserInformation DecisionBy { get; init; }
+    [Description("Information about the user who set the decision in Part 2")]
+    public UserInformation? DecisionBy { get; init; }
 
     [JsonPropertyName("decisionDate")]
     [Description("Date when the notification was validated or rejected")]
     public string? DecisionDate { get; init; }
 
     [JsonPropertyName("partTwo")]
-    public required PartTwo PartTwo { get; init; }
+    [Description("Part of the notification which contains information filled by inspector at BIP/DPE")]
+    public PartTwo? PartTwo { get; init; }
 
     [JsonPropertyName("partThree")]
-    public required PartThree PartThree { get; init; }
+    [Description("Part of the notification which contains information filled by LVU if control of consignment is needed.")]
+    public PartThree? PartThree { get; init; }
 
     [JsonPropertyName("officialVeterinarian")]
     [Description("Official veterinarian")]

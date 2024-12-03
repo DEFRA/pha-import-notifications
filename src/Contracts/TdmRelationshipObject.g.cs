@@ -9,7 +9,7 @@ public class TdmRelationshipObject
     public bool? Matched { get; init; }
 
     [JsonPropertyName("links")]
-    public required RelationshipLinks Links { get; init; }
+    public RelationshipLinks? Links { get; init; }
 
     [JsonPropertyName("data")]
     public List<RelationshipDataItem>? Data { get; init; }
