@@ -1,6 +1,4 @@
 using System.Reflection;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
@@ -63,21 +61,9 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 
     // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
     builder.Services.ConfigureHttpClientDefaults(options => options.AddStandardResilienceHandler());
-    builder.Services.ConfigureHttpJsonOptions(options =>
-    {
-        options.SerializerOptions.PropertyNameCaseInsensitive = true;
-        options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-        options.SerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
-        options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
-    });
+    builder.Services.ConfigureHttpJsonOptions(options => SerializerOptions.Configure(options));
     // This is needed for Swashbuckle and Minimal APIs
-    builder.Services.Configure<JsonOptions>(options =>
-    {
-        options.SerializerOptions.PropertyNameCaseInsensitive = true;
-        options.SerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-        options.SerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
-        options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
-    });
+    builder.Services.Configure<JsonOptions>(options => SerializerOptions.Configure(options));
     builder.Services.TryAddTransient<ISerializerDataContractResolver>(sp => new JsonSerializerDataContractResolver(
         sp.GetRequiredService<IOptions<JsonOptions>>().Value.SerializerOptions
     ));

@@ -1,11 +1,9 @@
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Testing;
+using Defra.PhaImportNotifications.Testing.Btms;
 using FluentAssertions;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging.Abstractions;
-using WireMock.RequestBuilders;
-using WireMock.ResponseBuilders;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
 
@@ -17,26 +15,19 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     [Fact]
     public async Task GetImportNotifications_WhenOk_ShouldSucceed()
     {
-        WireMock
-            .Given(Request.Create().WithPath("/api/import-notifications").UsingGet())
-            .RespondWith(
-                Response
-                    .Create()
-                    .WithStatusCode(StatusCodes.Status200OK)
-                    .WithBodyFromFile("Services\\Btms\\btms-import-notification-list.json")
-            );
+        WireMock.StubManyImportNotification();
 
         var result = await Subject.GetImportNotifications(default);
 
         result.Should().HaveCount(10);
+
+        await Verify(result).DontScrubGuids().DontScrubDateTimes();
     }
 
     [Fact]
     public async Task GetImportNotifications_WhenError_ShouldFail()
     {
-        WireMock
-            .Given(Request.Create().WithPath("/api/import-notifications").UsingGet())
-            .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status500InternalServerError));
+        WireMock.StubManyImportNotification(shouldFail: true);
 
         var act = () => Subject.GetImportNotifications(default);
 
@@ -46,28 +37,21 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     [Fact]
     public async Task GetImportNotification_WhenOk_ShouldSucceed()
     {
-        WireMock
-            .Given(Request.Create().WithPath("/api/import-notifications/CHED").UsingGet())
-            .RespondWith(
-                Response
-                    .Create()
-                    .WithStatusCode(StatusCodes.Status200OK)
-                    .WithBodyFromFile("Services\\Btms\\btms-import-notification-single.json")
-            );
+        WireMock.StubSingleImportNotification();
 
-        var result = await Subject.GetImportNotification("CHED", default);
+        var result = await Subject.GetImportNotification(ChedReferenceNumbers.ChedA, default);
 
         result.Should().NotBeNull();
+
+        await Verify(result).DontScrubGuids().DontScrubDateTimes();
     }
 
     [Fact]
     public async Task GetImportNotification_WhenError_ShouldFail()
     {
-        WireMock
-            .Given(Request.Create().WithPath("/api/import-notifications/CHED").UsingGet())
-            .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status500InternalServerError));
+        WireMock.StubSingleImportNotification(shouldFail: true);
 
-        var act = () => Subject.GetImportNotification("CHED", default);
+        var act = () => Subject.GetImportNotification(ChedReferenceNumbers.ChedA, default);
 
         await act.Should().ThrowAsync<Exception>();
     }
