@@ -1,11 +1,9 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
 using Defra.PhaImportNotifications.Api.Services.Btms;
-using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Defra.PhaImportNotifications.Api.Endpoints;
+namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
 public static class ImportNotificationsEndpoints
 {
@@ -40,8 +38,4 @@ public static class ImportNotificationsEndpoints
 
         return notification is not null ? Results.Ok(notification) : Results.NotFound();
     }
-
-    [SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty")]
-    // ReSharper disable once ClassNeverInstantiated.Local
-    private sealed class ImportNotificationsResponse : ImportNotification;
 }

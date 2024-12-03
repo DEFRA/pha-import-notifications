@@ -1,5 +1,6 @@
 using AutoFixture;
 using Defra.PhaImportNotifications.Api.Endpoints;
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
 using FluentAssertions;
