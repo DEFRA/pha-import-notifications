@@ -21,8 +21,8 @@ internal sealed class UpdatedImportNotificationRequest
 
     [Description(
         "Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. "
-        + "time of request. If the time period between from and to is greater than 24 hours then "
-        + "the request will be invalid."
+            + "time of request. If the time period between from and to is greater than 24 hours then "
+            + "the request will be invalid."
     )]
     [DefaultValue(typeof(DateTime), "Time of execution")] // This doesn't add anything to the spec - do we need it?
     [FromQuery(Name = "to")]
