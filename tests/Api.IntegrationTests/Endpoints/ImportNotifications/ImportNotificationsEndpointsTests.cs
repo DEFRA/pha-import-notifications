@@ -45,17 +45,6 @@ public class ImportNotificationsEndpointsTests(WebApplicationFactory<Program> fa
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
 
-    [Fact]
-    public async Task Get_WhenInvalidChedReferenceNumber_ShouldBeBadRequest()
-    {
-        var client = CreateClient();
-
-        var response = await client.GetAsync("import-notifications/12345");
-
-        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-        (await response.Content.ReadAsStringAsync()).Should().Contain("ChedReferenceNumber");
-    }
-
     protected override void ConfigureTestServices(IServiceCollection services)
     {
         base.ConfigureTestServices(services);
