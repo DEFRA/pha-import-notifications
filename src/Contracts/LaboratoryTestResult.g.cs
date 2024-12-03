@@ -22,7 +22,8 @@ public class LaboratoryTestResult
     public string? Results { get; init; }
 
     [JsonPropertyName("conclusion")]
-    public required LaboratoryTestResultConclusionEnum Conclusion { get; init; }
+    [Description("Conclusion of laboratory test")]
+    public LaboratoryTestResultConclusionEnum? Conclusion { get; init; }
 
     [JsonPropertyName("labTestCreatedOn")]
     [Description("Date of lab test created in IPAFFS")]

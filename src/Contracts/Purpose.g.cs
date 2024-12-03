@@ -10,14 +10,16 @@ public class Purpose
     public bool? ConformsToEU { get; init; }
 
     [JsonPropertyName("internalMarketPurpose")]
-    public required PurposeInternalMarketPurposeEnum InternalMarketPurpose { get; init; }
+    [Description("Detailed purpose of internal market purpose group")]
+    public PurposeInternalMarketPurposeEnum? InternalMarketPurpose { get; init; }
 
     [JsonPropertyName("thirdCountryTranshipment")]
     [Description("Country that consignment is transshipped through")]
     public string? ThirdCountryTranshipment { get; init; }
 
     [JsonPropertyName("forNonConforming")]
-    public required PurposeForNonConformingEnum ForNonConforming { get; init; }
+    [Description("Detailed purpose for non conforming purpose group")]
+    public PurposeForNonConformingEnum? ForNonConforming { get; init; }
 
     [JsonPropertyName("regNumber")]
     [Description("There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number.")]
@@ -44,7 +46,8 @@ public class Purpose
     public List<string>? TransitThirdCountries { get; init; }
 
     [JsonPropertyName("forImportOrAdmission")]
-    public required PurposeForImportOrAdmissionEnum ForImportOrAdmission { get; init; }
+    [Description("Specification of Import or admission purpose")]
+    public PurposeForImportOrAdmissionEnum? ForImportOrAdmission { get; init; }
 
     [JsonPropertyName("exitDate")]
     [Description("Exit date when import or admission")]
@@ -55,7 +58,8 @@ public class Purpose
     public string? FinalBip { get; init; }
 
     [JsonPropertyName("purposeGroup")]
-    public required PurposePurposeGroupEnum PurposeGroup { get; init; }
+    [Description("Purpose group of consignment (general purpose)")]
+    public PurposePurposeGroupEnum? PurposeGroup { get; init; }
 
     [JsonPropertyName("estimatedArrivesAtPortOfExit")]
     [Description("DateTime")]

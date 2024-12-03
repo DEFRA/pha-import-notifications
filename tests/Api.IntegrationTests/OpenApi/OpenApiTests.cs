@@ -10,7 +10,7 @@ public class OpenApiTests(WebApplicationFactory<Program> factory) : IClassFixtur
         var client = factory.CreateClient();
         var response = await client.GetStringAsync("/.well-known/openapi/v1/openapi.json");
 
-        await VerifyJson(response);
+        await Verify(response);
     }
 
     [Fact]

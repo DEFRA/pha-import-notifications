@@ -6,7 +6,8 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class VeterinaryInformation
 {
     [JsonPropertyName("establishmentsOfOriginExternalReference")]
-    public required ExternalReference EstablishmentsOfOriginExternalReference { get; init; }
+    [Description("External reference of approved establishments, which relates to a downstream service")]
+    public ExternalReference? EstablishmentsOfOriginExternalReference { get; init; }
 
     [JsonPropertyName("establishmentsOfOrigins")]
     [Description("List of establishments which were approved by UK to issue veterinary documents")]

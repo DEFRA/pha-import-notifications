@@ -29,6 +29,7 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
     var syntax = schema.Type switch
     {
         "integer" => CreateEnumSyntax(),
+        "string" => CreateEnumSyntax(),
         "object" => CreateClassSyntax(),
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
@@ -62,21 +63,36 @@ return;
 
 static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 {
+    if (schema.AllOf.Any())
+    {
+        return CreatePropertyType(schema.AllOf.First());
+    }
+
     var typeName = schema.Type switch
     {
-        "string" => schema.Format == "date-time" ? "DateTime" : "string",
-        "integer" => RefTypeName(schema, "int"),
+        "string" => CreateStringReferenceTypeName(schema),
+        "integer" => CreateReferenceTypeName(schema, "int"),
         "number" => "decimal",
         "boolean" => "bool",
-        "object" => RefTypeName(schema, schema.Type),
-        "array" => RefTypeName(schema.Items, schema.Items.Type),
+        "object" => CreateReferenceTypeName(schema, schema.Type),
+        "array" => CreateReferenceTypeName(schema.Items, schema.Items.Type),
         _ => "object",
     };
 
     return ParseTypeName(schema.Type == "array" ? $"List<{typeName}>" : typeName);
 }
 
-static string RefTypeName(OpenApiSchema schema, string defaultTypeName) =>
+static string CreateStringReferenceTypeName(OpenApiSchema schema)
+{
+    if (schema.Enum.Any())
+    {
+        return CreateReferenceTypeName(schema, "string");
+    }
+
+    return schema.Format == "date-time" ? "DateTime" : "string";
+}
+
+static string CreateReferenceTypeName(OpenApiSchema schema, string defaultTypeName) =>
     schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName;
 
 static EnumMemberDeclarationSyntax CreateEnumValue(string name) => EnumMemberDeclaration(name);

@@ -14,7 +14,8 @@ public class SealCheck
     public string? Reason { get; init; }
 
     [JsonPropertyName("officialInspector")]
-    public required OfficialInspector OfficialInspector { get; init; }
+    [Description("Official inspector")]
+    public OfficialInspector? OfficialInspector { get; init; }
 
     [JsonPropertyName("checkedOn")]
     [Description("date and time of seal check")]

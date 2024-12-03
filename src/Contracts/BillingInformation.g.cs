@@ -22,5 +22,6 @@ public class BillingInformation
     public string? ContactName { get; init; }
 
     [JsonPropertyName("postalAddress")]
-    public required PostalAddress PostalAddress { get; init; }
+    [Description("Billing postal address")]
+    public PostalAddress? PostalAddress { get; init; }
 }

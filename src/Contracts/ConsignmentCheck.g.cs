@@ -26,14 +26,16 @@ public class ConsignmentCheck
     public bool? IdentityCheckDone { get; init; }
 
     [JsonPropertyName("identityCheckType")]
-    public required ConsignmentCheckIdentityCheckTypeEnum IdentityCheckType { get; init; }
+    [Description("Type of identity check performed")]
+    public ConsignmentCheckIdentityCheckTypeEnum? IdentityCheckType { get; init; }
 
     [JsonPropertyName("identityCheckResult")]
     [Description("Result of identity check")]
     public string? IdentityCheckResult { get; init; }
 
     [JsonPropertyName("identityCheckNotDoneReason")]
-    public required ConsignmentCheckIdentityCheckNotDoneReasonEnum IdentityCheckNotDoneReason { get; init; }
+    [Description("What was the reason for skipping identity check")]
+    public ConsignmentCheckIdentityCheckNotDoneReasonEnum? IdentityCheckNotDoneReason { get; init; }
 
     [JsonPropertyName("physicalCheckDone")]
     [Description("Was physical check done")]
@@ -44,7 +46,8 @@ public class ConsignmentCheck
     public string? PhysicalCheckResult { get; init; }
 
     [JsonPropertyName("physicalCheckNotDoneReason")]
-    public required ConsignmentCheckPhysicalCheckNotDoneReasonEnum PhysicalCheckNotDoneReason { get; init; }
+    [Description("What was the reason for skipping physical check")]
+    public ConsignmentCheckPhysicalCheckNotDoneReasonEnum? PhysicalCheckNotDoneReason { get; init; }
 
     [JsonPropertyName("physicalCheckOtherText")]
     [Description("Other reason to not do physical check")]

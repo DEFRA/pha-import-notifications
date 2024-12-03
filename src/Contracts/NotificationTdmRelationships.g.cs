@@ -6,5 +6,5 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class NotificationTdmRelationships
 {
     [JsonPropertyName("movements")]
-    public required TdmRelationshipObject Movements { get; init; }
+    public TdmRelationshipObject? Movements { get; init; }
 }

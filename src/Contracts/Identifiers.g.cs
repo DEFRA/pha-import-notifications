@@ -18,5 +18,6 @@ public class Identifiers
     public bool? IsPlaceOfDestinationThePermanentAddress { get; init; }
 
     [JsonPropertyName("permanentAddress")]
-    public required EconomicOperator PermanentAddress { get; init; }
+    [Description("Permanent address of the species")]
+    public EconomicOperator? PermanentAddress { get; init; }
 }

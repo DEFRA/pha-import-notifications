@@ -15,7 +15,7 @@ public class RelationshipDataItem
     public string? Id { get; init; }
 
     [JsonPropertyName("links")]
-    public required ResourceLink Links { get; init; }
+    public ResourceLink? Links { get; init; }
 
     [JsonPropertyName("sourceItem")]
     public int? SourceItem { get; init; }

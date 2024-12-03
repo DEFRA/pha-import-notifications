@@ -50,7 +50,8 @@ public class Party
     public int? TracesId { get; init; }
 
     [JsonPropertyName("type")]
-    public required PartyTypeEnum Type { get; init; }
+    [Description("Type of party")]
+    public PartyTypeEnum? Type { get; init; }
 
     [JsonPropertyName("approvalNumber")]
     [Description("Approval number")]

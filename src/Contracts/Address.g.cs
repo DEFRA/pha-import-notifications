@@ -54,5 +54,6 @@ public class Address
     public string? Telephone { get; init; }
 
     [JsonPropertyName("internationalTelephone")]
-    public required InternationalTelephone InternationalTelephone { get; init; }
+    [Description("International phone number")]
+    public InternationalTelephone? InternationalTelephone { get; init; }
 }

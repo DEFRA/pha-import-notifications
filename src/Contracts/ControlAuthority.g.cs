@@ -6,7 +6,8 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class ControlAuthority
 {
     [JsonPropertyName("officialVeterinarian")]
-    public required OfficialVeterinarian OfficialVeterinarian { get; init; }
+    [Description("Official veterinarian")]
+    public OfficialVeterinarian? OfficialVeterinarian { get; init; }
 
     [JsonPropertyName("customsReferenceNo")]
     [Description("Customs reference number")]
@@ -30,5 +31,6 @@ public class ControlAuthority
     public bool? IuuCheckRequired { get; init; }
 
     [JsonPropertyName("iuuOption")]
-    public required ControlAuthorityIuuOptionEnum IuuOption { get; init; }
+    [Description("Result of Illegal, Unreported and Unregulated (IUU) check")]
+    public ControlAuthorityIuuOptionEnum? IuuOption { get; init; }
 }

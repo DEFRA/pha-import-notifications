@@ -30,7 +30,8 @@ public class Applicant
     public string? SampleBatchNumber { get; init; }
 
     [JsonPropertyName("analysisType")]
-    public required ApplicantAnalysisTypeEnum AnalysisType { get; init; }
+    [Description("Type of analysis")]
+    public ApplicantAnalysisTypeEnum? AnalysisType { get; init; }
 
     [JsonPropertyName("numberOfSamples")]
     [Description("Number of samples analysed")]
@@ -41,10 +42,12 @@ public class Applicant
     public string? SampleType { get; init; }
 
     [JsonPropertyName("conservationOfSample")]
-    public required ApplicantConservationOfSampleEnum ConservationOfSample { get; init; }
+    [Description("Conservation of sample")]
+    public ApplicantConservationOfSampleEnum? ConservationOfSample { get; init; }
 
     [JsonPropertyName("inspector")]
-    public required Inspector Inspector { get; init; }
+    [Description("inspector")]
+    public Inspector? Inspector { get; init; }
 
     [JsonPropertyName("sampledOn")]
     [Description("DateTime")]

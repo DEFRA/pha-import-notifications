@@ -6,20 +6,24 @@ namespace Defra.PhaImportNotifications.Contracts;
 public class PartTwo
 {
     [JsonPropertyName("decision")]
-    public required Decision Decision { get; init; }
+    [Description("Decision on the consignment")]
+    public Decision? Decision { get; init; }
 
     [JsonPropertyName("consignmentCheck")]
-    public required ConsignmentCheck ConsignmentCheck { get; init; }
+    [Description("Consignment check")]
+    public ConsignmentCheck? ConsignmentCheck { get; init; }
 
     [JsonPropertyName("impactOfTransportOnAnimals")]
-    public required ImpactOfTransportOnAnimals ImpactOfTransportOnAnimals { get; init; }
+    [Description("Checks of impact of transport on animals")]
+    public ImpactOfTransportOnAnimals? ImpactOfTransportOnAnimals { get; init; }
 
     [JsonPropertyName("laboratoryTestsRequired")]
     [Description("Are laboratory tests required")]
     public bool? LaboratoryTestsRequired { get; init; }
 
     [JsonPropertyName("laboratoryTests")]
-    public required LaboratoryTests LaboratoryTests { get; init; }
+    [Description("Laboratory tests information details")]
+    public LaboratoryTests? LaboratoryTests { get; init; }
 
     [JsonPropertyName("resealedContainersIncluded")]
     [Description("Are the containers resealed")]
@@ -35,10 +39,12 @@ public class PartTwo
     public List<SealContainer>? ResealedContainersMappings { get; init; }
 
     [JsonPropertyName("controlAuthority")]
-    public required ControlAuthority ControlAuthority { get; init; }
+    [Description("Control Authority information details")]
+    public ControlAuthority? ControlAuthority { get; init; }
 
     [JsonPropertyName("controlledDestination")]
-    public required EconomicOperator ControlledDestination { get; init; }
+    [Description("Controlled destination")]
+    public EconomicOperator? ControlledDestination { get; init; }
 
     [JsonPropertyName("bipLocalReferenceNumber")]
     [Description("Local reference number at BIP")]
@@ -77,7 +83,8 @@ public class PartTwo
     public string? InspectionRequired { get; init; }
 
     [JsonPropertyName("inspectionOverride")]
-    public required InspectionOverride InspectionOverride { get; init; }
+    [Description("Details about the manual inspection override")]
+    public InspectionOverride? InspectionOverride { get; init; }
 
     [JsonPropertyName("autoClearedOn")]
     [Description("Date of autoclearance")]

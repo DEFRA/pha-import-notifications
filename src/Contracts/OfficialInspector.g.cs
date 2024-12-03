@@ -26,7 +26,8 @@ public class OfficialInspector
     public string? Fax { get; init; }
 
     [JsonPropertyName("address")]
-    public required Address Address { get; init; }
+    [Description("Address of inspector")]
+    public Address? Address { get; init; }
 
     [JsonPropertyName("signed")]
     [Description("Date of sign")]

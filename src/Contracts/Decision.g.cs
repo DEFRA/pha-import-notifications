@@ -10,28 +10,36 @@ public class Decision
     public bool? ConsignmentAcceptable { get; init; }
 
     [JsonPropertyName("notAcceptableAction")]
-    public required DecisionNotAcceptableActionEnum NotAcceptableAction { get; init; }
+    [Description("Filled if consignmentAcceptable is set to false")]
+    public DecisionNotAcceptableActionEnum? NotAcceptableAction { get; init; }
 
     [JsonPropertyName("notAcceptableActionDestructionReason")]
-    public required DecisionNotAcceptableActionDestructionReasonEnum NotAcceptableActionDestructionReason { get; init; }
+    [Description("Filled if not acceptable action is set to destruction")]
+    public DecisionNotAcceptableActionDestructionReasonEnum? NotAcceptableActionDestructionReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionEntryRefusalReason")]
-    public required DecisionNotAcceptableActionEntryRefusalReasonEnum NotAcceptableActionEntryRefusalReason { get; init; }
+    [Description("Filled if not acceptable action is set to entry refusal")]
+    public DecisionNotAcceptableActionEntryRefusalReasonEnum? NotAcceptableActionEntryRefusalReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionQuarantineImposedReason")]
-    public required DecisionNotAcceptableActionQuarantineImposedReasonEnum NotAcceptableActionQuarantineImposedReason { get; init; }
+    [Description("Filled if not acceptable action is set to quarantine imposed")]
+    public DecisionNotAcceptableActionQuarantineImposedReasonEnum? NotAcceptableActionQuarantineImposedReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionSpecialTreatmentReason")]
-    public required DecisionNotAcceptableActionSpecialTreatmentReasonEnum NotAcceptableActionSpecialTreatmentReason { get; init; }
+    [Description("Filled if not acceptable action is set to special treatment")]
+    public DecisionNotAcceptableActionSpecialTreatmentReasonEnum? NotAcceptableActionSpecialTreatmentReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionIndustrialProcessingReason")]
-    public required DecisionNotAcceptableActionIndustrialProcessingReasonEnum NotAcceptableActionIndustrialProcessingReason { get; init; }
+    [Description("Filled if not acceptable action is set to industrial processing")]
+    public DecisionNotAcceptableActionIndustrialProcessingReasonEnum? NotAcceptableActionIndustrialProcessingReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionReDispatchReason")]
-    public required DecisionNotAcceptableActionReDispatchReasonEnum NotAcceptableActionReDispatchReason { get; init; }
+    [Description("Filled if not acceptable action is set to re-dispatch")]
+    public DecisionNotAcceptableActionReDispatchReasonEnum? NotAcceptableActionReDispatchReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionUseForOtherPurposesReason")]
-    public required DecisionNotAcceptableActionUseForOtherPurposesReasonEnum NotAcceptableActionUseForOtherPurposesReason { get; init; }
+    [Description("Filled if not acceptable action is set to use for other purposes")]
+    public DecisionNotAcceptableActionUseForOtherPurposesReasonEnum? NotAcceptableActionUseForOtherPurposesReason { get; init; }
 
     [JsonPropertyName("notAcceptableDestructionReason")]
     [Description("Filled when notAcceptableAction is equal to destruction")]
@@ -66,26 +74,32 @@ public class Decision
     public string? NotAcceptableOtherReason { get; init; }
 
     [JsonPropertyName("detailsOfControlledDestinations")]
-    public required Party DetailsOfControlledDestinations { get; init; }
+    [Description("Details of controlled destinations")]
+    public Party? DetailsOfControlledDestinations { get; init; }
 
     [JsonPropertyName("specificWarehouseNonConformingConsignment")]
-    public required DecisionSpecificWarehouseNonConformingConsignmentEnum SpecificWarehouseNonConformingConsignment { get; init; }
+    [Description("Filled if consignment is set to acceptable and decision type is Specific Warehouse")]
+    public DecisionSpecificWarehouseNonConformingConsignmentEnum? SpecificWarehouseNonConformingConsignment { get; init; }
 
     [JsonPropertyName("temporaryDeadline")]
     [Description("Deadline when consignment has to leave borders")]
     public string? TemporaryDeadline { get; init; }
 
     [JsonPropertyName("decisionEnum")]
-    public required DecisionDecisionEnum DecisionEnum { get; init; }
+    [Description("Detailed decision for consignment")]
+    public DecisionDecisionEnum? DecisionEnum { get; init; }
 
     [JsonPropertyName("freeCirculationPurpose")]
-    public required DecisionFreeCirculationPurposeEnum FreeCirculationPurpose { get; init; }
+    [Description("Decision over purpose of free circulation in country")]
+    public DecisionFreeCirculationPurposeEnum? FreeCirculationPurpose { get; init; }
 
     [JsonPropertyName("definitiveImportPurpose")]
-    public required DecisionDefinitiveImportPurposeEnum DefinitiveImportPurpose { get; init; }
+    [Description("Decision over purpose of definitive import")]
+    public DecisionDefinitiveImportPurposeEnum? DefinitiveImportPurpose { get; init; }
 
     [JsonPropertyName("ifChanneledOption")]
-    public required DecisionIfChanneledOptionEnum IfChanneledOption { get; init; }
+    [Description("Decision channeled option based on (article8, article15)")]
+    public DecisionIfChanneledOptionEnum? IfChanneledOption { get; init; }
 
     [JsonPropertyName("customWarehouseRegisteredNumber")]
     [Description("Custom warehouse registered number")]

@@ -81,7 +81,7 @@ public class CommodityComplement
     public object? AdditionalData { get; init; }
 
     [JsonPropertyName("riskAssesment")]
-    public required CommodityRiskResult RiskAssesment { get; init; }
+    public CommodityRiskResult? RiskAssesment { get; init; }
 
     [JsonPropertyName("checks")]
     public List<InspectionCheck>? Checks { get; init; }

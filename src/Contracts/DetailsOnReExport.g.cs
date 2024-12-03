@@ -14,7 +14,8 @@ public class DetailsOnReExport
     public string? MeansOfTransportNo { get; init; }
 
     [JsonPropertyName("transportType")]
-    public required DetailsOnReExportTransportTypeEnum TransportType { get; init; }
+    [Description("Type of transport to be used")]
+    public DetailsOnReExportTransportTypeEnum? TransportType { get; init; }
 
     [JsonPropertyName("document")]
     [Description("Document issued for re-export")]

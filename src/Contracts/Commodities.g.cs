@@ -70,5 +70,6 @@ public class Commodities
     public string? AnimalsCertifiedAs { get; init; }
 
     [JsonPropertyName("commodityIntendedFor")]
-    public required CommoditiesCommodityIntendedForEnum CommodityIntendedFor { get; init; }
+    [Description("What the commodity is intended for")]
+    public CommoditiesCommodityIntendedForEnum? CommodityIntendedFor { get; init; }
 }
