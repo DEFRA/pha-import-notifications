@@ -92,6 +92,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         c.IncludeXmlComments(typeof(ImportNotification).Assembly);
         c.DocumentFilter<TagsDocumentFilter>();
         c.SchemaFilter<DescriptionSchemaFilter>();
+        c.UseAllOfToExtendReferenceSchemas();
         c.SwaggerDoc(
             "v1",
             new OpenApiInfo
