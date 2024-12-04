@@ -7,26 +7,25 @@ using WireMock.Logging;
 using WireMock.Server;
 using WireMock.Settings;
 
-namespace Defra.PhaImportNotifications.Api.Services.Btms;
+namespace Defra.PhaImportNotifications.BtmsStub;
 
 [ExcludeFromCodeCoverage]
 public class WireMockHostedService(ILogger<WireMockHostedService> logger, bool startWireMock) : IHostedService
 {
     private readonly WireMockServerSettings _settings = new() { Logger = new WireMockLogger(logger) };
-
-    public WireMockServer? WireMockServer { get; private set; }
+    private WireMockServer? _wireMockServer;
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
         if (startWireMock)
-            WireMockServer = WireMockServer.Start(_settings);
+            _wireMockServer = WireMockServer.Start(_settings);
 
         return Task.CompletedTask;
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        WireMockServer?.Stop();
+        _wireMockServer?.Stop();
 
         return Task.CompletedTask;
     }
