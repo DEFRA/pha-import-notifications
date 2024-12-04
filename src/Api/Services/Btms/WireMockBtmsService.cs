@@ -14,7 +14,13 @@ public class WireMockBtmsService(IOptions<BtmsOptions> btmsOptions, ILogger<Wire
     : IHostedService
 {
     private readonly BtmsOptions _options = btmsOptions.Value;
-    private readonly WireMockServerSettings _settings = new() { Logger = new WireMockLogger(logger), Port = 8090 };
+
+    private readonly WireMockServerSettings _settings = new()
+    {
+        Logger = new WireMockLogger(logger),
+        Port = btmsOptions.Value.StubPort,
+    };
+
     private WireMockServer? _wireMockServer;
 
     public Task StartAsync(CancellationToken cancellationToken)
@@ -22,8 +28,8 @@ public class WireMockBtmsService(IOptions<BtmsOptions> btmsOptions, ILogger<Wire
         if (!_options.StubEnabled)
             return Task.CompletedTask;
 
-        logger.LogInformation("Starting BTMS WireMock server on http://localhost:{Port}", _settings.Port);
         _wireMockServer = WireMockServer.Start(_settings);
+        logger.LogInformation("Starting BTMS WireMock server on http://localhost:{Port}", _wireMockServer.Port);
         return Task.CompletedTask;
     }
 
