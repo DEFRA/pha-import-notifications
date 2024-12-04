@@ -11,10 +11,6 @@ public class BtmsOptions
     [Required]
     public required string Password { get; init; }
 
-    public bool StubEnabled { get; init; } = false;
-
-    public int StubPort { get; init; } = 8090;
-
     [Required]
     public required string Username { get; init; }
 

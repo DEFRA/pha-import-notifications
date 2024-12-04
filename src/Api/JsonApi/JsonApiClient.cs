@@ -22,6 +22,8 @@ public class JsonApiClient(HttpClient httpClient, ILogger<JsonApiClient> logger)
 
         var result = await response.Content.ReadFromJsonAsync<Document>(s_options, cancellationToken);
 
+        // Need to revisit this error handling as the above could throw too
+
         if (!response.IsSuccessStatusCode)
         {
             logger.LogWarning("Request failed {StatusCode} {Document}", response.StatusCode, result);

@@ -1,57 +1,30 @@
-using System.Net;
-using System.Net.Sockets;
-using Defra.PhaImportNotifications.Api.Configuration;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
-public class EndpointTestBase<T> : IClassFixture<WebApplicationFactory<T>>
+public class EndpointTestBase<T> : IClassFixture<TestWebApplicationFactory<T>>
     where T : class
 {
-    private readonly WebApplicationFactory<T> _factory;
+    private readonly TestWebApplicationFactory<T> _factory;
 
-    protected EndpointTestBase(WebApplicationFactory<T> factory)
+    protected EndpointTestBase(TestWebApplicationFactory<T> factory, ITestOutputHelper outputHelper)
     {
         _factory = factory;
+        _factory.OutputHelper = outputHelper;
     }
 
-    private static int GetRandomPort()
-    {
-        var listener = new TcpListener(IPAddress.Loopback, 0);
-        listener.Start();
-
-        var port = ((IPEndPoint)listener.LocalEndpoint).Port;
-
-        listener.Stop();
-        return port;
-    }
-
-    protected virtual void ConfigureTestServices(IServiceCollection services)
-    {
-        var btmsPort = GetRandomPort();
-
-        var configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(
-                new Dictionary<string, string?>
-                {
-                    { "Btms:BaseUrl", $"http://localhost:{btmsPort}" },
-                    { "Btms:StubEnabled", "true" },
-                    { "Btms:StubPort", btmsPort.ToString() },
-                }
-            )
-            .Build();
-
-        services.Configure<BtmsOptions>(configuration.GetSection("Btms"));
-    }
+    protected virtual void ConfigureTestServices(IServiceCollection services) { }
 
     protected HttpClient CreateClient()
     {
         return _factory
             .WithWebHostBuilder(builder =>
             {
-                builder.ConfigureServices(ConfigureTestServices);
+                builder.UseEnvironment("IntegrationTests");
+                builder.ConfigureTestServices(ConfigureTestServices);
             })
             .CreateClient();
     }

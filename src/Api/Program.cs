@@ -51,6 +51,10 @@ static WebApplication CreateWebApplication(string[] args)
 
 static void ConfigureWebApplication(WebApplicationBuilder builder)
 {
+    builder.Configuration.AddJsonFile(
+        $"appsettings.cdp.{Environment.GetEnvironmentVariable("ENVIRONMENT")}.json",
+        optional: true
+    );
     builder.Configuration.AddEnvironmentVariables();
 
     var generatingOpenApiFromCli = Assembly.GetEntryAssembly()?.GetName().Name == "dotnet-swagger";
@@ -107,7 +111,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BasicAuthCredential
     );
     builder.Services.AddTransient<IBtmsService, BtmsService>();
-    builder.Services.AddBtmsStub(sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.StubEnabled);
+    builder.Services.AddBtmsStub();
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);

@@ -4,10 +4,10 @@ using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
 using WireMock.Server;
+using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
@@ -16,8 +16,12 @@ public class ImportNotificationsEndpointsTests : EndpointTestBase<Program>, ICla
     private WireMockServer WireMock { get; }
     private HttpClient HttpClient { get; }
 
-    public ImportNotificationsEndpointsTests(WebApplicationFactory<Program> factory, WireMockContext context)
-        : base(factory)
+    public ImportNotificationsEndpointsTests(
+        TestWebApplicationFactory<Program> factory,
+        ITestOutputHelper outputHelper,
+        WireMockContext context
+    )
+        : base(factory, outputHelper)
     {
         WireMock = context.Server;
         WireMock.Reset();

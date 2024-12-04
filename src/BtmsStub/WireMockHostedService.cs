@@ -1,7 +1,10 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using System.Text.Json;
+using Defra.PhaImportNotifications.BtmsStub.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using WireMock.Admin.Requests;
 using WireMock.Logging;
 using WireMock.Server;
@@ -10,22 +13,42 @@ using WireMock.Settings;
 namespace Defra.PhaImportNotifications.BtmsStub;
 
 [ExcludeFromCodeCoverage]
-public class WireMockHostedService(ILogger<WireMockHostedService> logger, bool startWireMock) : IHostedService
+public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<WireMockHostedService> logger)
+    : IHostedService
 {
-    private readonly WireMockServerSettings _settings = new() { Logger = new WireMockLogger(logger) };
+    private readonly WireMockServerSettings _settings = new()
+    {
+        Port = options.Value.Port,
+        Logger = new WireMockLogger(logger),
+    };
     private WireMockServer? _wireMockServer;
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        if (startWireMock)
+        if (options.Value.Enabled)
+        {
             _wireMockServer = WireMockServer.Start(_settings);
+
+            logger.LogInformation("Started on port {0}", _settings.Port);
+
+            // We will have methods for each scenario in the future but for
+            // now these are just the ones used in our integration tests.
+            _wireMockServer.StubSingleImportNotification();
+            _wireMockServer.StubSingleImportNotification("CHEDA.GB.2024.fail", shouldFail: true);
+            _wireMockServer.StubManyImportNotification();
+        }
 
         return Task.CompletedTask;
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        _wireMockServer?.Stop();
+        if (_wireMockServer is not null)
+        {
+            _wireMockServer?.Stop();
+
+            logger.LogInformation("Stopped");
+        }
 
         return Task.CompletedTask;
     }

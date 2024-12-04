@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc.Testing;
-
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.OpenApi;
 
-public class OpenApiTests(WebApplicationFactory<Program> factory) : IClassFixture<WebApplicationFactory<Program>>
+public class OpenApiTests(TestWebApplicationFactory<Program> factory)
+    : IClassFixture<TestWebApplicationFactory<Program>>
 {
     [Fact]
     public async Task OpenApi_VerifyAsExpected()
