@@ -26,11 +26,6 @@ Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger()
 try
 {
     var app = CreateWebApplication(args);
-    var btmsOptions = app.Services.GetRequiredService<IOptions<BtmsOptions>>().Value;
-
-    if (btmsOptions.StubEnabled)
-        app.Services.GetRequiredService<WireMockBtmsService>().Start();
-
     await app.RunAsync();
 }
 catch (Exception ex)
@@ -111,7 +106,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BasicAuthCredential
     );
     builder.Services.AddTransient<IBtmsService, StubBtmsService>();
-    builder.Services.AddSingleton<WireMockBtmsService>();
+    builder.Services.AddHostedService<WireMockBtmsService>();
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);
