@@ -44,7 +44,7 @@ public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<Wi
     {
         if (_wireMockServer is not null)
         {
-            _wireMockServer?.Stop();
+            _wireMockServer.Stop();
 
             logger.LogInformation("Stopped");
         }
