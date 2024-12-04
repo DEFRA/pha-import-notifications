@@ -107,8 +107,13 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     builder.Services.AddHttpClient();
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddJsonApiClient(
-        sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BaseUrl,
-        sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BasicAuthCredential
+        (sp, options) =>
+        {
+            var btmsOptions = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
+
+            options.BaseUrl = btmsOptions.BaseUrl;
+            options.BasicAuthCredential = btmsOptions.BasicAuthCredential;
+        }
     );
     builder.Services.AddTransient<IBtmsService, BtmsService>();
     builder.Services.AddBtmsStub();

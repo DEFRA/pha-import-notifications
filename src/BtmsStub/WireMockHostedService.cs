@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using System.Text.Json;
 using Defra.PhaImportNotifications.BtmsStub.Configuration;
 using Microsoft.Extensions.Hosting;
