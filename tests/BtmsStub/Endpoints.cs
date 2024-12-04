@@ -1,6 +1,6 @@
-namespace Defra.PhaImportNotifications.Testing.Btms;
+namespace Defra.PhaImportNotifications.BtmsStub;
 
-public static class BtmsEndpoints
+public static class Endpoints
 {
     public static class ImportNotifications
     {

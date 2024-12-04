@@ -1,9 +1,10 @@
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
+using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
-using Defra.PhaImportNotifications.Testing.Btms;
 using FluentAssertions;
 using Microsoft.Extensions.Logging.Abstractions;
+using ChedReferenceNumbers = Defra.PhaImportNotifications.Testing.ChedReferenceNumbers;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
 

@@ -3,9 +3,9 @@ using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 
-namespace Defra.PhaImportNotifications.Testing.Btms;
+namespace Defra.PhaImportNotifications.BtmsStub;
 
-public static class BtmsWireMockExtensions
+public static class WireMockExtensions
 {
     public static void StubSingleImportNotification(
         this WireMockServer wireMock,
@@ -20,7 +20,7 @@ public static class BtmsWireMockExtensions
             response = response.WithBody(GetBody("btms-import-notification-single.json"));
 
         wireMock
-            .Given(Request.Create().WithPath(BtmsEndpoints.ImportNotifications.Get(chedReferenceNumber)).UsingGet())
+            .Given(Request.Create().WithPath(Endpoints.ImportNotifications.Get(chedReferenceNumber)).UsingGet())
             .RespondWith(response);
     }
 
@@ -32,18 +32,20 @@ public static class BtmsWireMockExtensions
         if (!shouldFail)
             response = response.WithBody(GetBody("btms-import-notification-list.json"));
 
-        wireMock
-            .Given(Request.Create().WithPath(BtmsEndpoints.ImportNotifications.Get()).UsingGet())
-            .RespondWith(response);
+        wireMock.Given(Request.Create().WithPath(Endpoints.ImportNotifications.Get()).UsingGet()).RespondWith(response);
     }
 
     private static string GetBody(string fileName)
     {
-        var type = typeof(BtmsWireMockExtensions);
+        var type = typeof(WireMockExtensions);
         var assembly = type.Assembly;
 
-        using var stream = assembly.GetManifestResourceStream($"{type.Namespace}.{fileName}");
-        using var reader = new StreamReader(stream!);
+        using var stream = assembly.GetManifestResourceStream($"{type.Namespace}.Scenarios.{fileName}");
+
+        if (stream is null)
+            throw new InvalidOperationException($"Unable to find embedded resource {fileName}");
+
+        using var reader = new StreamReader(stream);
 
         return reader.ReadToEnd();
     }
