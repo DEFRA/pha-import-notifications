@@ -6,14 +6,9 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications";
 
+        public static string GetUpdated() => $"{Root}?from=2024-11-20";
+
         public static string Get(string chedReferenceNumber = ChedReferenceNumbers.ChedA) =>
             $"{Root}/{chedReferenceNumber}";
-    }
-
-    public static class ImportNotificationsUpdates
-    {
-        private const string Root = "/import-notifications-updates";
-
-        public static string Get() => $"{Root}/pha?from=2024-11-20";
     }
 }
