@@ -2,14 +2,16 @@ using AutoFixture;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
 using Defra.PhaImportNotifications.Testing;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
+using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotificationsUpdates;
 
-public class ImportNotificationsUpdatesEndpointsTests(WebApplicationFactory<Program> factory)
-    : EndpointTestBase<Program>(factory)
+public class ImportNotificationsUpdatesEndpointsTests(
+    TestWebApplicationFactory<Program> factory,
+    ITestOutputHelper outputHelper
+) : EndpointTestBase<Program>(factory, outputHelper)
 {
     private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
 

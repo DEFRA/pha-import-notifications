@@ -1,10 +1,11 @@
 using System.Net.Http.Json;
 using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
+using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
-public class ExampleEndpoints(WebApplicationFactory<Program> factory) : EndpointTestBase<Program>(factory)
+public class ExampleEndpoints(TestWebApplicationFactory<Program> factory, ITestOutputHelper outputHelper)
+    : EndpointTestBase<Program>(factory, outputHelper)
 {
     [Fact]
     public async Task GetHelloWorldReturnsHelloWorld()

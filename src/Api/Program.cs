@@ -10,6 +10,7 @@ using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Http;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
+using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http.Json;
@@ -50,6 +51,10 @@ static WebApplication CreateWebApplication(string[] args)
 
 static void ConfigureWebApplication(WebApplicationBuilder builder)
 {
+    builder.Configuration.AddJsonFile(
+        $"appsettings.cdp.{Environment.GetEnvironmentVariable("ENVIRONMENT")}.json",
+        optional: true
+    );
     builder.Configuration.AddEnvironmentVariables();
 
     var generatingOpenApiFromCli = Assembly.GetEntryAssembly()?.GetName().Name == "dotnet-swagger";
@@ -102,11 +107,16 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     builder.Services.AddHttpClient();
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddJsonApiClient(
-        sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BaseUrl,
-        sp => sp.GetRequiredService<IOptions<BtmsOptions>>().Value.BasicAuthCredential
+        (sp, options) =>
+        {
+            var btmsOptions = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
+
+            options.BaseUrl = btmsOptions.BaseUrl;
+            options.BasicAuthCredential = btmsOptions.BasicAuthCredential;
+        }
     );
     builder.Services.AddTransient<IBtmsService, BtmsService>();
-    builder.Services.AddHostedService<WireMockBtmsService>();
+    builder.Services.AddBtmsStub();
 
     // calls outside the platform should be done using the named 'proxy' http client.
     builder.Services.AddHttpProxyClient(logger);

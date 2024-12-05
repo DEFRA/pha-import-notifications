@@ -1,4 +1,3 @@
-using System.Text;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,9 +12,15 @@ public class ServiceCollectionExtensionsTests
     public void AddJsonApiClient_AsExpected(string baseAddress, int expectedMajor, int expectedMinor)
     {
         var services = new ServiceCollection();
-        var authHeader = Convert.ToBase64String(Encoding.UTF8.GetBytes("username:password"));
+        var authHeader = Convert.ToBase64String("username:password"u8.ToArray());
 
-        services.AddJsonApiClient(_ => baseAddress, _ => authHeader);
+        services.AddJsonApiClient(
+            (_, options) =>
+            {
+                options.BaseUrl = baseAddress;
+                options.BasicAuthCredential = authHeader;
+            }
+        );
 
         using var serviceProvider = services.BuildServiceProvider();
 
@@ -29,5 +34,27 @@ public class ServiceCollectionExtensionsTests
         httpClient.DefaultRequestVersion.Should().Be(new Version(expectedMajor, expectedMinor));
         httpClient.DefaultRequestHeaders.Authorization?.Scheme.Should().Be("Basic");
         httpClient.DefaultRequestHeaders.Authorization?.Parameter.Should().Be(authHeader);
+    }
+
+    [Fact]
+    public void AddJsonApiClient_NoAuthorizationHeader()
+    {
+        var services = new ServiceCollection();
+
+        services.AddJsonApiClient(
+            (_, options) =>
+            {
+                options.BaseUrl = "http://localhost";
+            }
+        );
+
+        using var serviceProvider = services.BuildServiceProvider();
+
+        serviceProvider.GetRequiredService<JsonApiClient>().Should().NotBeNull();
+
+        var httpClient = serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient("JsonApiClient");
+
+        httpClient.Should().NotBeNull();
+        httpClient.DefaultRequestHeaders.Authorization.Should().BeNull();
     }
 }
