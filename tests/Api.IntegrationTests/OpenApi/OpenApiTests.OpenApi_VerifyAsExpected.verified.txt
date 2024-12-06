@@ -21,7 +21,7 @@
         "tags": [
           "Import Notifications"
         ],
-        "summary": "Get Import Notifications",
+        "summary": "Get updated Import Notifications",
         "description": "Get all Import Notifications that have been updated between the time period specified",
         "operationId": "UpdatedImportNotifications",
         "parameters": [

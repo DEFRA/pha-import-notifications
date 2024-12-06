@@ -12,7 +12,7 @@ public static class EndpointRouteBuilderExtensions
         app.MapGet("import-notifications", GetUpdated)
             .WithName("UpdatedImportNotifications")
             .WithTags("Import Notifications")
-            .WithSummary("Get Import Notifications")
+            .WithSummary("Get updated Import Notifications")
             .WithDescription("Get all Import Notifications that have been updated between the time period specified")
             .Produces<UpdatedImportNotificationsResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
