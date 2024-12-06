@@ -16,26 +16,35 @@
     }
   ],
   "paths": {
-    "/import-notifications/{chedReferenceNumber}": {
+    "/import-notifications": {
       "get": {
         "tags": [
           "Import Notifications"
         ],
-        "summary": "Get Import Notification",
-        "description": "Get an Import Notification by CHED Reference Number",
-        "operationId": "ImportNotificationsByChedReferenceNumber",
+        "summary": "Get updated Import Notifications",
+        "description": "Get all Import Notifications that have been updated between the time period specified",
+        "operationId": "UpdatedImportNotifications",
         "parameters": [
           {
-            "name": "chedReferenceNumber",
-            "in": "path",
-            "description": "CHED Reference Number",
+            "name": "from",
+            "in": "query",
+            "description": "Filter import notifications updated after this date and time. Format is ISO 8601-1:2019",
             "required": true,
             "schema": {
-              "pattern": "^CHED(?:A|D|P|PP)\\.GB\\.\\d{4}\\.\\d{7}$",
               "type": "string",
-              "description": "CHED Reference Number"
-            },
-            "example": "CHEDA.GB.2024.1020304"
+              "description": "Filter import notifications updated after this date and time. Format is ISO 8601-1:2019",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. time of request. If the time period between from and to is greater than 24 hours then the request will be invalid.",
+            "schema": {
+              "type": "string",
+              "description": "Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. time of request. If the time period between from and to is greater than 24 hours then the request will be invalid.",
+              "format": "date-time"
+            }
           }
         ],
         "responses": {
@@ -44,7 +53,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ImportNotificationsResponse"
+                  "$ref": "#/components/schemas/UpdatedImportNotificationsResponse"
                 }
               }
             }
@@ -92,67 +101,26 @@
         }
       }
     },
-    "/import-notifications-updates/{portHealthAuthority}": {
+    "/import-notifications/{chedReferenceNumber}": {
       "get": {
         "tags": [
           "Import Notifications"
         ],
-        "summary": "Get Import Notification Updates",
-        "description": "Get all import notifications by port health authority that have been updated between the time period specified",
-        "operationId": "ImportNotificationsUpdatesByPortHealthAuthority",
+        "summary": "Get Import Notification",
+        "description": "Get an Import Notification by CHED Reference Number",
+        "operationId": "ImportNotificationsByChedReferenceNumber",
         "parameters": [
           {
-            "name": "portHealthAuthority",
+            "name": "chedReferenceNumber",
             "in": "path",
-            "description": "The port health authority with format TBC",
+            "description": "CHED Reference Number",
             "required": true,
             "schema": {
+              "pattern": "^CHED(?:A|D|P|PP)\\.GB\\.\\d{4}\\.\\d{7}$",
               "type": "string",
-              "description": "The port health authority with format TBC"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "Allows a specific page to be requested",
-            "schema": {
-              "type": "integer",
-              "description": "Allows a specific page to be requested",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "Allows a page size to be requested",
-            "schema": {
-              "type": "integer",
-              "description": "Allows a page size to be requested",
-              "format": "int32",
-              "default": 100
-            }
-          },
-          {
-            "name": "from",
-            "in": "query",
-            "description": "Filter import notifications updated after this date and time. Format is ISO 8601-1:2019",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Filter import notifications updated after this date and time. Format is ISO 8601-1:2019",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "to",
-            "in": "query",
-            "description": "Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. time of request. If the time period between from and to is greater than 24 hours then the request will be invalid.",
-            "schema": {
-              "type": "string",
-              "description": "Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. time of request. If the time period between from and to is greater than 24 hours then the request will be invalid.",
-              "format": "date-time"
-            }
+              "description": "CHED Reference Number"
+            },
+            "example": "CHEDA.GB.2024.1020304"
           }
         ],
         "responses": {
@@ -161,7 +129,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UpdatedImportNotificationPagedResponse"
+                  "$ref": "#/components/schemas/ImportNotificationResponse"
                 }
               }
             }
@@ -1940,34 +1908,7 @@
         },
         "additionalProperties": false
       },
-      "ImportNotificationStatusEnum": {
-        "enum": [
-          "Draft",
-          "Submitted",
-          "Validated",
-          "Rejected",
-          "InProgress",
-          "Amend",
-          "Modify",
-          "Replaced",
-          "Cancelled",
-          "Deleted",
-          "PartiallyRejected",
-          "SplitConsignment"
-        ],
-        "type": "string"
-      },
-      "ImportNotificationTypeEnum": {
-        "enum": [
-          "Cveda",
-          "Cvedp",
-          "Chedpp",
-          "Ced",
-          "Imp"
-        ],
-        "type": "string"
-      },
-      "ImportNotificationsResponse": {
+      "ImportNotificationResponse": {
         "required": [
           "created",
           "updated"
@@ -2207,6 +2148,33 @@
           }
         },
         "additionalProperties": false
+      },
+      "ImportNotificationStatusEnum": {
+        "enum": [
+          "Draft",
+          "Submitted",
+          "Validated",
+          "Rejected",
+          "InProgress",
+          "Amend",
+          "Modify",
+          "Replaced",
+          "Cancelled",
+          "Deleted",
+          "PartiallyRejected",
+          "SplitConsignment"
+        ],
+        "type": "string"
+      },
+      "ImportNotificationTypeEnum": {
+        "enum": [
+          "Cveda",
+          "Cvedp",
+          "Chedpp",
+          "Ced",
+          "Imp"
+        ],
+        "type": "string"
       },
       "InspectionCheck": {
         "type": "object",
@@ -3600,8 +3568,9 @@
       },
       "UpdatedImportNotification": {
         "required": [
-          "updated",
-          "uri"
+          "links",
+          "referenceNumber",
+          "updated"
         ],
         "type": "object",
         "properties": {
@@ -3610,46 +3579,51 @@
             "description": "Date last updated. Format is ISO 8601-1:2019",
             "format": "date-time"
           },
-          "uri": {
+          "referenceNumber": {
             "minLength": 1,
+            "pattern": "^CHED(?:A|D|P|PP)\\.GB\\.\\d{4}\\.\\d{7}$",
+            "type": "string",
+            "description": "CHED Reference Number"
+          },
+          "links": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UpdatedImportNotificationLinks"
+              }
+            ],
+            "description": "Links"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdatedImportNotificationLinks": {
+        "required": [
+          "importNotification"
+        ],
+        "type": "object",
+        "properties": {
+          "importNotification": {
             "pattern": "^/import-notifications/CHED(?:A|D|P|PP)\\.GB\\.\\d{4}\\.\\d{7}$",
             "type": "string",
             "description": "Relative path to import notification",
+            "format": "uri",
             "example": "/import-notifications/CHEDA.GB.2024.1020304"
           }
         },
         "additionalProperties": false
       },
-      "UpdatedImportNotificationPagedResponse": {
+      "UpdatedImportNotificationsResponse": {
         "required": [
-          "currentPage",
-          "records",
-          "totalPages",
-          "totalRecords"
+          "importNotifications"
         ],
         "type": "object",
         "properties": {
-          "records": {
+          "importNotifications": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UpdatedImportNotification"
             },
-            "description": "Records for current page"
-          },
-          "totalRecords": {
-            "type": "integer",
-            "description": "Total records across all pages",
-            "format": "int32"
-          },
-          "currentPage": {
-            "type": "integer",
-            "description": "Current page",
-            "format": "int32"
-          },
-          "totalPages": {
-            "type": "integer",
-            "description": "Total number of pages",
-            "format": "int32"
+            "description": "Import Notifications"
           }
         },
         "additionalProperties": false
