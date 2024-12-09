@@ -2184,8 +2184,7 @@
           "Cveda",
           "Cvedp",
           "Chedpp",
-          "Ced",
-          "Imp"
+          "Ced"
         ],
         "type": "string"
       },
