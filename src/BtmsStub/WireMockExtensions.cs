@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using WireMock.Matchers;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -24,7 +25,11 @@ public static class WireMockExtensions
             .RespondWith(response);
     }
 
-    public static void StubManyImportNotification(this WireMockServer wireMock, bool shouldFail = false)
+    public static void StubManyImportNotification(
+        this WireMockServer wireMock,
+        bool shouldFail = false,
+        string? filter = null
+    )
     {
         var code = shouldFail ? StatusCodes.Status500InternalServerError : StatusCodes.Status200OK;
         var response = Response.Create().WithStatusCode(code);
@@ -32,7 +37,12 @@ public static class WireMockExtensions
         if (!shouldFail)
             response = response.WithBody(GetBody("btms-import-notification-list.json"));
 
-        wireMock.Given(Request.Create().WithPath(Endpoints.ImportNotifications.Get()).UsingGet()).RespondWith(response);
+        var request = Request.Create().WithPath(Endpoints.ImportNotifications.Get()).UsingGet();
+
+        if (filter is not null)
+            request = request.WithParam("filter", MatchBehaviour.AcceptOnMatch, filter);
+
+        wireMock.Given(request).RespondWith(response);
     }
 
     private static string GetBody(string fileName)
