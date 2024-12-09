@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Defra.PhaImportNotifications.Testing;
 
 public static class Endpoints
@@ -14,6 +16,8 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications-updates";
 
-        public static string Get() => $"{Root}/pha?from=2024-11-20";
+        private static string IsoDate(DateTime date) => date.ToString("yyyy-MM-ddTHH:mm");
+
+        public static string Get(DateTime from, DateTime to) => $"{Root}/pha?from={IsoDate(from)}&to={IsoDate(to)}";
     }
 }

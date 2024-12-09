@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +12,6 @@ public static class ImportNotificationsUpdatesEndpoints
         // Question: do we want versioning in our path at all?
         // e.g. we start with /v1/import-notifications-updates etc...
         // or v1 is implied and v2 can be added if ever needed
-
         app.MapGet("import-notifications-updates/{portHealthAuthority}/", Get)
             .WithName("ImportNotificationsUpdatesByPortHealthAuthority")
             .WithTags("Import Notifications")
@@ -23,7 +23,8 @@ public static class ImportNotificationsUpdatesEndpoints
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status429TooManyRequests)
-            .ProducesProblem(StatusCodes.Status500InternalServerError);
+            .ProducesProblem(StatusCodes.Status500InternalServerError)
+            .AddEndpointFilter<UpdatedImportNotificationRequestValidator>();
 
         // Will add things like RequireRateLimiting("policyname") and RequireAuthorization()
         // to the above to include additional information in the generated open API spec

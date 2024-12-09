@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
 
-internal sealed class UpdatedImportNotificationRequest
+public sealed class UpdatedImportNotificationRequest : IDateTimeRangeDefinition
 {
     [Description("Allows a specific page to be requested")]
     [DefaultValue(1)]
@@ -24,7 +24,12 @@ internal sealed class UpdatedImportNotificationRequest
             + "time of request. If the time period between from and to is greater than 24 hours then "
             + "the request will be invalid."
     )]
-    [DefaultValue(typeof(DateTime), "Time of execution")] // This doesn't add anything to the spec - do we need it?
     [FromQuery(Name = "to")]
-    public DateTime? To { get; init; } = DateTime.Now;
+    public DateTime To { get; init; }
+}
+
+public interface IDateTimeRangeDefinition
+{
+    DateTime From { get; init; }
+    DateTime To { get; init; }
 }
