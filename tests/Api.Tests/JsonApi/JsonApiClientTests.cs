@@ -4,6 +4,7 @@ using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging.Abstractions;
+using WireMock.Matchers;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 
@@ -218,6 +219,36 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
         var act = async () => await Subject.Get("get", default);
 
         await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Could not deserialize JSON");
+    }
+
+    [Fact]
+    public async Task Get_WithFilter_ShouldSucceed()
+    {
+        WireMock
+            .Given(
+                Request
+                    .Create()
+                    .WithPath("/get")
+                    .UsingGet()
+                    .WithParam("filter", MatchBehaviour.AcceptOnMatch, "equals(name,'Some Name')")
+            )
+            .RespondWith(
+                Response
+                    .Create()
+                    .WithStatusCode(StatusCodes.Status200OK)
+                    .WithBodyFromFile("JsonApi\\get-people-include-books.json")
+            );
+
+        var document = await Subject.Get(
+            "get",
+            default,
+            new FilterExpression(
+                LogicalOperator.And,
+                [new ComparisonExpression(ComparisonOperator.Equals, "name", "Some Name")]
+            )
+        );
+
+        document.Should().NotBeNull();
     }
 
     private record Person<T>(T Id, string Name);

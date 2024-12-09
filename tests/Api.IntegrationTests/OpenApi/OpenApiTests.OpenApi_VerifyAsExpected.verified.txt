@@ -26,6 +26,19 @@
         "operationId": "UpdatedImportNotifications",
         "parameters": [
           {
+            "name": "bcp",
+            "in": "query",
+            "description": "Filter import notifications by BCP",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Filter import notifications by BCP"
+            }
+          },
+          {
             "name": "from",
             "in": "query",
             "description": "Filter import notifications updated after this date and time. Format is ISO 8601-1:2019",

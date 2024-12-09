@@ -16,9 +16,10 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     [Fact]
     public async Task GetImportNotifications_WhenOk_ShouldSucceed()
     {
-        WireMock.StubManyImportNotification();
+        var bcp = new[] { "bcp1", "bcp2" };
+        WireMock.StubManyImportNotification(filter: "or(equals(_PointOfEntry,'bcp1'),equals(_PointOfEntry,'bcp2'))");
 
-        var result = await Subject.GetImportNotifications(default);
+        var result = await Subject.GetImportNotifications(bcp, default);
 
         result.Should().HaveCount(10);
 
@@ -30,7 +31,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     {
         WireMock.StubManyImportNotification(shouldFail: true);
 
-        var act = () => Subject.GetImportNotifications(default);
+        var act = () => Subject.GetImportNotifications([], default);
 
         await act.Should().ThrowAsync<Exception>();
     }

@@ -18,9 +18,10 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
     {
         var client = CreateClient();
         var fixture = new Fixture();
+        var bcp = new[] { "bcp1", "bcp2" };
 
         MockBtmsService
-            .GetImportNotifications(Arg.Any<CancellationToken>())
+            .GetImportNotifications(Arg.Is<string[]>(x => x.SequenceEqual(bcp)), Arg.Any<CancellationToken>())
             .Returns(
                 new List<ImportNotification>
                 {
@@ -32,9 +33,19 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
                 }
             );
 
-        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.GetUpdated());
+        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.GetUpdated(bcp));
 
         await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
+    }
+
+    [Fact(Skip = "Not implemented yet")]
+    public async Task Get_NoBcp_ShouldFail()
+    {
+        var client = CreateClient();
+
+        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.GetUpdated());
+
+        await Verify(response);
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)
