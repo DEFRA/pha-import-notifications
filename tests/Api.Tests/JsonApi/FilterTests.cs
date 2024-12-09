@@ -74,4 +74,16 @@ public class FilterTests
             .Should()
             .Be("and(equals(field1,'value1'),or(greaterThan(field2,'field2-val1'),lessThan(field2,'field2-val2')))");
     }
+
+    [Theory]
+    [InlineData(new[] { "value1" }, "any(field1,'value1')")]
+    [InlineData(new[] { "value'1" }, "any(field1,'value''1')")]
+    [InlineData(new[] { "value1", "value2", "value3" }, "any(field1,'value1','value2','value3')")]
+    [InlineData(new string[] { }, "")]
+    public void AnyExpression_ToString_AsExpected(string[] values, string expected)
+    {
+        var subject = new AnyExpression("field1", values);
+
+        subject.ToString().Should().Be(expected);
+    }
 }

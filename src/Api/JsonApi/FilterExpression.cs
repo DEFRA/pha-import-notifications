@@ -2,13 +2,13 @@ namespace Defra.PhaImportNotifications.Api.JsonApi;
 
 public record FilterExpression(
     LogicalOperator Operator,
-    IReadOnlyList<ComparisonExpression> ComparisonExpressions,
+    IReadOnlyList<IExpression> Expressions,
     IReadOnlyList<FilterExpression>? NestedExpressions = null
 )
 {
     public override string ToString()
     {
-        var expressions = ComparisonExpressions
+        var expressions = Expressions
             .Select(x => x.ToString())
             .Concat((NestedExpressions ?? []).Select(x => x.ToString()))
             .Where(x => !string.IsNullOrEmpty(x))
