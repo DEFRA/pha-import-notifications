@@ -10,7 +10,13 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
         CancellationToken cancellationToken
     )
     {
-        var filter = new FilterExpression(LogicalOperator.And, [new AnyExpression("_PointOfEntry", bcp)]);
+        var filter = new FilterExpression(
+            LogicalOperator.And,
+            [
+                new AnyExpression("_PointOfEntry", bcp),
+                new AnyExpression("importNotificationType", Enum.GetNames<ImportNotificationTypeEnum>()),
+            ]
+        );
         var document = await jsonApiClient.Get("api/import-notifications", cancellationToken, filter);
 
         // This may return a document with errors so we need to check things like this when we integrate.
