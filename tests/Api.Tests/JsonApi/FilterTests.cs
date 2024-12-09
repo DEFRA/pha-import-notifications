@@ -86,4 +86,12 @@ public class FilterTests
 
         subject.ToString().Should().Be(expected);
     }
+
+    [Fact]
+    public void NotExpression_ToString_AsExpected()
+    {
+        var subject = new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "field1", "value1"));
+
+        subject.ToString().Should().Be("not(equals(field1,'value1'))");
+    }
 }
