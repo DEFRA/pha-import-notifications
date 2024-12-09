@@ -17,7 +17,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     public async Task GetImportNotifications_WhenOk_ShouldSucceed()
     {
         var bcp = new[] { "bcp1", "bcp2" };
-        WireMock.StubManyImportNotification(filter: "or(equals(_PointOfEntry,'bcp1'),equals(_PointOfEntry,'bcp2'))");
+        WireMock.StubManyImportNotification(filter: "any(_PointOfEntry,'bcp1','bcp2')");
 
         var result = await Subject.GetImportNotifications(bcp, default);
 
