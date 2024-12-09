@@ -7,14 +7,11 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Xunit.Abstractions;
-using Xunit.Sdk;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotificationsUpdates;
+namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
-public class ImportNotificationsUpdatesEndpointsTests(
-    TestWebApplicationFactory<Program> factory,
-    ITestOutputHelper outputHelper
-) : EndpointTestBase<Program>(factory, outputHelper)
+public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOutputHelper outputHelper)
+    : EndpointTestBase<Program>(factory, outputHelper)
 {
     private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
 
@@ -23,9 +20,10 @@ public class ImportNotificationsUpdatesEndpointsTests(
     {
         var client = CreateClient();
         var fixture = new Fixture();
+        var bcp = new[] { "bcp1", "bcp2" };
 
         MockBtmsService
-            .GetImportNotifications(Arg.Any<CancellationToken>())
+            .GetImportNotifications(Arg.Is<string[]>(x => x.SequenceEqual(bcp)), Arg.Any<CancellationToken>())
             .Returns(
                 new List<ImportNotification>
                 {
@@ -40,7 +38,7 @@ public class ImportNotificationsUpdatesEndpointsTests(
         var from = DateTime.Now.Subtract(TimeSpan.FromHours(1));
         var to = DateTime.Now.Subtract(TimeSpan.FromMinutes(30));
 
-        var url = Testing.Endpoints.ImportNotificationsUpdates.Get(from, to);
+        var url = Testing.Endpoints.ImportNotifications.GetUpdated(from, to, bcp);
 
         var response = await client.GetStringAsync(url);
         await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
@@ -50,11 +48,12 @@ public class ImportNotificationsUpdatesEndpointsTests(
     public async Task Get_ShouldFail_With400_BadRequest()
     {
         var client = CreateClient();
+        var bcp = new[] { "bcp1", "bcp2" };
 
         var from = DateTime.Now.Subtract(TimeSpan.FromHours(4));
         var to = DateTime.Now.Subtract(TimeSpan.FromHours(1));
 
-        var url = Testing.Endpoints.ImportNotificationsUpdates.Get(from, to);
+        var url = Testing.Endpoints.ImportNotifications.GetUpdated(from, to, bcp);
 
         var exception = await Assert.ThrowsAsync<HttpRequestException>(() => client.GetStringAsync(url));
 

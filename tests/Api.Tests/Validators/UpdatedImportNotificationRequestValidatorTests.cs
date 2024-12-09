@@ -1,4 +1,4 @@
-using Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Validators;
@@ -11,7 +11,12 @@ public class UpdatedImportNotificationRequestValidatorTests
         var from = DateTime.Now.Subtract(TimeSpan.FromMinutes(60));
         var to = DateTime.Now.Subtract(TimeSpan.FromMinutes(30));
 
-        var request = new UpdatedImportNotificationRequest { From = from, To = to };
+        var request = new UpdatedImportNotificationRequest
+        {
+            From = from,
+            To = to,
+            Bcp = ["bcp1"],
+        };
         var result = new UpdatedImportNotificationRequestValidator().Validate(request);
         result.IsValid.Should().BeTrue();
     }
@@ -22,7 +27,12 @@ public class UpdatedImportNotificationRequestValidatorTests
         var from = DateTime.Now.Add(TimeSpan.FromHours(2));
         var to = DateTime.Now;
 
-        var request = new UpdatedImportNotificationRequest { From = from, To = to };
+        var request = new UpdatedImportNotificationRequest
+        {
+            From = from,
+            To = to,
+            Bcp = ["bcp1"],
+        };
         var result = new UpdatedImportNotificationRequestValidator().Validate(request);
         result.IsValid.Should().BeFalse();
         result.Errors.Count.Should().Be(3);

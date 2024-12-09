@@ -7,14 +7,24 @@ public abstract class ValidationEndpointFilter<TArgument> : AbstractValidator<TA
 {
     public async ValueTask<object?> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)
     {
-        var requestParams = context.GetArgument<TArgument>(ArgumentIndex);
-        var validationResult = await ValidateAsync(requestParams);
+        try
+        {
+            var requestParams = context.GetArgument<TArgument>(ArgumentIndex);
+            var validationResult = await ValidateAsync(requestParams);
 
-        if (validationResult.IsValid)
-            return await next(context);
+            if (validationResult.IsValid)
+                return await next(context);
 
-        return Results.ValidationProblem(GroupErrors(validationResult.Errors));
+            return Results.ValidationProblem(GroupErrors(validationResult.Errors));
+        }
+        catch (InvalidCastException)
+        {
+            throw new ArgumentNotFoundAtIndexException(typeof(TArgument), ArgumentIndex);
+        }
     }
+
+    public class ArgumentNotFoundAtIndexException(Type type, int index)
+        : Exception($"Argument for type '{type}' not found at index '{index}'") { }
 
     private static IEnumerable<KeyValuePair<string, string[]>> GroupErrors(List<ValidationFailure> failures) =>
         failures

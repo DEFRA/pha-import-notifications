@@ -1,4 +1,4 @@
-using Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using FluentValidation;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.Validation;

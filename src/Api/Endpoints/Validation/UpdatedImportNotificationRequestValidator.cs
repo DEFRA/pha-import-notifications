@@ -1,4 +1,4 @@
-using Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using FluentValidation;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.Validation;
@@ -14,5 +14,5 @@ public class UpdatedImportNotificationRequestValidator : ValidationEndpointFilte
             .WithMessage("To must be older the 30 seconds ago from now");
     }
 
-    protected override int ArgumentIndex => 1;
+    protected override int ArgumentIndex => 0;
 }

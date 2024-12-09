@@ -1,19 +1,15 @@
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
+namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
 public sealed class UpdatedImportNotificationRequest : IDateTimeRangeDefinition
 {
-    [Description("Allows a specific page to be requested")]
-    [DefaultValue(1)]
-    [FromQuery(Name = "page")]
-    public int? Page { get; init; } = 1;
-
-    [Description("Allows a page size to be requested")]
-    [DefaultValue(100)]
-    [FromQuery(Name = "pageSize")]
-    public int? PageSize { get; init; } = 100;
+    [Description("Filter import notifications by BCP")]
+    [FromQuery(Name = "bcp")]
+    [Required]
+    public required string[] Bcp { get; init; }
 
     [Description("Filter import notifications updated after this date and time. Format is ISO 8601-1:2019")]
     [FromQuery(Name = "from")]

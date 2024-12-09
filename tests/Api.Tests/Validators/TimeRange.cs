@@ -1,4 +1,4 @@
-using Defra.PhaImportNotifications.Api.Endpoints.ImportNotificationsUpdates;
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Validators;
 
