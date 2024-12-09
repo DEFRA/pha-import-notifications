@@ -6,7 +6,7 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications";
 
-        public static string GetUpdated(string[]? bcp = null)
+        public static string GetUpdated(DateTime from, DateTime to, string[]? bcp = null)
         {
             string? bcpParam = null;
 
@@ -15,10 +15,12 @@ public static class Endpoints
                 bcpParam = string.Join("&", bcp.Select(x => $"bcp={x}")) + "&";
             }
 
-            return $"{Root}?{bcpParam}from=2024-11-20";
+            return $"{Root}?{bcpParam}from={IsoDate(from)}&to={IsoDate(to)}";
         }
 
         public static string Get(string chedReferenceNumber = ChedReferenceNumbers.ChedA) =>
             $"{Root}/{chedReferenceNumber}";
+
+        private static string IsoDate(DateTime date) => date.ToString("yyyy-MM-ddTHH:mm");
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
-internal sealed class UpdatedImportNotificationRequest
+public sealed class UpdatedImportNotificationRequest : IDateTimeRangeDefinition
 {
     [Description("Filter import notifications by BCP")]
     [FromQuery(Name = "bcp")]
@@ -21,5 +21,11 @@ internal sealed class UpdatedImportNotificationRequest
             + "the request will be invalid."
     )]
     [FromQuery(Name = "to")]
-    public DateTime? To { get; init; } = DateTime.Now;
+    public DateTime To { get; init; }
+}
+
+public interface IDateTimeRangeDefinition
+{
+    DateTime From { get; init; }
+    DateTime To { get; init; }
 }
