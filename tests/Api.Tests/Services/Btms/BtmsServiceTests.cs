@@ -18,11 +18,12 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     {
         var bcp = new[] { "bcp1", "bcp2" };
         WireMock.StubManyImportNotification(
-            filter: "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'))"
+            filter: "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))"
         );
 
         var result = await Subject.GetImportNotifications(bcp, default);
 
+        // If this fails, check the expected filter as it may have changed
         result.Should().HaveCount(10);
 
         await Verify(result).DontScrubGuids().DontScrubDateTimes();

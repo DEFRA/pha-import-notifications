@@ -15,6 +15,7 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
             [
                 new AnyExpression("_PointOfEntry", bcp),
                 new AnyExpression("importNotificationType", Enum.GetNames<ImportNotificationTypeEnum>()),
+                new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
             ]
         );
         var document = await jsonApiClient.Get("api/import-notifications", cancellationToken, filter);
