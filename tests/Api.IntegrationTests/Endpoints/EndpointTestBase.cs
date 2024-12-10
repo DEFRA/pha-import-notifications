@@ -1,5 +1,4 @@
 using System.Net.Http.Headers;
-using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -20,10 +19,7 @@ public class EndpointTestBase<T> : IClassFixture<TestWebApplicationFactory<T>>
         _factory.OutputHelper = outputHelper;
     }
 
-    protected virtual void ConfigureTestServices(IServiceCollection services)
-    {
-        services.AddSingleton<BasicAuthOptions>(_ => new BasicAuthOptions { Username = "abcd", Password = "defg" });
-    }
+    protected virtual void ConfigureTestServices(IServiceCollection services) { }
 
     protected HttpClient CreateClient()
     {
