@@ -35,8 +35,8 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
                 }
             );
 
-        var from = DateTime.Now.Subtract(TimeSpan.FromHours(1));
-        var to = DateTime.Now.Subtract(TimeSpan.FromMinutes(30));
+        var from = DateTime.UtcNow.Subtract(TimeSpan.FromHours(1));
+        var to = DateTime.UtcNow.Subtract(TimeSpan.FromMinutes(30));
 
         var url = Testing.Endpoints.ImportNotifications.GetUpdated(from, to, bcp);
 
@@ -50,8 +50,8 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
         var client = CreateClient();
         var bcp = new[] { "bcp1", "bcp2" };
 
-        var from = DateTime.Now.Subtract(TimeSpan.FromHours(4));
-        var to = DateTime.Now.Subtract(TimeSpan.FromHours(1));
+        var from = DateTime.UtcNow.Subtract(TimeSpan.FromHours(4));
+        var to = DateTime.UtcNow.Subtract(TimeSpan.FromHours(1));
 
         var url = Testing.Endpoints.ImportNotifications.GetUpdated(from, to, bcp);
 

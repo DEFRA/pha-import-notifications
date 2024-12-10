@@ -10,7 +10,7 @@ public class UpdatedImportNotificationRequestValidator : ValidationEndpointFilte
         Include(new DateTimeRangeFromEarlierThanToValidator());
         Include(new DateTimeRangeIsLessThanValidator(TimeSpan.FromHours(1)));
         RuleFor(x => x.To)
-            .SetValidator(new DateTimeEarlierThanValidator(TimeSpan.FromSeconds(30), DateTime.Now))
+            .SetValidator(new DateTimeEarlierThanValidator(TimeSpan.FromSeconds(30), DateTime.UtcNow))
             .WithMessage("To must be older the 30 seconds ago from now");
     }
 

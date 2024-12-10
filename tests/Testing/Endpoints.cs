@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http.Extensions;
+
 namespace Defra.PhaImportNotifications.Testing;
 
 public static class Endpoints
@@ -8,19 +10,23 @@ public static class Endpoints
 
         public static string GetUpdated(DateTime from, DateTime to, string[]? bcp = null)
         {
-            string? bcpParam = null;
+            var query = new QueryBuilder();
 
-            if (bcp is not null && bcp.Length > 0)
+            if (bcp is not null)
             {
-                bcpParam = string.Join("&", bcp.Select(x => $"bcp={x}")) + "&";
+                foreach (var se in bcp)
+                {
+                    query.Add("bcp", se);
+                }
             }
 
-            return $"{Root}?{bcpParam}from={IsoDate(from)}&to={IsoDate(to)}";
+            query.Add("from", from.ToString("o"));
+            query.Add("to", to.ToString("o"));
+
+            return $"{Root}{query}";
         }
 
         public static string Get(string chedReferenceNumber = ChedReferenceNumbers.ChedA) =>
             $"{Root}/{chedReferenceNumber}";
-
-        private static string IsoDate(DateTime date) => date.ToString("yyyy-MM-ddTHH:mm");
     }
 }

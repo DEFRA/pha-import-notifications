@@ -8,7 +8,7 @@ public class DateTimeEarlierThanValidatorTests
     public void IsValid_ShouldReturnTrue_When_FromLaterThanTo()
     {
         new DateTimeEarlierThanValidator(TimeSpan.FromSeconds(1), DateTime.Now)
-            .Validate(DateTime.Now.Subtract(TimeSpan.FromSeconds(2)))
+            .Validate(DateTime.UtcNow.Subtract(TimeSpan.FromSeconds(2)))
             .IsValid.Should()
             .BeTrue();
     }
@@ -16,8 +16,8 @@ public class DateTimeEarlierThanValidatorTests
     [Fact]
     public void IsValid_ShouldReturnFalse_When_LaterThanExpected()
     {
-        var result = new DateTimeEarlierThanValidator(TimeSpan.FromSeconds(1), DateTime.Now).Validate(
-            DateTime.Now.Subtract(TimeSpan.FromMilliseconds(500))
+        var result = new DateTimeEarlierThanValidator(TimeSpan.FromSeconds(1), DateTime.UtcNow).Validate(
+            DateTime.UtcNow.Subtract(TimeSpan.FromMilliseconds(500))
         );
         result.IsValid.Should().BeFalse();
         result.Errors.Count.Should().Be(1);

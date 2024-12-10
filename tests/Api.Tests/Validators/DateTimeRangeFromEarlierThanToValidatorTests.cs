@@ -8,8 +8,8 @@ public class DateTimeRangeFromEarlierThanToValidatorTests
     public void IsValid_ShouldReturnTrue_When_FromLaterThanTo()
     {
         var range = new TimeRangeBuilder()
-            .From(DateTime.Now.Subtract(TimeSpan.FromSeconds(10)))
-            .To(DateTime.Now)
+            .From(DateTime.UtcNow.Subtract(TimeSpan.FromSeconds(10)))
+            .To(DateTime.UtcNow)
             .Build();
         new DateTimeRangeFromEarlierThanToValidator().Validate(range).IsValid.Should().BeTrue();
     }
@@ -18,8 +18,8 @@ public class DateTimeRangeFromEarlierThanToValidatorTests
     public void IsValid_ShouldReturnFalse_When_ToLaterThanFrom()
     {
         var range = new TimeRangeBuilder()
-            .From(DateTime.Now)
-            .To(DateTime.Now.Subtract(TimeSpan.FromSeconds(10)))
+            .From(DateTime.UtcNow)
+            .To(DateTime.UtcNow.Subtract(TimeSpan.FromSeconds(10)))
             .Build();
 
         var result = new DateTimeRangeFromEarlierThanToValidator().Validate(range);
