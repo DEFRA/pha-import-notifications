@@ -1,7 +1,9 @@
+using System.Net;
 using AutoFixture;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
 using Defra.PhaImportNotifications.Testing;
+using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Xunit.Abstractions;
@@ -46,6 +48,17 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
         var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.GetUpdated());
 
         await Verify(response);
+    }
+
+    [Fact]
+    public async Task Get_WhenNotAuthenticated_ReturnsUnauthorized()
+    {
+        var client = CreateClient();
+        client.DefaultRequestHeaders.Authorization = null;
+
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.GetUpdated());
+
+        response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)

@@ -3734,8 +3734,20 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Basic": {
+        "type": "http",
+        "description": "Basic authentication using the Authorization header",
+        "scheme": "Basic"
+      }
     }
   },
+  "security": [
+    {
+      "Basic": [ ]
+    }
+  ],
   "tags": [
     {
       "name": "Import Notifications",
