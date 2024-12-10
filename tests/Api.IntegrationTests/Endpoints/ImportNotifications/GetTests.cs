@@ -13,9 +13,6 @@ namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNoti
 
 public class GetTests : EndpointTestBase<Program>, IClassFixture<WireMockContext>
 {
-    private WireMockServer WireMock { get; }
-    private HttpClient HttpClient { get; }
-
     public GetTests(TestWebApplicationFactory<Program> factory, ITestOutputHelper outputHelper, WireMockContext context)
         : base(factory, outputHelper)
     {
@@ -23,6 +20,9 @@ public class GetTests : EndpointTestBase<Program>, IClassFixture<WireMockContext
         WireMock.Reset();
         HttpClient = context.HttpClient;
     }
+
+    private WireMockServer WireMock { get; }
+    private HttpClient HttpClient { get; }
 
     [Fact]
     public async Task Get_WhenFound_ShouldSucceed()
@@ -54,6 +54,17 @@ public class GetTests : EndpointTestBase<Program>, IClassFixture<WireMockContext
         var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
 
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+    }
+
+    [Fact]
+    public async Task Get_WhenNotAuthenticated_ReturnsUnauthorized()
+    {
+        var client = CreateClient();
+        client.DefaultRequestHeaders.Authorization = null;
+
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+
+        response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)
