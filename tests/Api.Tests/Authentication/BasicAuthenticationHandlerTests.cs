@@ -13,7 +13,7 @@ namespace Defra.PhaImportNotifications.Api.Tests.Authentication;
 
 public class BasicAuthenticationHandlerTests
 {
-    private async Task<BasicAuthenticationHandler> CreateHandler(TestHandlerOptions options)
+    private static async Task<BasicAuthenticationHandler> CreateHandler(TestHandlerOptions options)
     {
         var authSchemeOptions = new AuthenticationSchemeOptions { TimeProvider = Substitute.For<TimeProvider>() };
 
@@ -49,7 +49,7 @@ public class BasicAuthenticationHandlerTests
     public async Task HandleAuthenticateAsync_WhenDisabled_ReturnsSuccess()
     {
         var context = new DefaultHttpContext();
-        context.Request.Headers["Authorization"] = "";
+        context.Request.Headers.Authorization = "";
 
         var handler = await CreateHandler(new TestHandlerOptions { AuthEnabled = false, HttpContext = context });
 
@@ -61,7 +61,7 @@ public class BasicAuthenticationHandlerTests
     public async Task HandleAuthenticateAsync_WithNoAuthorizationHeader_FailsWithInvalidAuthorizationHeader()
     {
         var context = new DefaultHttpContext();
-        context.Request.Headers["Authorization"] = "";
+        context.Request.Headers.Authorization = "";
 
         var handler = await CreateHandler(new TestHandlerOptions { HttpContext = context });
 
@@ -79,7 +79,7 @@ public class BasicAuthenticationHandlerTests
     )
     {
         var context = new DefaultHttpContext();
-        context.Request.Headers["Authorization"] = authorizationHeader;
+        context.Request.Headers.Authorization = authorizationHeader;
 
         var handler = await CreateHandler(new TestHandlerOptions { HttpContext = context });
 
@@ -91,7 +91,7 @@ public class BasicAuthenticationHandlerTests
     public async Task HandleAuthenticateAsync_WithIncorrectUsernameOrPassword_FailsWithInvalidUsernameOrPassword()
     {
         var context = new DefaultHttpContext();
-        context.Request.Headers["Authorization"] = BasicAuthHelper.CreateBasicAuthHeader(
+        context.Request.Headers.Authorization = BasicAuthHelper.CreateBasicAuthHeader(
             "invalid-username",
             "invalid-password"
         );
@@ -110,7 +110,7 @@ public class BasicAuthenticationHandlerTests
         const string password = "real-password";
         const string username = "real-username";
 
-        context.Request.Headers["Authorization"] = BasicAuthHelper.CreateBasicAuthHeader(username, password);
+        context.Request.Headers.Authorization = BasicAuthHelper.CreateBasicAuthHeader(username, password);
 
         var handler = await CreateHandler(
             new TestHandlerOptions
