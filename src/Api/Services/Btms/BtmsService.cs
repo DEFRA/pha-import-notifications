@@ -11,8 +11,12 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
     )
     {
         var filter = new FilterExpression(
-            LogicalOperator.Or,
-            bcp.Select(x => new ComparisonExpression(ComparisonOperator.Equals, "_PointOfEntry", x)).ToList()
+            LogicalOperator.And,
+            [
+                new AnyExpression("_PointOfEntry", bcp),
+                new AnyExpression("importNotificationType", Enum.GetNames<ImportNotificationTypeEnum>()),
+                new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
+            ]
         );
         var document = await jsonApiClient.Get("api/import-notifications", cancellationToken, filter);
 

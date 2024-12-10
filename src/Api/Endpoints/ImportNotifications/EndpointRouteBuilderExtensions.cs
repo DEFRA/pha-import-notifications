@@ -11,6 +11,7 @@ public static class EndpointRouteBuilderExtensions
     public static void MapImportNotificationsEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("import-notifications", GetUpdated)
+            .RequireAuthorization()
             .WithName("UpdatedImportNotifications")
             .WithTags("Import Notifications")
             .WithSummary("Get updated Import Notifications")
@@ -23,6 +24,7 @@ public static class EndpointRouteBuilderExtensions
             .AddEndpointFilter<UpdatedImportNotificationRequestValidator>();
 
         app.MapGet("import-notifications/{chedReferenceNumber}/", Get)
+            .RequireAuthorization()
             .WithName("ImportNotificationsByChedReferenceNumber")
             .WithTags("Import Notifications")
             .WithSummary("Get Import Notification")

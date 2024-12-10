@@ -52,13 +52,15 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 {
     builder.Configuration.AddJsonFile(
         $"appsettings.cdp.{Environment.GetEnvironmentVariable("ENVIRONMENT")}.json",
-        optional: true
+        true
     );
     builder.Configuration.AddEnvironmentVariables();
 
     var generatingOpenApiFromCli = Assembly.GetEntryAssembly()?.GetName().Name == "dotnet-swagger";
 
     var logger = ConfigureLogging(builder);
+
+    builder.Services.AddBasicAuthentication();
 
     // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
     builder.Services.AddCustomTrustStore(logger);
@@ -78,6 +80,29 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     builder.Services.AddSwaggerGen(c =>
     {
         c.AddServer(new OpenApiServer { Url = "https://localhost" });
+        c.AddSecurityDefinition(
+            "Basic",
+            new OpenApiSecurityScheme
+            {
+                Description = "Basic authentication using the Authorization header",
+                In = ParameterLocation.Header,
+                Name = "Authorization",
+                Scheme = "Basic",
+                Type = SecuritySchemeType.Http,
+            }
+        );
+        c.AddSecurityRequirement(
+            new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Basic" },
+                    },
+                    []
+                },
+            }
+        );
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
         c.IncludeXmlComments(typeof(ImportNotification).Assembly);
         c.DocumentFilter<TagsDocumentFilter>();
@@ -141,6 +166,9 @@ static Logger ConfigureLogging(WebApplicationBuilder builder)
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 {
     var app = builder.Build();
+
+    app.UseAuthentication();
+    app.UseAuthorization();
 
     app.MapHealthChecks("/health");
     app.MapExampleEndpoints();

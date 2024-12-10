@@ -50,7 +50,7 @@ COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 RUN dotnet csharpier --check .
 
 RUN dotnet build --no-restore -c Release
-RUN swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
+RUN BasicAuth__Enabled=false swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
 RUN vacuum lint -d -r .vacuum.yml openapi.json
 
 RUN dotnet test --no-restore tests/Api.Tests

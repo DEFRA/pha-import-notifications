@@ -55,5 +55,13 @@ internal static class Ignored
             "ControlAuthority",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IuuFishingReference" }
         },
+        {
+            "ImportNotificationTypeEnum",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IMP" }
+        },
+        {
+            "ImportNotificationStatusEnum",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Draft" }
+        },
     };
 }

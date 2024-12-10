@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using Defra.PhaImportNotifications.Api.Helpers;
 
 namespace Defra.PhaImportNotifications.Api.Configuration;
 
@@ -14,5 +14,5 @@ public class BtmsOptions
     [Required]
     public required string Username { get; init; }
 
-    public string BasicAuthCredential => Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Username}:{Password}"));
+    public string BasicAuthCredential => BasicAuthHelper.CreateBasicAuth(Username, Password);
 }

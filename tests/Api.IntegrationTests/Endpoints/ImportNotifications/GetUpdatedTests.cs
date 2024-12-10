@@ -61,6 +61,17 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
         exception.Message.Should().Contain("Bad Request");
     }
 
+    [Fact]
+    public async Task Get_WhenNotAuthenticated_ReturnsUnauthorized()
+    {
+        var client = CreateClient();
+        client.DefaultRequestHeaders.Authorization = null;
+
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.GetUpdated());
+
+        response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+    }
+
     protected override void ConfigureTestServices(IServiceCollection services)
     {
         base.ConfigureTestServices(services);
