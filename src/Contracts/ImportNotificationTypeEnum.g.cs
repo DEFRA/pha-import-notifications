@@ -4,6 +4,5 @@ public enum ImportNotificationTypeEnum
     Cveda,
     Cvedp,
     Chedpp,
-    Ced,
-    Imp
+    Ced
 }

@@ -40,8 +40,8 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
 
     SyntaxNode CreateEnumSyntax()
     {
-        var values = schema.Enum.Select(v => CreateEnumValue((v as OpenApiString)!.Value));
-        var @enum = CreateEnum(schemaName).AddMembers(values.ToArray());
+        var values = schema.Enum.Select(v => CreateEnumValue(schemaName, (v as OpenApiString)!.Value));
+        var @enum = CreateEnum(schemaName).AddMembers(values.Where(x => x != null).Select(x => x!).ToArray());
 
         return namespaceDeclaration.AddMembers(@enum);
     }
@@ -95,7 +95,12 @@ static string CreateStringReferenceTypeName(OpenApiSchema schema)
 static string CreateReferenceTypeName(OpenApiSchema schema, string defaultTypeName) =>
     schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName;
 
-static EnumMemberDeclarationSyntax CreateEnumValue(string name) => EnumMemberDeclaration(name);
+static EnumMemberDeclarationSyntax? CreateEnumValue(string schemaName, string name)
+{
+    var ignored = Ignored.Properties.TryGetValue(schemaName, out var properties) && properties.Contains(name);
+
+    return ignored ? null : EnumMemberDeclaration(name);
+}
 
 static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, OpenApiSchema schema)
 {
