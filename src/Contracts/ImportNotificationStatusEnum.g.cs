@@ -1,7 +1,6 @@
 namespace Defra.PhaImportNotifications.Contracts;
 public enum ImportNotificationStatusEnum
 {
-    Draft,
     Submitted,
     Validated,
     Rejected,

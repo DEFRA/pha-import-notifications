@@ -59,5 +59,9 @@ internal static class Ignored
             "ImportNotificationTypeEnum",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IMP" }
         },
+        {
+            "ImportNotificationStatusEnum",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Draft" }
+        },
     };
 }
