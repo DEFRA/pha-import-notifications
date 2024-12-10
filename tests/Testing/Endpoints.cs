@@ -8,7 +8,7 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications";
 
-        public static string GetUpdated(DateTime from, DateTime to, string[]? bcp = null)
+        public static string GetUpdated(DateTime? from = null, DateTime? to = null, string[]? bcp = null)
         {
             var query = new QueryBuilder();
 
@@ -20,8 +20,8 @@ public static class Endpoints
                 }
             }
 
-            query.Add("from", from.ToString("o"));
-            query.Add("to", to.ToString("o"));
+            query.Add("from", from?.ToString("o") ?? string.Empty);
+            query.Add("to", to?.ToString("o") ?? string.Empty);
 
             return $"{Root}{query}";
         }
