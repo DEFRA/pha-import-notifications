@@ -17,7 +17,7 @@ public abstract class ValidationEndpointFilter<TArgument> : AbstractValidator<TA
 
             return Results.ValidationProblem(GroupErrors(validationResult.Errors));
         }
-        catch (InvalidCastException)
+        catch (Exception ex) when (ex is InvalidCastException or ArgumentOutOfRangeException)
         {
             throw new ArgumentNotFoundAtIndexException(typeof(TArgument), ArgumentIndex);
         }

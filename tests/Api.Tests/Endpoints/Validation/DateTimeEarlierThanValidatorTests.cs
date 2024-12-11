@@ -1,6 +1,6 @@
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Validators;
+namespace Defra.PhaImportNotifications.Api.Tests.Endpoints.Validation;
 
 public class DateTimeEarlierThanValidatorTests
 {
