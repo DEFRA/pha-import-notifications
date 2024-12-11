@@ -74,9 +74,9 @@ public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<Wi
             logger.LogError(formatString, args);
         }
 
-        public void Error(string formatString, Exception exception)
+        public void Error(string message, Exception exception)
         {
-            logger.LogError(exception, formatString, exception);
+            logger.LogError(exception, message, exception);
         }
 
         public void DebugRequestResponse(LogEntryModel logEntryModel, bool isAdminRequest)
