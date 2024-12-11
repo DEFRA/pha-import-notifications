@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http.Extensions;
+
 namespace Defra.PhaImportNotifications.Testing;
 
 public static class Endpoints
@@ -6,16 +8,22 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications";
 
-        public static string GetUpdated(string[]? bcp = null)
+        public static string GetUpdated(DateTime? from = null, DateTime? to = null, string[]? bcp = null)
         {
-            string? bcpParam = null;
+            var query = new QueryBuilder();
 
-            if (bcp is not null && bcp.Length > 0)
+            if (bcp is not null)
             {
-                bcpParam = string.Join("&", bcp.Select(x => $"bcp={x}")) + "&";
+                foreach (var se in bcp)
+                {
+                    query.Add("bcp", se);
+                }
             }
 
-            return $"{Root}?{bcpParam}from=2024-11-20";
+            query.Add("from", from?.ToString("o") ?? string.Empty);
+            query.Add("to", to?.ToString("o") ?? string.Empty);
+
+            return $"{Root}{query}";
         }
 
         public static string Get(string chedReferenceNumber = ChedReferenceNumbers.ChedA) =>

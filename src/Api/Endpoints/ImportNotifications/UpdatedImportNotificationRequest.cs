@@ -4,22 +4,32 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
-internal sealed class UpdatedImportNotificationRequest
+public sealed class UpdatedImportNotificationRequest : IDateTimeRangeDefinition
 {
     [Description("Filter import notifications by BCP")]
     [FromQuery(Name = "bcp")]
     [Required]
     public required string[] Bcp { get; init; }
 
-    [Description("Filter import notifications updated after this date and time. Format is ISO 8601-1:2019")]
+    [Description(
+        "Filter import notifications updated after this date and time. "
+            + " Expected value is UTC using format ISO 8601-1:2019"
+    )]
     [FromQuery(Name = "from")]
     public DateTime From { get; init; }
 
     [Description(
-        "Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. "
-            + "time of request. If the time period between from and to is greater than 24 hours then "
-            + "the request will be invalid."
+        "Filter import notifications updated before this date and time. Expected value is UTC using format "
+            + "ISO 8601-1:2019. If the time period between From and To is greater than 1 hour then the request will "
+            + "be invalid. Expected value also needs to be in the past by 30 seconds if requesting the"
+            + " current UTC date and time."
     )]
     [FromQuery(Name = "to")]
-    public DateTime? To { get; init; } = DateTime.Now;
+    public DateTime To { get; init; }
+}
+
+public interface IDateTimeRangeDefinition
+{
+    DateTime From { get; init; }
+    DateTime To { get; init; }
 }

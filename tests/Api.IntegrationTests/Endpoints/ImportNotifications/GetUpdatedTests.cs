@@ -35,19 +35,30 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
                 }
             );
 
-        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.GetUpdated(bcp));
+        var from = DateTime.UtcNow.Subtract(TimeSpan.FromHours(1));
+        var to = DateTime.UtcNow.Subtract(TimeSpan.FromMinutes(30));
 
+        var url = Testing.Endpoints.ImportNotifications.GetUpdated(from, to, bcp);
+
+        var response = await client.GetStringAsync(url);
         await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
     }
 
-    [Fact(Skip = "Not implemented yet")]
-    public async Task Get_NoBcp_ShouldFail()
+    [Fact]
+    public async Task Get_ShouldFail_With400_BadRequest()
     {
         var client = CreateClient();
+        var bcp = new[] { "bcp1", "bcp2" };
 
-        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.GetUpdated());
+        var from = DateTime.UtcNow.Subtract(TimeSpan.FromHours(4));
+        var to = DateTime.UtcNow.Subtract(TimeSpan.FromHours(1));
 
-        await Verify(response);
+        var url = Testing.Endpoints.ImportNotifications.GetUpdated(from, to, bcp);
+
+        var exception = await Assert.ThrowsAsync<HttpRequestException>(() => client.GetStringAsync(url));
+
+        exception.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        exception.Message.Should().Contain("Bad Request");
     }
 
     [Fact]
