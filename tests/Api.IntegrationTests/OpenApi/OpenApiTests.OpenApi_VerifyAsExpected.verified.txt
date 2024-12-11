@@ -41,22 +41,22 @@
           {
             "name": "from",
             "in": "query",
-            "description": "Filter import notifications updated after this date and time. Format is ISO 8601-1:2019",
+            "description": "Filter import notifications updated after this date and time.  Expected value is UTC using format ISO 8601-1:2019",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Filter import notifications updated after this date and time. Format is ISO 8601-1:2019",
+              "description": "Filter import notifications updated after this date and time.  Expected value is UTC using format ISO 8601-1:2019",
               "format": "date-time"
             }
           },
           {
             "name": "to",
             "in": "query",
-            "description": "Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. time of request. If the time period between from and to is greater than 1 hour then the request will be invalid.",
+            "description": "Filter import notifications updated before this date and time. Expected value is UTC using format ISO 8601-1:2019. If the time period between From and To is greater than 1 hour then the request will be invalid. Expected value also needs to be in the past by 30 seconds if requesting the current UTC date and time.",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Filter import notifications updated before this date and time. Format is ISO 8601-1:2019. Default is now ie. time of request. If the time period between from and to is greater than 1 hour then the request will be invalid.",
+              "description": "Filter import notifications updated before this date and time. Expected value is UTC using format ISO 8601-1:2019. If the time period between From and To is greater than 1 hour then the request will be invalid. Expected value also needs to be in the past by 30 seconds if requesting the current UTC date and time.",
               "format": "date-time"
             }
           }
