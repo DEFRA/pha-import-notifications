@@ -23,11 +23,13 @@ RUN wget "https://github.com/daveshanley/vacuum/releases/download/v${VACUUM_VERS
 WORKDIR /src
 
 ENV PATH="$PATH:/root/.dotnet/tools"
-RUN dotnet tool install -g --allow-roll-forward csharpier && \
-    dotnet tool install -g Swashbuckle.AspNetCore.Cli
+RUN dotnet tool install -g --allow-roll-forward csharpier
 
+COPY .config/dotnet-tools.json .config/dotnet-tools.json
 COPY .csharpierrc .csharpierrc
 COPY .vacuum.yml .vacuum.yml
+
+RUN dotnet tool restore
 
 COPY src/Api/Api.csproj src/Api/Api.csproj
 COPY src/Contracts/Contracts.csproj src/Contracts/Contracts.csproj
@@ -50,7 +52,7 @@ COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 RUN dotnet csharpier --check .
 
 RUN dotnet build --no-restore -c Release
-RUN BasicAuth__Enabled=false swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
+RUN BasicAuth__Enabled=false dotnet swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
 RUN vacuum lint -d -r .vacuum.yml openapi.json
 
 RUN dotnet test --no-restore tests/Api.Tests
