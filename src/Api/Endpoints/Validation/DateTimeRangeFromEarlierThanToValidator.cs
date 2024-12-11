@@ -7,6 +7,6 @@ public class DateTimeRangeFromEarlierThanToValidator : AbstractValidator<IDateTi
 {
     public DateTimeRangeFromEarlierThanToValidator()
     {
-        RuleFor(x => x.From).LessThan(x => x.To).WithMessage("'from' must be earlier than 'to'.");
+        RuleFor(x => x.From).LessThan(x => x.To).WithMessage("Must be earlier than To");
     }
 }

@@ -7,11 +7,19 @@ public class UpdatedImportNotificationRequestValidator : ValidationEndpointFilte
 {
     public UpdatedImportNotificationRequestValidator()
     {
+        RuleFor(x => x.From).Must(x => x.Kind == DateTimeKind.Utc).WithMessage("Must be UTC");
+
+        RuleFor(x => x.To).Must(x => x.Kind == DateTimeKind.Utc).WithMessage("Must be UTC");
+
         Include(new DateTimeRangeFromEarlierThanToValidator());
+
         Include(new DateTimeRangeIsLessThanValidator(TimeSpan.FromHours(1)));
+
         RuleFor(x => x.To)
-            .SetValidator(new DateTimeEarlierThanValidator(TimeSpan.FromSeconds(30), DateTime.UtcNow))
-            .WithMessage("To must be older the 30 seconds ago from now");
+            .Must(x => x < DateTime.UtcNow.AddSeconds(-30))
+            .WithMessage("Must be more than 30 seconds before UTC now");
+
+        RuleFor(x => x.Bcp).Must(x => x.Length > 0).WithMessage("At least one BCP must be specified");
     }
 
     protected override int ArgumentIndex => 0;
