@@ -34,7 +34,7 @@ public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<Wi
             // now these are just the ones used in our integration tests.
             _wireMockServer.StubSingleImportNotification();
             _wireMockServer.StubSingleImportNotification("CHEDA.GB.2024.fail", shouldFail: true);
-            _wireMockServer.StubManyImportNotification();
+            _wireMockServer.StubImportNotificationUpdates();
         }
 
         return Task.CompletedTask;

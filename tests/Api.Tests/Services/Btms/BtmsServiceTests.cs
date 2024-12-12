@@ -16,7 +16,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     public async Task GetImportNotificationUpdates_WhenOk_ShouldSucceed()
     {
         var bcp = new[] { "bcp1", "bcp2" };
-        WireMock.StubManyImportNotification(
+        WireMock.StubImportNotificationUpdates(
             filter: "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))",
             fields: ["fields[import-notifications]=updated,referenceNumber"],
             transformRequest: builder => builder.WithParam(Uri.EscapeDataString("page[size]=1000"))
@@ -37,14 +37,14 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
 
         // First request maps to path /api/import-notifications and returns next
         // link for second page
-        WireMock.StubManyImportNotification(transformBody: jsonNode =>
+        WireMock.StubImportNotificationUpdates(transformBody: jsonNode =>
         {
             jsonNode["links"]!["next"] = "/api/import-notifications?page=2";
             return jsonNode;
         });
         // Second page request maps to path /api/import-notifications with param page=2
         // which then includes no next page link by default
-        WireMock.StubManyImportNotification(
+        WireMock.StubImportNotificationUpdates(
             path: "/api/import-notifications",
             transformRequest: builder => builder.WithParam("page", "2")
         );
@@ -57,7 +57,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     [Fact]
     public async Task GetImportNotificationUpdates_WhenError_ShouldFail()
     {
-        WireMock.StubManyImportNotification(shouldFail: true);
+        WireMock.StubImportNotificationUpdates(shouldFail: true);
 
         var act = () => Subject.GetImportNotificationUpdates([], CancellationToken.None);
 

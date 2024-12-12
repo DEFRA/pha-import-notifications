@@ -1,0 +1,121 @@
+{
+  "links": {
+    "self": "/api/import-notifications",
+    "first": "/api/import-notifications"
+  },
+  "data": [
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011112000001",
+      "attributes": {
+        "updated": "2024-12-11T08:12:58.792Z",
+        "referenceNumber": "CHEDA.GB.2024.011112000001"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011112000001"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011112000002",
+      "attributes": {
+        "updated": "2024-12-11T08:12:59.114Z",
+        "referenceNumber": "CHEDA.GB.2024.011112000002"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011112000002"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011112000003",
+      "attributes": {
+        "updated": "2024-12-11T08:12:59.741Z",
+        "referenceNumber": "CHEDA.GB.2024.011112000003"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011112000003"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011113000001",
+      "attributes": {
+        "updated": "2024-12-11T08:12:59.947Z",
+        "referenceNumber": "CHEDA.GB.2024.011113000001"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011113000001"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011113000002",
+      "attributes": {
+        "updated": "2024-12-11T08:13:00.108Z",
+        "referenceNumber": "CHEDA.GB.2024.011113000002"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011113000002"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011113000003",
+      "attributes": {
+        "updated": "2024-12-11T08:13:00.203Z",
+        "referenceNumber": "CHEDA.GB.2024.011113000003"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011113000003"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011114000001",
+      "attributes": {
+        "updated": "2024-12-11T08:13:01.234Z",
+        "referenceNumber": "CHEDA.GB.2024.011114000001"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011114000001"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011114000002",
+      "attributes": {
+        "updated": "2024-12-11T08:13:01.546Z",
+        "referenceNumber": "CHEDA.GB.2024.011114000002"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011114000002"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011114000003",
+      "attributes": {
+        "updated": "2024-12-11T08:13:01.831Z",
+        "referenceNumber": "CHEDA.GB.2024.011114000003"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011114000003"
+      }
+    },
+    {
+      "type": "import-notifications",
+      "id": "CHEDA.GB.2024.011115000001",
+      "attributes": {
+        "updated": "2024-12-11T08:13:02.953Z",
+        "referenceNumber": "CHEDA.GB.2024.011115000001"
+      },
+      "links": {
+        "self": "/api/import-notifications/CHEDA.GB.2024.011115000001"
+      }
+    }
+  ],
+  "meta": {
+    "total": 7494
+  }
+}

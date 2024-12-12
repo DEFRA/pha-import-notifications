@@ -26,7 +26,7 @@ public static class WireMockExtensions
             .RespondWith(response);
     }
 
-    public static void StubManyImportNotification(
+    public static void StubImportNotificationUpdates(
         this WireMockServer wireMock,
         string? path = null,
         bool shouldFail = false,
@@ -41,7 +41,7 @@ public static class WireMockExtensions
 
         if (!shouldFail)
         {
-            var body = GetBody("btms-import-notification-list.json");
+            var body = GetBody("btms-import-notification-updates.json");
 
             if (transformBody != null)
             {
