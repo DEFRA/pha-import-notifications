@@ -2,7 +2,7 @@ using Defra.PhaImportNotifications.Api.JsonApi;
 
 namespace Defra.PhaImportNotifications.Api.Tests.JsonApi;
 
-public class FieldsTests
+public class FieldTests
 {
     [Fact]
     public void Fields_ShouldBeAsExpected()
