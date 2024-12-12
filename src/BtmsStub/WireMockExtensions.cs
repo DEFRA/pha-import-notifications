@@ -61,12 +61,7 @@ public static class WireMockExtensions
             request = request.WithParam("filter", MatchBehaviour.AcceptOnMatch, filter);
 
         if (fields is not null)
-            request = fields.Aggregate(
-                request,
-                // WireMock does not unescape automatically for us as part of the param scoring/matching
-                // therefore the param will come through escaped so we escape the expectation here too
-                (builder, field) => builder.WithParam(Uri.EscapeDataString($"{field}"))
-            );
+            request = fields.Aggregate(request, (builder, field) => builder.WithJsonApiParam(field));
 
         if (transformRequest is not null)
             request = transformRequest(request);
@@ -87,5 +82,18 @@ public static class WireMockExtensions
         using var reader = new StreamReader(stream);
 
         return reader.ReadToEnd();
+    }
+
+    /// <summary>
+    /// A helper for when a JSON.API request param is needed that includes braces. WireMock
+    /// does not handle the un-escaping therefore we escape on the param itself so we ensure
+    /// a match.
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <param name="param"></param>
+    /// <returns></returns>
+    private static IRequestBuilder WithJsonApiParam(this IParamsRequestBuilder builder, string param)
+    {
+        return builder.WithParam(Uri.EscapeDataString(param));
     }
 }

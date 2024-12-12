@@ -19,7 +19,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
         WireMock.StubImportNotificationUpdates(
             filter: "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))",
             fields: ["fields[import-notifications]=updated,referenceNumber"],
-            transformRequest: builder => builder.WithParam(Uri.EscapeDataString("page[size]=1000"))
+            transformRequest: builder => builder.WithJsonApiParam("page[size]=1000")
         );
 
         var result = await Subject.GetImportNotificationUpdates(bcp, CancellationToken.None);

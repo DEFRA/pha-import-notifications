@@ -250,19 +250,14 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
         );
 
         document.Should().NotBeNull();
+        document.Data.ManyValue.Should().NotBeNull();
     }
 
     [Fact]
     public async Task Get_WithFields_ShouldSucceed()
     {
         WireMock
-            .Given(
-                Request
-                    .Create()
-                    .WithPath("/get")
-                    .UsingGet()
-                    .WithParam("fields[people]", MatchBehaviour.AcceptOnMatch, "name")
-            )
+            .Given(Request.Create().WithPath("/get").UsingGet().WithJsonApiParam("fields[people]=name"))
             .RespondWith(
                 Response
                     .Create()
@@ -271,30 +266,19 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
             );
 
         var document = await Subject.Get(
-            new RequestUri(
-                "get",
-                new FilterExpression(
-                    LogicalOperator.And,
-                    [new ComparisonExpression(ComparisonOperator.Equals, "name", "Some Name")]
-                )
-            ),
+            new RequestUri("get", Fields: [new FieldExpression("people", ["name"])]),
             CancellationToken.None
         );
 
         document.Should().NotBeNull();
+        document.Data.ManyValue.Should().NotBeNull();
     }
 
     [Fact]
     public async Task Get_WithPageSize_ShouldSucceed()
     {
         WireMock
-            .Given(
-                Request
-                    .Create()
-                    .WithPath("/get")
-                    .UsingGet()
-                    .WithParam("page[size]", MatchBehaviour.AcceptOnMatch, "100")
-            )
+            .Given(Request.Create().WithPath("/get").UsingGet().WithJsonApiParam("page[size]=100"))
             .RespondWith(
                 Response
                     .Create()
@@ -305,6 +289,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
         var document = await Subject.Get(new RequestUri("get", PageSize: 100), CancellationToken.None);
 
         document.Should().NotBeNull();
+        document.Data.ManyValue.Should().NotBeNull();
     }
 
     private record Person<T>(T Id, string Name);
