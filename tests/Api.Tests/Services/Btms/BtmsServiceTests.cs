@@ -21,7 +21,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
             fields: ["fields[import-notifications]=updated,referenceNumber"]
         );
 
-        var result = await Subject.GetImportNotificationUpdates(bcp, default);
+        var result = await Subject.GetImportNotificationUpdates(bcp, CancellationToken.None);
 
         // If this fails, check the expected filter or fields as it may have changed
         result.Should().HaveCount(10);
@@ -48,7 +48,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
             transformRequest: builder => builder.WithParam("page", "2")
         );
 
-        var result = await Subject.GetImportNotificationUpdates(bcp, default);
+        var result = await Subject.GetImportNotificationUpdates(bcp, CancellationToken.None);
 
         result.Should().HaveCount(20);
     }
@@ -58,7 +58,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     {
         WireMock.StubManyImportNotification(shouldFail: true);
 
-        var act = () => Subject.GetImportNotificationUpdates([], default);
+        var act = () => Subject.GetImportNotificationUpdates([], CancellationToken.None);
 
         await act.Should().ThrowAsync<Exception>();
     }
@@ -68,7 +68,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     {
         WireMock.StubSingleImportNotification();
 
-        var result = await Subject.GetImportNotification(ChedReferenceNumbers.ChedA, default);
+        var result = await Subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
 
         result.Should().NotBeNull();
 
@@ -80,7 +80,7 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     {
         WireMock.StubSingleImportNotification(shouldFail: true);
 
-        var act = () => Subject.GetImportNotification(ChedReferenceNumbers.ChedA, default);
+        var act = () => Subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
 
         await act.Should().ThrowAsync<Exception>();
     }

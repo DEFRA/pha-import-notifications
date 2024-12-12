@@ -24,7 +24,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                 Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyFromFile("JsonApi\\get-people.json")
             );
 
-        var document = await Subject.Get(new RequestUri("get"), default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         document.Links?.Self.Should().Be("/api/people");
         document.Links?.First.Should().Be("/api/people");
@@ -60,7 +60,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                 Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyFromFile("JsonApi\\get-people.json")
             );
 
-        var document = await Subject.Get(new RequestUri("get"), default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         if (idIsString)
         {
@@ -86,7 +86,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                     .WithBodyFromFile("JsonApi\\get-people-include-books.json")
             );
 
-        var document = await Subject.Get(new RequestUri("get"), default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         var people = document.GetDataAsList<Person<int>>().ToList();
 
@@ -110,7 +110,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                 Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyFromFile("JsonApi\\get-person.json")
             );
 
-        var document = await Subject.Get(new RequestUri("get"), default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         document.Links?.Self.Should().Be("/api/people/1");
         document.Links?.First.Should().BeNull();
@@ -146,7 +146,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                 Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyFromFile("JsonApi\\get-person.json")
             );
 
-        var document = await Subject.Get(new RequestUri("get"), default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         if (idIsString)
         {
@@ -172,7 +172,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                     .WithBodyFromFile("JsonApi\\get-person-include-books.json")
             );
 
-        var document = await Subject.Get(new RequestUri("get"), default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         var person = document.GetDataAs<Person<int>>()!;
 
@@ -197,7 +197,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                     .WithBodyFromFile("JsonApi\\get-errors.json")
             );
 
-        var document = await Subject.Get(new RequestUri("get"), default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         document.Should().NotBeNull();
         document.Errors.Should().NotBeNull();
@@ -215,7 +215,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
             .Given(Request.Create().WithPath("/get").UsingGet())
             .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status500InternalServerError).WithBody("null"));
 
-        var act = async () => await Subject.Get(new RequestUri("get"), default);
+        var act = async () => await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Could not deserialize JSON");
     }
@@ -246,7 +246,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                     [new ComparisonExpression(ComparisonOperator.Equals, "name", "Some Name")]
                 )
             ),
-            default
+            CancellationToken.None
         );
 
         document.Should().NotBeNull();
@@ -278,7 +278,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                     [new ComparisonExpression(ComparisonOperator.Equals, "name", "Some Name")]
                 )
             ),
-            default
+            CancellationToken.None
         );
 
         document.Should().NotBeNull();
