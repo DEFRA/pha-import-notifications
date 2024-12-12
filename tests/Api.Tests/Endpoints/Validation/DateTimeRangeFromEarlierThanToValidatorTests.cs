@@ -11,6 +11,7 @@ public class DateTimeRangeFromEarlierThanToValidatorTests
             .From(DateTime.UtcNow.Subtract(TimeSpan.FromSeconds(10)))
             .To(DateTime.UtcNow)
             .Build();
+
         new DateTimeRangeFromEarlierThanToValidator().Validate(range).IsValid.Should().BeTrue();
     }
 
@@ -23,8 +24,9 @@ public class DateTimeRangeFromEarlierThanToValidatorTests
             .Build();
 
         var result = new DateTimeRangeFromEarlierThanToValidator().Validate(range);
+
         result.IsValid.Should().BeFalse();
         result.Errors.Count.Should().Be(1);
-        result.Errors[0].ErrorMessage.Should().Be("'from' must be earlier than 'to'.");
+        result.Errors[0].ErrorMessage.Should().Be("Must be earlier than To");
     }
 }

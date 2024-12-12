@@ -1,7 +1,7 @@
-using Defra.PhaImportNotifications.Api.Endpoints;
+using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 using FluentValidation.TestHelper;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
+namespace Defra.PhaImportNotifications.Api.Tests.Endpoints.Validation;
 
 public class ChedReferenceNumberValidatorTests
 {

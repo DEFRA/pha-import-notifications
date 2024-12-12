@@ -9,6 +9,7 @@ public class DateTimeRangeIsLessThanValidator : AbstractValidator<IDateTimeRange
     {
         RuleFor(x => (x.From - x.To).Duration())
             .LessThan(timeSpan)
-            .WithMessage($"Requested range must be less than {timeSpan.Duration().TotalSeconds} seconds.");
+            .WithName("To")
+            .WithMessage($"Must be within {timeSpan.Duration().TotalSeconds} seconds of From");
     }
 }

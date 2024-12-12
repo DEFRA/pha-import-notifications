@@ -8,7 +8,10 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications";
 
-        public static string GetUpdated(DateTime? from = null, DateTime? to = null, string[]? bcp = null)
+        public static string GetUpdatedValid(string? from = null, string? to = null, string[]? bcp = null) =>
+            GetUpdated(from ?? "2024-12-11T13:00:00Z", to ?? "2024-12-11T13:30:00Z", bcp ?? ["bcp"]);
+
+        public static string GetUpdated(string? from = null, string? to = null, string[]? bcp = null)
         {
             var query = new QueryBuilder();
 
@@ -20,8 +23,11 @@ public static class Endpoints
                 }
             }
 
-            query.Add("from", from?.ToString("o") ?? string.Empty);
-            query.Add("to", to?.ToString("o") ?? string.Empty);
+            if (from is not null)
+                query.Add("from", from);
+
+            if (to is not null)
+                query.Add("to", to);
 
             return $"{Root}{query}";
         }

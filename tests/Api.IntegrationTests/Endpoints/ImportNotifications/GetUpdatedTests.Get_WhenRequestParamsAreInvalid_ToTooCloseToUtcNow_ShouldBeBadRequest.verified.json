@@ -1,0 +1,11 @@
+﻿{
+  "type": "https://tools.ietf.org/html/rfc9110#section-15.5.1",
+  "title": "One or more validation errors occurred.",
+  "status": 400,
+  "errors": {
+    "To": [
+      "Must be more than 30 seconds before UTC now"
+    ]
+  },
+  "traceId": "{Scrubbed}"
+}

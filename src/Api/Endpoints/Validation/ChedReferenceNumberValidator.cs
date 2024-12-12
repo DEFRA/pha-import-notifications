@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Defra.PhaImportNotifications.Api.Endpoints;
+namespace Defra.PhaImportNotifications.Api.Endpoints.Validation;
 
 public class ChedReferenceNumberValidator : AbstractValidator<string>
 {
