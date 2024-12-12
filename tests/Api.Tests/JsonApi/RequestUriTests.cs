@@ -81,4 +81,12 @@ public class RequestUriTests
             .Should()
             .Be("path?filter=any(field1,'value1','value2')&fields[resource1]=field1,field2");
     }
+
+    [Fact]
+    public void WhenPageSize_ShouldIncludePageSize()
+    {
+        var subject = new RequestUri("path", PageSize: 100);
+
+        Uri.UnescapeDataString(subject.ToString()).Should().Be("path?page[size]=100");
+    }
 }

@@ -20,7 +20,7 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
         );
         var fields = new[] { new FieldExpression("import-notifications", ["updated", "referenceNumber"]) };
         var document = await jsonApiClient.Get(
-            new RequestUri("api/import-notifications", filter, fields),
+            new RequestUri("api/import-notifications", filter, fields, PageSize: 1000),
             cancellationToken
         );
 

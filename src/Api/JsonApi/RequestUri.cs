@@ -2,7 +2,12 @@ using System.Text;
 
 namespace Defra.PhaImportNotifications.Api.JsonApi;
 
-public record RequestUri(string Path, FilterExpression? Filter = null, FieldExpression[]? Fields = null)
+public record RequestUri(
+    string Path,
+    FilterExpression? Filter = null,
+    FieldExpression[]? Fields = null,
+    int? PageSize = null
+)
 {
     public override string ToString()
     {
@@ -41,6 +46,13 @@ public record RequestUri(string Path, FilterExpression? Filter = null, FieldExpr
 
                 result.Append(Uri.EscapeDataString(fieldAsString));
             }
+        }
+
+        if (PageSize is not null)
+        {
+            result.Append(!queryIncluded ? '?' : '&');
+            result.Append(Uri.EscapeDataString("page[size]="));
+            result.Append(PageSize);
         }
 
         return result.ToString();

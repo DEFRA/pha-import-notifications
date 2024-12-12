@@ -284,6 +284,29 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
         document.Should().NotBeNull();
     }
 
+    [Fact]
+    public async Task Get_WithPageSize_ShouldSucceed()
+    {
+        WireMock
+            .Given(
+                Request
+                    .Create()
+                    .WithPath("/get")
+                    .UsingGet()
+                    .WithParam("page[size]", MatchBehaviour.AcceptOnMatch, "100")
+            )
+            .RespondWith(
+                Response
+                    .Create()
+                    .WithStatusCode(StatusCodes.Status200OK)
+                    .WithBodyFromFile("JsonApi\\get-people-include-books.json")
+            );
+
+        var document = await Subject.Get(new RequestUri("get", PageSize: 100), CancellationToken.None);
+
+        document.Should().NotBeNull();
+    }
+
     private record Person<T>(T Id, string Name);
 
     private record Book<T>(T Id, string Title, int PublishYear);
