@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Http;
 using WireMock.Matchers;
@@ -7,6 +8,7 @@ using WireMock.Server;
 
 namespace Defra.PhaImportNotifications.BtmsStub;
 
+[ExcludeFromCodeCoverage]
 public static class WireMockExtensions
 {
     public static void StubSingleImportNotification(
