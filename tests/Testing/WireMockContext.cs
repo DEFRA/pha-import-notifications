@@ -1,4 +1,5 @@
 using WireMock.Server;
+using WireMock.Settings;
 
 namespace Defra.PhaImportNotifications.Testing;
 
@@ -9,7 +10,13 @@ public sealed class WireMockContext : IDisposable
 
     public WireMockContext()
     {
-        Server = WireMockServer.Start();
+        Server = WireMockServer.Start(
+            new WireMockServerSettings
+            {
+                // Uncomment if debugging /__admin/requests is needed
+                // StartAdminInterface = true,
+            }
+        );
         HttpClient = new HttpClient { BaseAddress = new Uri(Server.Urls[0]) };
     }
 

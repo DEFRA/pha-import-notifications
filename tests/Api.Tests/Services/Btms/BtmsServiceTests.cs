@@ -2,7 +2,6 @@ using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
-using FluentAssertions;
 using Microsoft.Extensions.Logging.Abstractions;
 using ChedReferenceNumbers = Defra.PhaImportNotifications.Testing.ChedReferenceNumbers;
 
@@ -18,12 +17,13 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     {
         var bcp = new[] { "bcp1", "bcp2" };
         WireMock.StubManyImportNotification(
-            filter: "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))"
+            filter: "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))",
+            fields: ["fields[import-notifications]=updated,referenceNumber"]
         );
 
         var result = await Subject.GetImportNotificationUpdates(bcp, default);
 
-        // If this fails, check the expected filter as it may have changed
+        // If this fails, check the expected filter or fields as it may have changed
         result.Should().HaveCount(10);
 
         await Verify(result).DontScrubGuids().DontScrubDateTimes();

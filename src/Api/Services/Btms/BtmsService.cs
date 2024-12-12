@@ -18,7 +18,11 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
                 new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
             ]
         );
-        var document = await jsonApiClient.Get("api/import-notifications", cancellationToken, filter);
+        var fields = new[] { new FieldExpression("import-notifications", ["updated", "referenceNumber"]) };
+        var document = await jsonApiClient.Get(
+            new RequestUri("api/import-notifications", filter, fields),
+            cancellationToken
+        );
 
         // This may return a document with errors so we need to check things like this when we integrate.
         // It could also throw and do all the usual stuff.
@@ -31,7 +35,10 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
         CancellationToken cancellationToken
     )
     {
-        var document = await jsonApiClient.Get($"api/import-notifications/{chedReferenceNumber}", cancellationToken);
+        var document = await jsonApiClient.Get(
+            new RequestUri($"api/import-notifications/{chedReferenceNumber}"),
+            cancellationToken
+        );
 
         // This may return a document with errors so we need to check things like this when we integrate.
         // It could also throw and do all the usual stuff.

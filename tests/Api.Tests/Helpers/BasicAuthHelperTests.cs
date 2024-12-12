@@ -1,5 +1,4 @@
 using Defra.PhaImportNotifications.Api.Helpers;
-using FluentAssertions;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Helpers;
 

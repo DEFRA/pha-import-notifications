@@ -1,5 +1,4 @@
 using Defra.PhaImportNotifications.Api.Utils.Http;
-using FluentAssertions;
 using Serilog;
 using Serilog.Core;
 
