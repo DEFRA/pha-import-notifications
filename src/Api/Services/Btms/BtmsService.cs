@@ -5,7 +5,7 @@ namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
 public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
 {
-    public async Task<IEnumerable<ImportNotification>> GetImportNotifications(
+    public async Task<IEnumerable<ImportNotificationUpdate>> GetImportNotificationUpdates(
         string[] bcp,
         CancellationToken cancellationToken
     )
@@ -23,7 +23,7 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
         // This may return a document with errors so we need to check things like this when we integrate.
         // It could also throw and do all the usual stuff.
 
-        return document.GetDataAsList<ImportNotification>();
+        return document.GetDataAsList<ImportNotificationUpdate>();
     }
 
     public async Task<ImportNotification?> GetImportNotification(

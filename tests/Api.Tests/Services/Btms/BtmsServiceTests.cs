@@ -14,14 +14,14 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
         new(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance));
 
     [Fact]
-    public async Task GetImportNotifications_WhenOk_ShouldSucceed()
+    public async Task GetImportNotificationUpdates_WhenOk_ShouldSucceed()
     {
         var bcp = new[] { "bcp1", "bcp2" };
         WireMock.StubManyImportNotification(
             filter: "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))"
         );
 
-        var result = await Subject.GetImportNotifications(bcp, default);
+        var result = await Subject.GetImportNotificationUpdates(bcp, default);
 
         // If this fails, check the expected filter as it may have changed
         result.Should().HaveCount(10);
@@ -30,11 +30,11 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     }
 
     [Fact]
-    public async Task GetImportNotifications_WhenError_ShouldFail()
+    public async Task GetImportNotificationUpdates_WhenError_ShouldFail()
     {
         WireMock.StubManyImportNotification(shouldFail: true);
 
-        var act = () => Subject.GetImportNotifications([], default);
+        var act = () => Subject.GetImportNotificationUpdates([], default);
 
         await act.Should().ThrowAsync<Exception>();
     }
