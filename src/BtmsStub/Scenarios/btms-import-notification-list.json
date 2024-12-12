@@ -2,8 +2,7 @@
   "links": {
     "self": "/api/import-notifications",
     "first": "/api/import-notifications",
-    "last": "/api/import-notifications?page%5Bnumber%5D=5",
-    "next": "/api/import-notifications?page%5Bnumber%5D=2"
+    "last": "/api/import-notifications"
   },
   "data": [
     {
