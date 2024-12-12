@@ -17,7 +17,7 @@ const string solutionPath = "../../../../../";
 const string outputPath = $"{solutionPath}src/Contracts/";
 const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
 
-Directory.GetFiles(outputPath, "*.cs").ToList().ForEach(File.Delete);
+Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
 var stream = new FileStream(inputPath, FileMode.Open);
 var openApiDocument = new OpenApiStreamReader().Read(stream, out _);
