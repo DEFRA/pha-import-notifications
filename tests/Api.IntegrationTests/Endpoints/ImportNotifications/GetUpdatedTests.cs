@@ -47,9 +47,9 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
             );
 
         var url = Testing.Endpoints.ImportNotifications.GetUpdatedValid(
-            bcp: validRequest.Bcp,
-            from: validRequest.From.ToString("O"),
-            to: validRequest.To.ToString("O")
+            validRequest.Bcp,
+            validRequest.From.ToString("O"),
+            validRequest.To.ToString("O")
         );
 
         var response = await client.GetStringAsync(url);
@@ -69,7 +69,7 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
     )
     {
         var client = CreateClient();
-        var url = Testing.Endpoints.ImportNotifications.GetUpdated(from, to, bcp);
+        var url = Testing.Endpoints.ImportNotifications.GetUpdated(bcp, from, to);
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -82,9 +82,9 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
     {
         var client = CreateClient();
         var url = Testing.Endpoints.ImportNotifications.GetUpdated(
-            DateTime.UtcNow.AddSeconds(-60).ToString("O"),
-            DateTime.UtcNow.AddSeconds(-29).ToString("O"),
-            ["bcp1"]
+            ["bcp1"],
+            from: DateTime.UtcNow.AddSeconds(-60).ToString("O"),
+            to: DateTime.UtcNow.AddSeconds(-29).ToString("O")
         );
 
         var response = await client.GetAsync(url);
