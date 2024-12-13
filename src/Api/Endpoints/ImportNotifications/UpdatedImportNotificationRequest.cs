@@ -12,7 +12,7 @@ public sealed class UpdatedImportNotificationRequest : IDateTimeRangeDefinition
     public required string[] Bcp { get; init; }
 
     [Description(
-        "Filter import notifications updated after this date and time. "
+        "Filter import notifications updated at this date and time or after this date and time. "
             + " Expected value is UTC using format ISO 8601-1:2019"
     )]
     [FromQuery(Name = "from")]
