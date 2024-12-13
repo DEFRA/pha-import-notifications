@@ -1,9 +1,11 @@
+using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Contracts;
+using Microsoft.Extensions.Options;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
-public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
+public class BtmsService(JsonApiClient jsonApiClient, IOptions<BtmsOptions> btmsOptions) : IBtmsService
 {
     public async Task<IEnumerable<ImportNotificationUpdate>> GetImportNotificationUpdates(
         string[] bcp,
@@ -24,7 +26,7 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
         );
         var fields = new[] { new FieldExpression("import-notifications", ["updated", "referenceNumber"]) };
         var document = await jsonApiClient.Get(
-            new RequestUri("api/import-notifications", filter, fields, PageSize: 1000),
+            new RequestUri("api/import-notifications", filter, fields, btmsOptions.Value.PageSize),
             cancellationToken
         );
 

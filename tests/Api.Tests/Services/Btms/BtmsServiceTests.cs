@@ -1,9 +1,11 @@
+using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 using ChedReferenceNumbers = Defra.PhaImportNotifications.Testing.ChedReferenceNumbers;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
@@ -12,7 +14,18 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
     : WireMockTestBase<WireMockContextQueryParameterNoComma>(context)
 {
     private BtmsService Subject { get; } =
-        new(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance));
+        new(
+            new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance),
+            new OptionsWrapper<BtmsOptions>(
+                new BtmsOptions
+                {
+                    BaseUrl = "http://base-url",
+                    Password = "password",
+                    Username = "username",
+                    PageSize = 100,
+                }
+            )
+        );
 
     private UpdatedImportNotificationRequest ValidRequest { get; } =
         new()
@@ -38,7 +51,7 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
                         + ")"
                 )
                 .WithJsonApiParam("fields[import-notifications]", "updated,referenceNumber")
-                .WithJsonApiParam("page[size]", "1000")
+                .WithJsonApiParam("page[size]", "100")
         );
 
         var result = await Subject.GetImportNotificationUpdates(
