@@ -23,12 +23,12 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
         var bcp = new[] { "bcp1", "bcp2" };
 
         MockBtmsService
-            .GetImportNotifications(Arg.Is<string[]>(x => x.SequenceEqual(bcp)), Arg.Any<CancellationToken>())
+            .GetImportNotificationUpdates(Arg.Is<string[]>(x => x.SequenceEqual(bcp)), Arg.Any<CancellationToken>())
             .Returns(
-                new List<ImportNotification>
+                new List<ImportNotificationUpdate>
                 {
                     fixture
-                        .Build<ImportNotification>()
+                        .Build<ImportNotificationUpdate>()
                         .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
                         .With(x => x.Updated, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
                         .Create(),

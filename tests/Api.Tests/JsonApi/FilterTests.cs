@@ -1,5 +1,4 @@
 using Defra.PhaImportNotifications.Api.JsonApi;
-using FluentAssertions;
 
 namespace Defra.PhaImportNotifications.Api.Tests.JsonApi;
 

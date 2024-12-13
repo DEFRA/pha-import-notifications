@@ -1,7 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Defra.PhaImportNotifications.Api.Configuration;
-using FluentAssertions;
 using Microsoft.AspNetCore.Http.Json;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Configuration;

@@ -2,7 +2,6 @@ using System.Text.Encodings.Web;
 using Defra.PhaImportNotifications.Api.Authentication;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Helpers;
-using FluentAssertions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;

@@ -10,16 +10,12 @@ public class JsonApiClient(HttpClient httpClient, ILogger<JsonApiClient> logger)
         Converters = { new SingleOrManyDataConverterFactory(), new JsonStringEnumConverter() },
     };
 
-    public async Task<Document> Get(
-        string requestUri,
-        CancellationToken cancellationToken,
-        FilterExpression? filter = null
-    )
+    public Task<Document> Get(RequestUri requestUri, CancellationToken cancellationToken) =>
+        Get(requestUri.ToString(), cancellationToken);
+
+    public async Task<Document> Get(string requestUri, CancellationToken cancellationToken)
     {
-        var request = new HttpRequestMessage(
-            HttpMethod.Get,
-            $"{requestUri}{(filter is not null ? $"?filter={Uri.EscapeDataString(filter.ToString())}" : "")}"
-        );
+        var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
 
         using var response = await httpClient.SendAsync(
             request,

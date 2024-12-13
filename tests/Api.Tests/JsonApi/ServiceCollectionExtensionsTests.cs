@@ -1,5 +1,4 @@
 using Defra.PhaImportNotifications.Api.JsonApi;
-using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Defra.PhaImportNotifications.Api.Tests.JsonApi;

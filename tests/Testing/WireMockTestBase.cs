@@ -2,7 +2,8 @@ using WireMock.Server;
 
 namespace Defra.PhaImportNotifications.Testing;
 
-public class WireMockTestBase : IClassFixture<WireMockContext>
+public class WireMockTestBase<T> : IClassFixture<T>
+    where T : WireMockContext, new()
 {
     protected WireMockServer WireMock { get; }
 

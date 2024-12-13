@@ -1,7 +1,6 @@
 using System.Text.Json;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Testing;
-using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging.Abstractions;
 using WireMock.Matchers;
@@ -12,7 +11,8 @@ using WireMock.ResponseBuilders;
 
 namespace Defra.PhaImportNotifications.Api.Tests.JsonApi;
 
-public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(context)
+public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
+    : WireMockTestBase<WireMockContextQueryParameterNoComma>(context)
 {
     private JsonApiClient Subject { get; } = new(context.HttpClient, NullLogger<JsonApiClient>.Instance);
 
@@ -25,7 +25,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                 Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyFromFile("JsonApi\\get-people.json")
             );
 
-        var document = await Subject.Get("get", default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         document.Links?.Self.Should().Be("/api/people");
         document.Links?.First.Should().Be("/api/people");
@@ -61,7 +61,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                 Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyFromFile("JsonApi\\get-people.json")
             );
 
-        var document = await Subject.Get("get", default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         if (idIsString)
         {
@@ -87,7 +87,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                     .WithBodyFromFile("JsonApi\\get-people-include-books.json")
             );
 
-        var document = await Subject.Get("get", default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         var people = document.GetDataAsList<Person<int>>().ToList();
 
@@ -111,7 +111,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                 Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyFromFile("JsonApi\\get-person.json")
             );
 
-        var document = await Subject.Get("get", default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         document.Links?.Self.Should().Be("/api/people/1");
         document.Links?.First.Should().BeNull();
@@ -147,7 +147,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                 Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBodyFromFile("JsonApi\\get-person.json")
             );
 
-        var document = await Subject.Get("get", default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         if (idIsString)
         {
@@ -173,7 +173,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                     .WithBodyFromFile("JsonApi\\get-person-include-books.json")
             );
 
-        var document = await Subject.Get("get", default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         var person = document.GetDataAs<Person<int>>()!;
 
@@ -198,7 +198,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
                     .WithBodyFromFile("JsonApi\\get-errors.json")
             );
 
-        var document = await Subject.Get("get", default);
+        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         document.Should().NotBeNull();
         document.Errors.Should().NotBeNull();
@@ -216,7 +216,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
             .Given(Request.Create().WithPath("/get").UsingGet())
             .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status500InternalServerError).WithBody("null"));
 
-        var act = async () => await Subject.Get("get", default);
+        var act = async () => await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
         await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Could not deserialize JSON");
     }
@@ -240,15 +240,57 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
             );
 
         var document = await Subject.Get(
-            "get",
-            default,
-            new FilterExpression(
-                LogicalOperator.And,
-                [new ComparisonExpression(ComparisonOperator.Equals, "name", "Some Name")]
-            )
+            new RequestUri(
+                "get",
+                new FilterExpression(
+                    LogicalOperator.And,
+                    [new ComparisonExpression(ComparisonOperator.Equals, "name", "Some Name")]
+                )
+            ),
+            CancellationToken.None
         );
 
         document.Should().NotBeNull();
+        document.Data.ManyValue.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task Get_WithFields_ShouldSucceed()
+    {
+        WireMock
+            .Given(Request.Create().WithPath("/get").UsingGet().WithJsonApiParam("fields[people]", "name"))
+            .RespondWith(
+                Response
+                    .Create()
+                    .WithStatusCode(StatusCodes.Status200OK)
+                    .WithBodyFromFile("JsonApi\\get-people-include-books.json")
+            );
+
+        var document = await Subject.Get(
+            new RequestUri("get", Fields: [new FieldExpression("people", ["name"])]),
+            CancellationToken.None
+        );
+
+        document.Should().NotBeNull();
+        document.Data.ManyValue.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task Get_WithPageSize_ShouldSucceed()
+    {
+        WireMock
+            .Given(Request.Create().WithPath("/get").UsingGet().WithJsonApiParam("page[size]", "100"))
+            .RespondWith(
+                Response
+                    .Create()
+                    .WithStatusCode(StatusCodes.Status200OK)
+                    .WithBodyFromFile("JsonApi\\get-people-include-books.json")
+            );
+
+        var document = await Subject.Get(new RequestUri("get", PageSize: 100), CancellationToken.None);
+
+        document.Should().NotBeNull();
+        document.Data.ManyValue.Should().NotBeNull();
     }
 
     private record Person<T>(T Id, string Name);

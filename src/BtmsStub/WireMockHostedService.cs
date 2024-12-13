@@ -28,13 +28,13 @@ public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<Wi
         {
             _wireMockServer = WireMockServer.Start(_settings);
 
-            logger.LogInformation("Started on port {0}", _settings.Port);
+            logger.LogInformation("Started on port {Port}", _settings.Port);
 
             // We will have methods for each scenario in the future but for
             // now these are just the ones used in our integration tests.
             _wireMockServer.StubSingleImportNotification();
             _wireMockServer.StubSingleImportNotification("CHEDA.GB.2024.fail", shouldFail: true);
-            _wireMockServer.StubManyImportNotification();
+            _wireMockServer.StubImportNotificationUpdates();
         }
 
         return Task.CompletedTask;
@@ -52,8 +52,11 @@ public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<Wi
         return Task.CompletedTask;
     }
 
+    [SuppressMessage("Usage", "CA2254:Template should be a static expression")]
     private sealed class WireMockLogger(ILogger<WireMockHostedService> logger) : IWireMockLogger
     {
+        private readonly JsonSerializerOptions _jsonSerializerOptions = new() { WriteIndented = true };
+
         public void Debug(string formatString, params object[] args)
         {
             logger.LogDebug(formatString, args);
@@ -81,8 +84,8 @@ public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<Wi
 
         public void DebugRequestResponse(LogEntryModel logEntryModel, bool isAdminRequest)
         {
-            var message = JsonSerializer.Serialize(logEntryModel, new JsonSerializerOptions { WriteIndented = true });
-            logger.LogDebug("Admin[{0}] {1}", isAdminRequest, message);
+            var message = JsonSerializer.Serialize(logEntryModel, _jsonSerializerOptions);
+            logger.LogDebug("Admin[{IsAdminRequest}] {Message}", isAdminRequest, message);
         }
     }
 }
