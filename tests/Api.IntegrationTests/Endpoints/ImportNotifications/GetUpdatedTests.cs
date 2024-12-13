@@ -1,5 +1,6 @@
 using System.Net;
 using AutoFixture;
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
 using Defra.PhaImportNotifications.Testing;
@@ -20,10 +21,20 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
     {
         var client = CreateClient();
         var fixture = new Fixture();
-        var bcp = new[] { "bcp1", "bcp2" };
+        var validRequest = new UpdatedImportNotificationRequest()
+        {
+            Bcp = ["bcp1", "bcp2"],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+        };
 
         MockBtmsService
-            .GetImportNotificationUpdates(Arg.Is<string[]>(x => x.SequenceEqual(bcp)), Arg.Any<CancellationToken>())
+            .GetImportNotificationUpdates(
+                Arg.Is<string[]>(x => x.SequenceEqual(validRequest.Bcp)),
+                validRequest.From,
+                validRequest.To,
+                Arg.Any<CancellationToken>()
+            )
             .Returns(
                 new List<ImportNotificationUpdate>
                 {
@@ -35,7 +46,11 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
                 }
             );
 
-        var url = Testing.Endpoints.ImportNotifications.GetUpdatedValid(bcp: bcp);
+        var url = Testing.Endpoints.ImportNotifications.GetUpdatedValid(
+            validRequest.Bcp,
+            validRequest.From.ToString("O"),
+            validRequest.To.ToString("O")
+        );
 
         var response = await client.GetStringAsync(url);
         await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
@@ -54,7 +69,7 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
     )
     {
         var client = CreateClient();
-        var url = Testing.Endpoints.ImportNotifications.GetUpdated(from, to, bcp);
+        var url = Testing.Endpoints.ImportNotifications.GetUpdated(bcp, from, to);
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -67,9 +82,9 @@ public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOu
     {
         var client = CreateClient();
         var url = Testing.Endpoints.ImportNotifications.GetUpdated(
-            DateTime.UtcNow.AddSeconds(-60).ToString("O"),
-            DateTime.UtcNow.AddSeconds(-29).ToString("O"),
-            ["bcp1"]
+            ["bcp1"],
+            from: DateTime.UtcNow.AddSeconds(-60).ToString("O"),
+            to: DateTime.UtcNow.AddSeconds(-29).ToString("O")
         );
 
         var response = await client.GetAsync(url);

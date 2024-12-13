@@ -1,12 +1,16 @@
+using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Contracts;
+using Microsoft.Extensions.Options;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
-public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
+public class BtmsService(JsonApiClient jsonApiClient, IOptions<BtmsOptions> btmsOptions) : IBtmsService
 {
     public async Task<IEnumerable<ImportNotificationUpdate>> GetImportNotificationUpdates(
         string[] bcp,
+        DateTime from,
+        DateTime to,
         CancellationToken cancellationToken
     )
     {
@@ -16,11 +20,13 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
                 new AnyExpression("_PointOfEntry", bcp),
                 new AnyExpression("importNotificationType", Enum.GetNames<ImportNotificationTypeEnum>()),
                 new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
+                new ComparisonExpression(ComparisonOperator.GreaterOrEqual, "updated", from.ToString("O")),
+                new ComparisonExpression(ComparisonOperator.LessThan, "updated", to.ToString("O")),
             ]
         );
         var fields = new[] { new FieldExpression("import-notifications", ["updated", "referenceNumber"]) };
         var document = await jsonApiClient.Get(
-            new RequestUri("api/import-notifications", filter, fields, PageSize: 1000),
+            new RequestUri("api/import-notifications", filter, fields, btmsOptions.Value.PageSize),
             cancellationToken
         );
 

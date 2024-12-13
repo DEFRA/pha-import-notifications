@@ -8,10 +8,10 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications";
 
-        public static string GetUpdatedValid(string? from = null, string? to = null, string[]? bcp = null) =>
-            GetUpdated(from ?? "2024-12-11T13:00:00Z", to ?? "2024-12-11T13:30:00Z", bcp ?? ["bcp"]);
+        public static string GetUpdatedValid(string[]? bcp = null, string? from = null, string? to = null) =>
+            GetUpdated(bcp ?? ["bcp"], from ?? "2024-12-11T13:00:00Z", to ?? "2024-12-11T13:30:00Z");
 
-        public static string GetUpdated(string? from = null, string? to = null, string[]? bcp = null)
+        public static string GetUpdated(string[]? bcp = null, string? from = null, string? to = null)
         {
             var query = new QueryBuilder();
 

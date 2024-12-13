@@ -15,4 +15,6 @@ public class BtmsOptions
     public required string Username { get; init; }
 
     public string BasicAuthCredential => BasicAuthHelper.CreateBasicAuth(Username, Password);
+
+    public int PageSize { get; init; } = 1000;
 }

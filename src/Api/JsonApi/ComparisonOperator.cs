@@ -4,5 +4,7 @@ public enum ComparisonOperator
 {
     Equals,
     GreaterThan,
+    GreaterOrEqual,
     LessThan,
+    LessOrEqual,
 }

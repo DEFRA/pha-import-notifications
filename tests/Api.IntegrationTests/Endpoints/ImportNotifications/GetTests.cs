@@ -1,4 +1,5 @@
 using System.Net;
+using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.BtmsStub;
@@ -6,6 +7,7 @@ using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
 using WireMock.Server;
 using Xunit.Abstractions;
 
@@ -72,7 +74,16 @@ public class GetTests : EndpointTestBase<Program>, IClassFixture<WireMockContext
         base.ConfigureTestServices(services);
 
         services.AddTransient<IBtmsService>(_ => new BtmsService(
-            new JsonApiClient(HttpClient, NullLogger<JsonApiClient>.Instance)
+            new JsonApiClient(HttpClient, NullLogger<JsonApiClient>.Instance),
+            new OptionsWrapper<BtmsOptions>(
+                new BtmsOptions
+                {
+                    BaseUrl = "http://base-url",
+                    Password = "password",
+                    Username = "username",
+                    PageSize = 100,
+                }
+            )
         ));
     }
 }

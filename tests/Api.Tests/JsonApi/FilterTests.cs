@@ -9,8 +9,12 @@ public class FilterTests
     [InlineData(ComparisonOperator.Equals, "value'1", "equals(field1,'value''1')")]
     [InlineData(ComparisonOperator.GreaterThan, "value1", "greaterThan(field1,'value1')")]
     [InlineData(ComparisonOperator.GreaterThan, "value'1", "greaterThan(field1,'value''1')")]
+    [InlineData(ComparisonOperator.GreaterOrEqual, "value1", "greaterOrEqual(field1,'value1')")]
+    [InlineData(ComparisonOperator.GreaterOrEqual, "value'1", "greaterOrEqual(field1,'value''1')")]
     [InlineData(ComparisonOperator.LessThan, "value1", "lessThan(field1,'value1')")]
     [InlineData(ComparisonOperator.LessThan, "value'1", "lessThan(field1,'value''1')")]
+    [InlineData(ComparisonOperator.LessOrEqual, "value1", "lessOrEqual(field1,'value1')")]
+    [InlineData(ComparisonOperator.LessOrEqual, "value'1", "lessOrEqual(field1,'value''1')")]
     public void ComparisonExpression_ToString_AsExpected(ComparisonOperator @operator, string value, string expected)
     {
         var subject = new ComparisonExpression(@operator, "field1", value);
