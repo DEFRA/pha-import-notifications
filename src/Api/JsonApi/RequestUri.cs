@@ -1,4 +1,4 @@
-using System.Text;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Defra.PhaImportNotifications.Api.JsonApi;
 
@@ -11,50 +11,28 @@ public record RequestUri(
 {
     public override string ToString()
     {
-        var result = new StringBuilder();
-
-        result.Append(Path);
-
-        var queryIncluded = false;
+        var query = new QueryBuilder();
 
         if (Filter is not null)
         {
-            result.Append("?filter=");
-            result.Append(Uri.EscapeDataString(Filter.ToString()));
-
-            queryIncluded = true;
+            query.Add("filter", Filter.ToString());
         }
 
-        if (Fields is not null)
+        foreach (var field in Fields ?? [])
         {
-            foreach (var field in Fields)
-            {
-                var fieldAsString = field.ToString();
+            var parts = field.ToParts();
 
-                if (string.IsNullOrEmpty(fieldAsString))
-                    continue;
+            if (parts is null)
+                continue;
 
-                if (!queryIncluded)
-                {
-                    result.Append('?');
-                    queryIncluded = true;
-                }
-                else
-                {
-                    result.Append('&');
-                }
-
-                result.Append(Uri.EscapeDataString(fieldAsString));
-            }
+            query.Add(parts.Value.Key, parts.Value.Value);
         }
 
         if (PageSize is not null)
         {
-            result.Append(!queryIncluded ? '?' : '&');
-            result.Append(Uri.EscapeDataString("page[size]="));
-            result.Append(PageSize);
+            query.Add("page[size]", PageSize.Value.ToString());
         }
 
-        return result.ToString();
+        return $"{Path}{query}";
     }
 }

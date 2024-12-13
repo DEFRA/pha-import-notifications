@@ -11,7 +11,8 @@ using WireMock.ResponseBuilders;
 
 namespace Defra.PhaImportNotifications.Api.Tests.JsonApi;
 
-public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(context)
+public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
+    : WireMockTestBase<WireMockContextQueryParameterNoComma>(context)
 {
     private JsonApiClient Subject { get; } = new(context.HttpClient, NullLogger<JsonApiClient>.Instance);
 
@@ -257,7 +258,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
     public async Task Get_WithFields_ShouldSucceed()
     {
         WireMock
-            .Given(Request.Create().WithPath("/get").UsingGet().WithJsonApiParam("fields[people]=name"))
+            .Given(Request.Create().WithPath("/get").UsingGet().WithJsonApiParam("fields[people]", "name"))
             .RespondWith(
                 Response
                     .Create()
@@ -278,7 +279,7 @@ public class JsonApiClientTests(WireMockContext context) : WireMockTestBase(cont
     public async Task Get_WithPageSize_ShouldSucceed()
     {
         WireMock
-            .Given(Request.Create().WithPath("/get").UsingGet().WithJsonApiParam("page[size]=100"))
+            .Given(Request.Create().WithPath("/get").UsingGet().WithJsonApiParam("page[size]", "100"))
             .RespondWith(
                 Response
                     .Create()

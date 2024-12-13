@@ -1,7 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Nodes;
 using Microsoft.AspNetCore.Http;
-using WireMock.Matchers;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -30,11 +29,9 @@ public static class WireMockExtensions
 
     public static void StubImportNotificationUpdates(
         this WireMockServer wireMock,
-        string? path = null,
         bool shouldFail = false,
-        string? filter = null,
-        string[]? fields = null,
         Func<JsonNode, JsonNode>? transformBody = null,
+        string? path = null,
         Func<IRequestBuilder, IRequestBuilder>? transformRequest = null
     )
     {
@@ -59,12 +56,6 @@ public static class WireMockExtensions
 
         var request = Request.Create().WithPath(path ?? Endpoints.ImportNotifications.Get()).UsingGet();
 
-        if (filter is not null)
-            request = request.WithParam("filter", MatchBehaviour.AcceptOnMatch, filter);
-
-        if (fields is not null)
-            request = fields.Aggregate(request, (builder, field) => builder.WithJsonApiParam(field));
-
         if (transformRequest is not null)
             request = transformRequest(request);
 
@@ -84,18 +75,5 @@ public static class WireMockExtensions
         using var reader = new StreamReader(stream);
 
         return reader.ReadToEnd();
-    }
-
-    /// <summary>
-    /// A helper for when a JSON.API request param is needed that includes braces. WireMock
-    /// does not handle the un-escaping therefore we escape on the param itself so we ensure
-    /// a match.
-    /// </summary>
-    /// <param name="builder"></param>
-    /// <param name="param"></param>
-    /// <returns></returns>
-    private static IRequestBuilder WithJsonApiParam(this IParamsRequestBuilder builder, string param)
-    {
-        return builder.WithParam(Uri.EscapeDataString(param));
     }
 }

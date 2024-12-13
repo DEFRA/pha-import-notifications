@@ -7,7 +7,8 @@ using ChedReferenceNumbers = Defra.PhaImportNotifications.Testing.ChedReferenceN
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
 
-public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(context)
+public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
+    : WireMockTestBase<WireMockContextQueryParameterNoComma>(context)
 {
     private BtmsService Subject { get; } =
         new(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance));
@@ -16,10 +17,14 @@ public class BtmsServiceTests(WireMockContext context) : WireMockTestBase(contex
     public async Task GetImportNotificationUpdates_WhenOk_ShouldSucceed()
     {
         var bcp = new[] { "bcp1", "bcp2" };
-        WireMock.StubImportNotificationUpdates(
-            filter: "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))",
-            fields: ["fields[import-notifications]=updated,referenceNumber"],
-            transformRequest: builder => builder.WithJsonApiParam("page[size]=1000")
+        WireMock.StubImportNotificationUpdates(transformRequest: builder =>
+            builder
+                .WithParam(
+                    "filter",
+                    "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))"
+                )
+                .WithJsonApiParam("fields[import-notifications]", "updated,referenceNumber")
+                .WithJsonApiParam("page[size]", "1000")
         );
 
         var result = await Subject.GetImportNotificationUpdates(bcp, CancellationToken.None);
