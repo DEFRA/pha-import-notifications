@@ -46,11 +46,16 @@ public static class EndpointRouteBuilderExtensions
         CancellationToken cancellationToken
     )
     {
-        var notifications = await btmsService.GetImportNotificationUpdates(request.Bcp, cancellationToken);
+        var notifications = await btmsService.GetImportNotificationUpdates(
+            request.Bcp,
+            request.From,
+            request.To,
+            cancellationToken
+        );
         var updated = notifications.Select(x => new UpdatedImportNotification
         {
             Updated = x.Updated,
-            ReferenceNumber = x.ReferenceNumber!,
+            ReferenceNumber = x.ReferenceNumber,
             Links = new UpdatedImportNotificationLinks
             {
                 ImportNotification = new Uri($"/import-notifications/{x.ReferenceNumber}"),

@@ -1,3 +1,4 @@
+using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.BtmsStub;
@@ -13,21 +14,39 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
     private BtmsService Subject { get; } =
         new(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance));
 
+    private UpdatedImportNotificationRequest ValidRequest { get; } =
+        new()
+        {
+            Bcp = ["bcp1", "bcp2"],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+        };
+
     [Fact]
     public async Task GetImportNotificationUpdates_WhenOk_ShouldSucceed()
     {
-        var bcp = new[] { "bcp1", "bcp2" };
         WireMock.StubImportNotificationUpdates(transformRequest: builder =>
             builder
                 .WithParam(
                     "filter",
-                    "and(any(_PointOfEntry,'bcp1','bcp2'),any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),not(equals(status,'Draft')))"
+                    "and("
+                        + "any(_PointOfEntry,'bcp1','bcp2'),"
+                        + "any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),"
+                        + "not(equals(status,'Draft')),"
+                        + "greaterOrEqual(updated,'2024-12-12T13:10:30.0000000Z'),"
+                        + "lessThan(updated,'2024-12-12T13:40:30.0000000Z')"
+                        + ")"
                 )
                 .WithJsonApiParam("fields[import-notifications]", "updated,referenceNumber")
                 .WithJsonApiParam("page[size]", "1000")
         );
 
-        var result = await Subject.GetImportNotificationUpdates(bcp, CancellationToken.None);
+        var result = await Subject.GetImportNotificationUpdates(
+            ValidRequest.Bcp,
+            ValidRequest.From,
+            ValidRequest.To,
+            CancellationToken.None
+        );
 
         // If this fails, check the expected filter or fields as it may have changed
         result.Should().HaveCount(10);
@@ -38,8 +57,6 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
     [Fact]
     public async Task GetImportNotificationUpdates_WhenOk_MultiplePages_ShouldSucceed()
     {
-        var bcp = new[] { "bcp1", "bcp2" };
-
         // First request maps to path /api/import-notifications and returns next
         // link for second page
         WireMock.StubImportNotificationUpdates(transformBody: jsonNode =>
@@ -54,7 +71,12 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
             transformRequest: builder => builder.WithParam("page", "2")
         );
 
-        var result = await Subject.GetImportNotificationUpdates(bcp, CancellationToken.None);
+        var result = await Subject.GetImportNotificationUpdates(
+            ValidRequest.Bcp,
+            ValidRequest.From,
+            ValidRequest.To,
+            CancellationToken.None
+        );
 
         result.Should().HaveCount(20);
     }
@@ -64,7 +86,7 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
     {
         WireMock.StubImportNotificationUpdates(shouldFail: true);
 
-        var act = () => Subject.GetImportNotificationUpdates([], CancellationToken.None);
+        var act = () => Subject.GetImportNotificationUpdates([], DateTime.Now, DateTime.Now, CancellationToken.None);
 
         await act.Should().ThrowAsync<Exception>();
     }

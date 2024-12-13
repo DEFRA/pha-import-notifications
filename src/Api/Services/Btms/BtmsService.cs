@@ -7,6 +7,8 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
 {
     public async Task<IEnumerable<ImportNotificationUpdate>> GetImportNotificationUpdates(
         string[] bcp,
+        DateTime from,
+        DateTime to,
         CancellationToken cancellationToken
     )
     {
@@ -16,6 +18,8 @@ public class BtmsService(JsonApiClient jsonApiClient) : IBtmsService
                 new AnyExpression("_PointOfEntry", bcp),
                 new AnyExpression("importNotificationType", Enum.GetNames<ImportNotificationTypeEnum>()),
                 new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
+                new ComparisonExpression(ComparisonOperator.GreaterOrEqual, "updated", from.ToString("O")),
+                new ComparisonExpression(ComparisonOperator.LessThan, "updated", to.ToString("O")),
             ]
         );
         var fields = new[] { new FieldExpression("import-notifications", ["updated", "referenceNumber"]) };
