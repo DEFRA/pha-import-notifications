@@ -11,8 +11,8 @@ using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
-public class GetUpdatedTests(TestWebApplicationFactory<Program> factory, ITestOutputHelper outputHelper)
-    : EndpointTestBase<Program>(factory, outputHelper)
+public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
+    : EndpointTestBase(factory, outputHelper)
 {
     private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
 

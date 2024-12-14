@@ -13,9 +13,9 @@ using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
-public class GetTests : EndpointTestBase<Program>, IClassFixture<WireMockContext>
+public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
 {
-    public GetTests(TestWebApplicationFactory<Program> factory, ITestOutputHelper outputHelper, WireMockContext context)
+    public GetTests(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper, WireMockContext context)
         : base(factory, outputHelper)
     {
         WireMock = context.Server;

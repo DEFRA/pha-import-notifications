@@ -1,7 +1,6 @@
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.OpenApi;
 
-public class OpenApiTests(TestWebApplicationFactory<Program> factory)
-    : IClassFixture<TestWebApplicationFactory<Program>>
+public class OpenApiTests(ApiWebApplicationFactory factory) : IClassFixture<ApiWebApplicationFactory>
 {
     [Fact]
     public async Task OpenApi_VerifyAsExpected()

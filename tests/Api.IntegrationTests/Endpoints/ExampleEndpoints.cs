@@ -4,8 +4,8 @@ using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
-public class ExampleEndpoints(TestWebApplicationFactory<Program> factory, ITestOutputHelper outputHelper)
-    : EndpointTestBase<Program>(factory, outputHelper)
+public class ExampleEndpoints(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
+    : EndpointTestBase(factory, outputHelper)
 {
     [Fact]
     public async Task GetHelloWorldReturnsHelloWorld()

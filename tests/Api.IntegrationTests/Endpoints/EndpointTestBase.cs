@@ -8,12 +8,11 @@ using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
-public class EndpointTestBase<T> : IClassFixture<TestWebApplicationFactory<T>>
-    where T : class
+public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
 {
-    private readonly TestWebApplicationFactory<T> _factory;
+    private readonly ApiWebApplicationFactory _factory;
 
-    protected EndpointTestBase(TestWebApplicationFactory<T> factory, ITestOutputHelper outputHelper)
+    protected EndpointTestBase(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
     {
         _factory = factory;
         _factory.OutputHelper = outputHelper;
