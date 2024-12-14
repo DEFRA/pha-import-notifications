@@ -16,6 +16,7 @@ public class TestWebApplicationFactory<T> : WebApplicationFactory<T>, ITestOutpu
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureLogging(config => config.AddXUnit(this));
+        builder.UseSetting("integrationTest", "true");
     }
 
     protected override IHost CreateHost(IHostBuilder builder)

@@ -41,14 +41,15 @@ static WebApplication CreateWebApplication(string[] args)
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    ConfigureWebApplication(builder);
+    ConfigureWebApplication(builder, args);
 
     return BuildWebApplication(builder);
 }
 
-static void ConfigureWebApplication(WebApplicationBuilder builder)
+static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args)
 {
     var generatingOpenApiFromCli = Assembly.GetEntryAssembly()?.GetName().Name == "dotnet-swagger";
+    var integrationTest = args.Contains("--integrationTest=true");
 
     builder.Configuration.AddJsonFile(
         $"appsettings.cdp.{Environment.GetEnvironmentVariable("ENVIRONMENT")}.json",
@@ -61,7 +62,13 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
 
     // Configure logging to use the CDP Platform standards.
     builder.Services.AddHttpContextAccessor();
-    builder.Host.UseSerilog(CdpLogging.Configuration);
+    if (!integrationTest)
+    {
+        // Configuring Serilog below wipes out the framework logging
+        // so we don't execute the following when the host is running
+        // within an integration test
+        builder.Host.UseSerilog(CdpLogging.Configuration);
+    }
 
     builder.Services.AddBasicAuthentication();
     // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
