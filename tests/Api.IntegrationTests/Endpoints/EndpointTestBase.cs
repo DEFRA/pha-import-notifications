@@ -16,8 +16,19 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
     {
         _factory = factory;
         _factory.OutputHelper = outputHelper;
+        _factory.ConfigureHostConfiguration = ConfigureHostConfiguration;
     }
 
+    /// <summary>
+    /// Use this to inject configuration before Host is created.
+    /// </summary>
+    /// <param name="config"></param>
+    protected virtual void ConfigureHostConfiguration(IConfigurationBuilder config) { }
+
+    /// <summary>
+    /// Use this to override DI services.
+    /// </summary>
+    /// <param name="services"></param>
     protected virtual void ConfigureTestServices(IServiceCollection services) { }
 
     protected HttpClient CreateClient()

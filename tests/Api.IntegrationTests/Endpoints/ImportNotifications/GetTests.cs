@@ -1,13 +1,8 @@
 using System.Net;
-using Defra.PhaImportNotifications.Api.Configuration;
-using Defra.PhaImportNotifications.Api.JsonApi;
-using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 using WireMock.Server;
 using Xunit.Abstractions;
 
@@ -69,21 +64,12 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
-    protected override void ConfigureTestServices(IServiceCollection services)
+    protected override void ConfigureHostConfiguration(IConfigurationBuilder config)
     {
-        base.ConfigureTestServices(services);
+        config.AddInMemoryCollection(
+            new Dictionary<string, string?> { { "Btms:BaseUrl", HttpClient.BaseAddress?.ToString() } }
+        );
 
-        services.AddTransient<IBtmsService>(_ => new BtmsService(
-            new JsonApiClient(HttpClient, NullLogger<JsonApiClient>.Instance),
-            new OptionsWrapper<BtmsOptions>(
-                new BtmsOptions
-                {
-                    BaseUrl = "http://base-url",
-                    Password = "password",
-                    Username = "username",
-                    PageSize = 100,
-                }
-            )
-        ));
+        base.ConfigureHostConfiguration(config);
     }
 }
