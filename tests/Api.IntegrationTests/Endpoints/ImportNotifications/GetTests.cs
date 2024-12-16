@@ -1,21 +1,16 @@
 using System.Net;
-using Defra.PhaImportNotifications.Api.Configuration;
-using Defra.PhaImportNotifications.Api.JsonApi;
-using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
 using WireMock.Server;
 using Xunit.Abstractions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
-public class GetTests : EndpointTestBase<Program>, IClassFixture<WireMockContext>
+public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
 {
-    public GetTests(TestWebApplicationFactory<Program> factory, ITestOutputHelper outputHelper, WireMockContext context)
+    public GetTests(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper, WireMockContext context)
         : base(factory, outputHelper)
     {
         WireMock = context.Server;
@@ -69,21 +64,27 @@ public class GetTests : EndpointTestBase<Program>, IClassFixture<WireMockContext
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
-    protected override void ConfigureTestServices(IServiceCollection services)
+    [Fact]
+    public async Task Get_WhenCdpRequestId_ShouldPropagate()
     {
-        base.ConfigureTestServices(services);
+        var client = CreateClient();
+        client.DefaultRequestHeaders.Add("x-cdp-request-id", "REQUEST-ID");
 
-        services.AddTransient<IBtmsService>(_ => new BtmsService(
-            new JsonApiClient(HttpClient, NullLogger<JsonApiClient>.Instance),
-            new OptionsWrapper<BtmsOptions>(
-                new BtmsOptions
-                {
-                    BaseUrl = "http://base-url",
-                    Password = "password",
-                    Username = "username",
-                    PageSize = 100,
-                }
-            )
-        ));
+        WireMock.StubSingleImportNotification(transformRequest: request =>
+            request.WithHeader("x-cdp-request-id", "REQUEST-ID")
+        );
+
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+    }
+
+    protected override void ConfigureHostConfiguration(IConfigurationBuilder config)
+    {
+        config.AddInMemoryCollection(
+            new Dictionary<string, string?> { { "Btms:BaseUrl", HttpClient.BaseAddress?.ToString() } }
+        );
+
+        base.ConfigureHostConfiguration(config);
     }
 }

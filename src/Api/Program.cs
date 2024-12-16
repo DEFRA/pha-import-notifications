@@ -7,7 +7,6 @@ using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.OpenApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Api.Utils;
-using Defra.PhaImportNotifications.Api.Utils.Http;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Contracts;
@@ -18,7 +17,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
-using Serilog.Core;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
@@ -43,28 +41,36 @@ static WebApplication CreateWebApplication(string[] args)
 {
     var builder = WebApplication.CreateBuilder(args);
 
-    ConfigureWebApplication(builder);
+    ConfigureWebApplication(builder, args);
 
     return BuildWebApplication(builder);
 }
 
-static void ConfigureWebApplication(WebApplicationBuilder builder)
+static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args)
 {
+    var generatingOpenApiFromCli = Assembly.GetEntryAssembly()?.GetName().Name == "dotnet-swagger";
+    var integrationTest = args.Contains("--integrationTest=true");
+
     builder.Configuration.AddJsonFile(
         $"appsettings.cdp.{Environment.GetEnvironmentVariable("ENVIRONMENT")}.json",
         true
     );
     builder.Configuration.AddEnvironmentVariables();
 
-    var generatingOpenApiFromCli = Assembly.GetEntryAssembly()?.GetName().Name == "dotnet-swagger";
+    // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
+    builder.Services.AddCustomTrustStore();
 
-    var logger = ConfigureLogging(builder);
+    // Configure logging to use the CDP Platform standards.
+    builder.Services.AddHttpContextAccessor();
+    if (!integrationTest)
+    {
+        // Configuring Serilog below wipes out the framework logging
+        // so we don't execute the following when the host is running
+        // within an integration test
+        builder.Host.UseSerilog(CdpLogging.Configuration);
+    }
 
     builder.Services.AddBasicAuthentication();
-
-    // Load certificates into Trust Store - Note must happen before Mongo and Http client connections
-    builder.Services.AddCustomTrustStore(logger);
-
     // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
     builder.Services.ConfigureHttpClientDefaults(options => options.AddStandardResilienceHandler());
     builder.Services.ConfigureHttpJsonOptions(options => SerializerOptions.Configure(options));
@@ -129,6 +135,14 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
         );
     });
     builder.Services.AddHttpClient();
+    builder.Services.AddHeaderPropagation(options =>
+    {
+        var traceHeader = builder.Configuration.GetValue<string>("TraceHeader");
+        if (!string.IsNullOrWhiteSpace(traceHeader))
+        {
+            options.Headers.Add(traceHeader);
+        }
+    });
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddJsonApiClient(
         (sp, options) =>
@@ -141,32 +155,13 @@ static void ConfigureWebApplication(WebApplicationBuilder builder)
     );
     builder.Services.AddTransient<IBtmsService, BtmsService>();
     builder.Services.AddBtmsStub();
-
-    // calls outside the platform should be done using the named 'proxy' http client.
-    builder.Services.AddHttpProxyClient(logger);
-}
-
-static Logger ConfigureLogging(WebApplicationBuilder builder)
-{
-    builder.Logging.ClearProviders();
-
-    var logger = new LoggerConfiguration()
-        .ReadFrom.Configuration(builder.Configuration)
-        .Enrich.With<LogLevelMapper>()
-        .Enrich.WithProperty("service.version", Environment.GetEnvironmentVariable("SERVICE_VERSION"))
-        .CreateLogger();
-
-    builder.Logging.AddSerilog(logger);
-
-    logger.Information("Starting application");
-
-    return logger;
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 {
     var app = builder.Build();
 
+    app.UseHeaderPropagation();
     app.UseAuthentication();
     app.UseAuthorization();
 
