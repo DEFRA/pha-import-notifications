@@ -64,6 +64,21 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
 
+    [Fact]
+    public async Task Get_WhenCdpRequestId_ShouldPropagate()
+    {
+        var client = CreateClient();
+        client.DefaultRequestHeaders.Add("x-cdp-request-id", "REQUEST-ID");
+
+        WireMock.StubSingleImportNotification(transformRequest: request =>
+            request.WithHeader("x-cdp-request-id", "REQUEST-ID")
+        );
+
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+    }
+
     protected override void ConfigureHostConfiguration(IConfigurationBuilder config)
     {
         config.AddInMemoryCollection(

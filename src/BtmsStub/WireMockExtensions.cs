@@ -12,8 +12,9 @@ public static class WireMockExtensions
 {
     public static void StubSingleImportNotification(
         this WireMockServer wireMock,
+        bool shouldFail = false,
         string chedReferenceNumber = ChedReferenceNumbers.ChedA,
-        bool shouldFail = false
+        Func<IRequestBuilder, IRequestBuilder>? transformRequest = null
     )
     {
         var code = shouldFail ? StatusCodes.Status500InternalServerError : StatusCodes.Status200OK;
@@ -22,9 +23,12 @@ public static class WireMockExtensions
         if (!shouldFail)
             response = response.WithBody(GetBody("btms-import-notification-single.json"));
 
-        wireMock
-            .Given(Request.Create().WithPath(Endpoints.ImportNotifications.Get(chedReferenceNumber)).UsingGet())
-            .RespondWith(response);
+        var request = Request.Create().WithPath(Endpoints.ImportNotifications.Get(chedReferenceNumber)).UsingGet();
+
+        if (transformRequest is not null)
+            request = transformRequest(request);
+
+        wireMock.Given(request).RespondWith(response);
     }
 
     public static void StubImportNotificationUpdates(
