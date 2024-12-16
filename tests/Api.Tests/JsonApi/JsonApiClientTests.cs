@@ -97,6 +97,11 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
 
         await Verify(books);
 
+        var relationships = document.GetRelationships("books", person.Id.ToString());
+
+        await Verify(relationships)
+            .UseMethodName($"{nameof(Get_Many_WhenOk_AndListOfPeople_IncludeBooks_ShouldSucceed)}_relationships");
+
         books = document.GetIncludedAsList<Book<int>>("books", 999);
 
         books.Should().BeEmpty();
@@ -180,6 +185,11 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
         var books = document.GetIncludedAsList<Book<int>>("books", person.Id);
 
         await Verify(books);
+
+        var relationships = document.GetRelationships("books", person.Id.ToString());
+
+        await Verify(relationships)
+            .UseMethodName($"{nameof(Get_Single_WhenOk_AndSinglePerson_IncludeBooks_ShouldSucceed)}_relationships");
 
         books = document.GetIncludedAsList<Book<int>>("books", 999);
 

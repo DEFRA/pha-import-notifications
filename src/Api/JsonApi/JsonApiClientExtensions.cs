@@ -14,25 +14,25 @@ public static class JsonApiClientExtensions
             : JsonApiClient.GetResourcesAs<T>(new List<ResourceObject> { document.Data.SingleValue }).FirstOrDefault();
     }
 
-    public static IEnumerable<T> GetIncludedAsList<T>(this Document document, string type, int id) =>
-        document.GetIncludedAsList<T>(type, id.ToString());
+    public static IEnumerable<T> GetIncludedAsList<T>(this Document document, string resourceType, int id) =>
+        document.GetIncludedAsList<T>(resourceType, id.ToString());
 
-    public static IEnumerable<T> GetIncludedAsList<T>(this Document document, string type, string id)
+    private static List<T> GetIncludedAsList<T>(this Document document, string resourceType, string id)
     {
-        var relationships = document.GetRelationships(type, id);
+        var relationships = document.GetRelationships(resourceType, id);
 
         var resources =
             document
                 .Included?.Where(included =>
-                    Equals(included.Type, type)
-                    && relationships.Any(y => Equals(y.Type, type) && Equals(y.Id, included.Id))
+                    Equals(included.Type, resourceType)
+                    && relationships.Any(y => Equals(y.ResourceType, resourceType) && Equals(y.Id, included.Id))
                 )
                 .ToList() ?? [];
 
         return JsonApiClient.GetResourcesAs<T>(resources);
     }
 
-    private static IEnumerable<Relationship> GetRelationships(this Document document, string type, string id)
+    public static IEnumerable<Relationship> GetRelationships(this Document document, string resourceType, string id)
     {
         var resources = document.Data.ManyValue ?? [];
 
@@ -45,7 +45,7 @@ public static class JsonApiClientExtensions
             return [];
 
         return resource
-                .Relationships?.FirstOrDefault(x => Equals(x.Key, type))
+                .Relationships?.FirstOrDefault(x => Equals(x.Key, resourceType))
                 .Value?.Data.ManyValue?.Where(x => x is { Type: not null, Id: not null })
                 .Select(x => new Relationship(x.Type!, x.Id!)) ?? [];
     }
