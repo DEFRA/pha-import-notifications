@@ -1,6 +1,5 @@
 using System.Net.Http.Headers;
 using Defra.PhaImportNotifications.Api.Helpers;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,7 +34,6 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
     {
         var builder = _factory.WithWebHostBuilder(builder =>
         {
-            builder.UseEnvironment("IntegrationTests");
             builder.ConfigureTestServices(ConfigureTestServices);
         });
 

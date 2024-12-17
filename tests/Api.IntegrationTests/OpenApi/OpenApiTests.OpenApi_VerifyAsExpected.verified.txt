@@ -12,7 +12,7 @@
   },
   "servers": [
     {
-      "url": "https://localhost"
+      "url": "https://integration-test-host"
     }
   ],
   "paths": {

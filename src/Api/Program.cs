@@ -85,7 +85,12 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(c =>
     {
-        c.AddServer(new OpenApiServer { Url = "https://localhost" });
+        c.AddServer(
+            new OpenApiServer
+            {
+                Url = "https://" + (builder.Configuration.GetValue<string>("OpenApi:Host") ?? "localhost"),
+            }
+        );
         c.AddSecurityDefinition(
             "Basic",
             new OpenApiSecurityScheme
