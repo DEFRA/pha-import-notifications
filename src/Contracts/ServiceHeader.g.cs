@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class ServiceHeader
+public partial class ServiceHeader
 {
     [JsonPropertyName("sourceSystem")]
     public string? SourceSystem { get; init; }

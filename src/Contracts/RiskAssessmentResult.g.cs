@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class RiskAssessmentResult
+public partial class RiskAssessmentResult
 {
     [JsonPropertyName("commodityResults")]
     [Description("List of risk assessed commodities")]

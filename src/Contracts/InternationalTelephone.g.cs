@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class InternationalTelephone
+public partial class InternationalTelephone
 {
     [JsonPropertyName("countryCode")]
     [Description("Country code of phone number")]

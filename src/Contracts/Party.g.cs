@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class Party
+public partial class Party
 {
     [JsonPropertyName("id")]
     [Description("IPAFFS ID of party")]

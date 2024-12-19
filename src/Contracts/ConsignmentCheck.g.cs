@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class ConsignmentCheck
+public partial class ConsignmentCheck
 {
     [JsonPropertyName("euStandard")]
     [Description("Does it conform EU standards")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class AlvsClearanceRequest
+public partial class AlvsClearanceRequest
 {
     [JsonPropertyName("serviceHeader")]
     [JsonIgnore]

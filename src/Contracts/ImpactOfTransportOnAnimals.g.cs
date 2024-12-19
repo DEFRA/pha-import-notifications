@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class ImpactOfTransportOnAnimals
+public partial class ImpactOfTransportOnAnimals
 {
     [JsonPropertyName("numberOfDeadAnimals")]
     [Description("Number of dead animals specified by units")]

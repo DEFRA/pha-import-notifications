@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class MovementTdmRelationships
+public partial class MovementTdmRelationships
 {
     [JsonPropertyName("notifications")]
     public TdmRelationshipObject? Notifications { get; init; }

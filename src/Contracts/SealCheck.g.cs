@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class SealCheck
+public partial class SealCheck
 {
     [JsonPropertyName("satisfactory")]
     [Description("Is seal check satisfactory")]

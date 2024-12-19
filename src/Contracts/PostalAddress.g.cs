@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class PostalAddress
+public partial class PostalAddress
 {
     [JsonPropertyName("addressLine1")]
     [Description("1st line of address")]

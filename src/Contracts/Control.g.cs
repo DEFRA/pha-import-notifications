@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class Control
+public partial class Control
 {
     [JsonPropertyName("feedbackInformation")]
     [Description("Feedback information of Control")]
