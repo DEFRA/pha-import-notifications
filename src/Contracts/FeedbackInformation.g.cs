@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class FeedbackInformation
+public partial class FeedbackInformation
 {
     [JsonPropertyName("authorityType")]
     [Description("Type of authority")]

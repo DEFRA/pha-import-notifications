@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class Header
+public partial class Header
 {
     [JsonPropertyName("entryReference")]
     public string? EntryReference { get; init; }

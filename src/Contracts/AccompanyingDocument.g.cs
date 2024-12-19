@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class AccompanyingDocument
+public partial class AccompanyingDocument
 {
     [JsonPropertyName("documentType")]
     [Description("Additional document type")]

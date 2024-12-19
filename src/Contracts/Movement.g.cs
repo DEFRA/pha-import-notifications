@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class Movement
+public partial class Movement
 {
     [JsonPropertyName("type")]
     [JsonIgnore]

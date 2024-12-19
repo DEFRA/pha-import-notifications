@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class BillingInformation
+public partial class BillingInformation
 {
     [JsonPropertyName("isConfirmed")]
     [Description("Indicates whether user has confirmed their billing information")]

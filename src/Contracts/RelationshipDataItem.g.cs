@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class RelationshipDataItem
+public partial class RelationshipDataItem
 {
     [JsonPropertyName("matched")]
     public bool? Matched { get; init; }

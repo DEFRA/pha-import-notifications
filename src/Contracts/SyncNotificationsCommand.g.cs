@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class SyncNotificationsCommand
+public partial class SyncNotificationsCommand
 {
     [JsonPropertyName("syncPeriod")]
     public required SyncPeriod SyncPeriod { get; init; }

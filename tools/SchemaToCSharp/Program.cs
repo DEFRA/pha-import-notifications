@@ -145,7 +145,7 @@ static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, 
 }
 
 static ClassDeclarationSyntax CreateClass(string name) =>
-    ClassDeclaration(Identifier(name)).AddModifiers(Token(SyntaxKind.PublicKeyword));
+    ClassDeclaration(Identifier(name)).AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
 
 static UsingDirectiveSyntax CreateUsing(string fqn) => UsingDirective(ParseName(fqn));
 
