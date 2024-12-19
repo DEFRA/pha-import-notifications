@@ -7,15 +7,15 @@ namespace Defra.PhaImportNotifications.Api.Utils.Logging;
 [ExcludeFromCodeCoverage]
 public static class CdpLogging
 {
-    public static void Configuration(HostBuilderContext ctx, LoggerConfiguration config)
+    public static void Configuration(HostBuilderContext ctx, IServiceProvider services, LoggerConfiguration config)
     {
-        var httpAccessor = ctx.Configuration.Get<HttpContextAccessor>();
+        var httpAccessor = services.GetRequiredService<IHttpContextAccessor>();
         var traceIdHeader = ctx.Configuration.GetValue<string>("TraceHeader");
         var serviceVersion = Environment.GetEnvironmentVariable("SERVICE_VERSION") ?? "";
 
         config
             .ReadFrom.Configuration(ctx.Configuration)
-            .Enrich.WithEcsHttpContext(httpAccessor!)
+            .Enrich.WithEcsHttpContext(httpAccessor)
             .Enrich.FromLogContext()
             .Enrich.WithProperty("service.version", serviceVersion);
 
