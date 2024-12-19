@@ -10,6 +10,53 @@
         "tags": [
           "AnalyticsEndpoints"
         ],
+        "parameters": [
+          {
+            "name": "chartsToRender",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/analytics/record-current-state": {
+      "get": {
+        "tags": [
+          "AnalyticsEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/analytics/timeline": {
+      "get": {
+        "tags": [
+          "AnalyticsEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "movementId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -18,6 +65,18 @@
       }
     },
     "/diagnostics/blob": {
+      "get": {
+        "tags": [
+          "DiagnosticEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/diagnostics/asb": {
       "get": {
         "tags": [
           "DiagnosticEndpoints"
@@ -233,6 +292,60 @@
         }
       }
     },
+    "/sync/generate-download": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "enum": [
+                "Today",
+                "LastMonth",
+                "ThisMonth",
+                "All"
+              ],
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/SyncPeriod"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/download/{id}": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/sync/gmrs": {
       "get": {
         "tags": [
@@ -290,6 +403,36 @@
       }
     },
     "/sync/decisions": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "syncPeriod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "enum": [
+                "Today",
+                "LastMonth",
+                "ThisMonth",
+                "All"
+              ],
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/SyncPeriod"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "post": {
         "tags": [
           "SyncEndpoints"
@@ -352,6 +495,28 @@
       }
     },
     "/sync/jobs/{jobId}": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/jobs/{jobId}/cancel": {
       "get": {
         "tags": [
           "SyncEndpoints"
@@ -2362,10 +2527,6 @@
             },
             "nullable": true
           },
-          "_Ts": {
-            "type": "string",
-            "format": "date-time"
-          },
           "_PointOfEntry": {
             "type": "string",
             "nullable": true
@@ -4362,8 +4523,7 @@
         "type": "object",
         "properties": {
           "matched": {
-            "type": "boolean",
-            "nullable": true
+            "type": "boolean"
           },
           "links": {
             "allOf": [
