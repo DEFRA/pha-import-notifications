@@ -76,7 +76,7 @@ internal static class Ignored
         },
         {
             "AlvsClearanceRequest",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader", "Header" }
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
         },
     };
 }
