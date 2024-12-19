@@ -10,10 +10,10 @@ public partial class Movement
     public string? Type { get; init; }
 
     [JsonPropertyName("clearanceRequests")]
-    public List<AlvsClearanceRequest>? ClearanceRequests { get; init; }
+    public List<CustomsClearanceRequest>? ClearanceRequests { get; init; }
 
     [JsonPropertyName("decisions")]
-    public List<AlvsClearanceRequest>? Decisions { get; init; }
+    public List<CustomsClearanceRequest>? Decisions { get; init; }
 
     [JsonPropertyName("items")]
     public List<Items>? Items { get; init; }

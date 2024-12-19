@@ -596,6 +596,36 @@
         },
         "additionalProperties": false
       },
+      "Check": {
+        "type": "object",
+        "properties": {
+          "checkCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "departmentCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "decisionCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "decisionsValidUntil": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "decisionReasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ChedppNotAcceptableReason": {
         "type": "object",
         "properties": {
@@ -1270,6 +1300,27 @@
         ],
         "type": "string"
       },
+      "CustomsClearanceRequest": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Header"
+              }
+            ],
+            "nullable": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Items"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Decision": {
         "type": "object",
         "properties": {
@@ -1710,6 +1761,33 @@
         ],
         "type": "string"
       },
+      "Document": {
+        "type": "object",
+        "properties": {
+          "documentCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "documentReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "documentStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "documentControl": {
+            "type": "string",
+            "nullable": true
+          },
+          "documentQuantity": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "EconomicOperator": {
         "type": "object",
         "properties": {
@@ -1888,6 +1966,72 @@
         ],
         "type": "string"
       },
+      "Header": {
+        "type": "object",
+        "properties": {
+          "entryReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "entryVersionNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "previousVersionNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "declarationUcr": {
+            "type": "string",
+            "nullable": true
+          },
+          "declarationPartNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "declarationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "arrivesAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "submitterTurn": {
+            "type": "string",
+            "nullable": true
+          },
+          "declarantId": {
+            "type": "string",
+            "nullable": true
+          },
+          "declarantName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dispatchCountryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "goodsLocationCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "masterUcr": {
+            "type": "string",
+            "nullable": true
+          },
+          "decisionNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ImpactOfTransportOnAnimals": {
         "type": "object",
         "properties": {
@@ -1929,6 +2073,13 @@
         ],
         "type": "object",
         "properties": {
+          "clearanceRequests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomsClearanceRequest"
+            },
+            "nullable": true
+          },
           "createdSource": {
             "type": "string",
             "description": "Date when the notification was created in IPAFFS",
@@ -2311,6 +2462,70 @@
           "subscriberNumber": {
             "type": "string",
             "description": "Phone number",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Items": {
+        "type": "object",
+        "properties": {
+          "itemNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "customsProcedureCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "taricCommodityCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "goodsDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "consigneeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "consigneeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "itemNetMass": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "itemSupplementaryUnits": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "itemThirdQuantity": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "itemOriginCountryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Document"
+            },
+            "nullable": true
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Check"
+            },
             "nullable": true
           }
         },

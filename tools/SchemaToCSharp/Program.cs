@@ -34,7 +34,7 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
 
-    await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
+    await using var streamWriter = new StreamWriter($"{outputPath}/{CreateTypeName(schemaName)}.g.cs", false);
     syntax.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
     continue;
 
@@ -78,6 +78,8 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
         "array" => CreateReferenceTypeName(schema.Items, schema.Items.Type),
         _ => "object",
     };
+
+    typeName = CreateTypeName(typeName);
 
     return ParseTypeName(schema.Type == "array" ? $"List<{typeName}>" : typeName);
 }
@@ -145,7 +147,8 @@ static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, 
 }
 
 static ClassDeclarationSyntax CreateClass(string name) =>
-    ClassDeclaration(Identifier(name)).AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
+    ClassDeclaration(Identifier(CreateTypeName(name)))
+        .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
 
 static UsingDirectiveSyntax CreateUsing(string fqn) => UsingDirective(ParseName(fqn));
 
@@ -159,3 +162,12 @@ static AttributeSyntax CreateSimpleAttribute(string type, string arg1) =>
     Attribute(ParseName(type)).WithArgumentList(ParseAttributeArgumentList($"(\"{arg1}\")"));
 
 static string CreatePropertyName(string s) => char.ToUpper(s[0]) + s[1..];
+
+static string CreateTypeName(string name)
+{
+    var identifier = name;
+    if (Rename.Types.TryGetValue(name, out var typeName))
+        identifier = typeName;
+
+    return identifier;
+}
