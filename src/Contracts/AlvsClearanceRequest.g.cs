@@ -10,7 +10,6 @@ public class AlvsClearanceRequest
     public ServiceHeader? ServiceHeader { get; init; }
 
     [JsonPropertyName("header")]
-    [JsonIgnore]
     public Header? Header { get; init; }
 
     [JsonPropertyName("items")]
