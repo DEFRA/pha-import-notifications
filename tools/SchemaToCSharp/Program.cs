@@ -15,7 +15,7 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 // Step up out of execution path : {solutionPath}/tools/SchemaToCSharp/bin/Debug/net8.0
 const string solutionPath = "../../../../../";
 const string outputPath = $"{solutionPath}src/Contracts/";
-const string inputPath = $"{solutionPath}tools/SchemaToCSharp/cdms-public-openapi-v0.1.json";
+const string inputPath = $"{solutionPath}tools/SchemaToCSharp/btms-public-openapi-v0.1.json";
 
 Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
