@@ -15,24 +15,30 @@ public partial class Header
     public int? PreviousVersionNumber { get; init; }
 
     [JsonPropertyName("declarationUcr")]
+    [JsonIgnore]
     public string? DeclarationUcr { get; init; }
 
     [JsonPropertyName("declarationPartNumber")]
+    [JsonIgnore]
     public string? DeclarationPartNumber { get; init; }
 
     [JsonPropertyName("declarationType")]
+    [JsonIgnore]
     public string? DeclarationType { get; init; }
 
     [JsonPropertyName("arrivesAt")]
     public DateTime? ArrivesAt { get; init; }
 
     [JsonPropertyName("submitterTurn")]
+    [JsonIgnore]
     public string? SubmitterTurn { get; init; }
 
     [JsonPropertyName("declarantId")]
+    [JsonIgnore]
     public string? DeclarantId { get; init; }
 
     [JsonPropertyName("declarantName")]
+    [JsonIgnore]
     public string? DeclarantName { get; init; }
 
     [JsonPropertyName("dispatchCountryCode")]
@@ -42,6 +48,7 @@ public partial class Header
     public string? GoodsLocationCode { get; init; }
 
     [JsonPropertyName("masterUcr")]
+    [JsonIgnore]
     public string? MasterUcr { get; init; }
 
     [JsonPropertyName("decisionNumber")]

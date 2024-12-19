@@ -72,11 +72,34 @@ internal static class Ignored
                 "AuditEntries",
                 "Relationships",
                 "Type",
+                "Items",
             }
         },
         {
             "AlvsClearanceRequest",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
+        },
+        {
+            "Header",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                "DeclarationUcr",
+                "DeclarationPartNumber",
+                "DeclarationType",
+                "SubmitterTurn",
+                "DeclarantId",
+                "DeclarantName",
+                "MasterUcr",
+            }
+        },
+        {
+            "Document",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                "DocumentStatus",
+                "DocumentControl",
+                "DocumentQuantity",
+            }
         },
     };
 }

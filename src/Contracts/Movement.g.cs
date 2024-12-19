@@ -16,6 +16,7 @@ public partial class Movement
     public List<CustomsClearanceRequest>? Decisions { get; init; }
 
     [JsonPropertyName("items")]
+    [JsonIgnore]
     public List<Items>? Items { get; init; }
 
     [JsonPropertyName("updatedSource")]
