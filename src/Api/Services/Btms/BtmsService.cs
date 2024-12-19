@@ -2,6 +2,7 @@ using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.Extensions.Options;
+using Document = Defra.PhaImportNotifications.Api.JsonApi.Document;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 

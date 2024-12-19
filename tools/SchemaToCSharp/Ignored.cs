@@ -63,5 +63,20 @@ internal static class Ignored
             "ImportNotificationStatusEnum",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Draft" }
         },
+        {
+            "Movement",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                "_Etag",
+                "_MatchReferences",
+                "AuditEntries",
+                "Relationships",
+                "Type",
+            }
+        },
+        {
+            "AlvsClearanceRequest",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader", "Header" }
+        },
     };
 }
