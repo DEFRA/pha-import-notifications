@@ -35,10 +35,6 @@ public class ImportNotification
     [JsonPropertyName("commodities")]
     public List<CommodityComplement>? Commodities { get; init; }
 
-    [JsonPropertyName("_Ts")]
-    [JsonIgnore]
-    public DateTime? _Ts { get; init; }
-
     [JsonPropertyName("_PointOfEntry")]
     [JsonIgnore]
     public string? _PointOfEntry { get; init; }
