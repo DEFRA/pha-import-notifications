@@ -21,7 +21,7 @@ public static class WireMockExtensions
         var response = Response.Create().WithStatusCode(code);
 
         if (!shouldFail)
-            response = response.WithBody(GetBody("btms-import-notification-single.json"));
+            response = response.WithBody(GetBody($"btms-import-notification-single-{chedReferenceNumber}.json"));
 
         var request = Request.Create().WithPath(Endpoints.ImportNotifications.Get(chedReferenceNumber)).UsingGet();
 
