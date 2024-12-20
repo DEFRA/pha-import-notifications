@@ -29,9 +29,13 @@ public class BasicAuthenticationHandlerTests
             }
         );
 
+        var mockAclOptions = Substitute.For<IOptions<AclOptions>>();
+        mockAclOptions.Value.Returns(options.AclOptions);
+
         var handler = new BasicAuthenticationHandler(
             mockSchemeOptions,
             mockBasicAuthOptions,
+            mockAclOptions,
             Substitute.For<ILoggerFactory>(),
             Substitute.For<UrlEncoder>()
         );
@@ -124,8 +128,79 @@ public class BasicAuthenticationHandlerTests
         result.Succeeded.Should().BeTrue();
     }
 
+    [Fact]
+    public async Task HandleAuthenticateAsync_WithAKnownClient_AddsTheBcpClaimsToTheTicket()
+    {
+        var context = new DefaultHttpContext();
+
+        const string password = "real-password";
+        const string username = "real-username";
+
+        context.Request.Headers.Authorization = BasicAuthHelper.CreateBasicAuthHeader(username, password);
+
+        var testHandlerOptions = new TestHandlerOptions
+        {
+            HttpContext = context,
+            Password = password,
+            Username = username,
+        };
+
+        var handler = await CreateHandler(testHandlerOptions);
+
+        var result = await handler.AuthenticateAsync();
+        var bcpClaims = result.Ticket?.Principal.Claims.Where(c => c.Type == PhaClaimTypes.Bcp).Select(c => c.Value);
+
+        bcpClaims?.Should().BeEquivalentTo(testHandlerOptions.AclOptions.Clients[username].Bcps);
+    }
+
+    [Fact]
+    public async Task HandleAuthenticateAsync_WithAnUnknownClient_ReturnsUnknownClient()
+    {
+        var context = new DefaultHttpContext();
+
+        const string password = "real-password";
+        const string username = "real-username";
+
+        context.Request.Headers.Authorization = BasicAuthHelper.CreateBasicAuthHeader(username, password);
+
+        var testHandlerOptions = new TestHandlerOptions
+        {
+            AclOptions = new AclOptions
+            {
+                Clients = new Dictionary<string, AclOptions.ClientConfig>
+                {
+                    {
+                        "a-different-user",
+                        new AclOptions.ClientConfig { Bcps = ["bcp1"] }
+                    },
+                },
+            },
+            HttpContext = context,
+            Password = password,
+            Username = username,
+        };
+
+        var handler = await CreateHandler(testHandlerOptions);
+
+        var result = await handler.AuthenticateAsync();
+        result.Succeeded.Should().BeFalse();
+        result.Failure?.Message.Should().Be("Unknown Client");
+    }
+
     private class TestHandlerOptions
     {
+        public AclOptions AclOptions { get; init; } =
+            new()
+            {
+                Clients = new Dictionary<string, AclOptions.ClientConfig>
+                {
+                    {
+                        "real-username",
+                        new AclOptions.ClientConfig { Bcps = ["abpc", "anotherbpc"] }
+                    },
+                },
+            };
+
         public bool AuthEnabled { get; init; } = true;
         public required HttpContext HttpContext { get; init; }
         public string Password { get; init; } = "password";

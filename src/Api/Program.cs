@@ -63,12 +63,10 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
     // Configure logging to use the CDP Platform standards.
     builder.Services.AddHttpContextAccessor();
     if (!integrationTest)
-    {
         // Configuring Serilog below wipes out the framework logging
         // so we don't execute the following when the host is running
         // within an integration test
         builder.Host.UseSerilog(CdpLogging.Configuration);
-    }
 
     builder.Services.AddBasicAuthentication();
     // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
@@ -144,10 +142,9 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
     {
         var traceHeader = builder.Configuration.GetValue<string>("TraceHeader");
         if (!string.IsNullOrWhiteSpace(traceHeader))
-        {
             options.Headers.Add(traceHeader);
-        }
     });
+    builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions();
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddJsonApiClient(
         (sp, options) =>
