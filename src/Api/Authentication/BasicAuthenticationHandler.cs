@@ -12,10 +12,12 @@ namespace Defra.PhaImportNotifications.Api.Authentication;
 public class BasicAuthenticationHandler(
     IOptionsMonitor<AuthenticationSchemeOptions> options,
     IOptionsMonitor<BasicAuthOptions> basicAuthenticationOptions,
+    IOptions<AclOptions> aclOptions,
     ILoggerFactory logger,
     UrlEncoder encoder
 ) : AuthenticationHandler<AuthenticationSchemeOptions>(options, logger, encoder)
 {
+    private readonly AclOptions _aclOptions = aclOptions.Value;
     private readonly BasicAuthOptions _authOptions = basicAuthenticationOptions.CurrentValue;
 
     private static (string, string)? GetCredentials(StringValues header)
@@ -37,16 +39,21 @@ public class BasicAuthenticationHandler(
         }
     }
 
-    private AuthenticationTicket CreateAuthenticationTicket(string username)
+    private AuthenticationTicket CreateAuthenticationTicket(string username, List<string> bcps)
     {
-        var identity = new ClaimsIdentity([new Claim(ClaimTypes.Name, username)], "Basic");
+        var bcpClaims = bcps.Select(bcp => new Claim(PhaClaimTypes.Bcp, bcp));
+        var claims = bcpClaims.Concat([new Claim(ClaimTypes.Name, username)]);
+
+        var identity = new ClaimsIdentity(claims, "Basic");
         return new AuthenticationTicket(new ClaimsPrincipal(identity), Scheme.Name);
     }
 
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
         if (!_authOptions.Enabled)
-            return Task.FromResult(AuthenticateResult.Success(CreateAuthenticationTicket("LocalDev")));
+            return Task.FromResult(
+                AuthenticateResult.Success(CreateAuthenticationTicket("LocalDev", ["bcp1", "bcp2"]))
+            );
 
         var credentials = GetCredentials(Request.Headers.Authorization);
         if (credentials is null)
@@ -56,6 +63,10 @@ public class BasicAuthenticationHandler(
         if (username != _authOptions.Username || password != _authOptions.Password)
             return Task.FromResult(AuthenticateResult.Fail("Invalid Username or Password"));
 
-        return Task.FromResult(AuthenticateResult.Success(CreateAuthenticationTicket(username)));
+        return Task.FromResult(
+            !_aclOptions.Clients.TryGetValue(username, out var client)
+                ? AuthenticateResult.Fail("Unknown Client")
+                : AuthenticateResult.Success(CreateAuthenticationTicket(username, client.Bcps))
+        );
     }
 }

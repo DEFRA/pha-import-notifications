@@ -7,7 +7,9 @@
       "applicationUrl": "http://localhost:8080",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ENVIRONMENT": "Local"
+        "ENVIRONMENT": "Local",
+        "AclOptions__Clients__LocalDev__Bcps__0": "bcp1",
+        "AclOptions__Clients__LocalDev__Bcps__1": "bcp2"
       }
     }
   }
