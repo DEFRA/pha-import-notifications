@@ -21,7 +21,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         var client = CreateClient();
         var fixture = new Fixture();
-        var validRequest = new UpdatedImportNotificationRequest()
+        var validRequest = new UpdatedImportNotificationRequest
         {
             Bcp = ["bcp1", "bcp2"],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
@@ -83,8 +83,8 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
         var url = Testing.Endpoints.ImportNotifications.GetUpdated(
             ["bcp1"],
-            from: DateTime.UtcNow.AddSeconds(-60).ToString("O"),
-            to: DateTime.UtcNow.AddSeconds(-29).ToString("O")
+            DateTime.UtcNow.AddSeconds(-60).ToString("O"),
+            DateTime.UtcNow.AddSeconds(-29).ToString("O")
         );
 
         var response = await client.GetAsync(url);
@@ -102,6 +102,18 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.GetUpdatedValid());
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+    }
+
+    [Fact]
+    public async Task Get_WhenAuthenticatedButAccessToBcpDenied_ReturnsForbidden()
+    {
+        var client = CreateClient();
+
+        var response = await client.GetAsync(
+            Testing.Endpoints.ImportNotifications.GetUpdatedValid(new[] { "bcp1", "bcp2", "bcp-no-access" })
+        );
+
+        response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
 
     protected override void ConfigureTestServices(IServiceCollection services)

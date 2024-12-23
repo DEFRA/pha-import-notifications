@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Defra.PhaImportNotifications.Api.Authorisation;
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Microsoft.AspNetCore.Mvc;
@@ -38,14 +39,19 @@ public static class EndpointRouteBuilderExtensions
 
     /// <param name="request">Request</param>
     /// <param name="btmsService">BTMS Service</param>
+    /// <param name="httpContext">HTTP Context</param>
     /// <param name="cancellationToken">Cancellation Token</param>
     [HttpGet]
     private static async Task<IResult> GetUpdated(
         [AsParameters] UpdatedImportNotificationRequest request,
         [FromServices] IBtmsService btmsService,
+        HttpContext httpContext,
         CancellationToken cancellationToken
     )
     {
+        if (!BcpAccessAuthorisation.ClientHasAccessTo(httpContext.User, request.Bcp.ToList()))
+            return Results.Forbid();
+
         var notifications = await btmsService.GetImportNotificationUpdates(
             request.Bcp,
             request.From,
@@ -67,6 +73,7 @@ public static class EndpointRouteBuilderExtensions
 
     /// <param name="chedReferenceNumber" example="CHEDA.GB.2024.1020304">CHED Reference Number</param>
     /// <param name="btmsService">BTMS Service</param>
+    /// <param name="httpContext">HTTP Context</param>
     /// <param name="cancellationToken">Cancellation Token</param>
     [HttpGet]
     private static async Task<IResult> Get(
@@ -75,11 +82,18 @@ public static class EndpointRouteBuilderExtensions
         [RegularExpression($"^{Regexes.ChedReferenceNumber}$")]
             string chedReferenceNumber,
         [FromServices] IBtmsService btmsService,
+        HttpContext httpContext,
         CancellationToken cancellationToken
     )
     {
         var notification = await btmsService.GetImportNotification(chedReferenceNumber, cancellationToken);
+        var bcp = notification?.PartOne?.PointOfEntry;
 
-        return notification is not null ? Results.Ok(notification) : Results.NotFound();
+        if (bcp is null)
+            return Results.NotFound();
+
+        return !BcpAccessAuthorisation.ClientHasAccessTo(httpContext.User, [bcp])
+            ? Results.NotFound()
+            : Results.Ok(notification);
     }
 }
