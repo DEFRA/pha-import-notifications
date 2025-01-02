@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text.Json.Nodes;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
@@ -62,6 +63,23 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
+    }
+
+    [Fact]
+    public async Task Get_WhenAuthenticatedButAccessToBcpDenied_ReturnsNotFound()
+    {
+        var client = CreateClient();
+
+        WireMock.StubSingleImportNotification(transformResponse: responseBody =>
+        {
+            var btmsDoc = JsonNode.Parse(responseBody)!;
+            btmsDoc["data"]!["attributes"]!["partOne"]!["pointOfEntry"] = "NOTALLOWED";
+            return btmsDoc.ToJsonString();
+        });
+
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+
+        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
 
     [Fact]

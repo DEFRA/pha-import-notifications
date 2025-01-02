@@ -69,6 +69,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         builder.Host.UseSerilog(CdpLogging.Configuration);
 
     builder.Services.AddBasicAuthentication();
+
     // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
     builder.Services.ConfigureHttpClientDefaults(options => options.AddStandardResilienceHandler());
     builder.Services.ConfigureHttpJsonOptions(options => SerializerOptions.Configure(options));

@@ -14,14 +14,21 @@ public static class WireMockExtensions
         this WireMockServer wireMock,
         bool shouldFail = false,
         string chedReferenceNumber = ChedReferenceNumbers.ChedA,
-        Func<IRequestBuilder, IRequestBuilder>? transformRequest = null
+        Func<IRequestBuilder, IRequestBuilder>? transformRequest = null,
+        Func<string, string>? transformResponse = null
     )
     {
         var code = shouldFail ? StatusCodes.Status500InternalServerError : StatusCodes.Status200OK;
         var response = Response.Create().WithStatusCode(code);
 
         if (!shouldFail)
-            response = response.WithBody(GetBody($"btms-import-notification-single-{chedReferenceNumber}.json"));
+        {
+            var responseBody = GetBody($"btms-import-notification-single-{chedReferenceNumber}.json");
+            if (transformResponse is not null)
+                responseBody = transformResponse(responseBody);
+
+            response = response.WithBody(responseBody);
+        }
 
         var request = Request.Create().WithPath(Endpoints.ImportNotifications.Get(chedReferenceNumber)).UsingGet();
 
