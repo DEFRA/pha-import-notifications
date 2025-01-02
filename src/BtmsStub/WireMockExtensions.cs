@@ -15,7 +15,7 @@ public static class WireMockExtensions
         bool shouldFail = false,
         string chedReferenceNumber = ChedReferenceNumbers.ChedA,
         Func<IRequestBuilder, IRequestBuilder>? transformRequest = null,
-        Func<string, string>? transformResponse = null
+        Func<JsonNode, JsonNode>? transformResponse = null
     )
     {
         var code = shouldFail ? StatusCodes.Status500InternalServerError : StatusCodes.Status200OK;
@@ -25,7 +25,7 @@ public static class WireMockExtensions
         {
             var responseBody = GetBody($"btms-import-notification-single-{chedReferenceNumber}.json");
             if (transformResponse is not null)
-                responseBody = transformResponse(responseBody);
+                responseBody = transformResponse(JsonNode.Parse(responseBody)!).ToJsonString();
 
             response = response.WithBody(responseBody);
         }

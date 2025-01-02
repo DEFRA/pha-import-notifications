@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Defra.PhaImportNotifications.Api.Authorisation;
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
+using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,7 +49,7 @@ public static class EndpointRouteBuilderExtensions
         CancellationToken cancellationToken
     )
     {
-        if (!BcpAccessAuthorisation.ClientHasAccessTo(httpContext.User, request.Bcp.ToList()))
+        if (!httpContext.User.ClientHasAccessTo(request.Bcp.ToList()))
             return Results.Forbid();
 
         var notifications = await btmsService.GetImportNotificationUpdates(
@@ -92,8 +92,6 @@ public static class EndpointRouteBuilderExtensions
         if (bcp is null)
             return Results.NotFound();
 
-        return !BcpAccessAuthorisation.ClientHasAccessTo(httpContext.User, [bcp])
-            ? Results.NotFound()
-            : Results.Ok(notification);
+        return !httpContext.User.ClientHasAccessTo([bcp]) ? Results.NotFound() : Results.Ok(notification);
     }
 }

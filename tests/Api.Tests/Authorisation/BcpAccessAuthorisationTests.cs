@@ -1,10 +1,10 @@
 using System.Security.Claims;
 using Defra.PhaImportNotifications.Api.Authentication;
-using Defra.PhaImportNotifications.Api.Authorisation;
+using Defra.PhaImportNotifications.Api.Extensions;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Authorisation;
 
-public class BcpAccessAuthorisationTests
+public class BcpAccessAuthorisationExtensionsTests
 {
     [Fact]
     public void ClientHasAccessTo_WhenClientHasClaimToBcp_ReturnsTrue()
@@ -13,7 +13,7 @@ public class BcpAccessAuthorisationTests
             new ClaimsIdentity([new Claim(PhaClaimTypes.Bcp, "bcp1"), new Claim(PhaClaimTypes.Bcp, "bcp2")], "test")
         );
 
-        BcpAccessAuthorisation.ClientHasAccessTo(claimsPrincipal, ["bcp1"]).Should().BeTrue();
+        claimsPrincipal.ClientHasAccessTo(["bcp1"]).Should().BeTrue();
     }
 
     [Fact]
@@ -23,7 +23,7 @@ public class BcpAccessAuthorisationTests
             new ClaimsIdentity([new Claim(PhaClaimTypes.Bcp, "bcp1"), new Claim(PhaClaimTypes.Bcp, "bcp2")], "test")
         );
 
-        BcpAccessAuthorisation.ClientHasAccessTo(claimsPrincipal, ["bcp3"]).Should().BeFalse();
+        claimsPrincipal.ClientHasAccessTo(["bcp3"]).Should().BeFalse();
     }
 
     [Fact]
@@ -33,6 +33,6 @@ public class BcpAccessAuthorisationTests
             new ClaimsIdentity([new Claim(PhaClaimTypes.Bcp, "bcp1"), new Claim(PhaClaimTypes.Bcp, "bcp2")], "test")
         );
 
-        BcpAccessAuthorisation.ClientHasAccessTo(claimsPrincipal, ["bcp1", "bcp2", "bcp3"]).Should().BeFalse();
+        claimsPrincipal.ClientHasAccessTo(["bcp1", "bcp2", "bcp3"]).Should().BeFalse();
     }
 }
