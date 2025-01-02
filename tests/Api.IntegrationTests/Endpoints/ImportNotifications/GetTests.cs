@@ -1,5 +1,4 @@
 using System.Net;
-using System.Text.Json.Nodes;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
@@ -72,9 +71,8 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
 
         WireMock.StubSingleImportNotification(transformResponse: responseBody =>
         {
-            var btmsDoc = JsonNode.Parse(responseBody)!;
-            btmsDoc["data"]!["attributes"]!["partOne"]!["pointOfEntry"] = "NOTALLOWED";
-            return btmsDoc.ToJsonString();
+            responseBody["data"]!["attributes"]!["partOne"]!["pointOfEntry"] = "NOTALLOWED";
+            return responseBody;
         });
 
         var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());

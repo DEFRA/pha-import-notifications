@@ -69,7 +69,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     )
     {
         var client = CreateClient();
-        var url = Testing.Endpoints.ImportNotifications.GetUpdated(bcp, from, to);
+        var url = Testing.Endpoints.ImportNotifications.GetUpdatedBetween(bcp, from, to);
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -81,7 +81,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     public async Task Get_WhenRequestParamsAreInvalid_ToTooCloseToUtcNow_ShouldBeBadRequest()
     {
         var client = CreateClient();
-        var url = Testing.Endpoints.ImportNotifications.GetUpdated(
+        var url = Testing.Endpoints.ImportNotifications.GetUpdatedBetween(
             ["bcp1"],
             DateTime.UtcNow.AddSeconds(-60).ToString("O"),
             DateTime.UtcNow.AddSeconds(-29).ToString("O")
