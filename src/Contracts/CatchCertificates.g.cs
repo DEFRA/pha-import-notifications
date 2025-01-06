@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class CatchCertificates
+public partial record CatchCertificates
 {
     [JsonPropertyName("certificateNumber")]
     [Description("The catch certificate number")]

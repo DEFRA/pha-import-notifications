@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class InspectionOverride
+public partial record InspectionOverride
 {
     [JsonPropertyName("originalDecision")]
     [Description("Original inspection decision")]

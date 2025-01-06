@@ -14,12 +14,21 @@ public static class JsonApiClientExtensions
             : JsonApiClient.GetResourcesAs<T>(new List<ResourceObject> { document.Data.SingleValue }).FirstOrDefault();
     }
 
-    public static IEnumerable<T> GetIncludedAsList<T>(this Document document, string resourceType, int id) =>
-        document.GetIncludedAsList<T>(resourceType, id.ToString());
+    /// <summary>
+    /// Get any included data within the specified document, looking for the primary resource by
+    /// id, which will then look at any relationships by resourceType.
+    /// </summary>
+    /// <param name="document">The single or many item result document that will contain the resource by id</param>
+    /// <param name="id">The id of the resource within the document</param>
+    /// <param name="resourceType">The type of relationship that will be inspected once the resource has been found</param>
+    /// <typeparam name="T"></typeparam>
+    /// <returns>A list of any included data that matched by relationship from the resource</returns>
+    public static IEnumerable<T> GetIncludedAsList<T>(this Document document, int id, string resourceType) =>
+        document.GetIncludedAsList<T>(id.ToString(), resourceType);
 
-    private static List<T> GetIncludedAsList<T>(this Document document, string resourceType, string id)
+    private static List<T> GetIncludedAsList<T>(this Document document, string id, string resourceType)
     {
-        var relationships = document.GetRelationships(resourceType, id);
+        var relationships = document.GetRelationships(id, resourceType);
 
         var resources =
             document
@@ -32,7 +41,15 @@ public static class JsonApiClientExtensions
         return JsonApiClient.GetResourcesAs<T>(resources);
     }
 
-    public static IEnumerable<Relationship> GetRelationships(this Document document, string resourceType, string id)
+    /// <summary>
+    /// Get any relationships within the specified document, looking for the primary resource by
+    /// id, which will then look at any relationships by resourceType.
+    /// </summary>
+    /// <param name="document">The single or many item result document that will contain the resource by id</param>
+    /// <param name="id">The id of the resource within the document</param>
+    /// <param name="resourceType">The type of relationship that will be returned</param>
+    /// <returns>A list of any matching relationships</returns>
+    public static IEnumerable<Relationship> GetRelationships(this Document document, string id, string resourceType)
     {
         var resources = document.Data.ManyValue ?? [];
 

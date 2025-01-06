@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class SingleLaboratoryTest
+public partial record SingleLaboratoryTest
 {
     [JsonPropertyName("commodityCode")]
     [Description("Commodity code for which lab test was ordered")]

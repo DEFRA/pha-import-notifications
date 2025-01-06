@@ -30,7 +30,7 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
     {
         "integer" => CreateEnumSyntax(),
         "string" => CreateEnumSyntax(),
-        "object" => CreateClassSyntax(),
+        "object" => CreateTypeSyntax(),
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
 
@@ -46,10 +46,13 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
         return namespaceDeclaration.AddMembers(@enum);
     }
 
-    SyntaxNode CreateClassSyntax()
+    SyntaxNode CreateTypeSyntax()
     {
         var properties = schema.Properties.Select(p => CreateProperty(schemaName, p.Key, p.Value));
-        var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
+        var @class = CreateRecord(schemaName)
+            .WithOpenBraceToken(Token(SyntaxKind.OpenBraceToken))
+            .AddMembers(properties.ToArray<MemberDeclarationSyntax>())
+            .WithCloseBraceToken(Token(SyntaxKind.CloseBraceToken));
 
         return CompilationUnit()
             .AddUsings(CreateUsing("System.Text.Json.Serialization"), CreateUsing("System.ComponentModel"))
@@ -148,6 +151,10 @@ static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, 
 
 static ClassDeclarationSyntax CreateClass(string name) =>
     ClassDeclaration(Identifier(CreateTypeName(name)))
+        .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
+
+static RecordDeclarationSyntax CreateRecord(string name) =>
+    RecordDeclaration(Token(SyntaxKind.RecordKeyword), Identifier(CreateTypeName(name)))
         .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
 
 static UsingDirectiveSyntax CreateUsing(string fqn) => UsingDirective(ParseName(fqn));

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class CommodityRiskResult
+public partial record CommodityRiskResult
 {
     [JsonPropertyName("riskDecision")]
     [Description("CHED-A, CHED-D, CHED-P - what is the commodity complement risk decision")]

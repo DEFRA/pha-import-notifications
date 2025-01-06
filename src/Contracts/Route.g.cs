@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class Route
+public partial record Route
 {
     [JsonPropertyName("transitingStates")]
     public List<string>? TransitingStates { get; init; }

@@ -23,9 +23,9 @@ public class ServiceCollectionExtensionsTests
 
         using var serviceProvider = services.BuildServiceProvider();
 
-        serviceProvider.GetRequiredService<JsonApiClient>().Should().NotBeNull();
+        serviceProvider.GetRequiredService<IJsonApiClient>().Should().NotBeNull();
 
-        var httpClient = serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient("JsonApiClient");
+        var httpClient = serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient(nameof(IJsonApiClient));
 
         httpClient.Should().NotBeNull();
         httpClient.BaseAddress.Should().Be(new Uri(baseAddress));
@@ -49,9 +49,9 @@ public class ServiceCollectionExtensionsTests
 
         using var serviceProvider = services.BuildServiceProvider();
 
-        serviceProvider.GetRequiredService<JsonApiClient>().Should().NotBeNull();
+        serviceProvider.GetRequiredService<IJsonApiClient>().Should().NotBeNull();
 
-        var httpClient = serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient("JsonApiClient");
+        var httpClient = serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient(nameof(IJsonApiClient));
 
         httpClient.Should().NotBeNull();
         httpClient.DefaultRequestHeaders.Authorization.Should().BeNull();

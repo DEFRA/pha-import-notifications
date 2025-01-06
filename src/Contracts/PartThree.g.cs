@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class PartThree
+public partial record PartThree
 {
     [JsonPropertyName("controlStatus")]
     [Description("Control status enum")]

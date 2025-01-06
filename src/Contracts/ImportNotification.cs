@@ -1,6 +1,6 @@
 namespace Defra.PhaImportNotifications.Contracts;
 
-public partial class ImportNotification
+public partial record ImportNotification
 {
-    public List<CustomsClearanceRequest>? ClearanceRequests { get; init; }
+    public IReadOnlyList<CustomsClearanceRequest>? ClearanceRequests { get; init; }
 }

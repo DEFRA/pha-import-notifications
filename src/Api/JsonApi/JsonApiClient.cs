@@ -1,19 +1,20 @@
+using System.Net;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Defra.PhaImportNotifications.Api.JsonApi;
 
-public class JsonApiClient(HttpClient httpClient, ILogger<JsonApiClient> logger)
+public class JsonApiClient(HttpClient httpClient, ILogger<JsonApiClient> logger) : IJsonApiClient
 {
     private static readonly JsonSerializerOptions s_options = new(JsonSerializerDefaults.Web)
     {
         Converters = { new SingleOrManyDataConverterFactory(), new JsonStringEnumConverter() },
     };
 
-    public Task<Document> Get(RequestUri requestUri, CancellationToken cancellationToken) =>
+    public Task<Document?> Get(RequestUri requestUri, CancellationToken cancellationToken) =>
         Get(requestUri.ToString(), cancellationToken);
 
-    public async Task<Document> Get(string requestUri, CancellationToken cancellationToken)
+    public async Task<Document?> Get(string requestUri, CancellationToken cancellationToken)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
 
@@ -23,19 +24,26 @@ public class JsonApiClient(HttpClient httpClient, ILogger<JsonApiClient> logger)
             cancellationToken
         );
 
-        var result = await response.Content.ReadFromJsonAsync<Document>(s_options, cancellationToken);
-
-        // Need to revisit this error handling as the above could throw too
+        if (response.StatusCode is HttpStatusCode.NotFound)
+            return null;
 
         if (!response.IsSuccessStatusCode)
         {
-            logger.LogWarning("Request failed {StatusCode} {Document}", response.StatusCode, result);
+            await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+            using var streamReader = new StreamReader(stream);
+            var content = await streamReader.ReadToEndAsync(cancellationToken);
+
+            logger.LogWarning(
+                "Request failed {RequestUri} {StatusCode} {Content}",
+                requestUri,
+                response.StatusCode,
+                content
+            );
         }
 
-        if (result is null)
-            throw new InvalidOperationException("Could not deserialize JSON");
+        response.EnsureSuccessStatusCode();
 
-        return result;
+        return await response.Content.ReadFromJsonAsync<Document>(s_options, cancellationToken);
     }
 
     public static List<T> GetResourcesAs<T>(IList<ResourceObject> resources)

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class CommodityComplement
+public partial record CommodityComplement
 {
     [JsonPropertyName("uniqueComplementId")]
     [Description("UUID used to match commodityComplement to its complementParameter set. CHEDPP only")]

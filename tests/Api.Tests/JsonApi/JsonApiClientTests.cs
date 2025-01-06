@@ -27,13 +27,13 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
 
         var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
-        document.Links?.Self.Should().Be("/api/people");
-        document.Links?.First.Should().Be("/api/people");
-        document.Links?.Last.Should().Be("/api/people");
-        document.Links?.Next.Should().BeNull();
-        document.Links?.Prev.Should().BeNull();
+        document?.Links?.Self.Should().Be("/api/people");
+        document?.Links?.First.Should().Be("/api/people");
+        document?.Links?.Last.Should().Be("/api/people");
+        document?.Links?.Next.Should().BeNull();
+        document?.Links?.Prev.Should().BeNull();
 
-        var first = document.Data.ManyValue?[0];
+        var first = document?.Data.ManyValue?[0];
         first.Should().NotBeNull();
         first?.Type.Should().Be("people");
         first?.Id.Should().Be("1");
@@ -47,7 +47,7 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
         firstBooks?.Links?.Self.Should().Be("/api/people/1/relationships/books");
         firstBooks?.Links?.Related.Should().Be("/api/people/1/books");
 
-        document.Meta?["total"].Should().BeOfType<JsonElement>().Which.GetInt32().Should().Be(3);
+        document?.Meta?["total"].Should().BeOfType<JsonElement>().Which.GetInt32().Should().Be(3);
     }
 
     [Theory]
@@ -65,12 +65,12 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
 
         if (idIsString)
         {
-            var people = document.GetDataAsList<Person<string>>().ToList();
+            var people = document?.GetDataAsList<Person<string>>().ToList();
             await Verify(people).UseParameters(idIsString).UseStrictJson();
         }
         else
         {
-            var people = document.GetDataAsList<Person<int>>().ToList();
+            var people = document?.GetDataAsList<Person<int>>().ToList();
             await Verify(people).UseParameters(idIsString).UseStrictJson();
         }
     }
@@ -89,20 +89,20 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
 
         var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
-        var people = document.GetDataAsList<Person<int>>().ToList();
+        var people = document?.GetDataAsList<Person<int>>().ToList();
 
-        var person = people[0];
+        var person = people?[0]!;
 
-        var books = document.GetIncludedAsList<Book<int>>("books", person.Id);
+        var books = document?.GetIncludedAsList<Book<int>>(person.Id, "books");
 
         await Verify(books);
 
-        var relationships = document.GetRelationships("books", person.Id.ToString());
+        var relationships = document?.GetRelationships(person.Id.ToString(), "books");
 
         await Verify(relationships)
             .UseMethodName($"{nameof(Get_Many_WhenOk_AndListOfPeople_IncludeBooks_ShouldSucceed)}_relationships");
 
-        books = document.GetIncludedAsList<Book<int>>("books", 999);
+        books = document?.GetIncludedAsList<Book<int>>(999, "books");
 
         books.Should().BeEmpty();
     }
@@ -118,13 +118,13 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
 
         var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
-        document.Links?.Self.Should().Be("/api/people/1");
-        document.Links?.First.Should().BeNull();
-        document.Links?.Last.Should().BeNull();
-        document.Links?.Next.Should().BeNull();
-        document.Links?.Prev.Should().BeNull();
+        document?.Links?.Self.Should().Be("/api/people/1");
+        document?.Links?.First.Should().BeNull();
+        document?.Links?.Last.Should().BeNull();
+        document?.Links?.Next.Should().BeNull();
+        document?.Links?.Prev.Should().BeNull();
 
-        var first = document.Data.SingleValue;
+        var first = document?.Data.SingleValue;
         first.Should().NotBeNull();
         first?.Type.Should().Be("people");
         first?.Id.Should().Be("1");
@@ -138,7 +138,7 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
         firstBooks?.Links?.Self.Should().Be("/api/people/1/relationships/books");
         firstBooks?.Links?.Related.Should().Be("/api/people/1/books");
 
-        document.Meta?["total"].Should().BeOfType<JsonElement>().Which.GetInt32().Should().Be(3);
+        document?.Meta?["total"].Should().BeOfType<JsonElement>().Which.GetInt32().Should().Be(3);
     }
 
     [Theory]
@@ -156,12 +156,12 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
 
         if (idIsString)
         {
-            var person = document.GetDataAs<Person<string>>();
+            var person = document?.GetDataAs<Person<string>>();
             await Verify(person).UseParameters(idIsString).UseStrictJson();
         }
         else
         {
-            var person = document.GetDataAs<Person<int>>();
+            var person = document?.GetDataAs<Person<int>>();
             await Verify(person).UseParameters(idIsString).UseStrictJson();
         }
     }
@@ -180,55 +180,49 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
 
         var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
-        var person = document.GetDataAs<Person<int>>()!;
+        var person = document?.GetDataAs<Person<int>>()!;
 
-        var books = document.GetIncludedAsList<Book<int>>("books", person.Id);
+        var books = document?.GetIncludedAsList<Book<int>>(person.Id, "books");
 
         await Verify(books);
 
-        var relationships = document.GetRelationships("books", person.Id.ToString());
+        var relationships = document?.GetRelationships(person.Id.ToString(), "books");
 
         await Verify(relationships)
             .UseMethodName($"{nameof(Get_Single_WhenOk_AndSinglePerson_IncludeBooks_ShouldSucceed)}_relationships");
 
-        books = document.GetIncludedAsList<Book<int>>("books", 999);
+        books = document?.GetIncludedAsList<Book<int>>(999, "books");
 
         books.Should().BeEmpty();
     }
 
     [Fact]
-    public async Task Get_WhenNotOk_ShouldIncludeErrors()
+    public async Task Get_WhenNotOk_ShouldThrow()
     {
         WireMock
             .Given(Request.Create().WithPath("/get").UsingGet())
             .RespondWith(
                 Response
                     .Create()
-                    .WithStatusCode(StatusCodes.Status400BadRequest)
+                    .WithStatusCode(StatusCodes.Status500InternalServerError)
                     .WithBodyFromFile("JsonApi\\get-errors.json")
             );
 
-        var document = await Subject.Get(new RequestUri("get"), CancellationToken.None);
+        var act = async () => await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
-        document.Should().NotBeNull();
-        document.Errors.Should().NotBeNull();
-        document.Errors?.Should().ContainSingle();
-        document.Errors?[0].Id.Should().Be("6300efa9-7822-4e00-a895-03b7756201cb");
-        document.Errors?[0].Status.Should().Be("400");
-        document.Errors?[0].Title.Should().Be("The specified filter is invalid.");
-        document.Errors?[0].Source?.Parameter.Should().Be("filter");
+        await act.Should().ThrowAsync<HttpRequestException>();
     }
 
     [Fact]
-    public async Task Get_WhenNotOk_AndCannotDeserialize_ShouldThrow()
+    public async Task Get_WhenOk_AndNoJson_ShouldBeNull()
     {
         WireMock
             .Given(Request.Create().WithPath("/get").UsingGet())
-            .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status500InternalServerError).WithBody("null"));
+            .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status200OK).WithBody("null"));
 
-        var act = async () => await Subject.Get(new RequestUri("get"), CancellationToken.None);
+        var result = await Subject.Get(new RequestUri("get"), CancellationToken.None);
 
-        await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Could not deserialize JSON");
+        result.Should().BeNull();
     }
 
     [Fact]
@@ -261,7 +255,7 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
         );
 
         document.Should().NotBeNull();
-        document.Data.ManyValue.Should().NotBeNull();
+        document?.Data.ManyValue.Should().NotBeNull();
     }
 
     [Fact]
@@ -282,7 +276,7 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
         );
 
         document.Should().NotBeNull();
-        document.Data.ManyValue.Should().NotBeNull();
+        document?.Data.ManyValue.Should().NotBeNull();
     }
 
     [Fact]
@@ -300,7 +294,19 @@ public class JsonApiClientTests(WireMockContextQueryParameterNoComma context)
         var document = await Subject.Get(new RequestUri("get", PageSize: 100), CancellationToken.None);
 
         document.Should().NotBeNull();
-        document.Data.ManyValue.Should().NotBeNull();
+        document?.Data.ManyValue.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task Get_WhenNotOk_AndCannotFindResource_ShouldBeNull()
+    {
+        WireMock
+            .Given(Request.Create().WithPath("/get").UsingGet())
+            .RespondWith(Response.Create().WithStatusCode(StatusCodes.Status404NotFound));
+
+        var result = await Subject.Get(new RequestUri("get"), CancellationToken.None);
+
+        result.Should().BeNull();
     }
 
     private record Person<T>(T Id, string Name);

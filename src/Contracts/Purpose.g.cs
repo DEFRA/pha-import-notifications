@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class Purpose
+public partial record Purpose
 {
     [JsonPropertyName("conformsToEU")]
     [Description("Does consignment conforms to UK laws")]

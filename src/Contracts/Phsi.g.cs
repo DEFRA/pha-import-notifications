@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class Phsi
+public partial record Phsi
 {
     [JsonPropertyName("documentCheck")]
     [Description("Whether or not a documentary check is required for PHSI")]

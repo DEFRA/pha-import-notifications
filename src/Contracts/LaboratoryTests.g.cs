@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public partial class LaboratoryTests
+public partial record LaboratoryTests
 {
     [JsonPropertyName("testedOn")]
     [Description("Date of tests")]
