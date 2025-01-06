@@ -1,4 +1,3 @@
-using System.Text.Json.Nodes;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.JsonApi;
@@ -72,19 +71,8 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
     [Fact]
     public async Task GetImportNotificationUpdates_MultiplePages_WhenOk_ShouldSucceed()
     {
-        // First request maps to path /api/import-notifications and returns next
-        // link for second page
-        WireMock.StubImportNotificationUpdates(transformBody: jsonNode =>
-        {
-            jsonNode["links"]!["next"] = "/api/import-notifications?page=2";
-            return jsonNode;
-        });
-        // Second page request maps to path /api/import-notifications with param page=2
-        // which then includes no next page link by default
-        WireMock.StubImportNotificationUpdates(
-            path: "/api/import-notifications",
-            transformRequest: builder => builder.WithParam("page", "2")
-        );
+        StubFirstUpdatesRequestAndAddSubsequentPage(2);
+        StubSubsequentUpdatesRequestForPage(2);
 
         var result = await Subject.GetImportNotificationUpdates(
             ValidRequest.Bcp,
@@ -99,20 +87,8 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
     [Fact]
     public async Task GetImportNotificationUpdates_MultiplePages_WhenPageReturnsNull_ShouldFail()
     {
-        // First request maps to path /api/import-notifications and returns next
-        // link for second page
-        WireMock.StubImportNotificationUpdates(transformBody: jsonNode =>
-        {
-            jsonNode["links"]!["next"] = "/api/import-notifications?page=2";
-            return jsonNode;
-        });
-        // Second page request maps to path /api/import-notifications with param page=2
-        // which then includes no next page link by default
-        WireMock.StubImportNotificationUpdates(
-            path: "/api/import-notifications",
-            transformRequest: builder => builder.WithParam("page", "2"),
-            statusCode: StatusCodes.Status404NotFound
-        );
+        StubFirstUpdatesRequestAndAddSubsequentPage(2);
+        StubSubsequentUpdatesRequestForPage(2, StatusCodes.Status404NotFound);
 
         var act = () =>
             Subject.GetImportNotificationUpdates(
@@ -208,5 +184,34 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         var act = () => subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
 
         await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Result was null");
+    }
+
+    /// <summary>
+    /// First request maps to path /api/import-notifications and returns next
+    /// link for second page.
+    /// </summary>
+    /// <param name="nextPage"></param>
+    private void StubFirstUpdatesRequestAndAddSubsequentPage(int nextPage)
+    {
+        WireMock.StubImportNotificationUpdates(transformBody: jsonNode =>
+        {
+            jsonNode["links"]!["next"] = $"/api/import-notifications?page={nextPage}";
+            return jsonNode;
+        });
+    }
+
+    /// <summary>
+    /// Second page request maps to path /api/import-notifications with param page=2
+    /// which then includes no next page link by default.
+    /// </summary>
+    /// <param name="page"></param>
+    /// <param name="statusCode"></param>
+    private void StubSubsequentUpdatesRequestForPage(int page, int? statusCode = null)
+    {
+        WireMock.StubImportNotificationUpdates(
+            path: "/api/import-notifications",
+            transformRequest: builder => builder.WithParam("page", page.ToString()),
+            statusCode: statusCode
+        );
     }
 }
