@@ -3910,7 +3910,7 @@
       }
     },
     "securitySchemes": {
-      "Basic": {
+      "Bearer": {
         "type": "http",
         "description": "OAuth2 Bearer Token",
         "scheme": "Bearer"

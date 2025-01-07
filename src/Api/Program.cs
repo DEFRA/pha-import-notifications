@@ -95,7 +95,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             }
         );
         c.AddSecurityDefinition(
-            "Basic",
+            "Bearer",
             new OpenApiSecurityScheme
             {
                 Description = "OAuth2 Bearer Token",
