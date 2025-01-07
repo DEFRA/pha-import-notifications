@@ -40,6 +40,7 @@ public class PhaJwtAuthenticationHandler(
 
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
+        // Setting Events in a constructor seemed to be overriden or ignored when HandleAuthenticateAsync() is run
         Events = _jwtBearerEvents;
         return base.HandleAuthenticateAsync();
     }

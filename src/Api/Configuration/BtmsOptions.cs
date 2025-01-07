@@ -14,7 +14,5 @@ public class BtmsOptions
     [Required]
     public required string Username { get; init; }
 
-    public string BasicAuthCredential => Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Username}:{Password}"));
-
     public int PageSize { get; init; } = 1000;
 }

@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
+using System.Text;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
@@ -157,7 +158,9 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             var btmsOptions = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
 
             options.BaseUrl = btmsOptions.BaseUrl;
-            options.BasicAuthCredential = btmsOptions.BasicAuthCredential;
+            options.BasicAuthCredential = Convert.ToBase64String(
+                Encoding.UTF8.GetBytes($"{btmsOptions.Username}:{btmsOptions.Password}")
+            );
         }
     );
     builder.Services.AddTransient<IBtmsService, BtmsService>();
