@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class IdentificationDetails
+public partial record IdentificationDetails
 {
     [JsonPropertyName("identificationDetail")]
     [Description("Identification detail")]

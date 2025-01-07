@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class SplitConsignment
+public partial record SplitConsignment
 {
     [JsonPropertyName("validReferenceNumber")]
     [Description("Reference number of the valid split consignment")]

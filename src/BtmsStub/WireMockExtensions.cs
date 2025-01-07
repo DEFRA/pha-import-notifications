@@ -43,10 +43,11 @@ public static class WireMockExtensions
         bool shouldFail = false,
         Func<JsonNode, JsonNode>? transformBody = null,
         string? path = null,
-        Func<IRequestBuilder, IRequestBuilder>? transformRequest = null
+        Func<IRequestBuilder, IRequestBuilder>? transformRequest = null,
+        int? statusCode = null
     )
     {
-        var code = shouldFail ? StatusCodes.Status500InternalServerError : StatusCodes.Status200OK;
+        var code = statusCode ?? (shouldFail ? StatusCodes.Status500InternalServerError : StatusCodes.Status200OK);
         var response = Response.Create().WithStatusCode(code);
 
         if (!shouldFail)
@@ -66,6 +67,27 @@ public static class WireMockExtensions
         }
 
         var request = Request.Create().WithPath(path ?? Endpoints.ImportNotifications.Get()).UsingGet();
+
+        if (transformRequest is not null)
+            request = transformRequest(request);
+
+        wireMock.Given(request).RespondWith(response);
+    }
+
+    public static void StubSingleMovement(
+        this WireMockServer wireMock,
+        bool shouldFail = false,
+        string mrn = MovementReferenceNumbers.Movement1,
+        Func<IRequestBuilder, IRequestBuilder>? transformRequest = null
+    )
+    {
+        var code = shouldFail ? StatusCodes.Status500InternalServerError : StatusCodes.Status200OK;
+        var response = Response.Create().WithStatusCode(code);
+
+        if (!shouldFail)
+            response = response.WithBody(GetBody($"btms-movement-single-{mrn}.json"));
+
+        var request = Request.Create().WithPath(Endpoints.Movements.Get(mrn)).UsingGet();
 
         if (transformRequest is not null)
             request = transformRequest(request);

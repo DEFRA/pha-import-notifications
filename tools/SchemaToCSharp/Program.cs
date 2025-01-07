@@ -30,11 +30,11 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
     {
         "integer" => CreateEnumSyntax(),
         "string" => CreateEnumSyntax(),
-        "object" => CreateClassSyntax(),
+        "object" => CreateTypeSyntax(),
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
 
-    await using var streamWriter = new StreamWriter($"{outputPath}/{schemaName}.g.cs", false);
+    await using var streamWriter = new StreamWriter($"{outputPath}/{CreateTypeName(schemaName)}.g.cs", false);
     syntax.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
     continue;
 
@@ -46,10 +46,13 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
         return namespaceDeclaration.AddMembers(@enum);
     }
 
-    SyntaxNode CreateClassSyntax()
+    SyntaxNode CreateTypeSyntax()
     {
         var properties = schema.Properties.Select(p => CreateProperty(schemaName, p.Key, p.Value));
-        var @class = CreateClass(schemaName).AddMembers(properties.ToArray<MemberDeclarationSyntax>());
+        var @class = CreateRecord(schemaName)
+            .WithOpenBraceToken(Token(SyntaxKind.OpenBraceToken))
+            .AddMembers(properties.ToArray<MemberDeclarationSyntax>())
+            .WithCloseBraceToken(Token(SyntaxKind.CloseBraceToken));
 
         return CompilationUnit()
             .AddUsings(CreateUsing("System.Text.Json.Serialization"), CreateUsing("System.ComponentModel"))
@@ -78,6 +81,8 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
         "array" => CreateReferenceTypeName(schema.Items, schema.Items.Type),
         _ => "object",
     };
+
+    typeName = CreateTypeName(typeName);
 
     return ParseTypeName(schema.Type == "array" ? $"List<{typeName}>" : typeName);
 }
@@ -145,7 +150,12 @@ static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, 
 }
 
 static ClassDeclarationSyntax CreateClass(string name) =>
-    ClassDeclaration(Identifier(name)).AddModifiers(Token(SyntaxKind.PublicKeyword));
+    ClassDeclaration(Identifier(CreateTypeName(name)))
+        .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
+
+static RecordDeclarationSyntax CreateRecord(string name) =>
+    RecordDeclaration(Token(SyntaxKind.RecordKeyword), Identifier(CreateTypeName(name)))
+        .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
 
 static UsingDirectiveSyntax CreateUsing(string fqn) => UsingDirective(ParseName(fqn));
 
@@ -159,3 +169,12 @@ static AttributeSyntax CreateSimpleAttribute(string type, string arg1) =>
     Attribute(ParseName(type)).WithArgumentList(ParseAttributeArgumentList($"(\"{arg1}\")"));
 
 static string CreatePropertyName(string s) => char.ToUpper(s[0]) + s[1..];
+
+static string CreateTypeName(string name)
+{
+    var identifier = name;
+    if (Rename.Types.TryGetValue(name, out var typeName))
+        identifier = typeName;
+
+    return identifier;
+}

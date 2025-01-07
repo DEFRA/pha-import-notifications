@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class DetailsOnReExport
+public partial record DetailsOnReExport
 {
     [JsonPropertyName("date")]
     [Description("Date of re-export")]

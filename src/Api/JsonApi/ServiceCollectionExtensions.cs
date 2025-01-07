@@ -17,7 +17,7 @@ public static class ServiceCollectionExtensions
         ));
 
         return services
-            .AddHttpClient<JsonApiClient>(
+            .AddHttpClient<IJsonApiClient, JsonApiClient>(
                 (sp, httpClient) =>
                 {
                     var options = sp.GetRequiredService<IOptions<JsonApiClientOptions>>().Value;

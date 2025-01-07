@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class TdmRelationshipObject
+public partial record TdmRelationshipObject
 {
     [JsonPropertyName("matched")]
     public required bool Matched { get; init; }

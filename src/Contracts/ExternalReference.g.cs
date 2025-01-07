@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class ExternalReference
+public partial record ExternalReference
 {
     [JsonPropertyName("system")]
     [Description("Identifier of the external system to which the reference relates")]

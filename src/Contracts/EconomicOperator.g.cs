@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class EconomicOperator
+public partial record EconomicOperator
 {
     [JsonPropertyName("id")]
     [Description("The unique identifier of this organisation")]

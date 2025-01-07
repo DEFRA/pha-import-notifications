@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class RelationshipLinks
+public partial record RelationshipLinks
 {
     [JsonPropertyName("self")]
     public string? Self { get; init; }

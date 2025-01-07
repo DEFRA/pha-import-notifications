@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class Identifiers
+public partial record Identifiers
 {
     [JsonPropertyName("speciesNumber")]
     [Description("Number used to identify which item the identifiers are related to")]

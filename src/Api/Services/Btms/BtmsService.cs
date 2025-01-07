@@ -1,11 +1,13 @@
 using Defra.PhaImportNotifications.Api.Configuration;
+using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.Extensions.Options;
+using Document = Defra.PhaImportNotifications.Api.JsonApi.Document;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
-public class BtmsService(JsonApiClient jsonApiClient, IOptions<BtmsOptions> btmsOptions) : IBtmsService
+public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btmsOptions) : IBtmsService
 {
     public async Task<IEnumerable<ImportNotificationUpdate>> GetImportNotificationUpdates(
         string[] bcp,
@@ -25,13 +27,14 @@ public class BtmsService(JsonApiClient jsonApiClient, IOptions<BtmsOptions> btms
             ]
         );
         var fields = new[] { new FieldExpression("import-notifications", ["updated", "referenceNumber"]) };
+
         var document = await jsonApiClient.Get(
             new RequestUri("api/import-notifications", filter, fields, btmsOptions.Value.PageSize),
             cancellationToken
         );
 
-        // This may return a document with errors so we need to check things like this when we integrate.
-        // It could also throw and do all the usual stuff.
+        if (document is null)
+            throw new InvalidOperationException("Result was null");
 
         return await CollectImportNotificationUpdatesFromAllPages(document, cancellationToken);
     }
@@ -46,10 +49,27 @@ public class BtmsService(JsonApiClient jsonApiClient, IOptions<BtmsOptions> btms
             cancellationToken
         );
 
-        // This may return a document with errors so we need to check things like this when we integrate.
-        // It could also throw and do all the usual stuff.
+        if (document is null)
+            return null;
 
-        return document.GetDataAs<ImportNotification>();
+        var tasks = document
+            .GetRelationships(chedReferenceNumber, "movements")
+            .Select(x => jsonApiClient.Get(new RequestUri($"api/movements/{x.Id}"), cancellationToken));
+
+        var clearanceRequests = (await Task.WhenAll(tasks))
+            .ThrowIfAnyNull("At least one movement could not be found")
+            .Select(x => x.GetDataAs<Movement>())
+            .ThrowIfAnyNull("At least one movement could not be deserialized")
+            .SelectMany(x => x.ClearanceRequests ?? []);
+
+        var result = document.GetDataAs<ImportNotification>();
+        if (result is null)
+            throw new InvalidOperationException("Result was null");
+
+        return result with
+        {
+            ClearanceRequests = clearanceRequests.ToList(),
+        };
     }
 
     /// <summary>
@@ -68,12 +88,18 @@ public class BtmsService(JsonApiClient jsonApiClient, IOptions<BtmsOptions> btms
     )
     {
         var results = new List<ImportNotificationUpdate>(document.GetDataAsList<ImportNotificationUpdate>());
+        var nextRequestUri = document.Links?.Next;
 
-        while (!string.IsNullOrEmpty(document.Links?.Next))
+        while (!string.IsNullOrEmpty(nextRequestUri))
         {
-            document = await jsonApiClient.Get(document.Links.Next, cancellationToken);
+            var next = await jsonApiClient.Get(nextRequestUri, cancellationToken);
 
-            results.AddRange(document.GetDataAsList<ImportNotificationUpdate>());
+            if (next is null)
+                throw new InvalidOperationException("Next page was null");
+
+            results.AddRange(next.GetDataAsList<ImportNotificationUpdate>());
+
+            nextRequestUri = next.Links?.Next;
         }
 
         return results;

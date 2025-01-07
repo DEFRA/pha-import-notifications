@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class JourneyRiskCategorisationResult
+public partial record JourneyRiskCategorisationResult
 {
     [JsonPropertyName("riskLevel")]
     [Description("Risk Level is defined using enum values High,Medium,Low")]

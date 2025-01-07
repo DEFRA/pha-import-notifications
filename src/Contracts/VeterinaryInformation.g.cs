@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class VeterinaryInformation
+public partial record VeterinaryInformation
 {
     [JsonPropertyName("establishmentsOfOriginExternalReference")]
     [Description("External reference of approved establishments, which relates to a downstream service")]

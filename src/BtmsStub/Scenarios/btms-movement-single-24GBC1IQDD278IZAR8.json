@@ -1,0 +1,202 @@
+{
+  "links": {
+    "self": "/api/movements/24GBC1IQDD278IZAR8"
+  },
+  "data": {
+    "type": "movements",
+    "id": "24GBC1IQDD278IZAR8",
+    "attributes": {
+      "clearanceRequests": [
+        {
+          "serviceHeader": {
+            "sourceSystem": "CDS",
+            "destinationSystem": "ALVS",
+            "correlationId": "1315468",
+            "serviceCalled": "2024-12-04T12:08:40Z"
+          },
+          "header": {
+            "entryReference": "24GBC1IQDD278IZAR8",
+            "entryVersionNumber": 3,
+            "previousVersionNumber": 2,
+            "declarationUcr": "4GB539035934000-BSA3155134",
+            "declarationPartNumber": null,
+            "declarationType": "S",
+            "arrivesAt": null,
+            "submitterTurn": "GB927534115000",
+            "declarantId": "GB927534115000",
+            "declarantName": "GB927534115000",
+            "dispatchCountryCode": "IT",
+            "goodsLocationCode": "EUTEUTEUTGVM",
+            "masterUcr": null,
+            "decisionNumber": null
+          },
+          "items": [
+            {
+              "itemNumber": 1,
+              "customsProcedureCode": "4000000",
+              "taricCommodityCode": "1601009110",
+              "goodsDescription": "FLAVOURED SAUSAGES",
+              "consigneeId": "GB539035934000",
+              "consigneeName": "GB539035934000",
+              "itemNetMass": 184,
+              "itemSupplementaryUnits": 0,
+              "itemThirdQuantity": null,
+              "itemOriginCountryCode": "IT",
+              "documents": [
+                {
+                  "documentCode": "N853",
+                  "documentReference": "GBCHD2024.2024.5070767",
+                  "documentStatus": "AE",
+                  "documentControl": "P",
+                  "documentQuantity": null
+                }
+              ],
+              "checks": [
+                {
+                  "checkCode": "H222",
+                  "departmentCode": "PHA",
+                  "decisionCode": null,
+                  "decisionsValidUntil": null,
+                  "decisionReasons": null
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "decisions": [
+        {
+          "serviceHeader": {
+            "sourceSystem": "BTMS",
+            "destinationSystem": "CDS",
+            "correlationId": "1a9109a3-1d4f-4af5-8ce4-7c065d039ac8",
+            "serviceCalled": "2024-12-17T13:53:34.696Z"
+          },
+          "header": {
+            "entryReference": "24GBC1IQDD278IZAR8",
+            "entryVersionNumber": 3,
+            "previousVersionNumber": null,
+            "declarationUcr": null,
+            "declarationPartNumber": null,
+            "declarationType": null,
+            "arrivesAt": null,
+            "submitterTurn": null,
+            "declarantId": null,
+            "declarantName": null,
+            "dispatchCountryCode": null,
+            "goodsLocationCode": null,
+            "masterUcr": null,
+            "decisionNumber": 1
+          },
+          "items": [
+            {
+              "itemNumber": 1,
+              "customsProcedureCode": null,
+              "taricCommodityCode": null,
+              "goodsDescription": null,
+              "consigneeId": null,
+              "consigneeName": null,
+              "itemNetMass": null,
+              "itemSupplementaryUnits": null,
+              "itemThirdQuantity": null,
+              "itemOriginCountryCode": null,
+              "documents": null,
+              "checks": [
+                {
+                  "checkCode": "H222",
+                  "departmentCode": null,
+                  "decisionCode": "X00",
+                  "decisionsValidUntil": null,
+                  "decisionReasons": [
+                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.2024.5070767). Please correct the Cvedp number(s) entered on your customs declaration."
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "itemNumber": 1,
+          "customsProcedureCode": "4000000",
+          "taricCommodityCode": "1601009110",
+          "goodsDescription": "FLAVOURED SAUSAGES",
+          "consigneeId": "GB539035934000",
+          "consigneeName": "GB539035934000",
+          "itemNetMass": 184,
+          "itemSupplementaryUnits": 0,
+          "itemThirdQuantity": null,
+          "itemOriginCountryCode": "IT",
+          "documents": [
+            {
+              "documentCode": "N853",
+              "documentReference": "GBCHD2024.2024.5070767",
+              "documentStatus": "AE",
+              "documentControl": "P",
+              "documentQuantity": null
+            }
+          ],
+          "checks": [
+            {
+              "checkCode": "H222",
+              "departmentCode": null,
+              "decisionCode": "X00",
+              "decisionsValidUntil": null,
+              "decisionReasons": [
+                "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.2024.5070767). Please correct the Cvedp number(s) entered on your customs declaration."
+              ]
+            }
+          ]
+        }
+      ],
+      "updatedSource": "2024-12-04T12:08:40Z",
+      "createdSource": "2024-12-04T12:08:40Z",
+      "entryReference": "24GBC1IQDD278IZAR8",
+      "entryVersionNumber": 3,
+      "masterUcr": null,
+      "declarationPartNumber": null,
+      "declarationType": "S",
+      "arrivesAt": null,
+      "submitterTurn": "GB927534115000",
+      "declarantId": "GB927534115000",
+      "declarantName": "GB927534115000",
+      "dispatchCountryCode": "IT",
+      "goodsLocationCode": "EUTEUTEUTGVM",
+      "auditEntries": [
+        {
+          "id": "GBC1IQDD278IZAR8-a4f15912-15c7-49d3-831a-b5bcfb97d9ed.json",
+          "version": 3,
+          "createdBy": "System",
+          "createdSource": "2024-12-04T12:08:40Z",
+          "createdLocal": "2024-12-17T13:53:33.973Z",
+          "status": "Created",
+          "diff": []
+        },
+        {
+          "id": "4b83d491-1e54-4fa1-ae2c-7835a6930365",
+          "version": 3,
+          "createdBy": "System",
+          "createdSource": "2024-12-17T13:53:34.696Z",
+          "createdLocal": "2024-12-17T13:53:35.386Z",
+          "status": "Decision",
+          "diff": []
+        }
+      ],
+      "localId": null,
+      "created": "2024-12-17T13:53:33.973Z",
+      "updated": "2024-12-17T13:53:35.391Z"
+    },
+    "relationships": {
+      "notifications": {
+        "data": [],
+        "meta": {
+          "matched": false
+        }
+      }
+    },
+    "links": {
+      "self": "/api/movements/24GBC1IQDD278IZAR8"
+    }
+  }
+}

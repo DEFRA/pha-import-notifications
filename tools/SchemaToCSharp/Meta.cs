@@ -16,5 +16,15 @@ internal static class Meta
                 { "UpdatedSource", "Date when the notification was last updated in IPAFFS" },
             }
         },
+        {
+            "Movement",
+            new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "Created", "Date when the movement was created" },
+                { "Updated", "Date when the movement was last updated" },
+                { "CreatedSource", "Date when the movement was created in ALVS" },
+                { "UpdatedSource", "Date when the movement was last updated in ALVS" },
+            }
+        },
     };
 }

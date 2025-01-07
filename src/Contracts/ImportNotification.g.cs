@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using System.ComponentModel;
 
 namespace Defra.PhaImportNotifications.Contracts;
-public class ImportNotification
+public partial record ImportNotification
 {
     [JsonPropertyName("_Etag")]
     [JsonIgnore]

@@ -17,7 +17,7 @@
         "data": [
           {
             "type": "books",
-            "id": "1"
+            "id": "111"
           }
         ]
       }
@@ -29,7 +29,7 @@
   "included": [
     {
       "type": "books",
-      "id": "1",
+      "id": "111",
       "attributes": {
         "title": "Frankenstein",
         "publishYear": 1818
@@ -37,13 +37,13 @@
       "relationships": {
         "author": {
           "links": {
-            "self": "/api/books/1/relationships/author",
-            "related": "/api/books/1/author"
+            "self": "/api/books/111/relationships/author",
+            "related": "/api/books/111/author"
           }
         }
       },
       "links": {
-        "self": "/api/books/1"
+        "self": "/api/books/111"
       }
     }
   ]

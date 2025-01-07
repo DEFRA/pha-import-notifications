@@ -20,7 +20,7 @@
           "data": [
             {
               "type": "books",
-              "id": "1"
+              "id": "111"
             }
           ]
         }
@@ -44,7 +44,7 @@
           "data": [
             {
               "type": "books",
-              "id": "2"
+              "id": "222"
             }
           ]
         }
@@ -68,7 +68,7 @@
           "data": [
             {
               "type": "books",
-              "id": "3"
+              "id": "333"
             }
           ]
         }
@@ -81,7 +81,7 @@
   "included": [
     {
       "type": "books",
-      "id": "1",
+      "id": "111",
       "attributes": {
         "title": "Frankenstein",
         "publishYear": 1818
@@ -89,18 +89,18 @@
       "relationships": {
         "author": {
           "links": {
-            "self": "/api/books/1/relationships/author",
-            "related": "/api/books/1/author"
+            "self": "/api/books/111/relationships/author",
+            "related": "/api/books/111/author"
           }
         }
       },
       "links": {
-        "self": "/api/books/1"
+        "self": "/api/books/111"
       }
     },
     {
       "type": "books",
-      "id": "2",
+      "id": "222",
       "attributes": {
         "title": "Robinson Crusoe",
         "publishYear": 1719
@@ -108,18 +108,18 @@
       "relationships": {
         "author": {
           "links": {
-            "self": "/api/books/2/relationships/author",
-            "related": "/api/books/2/author"
+            "self": "/api/books/222/relationships/author",
+            "related": "/api/books/222/author"
           }
         }
       },
       "links": {
-        "self": "/api/books/2"
+        "self": "/api/books/222"
       }
     },
     {
       "type": "books",
-      "id": "3",
+      "id": "333",
       "attributes": {
         "title": "Gulliver's Travels",
         "publishYear": 1726
@@ -127,13 +127,13 @@
       "relationships": {
         "author": {
           "links": {
-            "self": "/api/books/3/relationships/author",
-            "related": "/api/books/3/author"
+            "self": "/api/books/333/relationships/author",
+            "related": "/api/books/333/author"
           }
         }
       },
       "links": {
-        "self": "/api/books/3"
+        "self": "/api/books/333"
       }
     }
   ],
