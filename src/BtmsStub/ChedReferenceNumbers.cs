@@ -1,3 +1,4 @@
+// ReSharper disable InconsistentNaming
 namespace Defra.PhaImportNotifications.BtmsStub;
 
 public static class ChedReferenceNumbers
