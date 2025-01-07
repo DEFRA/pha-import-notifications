@@ -1,9 +1,14 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
-using Defra.PhaImportNotifications.Api.Helpers;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using Defra.PhaImportNotifications.Api.Authentication;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Xunit.Abstractions;
+using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
 
@@ -38,16 +43,27 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
         });
 
         var client = builder.CreateClient();
-        var config = builder.Services.GetService<IConfiguration>();
 
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
-            "Basic",
-            BasicAuthHelper.CreateBasicAuth(
-                config?.GetValue<string>("BasicAuth:Username")!,
-                config?.GetValue<string>("BasicAuth:Password")!
-            )
-        );
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GenerateJwt());
 
         return client;
+    }
+
+    private static string GenerateJwt()
+    {
+        var claims = new[] { new Claim(JwtRegisteredClaimNames.Sub, "pha"), new Claim(PhaClaimTypes.ClientId, "pha") };
+
+        var rand = new byte[32];
+        using (var rng = RandomNumberGenerator.Create())
+            rng.GetBytes(rand);
+
+        var token = new JwtSecurityToken(
+            issuer: "Local",
+            claims: claims,
+            expires: DateTime.Now.AddMinutes(30),
+            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(rand), SecurityAlgorithms.HmacSha256)
+        );
+
+        return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }
