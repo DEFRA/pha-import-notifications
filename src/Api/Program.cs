@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
@@ -10,11 +11,14 @@ using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Contracts;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -68,7 +72,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         // within an integration test
         builder.Host.UseSerilog(CdpLogging.Configuration);
 
-    builder.Services.AddBasicAuthentication();
+    builder.Services.AddPhaJwtAuthentication();
 
     // This adds default rate limiter, total request timeout, retries, circuit breaker and timeout per attempt
     builder.Services.ConfigureHttpClientDefaults(options => options.AddStandardResilienceHandler());
@@ -94,10 +98,10 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             "Basic",
             new OpenApiSecurityScheme
             {
-                Description = "Basic authentication using the Authorization header",
+                Description = "OAuth2 Bearer Token",
                 In = ParameterLocation.Header,
                 Name = "Authorization",
-                Scheme = "Basic",
+                Scheme = "Bearer",
                 Type = SecuritySchemeType.Http,
             }
         );
@@ -107,7 +111,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
                 {
                     new OpenApiSecurityScheme
                     {
-                        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Basic" },
+                        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" },
                     },
                     []
                 },

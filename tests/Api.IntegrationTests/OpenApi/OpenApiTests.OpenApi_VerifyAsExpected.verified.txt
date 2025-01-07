@@ -3912,14 +3912,14 @@
     "securitySchemes": {
       "Basic": {
         "type": "http",
-        "description": "Basic authentication using the Authorization header",
-        "scheme": "Basic"
+        "description": "OAuth2 Bearer Token",
+        "scheme": "Bearer"
       }
     }
   },
   "security": [
     {
-      "Basic": [ ]
+      "Bearer": [ ]
     }
   ],
   "tags": [
