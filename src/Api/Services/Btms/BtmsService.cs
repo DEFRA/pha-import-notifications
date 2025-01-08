@@ -69,7 +69,7 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
         return result with
         {
             ClearanceRequests = movements.SelectMany(x => x.ClearanceRequests ?? []).ToList(),
-            ClearanceDecision = movements.SelectMany(x => x.Decisions ?? []).ToList(),
+            ClearanceDecisions = movements.SelectMany(x => x.Decisions ?? []).ToList(),
         };
     }
 

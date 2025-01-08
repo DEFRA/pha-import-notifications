@@ -2039,7 +2039,7 @@
             },
             "nullable": true
           },
-          "clearanceDecision": {
+          "clearanceDecisions": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CustomsClearanceRequest"

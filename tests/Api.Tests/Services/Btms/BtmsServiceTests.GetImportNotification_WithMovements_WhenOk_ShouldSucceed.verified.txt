@@ -161,7 +161,7 @@
       ]
     }
   ],
-  ClearanceDecision: [
+  ClearanceDecisions: [
     {
       Header: {
         EntryReference: 24GBC1IQDD278IZAR8,
