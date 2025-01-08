@@ -1,0 +1,191 @@
+﻿{
+  CreatedSource: 2018-06-05 11:00:27.823 Utc,
+  CommoditiesSummary: {
+    TotalGrossWeight: 8678.0,
+    TotalNetWeight: 101.0,
+    NumberOfPackages: 5,
+    Temperature: Chilled,
+    NumberOfAnimals: 0,
+    IncludeNonAblactedAnimals: false,
+    CountryOfOrigin: FJ,
+    ConsignedCountry: IS
+  },
+  Commodities: [
+    {
+      CommodityDescription: Short forequarters,
+      CommodityId: 02042210,
+      ComplementId: 131906,
+      SpeciesId: 8944427,
+      SpeciesName: Ovis aries,
+      SpeciesNomination: Ovis aries,
+      SpeciesTypeName: Domestic,
+      SpeciesType: 131906,
+      SpeciesClass: 131906,
+      SpeciesFamily: 131906,
+      AdditionalData: {
+        ValueKind: Object
+      }
+    },
+    {
+      CommodityDescription: Of domestic swine,
+      CommodityId: 02032110,
+      ComplementId: 131711,
+      SpeciesId: 8943591,
+      SpeciesName: Sus scrofa domesticus,
+      SpeciesNomination: Sus scrofa domesticus,
+      SpeciesType: 131711,
+      SpeciesClass: 131711,
+      SpeciesFamily: 131711,
+      AdditionalData: {
+        ValueKind: Object
+      }
+    }
+  ],
+  IpaffsId: 39800,
+  ReferenceNumber: CHEDP.GB.2024.1043483,
+  Version: 1,
+  UpdatedSource: 2018-06-05 11:00:27.823 Utc,
+  ImportNotificationType: Cvedp,
+  Status: Rejected,
+  PartOne: {
+    PersonResponsible: {
+      Name: JamesFranco,
+      CompanyName: Acme Importers Limited,
+      Addresses: [
+        23 High Street, Newcastle, ABC123
+      ],
+      Country: GB,
+      City: Newcastle,
+      TracesId: 1
+    },
+    Consignor: {
+      Type: Exporter,
+      Status: Approved,
+      CompanyName: MARCH SEGARRA,SA,
+      IndividualName: MARCH SEGARRA,SA,
+      Address: {
+        City: Andorra,
+        AddressLine1: CTRA LA COMELLA,45,
+        PostalZipCode: AD500,
+        CountryIsoCode: AD
+      }
+    },
+    Consignee: {
+      Type: Consignee,
+      Status: Approved,
+      CompanyName: Acme Importers Limited,
+      IndividualName: Acme Importers Limited,
+      Address: {
+        City: Andorra,
+        AddressLine1: 23 High Street, Newcastle, ABC123,
+        PostalZipCode: AD500,
+        CountryIsoCode: AD
+      }
+    },
+    Importer: {
+      Type: Importer,
+      Status: Approved,
+      CompanyName: JONES AS & JT,
+      IndividualName: JONES AS & JT,
+      Address: {
+        City: Andorra,
+        AddressLine1: 66 RICKAMORE ROAD UPPER TEMPLEPATRICK BALLYCLARE,
+        PostalZipCode: AD500,
+        CountryIsoCode: AD
+      }
+    },
+    PlaceOfDestination: {
+      Type: Destination,
+      Status: Approved,
+      CompanyName: Five Sisters Zoo Park,
+      IndividualName: n/a,
+      Address: {
+        City: Gavieside,
+        AddressLine1: Gavieside,
+        PostalZipCode: EH55,
+        CountryIsoCode: GB
+      }
+    },
+    Purpose: {
+      ConformsToEU: true,
+      ThirdCountryTranshipment: Panama,
+      ExitBip: GBBEL1,
+      ThirdCountry: TH,
+      TransitThirdCountries: [
+        GB
+      ],
+      FinalBip: GBBEL1,
+      PurposeGroup: ForReImport
+    },
+    PointOfEntry: GBBEL1,
+    MeansOfTransport: {
+      Type: Ship,
+      Document: CVEDP_TRANSPORT_DOC.159447,
+      Id: CVEDPTRANSPORT_ID.582393
+    },
+    Transporter: {
+      Type: PrivateTransporter,
+      Status: Approved,
+      CompanyName: Chris+Nichol,
+      IndividualName: Chris+Nichol,
+      Address: {
+        City: Cleckheaton,
+        AddressLine1: the+grove+cartwright+street+cleckheaton+bd19+5lx,
+        PostalZipCode: BD19,
+        CountryIsoCode: GB
+      },
+      ApprovalNumber: GB00113999
+    },
+    MeansOfTransportFromEntryPoint: {
+      Type: Aeroplane,
+      Document: CVEDP_VET_DOC.023,
+      Id: CVEDP_VET_ID.700
+    },
+    VeterinaryInformation: {
+      VeterinaryDocument: CVEDP_VET.228773,
+      VeterinaryDocumentIssuedOn: 2018-03-15,
+      AccompanyingDocumentNumbers: [
+        n/a
+      ]
+    },
+    ImporterLocalReferenceNumber: CVEDP.550447,
+    Route: {},
+    SubmittedOn: 2018-06-05 10:59:55.689 Utc,
+    ArrivesAt: 2019-04-24 11:40,
+    DepartedOn: 2019-07-16 06:28
+  },
+  DecisionBy: {
+    DisplayName: s_RcwY29955gH7DEKLupAA-FPA4U8xbltyAGMuJ3uto,
+    UserId: 79f6dc68-2144-e911-a96a-000d3a29ba60
+  },
+  DecisionDate: 2019-12-03T10:48:08.899922Z,
+  PartTwo: {
+    Decision: {
+      ConsignmentAcceptable: true,
+      DecisionEnum: AcceptableIfChanneled,
+      IfChanneledOption: Article15
+    },
+    ConsignmentCheck: {
+      DocumentCheckResult: Satisfactory,
+      IdentityCheckDone: false,
+      IdentityCheckResult: Satisfactory,
+      PhysicalCheckDone: false,
+      PhysicalCheckResult: Satisfactory
+    },
+    ImpactOfTransportOnAnimals: {},
+    ControlAuthority: {
+      OfficialVeterinarian: {
+        FirstName: Gary,
+        LastName: Admin-Tester,
+        Email: DefraTestBIP@anthunt3.33mail.com,
+        Phone: 020 8225 7295,
+        Signed: 2020-06-16T11:26:43.721061
+      },
+      IuuCheckRequired: true,
+      IuuOption: Iuuok
+    }
+  },
+  PartThree: {
+    ControlStatus: Required
+  }
+}

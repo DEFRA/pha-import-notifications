@@ -1,0 +1,669 @@
+{
+  "links": {
+    "self": "/api/import-notifications/CHEDA.GB.2024.1043483"
+  },
+  "data": {
+    "type": "import-notifications",
+    "id": "CHEDA.GB.2024.1043483",
+    "attributes": {
+      "_Etag": null,
+      "CreatedSource": "2020-04-08T12:32:02.48Z",
+      "Created": "0001-01-01T00:00:00",
+      "Updated": "0001-01-01T00:00:00",
+      "StringId": "CHEDD.GB.2019.1005031",
+      "LocalId": null,
+      "AuditEntries": [],
+      "relationships": {
+        "Movements": {
+          "Matched": false,
+          "Links": null,
+          "Data": []
+        }
+      },
+      "CommoditiesSummary": {
+        "GmsDeclarationAccepted": null,
+        "ConsignedCountryInChargeGroup": null,
+        "TotalGrossWeight": 8678,
+        "TotalNetWeight": 101,
+        "TotalGrossVolume": 10,
+        "TotalGrossVolumeUnit": "litres",
+        "NumberOfPackages": 5,
+        "Temperature": "Chilled",
+        "NumberOfAnimals": 0,
+        "CommodityComplements": [
+          {
+            "UniqueComplementId": null,
+            "CommodityDescription": "Sultanas",
+            "CommodityId": "08062030",
+            "ComplementId": 149810,
+            "ComplementName": null,
+            "EppoCode": null,
+            "IsWoodPackaging": null,
+            "SpeciesId": null,
+            "SpeciesName": null,
+            "SpeciesNomination": null,
+            "SpeciesTypeName": null,
+            "SpeciesType": "149810",
+            "SpeciesClassName": null,
+            "SpeciesClass": "149810",
+            "SpeciesFamilyName": null,
+            "SpeciesFamily": "149810",
+            "SpeciesCommonName": null,
+            "IsCdsMatched": null,
+            "AdditionalData": {
+              "netWeight": 10,
+              "numberPackage": 1,
+              "typePackage": "Bag"
+            },
+            "RiskAssesment": null,
+            "Checks": null
+          },
+          {
+            "UniqueComplementId": null,
+            "CommodityDescription": "Sultanas",
+            "CommodityId": "08062031",
+            "ComplementId": 149811,
+            "ComplementName": null,
+            "EppoCode": null,
+            "IsWoodPackaging": null,
+            "SpeciesId": null,
+            "SpeciesName": null,
+            "SpeciesNomination": null,
+            "SpeciesTypeName": null,
+            "SpeciesType": "149810",
+            "SpeciesClassName": null,
+            "SpeciesClass": "149810",
+            "SpeciesFamilyName": null,
+            "SpeciesFamily": "149810",
+            "SpeciesCommonName": null,
+            "IsCdsMatched": null,
+            "AdditionalData": {
+              "netWeight": 10,
+              "numberPackage": 2,
+              "typePackage": "Bag"
+            },
+            "RiskAssesment": null,
+            "Checks": null
+          }
+        ],
+        "ComplementParameterSets": [
+          {
+            "UniqueComplementId": null,
+            "ComplementId": 149810,
+            "SpeciesId": null,
+            "KeyDataPairs": {
+              "netweight": 10,
+              "number_package": 1,
+              "type_package": "Bag"
+            },
+            "CatchCertificates": null,
+            "Identifiers": null
+          },
+          {
+            "UniqueComplementId": null,
+            "ComplementId": 149811,
+            "SpeciesId": null,
+            "KeyDataPairs": {
+              "netweight": 10,
+              "number_package": 2,
+              "type_package": "Bag"
+            },
+            "CatchCertificates": null,
+            "Identifiers": null
+          }
+        ],
+        "IncludeNonAblactedAnimals": false,
+        "CountryOfOrigin": "FJ",
+        "CountryOfOriginIsPodCountry": null,
+        "IsLowRiskArticle72Country": null,
+        "RegionOfOrigin": "FJ",
+        "ConsignedCountry": "FJ",
+        "AnimalsCertifiedAs": null,
+        "CommodityIntendedFor": null
+      },
+      "Commodities": [
+        {
+          "UniqueComplementId": null,
+          "CommodityDescription": "Sultanas",
+          "CommodityId": "08062030",
+          "ComplementId": 149810,
+          "ComplementName": null,
+          "EppoCode": null,
+          "IsWoodPackaging": null,
+          "SpeciesId": null,
+          "SpeciesName": null,
+          "SpeciesNomination": null,
+          "SpeciesTypeName": null,
+          "SpeciesType": "149810",
+          "SpeciesClassName": null,
+          "SpeciesClass": "149810",
+          "SpeciesFamilyName": null,
+          "SpeciesFamily": "149810",
+          "SpeciesCommonName": null,
+          "IsCdsMatched": null,
+          "AdditionalData": {
+            "netWeight": 10,
+            "numberPackage": 1,
+            "typePackage": "Bag"
+          },
+          "RiskAssesment": null,
+          "Checks": null
+        },
+        {
+          "UniqueComplementId": null,
+          "CommodityDescription": "Sultanas",
+          "CommodityId": "08062031",
+          "ComplementId": 149811,
+          "ComplementName": null,
+          "EppoCode": null,
+          "IsWoodPackaging": null,
+          "SpeciesId": null,
+          "SpeciesName": null,
+          "SpeciesNomination": null,
+          "SpeciesTypeName": null,
+          "SpeciesType": "149810",
+          "SpeciesClassName": null,
+          "SpeciesClass": "149810",
+          "SpeciesFamilyName": null,
+          "SpeciesFamily": "149810",
+          "SpeciesCommonName": null,
+          "IsCdsMatched": null,
+          "AdditionalData": {
+            "netWeight": 10,
+            "numberPackage": 2,
+            "typePackage": "Bag"
+          },
+          "RiskAssesment": null,
+          "Checks": null
+        }
+      ],
+      "_PointOfEntry": "GBDSA4P",
+      "_PointOfEntryControlPoint": null,
+      "_MatchReference": "1005031",
+      "IpaffsId": 5031,
+      "Etag": null,
+      "ExternalReferences": null,
+      "ReferenceNumber": "CHEDD.GB.2019.1005031",
+      "Version": 1,
+      "UpdatedSource": "2020-04-08T12:32:02.48Z",
+      "LastUpdatedBy": {
+        "DisplayName": "Percy Inspector-Tester",
+        "UserId": "79f6dc68-2144-e911-a96a-000d3a29ba60",
+        "IsControlUser": null
+      },
+      "ImportNotificationType": "Ced",
+      "Replaces": "CHEDD.GB.2019.1000054",
+      "ReplacedBy": null,
+      "Status": 1,
+      "SplitConsignment": null,
+      "ChildNotification": null,
+      "RiskAssessment": null,
+      "JourneyRiskCategorisation": null,
+      "IsHighRiskEuImport": null,
+      "PartOne": {
+        "TypeOfImp": null,
+        "PersonResponsible": {
+          "Id": null,
+          "Name": "Percy Inspector-Tester",
+          "CompanyId": "767ceb6a-2144-e911-a96c-000d3a29b5de",
+          "ContactId": "79f6dc68-2144-e911-a96a-000d3a29ba60",
+          "CompanyName": "Defra Test BIP",
+          "Addresses": [
+            "Animal and Plant Health Agency",
+            "Woodham Lane",
+            "New Haw",
+            "Addlestone",
+            "Surrey",
+            "KT15 3NB",
+            "GB"
+          ],
+          "County": null,
+          "PostCode": null,
+          "Country": "GB",
+          "City": "Surrey",
+          "TracesId": 1001,
+          "Type": null,
+          "ApprovalNumber": null,
+          "Phone": "020 8225 7295",
+          "Fax": null,
+          "Email": "DefraTestBIP@anthunt3.33mail.com"
+        },
+        "CustomsReferenceNumber": null,
+        "ContainsWoodPackaging": null,
+        "ConsignmentArrived": null,
+        "Consignor": {
+          "Id": "9e5de724-94e4-44bb-b55e-0369c1301917",
+          "Type": 2,
+          "Status": 1,
+          "CompanyName": "Emard Emard and Emard",
+          "IndividualName": null,
+          "Address": {
+            "Street": null,
+            "City": "West Antonia",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "44064 Horacio",
+            "AddressLine2": "52862 Flatley Grove",
+            "AddressLine3": "Colorado",
+            "PostalZipCode": "64443-1",
+            "CountryIsoCode": "DE",
+            "Email": "ukoperator@email.com",
+            "UkTelephone": null,
+            "Telephone": null,
+            "InternationalTelephone": {
+              "CountryCode": "32",
+              "SubscriberNumber": "1617777777"
+            }
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "ConsignorTwo": null,
+        "Packer": null,
+        "Consignee": {
+          "Id": "03359c68-3410-4829-8ff2-b516397ecdeb",
+          "Type": 0,
+          "Status": 1,
+          "CompanyName": "Graham Graham and Graham",
+          "IndividualName": null,
+          "Address": {
+            "Street": null,
+            "City": "North Eliezerchester",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "132 Vincenza",
+            "AddressLine2": "5948 Larry Ranch",
+            "AddressLine3": "Ohio",
+            "PostalZipCode": "HDB 7zh",
+            "CountryIsoCode": "GB",
+            "Email": "ukoperator@email.com",
+            "UkTelephone": "01615555555",
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "Importer": {
+          "Id": "03359c68-3410-4829-8ff2-b516397ecdeb",
+          "Type": 0,
+          "Status": 1,
+          "CompanyName": "Graham Graham and Graham",
+          "IndividualName": null,
+          "Address": {
+            "Street": null,
+            "City": "North Eliezerchester",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "132 Vincenza",
+            "AddressLine2": "5948 Larry Ranch",
+            "AddressLine3": "Ohio",
+            "PostalZipCode": "HDB 7zh",
+            "CountryIsoCode": "GB",
+            "Email": "ukoperator@email.com",
+            "UkTelephone": "01615555555",
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "PlaceOfDestination": {
+          "Id": "03359c68-3410-4829-8ff2-b516397ecdeb",
+          "Type": 0,
+          "Status": 1,
+          "CompanyName": "Graham Graham and Graham",
+          "IndividualName": null,
+          "Address": {
+            "Street": null,
+            "City": "North Eliezerchester",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "132 Vincenza",
+            "AddressLine2": "5948 Larry Ranch",
+            "AddressLine3": "Ohio",
+            "PostalZipCode": "HDB 7zh",
+            "CountryIsoCode": "GB",
+            "Email": "ukoperator@email.com",
+            "UkTelephone": "01615555555",
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "Pod": null,
+        "PlaceOfOriginHarvest": null,
+        "AdditionalPermanentAddresses": null,
+        "CphNumber": null,
+        "ImportingFromCharity": null,
+        "IsPlaceOfDestinationThePermanentAddress": null,
+        "IsCatchCertificateRequired": null,
+        "IsGvmsRoute": null,
+        "Purpose": {
+          "ConformsToEU": true,
+          "InternalMarketPurpose": null,
+          "ThirdCountryTranshipment": null,
+          "ForNonConforming": null,
+          "RegNumber": null,
+          "ShipName": null,
+          "ShipPort": null,
+          "ExitBip": null,
+          "ThirdCountry": null,
+          "TransitThirdCountries": null,
+          "ForImportOrAdmission": null,
+          "ExitDate": null,
+          "FinalBip": "Final BIP",
+          "PurposeGroup": 0,
+          "EstimatedArrivesAtPortOfExit": null
+        },
+        "PointOfEntry": "GBDSA4P",
+        "PointOfEntryControlPoint": null,
+        "MeansOfTransport": null,
+        "Transporter": {
+          "Id": "81f9a1b2-8ed0-4a2a-a823-3444d6912400",
+          "Type": 5,
+          "Status": 1,
+          "CompanyName": "Goldner Goldner and Goldner",
+          "IndividualName": null,
+          "Address": {
+            "Street": null,
+            "City": "Ricoshire",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "2357 Rogers",
+            "AddressLine2": "90771 Patience Cove",
+            "AddressLine3": "Rhode Island",
+            "PostalZipCode": "g4t 3RH",
+            "CountryIsoCode": "GB",
+            "Email": "ukoperator@email.com",
+            "UkTelephone": "01615555555",
+            "Telephone": "01615555555",
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "TransporterDetailsRequired": null,
+        "MeansOfTransportFromEntryPoint": {
+          "Type": 2,
+          "Document": "hshshshs",
+          "Id": "8181881"
+        },
+        "EstimatedJourneyTimeInMinutes": null,
+        "ResponsibleForTransport": null,
+        "VeterinaryInformation": {
+          "EstablishmentsOfOriginExternalReference": null,
+          "EstablishmentsOfOrigins": null,
+          "VeterinaryDocument": "23432",
+          "VeterinaryDocumentIssuedOn": "1999-01-11",
+          "AccompanyingDocumentNumbers": null,
+          "AccompanyingDocuments": [
+            {
+              "DocumentType": 0,
+              "DocumentReference": "DOC_12345",
+              "DocumentIssuedOn": "2020-05-17T00:00:00",
+              "AttachmentId": null,
+              "AttachmentFilename": null,
+              "AttachmentContentType": null,
+              "UploadUserId": null,
+              "UploadOrganisationId": null,
+              "ExternalReference": null
+            }
+          ],
+          "CatchCertificateAttachments": null,
+          "IdentificationDetails": null
+        },
+        "ImporterLocalReferenceNumber": "Reference number",
+        "Route": null,
+        "SealsContainers": [
+          {
+            "SealNumber": "6666",
+            "ContainerNumber": "5678",
+            "OfficialSeal": false,
+            "ResealedSealNumber": null
+          },
+          {
+            "SealNumber": "6667",
+            "ContainerNumber": "5679",
+            "OfficialSeal": true,
+            "ResealedSealNumber": null
+          }
+        ],
+        "SubmittedOn": "2019-11-29T11:02:28.76883Z",
+        "SubmittedBy": {
+          "DisplayName": "Percy Inspector-Tester",
+          "UserId": "79f6dc68-2144-e911-a96a-000d3a29ba60",
+          "IsControlUser": null
+        },
+        "ConsignmentValidations": [
+          {
+            "Field": "uk/gov/defra/tracesx/notificationschema/representation/partone/commodities/totalgrossvolume",
+            "Code": null
+          }
+        ],
+        "ComplexCommoditySelected": null,
+        "PortOfEntry": null,
+        "PortOfExit": null,
+        "ExitedPortOfOn": null,
+        "ContactDetails": null,
+        "NominatedContacts": null,
+        "OriginalEstimatedOn": null,
+        "BillingInformation": null,
+        "IsChargeable": null,
+        "WasChargeable": null,
+        "CommonUserCharge": null,
+        "ProvideCtcMrn": null,
+        "ArrivesAt": "2019-06-14T23:10:00",
+        "DepartedOn": "2020-06-15T21:30:00"
+      },
+      "DecisionBy": {
+        "DisplayName": "s_RcwY29955gH7DEKLupAA-FPA4U8xbltyAGMuJ3uto",
+        "UserId": "79f6dc68-2144-e911-a96a-000d3a29ba60",
+        "IsControlUser": null
+      },
+      "DecisionDate": "2019-12-03T10:48:08.899922Z",
+      "PartTwo": {
+        "Decision": {
+          "ConsignmentAcceptable": true,
+          "NotAcceptableAction": null,
+          "NotAcceptableActionDestructionReason": null,
+          "NotAcceptableActionEntryRefusalReason": null,
+          "NotAcceptableActionQuarantineImposedReason": null,
+          "NotAcceptableActionSpecialTreatmentReason": null,
+          "NotAcceptableActionIndustrialProcessingReason": null,
+          "NotAcceptableActionReDispatchReason": null,
+          "NotAcceptableActionUseForOtherPurposesReason": null,
+          "NotAcceptableDestructionReason": null,
+          "NotAcceptableActionOtherReason": null,
+          "NotAcceptableActionByDate": null,
+          "ChedppNotAcceptableReasons": null,
+          "NotAcceptableReasons": null,
+          "NotAcceptableCountry": null,
+          "NotAcceptableEstablishment": null,
+          "NotAcceptableOtherReason": null,
+          "DetailsOfControlledDestinations": null,
+          "SpecificWarehouseNonConformingConsignment": null,
+          "TemporaryDeadline": null,
+          "DecisionEnum": 1,
+          "FreeCirculationPurpose": 0,
+          "DefinitiveImportPurpose": null,
+          "IfChanneledOption": null,
+          "CustomWarehouseRegisteredNumber": null,
+          "FreeWarehouseRegisteredNumber": null,
+          "ShipName": null,
+          "ShipPortOfExit": null,
+          "ShipSupplierRegisteredNumber": null,
+          "TranshipmentBip": null,
+          "TranshipmentThirdCountry": null,
+          "TransitExitBip": null,
+          "TransitThirdCountry": null,
+          "TransitDestinationThirdCountry": null,
+          "TemporaryExitBip": null,
+          "HorseReentry": null,
+          "TranshipmentEuOrThirdCountry": null
+        },
+        "ConsignmentCheck": {
+          "EuStandard": null,
+          "AdditionalGuarantees": null,
+          "DocumentCheckResult": "Satisfactory",
+          "NationalRequirements": null,
+          "IdentityCheckDone": false,
+          "IdentityCheckType": null,
+          "IdentityCheckResult": "Satisfactory",
+          "IdentityCheckNotDoneReason": null,
+          "PhysicalCheckDone": false,
+          "PhysicalCheckResult": "Satisfactory",
+          "PhysicalCheckNotDoneReason": null,
+          "PhysicalCheckOtherText": null,
+          "WelfareCheck": null,
+          "NumberOfAnimalsChecked": null,
+          "LaboratoryCheckDone": null,
+          "LaboratoryCheckResult": null
+        },
+        "ImpactOfTransportOnAnimals": null,
+        "LaboratoryTestsRequired": true,
+        "LaboratoryTests": {
+          "TestedOn": "2019-12-02T16:41:41.633",
+          "TestReason": null,
+          "SingleLaboratoryTests": [
+            {
+              "CommodityCode": "08062030",
+              "SpeciesId": null,
+              "TracesId": 1,
+              "TestName": ".Beta-agonists (screening multisubstances)",
+              "Applicant": {
+                "Laboratory": "Microbiology Cardiff (FE)",
+                "LaboratoryAddress": "Llandough Hospita, Penlan Road, Penarth, Wales CF64 2XX",
+                "LaboratoryIdentification": "Public Health Wales (PHW)",
+                "LaboratoryPhoneNumber": "029 20716745",
+                "LaboratoryEmail": null,
+                "SampleBatchNumber": "21e3",
+                "AnalysisType": 0,
+                "NumberOfSamples": 12,
+                "SampleType": "Cuttings",
+                "ConservationOfSample": 0,
+                "Inspector": {
+                  "Name": "Percy Inspector-Tester",
+                  "Phone": "020 8225 7295",
+                  "Email": "DefraTestBIP@anthunt3.33mail.com"
+                },
+                "SampledOn": null
+              },
+              "LaboratoryTestResult": {
+                "SampleUseByDate": "2010-10-10",
+                "ReleasedOn": "2009-10-20T00:00:00",
+                "LaboratoryTestMethod": "Looking",
+                "Results": "I looked with my eyes and saw no problems",
+                "Conclusion": 0,
+                "LabTestCreatedOn": "2019-12-02T00:00:00"
+              }
+            }
+          ]
+        },
+        "ResealedContainersIncluded": true,
+        "ResealedContainers": null,
+        "ResealedContainersMappings": [
+          {
+            "SealNumber": "6666",
+            "ContainerNumber": "5678",
+            "OfficialSeal": false,
+            "ResealedSealNumber": "1111"
+          },
+          {
+            "SealNumber": "6667",
+            "ContainerNumber": "5679",
+            "OfficialSeal": true,
+            "ResealedSealNumber": "1112"
+          }
+        ],
+        "ControlAuthority": {
+          "OfficialVeterinarian": {
+            "FirstName": "Percy",
+            "LastName": "Inspector-Tester",
+            "Email": "DefraTestBIP@anthunt3.33mail.com",
+            "Phone": "020 8225 7295",
+            "Fax": null,
+            "Signed": "2019-12-03T10:48:09.003509"
+          },
+          "CustomsReferenceNo": null,
+          "ContainerResealed": null,
+          "NewSealNumber": null,
+          "IuuFishingReference": null,
+          "IuuCheckRequired": null,
+          "IuuOption": null
+        },
+        "ControlledDestination": {
+          "Id": "03359c68-3410-4829-8ff2-b516397ecdeb",
+          "Type": 1,
+          "Status": 1,
+          "CompanyName": "Graham Graham and Graham",
+          "IndividualName": null,
+          "Address": {
+            "Street": null,
+            "City": "North Eliezerchester",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "132 Vincenza",
+            "AddressLine2": "5948 Larry Ranch",
+            "AddressLine3": "Ohio",
+            "PostalZipCode": "HDB 7zh",
+            "CountryIsoCode": "GB",
+            "Email": "ukoperator@email.com",
+            "UkTelephone": "01615555555",
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "BipLocalReferenceNumber": "1234",
+        "SignedOnBehalfOf": null,
+        "OnwardTransportation": null,
+        "ConsignmentValidations": null,
+        "CheckedOn": "2020-01-30T10:15:00Z",
+        "AccompanyingDocuments": null,
+        "PhsiAutoCleared": null,
+        "HmiAutoCleared": null,
+        "InspectionRequired": null,
+        "InspectionOverride": null,
+        "AutoClearedOn": null
+      },
+      "PartThree": {
+        "ControlStatus": null,
+        "Control": null,
+        "ConsignmentValidations": null,
+        "SealCheckRequired": null,
+        "SealCheck": null,
+        "SealCheckOverride": null
+      },
+      "OfficialVeterinarian": null,
+      "ConsignmentValidations": null,
+      "AgencyOrganisationId": null,
+      "RiskDecisionLockedOn": null,
+      "IsRiskDecisionLocked": null,
+      "IsBulkUploadInProgress": null,
+      "RequestId": null,
+      "IsCdsFullMatched": null,
+      "ChedTypeVersion": null,
+      "IsGMRMatched": null
+    },
+    "relationships": {
+      "movements": {
+        "data": [],
+        "meta": {
+          "matched": false
+        }
+      }
+    },
+    "links": {
+      "self": "/api/import-notifications/CHEDA.GB.2024.1043483"
+    }
+  }
+}

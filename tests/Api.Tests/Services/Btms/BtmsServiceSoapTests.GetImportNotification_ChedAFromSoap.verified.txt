@@ -1,0 +1,167 @@
+﻿{
+  CreatedSource: 2018-06-05 11:03:22.337 Utc,
+  CommoditiesSummary: {
+    TotalGrossWeight: 0.0,
+    TotalNetWeight: 0.0,
+    NumberOfPackages: 12,
+    NumberOfAnimals: 61,
+    IncludeNonAblactedAnimals: true,
+    CountryOfOrigin: FJ,
+    AnimalsCertifiedAs: Approved
+  },
+  Commodities: [
+    {
+      CommodityId: 0103,
+      ComplementId: 1911,
+      SpeciesId: 3144,
+      SpeciesName: Sus scrofa domesticus,
+      SpeciesNomination: Sus scrofa domesticus,
+      SpeciesTypeName: Domestic,
+      SpeciesType: 1911,
+      SpeciesClassName: ,
+      SpeciesClass: 1911,
+      SpeciesFamilyName: ,
+      SpeciesFamily: 1911,
+      AdditionalData: {
+        ValueKind: Object
+      }
+    }
+  ],
+  ReferenceNumber: CHEDA.GB.2024.1043483,
+  Version: 1,
+  UpdatedSource: 2018-06-05 11:03:22.337 Utc,
+  ImportNotificationType: Cveda,
+  Status: Rejected,
+  PartOne: {
+    PersonResponsible: {
+      Name: Michael Scott,
+      CompanyId: null,
+      ContactId: ebc98b54-834c-e911-a96a-000d3a29ba60,
+      Addresses: [
+        Animal and Plant Health Agency,
+        Woodham Lane,
+        New Haw,
+        Addlestone,
+        Surrey,
+        KT15 3NB
+      ],
+      Country: GB,
+      TracesId: 1001,
+      Phone: 01234566234,
+      Email: test14@hghumankainos.33mail.com
+    },
+    Consignor: {
+      Type: Exporter,
+      Status: Approved,
+      CompanyName: MARCH SEGARRA,SA,
+      IndividualName: MARCH SEGARRA,SA,
+      Address: {
+        City: Andorra,
+        AddressLine1: CTRA LA COMELLA,45,
+        PostalZipCode: AD500,
+        CountryIsoCode: AD
+      }
+    },
+    Consignee: {
+      Type: Consignee,
+      Status: Nonapproved,
+      CompanyName: Acme Importers Limited,
+      IndividualName: Acme Importers Limited,
+      Address: {
+        City: Newcastle,
+        AddressLine1: 23 High Street, Newcastle, ABC123,
+        PostalZipCode: CB3,
+        CountryIsoCode: GB
+      }
+    },
+    Importer: {
+      Type: Importer,
+      Status: Approved,
+      CompanyName: JONES AS & JT,
+      IndividualName: JONES AS & JT,
+      Address: {
+        City: BALLYCLARE,
+        AddressLine1: 66 RICKAMORE ROAD UPPER TEMPLEPATRICK BALLYCLARE,
+        PostalZipCode: BT39,
+        CountryIsoCode: GB
+      }
+    },
+    PlaceOfDestination: {
+      Type: Destination,
+      Status: Nonapproved,
+      CompanyName: Five Sisters Zoo Park,
+      Address: {
+        City: Gavieside,
+        AddressLine1: Gavieside,
+        PostalZipCode: EH55,
+        CountryIsoCode: GB
+      }
+    },
+    Purpose: {
+      ConformsToEU: false,
+      ThirdCountryTranshipment: Panama,
+      ThirdCountry: Panama,
+      TransitThirdCountries: [
+        GB
+      ],
+      ForImportOrAdmission: DefinitiveImport,
+      FinalBip: GBBEL1,
+      PurposeGroup: ForReImport
+    },
+    PointOfEntry: GBBEL4,
+    MeansOfTransport: {
+      Type: Ship,
+      Document: CVEDA_TRANSPORT_DOC.226243,
+      Id: CVEDATRANSPORT_ID.676863
+    },
+    Transporter: {
+      Type: PrivateTransporter,
+      Status: Approved,
+      CompanyName: Chris+Nichol,
+      IndividualName: Chris+Nichol,
+      Address: {
+        City: Cleckheaton,
+        AddressLine1: the+grove+cartwright+street+cleckheaton+bd19+5lx,
+        PostalZipCode: BD19,
+        CountryIsoCode: GB
+      },
+      ApprovalNumber: GB00113999
+    },
+    MeansOfTransportFromEntryPoint: {
+      Type: Aeroplane,
+      Document: CVEDA_VET_DOC.595,
+      Id: CVEDA_VET_ID.771
+    },
+    EstimatedJourneyTimeInMinutes: 0.0,
+    VeterinaryInformation: {
+      VeterinaryDocument: CVEDA_VET.051823,
+      VeterinaryDocumentIssuedOn: 2018-04-19,
+      AccompanyingDocumentNumbers: [
+        n/a
+      ]
+    },
+    ImporterLocalReferenceNumber: CVEDA.866781,
+    Route: {
+      TransitingStates: [
+        IS
+      ]
+    },
+    SubmittedOn: 2018-06-05 11:03:00.138 Utc,
+    ArrivesAt: 2019-06-14 10:11,
+    DepartedOn: 2019-06-19 04:54
+  },
+  DecisionBy: {
+    DisplayName: s_RcwY29955gH7DEKLupAA-FPA4U8xbltyAGMuJ3uto,
+    UserId: 79f6dc68-2144-e911-a96a-000d3a29ba60
+  },
+  DecisionDate: 2018-03-19T10:42:13.885Z,
+  PartTwo: {
+    Decision: {
+      ConsignmentAcceptable: true,
+      DecisionEnum: AcceptableForTemporaryImport
+    }
+  },
+  PartThree: {
+    ControlStatus: Required
+  }
+}

@@ -1,0 +1,571 @@
+{
+  "links": {
+    "self": "/api/import-notifications/CHEDA.GB.2024.1043483"
+  },
+  "data": {
+    "type": "import-notifications",
+    "id": "CHEDA.GB.2024.1043483",
+    "attributes": {
+      "_Etag": null,
+      "CreatedSource": "2018-06-05T11:00:27.823Z",
+      "Created": "0001-01-01T00:00:00",
+      "Updated": "0001-01-01T00:00:00",
+      "StringId": "CHEDP.GB.2024.1043483",
+      "LocalId": null,
+      "AuditEntries": [],
+      "relationships": {
+        "Movements": {
+          "Matched": false,
+          "Links": null,
+          "Data": []
+        }
+      },
+      "CommoditiesSummary": {
+        "GmsDeclarationAccepted": null,
+        "ConsignedCountryInChargeGroup": null,
+        "TotalGrossWeight": 8678,
+        "TotalNetWeight": 101,
+        "TotalGrossVolume": null,
+        "TotalGrossVolumeUnit": null,
+        "NumberOfPackages": 5,
+        "Temperature": "Chilled",
+        "NumberOfAnimals": 0,
+        "CommodityComplements": [
+          {
+            "UniqueComplementId": null,
+            "CommodityDescription": "Short forequarters",
+            "CommodityId": "02042210",
+            "ComplementId": 131906,
+            "ComplementName": null,
+            "EppoCode": null,
+            "IsWoodPackaging": null,
+            "SpeciesId": "8944427",
+            "SpeciesName": "Ovis aries",
+            "SpeciesNomination": "Ovis aries",
+            "SpeciesTypeName": "Domestic",
+            "SpeciesType": "131906",
+            "SpeciesClassName": null,
+            "SpeciesClass": "131906",
+            "SpeciesFamilyName": null,
+            "SpeciesFamily": "131906",
+            "SpeciesCommonName": null,
+            "IsCdsMatched": null,
+            "AdditionalData": {
+              "netWeight": 41,
+              "numberPackage": 2,
+              "typePackage": "Box"
+            },
+            "RiskAssesment": null,
+            "Checks": null
+          },
+          {
+            "UniqueComplementId": null,
+            "CommodityDescription": "Of domestic swine",
+            "CommodityId": "02032110",
+            "ComplementId": 131711,
+            "ComplementName": null,
+            "EppoCode": null,
+            "IsWoodPackaging": null,
+            "SpeciesId": "8943591",
+            "SpeciesName": "Sus scrofa domesticus",
+            "SpeciesNomination": "Sus scrofa domesticus",
+            "SpeciesTypeName": null,
+            "SpeciesType": "131711",
+            "SpeciesClassName": null,
+            "SpeciesClass": "131711",
+            "SpeciesFamilyName": null,
+            "SpeciesFamily": "131711",
+            "SpeciesCommonName": null,
+            "IsCdsMatched": null,
+            "AdditionalData": {
+              "netWeight": 60,
+              "numberPackage": 3,
+              "typePackage": "Crate"
+            },
+            "RiskAssesment": null,
+            "Checks": null
+          }
+        ],
+        "ComplementParameterSets": [
+          {
+            "UniqueComplementId": null,
+            "ComplementId": 131906,
+            "SpeciesId": "8944427",
+            "KeyDataPairs": {
+              "netweight": 41,
+              "number_package": 2,
+              "type_package": "Box"
+            },
+            "CatchCertificates": null,
+            "Identifiers": null
+          },
+          {
+            "UniqueComplementId": null,
+            "ComplementId": 131711,
+            "SpeciesId": "8943591",
+            "KeyDataPairs": {
+              "netweight": 60,
+              "number_package": 3,
+              "type_package": "Crate"
+            },
+            "CatchCertificates": null,
+            "Identifiers": null
+          }
+        ],
+        "IncludeNonAblactedAnimals": false,
+        "CountryOfOrigin": "FJ",
+        "CountryOfOriginIsPodCountry": null,
+        "IsLowRiskArticle72Country": null,
+        "RegionOfOrigin": null,
+        "ConsignedCountry": "IS",
+        "AnimalsCertifiedAs": null,
+        "CommodityIntendedFor": null
+      },
+      "Commodities": [
+        {
+          "UniqueComplementId": null,
+          "CommodityDescription": "Short forequarters",
+          "CommodityId": "02042210",
+          "ComplementId": 131906,
+          "ComplementName": null,
+          "EppoCode": null,
+          "IsWoodPackaging": null,
+          "SpeciesId": "8944427",
+          "SpeciesName": "Ovis aries",
+          "SpeciesNomination": "Ovis aries",
+          "SpeciesTypeName": "Domestic",
+          "SpeciesType": "131906",
+          "SpeciesClassName": null,
+          "SpeciesClass": "131906",
+          "SpeciesFamilyName": null,
+          "SpeciesFamily": "131906",
+          "SpeciesCommonName": null,
+          "IsCdsMatched": null,
+          "AdditionalData": {
+            "netWeight": 41,
+            "numberPackage": 2,
+            "typePackage": "Box"
+          },
+          "RiskAssesment": null,
+          "Checks": null
+        },
+        {
+          "UniqueComplementId": null,
+          "CommodityDescription": "Of domestic swine",
+          "CommodityId": "02032110",
+          "ComplementId": 131711,
+          "ComplementName": null,
+          "EppoCode": null,
+          "IsWoodPackaging": null,
+          "SpeciesId": "8943591",
+          "SpeciesName": "Sus scrofa domesticus",
+          "SpeciesNomination": "Sus scrofa domesticus",
+          "SpeciesTypeName": null,
+          "SpeciesType": "131711",
+          "SpeciesClassName": null,
+          "SpeciesClass": "131711",
+          "SpeciesFamilyName": null,
+          "SpeciesFamily": "131711",
+          "SpeciesCommonName": null,
+          "IsCdsMatched": null,
+          "AdditionalData": {
+            "netWeight": 60,
+            "numberPackage": 3,
+            "typePackage": "Crate"
+          },
+          "RiskAssesment": null,
+          "Checks": null
+        }
+      ],
+      "_PointOfEntry": "GBBEL1",
+      "_PointOfEntryControlPoint": null,
+      "_MatchReference": "1043483",
+      "IpaffsId": 39800,
+      "Etag": null,
+      "ExternalReferences": null,
+      "ReferenceNumber": "CHEDP.GB.2024.1043483",
+      "Version": 1,
+      "UpdatedSource": "2018-06-05T11:00:27.823Z",
+      "LastUpdatedBy": null,
+      "ImportNotificationType": "Cvedp",
+      "Replaces": null,
+      "ReplacedBy": null,
+      "Status": 2,
+      "SplitConsignment": null,
+      "ChildNotification": null,
+      "RiskAssessment": null,
+      "JourneyRiskCategorisation": null,
+      "IsHighRiskEuImport": null,
+      "PartOne": {
+        "TypeOfImp": null,
+        "PersonResponsible": {
+          "Id": null,
+          "Name": "JamesFranco",
+          "CompanyId": null,
+          "ContactId": null,
+          "CompanyName": "Acme Importers Limited",
+          "Addresses": [
+            "23 High Street, Newcastle, ABC123"
+          ],
+          "County": null,
+          "PostCode": null,
+          "Country": "GB",
+          "City": "Newcastle",
+          "TracesId": 1,
+          "Type": null,
+          "ApprovalNumber": null,
+          "Phone": null,
+          "Fax": null,
+          "Email": null
+        },
+        "CustomsReferenceNumber": null,
+        "ContainsWoodPackaging": null,
+        "ConsignmentArrived": null,
+        "Consignor": {
+          "Id": null,
+          "Type": 2,
+          "Status": 0,
+          "CompanyName": "MARCH SEGARRA,SA",
+          "IndividualName": "MARCH SEGARRA,SA",
+          "Address": {
+            "Street": null,
+            "City": "Andorra",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "CTRA LA COMELLA,45",
+            "AddressLine2": null,
+            "AddressLine3": null,
+            "PostalZipCode": "AD500",
+            "CountryIsoCode": "AD",
+            "Email": null,
+            "UkTelephone": null,
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "ConsignorTwo": null,
+        "Packer": null,
+        "Consignee": {
+          "Id": null,
+          "Type": 0,
+          "Status": 0,
+          "CompanyName": "Acme Importers Limited",
+          "IndividualName": "Acme Importers Limited",
+          "Address": {
+            "Street": null,
+            "City": "Andorra",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "23 High Street, Newcastle, ABC123",
+            "AddressLine2": null,
+            "AddressLine3": null,
+            "PostalZipCode": "AD500",
+            "CountryIsoCode": "AD",
+            "Email": null,
+            "UkTelephone": null,
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "Importer": {
+          "Id": null,
+          "Type": 3,
+          "Status": 0,
+          "CompanyName": "JONES AS \u0026 JT",
+          "IndividualName": "JONES AS \u0026 JT",
+          "Address": {
+            "Street": null,
+            "City": "Andorra",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "66 RICKAMORE ROAD UPPER TEMPLEPATRICK BALLYCLARE",
+            "AddressLine2": null,
+            "AddressLine3": null,
+            "PostalZipCode": "AD500",
+            "CountryIsoCode": "AD",
+            "Email": null,
+            "UkTelephone": null,
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "PlaceOfDestination": {
+          "Id": null,
+          "Type": 1,
+          "Status": 0,
+          "CompanyName": "Five Sisters Zoo Park",
+          "IndividualName": "n/a",
+          "Address": {
+            "Street": null,
+            "City": "Gavieside",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "Gavieside",
+            "AddressLine2": null,
+            "AddressLine3": null,
+            "PostalZipCode": "EH55",
+            "CountryIsoCode": "GB",
+            "Email": null,
+            "UkTelephone": null,
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": null,
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "Pod": null,
+        "PlaceOfOriginHarvest": null,
+        "AdditionalPermanentAddresses": null,
+        "CphNumber": null,
+        "ImportingFromCharity": null,
+        "IsPlaceOfDestinationThePermanentAddress": null,
+        "IsCatchCertificateRequired": null,
+        "IsGvmsRoute": null,
+        "Purpose": {
+          "ConformsToEU": true,
+          "InternalMarketPurpose": null,
+          "ThirdCountryTranshipment": "Panama",
+          "ForNonConforming": null,
+          "RegNumber": null,
+          "ShipName": null,
+          "ShipPort": null,
+          "ExitBip": "GBBEL1",
+          "ThirdCountry": "TH",
+          "TransitThirdCountries": [
+            "GB"
+          ],
+          "ForImportOrAdmission": null,
+          "ExitDate": null,
+          "FinalBip": "GBBEL1",
+          "PurposeGroup": 4,
+          "EstimatedArrivesAtPortOfExit": null
+        },
+        "PointOfEntry": "GBBEL1",
+        "PointOfEntryControlPoint": null,
+        "MeansOfTransport": {
+          "Type": 3,
+          "Document": "CVEDP_TRANSPORT_DOC.159447",
+          "Id": "CVEDPTRANSPORT_ID.582393"
+        },
+        "Transporter": {
+          "Id": null,
+          "Type": 7,
+          "Status": 0,
+          "CompanyName": "Chris\u002BNichol",
+          "IndividualName": "Chris\u002BNichol",
+          "Address": {
+            "Street": null,
+            "City": "Cleckheaton",
+            "Country": null,
+            "PostalCode": null,
+            "AddressLine1": "the\u002Bgrove\u002Bcartwright\u002Bstreet\u002Bcleckheaton\u002Bbd19\u002B5lx",
+            "AddressLine2": null,
+            "AddressLine3": null,
+            "PostalZipCode": "BD19",
+            "CountryIsoCode": "GB",
+            "Email": null,
+            "UkTelephone": null,
+            "Telephone": null,
+            "InternationalTelephone": null
+          },
+          "ApprovalNumber": "GB00113999",
+          "OtherIdentifier": null,
+          "TracesId": null
+        },
+        "TransporterDetailsRequired": null,
+        "MeansOfTransportFromEntryPoint": {
+          "Type": 0,
+          "Document": "CVEDP_VET_DOC.023",
+          "Id": "CVEDP_VET_ID.700"
+        },
+        "EstimatedJourneyTimeInMinutes": null,
+        "ResponsibleForTransport": "responsible_transport_from_bip",
+        "VeterinaryInformation": {
+          "EstablishmentsOfOriginExternalReference": null,
+          "EstablishmentsOfOrigins": [],
+          "VeterinaryDocument": "CVEDP_VET.228773",
+          "VeterinaryDocumentIssuedOn": "2018-03-15",
+          "AccompanyingDocumentNumbers": [
+            "n/a"
+          ],
+          "AccompanyingDocuments": null,
+          "CatchCertificateAttachments": null,
+          "IdentificationDetails": null
+        },
+        "ImporterLocalReferenceNumber": "CVEDP.550447",
+        "Route": {
+          "TransitingStates": null
+        },
+        "SealsContainers": [
+          {
+            "SealNumber": "3191",
+            "ContainerNumber": "5089",
+            "OfficialSeal": null,
+            "ResealedSealNumber": null
+          }
+        ],
+        "SubmittedOn": "2018-06-05T10:59:55.689Z",
+        "SubmittedBy": null,
+        "ConsignmentValidations": null,
+        "ComplexCommoditySelected": null,
+        "PortOfEntry": null,
+        "PortOfExit": null,
+        "ExitedPortOfOn": null,
+        "ContactDetails": null,
+        "NominatedContacts": null,
+        "OriginalEstimatedOn": null,
+        "BillingInformation": null,
+        "IsChargeable": null,
+        "WasChargeable": null,
+        "CommonUserCharge": null,
+        "ProvideCtcMrn": null,
+        "ArrivesAt": "2019-04-24T11:40:00",
+        "DepartedOn": "2019-07-16T06:28:00"
+      },
+      "DecisionBy": {
+        "DisplayName": "s_RcwY29955gH7DEKLupAA-FPA4U8xbltyAGMuJ3uto",
+        "UserId": "79f6dc68-2144-e911-a96a-000d3a29ba60",
+        "IsControlUser": null
+      },
+      "DecisionDate": "2019-12-03T10:48:08.899922Z",
+      "PartTwo": {
+        "Decision": {
+          "ConsignmentAcceptable": true,
+          "NotAcceptableAction": null,
+          "NotAcceptableActionDestructionReason": null,
+          "NotAcceptableActionEntryRefusalReason": null,
+          "NotAcceptableActionQuarantineImposedReason": null,
+          "NotAcceptableActionSpecialTreatmentReason": null,
+          "NotAcceptableActionIndustrialProcessingReason": null,
+          "NotAcceptableActionReDispatchReason": null,
+          "NotAcceptableActionUseForOtherPurposesReason": null,
+          "NotAcceptableDestructionReason": null,
+          "NotAcceptableActionOtherReason": null,
+          "NotAcceptableActionByDate": null,
+          "ChedppNotAcceptableReasons": null,
+          "NotAcceptableReasons": null,
+          "NotAcceptableCountry": null,
+          "NotAcceptableEstablishment": null,
+          "NotAcceptableOtherReason": null,
+          "DetailsOfControlledDestinations": null,
+          "SpecificWarehouseNonConformingConsignment": null,
+          "TemporaryDeadline": null,
+          "DecisionEnum": 2,
+          "FreeCirculationPurpose": null,
+          "DefinitiveImportPurpose": null,
+          "IfChanneledOption": 1,
+          "CustomWarehouseRegisteredNumber": null,
+          "FreeWarehouseRegisteredNumber": null,
+          "ShipName": null,
+          "ShipPortOfExit": null,
+          "ShipSupplierRegisteredNumber": null,
+          "TranshipmentBip": null,
+          "TranshipmentThirdCountry": null,
+          "TransitExitBip": null,
+          "TransitThirdCountry": null,
+          "TransitDestinationThirdCountry": null,
+          "TemporaryExitBip": null,
+          "HorseReentry": null,
+          "TranshipmentEuOrThirdCountry": null
+        },
+        "ConsignmentCheck": {
+          "EuStandard": null,
+          "AdditionalGuarantees": null,
+          "DocumentCheckResult": "Satisfactory",
+          "NationalRequirements": null,
+          "IdentityCheckDone": false,
+          "IdentityCheckType": null,
+          "IdentityCheckResult": "Satisfactory",
+          "IdentityCheckNotDoneReason": null,
+          "PhysicalCheckDone": false,
+          "PhysicalCheckResult": "Satisfactory",
+          "PhysicalCheckNotDoneReason": null,
+          "PhysicalCheckOtherText": null,
+          "WelfareCheck": null,
+          "NumberOfAnimalsChecked": null,
+          "LaboratoryCheckDone": null,
+          "LaboratoryCheckResult": null
+        },
+        "ImpactOfTransportOnAnimals": {
+          "NumberOfDeadAnimals": null,
+          "NumberOfDeadAnimalsUnit": null,
+          "NumberOfUnfitAnimals": null,
+          "NumberOfUnfitAnimalsUnit": null,
+          "NumberOfBirthOrAbortion": null
+        },
+        "LaboratoryTestsRequired": null,
+        "LaboratoryTests": null,
+        "ResealedContainersIncluded": null,
+        "ResealedContainers": null,
+        "ResealedContainersMappings": null,
+        "ControlAuthority": {
+          "OfficialVeterinarian": {
+            "FirstName": "Gary",
+            "LastName": "Admin-Tester",
+            "Email": "DefraTestBIP@anthunt3.33mail.com",
+            "Phone": "020 8225 7295",
+            "Fax": null,
+            "Signed": "2020-06-16T11:26:43.721061"
+          },
+          "CustomsReferenceNo": null,
+          "ContainerResealed": null,
+          "NewSealNumber": null,
+          "IuuFishingReference": null,
+          "IuuCheckRequired": true,
+          "IuuOption": 0
+        },
+        "ControlledDestination": null,
+        "BipLocalReferenceNumber": null,
+        "SignedOnBehalfOf": null,
+        "OnwardTransportation": null,
+        "ConsignmentValidations": null,
+        "CheckedOn": null,
+        "AccompanyingDocuments": null,
+        "PhsiAutoCleared": null,
+        "HmiAutoCleared": null,
+        "InspectionRequired": null,
+        "InspectionOverride": null,
+        "AutoClearedOn": null
+      },
+      "PartThree": {
+        "ControlStatus": 0,
+        "Control": null,
+        "ConsignmentValidations": null,
+        "SealCheckRequired": null,
+        "SealCheck": null,
+        "SealCheckOverride": null
+      },
+      "OfficialVeterinarian": null,
+      "ConsignmentValidations": null,
+      "AgencyOrganisationId": null,
+      "RiskDecisionLockedOn": null,
+      "IsRiskDecisionLocked": null,
+      "IsBulkUploadInProgress": null,
+      "RequestId": null,
+      "IsCdsFullMatched": null,
+      "ChedTypeVersion": null,
+      "IsGMRMatched": null
+    },
+    "relationships": {
+      "movements": {
+        "data": [],
+        "meta": {
+          "matched": false
+        }
+      }
+    },
+    "links": {
+      "self": "/api/import-notifications/CHEDA.GB.2024.1043483"
+    }
+  }
+}

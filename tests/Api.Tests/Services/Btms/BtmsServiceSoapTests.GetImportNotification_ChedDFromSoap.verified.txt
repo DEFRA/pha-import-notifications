@@ -1,0 +1,289 @@
+﻿{
+  CreatedSource: 2020-04-08 12:32:02.48 Utc,
+  CommoditiesSummary: {
+    TotalGrossWeight: 8678.0,
+    TotalNetWeight: 101.0,
+    TotalGrossVolume: 10.0,
+    TotalGrossVolumeUnit: litres,
+    NumberOfPackages: 5,
+    Temperature: Chilled,
+    NumberOfAnimals: 0,
+    IncludeNonAblactedAnimals: false,
+    CountryOfOrigin: FJ,
+    RegionOfOrigin: FJ,
+    ConsignedCountry: FJ
+  },
+  Commodities: [
+    {
+      CommodityDescription: Sultanas,
+      CommodityId: 08062030,
+      ComplementId: 149810,
+      SpeciesType: 149810,
+      SpeciesClass: 149810,
+      SpeciesFamily: 149810,
+      AdditionalData: {
+        ValueKind: Object
+      }
+    },
+    {
+      CommodityDescription: Sultanas,
+      CommodityId: 08062031,
+      ComplementId: 149811,
+      SpeciesType: 149810,
+      SpeciesClass: 149810,
+      SpeciesFamily: 149810,
+      AdditionalData: {
+        ValueKind: Object
+      }
+    }
+  ],
+  IpaffsId: 5031,
+  ReferenceNumber: CHEDD.GB.2019.1005031,
+  Version: 1,
+  UpdatedSource: 2020-04-08 12:32:02.48 Utc,
+  LastUpdatedBy: {
+    DisplayName: Percy Inspector-Tester,
+    UserId: 79f6dc68-2144-e911-a96a-000d3a29ba60
+  },
+  ImportNotificationType: Ced,
+  Replaces: CHEDD.GB.2019.1000054,
+  Status: Validated,
+  PartOne: {
+    PersonResponsible: {
+      Name: Percy Inspector-Tester,
+      CompanyId: 767ceb6a-2144-e911-a96c-000d3a29b5de,
+      ContactId: 79f6dc68-2144-e911-a96a-000d3a29ba60,
+      CompanyName: Defra Test BIP,
+      Addresses: [
+        Animal and Plant Health Agency,
+        Woodham Lane,
+        New Haw,
+        Addlestone,
+        Surrey,
+        KT15 3NB,
+        GB
+      ],
+      Country: GB,
+      City: Surrey,
+      TracesId: 1001,
+      Phone: 020 8225 7295,
+      Email: DefraTestBIP@anthunt3.33mail.com
+    },
+    Consignor: {
+      Id: 9e5de724-94e4-44bb-b55e-0369c1301917,
+      Type: Exporter,
+      Status: Nonapproved,
+      CompanyName: Emard Emard and Emard,
+      Address: {
+        City: West Antonia,
+        AddressLine1: 44064 Horacio,
+        AddressLine2: 52862 Flatley Grove,
+        AddressLine3: Colorado,
+        PostalZipCode: 64443-1,
+        CountryIsoCode: DE,
+        Email: ukoperator@email.com,
+        InternationalTelephone: {
+          CountryCode: 32,
+          SubscriberNumber: 1617777777
+        }
+      }
+    },
+    Consignee: {
+      Id: 03359c68-3410-4829-8ff2-b516397ecdeb,
+      Type: Consignee,
+      Status: Nonapproved,
+      CompanyName: Graham Graham and Graham,
+      Address: {
+        City: North Eliezerchester,
+        AddressLine1: 132 Vincenza,
+        AddressLine2: 5948 Larry Ranch,
+        AddressLine3: Ohio,
+        PostalZipCode: HDB 7zh,
+        CountryIsoCode: GB,
+        Email: ukoperator@email.com,
+        UkTelephone: 01615555555
+      }
+    },
+    Importer: {
+      Id: 03359c68-3410-4829-8ff2-b516397ecdeb,
+      Type: Consignee,
+      Status: Nonapproved,
+      CompanyName: Graham Graham and Graham,
+      Address: {
+        City: North Eliezerchester,
+        AddressLine1: 132 Vincenza,
+        AddressLine2: 5948 Larry Ranch,
+        AddressLine3: Ohio,
+        PostalZipCode: HDB 7zh,
+        CountryIsoCode: GB,
+        Email: ukoperator@email.com,
+        UkTelephone: 01615555555
+      }
+    },
+    PlaceOfDestination: {
+      Id: 03359c68-3410-4829-8ff2-b516397ecdeb,
+      Type: Consignee,
+      Status: Nonapproved,
+      CompanyName: Graham Graham and Graham,
+      Address: {
+        City: North Eliezerchester,
+        AddressLine1: 132 Vincenza,
+        AddressLine2: 5948 Larry Ranch,
+        AddressLine3: Ohio,
+        PostalZipCode: HDB 7zh,
+        CountryIsoCode: GB,
+        Email: ukoperator@email.com,
+        UkTelephone: 01615555555
+      }
+    },
+    Purpose: {
+      ConformsToEU: true,
+      FinalBip: Final BIP,
+      PurposeGroup: ForImport
+    },
+    PointOfEntry: GBDSA4P,
+    Transporter: {
+      Id: 81f9a1b2-8ed0-4a2a-a823-3444d6912400,
+      Type: CommercialTransporter,
+      Status: Nonapproved,
+      CompanyName: Goldner Goldner and Goldner,
+      Address: {
+        City: Ricoshire,
+        AddressLine1: 2357 Rogers,
+        AddressLine2: 90771 Patience Cove,
+        AddressLine3: Rhode Island,
+        PostalZipCode: g4t 3RH,
+        CountryIsoCode: GB,
+        Email: ukoperator@email.com,
+        UkTelephone: 01615555555,
+        Telephone: 01615555555
+      }
+    },
+    MeansOfTransportFromEntryPoint: {
+      Type: RailwayWagon,
+      Document: hshshshs,
+      Id: 8181881
+    },
+    VeterinaryInformation: {
+      VeterinaryDocument: 23432,
+      VeterinaryDocumentIssuedOn: 1999-01-11,
+      AccompanyingDocuments: [
+        {
+          DocumentType: AirWaybill,
+          DocumentReference: DOC_12345,
+          DocumentIssuedOn: 2020-05-17
+        }
+      ]
+    },
+    ImporterLocalReferenceNumber: Reference number,
+    SubmittedOn: 2019-11-29 11:02:28.76883 Utc,
+    SubmittedBy: {
+      DisplayName: Percy Inspector-Tester,
+      UserId: 79f6dc68-2144-e911-a96a-000d3a29ba60
+    },
+    ConsignmentValidations: [
+      {
+        Field: uk/gov/defra/tracesx/notificationschema/representation/partone/commodities/totalgrossvolume
+      }
+    ],
+    ArrivesAt: 2019-06-14 23:10,
+    DepartedOn: 2020-06-15 21:30
+  },
+  DecisionBy: {
+    DisplayName: s_RcwY29955gH7DEKLupAA-FPA4U8xbltyAGMuJ3uto,
+    UserId: 79f6dc68-2144-e911-a96a-000d3a29ba60
+  },
+  DecisionDate: 2019-12-03T10:48:08.899922Z,
+  PartTwo: {
+    Decision: {
+      ConsignmentAcceptable: true,
+      DecisionEnum: AcceptableForInternalMarket,
+      FreeCirculationPurpose: AnimalFeedingStuff
+    },
+    ConsignmentCheck: {
+      DocumentCheckResult: Satisfactory,
+      IdentityCheckDone: false,
+      IdentityCheckResult: Satisfactory,
+      PhysicalCheckDone: false,
+      PhysicalCheckResult: Satisfactory
+    },
+    LaboratoryTestsRequired: true,
+    LaboratoryTests: {
+      TestedOn: 2019-12-02 16:41:41.633,
+      SingleLaboratoryTests: [
+        {
+          CommodityCode: 08062030,
+          TracesId: 1,
+          TestName: .Beta-agonists (screening multisubstances),
+          Applicant: {
+            Laboratory: Microbiology Cardiff (FE),
+            LaboratoryAddress: Llandough Hospita, Penlan Road, Penarth, Wales CF64 2XX,
+            LaboratoryIdentification: Public Health Wales (PHW),
+            LaboratoryPhoneNumber: 029 20716745,
+            SampleBatchNumber: 21e3,
+            AnalysisType: InitialAnalysis,
+            NumberOfSamples: 12,
+            SampleType: Cuttings,
+            ConservationOfSample: Ambient,
+            Inspector: {
+              Name: Percy Inspector-Tester,
+              Phone: 020 8225 7295,
+              Email: DefraTestBIP@anthunt3.33mail.com
+            }
+          },
+          LaboratoryTestResult: {
+            SampleUseByDate: 2010-10-10,
+            ReleasedOn: 2009-10-20,
+            LaboratoryTestMethod: Looking,
+            Results: I looked with my eyes and saw no problems,
+            Conclusion: Satisfactory,
+            LabTestCreatedOn: 2019-12-02
+          }
+        }
+      ]
+    },
+    ResealedContainersIncluded: true,
+    ResealedContainersMappings: [
+      {
+        SealNumber: 6666,
+        ContainerNumber: 5678,
+        OfficialSeal: false,
+        ResealedSealNumber: 1111
+      },
+      {
+        SealNumber: 6667,
+        ContainerNumber: 5679,
+        OfficialSeal: true,
+        ResealedSealNumber: 1112
+      }
+    ],
+    ControlAuthority: {
+      OfficialVeterinarian: {
+        FirstName: Percy,
+        LastName: Inspector-Tester,
+        Email: DefraTestBIP@anthunt3.33mail.com,
+        Phone: 020 8225 7295,
+        Signed: 2019-12-03T10:48:09.003509
+      }
+    },
+    ControlledDestination: {
+      Id: 03359c68-3410-4829-8ff2-b516397ecdeb,
+      Type: Destination,
+      Status: Nonapproved,
+      CompanyName: Graham Graham and Graham,
+      Address: {
+        City: North Eliezerchester,
+        AddressLine1: 132 Vincenza,
+        AddressLine2: 5948 Larry Ranch,
+        AddressLine3: Ohio,
+        PostalZipCode: HDB 7zh,
+        CountryIsoCode: GB,
+        Email: ukoperator@email.com,
+        UkTelephone: 01615555555
+      }
+    },
+    BipLocalReferenceNumber: 1234,
+    CheckedOn: 2020-01-30 10:15 Utc
+  },
+  PartThree: {}
+}
