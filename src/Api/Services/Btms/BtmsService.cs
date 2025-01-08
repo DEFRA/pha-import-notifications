@@ -56,11 +56,11 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
             .GetRelationships(chedReferenceNumber, "movements")
             .Select(x => jsonApiClient.Get(new RequestUri($"api/movements/{x.Id}"), cancellationToken));
 
-        var clearanceRequests = (await Task.WhenAll(tasks))
+        var movements = (await Task.WhenAll(tasks))
             .ThrowIfAnyNull("At least one movement could not be found")
             .Select(x => x.GetDataAs<Movement>())
             .ThrowIfAnyNull("At least one movement could not be deserialized")
-            .SelectMany(x => x.ClearanceRequests ?? []);
+            .ToList();
 
         var result = document.GetDataAs<ImportNotification>();
         if (result is null)
@@ -68,7 +68,8 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
 
         return result with
         {
-            ClearanceRequests = clearanceRequests.ToList(),
+            ClearanceRequests = movements.SelectMany(x => x.ClearanceRequests ?? []).ToList(),
+            ClearanceDecision = movements.SelectMany(x => x.Decisions ?? []).ToList(),
         };
     }
 
