@@ -161,6 +161,98 @@
       ]
     }
   ],
+  ClearanceDecisions: [
+    {
+      Header: {
+        EntryReference: 24GBC1IQDD278IZAR8,
+        EntryVersionNumber: 3,
+        DecisionNumber: 1
+      },
+      Items: [
+        {
+          ItemNumber: 1,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.2024.5070767). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      Header: {
+        EntryReference: 24GBCND8RONCFGAAR3,
+        EntryVersionNumber: 2,
+        DecisionNumber: 1
+      },
+      Items: [
+        {
+          ItemNumber: 4,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5146876). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        },
+        {
+          ItemNumber: 5,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        },
+        {
+          ItemNumber: 6,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        },
+        {
+          ItemNumber: 7,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5146490). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        },
+        {
+          ItemNumber: 8,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   CreatedSource: 2024-12-04 09:01:21.089 Utc,
   Created: 2024-12-17 13:54:07.296 Utc,
   Updated: 2024-12-17 13:56:21.502 Utc,

@@ -2039,6 +2039,13 @@
             },
             "nullable": true
           },
+          "clearanceDecisions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomsClearanceRequest"
+            },
+            "nullable": true
+          },
           "createdSource": {
             "type": "string",
             "description": "Date when the notification was created in IPAFFS",
