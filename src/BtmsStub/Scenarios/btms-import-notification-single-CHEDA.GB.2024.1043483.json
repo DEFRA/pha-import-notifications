@@ -127,7 +127,7 @@
       "ImportNotificationType": "Cveda",
       "Replaces": null,
       "ReplacedBy": null,
-      "Status": 2,
+      "Status": "Validated",
       "SplitConsignment": null,
       "ChildNotification": null,
       "RiskAssessment": null,
@@ -165,8 +165,8 @@
         "ConsignmentArrived": null,
         "Consignor": {
           "Id": null,
-          "Type": 2,
-          "Status": 0,
+          "Type": "Exporter",
+          "Status": "Approved",
           "CompanyName": "MARCH SEGARRA,SA",
           "IndividualName": "MARCH SEGARRA,SA",
           "Address": {
@@ -192,8 +192,8 @@
         "Packer": null,
         "Consignee": {
           "Id": null,
-          "Type": 0,
-          "Status": 1,
+          "Type": "Consignee",
+          "Status": "Nonapproved",
           "CompanyName": "Acme Importers Limited",
           "IndividualName": "Acme Importers Limited",
           "Address": {
@@ -217,8 +217,8 @@
         },
         "Importer": {
           "Id": null,
-          "Type": 3,
-          "Status": 0,
+          "Type": "Importer",
+          "Status": "Approved",
           "CompanyName": "JONES AS \u0026 JT",
           "IndividualName": "JONES AS \u0026 JT",
           "Address": {
@@ -242,8 +242,8 @@
         },
         "PlaceOfDestination": {
           "Id": null,
-          "Type": 1,
-          "Status": 1,
+          "Type": "Destination",
+          "Status": "Nonapproved",
           "CompanyName": "Five Sisters Zoo Park",
           "IndividualName": null,
           "Address": {
@@ -286,23 +286,23 @@
           "TransitThirdCountries": [
             "GB"
           ],
-          "ForImportOrAdmission": 0,
+          "ForImportOrAdmission": "DefinitiveImport",
           "ExitDate": null,
           "FinalBip": "GBBEL1",
-          "PurposeGroup": 4,
+          "PurposeGroup": "ForReImport",
           "EstimatedArrivesAtPortOfExit": null
         },
         "PointOfEntry": "GBBEL4",
         "PointOfEntryControlPoint": null,
         "MeansOfTransport": {
-          "Type": 3,
+          "Type": "Ship",
           "Document": "CVEDA_TRANSPORT_DOC.226243",
           "Id": "CVEDATRANSPORT_ID.676863"
         },
         "Transporter": {
           "Id": null,
-          "Type": 7,
-          "Status": 0,
+          "Type": "PrivateTransporter",
+          "Status": "Approved",
           "CompanyName": "Chris\u002BNichol",
           "IndividualName": "Chris\u002BNichol",
           "Address": {
@@ -326,7 +326,7 @@
         },
         "TransporterDetailsRequired": null,
         "MeansOfTransportFromEntryPoint": {
-          "Type": 0,
+          "Type": "Aeroplane",
           "Document": "CVEDA_VET_DOC.595",
           "Id": "CVEDA_VET_ID.771"
         },
@@ -397,7 +397,7 @@
           "DetailsOfControlledDestinations": null,
           "SpecificWarehouseNonConformingConsignment": null,
           "TemporaryDeadline": null,
-          "DecisionEnum": 5,
+          "DecisionEnum": "AcceptableForTemporaryImport",
           "FreeCirculationPurpose": null,
           "DefinitiveImportPurpose": null,
           "IfChanneledOption": null,
@@ -437,7 +437,7 @@
         "AutoClearedOn": null
       },
       "PartThree": {
-        "ControlStatus": 0,
+        "ControlStatus": "Required",
         "Control": null,
         "ConsignmentValidations": null,
         "SealCheckRequired": null,

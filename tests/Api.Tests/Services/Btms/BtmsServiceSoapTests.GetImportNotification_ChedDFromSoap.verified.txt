@@ -47,7 +47,7 @@
   },
   ImportNotificationType: Ced,
   Replaces: CHEDD.GB.2019.1000054,
-  Status: Validated,
+  Status: Submitted,
   PartOne: {
     PersonResponsible: {
       Name: Percy Inspector-Tester,

@@ -194,7 +194,7 @@
       "ImportNotificationType": "Ced",
       "Replaces": "CHEDD.GB.2019.1000054",
       "ReplacedBy": null,
-      "Status": 1,
+      "Status": "Submitted",
       "SplitConsignment": null,
       "ChildNotification": null,
       "RiskAssessment": null,
@@ -233,8 +233,8 @@
         "ConsignmentArrived": null,
         "Consignor": {
           "Id": "9e5de724-94e4-44bb-b55e-0369c1301917",
-          "Type": 2,
-          "Status": 1,
+          "Type": "Exporter",
+          "Status": "Nonapproved",
           "CompanyName": "Emard Emard and Emard",
           "IndividualName": null,
           "Address": {
@@ -263,8 +263,8 @@
         "Packer": null,
         "Consignee": {
           "Id": "03359c68-3410-4829-8ff2-b516397ecdeb",
-          "Type": 0,
-          "Status": 1,
+          "Type": "Consignee",
+          "Status": "Nonapproved",
           "CompanyName": "Graham Graham and Graham",
           "IndividualName": null,
           "Address": {
@@ -288,8 +288,8 @@
         },
         "Importer": {
           "Id": "03359c68-3410-4829-8ff2-b516397ecdeb",
-          "Type": 0,
-          "Status": 1,
+          "Type": "Consignee",
+          "Status": "Nonapproved",
           "CompanyName": "Graham Graham and Graham",
           "IndividualName": null,
           "Address": {
@@ -313,8 +313,8 @@
         },
         "PlaceOfDestination": {
           "Id": "03359c68-3410-4829-8ff2-b516397ecdeb",
-          "Type": 0,
-          "Status": 1,
+          "Type": "Consignee",
+          "Status": "Nonapproved",
           "CompanyName": "Graham Graham and Graham",
           "IndividualName": null,
           "Address": {
@@ -358,7 +358,7 @@
           "ForImportOrAdmission": null,
           "ExitDate": null,
           "FinalBip": "Final BIP",
-          "PurposeGroup": 0,
+          "PurposeGroup": "ForImport",
           "EstimatedArrivesAtPortOfExit": null
         },
         "PointOfEntry": "GBDSA4P",
@@ -366,8 +366,8 @@
         "MeansOfTransport": null,
         "Transporter": {
           "Id": "81f9a1b2-8ed0-4a2a-a823-3444d6912400",
-          "Type": 5,
-          "Status": 1,
+          "Type": "CommercialTransporter",
+          "Status": "Nonapproved",
           "CompanyName": "Goldner Goldner and Goldner",
           "IndividualName": null,
           "Address": {
@@ -391,7 +391,7 @@
         },
         "TransporterDetailsRequired": null,
         "MeansOfTransportFromEntryPoint": {
-          "Type": 2,
+          "Type": "RailwayWagon",
           "Document": "hshshshs",
           "Id": "8181881"
         },
@@ -405,7 +405,7 @@
           "AccompanyingDocumentNumbers": null,
           "AccompanyingDocuments": [
             {
-              "DocumentType": 0,
+              "DocumentType": "AirWaybill",
               "DocumentReference": "DOC_12345",
               "DocumentIssuedOn": "2020-05-17T00:00:00",
               "AttachmentId": null,
@@ -490,8 +490,8 @@
           "DetailsOfControlledDestinations": null,
           "SpecificWarehouseNonConformingConsignment": null,
           "TemporaryDeadline": null,
-          "DecisionEnum": 1,
-          "FreeCirculationPurpose": 0,
+          "DecisionEnum": "AcceptableForInternalMarket",
+          "FreeCirculationPurpose": "AnimalFeedingStuff",
           "DefinitiveImportPurpose": null,
           "IfChanneledOption": null,
           "CustomWarehouseRegisteredNumber": null,
@@ -544,10 +544,10 @@
                 "LaboratoryPhoneNumber": "029 20716745",
                 "LaboratoryEmail": null,
                 "SampleBatchNumber": "21e3",
-                "AnalysisType": 0,
+                "AnalysisType": "InitialAnalysis",
                 "NumberOfSamples": 12,
                 "SampleType": "Cuttings",
-                "ConservationOfSample": 0,
+                "ConservationOfSample": "Ambient",
                 "Inspector": {
                   "Name": "Percy Inspector-Tester",
                   "Phone": "020 8225 7295",
@@ -560,7 +560,7 @@
                 "ReleasedOn": "2009-10-20T00:00:00",
                 "LaboratoryTestMethod": "Looking",
                 "Results": "I looked with my eyes and saw no problems",
-                "Conclusion": 0,
+                "Conclusion": "Satisfactory",
                 "LabTestCreatedOn": "2019-12-02T00:00:00"
               }
             }
@@ -600,8 +600,8 @@
         },
         "ControlledDestination": {
           "Id": "03359c68-3410-4829-8ff2-b516397ecdeb",
-          "Type": 1,
-          "Status": 1,
+          "Type": "Destination",
+          "Status": "Nonapproved",
           "CompanyName": "Graham Graham and Graham",
           "IndividualName": null,
           "Address": {

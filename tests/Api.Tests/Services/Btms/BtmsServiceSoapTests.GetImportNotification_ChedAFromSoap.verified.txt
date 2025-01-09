@@ -31,7 +31,7 @@
   Version: 1,
   UpdatedSource: 2018-06-05 11:03:22.337 Utc,
   ImportNotificationType: Cveda,
-  Status: Rejected,
+  Status: Validated,
   PartOne: {
     PersonResponsible: {
       Name: Michael Scott,

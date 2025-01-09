@@ -13523,7 +13523,7 @@
     UserId: 79f6dc68-2144-e911-a96a-000d3a29ba60
   },
   ImportNotificationType: Chedpp,
-  Status: Validated,
+  Status: Submitted,
   PartOne: {
     PersonResponsible: {
       Name: Andrew Inspector-Tester,

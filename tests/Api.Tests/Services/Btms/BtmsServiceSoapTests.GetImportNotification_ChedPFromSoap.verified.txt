@@ -46,7 +46,7 @@
   Version: 1,
   UpdatedSource: 2018-06-05 11:00:27.823 Utc,
   ImportNotificationType: Cvedp,
-  Status: Rejected,
+  Status: Validated,
   PartOne: {
     PersonResponsible: {
       Name: JamesFranco,

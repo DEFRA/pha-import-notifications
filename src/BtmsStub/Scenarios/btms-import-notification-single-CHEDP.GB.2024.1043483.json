@@ -190,7 +190,7 @@
       "ImportNotificationType": "Cvedp",
       "Replaces": null,
       "ReplacedBy": null,
-      "Status": 2,
+      "Status": "Validated",
       "SplitConsignment": null,
       "ChildNotification": null,
       "RiskAssessment": null,
@@ -223,8 +223,8 @@
         "ConsignmentArrived": null,
         "Consignor": {
           "Id": null,
-          "Type": 2,
-          "Status": 0,
+          "Type": "Exporter",
+          "Status": "Approved",
           "CompanyName": "MARCH SEGARRA,SA",
           "IndividualName": "MARCH SEGARRA,SA",
           "Address": {
@@ -250,8 +250,8 @@
         "Packer": null,
         "Consignee": {
           "Id": null,
-          "Type": 0,
-          "Status": 0,
+          "Type": "Consignee",
+          "Status": "Approved",
           "CompanyName": "Acme Importers Limited",
           "IndividualName": "Acme Importers Limited",
           "Address": {
@@ -275,8 +275,8 @@
         },
         "Importer": {
           "Id": null,
-          "Type": 3,
-          "Status": 0,
+          "Type": "Importer",
+          "Status": "Approved",
           "CompanyName": "JONES AS \u0026 JT",
           "IndividualName": "JONES AS \u0026 JT",
           "Address": {
@@ -300,8 +300,8 @@
         },
         "PlaceOfDestination": {
           "Id": null,
-          "Type": 1,
-          "Status": 0,
+          "Type": "Destination",
+          "Status": "Approved",
           "CompanyName": "Five Sisters Zoo Park",
           "IndividualName": "n/a",
           "Address": {
@@ -347,20 +347,20 @@
           "ForImportOrAdmission": null,
           "ExitDate": null,
           "FinalBip": "GBBEL1",
-          "PurposeGroup": 4,
+          "PurposeGroup": "ForReImport",
           "EstimatedArrivesAtPortOfExit": null
         },
         "PointOfEntry": "GBBEL1",
         "PointOfEntryControlPoint": null,
         "MeansOfTransport": {
-          "Type": 3,
+          "Type": "Ship",
           "Document": "CVEDP_TRANSPORT_DOC.159447",
           "Id": "CVEDPTRANSPORT_ID.582393"
         },
         "Transporter": {
           "Id": null,
-          "Type": 7,
-          "Status": 0,
+          "Type": "PrivateTransporter",
+          "Status": "Approved",
           "CompanyName": "Chris\u002BNichol",
           "IndividualName": "Chris\u002BNichol",
           "Address": {
@@ -384,7 +384,7 @@
         },
         "TransporterDetailsRequired": null,
         "MeansOfTransportFromEntryPoint": {
-          "Type": 0,
+          "Type": "Aeroplane",
           "Document": "CVEDP_VET_DOC.023",
           "Id": "CVEDP_VET_ID.700"
         },
@@ -460,10 +460,10 @@
           "DetailsOfControlledDestinations": null,
           "SpecificWarehouseNonConformingConsignment": null,
           "TemporaryDeadline": null,
-          "DecisionEnum": 2,
+          "DecisionEnum": "AcceptableIfChanneled",
           "FreeCirculationPurpose": null,
           "DefinitiveImportPurpose": null,
-          "IfChanneledOption": 1,
+          "IfChanneledOption": "Article15",
           "CustomWarehouseRegisteredNumber": null,
           "FreeWarehouseRegisteredNumber": null,
           "ShipName": null,
@@ -522,7 +522,7 @@
           "NewSealNumber": null,
           "IuuFishingReference": null,
           "IuuCheckRequired": true,
-          "IuuOption": 0
+          "IuuOption": "Iuuok"
         },
         "ControlledDestination": null,
         "BipLocalReferenceNumber": null,
@@ -538,7 +538,7 @@
         "AutoClearedOn": null
       },
       "PartThree": {
-        "ControlStatus": 0,
+        "ControlStatus": "Required",
         "Control": null,
         "ConsignmentValidations": null,
         "SealCheckRequired": null,
