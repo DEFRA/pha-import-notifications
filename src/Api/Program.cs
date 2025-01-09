@@ -96,17 +96,17 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             }
         );
         c.AddSecurityDefinition(
-            "Bearer",
+            "oAuth",
             new OpenApiSecurityScheme
             {
-                Description = "OAuth2 Bearer Token",
+                Description = "RFC8725 Compliant JWT",
                 In = ParameterLocation.Header,
                 Name = "Authorization",
                 Scheme = "Bearer",
                 Type = SecuritySchemeType.OAuth2,
                 Flows = new OpenApiOAuthFlows
                 {
-                    AuthorizationCode = new OpenApiOAuthFlow
+                    ClientCredentials = new OpenApiOAuthFlow
                     {
                         TokenUrl = new Uri(
                             "https://"
@@ -123,7 +123,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
                 {
                     new OpenApiSecurityScheme
                     {
-                        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" },
+                        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "oAuth" },
                     },
                     []
                 },
