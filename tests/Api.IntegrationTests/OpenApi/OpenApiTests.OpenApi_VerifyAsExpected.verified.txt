@@ -3917,16 +3917,21 @@
       }
     },
     "securitySchemes": {
-      "Bearer": {
-        "type": "http",
-        "description": "OAuth2 Bearer Token",
-        "scheme": "Bearer"
+      "oAuth": {
+        "type": "oauth2",
+        "description": "RFC8725 Compliant JWT",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://localhost/oauth2/token",
+            "scopes": { }
+          }
+        }
       }
     }
   },
   "security": [
     {
-      "Bearer": [ ]
+      "oAuth": [ ]
     }
   ],
   "tags": [
