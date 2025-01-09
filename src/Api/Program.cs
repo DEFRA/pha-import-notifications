@@ -103,7 +103,18 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
                 In = ParameterLocation.Header,
                 Name = "Authorization",
                 Scheme = "Bearer",
-                Type = SecuritySchemeType.Http,
+                Type = SecuritySchemeType.OAuth2,
+                Flows = new OpenApiOAuthFlows
+                {
+                    AuthorizationCode = new OpenApiOAuthFlow
+                    {
+                        TokenUrl = new Uri(
+                            "https://"
+                                + (builder.Configuration.GetValue<string>("OpenApi:AuthEndpoint") ?? "localhost")
+                                + "/oauth2/token"
+                        ),
+                    },
+                },
             }
         );
         c.AddSecurityRequirement(

@@ -3918,9 +3918,14 @@
     },
     "securitySchemes": {
       "Bearer": {
-        "type": "http",
+        "type": "oauth2",
         "description": "OAuth2 Bearer Token",
-        "scheme": "Bearer"
+        "flows": {
+          "authorizationCode": {
+            "tokenUrl": "https://localhost/oauth2/token",
+            "scopes": { }
+          }
+        }
       }
     }
   },
