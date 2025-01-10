@@ -4,7 +4,7 @@
   "status": 400,
   "errors": {
     "To": [
-      "Must be within 3600 seconds of From"
+      "Must not be more than 3600 seconds of From"
     ]
   },
   "traceId": "{Scrubbed}"
