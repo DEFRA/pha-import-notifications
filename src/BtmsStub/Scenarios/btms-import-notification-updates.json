@@ -6,57 +6,57 @@
   "data": [
     {
       "type": "import-notifications",
-      "id": "CHEDA.GB.2024.011112000001",
+      "id": "CHEDA.GB.2024.4792831",
       "attributes": {
         "updated": "2024-12-11T08:12:58.792Z",
-        "referenceNumber": "CHEDA.GB.2024.011112000001"
+        "referenceNumber": "CHEDA.GB.2024.4792831"
       },
       "links": {
-        "self": "/api/import-notifications/CHEDA.GB.2024.011112000001"
+        "self": "/api/import-notifications/CHEDA.GB.2024.4792831"
       }
     },
     {
       "type": "import-notifications",
-      "id": "CHEDA.GB.2024.011112000002",
+      "id": "CHEDD.GB.2024.5019877",
       "attributes": {
         "updated": "2024-12-11T08:12:59.114Z",
-        "referenceNumber": "CHEDA.GB.2024.011112000002"
+        "referenceNumber": "CHEDD.GB.2024.5019877"
       },
       "links": {
-        "self": "/api/import-notifications/CHEDA.GB.2024.011112000002"
+        "self": "/api/import-notifications/CHEDD.GB.2024.5019877"
       }
     },
     {
       "type": "import-notifications",
-      "id": "CHEDA.GB.2024.011112000003",
+      "id": "CHEDP.GB.2024.4144842",
       "attributes": {
         "updated": "2024-12-11T08:12:59.741Z",
-        "referenceNumber": "CHEDA.GB.2024.011112000003"
+        "referenceNumber": "CHEDP.GB.2024.4144842"
       },
       "links": {
-        "self": "/api/import-notifications/CHEDA.GB.2024.011112000003"
+        "self": "/api/import-notifications/CHEDP.GB.2024.4144842"
       }
     },
     {
       "type": "import-notifications",
-      "id": "CHEDA.GB.2024.011113000001",
+      "id": "CHEDPP.GB.2024.3726460",
       "attributes": {
         "updated": "2024-12-11T08:12:59.947Z",
-        "referenceNumber": "CHEDA.GB.2024.011113000001"
+        "referenceNumber": "CHEDPP.GB.2024.3726460"
       },
       "links": {
-        "self": "/api/import-notifications/CHEDA.GB.2024.011113000001"
+        "self": "/api/import-notifications/CHEDPP.GB.2024.3726460"
       }
     },
     {
       "type": "import-notifications",
-      "id": "CHEDA.GB.2024.011113000002",
+      "id": "CHEDA.GB.2024.5129502",
       "attributes": {
         "updated": "2024-12-11T08:13:00.108Z",
-        "referenceNumber": "CHEDA.GB.2024.011113000002"
+        "referenceNumber": "CHEDA.GB.2024.5129502"
       },
       "links": {
-        "self": "/api/import-notifications/CHEDA.GB.2024.011113000002"
+        "self": "/api/import-notifications/CHEDA.GB.2024.5129502"
       }
     },
     {
