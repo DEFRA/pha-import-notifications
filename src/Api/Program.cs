@@ -55,10 +55,11 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
 {
     var generatingOpenApiFromCli = Assembly.GetEntryAssembly()?.GetName().Name == "dotnet-swagger";
     var integrationTest = args.Contains("--integrationTest=true");
+    var cdpAppSettingsOptional = generatingOpenApiFromCli || integrationTest;
 
     builder.Configuration.AddJsonFile(
-        $"appsettings.cdp.{Environment.GetEnvironmentVariable("ENVIRONMENT")}.json",
-        true
+        $"appsettings.cdp.{Environment.GetEnvironmentVariable("ENVIRONMENT")?.ToLower()}.json",
+        cdpAppSettingsOptional
     );
     builder.Configuration.AddEnvironmentVariables();
 
@@ -161,7 +162,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         if (!string.IsNullOrWhiteSpace(traceHeader))
             options.Headers.Add(traceHeader);
     });
-    builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions();
+    builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddJsonApiClient(
         (sp, options) =>
