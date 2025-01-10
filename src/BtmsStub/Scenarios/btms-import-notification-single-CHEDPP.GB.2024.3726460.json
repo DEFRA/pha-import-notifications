@@ -95,7 +95,7 @@
           "checks": null
         }
       ],
-      "_PointOfEntry": "GBHCH4PP",
+      "_PointOfEntry": "GBTEEP1",
       "_PointOfEntryControlPoint": "POD",
       "ipaffsId": 2726460,
       "etag": "00000000044F9E93",
@@ -320,7 +320,7 @@
           "purposeGroup": "ForImport",
           "estimatedArrivesAtPortOfExit": null
         },
-        "pointOfEntry": "GBHCH4PP",
+        "pointOfEntry": "GBTEEP1",
         "pointOfEntryControlPoint": "POD",
         "meansOfTransport": {
           "type": null,

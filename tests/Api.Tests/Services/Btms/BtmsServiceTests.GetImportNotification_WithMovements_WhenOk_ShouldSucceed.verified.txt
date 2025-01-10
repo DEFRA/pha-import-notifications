@@ -379,7 +379,7 @@
       ForImportOrAdmission: DefinitiveImport,
       PurposeGroup: ForReImport
     },
-    PointOfEntry: GBLGW4,
+    PointOfEntry: GBTEEP1,
     MeansOfTransport: {
       Type: RoadVehicle,
       Document: 239-2433 3805,

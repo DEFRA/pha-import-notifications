@@ -79,7 +79,7 @@
           "checks": null
         }
       ],
-      "_PointOfEntry": "GBLGW4",
+      "_PointOfEntry": "GBTEEP1",
       "_PointOfEntryControlPoint": null,
       "ipaffsId": 4252422,
       "etag": "00000000044FD874",
@@ -256,7 +256,7 @@
           "purposeGroup": "ForReImport",
           "estimatedArrivesAtPortOfExit": null
         },
-        "pointOfEntry": "GBLGW4",
+        "pointOfEntry": "GBTEEP1",
         "pointOfEntryControlPoint": null,
         "meansOfTransport": {
           "type": "RoadVehicle",
