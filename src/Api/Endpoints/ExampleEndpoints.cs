@@ -8,8 +8,6 @@ public static class ExampleEndpoints
     public static void MapExampleEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("hello/world", HelloWorld).ExcludeFromDescription();
-        app.MapGet("env", () => new { Environment = Environment.GetEnvironmentVariable("ENVIRONMENT") })
-            .ExcludeFromDescription();
     }
 
     [HttpGet]
