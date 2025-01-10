@@ -125,7 +125,7 @@
       InternalMarketPurpose: RegisteredHorses,
       PurposeGroup: ForImport
     },
-    PointOfEntry: GBAPHA1A,
+    PointOfEntry: GBTEEP1,
     MeansOfTransport: {},
     Transporter: {
       Id: 3e6cdd71-9dd6-4cf6-8b37-fc42047c0826,
