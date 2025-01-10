@@ -60,7 +60,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [InlineData("2024-12-11T10:00:00.000", "2024-12-11T10:30:00.000", new[] { "bcp1" }, "Utc")]
     [InlineData("2024-12-11T10:00:00.000Z", "2024-12-11T09:30:00.000Z", new[] { "bcp1" }, "FromBeforeTo")]
     [InlineData("2024-12-11T10:00:00.000Z", "2024-12-11T11:00:00.001Z", new[] { "bcp1" }, "FromToRange")]
-    [InlineData("2024-12-11T10:00:00.000Z", "2024-12-11T10:30:00.001Z", null, "NoBcp")]
+    [InlineData("2024-12-11T10:00:00.000Z", "2024-12-11T10:30:00.000Z", null, "NoBcp")]
     public async Task Get_WhenRequestParamsAreInvalid_ShouldBeBadRequest(
         string? from,
         string? to,

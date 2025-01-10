@@ -13,7 +13,7 @@ public class UpdatedImportNotificationRequestValidator : ValidationEndpointFilte
 
         Include(new DateTimeRangeFromEarlierThanToValidator());
 
-        Include(new DateTimeRangeIsLessThanValidator(TimeSpan.FromHours(1)));
+        Include(new DateTimeRangeIsLessThanOrEqualToValidator(TimeSpan.FromHours(1)));
 
         RuleFor(x => x.To)
             .Must(x => x < DateTime.UtcNow.AddSeconds(-30))
