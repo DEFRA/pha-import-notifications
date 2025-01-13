@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CertificatePollResult xmlns="traceswsns">
+  <XMLSchemaVersion>2.0</XMLSchemaVersion>
+  <SendingDate>1970-01-01 00:00</SendingDate>
+  <OperationCode>0</OperationCode>
+  <RequestIdentifier>99</RequestIdentifier>
+  <Certificates>
+    <CED>
+      <LastChangeDate>2020-04-08 14:32</LastChangeDate>
+      <Consignment>
+        <Id>5031</Id>
+        <Status>new</Status>
+        <ConsignorExporter>
+          <Status>new</Status>
+          <Name>Emard Emard and Emard</Name>
+          <Address>
+            <Street>44064 Horacio, 52862 Flatley Grove, Colorado</Street>
+            <City>
+              <PostalCode>64443-1</PostalCode>
+              <Name>West Antonia</Name>
+            </City>
+            <CountryISOCode>DE</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </ConsignorExporter>
+        <CEDReferenceNumber>CHEDD.GB.2019.1005031</CEDReferenceNumber>
+        <CEDVersionNumber>1</CEDVersionNumber>
+        <DesignatedPointOfEntry>GBDSA4P</DesignatedPointOfEntry>
+        <Consignee>
+          <Status>new</Status>
+          <Name>Graham Graham and Graham</Name>
+          <Address>
+            <Street>132 Vincenza, 5948 Larry Ranch, Ohio</Street>
+            <City>
+              <PostalCode>HDB 7zh</PostalCode>
+              <Name>North Eliezerchester</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </Consignee>
+        <PersonResponsibleForLoad>
+          <Status>valid</Status>
+          <Name>Percy Inspector-Tester</Name>
+          <Address>
+            <Street>Animal and Plant Health Agency, Woodham Lane, New Haw, Addlestone, Surrey, KT15
+              3NB, GB</Street>
+            <City>
+              <Name>Surrey</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </PersonResponsibleForLoad>
+        <Importer>
+          <Status>new</Status>
+          <Name>Graham Graham and Graham</Name>
+          <Address>
+            <Street>132 Vincenza, 5948 Larry Ranch, Ohio</Street>
+            <City>
+              <PostalCode>HDB 7zh</PostalCode>
+              <Name>North Eliezerchester</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </Importer>
+        <CountryOfOrigin>FJ</CountryOfOrigin>
+        <CountryFromWhereConsigned>FJ</CountryFromWhereConsigned>
+        <DeliveryAddress>
+          <Status>new</Status>
+          <Name>Graham Graham and Graham</Name>
+          <Address>
+            <Street>132 Vincenza, 5948 Larry Ranch, Ohio</Street>
+            <City>
+              <PostalCode>HDB 7zh</PostalCode>
+              <Name>North Eliezerchester</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </DeliveryAddress>
+        <ArrivalAtDpe>2019-06-14 23:10</ArrivalAtDpe>
+        <Document>
+          <Number>23432</Number>
+          <DateOfIssue>1999-01-11</DateOfIssue>
+        </Document>
+        <MeansOfTransport>
+          <Means>rail</Means>
+          <Identification>8181881</Identification>
+          <Document>hshshshs</Document>
+        </MeansOfTransport>
+        <Temperature>chilled</Temperature>
+        <NumberOfPackages>5</NumberOfPackages>
+        <CommodityComplements>
+          <CommodityComplement>
+            <CommodityCode>08062030</CommodityCode>
+            <ComplementID>149810</ComplementID>
+            <SpeciesType>149810</SpeciesType>
+            <SpeciesClass>149810</SpeciesClass>
+            <SpeciesFamily>149810</SpeciesFamily>
+          </CommodityComplement>
+          <CommodityComplement>
+            <CommodityCode>08062031</CommodityCode>
+            <ComplementID>149811</ComplementID>
+            <SpeciesType>149810</SpeciesType>
+            <SpeciesClass>149810</SpeciesClass>
+            <SpeciesFamily>149810</SpeciesFamily>
+          </CommodityComplement>
+        </CommodityComplements>
+        <GrossWeight>8678.00</GrossWeight>
+        <NetWeight>101.00</NetWeight>
+        <IdentificationOfCommodity>
+          <IdentificationParameterSet>
+            <IdentificationParameter>
+              <Key>complement</Key>
+              <Data>149810</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>netweight</Key>
+              <Data>10</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>number_package</Key>
+              <Data>1</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>type_package</Key>
+              <Data>Bag</Data>
+            </IdentificationParameter>
+          </IdentificationParameterSet>
+          <IdentificationParameterSet>
+            <IdentificationParameter>
+              <Key>complement</Key>
+              <Data>149811</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>netweight</Key>
+              <Data>10</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>number_package</Key>
+              <Data>2</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>type_package</Key>
+              <Data>Bag</Data>
+            </IdentificationParameter>
+          </IdentificationParameterSet>
+        </IdentificationOfCommodity>
+        <SealsContainers>
+          <SealContainer>
+            <SealNumber>6666</SealNumber>
+            <ContainerNumber>5678</ContainerNumber>
+          </SealContainer>
+          <SealContainer>
+            <SealNumber>6667</SealNumber>
+            <ContainerNumber>5679</ContainerNumber>
+          </SealContainer>
+        </SealsContainers>
+        <ForImport />
+        <PlaceAndDateOfDeclaration>
+          <FirstName>Percy Inspector-Tester</FirstName>
+          <LastName>Percy Inspector-Tester</LastName>
+          <eMail>DefraTestBIP@anthunt3.33mail.com</eMail>
+          <Phone>020 8225 7295</Phone>
+          <SignatureDate>2019-11-29 11:02</SignatureDate>
+        </PlaceAndDateOfDeclaration>
+        <LocalReferenceNumber>Reference number</LocalReferenceNumber>
+        <Departure>2020-06-15 21:30</Departure>
+        <Transporter>
+          <Status>new</Status>
+          <Name>Goldner Goldner and Goldner</Name>
+          <Address>
+            <Street>2357 Rogers, 90771 Patience Cove, Rhode Island</Street>
+            <City>
+              <PostalCode>g4t 3RH</PostalCode>
+              <Name>Ricoshire</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <Type>com_transport</Type>
+          <TracesId>0</TracesId>
+        </Transporter>
+        <ReplacedReferenceNumber>CHEDD.GB.2019.1000054</ReplacedReferenceNumber>
+      </Consignment>
+    </CED>
+  </Certificates>
+</CertificatePollResult>

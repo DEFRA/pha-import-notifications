@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CertificatePollResult xmlns="traceswsns">
+  <XMLSchemaVersion>2.0</XMLSchemaVersion>
+  <SendingDate>1970-01-01 00:00</SendingDate>
+  <OperationCode>0</OperationCode>
+  <RequestIdentifier>99</RequestIdentifier>
+  <Certificates>
+    <CVEDAnimal>
+      <LastChangeDate>2018-06-05 13:03</LastChangeDate>
+      <Consignment>
+        <Id>0</Id>
+        <Status>valid</Status>
+        <ConsignorExporter>
+          <Status>valid</Status>
+          <Name>MARCH SEGARRA,SA</Name>
+          <Address>
+            <Street>CTRA LA COMELLA,45</Street>
+            <City>
+              <PostalCode>AD500</PostalCode>
+              <Name>Andorra</Name>
+            </City>
+            <CountryISOCode>AD</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </ConsignorExporter>
+        <CVEDReferenceNumber>CHEDA.GB.2024.1043483</CVEDReferenceNumber>
+        <CVEDVersionNumber>1</CVEDVersionNumber>
+        <BorderInspectionPost>GBBEL4</BorderInspectionPost>
+        <Consignee>
+          <Status>new</Status>
+          <Name>Acme Importers Limited</Name>
+          <Address>
+            <Street>23 High Street, Newcastle, ABC123</Street>
+            <City>
+              <PostalCode>CB3</PostalCode>
+              <Name>Newcastle</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </Consignee>
+        <PersonResponsible>
+          <Status>valid</Status>
+          <Name>Michael Scott</Name>
+          <Address>
+            <Street>Animal and Plant Health Agency, Woodham Lane, New Haw, Addlestone, Surrey, KT15
+              3NB</Street>
+            <City>
+              <Name>Not Specified</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </PersonResponsible>
+        <CountryOfOrigin>FJ</CountryOfOrigin>
+        <Importer>
+          <Status>valid</Status>
+          <Name>JONES AS &amp; JT</Name>
+          <Address>
+            <Street>66 RICKAMORE ROAD UPPER TEMPLEPATRICK BALLYCLARE</Street>
+            <City>
+              <PostalCode>BT39</PostalCode>
+              <Name>BALLYCLARE</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </Importer>
+        <PlaceOfDestination>
+          <Status>new</Status>
+          <Name>Five Sisters Zoo Park</Name>
+          <Address>
+            <Street>Gavieside</Street>
+            <City>
+              <PostalCode>EH55</PostalCode>
+              <Name>Gavieside</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <TracesId>0</TracesId>
+        </PlaceOfDestination>
+        <ArrivalAtBip>2019-06-14 10:11</ArrivalAtBip>
+        <VeterinaryDocument>
+          <Number>CVEDA_VET.051823</Number>
+          <DateOfIssue>2018-04-19</DateOfIssue>
+        </VeterinaryDocument>
+        <AccompanyingDocuments>
+          <AccompanyingDocument>n/a</AccompanyingDocument>
+        </AccompanyingDocuments>
+        <MeansOfTransport>
+          <Means>plane</Means>
+          <Identification>CVEDA_VET_ID.771</Identification>
+          <Document>CVEDA_VET_DOC.595</Document>
+        </MeansOfTransport>
+        <CommodityComplements>
+          <CommodityComplement>
+            <CommodityCode>0103</CommodityCode>
+            <ComplementID>1911</ComplementID>
+            <SpeciesType>1911</SpeciesType>
+            <SpeciesClass>1911</SpeciesClass>
+            <SpeciesFamily>1911</SpeciesFamily>
+            <Species>
+              <SpeciesID>3144</SpeciesID>
+              <SpeciesNomination>Sus scrofa domesticus</SpeciesNomination>
+            </Species>
+          </CommodityComplement>
+        </CommodityComplements>
+        <IncludeNonAblactedAnimals>true</IncludeNonAblactedAnimals>
+        <NumberOfAnimals>61</NumberOfAnimals>
+        <NumberOfPackages>12</NumberOfPackages>
+        <IdentificationOfAnimals>
+          <IdentificationParameterSet>
+            <IdentificationParameter>
+              <Key>complement</Key>
+              <Data>1911</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>species</Key>
+              <Data>3144</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>number_package</Key>
+              <Data>12</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>number_animal</Key>
+              <Data>61</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>invasive_specie</Key>
+              <Data>false</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>allowed</Key>
+              <Data>false</Data>
+            </IdentificationParameter>
+            <IdentificationParameter>
+              <Key>chosenforphysical</Key>
+              <Data>Y</Data>
+            </IdentificationParameter>
+          </IdentificationParameterSet>
+        </IdentificationOfAnimals>
+        <AnimalCertifiedAs>ApprovedBodies</AnimalCertifiedAs>
+        <ImportOrAdmission>
+          <ImportOrAdmissionType>import</ImportOrAdmissionType>
+        </ImportOrAdmission>
+        <TransitInMemberStates>
+          <MemberStateISOCode>IS</MemberStateISOCode>
+        </TransitInMemberStates>
+        <MeansOfTransportAfterBorder>
+          <Means>ship</Means>
+          <Identification>CVEDATRANSPORT_ID.676863</Identification>
+          <Document>CVEDA_TRANSPORT_DOC.226243</Document>
+        </MeansOfTransportAfterBorder>
+        <Transporter>
+          <Status>valid</Status>
+          <Name>Chris+Nichol</Name>
+          <Address>
+            <Street>the+grove+cartwright+street+cleckheaton+bd19+5lx</Street>
+            <City>
+              <PostalCode>BD19</PostalCode>
+              <Name>Cleckheaton</Name>
+            </City>
+            <CountryISOCode>GB</CountryISOCode>
+          </Address>
+          <Type>priv_transport</Type>
+          <ApprovalNumber>GB00113999</ApprovalNumber>
+          <TracesId>0</TracesId>
+        </Transporter>
+        <Departure>2019-06-19 04:54</Departure>
+        <EstimatedJourneyTime>
+          <JourneyTime>0.00</JourneyTime>
+          <TimeScale>hours</TimeScale>
+        </EstimatedJourneyTime>
+        <ResponsibleTransportJourney>responsible_transport_from_bip</ResponsibleTransportJourney>
+        <PlaceAndDateOfDeclaration>
+          <FirstName>Michael Scott</FirstName>
+          <LastName>Michael Scott</LastName>
+          <eMail>test14@hghumankainos.33mail.com</eMail>
+          <Phone>01234566234</Phone>
+          <SignatureDate>2018-06-05 11:03</SignatureDate>
+        </PlaceAndDateOfDeclaration>
+        <LocalReferenceNumber>CVEDA.866781</LocalReferenceNumber>
+      </Consignment>
+    </CVEDAnimal>
+  </Certificates>
+</CertificatePollResult>

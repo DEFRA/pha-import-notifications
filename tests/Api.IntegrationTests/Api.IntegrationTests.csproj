@@ -33,4 +33,9 @@
     <ProjectReference Include="..\Testing\Testing.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Endpoints\ImportNotifications\*.json" />
+    <EmbeddedResource Include="Endpoints\ImportNotifications\*.xml" />
+  </ItemGroup>
+
 </Project>
