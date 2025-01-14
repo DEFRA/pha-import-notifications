@@ -1,7 +1,9 @@
+using Defra.PhaImportNotifications.BtmsStub;
 using MartinCostello.Logging.XUnit;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
@@ -22,10 +24,20 @@ public class TestWebApplicationFactory<T> : WebApplicationFactory<T>, ITestOutpu
 
     protected override IHost CreateHost(IHostBuilder builder)
     {
-        builder.ConfigureHostConfiguration(config =>
-        {
-            ConfigureHostConfiguration(config);
-        });
+        builder
+            .ConfigureHostConfiguration(config =>
+            {
+                ConfigureHostConfiguration(config);
+            })
+            .ConfigureServices(
+                (_, services) =>
+                {
+                    services.AddSingleton<WireMockHostedService>();
+                    services.AddHostedService<WireMockHostedService>(sp =>
+                        sp.GetRequiredService<WireMockHostedService>()
+                    );
+                }
+            );
 
         return base.CreateHost(builder);
     }

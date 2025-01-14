@@ -1,9 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
-using Defra.PhaImportNotifications.BtmsStub.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using WireMock.Admin.Requests;
 using WireMock.Logging;
 using WireMock.Server;
@@ -12,26 +10,19 @@ using WireMock.Settings;
 namespace Defra.PhaImportNotifications.BtmsStub;
 
 [ExcludeFromCodeCoverage]
-public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<WireMockHostedService> logger)
-    : IHostedService
+public class WireMockHostedService(ILogger<WireMockHostedService> logger) : IHostedService
 {
-    private readonly WireMockServerSettings _settings = new()
-    {
-        Port = options.Value.Port,
-        Logger = new WireMockLogger(logger),
-    };
+    private readonly WireMockServerSettings _settings = new() { Logger = new WireMockLogger(logger) };
+
     private WireMockServer? _wireMockServer;
 
     public Task StartAsync(CancellationToken cancellationToken)
     {
-        if (options.Value.Enabled)
-        {
-            _wireMockServer = WireMockServer.Start(_settings);
+        _wireMockServer = WireMockServer.Start(_settings);
 
-            logger.LogInformation("Started on port {Port}", _settings.Port);
+        logger.LogInformation("Started on port {Port}", _settings.Port);
 
-            ConfigureStubbedData();
-        }
+        ConfigureStubbedData();
 
         return Task.CompletedTask;
     }
@@ -57,12 +48,12 @@ public class WireMockHostedService(IOptions<BtmsStubOptions> options, ILogger<Wi
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
-        if (_wireMockServer is not null)
-        {
-            _wireMockServer.Stop();
+        if (_wireMockServer is null)
+            return Task.CompletedTask;
 
-            logger.LogInformation("Stopped");
-        }
+        _wireMockServer.Stop();
+
+        logger.LogInformation("Stopped");
 
         return Task.CompletedTask;
     }

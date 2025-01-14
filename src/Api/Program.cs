@@ -1,4 +1,3 @@
-using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 using System.Text;
 using Defra.PhaImportNotifications.Api.Configuration;
@@ -10,16 +9,12 @@ using Defra.PhaImportNotifications.Api.OpenApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
-using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Contracts;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.JsonWebTokens;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -176,7 +171,6 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         }
     );
     builder.Services.AddTransient<IBtmsService, BtmsService>();
-    builder.Services.AddBtmsStub();
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)
