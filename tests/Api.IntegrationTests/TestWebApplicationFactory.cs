@@ -24,20 +24,10 @@ public class TestWebApplicationFactory<T> : WebApplicationFactory<T>, ITestOutpu
 
     protected override IHost CreateHost(IHostBuilder builder)
     {
-        builder
-            .ConfigureHostConfiguration(config =>
-            {
-                ConfigureHostConfiguration(config);
-            })
-            .ConfigureServices(
-                (_, services) =>
-                {
-                    services.AddSingleton<WireMockHostedService>();
-                    services.AddHostedService<WireMockHostedService>(sp =>
-                        sp.GetRequiredService<WireMockHostedService>()
-                    );
-                }
-            );
+        builder.ConfigureHostConfiguration(config =>
+        {
+            ConfigureHostConfiguration(config);
+        });
 
         return base.CreateHost(builder);
     }
