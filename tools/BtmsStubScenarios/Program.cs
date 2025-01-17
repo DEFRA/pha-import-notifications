@@ -39,6 +39,8 @@ foreach (var ched in cheds)
     // Preserve river tees BCP so responses remain valid
     json = json.Replace("GBAPHA1A", "GBTEEP1");
     json = json.Replace("GBLGW4", "GBTEEP1");
+    json = json.Replace("GBLGP1", "GBTEEP1");
+    json = json.Replace("GBHCH4PP", "GBTEEP1");
 
     await File.WriteAllTextAsync($"{outputPath}btms-import-notification-single-{ched}.json", json);
 }

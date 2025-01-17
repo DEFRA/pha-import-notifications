@@ -86,7 +86,7 @@
           "checks": null
         }
       ],
-      "_PointOfEntry": "GBLGP1",
+      "_PointOfEntry": "GBTEEP1",
       "_PointOfEntryControlPoint": null,
       "ipaffsId": 3212248,
       "etag": "0000000002E6170C",
@@ -286,7 +286,7 @@
           "purposeGroup": "ForImport",
           "estimatedArrivesAtPortOfExit": null
         },
-        "pointOfEntry": "GBLGP1",
+        "pointOfEntry": "GBTEEP1",
         "pointOfEntryControlPoint": null,
         "meansOfTransport": {
           "type": null,
