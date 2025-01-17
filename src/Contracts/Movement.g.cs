@@ -5,6 +5,10 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public partial record Movement
 {
+    [JsonPropertyName("btmsStatus")]
+    [JsonIgnore]
+    public MovementStatus? BtmsStatus { get; init; }
+
     [JsonPropertyName("type")]
     [JsonIgnore]
     public string? Type { get; init; }
@@ -14,6 +18,10 @@ public partial record Movement
 
     [JsonPropertyName("decisions")]
     public List<CustomsClearanceRequest>? Decisions { get; init; }
+
+    [JsonPropertyName("alvsDecisionStatus")]
+    [JsonIgnore]
+    public AlvsDecisionStatus? AlvsDecisionStatus { get; init; }
 
     [JsonPropertyName("items")]
     [JsonIgnore]

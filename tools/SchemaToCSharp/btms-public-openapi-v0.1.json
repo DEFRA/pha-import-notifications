@@ -21,19 +21,41 @@
                 "type": "string"
               }
             }
+          },
+          {
+            "name": "chedType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ImportNotificationTypeEnum"
+              }
+            }
+          },
+          {
+            "name": "coo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/analytics/record-current-state": {
-      "get": {
-        "tags": [
-          "AnalyticsEndpoints"
         ],
         "responses": {
           "200": {
@@ -56,6 +78,96 @@
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/analytics/exceptions": {
+      "get": {
+        "tags": [
+          "AnalyticsEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "chedType",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/ImportNotificationTypeEnum"
+              }
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/analytics/scenarios": {
+      "get": {
+        "tags": [
+          "AnalyticsEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/analytics/record-current-state": {
+      "get": {
+        "tags": [
+          "AnalyticsEndpoints"
         ],
         "responses": {
           "200": {
@@ -160,6 +272,30 @@
               ]
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mgmt/asb/start": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/mgmt/asb/stop": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
         ],
         "responses": {
           "200": {
@@ -293,30 +429,24 @@
       }
     },
     "/sync/generate-download": {
-      "get": {
+      "post": {
         "tags": [
           "SyncEndpoints"
         ],
-        "parameters": [
-          {
-            "name": "period",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "enum": [
-                "Today",
-                "LastMonth",
-                "ThisMonth",
-                "All"
-              ],
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SyncPeriod"
-                }
-              ]
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/DownloadCommand"
+                  }
+                ]
+              }
             }
-          }
-        ],
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -755,32 +885,51 @@
         },
         "additionalProperties": false
       },
-      "AlvsClearanceRequest": {
+      "AlvsDecision": {
+        "required": [
+          "context",
+          "decision"
+        ],
         "type": "object",
         "properties": {
-          "serviceHeader": {
+          "decision": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/ServiceHeader"
+                "$ref": "#/components/schemas/CdsClearanceRequest"
               }
             ],
             "description": "",
             "nullable": true
           },
-          "header": {
+          "context": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Header"
+                "$ref": "#/components/schemas/DecisionContext"
               }
             ],
             "description": "",
             "nullable": true
-          },
-          "items": {
+          }
+        },
+        "additionalProperties": false
+      },
+      "AlvsDecisionStatus": {
+        "type": "object",
+        "properties": {
+          "decisions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Items"
+              "$ref": "#/components/schemas/AlvsDecision"
             },
+            "description": "",
+            "nullable": true
+          },
+          "context": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SummarisedDecisionContext"
+              }
+            ],
             "description": "",
             "nullable": true
           }
@@ -948,11 +1097,22 @@
           },
           "version": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "createdBy": {
-            "type": "string",
-            "nullable": true
+            "enum": [
+              "Btms",
+              "Ipaffs",
+              "Alvs",
+              "Cds",
+              "Gvms"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CreatedBySystem"
+              }
+            ]
           },
           "createdSource": {
             "type": "string",
@@ -972,6 +1132,14 @@
             "items": {
               "$ref": "#/components/schemas/AuditDiffEntry"
             },
+            "nullable": true
+          },
+          "context": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DecisionContext"
+              }
+            ],
             "nullable": true
           }
         },
@@ -1089,6 +1257,38 @@
         },
         "additionalProperties": false
       },
+      "CdsClearanceRequest": {
+        "type": "object",
+        "properties": {
+          "serviceHeader": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServiceHeader"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "header": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Header"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Items"
+            },
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Check": {
         "type": "object",
         "properties": {
@@ -1116,6 +1316,20 @@
             "items": {
               "type": "string"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Ched": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "identifier": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -1859,6 +2073,16 @@
         ],
         "type": "string"
       },
+      "CreatedBySystem": {
+        "enum": [
+          "Btms",
+          "Ipaffs",
+          "Alvs",
+          "Cds",
+          "Gvms"
+        ],
+        "type": "string"
+      },
       "Decision": {
         "type": "object",
         "properties": {
@@ -2113,6 +2337,112 @@
         },
         "additionalProperties": false
       },
+      "DecisionComparison": {
+        "type": "object",
+        "properties": {
+          "paired": {
+            "type": "boolean",
+            "description": ""
+          },
+          "decisionStatus": {
+            "enum": [
+              "BtmsMadeSameDecisionAsAlvs",
+              "ReliesOnCDMS205",
+              "ReliesOnCDMS249",
+              "HasChedppChecks",
+              "NoImportNotificationsLinked",
+              "HasOtherDataErrors",
+              "HasGenericDataErrors",
+              "NoAlvsDecisions",
+              "HasMultipleChedTypes",
+              "HasMultipleCheds",
+              "AlvsClearanceRequestVersion1NotPresent",
+              "AlvsClearanceRequestVersionsNotComplete",
+              "AlvsDecisionVersion1NotPresent",
+              "AlvsDecisionVersionsNotComplete",
+              "InvestigationNeeded",
+              "None"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DecisionStatusEnum"
+              }
+            ],
+            "description": ""
+          },
+          "decisionMatched": {
+            "type": "boolean",
+            "description": ""
+          },
+          "btmsDecisionNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32",
+            "nullable": true
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemCheck"
+            },
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DecisionContext": {
+        "type": "object",
+        "properties": {
+          "alvsDecisionNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32",
+            "nullable": true
+          },
+          "entryVersionNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "importNotifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DecisionImportNotifications"
+            },
+            "description": "",
+            "nullable": true
+          },
+          "decisionComparison": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DecisionComparison"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "alvsCheckStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StatusChecker"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "btmsCheckStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StatusChecker"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DecisionDecisionEnum": {
         "enum": [
           "NonAcceptable",
@@ -2153,6 +2483,45 @@
           "Article15"
         ],
         "type": "string"
+      },
+      "DecisionImportNotifications": {
+        "required": [
+          "created",
+          "createdSource",
+          "id",
+          "updated",
+          "updatedSource",
+          "version"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdSource": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedSource": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
       },
       "DecisionNotAcceptableActionDestructionReasonEnum": {
         "enum": [
@@ -2247,6 +2616,27 @@
         ],
         "type": "string"
       },
+      "DecisionStatusEnum": {
+        "enum": [
+          "BtmsMadeSameDecisionAsAlvs",
+          "ReliesOnCDMS205",
+          "ReliesOnCDMS249",
+          "HasChedppChecks",
+          "NoImportNotificationsLinked",
+          "HasOtherDataErrors",
+          "HasGenericDataErrors",
+          "NoAlvsDecisions",
+          "HasMultipleChedTypes",
+          "HasMultipleCheds",
+          "AlvsClearanceRequestVersion1NotPresent",
+          "AlvsClearanceRequestVersionsNotComplete",
+          "AlvsDecisionVersion1NotPresent",
+          "AlvsDecisionVersionsNotComplete",
+          "InvestigationNeeded",
+          "None"
+        ],
+        "type": "string"
+      },
       "DetailsOnReExport": {
         "type": "object",
         "properties": {
@@ -2327,6 +2717,72 @@
             "type": "number",
             "description": "",
             "format": "double",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DownloadCommand": {
+        "type": "object",
+        "properties": {
+          "syncPeriod": {
+            "enum": [
+              "Today",
+              "LastMonth",
+              "ThisMonth",
+              "All"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SyncPeriod"
+              }
+            ]
+          },
+          "jobId": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "timespan": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "resource": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "filter": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DownloadFilter"
+              }
+            ],
+            "nullable": true
+          },
+          "rootFolder": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DownloadFilter": {
+        "type": "object",
+        "properties": {
+          "mrns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "cheds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Ched"
+            },
             "nullable": true
           }
         },
@@ -3063,6 +3519,14 @@
         },
         "additionalProperties": false
       },
+      "InspectionRequiredEnum": {
+        "enum": [
+          "Required",
+          "Inconclusive",
+          "NotRequired"
+        ],
+        "type": "string"
+      },
       "Inspector": {
         "type": "object",
         "properties": {
@@ -3095,6 +3559,36 @@
           "subscriberNumber": {
             "type": "string",
             "description": "Phone number",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemCheck": {
+        "required": [
+          "alvsDecisionCode",
+          "checkCode"
+        ],
+        "type": "object",
+        "properties": {
+          "itemNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "checkCode": {
+            "type": "string",
+            "description": "",
+            "nullable": true
+          },
+          "alvsDecisionCode": {
+            "type": "string",
+            "description": "",
+            "nullable": true
+          },
+          "btmsDecisionCode": {
+            "type": "string",
+            "description": "",
             "nullable": true
           }
         },
@@ -3312,6 +3806,18 @@
         ],
         "type": "string"
       },
+      "LinkStatusEnum": {
+        "enum": [
+          "Error",
+          "NotLinked",
+          "PartiallyLinked",
+          "MissingLinks",
+          "NoLinks",
+          "AllLinked",
+          "Investigate"
+        ],
+        "type": "string"
+      },
       "MeansOfTransport": {
         "type": "object",
         "properties": {
@@ -3351,8 +3857,19 @@
         "type": "string"
       },
       "Movement": {
+        "required": [
+          "btmsStatus"
+        ],
         "type": "object",
         "properties": {
+          "btmsStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MovementStatus"
+              }
+            ],
+            "nullable": true
+          },
           "type": {
             "type": "string",
             "nullable": true
@@ -3360,15 +3877,23 @@
           "clearanceRequests": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AlvsClearanceRequest"
+              "$ref": "#/components/schemas/CdsClearanceRequest"
             },
             "nullable": true
           },
           "decisions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/AlvsClearanceRequest"
+              "$ref": "#/components/schemas/CdsClearanceRequest"
             },
+            "nullable": true
+          },
+          "alvsDecisionStatus": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AlvsDecisionStatus"
+              }
+            ],
             "nullable": true
           },
           "items": {
@@ -3488,6 +4013,86 @@
           }
         },
         "additionalProperties": false
+      },
+      "MovementSegmentEnum": {
+        "enum": [
+          "Cdms205Ac1",
+          "Cdms205Ac2",
+          "Cdms205Ac3",
+          "Cdms205Ac4",
+          "Cdms205Ac5",
+          "Cdms249",
+          "None"
+        ],
+        "type": "string"
+      },
+      "MovementStatus": {
+        "required": [
+          "chedTypes",
+          "linkStatus"
+        ],
+        "type": "object",
+        "properties": {
+          "chedTypes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImportNotificationTypeEnum"
+            },
+            "description": "",
+            "nullable": true
+          },
+          "linkStatus": {
+            "enum": [
+              "Error",
+              "NotLinked",
+              "PartiallyLinked",
+              "MissingLinks",
+              "NoLinks",
+              "AllLinked",
+              "Investigate"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LinkStatusEnum"
+              }
+            ],
+            "description": ""
+          },
+          "linkStatusDescription": {
+            "type": "string",
+            "description": "",
+            "nullable": true
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MovementStatusEnum"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "segment": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MovementSegmentEnum"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MovementStatusEnum": {
+        "enum": [
+          "DecisionMatch",
+          "FeatureMissing",
+          "DataIssue",
+          "KnownIssue",
+          "InvestigationNeeded"
+        ],
+        "type": "string"
       },
       "MovementTdmRelationships": {
         "type": "object",
@@ -4195,7 +4800,11 @@
             "nullable": true
           },
           "inspectionRequired": {
-            "type": "string",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/InspectionRequiredEnum"
+              }
+            ],
             "description": "Inspection required",
             "nullable": true
           },
@@ -4781,6 +5390,86 @@
         },
         "additionalProperties": false
       },
+      "StatusChecker": {
+        "type": "object",
+        "properties": {
+          "allMatch": {
+            "type": "boolean",
+            "description": ""
+          },
+          "anyMatch": {
+            "type": "boolean",
+            "description": ""
+          },
+          "allNoMatch": {
+            "type": "boolean",
+            "description": ""
+          },
+          "anyNoMatch": {
+            "type": "boolean",
+            "description": ""
+          },
+          "allHold": {
+            "type": "boolean",
+            "description": ""
+          },
+          "anyHold": {
+            "type": "boolean",
+            "description": ""
+          },
+          "allRefuse": {
+            "type": "boolean",
+            "description": ""
+          },
+          "anyRefuse": {
+            "type": "boolean",
+            "description": ""
+          },
+          "allRelease": {
+            "type": "boolean",
+            "description": ""
+          },
+          "anyRelease": {
+            "type": "boolean",
+            "description": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "SummarisedDecisionContext": {
+        "type": "object",
+        "properties": {
+          "alvsDecisionNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32",
+            "nullable": true
+          },
+          "entryVersionNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "importNotifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DecisionImportNotifications"
+            },
+            "description": "",
+            "nullable": true
+          },
+          "decisionComparison": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DecisionComparison"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "SyncClearanceRequestsCommand": {
         "type": "object",
         "properties": {
@@ -4975,9 +5664,6 @@
       "TdmRelationshipObject": {
         "type": "object",
         "properties": {
-          "matched": {
-            "type": "boolean"
-          },
           "links": {
             "allOf": [
               {

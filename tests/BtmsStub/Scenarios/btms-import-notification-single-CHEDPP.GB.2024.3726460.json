@@ -7,18 +7,19 @@
     "id": "CHEDPP.GB.2024.3726460",
     "attributes": {
       "createdSource": "2024-12-04T06:00:04.77Z",
-      "created": "2024-12-17T14:17:13.574Z",
-      "updated": "2024-12-17T14:17:13.574Z",
+      "created": "2025-01-17T17:01:03.247Z",
+      "updated": "2025-01-17T17:01:03.247Z",
       "stringId": "CHEDPP.GB.2024.3726460",
       "auditEntries": [
         {
-          "id": "_GB_2024_3726460-1d461b90-c30c-4238-b83f-ca25f2d16d19.json",
+          "id": "PRODREDACTED-202412/IPAFFS/CHEDPP/2024/12/04/CHEDPP_GB_2024_3726460-1d461b90-c30c-4238-b83f-ca25f2d16d19.json",
           "version": 1,
-          "createdBy": "System",
+          "createdBy": "Ipaffs",
           "createdSource": "2024-12-04T06:00:04.77Z",
-          "createdLocal": "2024-12-17T14:17:13.574Z",
+          "createdLocal": "2025-01-17T17:01:03.247Z",
           "status": "Created",
-          "diff": []
+          "diff": [],
+          "context": null
         }
       ],
       "commoditiesSummary": {
@@ -66,7 +67,7 @@
             "regulatoryAuthority": "PHSI",
             "requiresTestAndTrialData": "true",
             "propagation": "Seed",
-            "commodityGroup": "Seed & Tissue Culture",
+            "commodityGroup": "Seed \u0026 Tissue Culture",
             "typePackage": "Package",
             "netWeight": 3530,
             "numberPackage": 80,
@@ -95,7 +96,7 @@
           "checks": null
         }
       ],
-      "_PointOfEntry": "GBTEEP1",
+      "_PointOfEntry": "GBHCH4PP",
       "_PointOfEntryControlPoint": "POD",
       "ipaffsId": 2726460,
       "etag": "00000000044F9E93",
@@ -320,7 +321,7 @@
           "purposeGroup": "ForImport",
           "estimatedArrivesAtPortOfExit": null
         },
-        "pointOfEntry": "GBTEEP1",
+        "pointOfEntry": "GBHCH4PP",
         "pointOfEntryControlPoint": "POD",
         "meansOfTransport": {
           "type": null,
@@ -473,10 +474,7 @@
     },
     "relationships": {
       "movements": {
-        "data": [],
-        "meta": {
-          "matched": false
-        }
+        "data": []
       }
     },
     "links": {

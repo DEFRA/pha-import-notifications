@@ -6,6 +6,15 @@
     "type": "movements",
     "id": "24GBCND8RONCFGAAR3",
     "attributes": {
+      "btmsStatus": {
+        "chedTypes": [
+          "Cvedp"
+        ],
+        "linkStatus": "MissingLinks",
+        "linkStatusDescription": null,
+        "status": null,
+        "segment": null
+      },
       "clearanceRequests": [
         {
           "serviceHeader": {
@@ -189,8 +198,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "f839bd12-c2c7-4d3a-a46d-4016c92d1d74",
-            "serviceCalled": "2024-12-17T13:53:38.996Z"
+            "correlationId": "4e7cc809-1d6c-485c-9865-9055ffaebd60",
+            "serviceCalled": "2025-01-17T16:32:48.351Z"
           },
           "header": {
             "entryReference": "24GBCND8RONCFGAAR3",
@@ -332,6 +341,21 @@
           ]
         }
       ],
+      "alvsDecisionStatus": {
+        "decisions": [],
+        "context": {
+          "alvsDecisionNumber": null,
+          "entryVersionNumber": 0,
+          "importNotifications": null,
+          "decisionComparison": {
+            "paired": false,
+            "decisionStatus": "NoAlvsDecisions",
+            "decisionMatched": false,
+            "btmsDecisionNumber": null,
+            "checks": []
+          }
+        }
+      },
       "items": [
         {
           "itemNumber": 4,
@@ -509,34 +533,40 @@
       "goodsLocationCode": "DEUDEUDEUGVM",
       "auditEntries": [
         {
-          "id": "GBCND8RONCFGAAR3-2cf67d2e-5d2b-45e0-8fef-cd0a9841a720.json",
+          "id": "PRODREDACTED-202412/ALVS/2024/12/04/24GBCND8RONCFGAAR3-2cf67d2e-5d2b-45e0-8fef-cd0a9841a720.json",
           "version": 2,
-          "createdBy": "System",
+          "createdBy": "Cds",
           "createdSource": "2024-12-04T12:48:45Z",
-          "createdLocal": "2024-12-17T13:53:38.771Z",
+          "createdLocal": "2025-01-17T16:32:47.049Z",
           "status": "Created",
-          "diff": []
+          "diff": [],
+          "context": null
         },
         {
-          "id": "6c0725bc-1069-4cfc-9f7d-266f550dd4f1",
-          "version": 2,
-          "createdBy": "System",
-          "createdSource": "2024-12-17T13:53:38.996Z",
-          "createdLocal": "2024-12-17T13:53:39.097Z",
+          "id": "33edb9dd-1a53-4265-afdd-7f2bae5cdb95",
+          "version": 1,
+          "createdBy": "Btms",
+          "createdSource": "2025-01-17T16:32:48.351Z",
+          "createdLocal": "2025-01-17T16:32:48.784Z",
           "status": "Decision",
-          "diff": []
+          "diff": [],
+          "context": {
+            "alvsCheckStatus": null,
+            "btmsCheckStatus": null,
+            "alvsDecisionNumber": null,
+            "entryVersionNumber": 2,
+            "importNotifications": [],
+            "decisionComparison": null
+          }
         }
       ],
       "localId": null,
-      "created": "2024-12-17T13:53:38.771Z",
-      "updated": "2024-12-17T13:53:39.098Z"
+      "created": "2025-01-17T16:32:47.049Z",
+      "updated": "2025-01-17T16:32:48.784Z"
     },
     "relationships": {
       "notifications": {
-        "data": [],
-        "meta": {
-          "matched": false
-        }
+        "data": []
       }
     },
     "links": {

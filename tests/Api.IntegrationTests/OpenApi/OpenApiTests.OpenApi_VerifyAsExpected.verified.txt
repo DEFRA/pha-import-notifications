@@ -2396,6 +2396,14 @@
         },
         "additionalProperties": false
       },
+      "InspectionRequiredEnum": {
+        "enum": [
+          "Required",
+          "Inconclusive",
+          "NotRequired"
+        ],
+        "type": "string"
+      },
       "Inspector": {
         "type": "object",
         "properties": {
@@ -3244,7 +3252,11 @@
             "nullable": true
           },
           "inspectionRequired": {
-            "type": "string",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/InspectionRequiredEnum"
+              }
+            ],
             "description": "Inspection required",
             "nullable": true
           },

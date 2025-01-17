@@ -6,6 +6,15 @@
     "type": "movements",
     "id": "24GBC1IQDD278IZAR8",
     "attributes": {
+      "btmsStatus": {
+        "chedTypes": [
+          "Cvedp"
+        ],
+        "linkStatus": "MissingLinks",
+        "linkStatusDescription": null,
+        "status": null,
+        "segment": null
+      },
       "clearanceRequests": [
         {
           "serviceHeader": {
@@ -69,8 +78,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "1a9109a3-1d4f-4af5-8ce4-7c065d039ac8",
-            "serviceCalled": "2024-12-17T13:53:34.696Z"
+            "correlationId": "d4ba979c-c628-42d6-9e44-eeb88505477b",
+            "serviceCalled": "2025-01-17T16:32:47.108Z"
           },
           "header": {
             "entryReference": "24GBC1IQDD278IZAR8",
@@ -116,6 +125,21 @@
           ]
         }
       ],
+      "alvsDecisionStatus": {
+        "decisions": [],
+        "context": {
+          "alvsDecisionNumber": null,
+          "entryVersionNumber": 0,
+          "importNotifications": null,
+          "decisionComparison": {
+            "paired": false,
+            "decisionStatus": "NoAlvsDecisions",
+            "decisionMatched": false,
+            "btmsDecisionNumber": null,
+            "checks": []
+          }
+        }
+      },
       "items": [
         {
           "itemNumber": 1,
@@ -165,34 +189,40 @@
       "goodsLocationCode": "EUTEUTEUTGVM",
       "auditEntries": [
         {
-          "id": "GBC1IQDD278IZAR8-a4f15912-15c7-49d3-831a-b5bcfb97d9ed.json",
+          "id": "PRODREDACTED-202412/ALVS/2024/12/04/24GBC1IQDD278IZAR8-a4f15912-15c7-49d3-831a-b5bcfb97d9ed.json",
           "version": 3,
-          "createdBy": "System",
+          "createdBy": "Cds",
           "createdSource": "2024-12-04T12:08:40Z",
-          "createdLocal": "2024-12-17T13:53:33.973Z",
+          "createdLocal": "2025-01-17T16:32:45.811Z",
           "status": "Created",
-          "diff": []
+          "diff": [],
+          "context": null
         },
         {
-          "id": "4b83d491-1e54-4fa1-ae2c-7835a6930365",
-          "version": 3,
-          "createdBy": "System",
-          "createdSource": "2024-12-17T13:53:34.696Z",
-          "createdLocal": "2024-12-17T13:53:35.386Z",
+          "id": "7fed95c2-d90d-441a-be55-5c23be9e0fcc",
+          "version": 1,
+          "createdBy": "Btms",
+          "createdSource": "2025-01-17T16:32:47.108Z",
+          "createdLocal": "2025-01-17T16:32:47.574Z",
           "status": "Decision",
-          "diff": []
+          "diff": [],
+          "context": {
+            "alvsCheckStatus": null,
+            "btmsCheckStatus": null,
+            "alvsDecisionNumber": null,
+            "entryVersionNumber": 3,
+            "importNotifications": [],
+            "decisionComparison": null
+          }
         }
       ],
       "localId": null,
-      "created": "2024-12-17T13:53:33.973Z",
-      "updated": "2024-12-17T13:53:35.391Z"
+      "created": "2025-01-17T16:32:45.811Z",
+      "updated": "2025-01-17T16:32:47.574Z"
     },
     "relationships": {
       "notifications": {
-        "data": [],
-        "meta": {
-          "matched": false
-        }
+        "data": []
       }
     },
     "links": {

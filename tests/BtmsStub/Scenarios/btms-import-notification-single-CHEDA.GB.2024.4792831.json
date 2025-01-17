@@ -6,19 +6,81 @@
     "type": "import-notifications",
     "id": "CHEDA.GB.2024.4792831",
     "attributes": {
-      "createdSource": "2024-12-04T13:25:01.362Z",
-      "created": "2024-12-17T13:53:33.675Z",
-      "updated": "2024-12-17T13:53:33.675Z",
+      "createdSource": "2024-12-04T13:24:39.611Z",
+      "created": "0001-01-01T00:00:00Z",
+      "updated": "2025-01-17T16:37:47.171Z",
       "stringId": "CHEDA.GB.2024.4792831",
       "auditEntries": [
         {
-          "id": "_GB_2024_4792831-c6b51fd4-16c6-4655-9237-139777019ff2.json",
+          "id": "PRODREDACTED-202412/IPAFFS/CHEDA/2024/12/04/CHEDA_GB_2024_4792831-5eff3c81-189c-4eea-9230-f4d4157210e6.json",
           "version": 6,
-          "createdBy": "System",
-          "createdSource": "2024-12-04T13:25:01.362Z",
-          "createdLocal": "2024-12-17T13:53:33.674Z",
+          "createdBy": "Ipaffs",
+          "createdSource": "2024-12-04T13:24:39.611Z",
+          "createdLocal": "2025-01-17T16:37:46.055Z",
           "status": "Created",
-          "diff": []
+          "diff": [],
+          "context": null
+        },
+        {
+          "id": "PRODREDACTED-202412/IPAFFS/CHEDA/2024/12/04/CHEDA_GB_2024_4792831-c6b51fd4-16c6-4655-9237-139777019ff2.json",
+          "version": 6,
+          "createdBy": "Ipaffs",
+          "createdSource": "2024-12-04T13:25:01.362Z",
+          "createdLocal": "2025-01-17T16:37:47.171Z",
+          "status": "Updated",
+          "diff": [
+            {
+              "path": "/CommoditiesSummary/CommodityComplements",
+              "op": "Replace",
+              "value": "ARRAY"
+            },
+            {
+              "path": "/CommoditiesSummary/ComplementParameterSets",
+              "op": "Replace",
+              "value": "ARRAY"
+            },
+            {
+              "path": "/Etag",
+              "op": "Replace",
+              "value": "000000000450D15D"
+            },
+            {
+              "path": "/UpdatedSource",
+              "op": "Replace",
+              "value": "2024-12-04T13:25:01.3628299Z"
+            },
+            {
+              "path": "/Status",
+              "op": "Replace",
+              "value": 1
+            },
+            {
+              "path": "/PartOne/SubmittedOn",
+              "op": "Replace",
+              "value": "2024-12-04T13:25:01.332767Z"
+            },
+            {
+              "path": "/PartOne/ArrivesAt",
+              "op": "Replace",
+              "value": "2025-01-30T22:00:00"
+            },
+            {
+              "path": "/ConsignmentValidations/1/Field",
+              "op": "Replace",
+              "value": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/laboratorytestsrequired"
+            },
+            {
+              "path": "/ConsignmentValidations/2/Field",
+              "op": "Replace",
+              "value": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/welfarecheck"
+            },
+            {
+              "path": "/RiskDecisionLockedOn",
+              "op": "Replace",
+              "value": "2025-01-30T20:00:00Z"
+            }
+          ],
+          "context": null
         }
       ],
       "commoditiesSummary": {
@@ -489,10 +551,7 @@
     },
     "relationships": {
       "movements": {
-        "data": [],
-        "meta": {
-          "matched": false
-        }
+        "data": []
       }
     },
     "links": {

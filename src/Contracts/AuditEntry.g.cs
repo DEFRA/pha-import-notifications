@@ -9,10 +9,10 @@ public partial record AuditEntry
     public string? Id { get; init; }
 
     [JsonPropertyName("version")]
-    public required int Version { get; init; }
+    public int? Version { get; init; }
 
     [JsonPropertyName("createdBy")]
-    public string? CreatedBy { get; init; }
+    public required CreatedBySystem CreatedBy { get; init; }
 
     [JsonPropertyName("createdSource")]
     public DateTime? CreatedSource { get; init; }
@@ -25,4 +25,7 @@ public partial record AuditEntry
 
     [JsonPropertyName("diff")]
     public List<AuditDiffEntry>? Diff { get; init; }
+
+    [JsonPropertyName("context")]
+    public DecisionContext? Context { get; init; }
 }
