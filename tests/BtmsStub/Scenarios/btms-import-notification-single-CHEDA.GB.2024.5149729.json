@@ -1,0 +1,551 @@
+{
+  "links": {
+    "self": "/api/import-notifications/CHEDA.GB.2024.5149729"
+  },
+  "data": {
+    "type": "import-notifications",
+    "id": "CHEDA.GB.2024.5149729",
+    "attributes": {
+      "createdSource": "2024-12-05T22:00:07.964Z",
+      "created": "2025-01-17T16:44:12.997Z",
+      "updated": "2025-01-17T16:46:11.714Z",
+      "stringId": "CHEDA.GB.2024.5149729",
+      "auditEntries": [
+        {
+          "id": "PRODREDACTED-202412/IPAFFS/CHEDA/2024/12/05/CHEDA_GB_2024_5149729-6b314447-c379-4428-8baf-4e78a997b5df.json",
+          "version": 2,
+          "createdBy": "Ipaffs",
+          "createdSource": "2024-12-05T22:00:07.964Z",
+          "createdLocal": "2025-01-17T16:44:12.997Z",
+          "status": "Created",
+          "diff": [],
+          "context": null
+        },
+        {
+          "id": "",
+          "version": null,
+          "createdBy": "Btms",
+          "createdSource": "2025-01-17T16:44:13.097Z",
+          "createdLocal": "2025-01-17T16:44:13.097Z",
+          "status": "Linked",
+          "diff": [],
+          "context": null
+        }
+      ],
+      "commoditiesSummary": {
+        "gmsDeclarationAccepted": null,
+        "consignedCountryInChargeGroup": null,
+        "totalGrossWeight": null,
+        "totalNetWeight": null,
+        "totalGrossVolume": null,
+        "totalGrossVolumeUnit": null,
+        "numberOfPackages": 1,
+        "temperature": null,
+        "numberOfAnimals": 1,
+        "commodityComplements": null,
+        "complementParameterSets": null,
+        "includeNonAblactedAnimals": false,
+        "countryOfOrigin": "IE",
+        "countryOfOriginIsPodCountry": null,
+        "isLowRiskArticle72Country": null,
+        "regionOfOrigin": null,
+        "consignedCountry": null,
+        "animalsCertifiedAs": "Registered",
+        "commodityIntendedFor": null
+      },
+      "commodities": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Live horses, asses, mules and hinnies",
+          "commodityId": "0101",
+          "complementId": 1,
+          "complementName": "Equus caballus",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "147603",
+          "speciesName": "Equus caballus",
+          "speciesNomination": "Equus caballus",
+          "speciesTypeName": null,
+          "speciesType": "2",
+          "speciesClassName": null,
+          "speciesClass": "147603",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null,
+          "additionalData": {
+            "numberPackage": 1,
+            "numberAnimal": 1
+          },
+          "riskAssesment": {
+            "riskDecision": "Notrequired",
+            "exitRiskDecision": null,
+            "hmiDecision": null,
+            "phsiDecision": null,
+            "phsiClassification": null,
+            "phsi": null,
+            "uniqueId": "0d10f4de-971e-45eb-b19c-1f4e71912e75",
+            "eppoCode": null,
+            "variety": null,
+            "isWoody": null,
+            "indoorOutdoor": null,
+            "propagation": null,
+            "phsiRuleType": null
+          },
+          "checks": null
+        }
+      ],
+      "_PointOfEntry": "GBTEEP1",
+      "_PointOfEntryControlPoint": null,
+      "ipaffsId": 4180065,
+      "etag": "0000000004380251",
+      "externalReferences": null,
+      "referenceNumber": "CHEDA.GB.2024.5149729",
+      "version": 2,
+      "updatedSource": "2024-12-05T22:00:07.964Z",
+      "lastUpdatedBy": {
+        "displayName": "893c005ccd6144e7616c6d16cdf73a0a09b7f2d6302f1b149d884556c0f032d9",
+        "userId": "db023b6e-b68f-ef11-8a69-6045bd9a0047",
+        "isControlUser": null
+      },
+      "importNotificationType": "Cveda",
+      "replaces": null,
+      "replacedBy": null,
+      "status": "Validated",
+      "splitConsignment": null,
+      "childNotification": null,
+      "riskAssessment": {
+        "commodityResults": [
+          {
+            "riskDecision": "Notrequired",
+            "exitRiskDecision": null,
+            "hmiDecision": null,
+            "phsiDecision": null,
+            "phsiClassification": null,
+            "phsi": null,
+            "uniqueId": "0d10f4de-971e-45eb-b19c-1f4e71912e75",
+            "eppoCode": null,
+            "variety": null,
+            "isWoody": null,
+            "indoorOutdoor": null,
+            "propagation": null,
+            "phsiRuleType": null
+          }
+        ],
+        "assessedOn": "2024-11-16T22:00:27.015Z"
+      },
+      "journeyRiskCategorisation": null,
+      "isHighRiskEuImport": true,
+      "partOne": {
+        "typeOfImp": null,
+        "personResponsible": {
+          "id": null,
+          "name": "893c005ccd6144e7616c6d16cdf73a0a09b7f2d6302f1b149d884556c0f032d9",
+          "companyId": "e071b540-0de9-e911-a827-000d3a479be2",
+          "contactId": "db023b6e-b68f-ef11-8a69-6045bd9a0047",
+          "companyName": "2bfba53bdc12edaee7f97a2daf1740749756dcb0440b3291e1b1fb027a7e9fb7",
+          "addresses": [
+            "ce3102b6e1e541737c268e53032c0fa27326c7345b4006725b31f575506ca3a3",
+            "384227db5d04d5a25c0f2e59155f22a3b712d86c3fd84d03a0219f9ad8ac36b2",
+            "4048e5146b7414c4496a5adb8e021f255bc7e8d2f3f30a43d8aacfe1128119c5",
+            "407888d6ed1f5b3870c88094cfbd987090ade6168d0e2e448d3fa062a95c3330",
+            "78e19aea369f95e9d748b754e4dfb4c969f8846f2eb25a1e5dacf12095ad9f35"
+          ],
+          "county": null,
+          "postCode": null,
+          "country": "GB",
+          "city": null,
+          "tracesId": 1001,
+          "type": null,
+          "approvalNumber": null,
+          "phone": "d40908fd99b5267fdeead8d8b05f689ade461a4335c153e416a8237880f13c62",
+          "fax": null,
+          "email": "fe3d5d3adcfcdba18f5bc23c36d35ff7253f737235a32fab22632ee9850c0abd"
+        },
+        "customsReferenceNumber": null,
+        "containsWoodPackaging": null,
+        "consignmentArrived": null,
+        "consignor": {
+          "id": "ed7a7d64-f153-4092-9bd2-bf91a479e9cb",
+          "type": "Exporter",
+          "status": "Nonapproved",
+          "companyName": "eb5d0ff5d939b284bd2d347edc42bcd94790e8ab56ae582585dcf01da4bde32a",
+          "individualName": null,
+          "address": {
+            "street": null,
+            "city": "16cb73af3f2b7df6440db01e800e0d36c50deaf7f6b062f608f426f37ec9abac",
+            "country": null,
+            "postalCode": null,
+            "addressLine1": "efe748bf0ce282639bd9d68a8d87bbbe9a146b9f8f6a2e84b7eb313e7ca00596",
+            "addressLine2": "ec5145366c29aeb84a10da1ce899b004d3d1d27627c0c3397525747099a3721e",
+            "addressLine3": null,
+            "postalZipCode": null,
+            "countryIsoCode": "f078492902275dd3cfc4e676148aea2ee4f88b88e4886f6628d3bfdb6eb5df20",
+            "email": "5bbb440f6d50095609c3e6ef9cf0681139c01318ffa467e1a377571a21e7258c",
+            "ukTelephone": null,
+            "telephone": "64b2898df664432eca016f707f6a7140c3ae9d847afd2c7d3334a54f59f4e0aa",
+            "internationalTelephone": null
+          },
+          "approvalNumber": null,
+          "otherIdentifier": null,
+          "tracesId": 10076882
+        },
+        "consignorTwo": null,
+        "packer": null,
+        "consignee": {
+          "id": "905f67bd-d355-4611-b612-846ce6aae201",
+          "type": "Importer",
+          "status": "Nonapproved",
+          "companyName": "2268799c17a5ec65810ffc26bca215c0c09b24c97fcf4cb85334b25aa7448d8f",
+          "individualName": null,
+          "address": {
+            "street": null,
+            "city": "4048e5146b7414c4496a5adb8e021f255bc7e8d2f3f30a43d8aacfe1128119c5",
+            "country": null,
+            "postalCode": null,
+            "addressLine1": "ce30812210f9581ee2a21afc8da55d3ae6bfe5ada1207e9246ea6a171eb10a53",
+            "addressLine2": "66cc8422249f0c8380de8cf914b3f72bb8bd14348552d4249913a7886d04d111",
+            "addressLine3": "407888d6ed1f5b3870c88094cfbd987090ade6168d0e2e448d3fa062a95c3330",
+            "postalZipCode": "1b073bc9a960a52acf9a4fadf01a2ffbdb4a4f7a76870a5f5dff033d20056c1f",
+            "countryIsoCode": "d61bc5a683625b3980e8f48b9141dfb2dfea199059f0df327c8e3a92bcb57f97",
+            "email": "8a04d1941629a0d15ae5c2d490d54197f02b9b1b6c2a13a4b9103e6dc3450430",
+            "ukTelephone": null,
+            "telephone": "772e9155160c0b9f292afcf2f7618e3d4a436d5d0b7f5b8faa2a3fe385139f0c",
+            "internationalTelephone": null
+          },
+          "approvalNumber": null,
+          "otherIdentifier": null,
+          "tracesId": 10024536
+        },
+        "importer": {
+          "id": "905f67bd-d355-4611-b612-846ce6aae201",
+          "type": "Importer",
+          "status": "Nonapproved",
+          "companyName": "2268799c17a5ec65810ffc26bca215c0c09b24c97fcf4cb85334b25aa7448d8f",
+          "individualName": null,
+          "address": {
+            "street": null,
+            "city": "4048e5146b7414c4496a5adb8e021f255bc7e8d2f3f30a43d8aacfe1128119c5",
+            "country": null,
+            "postalCode": null,
+            "addressLine1": "ce30812210f9581ee2a21afc8da55d3ae6bfe5ada1207e9246ea6a171eb10a53",
+            "addressLine2": "66cc8422249f0c8380de8cf914b3f72bb8bd14348552d4249913a7886d04d111",
+            "addressLine3": "407888d6ed1f5b3870c88094cfbd987090ade6168d0e2e448d3fa062a95c3330",
+            "postalZipCode": "1b073bc9a960a52acf9a4fadf01a2ffbdb4a4f7a76870a5f5dff033d20056c1f",
+            "countryIsoCode": "d61bc5a683625b3980e8f48b9141dfb2dfea199059f0df327c8e3a92bcb57f97",
+            "email": "8a04d1941629a0d15ae5c2d490d54197f02b9b1b6c2a13a4b9103e6dc3450430",
+            "ukTelephone": null,
+            "telephone": "772e9155160c0b9f292afcf2f7618e3d4a436d5d0b7f5b8faa2a3fe385139f0c",
+            "internationalTelephone": null
+          },
+          "approvalNumber": null,
+          "otherIdentifier": null,
+          "tracesId": 10024536
+        },
+        "placeOfDestination": {
+          "id": "905f67bd-d355-4611-b612-846ce6aae201",
+          "type": "Importer",
+          "status": "Nonapproved",
+          "companyName": "2268799c17a5ec65810ffc26bca215c0c09b24c97fcf4cb85334b25aa7448d8f",
+          "individualName": null,
+          "address": {
+            "street": null,
+            "city": "4048e5146b7414c4496a5adb8e021f255bc7e8d2f3f30a43d8aacfe1128119c5",
+            "country": null,
+            "postalCode": null,
+            "addressLine1": "ce30812210f9581ee2a21afc8da55d3ae6bfe5ada1207e9246ea6a171eb10a53",
+            "addressLine2": "66cc8422249f0c8380de8cf914b3f72bb8bd14348552d4249913a7886d04d111",
+            "addressLine3": "407888d6ed1f5b3870c88094cfbd987090ade6168d0e2e448d3fa062a95c3330",
+            "postalZipCode": "1b073bc9a960a52acf9a4fadf01a2ffbdb4a4f7a76870a5f5dff033d20056c1f",
+            "countryIsoCode": "d61bc5a683625b3980e8f48b9141dfb2dfea199059f0df327c8e3a92bcb57f97",
+            "email": "8a04d1941629a0d15ae5c2d490d54197f02b9b1b6c2a13a4b9103e6dc3450430",
+            "ukTelephone": null,
+            "telephone": "772e9155160c0b9f292afcf2f7618e3d4a436d5d0b7f5b8faa2a3fe385139f0c",
+            "internationalTelephone": null
+          },
+          "approvalNumber": null,
+          "otherIdentifier": null,
+          "tracesId": 10024536
+        },
+        "pod": null,
+        "placeOfOriginHarvest": null,
+        "additionalPermanentAddresses": null,
+        "cphNumber": null,
+        "importingFromCharity": null,
+        "isPlaceOfDestinationThePermanentAddress": null,
+        "isCatchCertificateRequired": null,
+        "isGvmsRoute": null,
+        "purpose": {
+          "conformsToEU": null,
+          "internalMarketPurpose": "CommercialSaleOrChangeOfOwnership",
+          "thirdCountryTranshipment": null,
+          "forNonConforming": null,
+          "regNumber": null,
+          "shipName": null,
+          "shipPort": null,
+          "exitBip": null,
+          "thirdCountry": null,
+          "transitThirdCountries": null,
+          "forImportOrAdmission": null,
+          "exitDate": null,
+          "finalBip": null,
+          "purposeGroup": "ForImport",
+          "estimatedArrivesAtPortOfExit": null
+        },
+        "pointOfEntry": "GBTEEP1",
+        "pointOfEntryControlPoint": null,
+        "meansOfTransport": {
+          "type": null,
+          "document": null,
+          "id": null
+        },
+        "transporter": {
+          "id": "d1b4150a-cdcc-4fb8-a2b1-c15c977cc47e",
+          "type": "CommercialTransporterUserAdded",
+          "status": "Nonapproved",
+          "companyName": "4830df65eda468c54292fed07ac1bb856ae54dec83e67043ffcaeb5c03d04d30",
+          "individualName": null,
+          "address": {
+            "street": null,
+            "city": "d4694574353903e3989141fdaa250b59929a67f93fd9c3371f567275e9d71552",
+            "country": null,
+            "postalCode": null,
+            "addressLine1": "b3a5f7bac8036170488fc145e9e6c718348dd2f6d8fe5cf2747efc68b81dd166",
+            "addressLine2": "d0989c317a390bbdf57b4a9ddb40bfd1f8178465b981edb12a4c4530690deff9",
+            "addressLine3": "304a93fc5c9859d8a401996bd92bb096adb8eba8dd77744269dedb6a9480f1a2",
+            "postalZipCode": "5eb18917d655457c196de9a05a9e44e5dbb73b5a49163df149ef2282a86758d1",
+            "countryIsoCode": "f078492902275dd3cfc4e676148aea2ee4f88b88e4886f6628d3bfdb6eb5df20",
+            "email": "b3d72bd6ad1168137bf49fdaca958ac0f0efb7cf7f635a7061a18fac751a4ab6",
+            "ukTelephone": null,
+            "telephone": "380e9731a8c1dccf66743a9fb7b22053487dab6a8880f75e779f124e24f2514d",
+            "internationalTelephone": null
+          },
+          "approvalNumber": "WIT0242",
+          "otherIdentifier": null,
+          "tracesId": 10353765
+        },
+        "transporterDetailsRequired": null,
+        "meansOfTransportFromEntryPoint": {
+          "type": "RoadVehicle",
+          "document": "NONE",
+          "id": "BALLINROE"
+        },
+        "estimatedJourneyTimeInMinutes": null,
+        "responsibleForTransport": null,
+        "veterinaryInformation": {
+          "establishmentsOfOriginExternalReference": null,
+          "establishmentsOfOrigins": null,
+          "veterinaryDocument": null,
+          "veterinaryDocumentIssuedOn": null,
+          "accompanyingDocumentNumbers": null,
+          "accompanyingDocuments": [
+            {
+              "documentType": "LatestVeterinaryHealthCertificate",
+              "documentReference": "EXPORT.EU.IE.2024.0076934",
+              "documentIssuedOn": "2024-11-21T00:00:00Z",
+              "attachmentId": "3e7ff8a0-ec26-47f9-8e9d-e11f679dc342",
+              "attachmentFilename": "EXPORT.EU.IE.2024.00769.pdf",
+              "attachmentContentType": "application/pdf",
+              "uploadUserId": "db023b6e-b68f-ef11-8a69-6045bd9a0047",
+              "uploadOrganisationId": "e071b540-0de9-e911-a827-000d3a479be2",
+              "externalReference": null
+            }
+          ],
+          "catchCertificateAttachments": null,
+          "identificationDetails": null
+        },
+        "importerLocalReferenceNumber": null,
+        "route": {
+          "transitingStates": null
+        },
+        "sealsContainers": null,
+        "submittedOn": "2024-11-21T10:26:29.713Z",
+        "submittedBy": {
+          "displayName": "893c005ccd6144e7616c6d16cdf73a0a09b7f2d6302f1b149d884556c0f032d9",
+          "userId": "db023b6e-b68f-ef11-8a69-6045bd9a0047",
+          "isControlUser": null
+        },
+        "consignmentValidations": null,
+        "complexCommoditySelected": true,
+        "portOfEntry": "GBHLY",
+        "portOfExit": null,
+        "exitedPortOfOn": null,
+        "contactDetails": null,
+        "nominatedContacts": null,
+        "originalEstimatedOn": null,
+        "billingInformation": null,
+        "isChargeable": null,
+        "wasChargeable": null,
+        "commonUserCharge": null,
+        "provideCtcMrn": null,
+        "arrivesAt": "2024-11-21T22:00:00Z",
+        "departedOn": null
+      },
+      "decisionBy": {
+        "displayName": "3f2a58a29921db31ef7b0f8714bff9989bcd0d6a5335b19b568a5831a461e2e3",
+        "userId": "3dd58971-2d3f-e911-a95d-000d3a454f67",
+        "isControlUser": null
+      },
+      "decisionDate": "2024-12-05T22:00:07.946850335Z",
+      "partTwo": {
+        "decision": {
+          "consignmentAcceptable": null,
+          "notAcceptableAction": null,
+          "notAcceptableActionDestructionReason": null,
+          "notAcceptableActionEntryRefusalReason": null,
+          "notAcceptableActionQuarantineImposedReason": null,
+          "notAcceptableActionSpecialTreatmentReason": null,
+          "notAcceptableActionIndustrialProcessingReason": null,
+          "notAcceptableActionReDispatchReason": null,
+          "notAcceptableActionUseForOtherPurposesReason": null,
+          "notAcceptableDestructionReason": null,
+          "notAcceptableActionOtherReason": null,
+          "notAcceptableActionByDate": null,
+          "chedppNotAcceptableReasons": null,
+          "notAcceptableReasons": null,
+          "notAcceptableCountry": null,
+          "notAcceptableEstablishment": null,
+          "notAcceptableOtherReason": null,
+          "detailsOfControlledDestinations": null,
+          "specificWarehouseNonConformingConsignment": null,
+          "temporaryDeadline": null,
+          "decisionEnum": "AcceptableForInternalMarket",
+          "freeCirculationPurpose": null,
+          "definitiveImportPurpose": "Approvedbodies",
+          "ifChanneledOption": null,
+          "customWarehouseRegisteredNumber": null,
+          "freeWarehouseRegisteredNumber": null,
+          "shipName": null,
+          "shipPortOfExit": null,
+          "shipSupplierRegisteredNumber": null,
+          "transhipmentBip": null,
+          "transhipmentThirdCountry": null,
+          "transitExitBip": null,
+          "transitThirdCountry": null,
+          "transitDestinationThirdCountry": null,
+          "temporaryExitBip": null,
+          "horseReentry": null,
+          "transhipmentEuOrThirdCountry": null
+        },
+        "consignmentCheck": {
+          "euStandard": "Not Set",
+          "additionalGuarantees": "Not Set",
+          "documentCheckResult": "Not Done",
+          "nationalRequirements": "Not Set",
+          "identityCheckDone": null,
+          "identityCheckType": null,
+          "identityCheckResult": "Not Done",
+          "identityCheckNotDoneReason": null,
+          "physicalCheckDone": null,
+          "physicalCheckResult": "Not Done",
+          "physicalCheckNotDoneReason": null,
+          "physicalCheckOtherText": null,
+          "welfareCheck": "Not Done",
+          "numberOfAnimalsChecked": 0,
+          "laboratoryCheckDone": null,
+          "laboratoryCheckResult": null
+        },
+        "impactOfTransportOnAnimals": {
+          "numberOfDeadAnimals": null,
+          "numberOfDeadAnimalsUnit": "number",
+          "numberOfUnfitAnimals": null,
+          "numberOfUnfitAnimalsUnit": "number",
+          "numberOfBirthOrAbortion": null
+        },
+        "laboratoryTestsRequired": false,
+        "laboratoryTests": null,
+        "resealedContainersIncluded": false,
+        "resealedContainers": null,
+        "resealedContainersMappings": null,
+        "controlAuthority": {
+          "officialVeterinarian": {
+            "firstName": "097e6d910bce5091bebf81f753dd95368f4317f0cfcaf3b116e7492df0d37ea8",
+            "lastName": "feecdfce844ff4e526f513ea6fa26c2197219848cd01b68442ef009b3e03cca9",
+            "email": "cbf5f331177a09fea7731f676355f091657b84148b38e10c5715a14b46a21f0c",
+            "phone": "0a222c9ccde46516b9c29a9ea4f189bcb8901d4c3bd80a0604e7ecdcc9e7da08",
+            "fax": null,
+            "signed": "2024-12-05T22:00:07.964786658"
+          },
+          "customsReferenceNo": null,
+          "containerResealed": null,
+          "newSealNumber": null,
+          "iuuFishingReference": null,
+          "iuuCheckRequired": null,
+          "iuuOption": null
+        },
+        "controlledDestination": null,
+        "bipLocalReferenceNumber": null,
+        "signedOnBehalfOf": null,
+        "onwardTransportation": null,
+        "consignmentValidations": [
+          {
+            "field": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/decision/consignmentacceptable",
+            "code": null
+          },
+          {
+            "field": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/",
+            "code": null
+          }
+        ],
+        "checkedOn": null,
+        "accompanyingDocuments": null,
+        "phsiAutoCleared": null,
+        "hmiAutoCleared": null,
+        "inspectionRequired": "NotRequired",
+        "inspectionOverride": null,
+        "autoClearedOn": "2024-12-05T22:00:07.896Z"
+      },
+      "partThree": {
+        "controlStatus": "Required",
+        "control": null,
+        "consignmentValidations": null,
+        "sealCheckRequired": false,
+        "sealCheck": null,
+        "sealCheckOverride": null
+      },
+      "officialVeterinarian": null,
+      "consignmentValidations": [
+        {
+          "field": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo",
+          "code": null
+        },
+        {
+          "field": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/decision/consignmentacceptable",
+          "code": null
+        }
+      ],
+      "agencyOrganisationId": null,
+      "riskDecisionLockedOn": "2024-11-21T20:00:00Z",
+      "isRiskDecisionLocked": true,
+      "isBulkUploadInProgress": null,
+      "requestId": null,
+      "isCdsFullMatched": null,
+      "chedTypeVersion": 1,
+      "isGMRMatched": null
+    },
+    "relationships": {
+      "movements": {
+        "links": {
+          "self": "/api/import-notifications/CHEDA.GB.2024.5149729",
+          "related": "/api/import-notifications/CHEDA.GB.2024.5149729/movements"
+        },
+        "data": [
+          {
+            "type": "movements",
+            "id": "24GBDMQ23IN8F7AAR4",
+            "meta": {
+              "matched": true,
+              "sourceItem": 1,
+              "destinationItem": 1,
+              "matchingLevel": 1,
+              "self": "/api/movements/24GBDMQ23IN8F7AAR4/import-notifications"
+            }
+          }
+        ]
+      }
+    },
+    "links": {
+      "self": "/api/import-notifications/CHEDA.GB.2024.5149729"
+    }
+  }
+}

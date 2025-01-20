@@ -126,17 +126,120 @@
         }
       ],
       "alvsDecisionStatus": {
-        "decisions": [],
+        "decisions": [
+          {
+            "decision": {
+              "serviceHeader": {
+                "sourceSystem": "ALVS",
+                "destinationSystem": "CDS",
+                "correlationId": "000",
+                "serviceCalled": "2024-12-04T12:34:31.984Z"
+              },
+              "header": {
+                "entryReference": "24GBC1IQDD278IZAR8",
+                "entryVersionNumber": 3,
+                "previousVersionNumber": null,
+                "declarationUcr": null,
+                "declarationPartNumber": null,
+                "declarationType": null,
+                "arrivesAt": null,
+                "submitterTurn": null,
+                "declarantId": null,
+                "declarantName": null,
+                "dispatchCountryCode": null,
+                "goodsLocationCode": null,
+                "masterUcr": null,
+                "decisionNumber": 6
+              },
+              "items": [
+                {
+                  "itemNumber": 1,
+                  "customsProcedureCode": null,
+                  "taricCommodityCode": null,
+                  "goodsDescription": null,
+                  "consigneeId": null,
+                  "consigneeName": null,
+                  "itemNetMass": null,
+                  "itemSupplementaryUnits": null,
+                  "itemThirdQuantity": null,
+                  "itemOriginCountryCode": null,
+                  "documents": [],
+                  "checks": [
+                    {
+                      "checkCode": "H222",
+                      "departmentCode": null,
+                      "decisionCode": "X00",
+                      "decisionsValidUntil": null,
+                      "decisionReasons": [
+                        " A Customs Declaration has been submitted however no matching CHEDP(s) have been submitted to Port Health (for CHEDP number(s) GBCHD2024.2024.5070767). Please correct the CHEDP number(s) entered on your customs declaration. "
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "context": {
+              "alvsCheckStatus": {
+                "allMatch": false,
+                "anyMatch": false,
+                "allNoMatch": true,
+                "anyNoMatch": true,
+                "allHold": false,
+                "anyHold": false,
+                "allRefuse": false,
+                "anyRefuse": false,
+                "allRelease": false,
+                "anyRelease": false
+              },
+              "btmsCheckStatus": {
+                "allMatch": true,
+                "anyMatch": false,
+                "allNoMatch": true,
+                "anyNoMatch": true,
+                "allHold": false,
+                "anyHold": false,
+                "allRefuse": false,
+                "anyRefuse": false,
+                "allRelease": false,
+                "anyRelease": false
+              },
+              "alvsDecisionNumber": 6,
+              "entryVersionNumber": 3,
+              "importNotifications": null,
+              "decisionComparison": {
+                "paired": true,
+                "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
+                "decisionMatched": true,
+                "btmsDecisionNumber": 1,
+                "checks": [
+                  {
+                    "itemNumber": 1,
+                    "checkCode": "H222",
+                    "alvsDecisionCode": "X00",
+                    "btmsDecisionCode": "X00"
+                  }
+                ]
+              }
+            }
+          }
+        ],
         "context": {
-          "alvsDecisionNumber": null,
-          "entryVersionNumber": 0,
+          "alvsDecisionNumber": 6,
+          "entryVersionNumber": 3,
           "importNotifications": null,
           "decisionComparison": {
-            "paired": false,
-            "decisionStatus": "NoAlvsDecisions",
-            "decisionMatched": false,
-            "btmsDecisionNumber": null,
-            "checks": []
+            "paired": true,
+            "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
+            "decisionMatched": true,
+            "btmsDecisionNumber": 1,
+            "checks": [
+              {
+                "itemNumber": 1,
+                "checkCode": "H222",
+                "alvsDecisionCode": "X00",
+                "btmsDecisionCode": "X00"
+              }
+            ]
           }
         }
       },
@@ -214,11 +317,63 @@
             "importNotifications": [],
             "decisionComparison": null
           }
+        },
+        {
+          "id": "PRODREDACTED-202412/DECISIONS/2024/12/04/24GBC1IQDD278IZAR8-07642562-d943-4423-92e5-526159a635aa.json",
+          "version": 6,
+          "createdBy": "Alvs",
+          "createdSource": "2024-12-04T12:34:31.984Z",
+          "createdLocal": "2025-01-17T18:24:31.37Z",
+          "status": "Decision",
+          "diff": [],
+          "context": {
+            "alvsCheckStatus": {
+              "allMatch": false,
+              "anyMatch": false,
+              "allNoMatch": true,
+              "anyNoMatch": true,
+              "allHold": false,
+              "anyHold": false,
+              "allRefuse": false,
+              "anyRefuse": false,
+              "allRelease": false,
+              "anyRelease": false
+            },
+            "btmsCheckStatus": {
+              "allMatch": true,
+              "anyMatch": false,
+              "allNoMatch": true,
+              "anyNoMatch": true,
+              "allHold": false,
+              "anyHold": false,
+              "allRefuse": false,
+              "anyRefuse": false,
+              "allRelease": false,
+              "anyRelease": false
+            },
+            "alvsDecisionNumber": 6,
+            "entryVersionNumber": 3,
+            "importNotifications": null,
+            "decisionComparison": {
+              "paired": true,
+              "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
+              "decisionMatched": true,
+              "btmsDecisionNumber": 1,
+              "checks": [
+                {
+                  "itemNumber": 1,
+                  "checkCode": "H222",
+                  "alvsDecisionCode": "X00",
+                  "btmsDecisionCode": "X00"
+                }
+              ]
+            }
+          }
         }
       ],
       "localId": null,
       "created": "2025-01-17T16:32:45.811Z",
-      "updated": "2025-01-17T16:32:47.574Z"
+      "updated": "2025-01-17T18:24:31.37Z"
     },
     "relationships": {
       "notifications": {

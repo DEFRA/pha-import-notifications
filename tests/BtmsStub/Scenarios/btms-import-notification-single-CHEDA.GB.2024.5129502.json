@@ -638,7 +638,34 @@
     },
     "relationships": {
       "movements": {
-        "data": []
+        "links": {
+          "self": "/api/import-notifications/CHEDA.GB.2024.5129502",
+          "related": "/api/import-notifications/CHEDA.GB.2024.5129502/movements"
+        },
+        "data": [
+          {
+            "type": "movements",
+            "id": "24GBC1IQDD278IZAR8",
+            "meta": {
+              "matched": true,
+              "sourceItem": 1,
+              "destinationItem": 1,
+              "matchingLevel": 1,
+              "self": "/api/movements/24GBC1IQDD278IZAR8/import-notifications"
+            }
+          },
+          {
+            "type": "movements",
+            "id": "24GBCND8RONCFGAAR3",
+            "meta": {
+              "matched": true,
+              "sourceItem": 1,
+              "destinationItem": 1,
+              "matchingLevel": 1,
+              "self": "/api/movements/24GBCND8RONCFGAAR3/import-notifications"
+            }
+          }
+        ]
       }
     },
     "links": {

@@ -342,17 +342,254 @@
         }
       ],
       "alvsDecisionStatus": {
-        "decisions": [],
+        "decisions": [
+          {
+            "decision": {
+              "serviceHeader": {
+                "sourceSystem": "ALVS",
+                "destinationSystem": "CDS",
+                "correlationId": "000",
+                "serviceCalled": "2024-12-04T13:03:57.82Z"
+              },
+              "header": {
+                "entryReference": "24GBCND8RONCFGAAR3",
+                "entryVersionNumber": 2,
+                "previousVersionNumber": null,
+                "declarationUcr": null,
+                "declarationPartNumber": null,
+                "declarationType": null,
+                "arrivesAt": null,
+                "submitterTurn": null,
+                "declarantId": null,
+                "declarantName": null,
+                "dispatchCountryCode": null,
+                "goodsLocationCode": null,
+                "masterUcr": null,
+                "decisionNumber": 3
+              },
+              "items": [
+                {
+                  "itemNumber": 4,
+                  "customsProcedureCode": null,
+                  "taricCommodityCode": null,
+                  "goodsDescription": null,
+                  "consigneeId": null,
+                  "consigneeName": null,
+                  "itemNetMass": null,
+                  "itemSupplementaryUnits": null,
+                  "itemThirdQuantity": null,
+                  "itemOriginCountryCode": null,
+                  "documents": [],
+                  "checks": [
+                    {
+                      "checkCode": "H222",
+                      "departmentCode": null,
+                      "decisionCode": "C03",
+                      "decisionsValidUntil": null,
+                      "decisionReasons": []
+                    }
+                  ]
+                },
+                {
+                  "itemNumber": 5,
+                  "customsProcedureCode": null,
+                  "taricCommodityCode": null,
+                  "goodsDescription": null,
+                  "consigneeId": null,
+                  "consigneeName": null,
+                  "itemNetMass": null,
+                  "itemSupplementaryUnits": null,
+                  "itemThirdQuantity": null,
+                  "itemOriginCountryCode": null,
+                  "documents": [],
+                  "checks": [
+                    {
+                      "checkCode": "H222",
+                      "departmentCode": null,
+                      "decisionCode": "C03",
+                      "decisionsValidUntil": null,
+                      "decisionReasons": []
+                    }
+                  ]
+                },
+                {
+                  "itemNumber": 6,
+                  "customsProcedureCode": null,
+                  "taricCommodityCode": null,
+                  "goodsDescription": null,
+                  "consigneeId": null,
+                  "consigneeName": null,
+                  "itemNetMass": null,
+                  "itemSupplementaryUnits": null,
+                  "itemThirdQuantity": null,
+                  "itemOriginCountryCode": null,
+                  "documents": [],
+                  "checks": [
+                    {
+                      "checkCode": "H222",
+                      "departmentCode": null,
+                      "decisionCode": "C03",
+                      "decisionsValidUntil": null,
+                      "decisionReasons": []
+                    }
+                  ]
+                },
+                {
+                  "itemNumber": 7,
+                  "customsProcedureCode": null,
+                  "taricCommodityCode": null,
+                  "goodsDescription": null,
+                  "consigneeId": null,
+                  "consigneeName": null,
+                  "itemNetMass": null,
+                  "itemSupplementaryUnits": null,
+                  "itemThirdQuantity": null,
+                  "itemOriginCountryCode": null,
+                  "documents": [],
+                  "checks": [
+                    {
+                      "checkCode": "H222",
+                      "departmentCode": null,
+                      "decisionCode": "C03",
+                      "decisionsValidUntil": null,
+                      "decisionReasons": []
+                    }
+                  ]
+                },
+                {
+                  "itemNumber": 8,
+                  "customsProcedureCode": null,
+                  "taricCommodityCode": null,
+                  "goodsDescription": null,
+                  "consigneeId": null,
+                  "consigneeName": null,
+                  "itemNetMass": null,
+                  "itemSupplementaryUnits": null,
+                  "itemThirdQuantity": null,
+                  "itemOriginCountryCode": null,
+                  "documents": [],
+                  "checks": [
+                    {
+                      "checkCode": "H222",
+                      "departmentCode": null,
+                      "decisionCode": "C03",
+                      "decisionsValidUntil": null,
+                      "decisionReasons": []
+                    }
+                  ]
+                }
+              ]
+            },
+            "context": {
+              "alvsCheckStatus": {
+                "allMatch": true,
+                "anyMatch": true,
+                "allNoMatch": false,
+                "anyNoMatch": false,
+                "allHold": false,
+                "anyHold": false,
+                "allRefuse": false,
+                "anyRefuse": false,
+                "allRelease": true,
+                "anyRelease": true
+              },
+              "btmsCheckStatus": {
+                "allMatch": true,
+                "anyMatch": false,
+                "allNoMatch": true,
+                "anyNoMatch": true,
+                "allHold": false,
+                "anyHold": false,
+                "allRefuse": false,
+                "anyRefuse": false,
+                "allRelease": false,
+                "anyRelease": false
+              },
+              "alvsDecisionNumber": 3,
+              "entryVersionNumber": 2,
+              "importNotifications": null,
+              "decisionComparison": {
+                "paired": true,
+                "decisionStatus": "NoImportNotificationsLinked",
+                "decisionMatched": false,
+                "btmsDecisionNumber": 1,
+                "checks": [
+                  {
+                    "itemNumber": 4,
+                    "checkCode": "H222",
+                    "alvsDecisionCode": "C03",
+                    "btmsDecisionCode": "X00"
+                  },
+                  {
+                    "itemNumber": 5,
+                    "checkCode": "H222",
+                    "alvsDecisionCode": "C03",
+                    "btmsDecisionCode": "X00"
+                  },
+                  {
+                    "itemNumber": 6,
+                    "checkCode": "H222",
+                    "alvsDecisionCode": "C03",
+                    "btmsDecisionCode": "X00"
+                  },
+                  {
+                    "itemNumber": 7,
+                    "checkCode": "H222",
+                    "alvsDecisionCode": "C03",
+                    "btmsDecisionCode": "X00"
+                  },
+                  {
+                    "itemNumber": 8,
+                    "checkCode": "H222",
+                    "alvsDecisionCode": "C03",
+                    "btmsDecisionCode": "X00"
+                  }
+                ]
+              }
+            }
+          }
+        ],
         "context": {
-          "alvsDecisionNumber": null,
-          "entryVersionNumber": 0,
+          "alvsDecisionNumber": 3,
+          "entryVersionNumber": 2,
           "importNotifications": null,
           "decisionComparison": {
-            "paired": false,
-            "decisionStatus": "NoAlvsDecisions",
+            "paired": true,
+            "decisionStatus": "NoImportNotificationsLinked",
             "decisionMatched": false,
-            "btmsDecisionNumber": null,
-            "checks": []
+            "btmsDecisionNumber": 1,
+            "checks": [
+              {
+                "itemNumber": 4,
+                "checkCode": "H222",
+                "alvsDecisionCode": "C03",
+                "btmsDecisionCode": "X00"
+              },
+              {
+                "itemNumber": 5,
+                "checkCode": "H222",
+                "alvsDecisionCode": "C03",
+                "btmsDecisionCode": "X00"
+              },
+              {
+                "itemNumber": 6,
+                "checkCode": "H222",
+                "alvsDecisionCode": "C03",
+                "btmsDecisionCode": "X00"
+              },
+              {
+                "itemNumber": 7,
+                "checkCode": "H222",
+                "alvsDecisionCode": "C03",
+                "btmsDecisionCode": "X00"
+              },
+              {
+                "itemNumber": 8,
+                "checkCode": "H222",
+                "alvsDecisionCode": "C03",
+                "btmsDecisionCode": "X00"
+              }
+            ]
           }
         }
       },
@@ -558,11 +795,87 @@
             "importNotifications": [],
             "decisionComparison": null
           }
+        },
+        {
+          "id": "PRODREDACTED-202412/DECISIONS/2024/12/04/24GBCND8RONCFGAAR3-5f05edb7-0c22-4d5b-b74c-dad29d82b136.json",
+          "version": 3,
+          "createdBy": "Alvs",
+          "createdSource": "2024-12-04T13:03:57.82Z",
+          "createdLocal": "2025-01-17T18:24:31.865Z",
+          "status": "Decision",
+          "diff": [],
+          "context": {
+            "alvsCheckStatus": {
+              "allMatch": true,
+              "anyMatch": true,
+              "allNoMatch": false,
+              "anyNoMatch": false,
+              "allHold": false,
+              "anyHold": false,
+              "allRefuse": false,
+              "anyRefuse": false,
+              "allRelease": true,
+              "anyRelease": true
+            },
+            "btmsCheckStatus": {
+              "allMatch": true,
+              "anyMatch": false,
+              "allNoMatch": true,
+              "anyNoMatch": true,
+              "allHold": false,
+              "anyHold": false,
+              "allRefuse": false,
+              "anyRefuse": false,
+              "allRelease": false,
+              "anyRelease": false
+            },
+            "alvsDecisionNumber": 3,
+            "entryVersionNumber": 2,
+            "importNotifications": null,
+            "decisionComparison": {
+              "paired": true,
+              "decisionStatus": "NoImportNotificationsLinked",
+              "decisionMatched": false,
+              "btmsDecisionNumber": 1,
+              "checks": [
+                {
+                  "itemNumber": 4,
+                  "checkCode": "H222",
+                  "alvsDecisionCode": "C03",
+                  "btmsDecisionCode": "X00"
+                },
+                {
+                  "itemNumber": 5,
+                  "checkCode": "H222",
+                  "alvsDecisionCode": "C03",
+                  "btmsDecisionCode": "X00"
+                },
+                {
+                  "itemNumber": 6,
+                  "checkCode": "H222",
+                  "alvsDecisionCode": "C03",
+                  "btmsDecisionCode": "X00"
+                },
+                {
+                  "itemNumber": 7,
+                  "checkCode": "H222",
+                  "alvsDecisionCode": "C03",
+                  "btmsDecisionCode": "X00"
+                },
+                {
+                  "itemNumber": 8,
+                  "checkCode": "H222",
+                  "alvsDecisionCode": "C03",
+                  "btmsDecisionCode": "X00"
+                }
+              ]
+            }
+          }
         }
       ],
       "localId": null,
       "created": "2025-01-17T16:32:47.049Z",
-      "updated": "2025-01-17T16:32:48.784Z"
+      "updated": "2025-01-17T18:24:31.865Z"
     },
     "relationships": {
       "notifications": {

@@ -1,4 +1,258 @@
 ﻿{
+  ClearanceRequests: [
+    {
+      Header: {
+        EntryReference: 24GBC1IQDD278IZAR8,
+        EntryVersionNumber: 3,
+        PreviousVersionNumber: 2,
+        DispatchCountryCode: IT,
+        GoodsLocationCode: EUTEUTEUTGVM
+      },
+      Items: [
+        {
+          ItemNumber: 1,
+          CustomsProcedureCode: 4000000,
+          TaricCommodityCode: 1601009110,
+          GoodsDescription: FLAVOURED SAUSAGES,
+          ConsigneeId: GB539035934000,
+          ConsigneeName: GB539035934000,
+          ItemNetMass: 184.0,
+          ItemSupplementaryUnits: 0.0,
+          ItemOriginCountryCode: IT,
+          Documents: [
+            {
+              DocumentCode: N853,
+              DocumentReference: GBCHD2024.2024.5070767
+            }
+          ],
+          Checks: [
+            {
+              CheckCode: H222,
+              DepartmentCode: PHA
+            }
+          ]
+        }
+      ]
+    },
+    {
+      Header: {
+        EntryReference: 24GBCND8RONCFGAAR3,
+        EntryVersionNumber: 2,
+        PreviousVersionNumber: 1,
+        DispatchCountryCode: IT,
+        GoodsLocationCode: DEUDEUDEUGVM
+      },
+      Items: [
+        {
+          ItemNumber: 4,
+          CustomsProcedureCode: 4000000,
+          TaricCommodityCode: 1601009105,
+          GoodsDescription: CURED HAM - FINOCCHIONA,
+          ConsigneeId: GB302095934000,
+          ConsigneeName: GB302095934000,
+          ItemNetMass: 206.37,
+          ItemSupplementaryUnits: 0.0,
+          ItemOriginCountryCode: IT,
+          Documents: [
+            {
+              DocumentCode: N853,
+              DocumentReference: GBCHD2024.5146876
+            }
+          ],
+          Checks: [
+            {
+              CheckCode: H222,
+              DepartmentCode: PHA
+            }
+          ]
+        },
+        {
+          ItemNumber: 5,
+          CustomsProcedureCode: 4000000,
+          TaricCommodityCode: 1601009105,
+          GoodsDescription: CURED HAM - FINOCCHIONA,
+          ConsigneeId: GB302095934000,
+          ConsigneeName: GB302095934000,
+          ItemNetMass: 26.91,
+          ItemSupplementaryUnits: 0.0,
+          ItemOriginCountryCode: IT,
+          Documents: [
+            {
+              DocumentCode: N853,
+              DocumentReference: GBCHD2024.5144604
+            }
+          ],
+          Checks: [
+            {
+              CheckCode: H222,
+              DepartmentCode: PHA
+            }
+          ]
+        },
+        {
+          ItemNumber: 6,
+          CustomsProcedureCode: 4000000,
+          TaricCommodityCode: 0210121100,
+          GoodsDescription: CURED HAM - PANCETTA TESA,
+          ConsigneeId: GB302095934000,
+          ConsigneeName: GB302095934000,
+          ItemNetMass: 206.85,
+          ItemSupplementaryUnits: 0.0,
+          ItemOriginCountryCode: IT,
+          Documents: [
+            {
+              DocumentCode: N853,
+              DocumentReference: GBCHD2024.5144604
+            }
+          ],
+          Checks: [
+            {
+              CheckCode: H222,
+              DepartmentCode: PHA
+            }
+          ]
+        },
+        {
+          ItemNumber: 7,
+          CustomsProcedureCode: 4000000,
+          TaricCommodityCode: 1601009105,
+          GoodsDescription: CURED HAM - PARMA HAM 24 MONTHS,
+          ConsigneeId: GB302095934000,
+          ConsigneeName: GB302095934000,
+          ItemNetMass: 21.34,
+          ItemSupplementaryUnits: 0.0,
+          ItemOriginCountryCode: IT,
+          Documents: [
+            {
+              DocumentCode: N853,
+              DocumentReference: GBCHD2024.5146490
+            }
+          ],
+          Checks: [
+            {
+              CheckCode: H222,
+              DepartmentCode: PHA
+            }
+          ]
+        },
+        {
+          ItemNumber: 8,
+          CustomsProcedureCode: 4000000,
+          TaricCommodityCode: 1601009105,
+          GoodsDescription: CURED HAM - SALAME TOSCANO,
+          ConsigneeId: GB302095934000,
+          ConsigneeName: GB302095934000,
+          ItemNetMass: 81.88,
+          ItemSupplementaryUnits: 0.0,
+          ItemOriginCountryCode: IT,
+          Documents: [
+            {
+              DocumentCode: N853,
+              DocumentReference: GBCHD2024.5144604
+            }
+          ],
+          Checks: [
+            {
+              CheckCode: H222,
+              DepartmentCode: PHA
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  ClearanceDecisions: [
+    {
+      Header: {
+        EntryReference: 24GBC1IQDD278IZAR8,
+        EntryVersionNumber: 3,
+        DecisionNumber: 1
+      },
+      Items: [
+        {
+          ItemNumber: 1,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.2024.5070767). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      Header: {
+        EntryReference: 24GBCND8RONCFGAAR3,
+        EntryVersionNumber: 2,
+        DecisionNumber: 1
+      },
+      Items: [
+        {
+          ItemNumber: 4,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5146876). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        },
+        {
+          ItemNumber: 5,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        },
+        {
+          ItemNumber: 6,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        },
+        {
+          ItemNumber: 7,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5146490). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        },
+        {
+          ItemNumber: 8,
+          Checks: [
+            {
+              CheckCode: H222,
+              DecisionCode: X00,
+              DecisionReasons: [
+                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   CreatedSource: 2024-12-04 09:00:39.511 Utc,
   Updated: 2025-01-17 16:38:33.739 Utc,
   CommoditiesSummary: {
