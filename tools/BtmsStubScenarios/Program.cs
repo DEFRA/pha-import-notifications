@@ -108,7 +108,7 @@ foreach (var ched in cheds)
     await File.WriteAllTextAsync($"{outputPath}btms-import-notification-single-{ched}.json", json);
 }
 
-var movements = new[] { "24GBC1IQDD278IZAR8", "24GBCND8RONCFGAAR3" };
+var movements = new[] { "24GBE0XBAS7Z0J5AR0", "24GBC1IQDD278IZAR8", "24GBCND8RONCFGAAR3" };
 
 foreach (var movement in movements)
 {

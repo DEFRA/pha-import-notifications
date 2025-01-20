@@ -1,0 +1,243 @@
+﻿{
+  CreatedSource: 2024-12-04 06:00:04.77 Utc,
+  Created: 2025-01-17 17:01:03.247 Utc,
+  Updated: 2025-01-17 17:01:03.247 Utc,
+  CommoditiesSummary: {
+    ConsignedCountryInChargeGroup: true,
+    TotalGrossWeight: 3667.0,
+    TotalNetWeight: 3530.0,
+    NumberOfPackages: 80,
+    IncludeNonAblactedAnimals: false,
+    CountryOfOrigin: NL,
+    CountryOfOriginIsPodCountry: true,
+    IsLowRiskArticle72Country: false,
+    ConsignedCountry: NL
+  },
+  Commodities: [
+    {
+      CommodityDescription: Seeds of herbaceous plants cultivated principally for their flowers,
+      CommodityId: 12093000,
+      ComplementId: 5,
+      ComplementName: plants (general),
+      EppoCode: XXXXX,
+      SpeciesId: 1436533,
+      SpeciesName: plants (general),
+      SpeciesNomination: plants (general),
+      AdditionalData: {
+        ValueKind: Object
+      },
+      RiskAssesment: {
+        HmiDecision: Notrequired,
+        PhsiDecision: Required,
+        PhsiClassification: Reduced,
+        Phsi: {
+          DocumentCheck: true,
+          IdentityCheck: true,
+          PhysicalCheck: true
+        },
+        UniqueId: 40805d5b-27de-40ea-9e4f-b80d96ab874b,
+        EppoCode: XXXXX,
+        Propagation: Seed,
+        PhsiRuleType: Commodity
+      }
+    }
+  ],
+  IpaffsId: 2726460,
+  Etag: 00000000044F9E93,
+  ReferenceNumber: CHEDPP.GB.2024.3726460,
+  Version: 1,
+  UpdatedSource: 2024-12-04 06:00:04.77 Utc,
+  LastUpdatedBy: {
+    DisplayName: f62de3c129c21b51c1c2a43b804d5a86defc7fc48fc76e17d7b3d06395d3ba4a,
+    UserId: 3dd58971-2d3f-e911-a95d-000d3a454f67
+  },
+  ImportNotificationType: Chedpp,
+  Status: Validated,
+  RiskAssessment: {
+    CommodityResults: [
+      {
+        HmiDecision: Notrequired,
+        PhsiDecision: Required,
+        PhsiClassification: Reduced,
+        Phsi: {
+          DocumentCheck: true,
+          IdentityCheck: true,
+          PhysicalCheck: true
+        },
+        UniqueId: 40805d5b-27de-40ea-9e4f-b80d96ab874b,
+        EppoCode: XXXXX,
+        Propagation: Seed,
+        PhsiRuleType: Commodity
+      }
+    ],
+    AssessedOn: 2024-11-29 06:00:09.34 Utc
+  },
+  PartOne: {
+    PersonResponsible: {
+      Name: d2b2d18b11bca68298454b42e63e6db79af0aaa3f7e1c58014b5dc6d5a39d89a,
+      CompanyId: 422d9201-5780-ec11-8d21-00224881bb2d,
+      ContactId: 2e2d9201-5780-ec11-8d21-00224881bb2d,
+      CompanyName: 9b08366bafe78d4076c6caf0d83bf2868c90be2fa162ab28d32e8fd568147b7f,
+      Addresses: [
+        a428acdf1c1b2a9714778b0c7fb2c9ca3312caf77ee42e2602cf5db5a089a1b1,
+        d8ab91cfd6d4d4d046c89598e79fd62bdeefb5104ba2867dd51c2fb558caf3a6,
+        8c2070c7d94a895d991465ff6a14eba7eb93b85423f937c7ff1957a7d26362e7,
+        cb04926889c1b0d6a4aef92e3618812857a564b483721d3f802d8b8d63331c8c,
+        85bee5313027e26874b0a80974c64b6c46438d6ba8ca93684e2a6d09a3379efe
+      ],
+      Country: GB,
+      TracesId: 1001,
+      Phone: 42840ccbbb124ce9e39eece47eb9e1451dabeffd695b72d95416a1f9d34bc7a8,
+      Email: c4fa748b1dd7c1bdae031c3040a6ae41e2847215b64009b0b4a070db74d90ffb
+    },
+    Consignor: {
+      Id: 87b4fb30-a791-4fbf-8074-2eecf332189f,
+      Type: Exporter,
+      Status: Nonapproved,
+      CompanyName: c16a82ca868356e5fb42032304d79f9f5010f8795f9db6b08383c498d4302ad6,
+      Address: {
+        City: ca7be633b9d7d2c048a18eced597aaebc1a2b1867a70e88d69e03a61a1d2e1d7,
+        AddressLine1: 7513dd20ee90e04c6f629858d832a8399260b1f4b2c403515e89f8cfded43b06,
+        PostalZipCode: d07858dc98ee2802d98e8c29b986d43b676b9ef1c2d2a5cbb5ca5a346ce34dc9,
+        CountryIsoCode: 4334ffcf78137d9c9d5866146d7f29a62735f232fc7239bd43332145e376bda3,
+        Email: b5ddc5fc3df9ee42f342d60252ae692508a95ac00ff8f76055adcb3ef50a1ea0,
+        Telephone: 40f30880f953d3bc1f33a0ca660e1e53bd8240289acd538353de6cd357f32950
+      },
+      TracesId: 10293655
+    },
+    Consignee: {
+      Id: 422d9201-5780-ec11-8d21-00224881bb2d,
+      Type: Consignee,
+      CompanyName: 9b08366bafe78d4076c6caf0d83bf2868c90be2fa162ab28d32e8fd568147b7f,
+      Address: {
+        City: 8c2070c7d94a895d991465ff6a14eba7eb93b85423f937c7ff1957a7d26362e7,
+        AddressLine1: a428acdf1c1b2a9714778b0c7fb2c9ca3312caf77ee42e2602cf5db5a089a1b1,
+        AddressLine2: d8ab91cfd6d4d4d046c89598e79fd62bdeefb5104ba2867dd51c2fb558caf3a6,
+        PostalZipCode: cb04926889c1b0d6a4aef92e3618812857a564b483721d3f802d8b8d63331c8c,
+        CountryIsoCode: b4043b0b8297e379bc559ab33b6ae9c7a9b4ef6519d3baee53270f0c0dd3d960,
+        Email: c4fa748b1dd7c1bdae031c3040a6ae41e2847215b64009b0b4a070db74d90ffb,
+        Telephone: 42840ccbbb124ce9e39eece47eb9e1451dabeffd695b72d95416a1f9d34bc7a8
+      },
+      TracesId: 10131482
+    },
+    Importer: {
+      Id: 422d9201-5780-ec11-8d21-00224881bb2d,
+      Type: Importer,
+      CompanyName: 9b08366bafe78d4076c6caf0d83bf2868c90be2fa162ab28d32e8fd568147b7f,
+      Address: {
+        City: 8c2070c7d94a895d991465ff6a14eba7eb93b85423f937c7ff1957a7d26362e7,
+        AddressLine1: a428acdf1c1b2a9714778b0c7fb2c9ca3312caf77ee42e2602cf5db5a089a1b1,
+        AddressLine2: d8ab91cfd6d4d4d046c89598e79fd62bdeefb5104ba2867dd51c2fb558caf3a6,
+        PostalZipCode: cb04926889c1b0d6a4aef92e3618812857a564b483721d3f802d8b8d63331c8c,
+        CountryIsoCode: b4043b0b8297e379bc559ab33b6ae9c7a9b4ef6519d3baee53270f0c0dd3d960,
+        Email: c4fa748b1dd7c1bdae031c3040a6ae41e2847215b64009b0b4a070db74d90ffb,
+        Telephone: 42840ccbbb124ce9e39eece47eb9e1451dabeffd695b72d95416a1f9d34bc7a8
+      },
+      TracesId: 10131482
+    },
+    PlaceOfDestination: {
+      Id: b54d2093-930f-43c2-a203-91b716980aa8,
+      Type: Destination,
+      Status: Nonapproved,
+      CompanyName: 926dfd367726a1434a7a5dd16b49465dd1d5405bf216981ca522f437074f87a8,
+      Address: {
+        City: 8c2070c7d94a895d991465ff6a14eba7eb93b85423f937c7ff1957a7d26362e7,
+        AddressLine1: d31a83a6935973a07ea7be2815eaa024c0bad038770e300da5e0ba6e01198a3b,
+        AddressLine2: a1f3c0fe7d301be6400b0558d8eabd64d10bd0ca0b6d956f60619dce70581d3b,
+        PostalZipCode: cb04926889c1b0d6a4aef92e3618812857a564b483721d3f802d8b8d63331c8c,
+        CountryIsoCode: b4043b0b8297e379bc559ab33b6ae9c7a9b4ef6519d3baee53270f0c0dd3d960,
+        Email: c4fa748b1dd7c1bdae031c3040a6ae41e2847215b64009b0b4a070db74d90ffb,
+        Telephone: 42c61a83dc32bb7c11c6c0abd89d333c35c88342f4bc1d57c95813b94bfb05da
+      },
+      TracesId: 10131489
+    },
+    Pod: {
+      Id: 82e9c08a-d81b-4bfd-bd46-54a7de83e080,
+      Type: Pod,
+      Status: Approved,
+      CompanyName: 9b08366bafe78d4076c6caf0d83bf2868c90be2fa162ab28d32e8fd568147b7f,
+      Address: {
+        AddressLine1: 0a29ec828e8e0e9caf9174d6a1664503a80be49c181fdba34949ac63cb2f5e06,
+        AddressLine3: 652bdd25fc30e17bafa7fb0ffe81502e384ab1695421cb96b843a1aaf06f4156,
+        PostalZipCode: cb04926889c1b0d6a4aef92e3618812857a564b483721d3f802d8b8d63331c8c,
+        CountryIsoCode: b4043b0b8297e379bc559ab33b6ae9c7a9b4ef6519d3baee53270f0c0dd3d960
+      },
+      ApprovalNumber: 120173
+    },
+    Purpose: {
+      PurposeGroup: ForImport
+    },
+    PointOfEntry: GBTEEP1,
+    PointOfEntryControlPoint: POD,
+    MeansOfTransport: {},
+    MeansOfTransportFromEntryPoint: {
+      Type: RoadVehicle,
+      Document: EXA,
+      Id: thb
+    },
+    VeterinaryInformation: {
+      AccompanyingDocuments: [
+        {
+          DocumentType: PhytosanitaryCertificate,
+          DocumentReference: 291393080,
+          DocumentIssuedOn: 2023-12-13 Utc,
+          AttachmentId: 37cb8d00-0017-4948-8ec1-a3d41d6c76eb,
+          AttachmentFilename: Invoice 85202.pdf,
+          AttachmentContentType: application/pdf,
+          UploadUserId: 0f144089-9f8c-eb11-b1ac-000d3a4cdb57,
+          UploadOrganisationId: 23144089-9f8c-eb11-b1ac-000d3a4cdb57
+        },
+        {
+          DocumentType: CommercialInvoice,
+          DocumentReference: 236708,
+          DocumentIssuedOn: 2023-12-18 Utc,
+          AttachmentId: 16fe0e14-d60a-4a51-85be-e3e7a71a7eea,
+          AttachmentFilename: Invoice 85202(1).pdf,
+          AttachmentContentType: application/pdf,
+          UploadUserId: 0f144089-9f8c-eb11-b1ac-000d3a4cdb57,
+          UploadOrganisationId: 23144089-9f8c-eb11-b1ac-000d3a4cdb57
+        }
+      ]
+    },
+    SubmittedOn: 2024-01-02 11:38:57.009 Utc,
+    SubmittedBy: {
+      DisplayName: 0ad767fd86f8814be1b63fb81fccbe2abbcf2d814dfd6d87d0f98941538eaa41,
+      UserId: 0f144089-9f8c-eb11-b1ac-000d3a4cdb57
+    },
+    ConsignmentValidations: [
+      {
+        Field: uk/gov/defra/tracesx/notificationschema/representation/partone/pointofentrycontrolpoint
+      },
+      {
+        Field: uk/gov/defra/tracesx/notificationschema/representation/partone/providectcmrn
+      },
+      {
+        Field: uk/gov/defra/tracesx/notificationschema/representation/partone/isgvmsroute
+      }
+    ],
+    ContactDetails: {
+      Name: 08d700825007fd442d6e630170e8de5855e260b1997f2fd2dc923775081e379c,
+      Telephone: aebdb25ad449f413fd13c109f10102f536ee4f9fc3d17c34d438c9266b94b1c6,
+      Email: ab6382b836db73c2f689d0a837bfadbcddc77b69c771d89cc6cfe310ce0d6bc8,
+      Agent: 58b5b9dcd302fb1eeee68aabef62c0d363286c439a5e49686bdabf8b164bf2a2
+    },
+    ArrivesAt: 2024-12-04 06:00 Utc
+  },
+  PartTwo: {
+    ControlAuthority: {
+      OfficialVeterinarian: {
+        FirstName: ef6d967f4a548d4707e47e97d01b9936ad65f69087e39572df34cffca25b0048,
+        LastName: 3a87a57101c567565a5db61b9572e07981dc2821297f3c015224e4faea392220,
+        Email: 6e39bdd1d6e4eefa995ea51a18af047e41fabde4c896b902447b1e673317ec7c,
+        Phone: 2f44eb032d5afa7a866e3fee6f7b299cf6003888c2855b4b8b399838a3c548b0,
+        Signed: 2024-12-04T10:00:02.938653803
+      }
+    },
+    PhsiAutoCleared: true,
+    HmiAutoCleared: true,
+    InspectionRequired: Required
+  },
+  PartThree: {},
+  AgencyOrganisationId: 23144089-9f8c-eb11-b1ac-000d3a4cdb57,
+  ChedTypeVersion: 0
+}

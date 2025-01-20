@@ -122,16 +122,20 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Result was null");
     }
 
-    [Fact]
-    public async Task GetImportNotification_WhenOk_ShouldSucceed()
+    [Theory]
+    [InlineData(ChedReferenceNumbers.ChedA)]
+    // ChedReferenceNumbers.ChedD has a movement. See GetImportNotification_WithMovements_WhenOk_ShouldSucceed
+    [InlineData(ChedReferenceNumbers.ChedP)]
+    [InlineData(ChedReferenceNumbers.ChedPP)]
+    public async Task GetImportNotification_WhenOk_ShouldSucceed(string chedReferenceNumber)
     {
-        WireMock.StubSingleImportNotification();
+        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
 
-        var result = await Subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
+        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
 
         result.Should().NotBeNull();
 
-        await Verify(result).DontScrubGuids().DontScrubDateTimes();
+        await Verify(result).UseParameters(chedReferenceNumber).DontScrubGuids().DontScrubDateTimes();
     }
 
     [Fact]
@@ -144,21 +148,31 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         await act.Should().ThrowAsync<Exception>();
     }
 
-    [Fact]
-    public async Task GetImportNotification_WithMovements_WhenOk_ShouldSucceed()
+    public static TheoryData<string, string[]> ChedReferenceNumbersWithMovements = new()
     {
-        WireMock.StubSingleImportNotification(chedReferenceNumber: ChedReferenceNumbers.ChedAWithMovement);
-        WireMock.StubSingleMovement(mrn: MovementReferenceNumbers.Movement1);
-        WireMock.StubSingleMovement(mrn: MovementReferenceNumbers.Movement2);
-
-        var result = await Subject.GetImportNotification(
+        {
             ChedReferenceNumbers.ChedAWithMovement,
-            CancellationToken.None
-        );
+            [MovementReferenceNumbers.Movement1, MovementReferenceNumbers.Movement2]
+        },
+        { ChedReferenceNumbers.ChedD, [MovementReferenceNumbers.Movement3] },
+    };
+
+    [Theory, MemberData(nameof(ChedReferenceNumbersWithMovements))]
+    public async Task GetImportNotification_WithMovements_WhenOk_ShouldSucceed(
+        string chedReferenceNumber,
+        string[] movementReferenceNumbers
+    )
+    {
+        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
+
+        foreach (var mrn in movementReferenceNumbers)
+            WireMock.StubSingleMovement(mrn: mrn);
+
+        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
 
         result.Should().NotBeNull();
 
-        await Verify(result).DontScrubGuids().DontScrubDateTimes();
+        await Verify(result).UseParameters(chedReferenceNumber).DontScrubGuids().DontScrubDateTimes();
     }
 
     [Fact]
