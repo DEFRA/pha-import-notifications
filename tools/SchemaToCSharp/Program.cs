@@ -12,7 +12,6 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 #pragma warning disable S6608
 #pragma warning disable S125
 
-// Step up out of execution path : {solutionPath}/tools/SchemaToCSharp/bin/Debug/net8.0
 const string solutionPath = "../../../../../";
 const string outputPath = $"{solutionPath}src/Contracts/";
 const string inputPath = $"{solutionPath}tools/SchemaToCSharp/btms-public-openapi-v0.1.json";

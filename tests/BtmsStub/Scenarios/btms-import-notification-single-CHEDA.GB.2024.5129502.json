@@ -6,28 +6,191 @@
     "type": "import-notifications",
     "id": "CHEDA.GB.2024.5129502",
     "attributes": {
-      "createdSource": "2024-12-04T09:01:21.089Z",
-      "created": "2024-12-17T13:54:07.296Z",
-      "updated": "2024-12-17T13:56:21.502Z",
+      "createdSource": "2024-12-04T09:00:39.511Z",
+      "created": "0001-01-01T00:00:00Z",
+      "updated": "2025-01-17T16:38:33.739Z",
       "stringId": "CHEDA.GB.2024.5129502",
       "auditEntries": [
         {
-          "id": "_GB_2024_5129502-a0ff8537-e244-4a95-b420-193a134b3e84.json",
+          "id": "PRODREDACTED-202412/IPAFFS/CHEDA/2024/12/04/CHEDA_GB_2024_5129502-bdfe9450-cbba-4ea3-b6f9-a9379e27b591.json",
           "version": 2,
-          "createdBy": "System",
-          "createdSource": "2024-12-04T09:01:21.089Z",
-          "createdLocal": "2024-12-17T13:54:07.296Z",
+          "createdBy": "Ipaffs",
+          "createdSource": "2024-12-04T09:00:39.511Z",
+          "createdLocal": "2025-01-17T16:38:32.418Z",
           "status": "Created",
-          "diff": []
+          "diff": [],
+          "context": null
         },
         {
           "id": "",
-          "version": 2,
-          "createdBy": "System",
-          "createdSource": "2024-12-04T09:01:21.089Z",
-          "createdLocal": "2024-12-17T13:56:21.499Z",
+          "version": null,
+          "createdBy": "Btms",
+          "createdSource": "2025-01-17T16:38:32.99Z",
+          "createdLocal": "2025-01-17T16:38:32.99Z",
           "status": "Linked",
-          "diff": []
+          "diff": [],
+          "context": null
+        },
+        {
+          "id": "PRODREDACTED-202412/IPAFFS/CHEDA/2024/12/04/CHEDA_GB_2024_5129502-a0ff8537-e244-4a95-b420-193a134b3e84.json",
+          "version": 2,
+          "createdBy": "Ipaffs",
+          "createdSource": "2024-12-04T09:01:21.089Z",
+          "createdLocal": "2025-01-17T16:38:33.739Z",
+          "status": "Updated",
+          "diff": [
+            {
+              "path": "/relationships/Movements/Links",
+              "op": "Replace",
+              "value": null
+            },
+            {
+              "path": "/relationships/Movements/Data",
+              "op": "Replace",
+              "value": "ARRAY"
+            },
+            {
+              "path": "/CommoditiesSummary/CommodityComplements",
+              "op": "Replace",
+              "value": "ARRAY"
+            },
+            {
+              "path": "/CommoditiesSummary/ComplementParameterSets",
+              "op": "Replace",
+              "value": "ARRAY"
+            },
+            {
+              "path": "/Etag",
+              "op": "Replace",
+              "value": "00000000044FD874"
+            },
+            {
+              "path": "/UpdatedSource",
+              "op": "Replace",
+              "value": "2024-12-04T09:01:21.0894983Z"
+            },
+            {
+              "path": "/Status",
+              "op": "Replace",
+              "value": 2
+            },
+            {
+              "path": "/PartOne/VeterinaryInformation/AccompanyingDocuments/0/DocumentIssuedOn",
+              "op": "Replace",
+              "value": "2024-12-02T00:00:00"
+            },
+            {
+              "path": "/PartOne/SubmittedOn",
+              "op": "Replace",
+              "value": "2024-11-12T09:14:23.9971155Z"
+            },
+            {
+              "path": "/PartOne/ArrivesAt",
+              "op": "Replace",
+              "value": "2024-12-04T06:55:00"
+            },
+            {
+              "path": "/PartOne/DepartedOn",
+              "op": "Replace",
+              "value": "2024-12-04T11:00:00"
+            },
+            {
+              "path": "/DecisionBy",
+              "op": "Replace",
+              "value": "COMPLEXTYPE"
+            },
+            {
+              "path": "/DecisionDate",
+              "op": "Replace",
+              "value": "2024-12-04T09:01:21.062747048Z"
+            },
+            {
+              "path": "/PartTwo/Decision/ConsignmentAcceptable",
+              "op": "Replace",
+              "value": true
+            },
+            {
+              "path": "/PartTwo/Decision/IfChanneledOption",
+              "op": "Replace",
+              "value": null
+            },
+            {
+              "path": "/PartTwo/ConsignmentCheck/DocumentCheckResult",
+              "op": "Replace",
+              "value": "Satisfactory"
+            },
+            {
+              "path": "/PartTwo/ConsignmentCheck/IdentityCheckResult",
+              "op": "Replace",
+              "value": "Satisfactory"
+            },
+            {
+              "path": "/PartTwo/ConsignmentCheck/PhysicalCheckResult",
+              "op": "Replace",
+              "value": "Satisfactory"
+            },
+            {
+              "path": "/PartTwo/ConsignmentCheck/WelfareCheck",
+              "op": "Replace",
+              "value": "Satisfactory"
+            },
+            {
+              "path": "/PartTwo/ConsignmentCheck/NumberOfAnimalsChecked",
+              "op": "Replace",
+              "value": 2
+            },
+            {
+              "path": "/PartTwo/ImpactOfTransportOnAnimals/NumberOfDeadAnimals",
+              "op": "Replace",
+              "value": 0
+            },
+            {
+              "path": "/PartTwo/ImpactOfTransportOnAnimals/NumberOfUnfitAnimals",
+              "op": "Replace",
+              "value": 0
+            },
+            {
+              "path": "/PartTwo/ImpactOfTransportOnAnimals/NumberOfBirthOrAbortion",
+              "op": "Replace",
+              "value": 0
+            },
+            {
+              "path": "/PartTwo/LaboratoryTestsRequired",
+              "op": "Replace",
+              "value": false
+            },
+            {
+              "path": "/PartTwo/LaboratoryTests",
+              "op": "Replace",
+              "value": null
+            },
+            {
+              "path": "/PartTwo/ResealedContainersIncluded",
+              "op": "Replace",
+              "value": false
+            },
+            {
+              "path": "/PartTwo/ControlAuthority/OfficialVeterinarian/Signed",
+              "op": "Replace",
+              "value": "2024-12-04T09:01:21.089465601"
+            },
+            {
+              "path": "/PartTwo/BipLocalReferenceNumber",
+              "op": "Replace",
+              "value": "24/49/001"
+            },
+            {
+              "path": "/PartTwo/ConsignmentValidations",
+              "op": "Replace",
+              "value": null
+            },
+            {
+              "path": "/ConsignmentValidations",
+              "op": "Replace",
+              "value": null
+            }
+          ],
+          "context": null
         }
       ],
       "commoditiesSummary": {
@@ -502,10 +665,7 @@
               "self": "/api/movements/24GBCND8RONCFGAAR3/import-notifications"
             }
           }
-        ],
-        "meta": {
-          "matched": true
-        }
+        ]
       }
     },
     "links": {

@@ -1,0 +1,6 @@
+# Global editorconfig for local overrides to aid development
+
+[*.cs]
+# To see further detail, append number below to https://rules.sonarsource.com/csharp/RSPEC-
+dotnet_diagnostic.S125.severity = none
+dotnet_diagnostic.S1075.severity = none

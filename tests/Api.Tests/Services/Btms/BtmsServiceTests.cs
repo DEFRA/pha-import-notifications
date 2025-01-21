@@ -1,3 +1,4 @@
+using Argon;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.JsonApi;
@@ -12,9 +13,21 @@ using ChedReferenceNumbers = Defra.PhaImportNotifications.Testing.ChedReferenceN
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
 
-public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
-    : WireMockTestBase<WireMockContextQueryParameterNoComma>(context)
+public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
 {
+    private readonly VerifySettings _settings;
+
+    public BtmsServiceTests(WireMockContextQueryParameterNoComma context)
+        : base(context)
+    {
+        Subject = new BtmsService(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance), Options);
+
+        _settings = new VerifySettings();
+        _settings.DontScrubGuids();
+        _settings.DontScrubDateTimes();
+        _settings.AddExtraSettings(settings => settings.DefaultValueHandling = DefaultValueHandling.Include);
+    }
+
     private static IOptions<BtmsOptions> Options { get; } =
         new OptionsWrapper<BtmsOptions>(
             new BtmsOptions
@@ -25,8 +38,7 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
                 PageSize = 100,
             }
         );
-    private BtmsService Subject { get; } =
-        new(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance), Options);
+    private BtmsService Subject { get; }
 
     private UpdatedImportNotificationRequest ValidRequest { get; } =
         new()
@@ -65,7 +77,7 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         // If this fails, check the expected filter or fields as it may have changed
         result.Should().HaveCount(10);
 
-        await Verify(result).DontScrubGuids().DontScrubDateTimes();
+        await Verify(result, _settings);
     }
 
     [Fact]
@@ -122,16 +134,20 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Result was null");
     }
 
-    [Fact]
-    public async Task GetImportNotification_WhenOk_ShouldSucceed()
+    [Theory]
+    [InlineData(ChedReferenceNumbers.ChedA)]
+    // ChedReferenceNumbers.ChedD has a movement. See GetImportNotification_WithMovements_WhenOk_ShouldSucceed
+    [InlineData(ChedReferenceNumbers.ChedP)]
+    [InlineData(ChedReferenceNumbers.ChedPP)]
+    public async Task GetImportNotification_WhenOk_ShouldSucceed(string chedReferenceNumber)
     {
-        WireMock.StubSingleImportNotification();
+        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
 
-        var result = await Subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
+        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
 
         result.Should().NotBeNull();
 
-        await Verify(result).DontScrubGuids().DontScrubDateTimes();
+        await Verify(result, _settings).UseParameters(chedReferenceNumber);
     }
 
     [Fact]
@@ -144,21 +160,31 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         await act.Should().ThrowAsync<Exception>();
     }
 
-    [Fact]
-    public async Task GetImportNotification_WithMovements_WhenOk_ShouldSucceed()
+    public static TheoryData<string, string[]> ChedReferenceNumbersWithMovements = new()
     {
-        WireMock.StubSingleImportNotification(chedReferenceNumber: ChedReferenceNumbers.ChedAWithMovement);
-        WireMock.StubSingleMovement(mrn: MovementReferenceNumbers.Movement1);
-        WireMock.StubSingleMovement(mrn: MovementReferenceNumbers.Movement2);
-
-        var result = await Subject.GetImportNotification(
+        {
             ChedReferenceNumbers.ChedAWithMovement,
-            CancellationToken.None
-        );
+            [MovementReferenceNumbers.Movement1, MovementReferenceNumbers.Movement2]
+        },
+        { ChedReferenceNumbers.ChedD, [MovementReferenceNumbers.Movement3] },
+    };
+
+    [Theory, MemberData(nameof(ChedReferenceNumbersWithMovements))]
+    public async Task GetImportNotification_WithMovements_WhenOk_ShouldSucceed(
+        string chedReferenceNumber,
+        string[] movementReferenceNumbers
+    )
+    {
+        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
+
+        foreach (var mrn in movementReferenceNumbers)
+            WireMock.StubSingleMovement(mrn: mrn);
+
+        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
 
         result.Should().NotBeNull();
 
-        await Verify(result).DontScrubGuids().DontScrubDateTimes();
+        await Verify(result, _settings).UseParameters(chedReferenceNumber);
     }
 
     [Fact]

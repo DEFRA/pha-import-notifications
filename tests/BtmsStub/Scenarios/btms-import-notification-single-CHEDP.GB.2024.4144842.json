@@ -6,114 +6,20 @@
     "type": "import-notifications",
     "id": "CHEDP.GB.2024.4144842",
     "attributes": {
-      "createdSource": "2024-12-04T10:34:24.758Z",
-      "created": "0001-01-01T00:00:00Z",
-      "updated": "2024-12-17T13:59:12.007Z",
+      "createdSource": "2024-05-02T12:19:47.06Z",
+      "created": "2025-01-17T16:45:41.165Z",
+      "updated": "2025-01-17T16:45:41.165Z",
       "stringId": "CHEDP.GB.2024.4144842",
       "auditEntries": [
         {
-          "id": "_GB_2024_4144842-24b6b0f6-1372-4099-901b-dbf62b77afcc.json",
-          "version": 5,
-          "createdBy": "System",
-          "createdSource": "2024-12-04T10:34:24.758Z",
-          "createdLocal": "2024-12-17T13:59:11.901Z",
+          "id": "PRODREDACTED-202412/IPAFFS/CHEDP/2024/12/02/CHEDP_GB_2024_4144842-81cf11f1-164d-4245-ab7d-fa0141286461.json",
+          "version": 4,
+          "createdBy": "Ipaffs",
+          "createdSource": "2024-05-02T12:19:47.06Z",
+          "createdLocal": "2025-01-17T16:45:41.165Z",
           "status": "Created",
-          "diff": []
-        },
-        {
-          "id": "_GB_2024_4144842-b1a4bc8e-047a-4cc0-b84a-e7e1ca768066.json",
-          "version": 5,
-          "createdBy": "System",
-          "createdSource": "2024-12-04T10:34:32.203Z",
-          "createdLocal": "2024-12-17T13:59:12.007Z",
-          "status": "Updated",
-          "diff": [
-            {
-              "path": "/CommoditiesSummary/CommodityComplements",
-              "op": "Replace",
-              "value": "ARRAY"
-            },
-            {
-              "path": "/CommoditiesSummary/ComplementParameterSets",
-              "op": "Replace",
-              "value": "ARRAY"
-            },
-            {
-              "path": "/Etag",
-              "op": "Replace",
-              "value": "0000000004502D5A"
-            },
-            {
-              "path": "/UpdatedSource",
-              "op": "Replace",
-              "value": "2024-12-04T10:34:32.2037959Z"
-            },
-            {
-              "path": "/Status",
-              "op": "Replace",
-              "value": 8
-            },
-            {
-              "path": "/RiskAssessment/AssessedOn",
-              "op": "Replace",
-              "value": "2024-04-30T15:51:49.0977467"
-            },
-            {
-              "path": "/JourneyRiskCategorisation/RiskLevelSetFor",
-              "op": "Replace",
-              "value": "2024-04-30T14:50:17.29"
-            },
-            {
-              "path": "/PartOne/VeterinaryInformation/AccompanyingDocuments/0/DocumentIssuedOn",
-              "op": "Replace",
-              "value": "2024-03-21T00:00:00"
-            },
-            {
-              "path": "/PartOne/SubmittedOn",
-              "op": "Replace",
-              "value": "2024-05-02T12:02:29.2554255Z"
-            },
-            {
-              "path": "/PartOne/ConsignmentValidations",
-              "op": "Replace",
-              "value": null
-            },
-            {
-              "path": "/PartOne/ProvideCtcMrn",
-              "op": "Replace",
-              "value": 2
-            },
-            {
-              "path": "/PartOne/ArrivesAt",
-              "op": "Replace",
-              "value": "2024-05-03T12:00:00"
-            },
-            {
-              "path": "/PartTwo/ConsignmentValidations/3/Field",
-              "op": "Replace",
-              "value": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/identitycheckdone"
-            },
-            {
-              "path": "/PartTwo/ConsignmentValidations/4/Field",
-              "op": "Replace",
-              "value": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/laboratorytestsrequired"
-            },
-            {
-              "path": "/ConsignmentValidations/0/Field",
-              "op": "Replace",
-              "value": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/documentcheckresult"
-            },
-            {
-              "path": "/ConsignmentValidations/1/Field",
-              "op": "Replace",
-              "value": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/identitycheckdone"
-            },
-            {
-              "path": "/RiskDecisionLockedOn",
-              "op": "Replace",
-              "value": "2024-05-03T09:00:00Z"
-            }
-          ]
+          "diff": [],
+          "context": null
         }
       ],
       "commoditiesSummary": {
@@ -182,21 +88,21 @@
       ],
       "_PointOfEntry": "GBTEEP1",
       "_PointOfEntryControlPoint": null,
-      "ipaffsId": 4253441,
-      "etag": "0000000004502D5A",
+      "ipaffsId": 3212248,
+      "etag": "0000000002E6170C",
       "externalReferences": null,
       "referenceNumber": "CHEDP.GB.2024.4144842",
-      "version": 5,
-      "updatedSource": "2024-12-04T10:34:32.203Z",
+      "version": 4,
+      "updatedSource": "2024-05-02T12:19:47.06Z",
       "lastUpdatedBy": {
-        "displayName": "65fe09a96201a901017d6b013456187a6e2c1224a493bcb8eac6bd4b0608344f",
-        "userId": "db092b42-1f3c-e911-a95d-000d3a454f67",
+        "displayName": "d68c9225253b8fa5d53bf2ae74119bfa14ab8000abfefcc9cc7f59b0cba22cb0",
+        "userId": "7168f31f-b3f1-ee11-904b-000d3aad43e7",
         "isControlUser": null
       },
       "importNotificationType": "Cvedp",
       "replaces": null,
       "replacedBy": null,
-      "status": "Cancelled",
+      "status": "Deleted",
       "splitConsignment": null,
       "childNotification": null,
       "riskAssessment": {
@@ -445,7 +351,12 @@
           "userId": "7168f31f-b3f1-ee11-904b-000d3aad43e7",
           "isControlUser": null
         },
-        "consignmentValidations": null,
+        "consignmentValidations": [
+          {
+            "field": "uk/gov/defra/tracesx/notificationschema/representation/partone/providectcmrn",
+            "code": null
+          }
+        ],
         "complexCommoditySelected": true,
         "portOfEntry": "GBLGP",
         "portOfExit": null,
@@ -462,7 +373,7 @@
         "isChargeable": null,
         "wasChargeable": null,
         "commonUserCharge": null,
-        "provideCtcMrn": "No",
+        "provideCtcMrn": null,
         "arrivesAt": "2024-05-03T12:00:00Z",
         "departedOn": null
       },
@@ -528,30 +439,11 @@
         },
         "impactOfTransportOnAnimals": null,
         "laboratoryTestsRequired": null,
-        "laboratoryTests": {
-          "testedOn": null,
-          "testReason": null,
-          "singleLaboratoryTests": null
-        },
+        "laboratoryTests": null,
         "resealedContainersIncluded": null,
         "resealedContainers": null,
         "resealedContainersMappings": null,
-        "controlAuthority": {
-          "officialVeterinarian": {
-            "firstName": "e3586b534662b33048eb6183fcb300c607d6cd347201b2d60040648c5a9fc605",
-            "lastName": "f2b835a4e5f6ae23da990f843eba52b0106bd4c12e5f467209a41eb98d1a303a",
-            "email": "58cc30557200d4a9485c7a519ada4d859c50729c74d99ca696b82d5dfe6fce75",
-            "phone": "d5293658c36e04746b52f1066add15486efeaaf1743844664d15092e86c2b644",
-            "fax": null,
-            "signed": null
-          },
-          "customsReferenceNo": null,
-          "containerResealed": null,
-          "newSealNumber": null,
-          "iuuFishingReference": null,
-          "iuuCheckRequired": null,
-          "iuuOption": null
-        },
+        "controlAuthority": null,
         "controlledDestination": null,
         "bipLocalReferenceNumber": null,
         "signedOnBehalfOf": null,
@@ -562,19 +454,19 @@
             "code": null
           },
           {
-            "field": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/physicalcheckdone",
-            "code": null
-          },
-          {
             "field": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/documentcheckresult",
             "code": null
           },
           {
-            "field": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/identitycheckdone",
+            "field": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/physicalcheckdone",
             "code": null
           },
           {
             "field": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/laboratorytestsrequired",
+            "code": null
+          },
+          {
+            "field": "uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/identitycheckdone",
             "code": null
           }
         ],
@@ -582,7 +474,7 @@
         "accompanyingDocuments": null,
         "phsiAutoCleared": null,
         "hmiAutoCleared": null,
-        "inspectionRequired": "Not required",
+        "inspectionRequired": "NotRequired",
         "inspectionOverride": null,
         "autoClearedOn": null
       },
@@ -597,11 +489,11 @@
       "officialVeterinarian": null,
       "consignmentValidations": [
         {
-          "field": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/documentcheckresult",
+          "field": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/identitycheckdone",
           "code": null
         },
         {
-          "field": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/identitycheckdone",
+          "field": "uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/documentcheckresult",
           "code": null
         },
         {
@@ -618,20 +510,17 @@
         }
       ],
       "agencyOrganisationId": null,
-      "riskDecisionLockedOn": "2024-05-03T09:00:00Z",
+      "riskDecisionLockedOn": "2024-05-03T10:00:00Z",
       "isRiskDecisionLocked": false,
       "isBulkUploadInProgress": null,
       "requestId": null,
       "isCdsFullMatched": null,
-      "chedTypeVersion": 1,
+      "chedTypeVersion": 0,
       "isGMRMatched": null
     },
     "relationships": {
       "movements": {
-        "data": [],
-        "meta": {
-          "matched": false
-        }
+        "data": []
       }
     },
     "links": {

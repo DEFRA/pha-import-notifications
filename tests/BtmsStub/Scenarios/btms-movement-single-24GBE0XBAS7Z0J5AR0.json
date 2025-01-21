@@ -1,16 +1,16 @@
 {
   "links": {
-    "self": "/api/movements/24GBC1IQDD278IZAR8"
+    "self": "/api/movements/24GBE0XBAS7Z0J5AR0"
   },
   "data": {
     "type": "movements",
-    "id": "24GBC1IQDD278IZAR8",
+    "id": "24GBE0XBAS7Z0J5AR0",
     "attributes": {
       "btmsStatus": {
         "chedTypes": [
-          "Cvedp"
+          "Ced"
         ],
-        "linkStatus": "MissingLinks",
+        "linkStatus": "AllLinked",
         "linkStatusDescription": null,
         "status": null,
         "segment": null
@@ -20,49 +20,49 @@
           "serviceHeader": {
             "sourceSystem": "CDS",
             "destinationSystem": "ALVS",
-            "correlationId": "1315468",
-            "serviceCalled": "2024-12-04T12:08:40Z"
+            "correlationId": "1358673",
+            "serviceCalled": "2024-12-19T08:49:03Z"
           },
           "header": {
-            "entryReference": "24GBC1IQDD278IZAR8",
-            "entryVersionNumber": 3,
-            "previousVersionNumber": 2,
-            "declarationUcr": "4GB539035934000-BSA3155134",
+            "entryReference": "24GBE0XBAS7Z0J5AR0",
+            "entryVersionNumber": 1,
+            "previousVersionNumber": null,
+            "declarationUcr": "4GB244049769033-LI42468",
             "declarationPartNumber": null,
             "declarationType": "S",
             "arrivesAt": null,
-            "submitterTurn": "GB927534115000",
-            "declarantId": "GB927534115000",
-            "declarantName": "GB927534115000",
-            "dispatchCountryCode": "IT",
-            "goodsLocationCode": "EUTEUTEUTGVM",
-            "masterUcr": null,
+            "submitterTurn": "GB244049769033",
+            "declarantId": "GB244049769033",
+            "declarantName": "GB244049769033",
+            "dispatchCountryCode": "CN",
+            "goodsLocationCode": "TEEMIDTEE",
+            "masterUcr": "607790951",
             "decisionNumber": null
           },
           "items": [
             {
               "itemNumber": 1,
               "customsProcedureCode": "4000000",
-              "taricCommodityCode": "1601009110",
-              "goodsDescription": "FLAVOURED SAUSAGES",
-              "consigneeId": "GB539035934000",
-              "consigneeName": "GB539035934000",
-              "itemNetMass": 184,
+              "taricCommodityCode": "0902400000",
+              "goodsDescription": "TEA",
+              "consigneeId": "GB405696146000",
+              "consigneeName": "GB405696146000",
+              "itemNetMass": 24480,
               "itemSupplementaryUnits": 0,
               "itemThirdQuantity": null,
-              "itemOriginCountryCode": "IT",
+              "itemOriginCountryCode": "CN",
               "documents": [
                 {
-                  "documentCode": "N853",
-                  "documentReference": "GBCHD2024.2024.5070767",
-                  "documentStatus": "AE",
+                  "documentCode": "C678",
+                  "documentReference": "GBCHD2024.5019877",
+                  "documentStatus": "JP",
                   "documentControl": "P",
                   "documentQuantity": null
                 }
               ],
               "checks": [
                 {
-                  "checkCode": "H222",
+                  "checkCode": "H223",
                   "departmentCode": "PHA",
                   "decisionCode": null,
                   "decisionsValidUntil": null,
@@ -78,12 +78,12 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "d4ba979c-c628-42d6-9e44-eeb88505477b",
-            "serviceCalled": "2025-01-17T16:32:47.108Z"
+            "correlationId": "e3fe2cfc-8bda-4821-8e41-f687c8f433d4",
+            "serviceCalled": "2025-01-17T16:59:25.384Z"
           },
           "header": {
-            "entryReference": "24GBC1IQDD278IZAR8",
-            "entryVersionNumber": 3,
+            "entryReference": "24GBE0XBAS7Z0J5AR0",
+            "entryVersionNumber": 1,
             "previousVersionNumber": null,
             "declarationUcr": null,
             "declarationPartNumber": null,
@@ -112,13 +112,11 @@
               "documents": null,
               "checks": [
                 {
-                  "checkCode": "H222",
+                  "checkCode": "H223",
                   "departmentCode": null,
-                  "decisionCode": "X00",
+                  "decisionCode": "C03",
                   "decisionsValidUntil": null,
-                  "decisionReasons": [
-                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.2024.5070767). Please correct the Cvedp number(s) entered on your customs declaration."
-                  ]
+                  "decisionReasons": []
                 }
               ]
             }
@@ -133,11 +131,11 @@
                 "sourceSystem": "ALVS",
                 "destinationSystem": "CDS",
                 "correlationId": "000",
-                "serviceCalled": "2024-12-04T12:34:31.984Z"
+                "serviceCalled": "2024-12-19T08:49:09.213Z"
               },
               "header": {
-                "entryReference": "24GBC1IQDD278IZAR8",
-                "entryVersionNumber": 3,
+                "entryReference": "24GBE0XBAS7Z0J5AR0",
+                "entryVersionNumber": 1,
                 "previousVersionNumber": null,
                 "declarationUcr": null,
                 "declarationPartNumber": null,
@@ -149,7 +147,7 @@
                 "dispatchCountryCode": null,
                 "goodsLocationCode": null,
                 "masterUcr": null,
-                "decisionNumber": 6
+                "decisionNumber": 1
               },
               "items": [
                 {
@@ -166,13 +164,11 @@
                   "documents": [],
                   "checks": [
                     {
-                      "checkCode": "H222",
+                      "checkCode": "H223",
                       "departmentCode": null,
-                      "decisionCode": "X00",
+                      "decisionCode": "C03",
                       "decisionsValidUntil": null,
-                      "decisionReasons": [
-                        " A Customs Declaration has been submitted however no matching CHEDP(s) have been submitted to Port Health (for CHEDP number(s) GBCHD2024.2024.5070767). Please correct the CHEDP number(s) entered on your customs declaration. "
-                      ]
+                      "decisionReasons": []
                     }
                   ]
                 }
@@ -180,31 +176,31 @@
             },
             "context": {
               "alvsCheckStatus": {
-                "allMatch": false,
-                "anyMatch": false,
-                "allNoMatch": true,
-                "anyNoMatch": true,
+                "allMatch": true,
+                "anyMatch": true,
+                "allNoMatch": false,
+                "anyNoMatch": false,
                 "allHold": false,
                 "anyHold": false,
                 "allRefuse": false,
                 "anyRefuse": false,
-                "allRelease": false,
-                "anyRelease": false
+                "allRelease": true,
+                "anyRelease": true
               },
               "btmsCheckStatus": {
-                "allMatch": true,
-                "anyMatch": false,
-                "allNoMatch": true,
-                "anyNoMatch": true,
+                "allMatch": false,
+                "anyMatch": true,
+                "allNoMatch": false,
+                "anyNoMatch": false,
                 "allHold": false,
                 "anyHold": false,
                 "allRefuse": false,
                 "anyRefuse": false,
-                "allRelease": false,
-                "anyRelease": false
+                "allRelease": true,
+                "anyRelease": true
               },
-              "alvsDecisionNumber": 6,
-              "entryVersionNumber": 3,
+              "alvsDecisionNumber": 1,
+              "entryVersionNumber": 1,
               "importNotifications": null,
               "decisionComparison": {
                 "paired": true,
@@ -214,9 +210,9 @@
                 "checks": [
                   {
                     "itemNumber": 1,
-                    "checkCode": "H222",
-                    "alvsDecisionCode": "X00",
-                    "btmsDecisionCode": "X00"
+                    "checkCode": "H223",
+                    "alvsDecisionCode": "C03",
+                    "btmsDecisionCode": "C03"
                   }
                 ]
               }
@@ -224,8 +220,8 @@
           }
         ],
         "context": {
-          "alvsDecisionNumber": 6,
-          "entryVersionNumber": 3,
+          "alvsDecisionNumber": 1,
+          "entryVersionNumber": 1,
           "importNotifications": null,
           "decisionComparison": {
             "paired": true,
@@ -235,9 +231,9 @@
             "checks": [
               {
                 "itemNumber": 1,
-                "checkCode": "H222",
-                "alvsDecisionCode": "X00",
-                "btmsDecisionCode": "X00"
+                "checkCode": "H223",
+                "alvsDecisionCode": "C03",
+                "btmsDecisionCode": "C03"
               }
             ]
           }
@@ -247,112 +243,129 @@
         {
           "itemNumber": 1,
           "customsProcedureCode": "4000000",
-          "taricCommodityCode": "1601009110",
-          "goodsDescription": "FLAVOURED SAUSAGES",
-          "consigneeId": "GB539035934000",
-          "consigneeName": "GB539035934000",
-          "itemNetMass": 184,
+          "taricCommodityCode": "0902400000",
+          "goodsDescription": "TEA",
+          "consigneeId": "GB405696146000",
+          "consigneeName": "GB405696146000",
+          "itemNetMass": 24480,
           "itemSupplementaryUnits": 0,
           "itemThirdQuantity": null,
-          "itemOriginCountryCode": "IT",
+          "itemOriginCountryCode": "CN",
           "documents": [
             {
-              "documentCode": "N853",
-              "documentReference": "GBCHD2024.2024.5070767",
-              "documentStatus": "AE",
+              "documentCode": "C678",
+              "documentReference": "GBCHD2024.5019877",
+              "documentStatus": "JP",
               "documentControl": "P",
               "documentQuantity": null
             }
           ],
           "checks": [
             {
-              "checkCode": "H222",
+              "checkCode": "H223",
               "departmentCode": null,
-              "decisionCode": "X00",
+              "decisionCode": "C03",
               "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.2024.5070767). Please correct the Cvedp number(s) entered on your customs declaration."
-              ]
+              "decisionReasons": []
             }
           ]
         }
       ],
-      "updatedSource": "2024-12-04T12:08:40Z",
-      "createdSource": "2024-12-04T12:08:40Z",
-      "entryReference": "24GBC1IQDD278IZAR8",
-      "entryVersionNumber": 3,
-      "masterUcr": null,
+      "updatedSource": "2024-12-19T08:49:03Z",
+      "createdSource": "2024-12-19T08:49:03Z",
+      "entryReference": "24GBE0XBAS7Z0J5AR0",
+      "entryVersionNumber": 1,
+      "masterUcr": "607790951",
       "declarationPartNumber": null,
       "declarationType": "S",
       "arrivesAt": null,
-      "submitterTurn": "GB927534115000",
-      "declarantId": "GB927534115000",
-      "declarantName": "GB927534115000",
-      "dispatchCountryCode": "IT",
-      "goodsLocationCode": "EUTEUTEUTGVM",
+      "submitterTurn": "GB244049769033",
+      "declarantId": "GB244049769033",
+      "declarantName": "GB244049769033",
+      "dispatchCountryCode": "CN",
+      "goodsLocationCode": "TEEMIDTEE",
       "auditEntries": [
         {
-          "id": "PRODREDACTED-202412/ALVS/2024/12/04/24GBC1IQDD278IZAR8-a4f15912-15c7-49d3-831a-b5bcfb97d9ed.json",
-          "version": 3,
+          "id": "PRODREDACTED-202412/ALVS/2024/12/19/24GBE0XBAS7Z0J5AR0-750249bc-daac-45da-a423-db23735f2548.json",
+          "version": 1,
           "createdBy": "Cds",
-          "createdSource": "2024-12-04T12:08:40Z",
-          "createdLocal": "2025-01-17T16:32:45.811Z",
+          "createdSource": "2024-12-19T08:49:03Z",
+          "createdLocal": "2025-01-17T16:59:24.711Z",
           "status": "Created",
           "diff": [],
           "context": null
         },
         {
-          "id": "7fed95c2-d90d-441a-be55-5c23be9e0fcc",
+          "id": "",
+          "version": null,
+          "createdBy": "Btms",
+          "createdSource": "2025-01-17T16:59:24.962Z",
+          "createdLocal": "2025-01-17T16:59:24.962Z",
+          "status": "Linked",
+          "diff": [],
+          "context": null
+        },
+        {
+          "id": "7e811e87-cf6b-403f-a09f-63b72f1b7100",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-01-17T16:32:47.108Z",
-          "createdLocal": "2025-01-17T16:32:47.574Z",
+          "createdSource": "2025-01-17T16:59:25.384Z",
+          "createdLocal": "2025-01-17T16:59:25.591Z",
           "status": "Decision",
           "diff": [],
           "context": {
             "alvsCheckStatus": null,
             "btmsCheckStatus": null,
             "alvsDecisionNumber": null,
-            "entryVersionNumber": 3,
-            "importNotifications": [],
+            "entryVersionNumber": 1,
+            "importNotifications": [
+              {
+                "id": "CHEDD.GB.2024.5019877",
+                "version": 1,
+                "created": "0001-01-01T00:00:00Z",
+                "updated": "2025-01-17T16:59:25.037Z",
+                "createdSource": "2024-12-04T16:14:19.067Z",
+                "updatedSource": "2024-12-16T15:05:27.801Z"
+              }
+            ],
             "decisionComparison": null
           }
         },
         {
-          "id": "PRODREDACTED-202412/DECISIONS/2024/12/04/24GBC1IQDD278IZAR8-07642562-d943-4423-92e5-526159a635aa.json",
-          "version": 6,
+          "id": "PRODREDACTED-202412/DECISIONS/2024/12/19/24GBE0XBAS7Z0J5AR0-8f1e5ddf-2af4-41c8-9603-83042ff7ee1f.json",
+          "version": 1,
           "createdBy": "Alvs",
-          "createdSource": "2024-12-04T12:34:31.984Z",
-          "createdLocal": "2025-01-17T18:24:31.37Z",
+          "createdSource": "2024-12-19T08:49:09.213Z",
+          "createdLocal": "2025-01-17T18:53:14.369Z",
           "status": "Decision",
           "diff": [],
           "context": {
             "alvsCheckStatus": {
-              "allMatch": false,
-              "anyMatch": false,
-              "allNoMatch": true,
-              "anyNoMatch": true,
+              "allMatch": true,
+              "anyMatch": true,
+              "allNoMatch": false,
+              "anyNoMatch": false,
               "allHold": false,
               "anyHold": false,
               "allRefuse": false,
               "anyRefuse": false,
-              "allRelease": false,
-              "anyRelease": false
+              "allRelease": true,
+              "anyRelease": true
             },
             "btmsCheckStatus": {
-              "allMatch": true,
-              "anyMatch": false,
-              "allNoMatch": true,
-              "anyNoMatch": true,
+              "allMatch": false,
+              "anyMatch": true,
+              "allNoMatch": false,
+              "anyNoMatch": false,
               "allHold": false,
               "anyHold": false,
               "allRefuse": false,
               "anyRefuse": false,
-              "allRelease": false,
-              "anyRelease": false
+              "allRelease": true,
+              "anyRelease": true
             },
-            "alvsDecisionNumber": 6,
-            "entryVersionNumber": 3,
+            "alvsDecisionNumber": 1,
+            "entryVersionNumber": 1,
             "importNotifications": null,
             "decisionComparison": {
               "paired": true,
@@ -362,9 +375,9 @@
               "checks": [
                 {
                   "itemNumber": 1,
-                  "checkCode": "H222",
-                  "alvsDecisionCode": "X00",
-                  "btmsDecisionCode": "X00"
+                  "checkCode": "H223",
+                  "alvsDecisionCode": "C03",
+                  "btmsDecisionCode": "C03"
                 }
               ]
             }
@@ -372,16 +385,32 @@
         }
       ],
       "localId": null,
-      "created": "2025-01-17T16:32:45.811Z",
-      "updated": "2025-01-17T18:24:31.37Z"
+      "created": "2025-01-17T16:59:24.711Z",
+      "updated": "2025-01-17T18:53:14.37Z"
     },
     "relationships": {
       "notifications": {
-        "data": []
+        "links": {
+          "self": "/api/movements/24GBE0XBAS7Z0J5AR0",
+          "related": "/api/movements/24GBE0XBAS7Z0J5AR0/import-notifications"
+        },
+        "data": [
+          {
+            "type": "notifications",
+            "id": "CHEDD.GB.2024.5019877",
+            "meta": {
+              "matched": true,
+              "sourceItem": 1,
+              "destinationItem": 1,
+              "matchingLevel": 1,
+              "self": "/api/import-notifications/CHEDD.GB.2024.5019877"
+            }
+          }
+        ]
       }
     },
     "links": {
-      "self": "/api/movements/24GBC1IQDD278IZAR8"
+      "self": "/api/movements/24GBE0XBAS7Z0J5AR0"
     }
   }
 }

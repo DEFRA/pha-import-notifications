@@ -73,10 +73,12 @@ internal static class Ignored
                 "Relationships",
                 "Type",
                 "Items",
+                "BtmsStatus",
+                "AlvsDecisionStatus",
             }
         },
         {
-            "AlvsClearanceRequest",
+            "CdsClearanceRequest",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
         },
         {

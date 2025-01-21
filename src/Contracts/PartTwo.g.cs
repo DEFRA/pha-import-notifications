@@ -80,7 +80,7 @@ public partial record PartTwo
 
     [JsonPropertyName("inspectionRequired")]
     [Description("Inspection required")]
-    public string? InspectionRequired { get; init; }
+    public InspectionRequiredEnum? InspectionRequired { get; init; }
 
     [JsonPropertyName("inspectionOverride")]
     [Description("Details about the manual inspection override")]

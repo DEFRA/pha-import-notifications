@@ -1,3 +1,4 @@
+// ReSharper disable InconsistentNaming
 namespace Defra.PhaImportNotifications.Testing;
 
 public static class ChedReferenceNumbers
