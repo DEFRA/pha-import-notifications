@@ -1,3 +1,4 @@
+using Argon;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.JsonApi;
@@ -12,9 +13,21 @@ using ChedReferenceNumbers = Defra.PhaImportNotifications.Testing.ChedReferenceN
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
 
-public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
-    : WireMockTestBase<WireMockContextQueryParameterNoComma>(context)
+public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
 {
+    private readonly VerifySettings _settings;
+
+    public BtmsServiceTests(WireMockContextQueryParameterNoComma context)
+        : base(context)
+    {
+        Subject = new BtmsService(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance), Options);
+
+        _settings = new VerifySettings();
+        _settings.DontScrubGuids();
+        _settings.DontScrubDateTimes();
+        _settings.AddExtraSettings(settings => settings.DefaultValueHandling = DefaultValueHandling.Include);
+    }
+
     private static IOptions<BtmsOptions> Options { get; } =
         new OptionsWrapper<BtmsOptions>(
             new BtmsOptions
@@ -25,8 +38,7 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
                 PageSize = 100,
             }
         );
-    private BtmsService Subject { get; } =
-        new(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance), Options);
+    private BtmsService Subject { get; }
 
     private UpdatedImportNotificationRequest ValidRequest { get; } =
         new()
@@ -65,7 +77,7 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         // If this fails, check the expected filter or fields as it may have changed
         result.Should().HaveCount(10);
 
-        await Verify(result).DontScrubGuids().DontScrubDateTimes();
+        await Verify(result, _settings);
     }
 
     [Fact]
@@ -135,7 +147,7 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
 
         result.Should().NotBeNull();
 
-        await Verify(result).UseParameters(chedReferenceNumber).DontScrubGuids().DontScrubDateTimes();
+        await Verify(result, _settings).UseParameters(chedReferenceNumber);
     }
 
     [Fact]
@@ -172,7 +184,7 @@ public class BtmsServiceTests(WireMockContextQueryParameterNoComma context)
 
         result.Should().NotBeNull();
 
-        await Verify(result).UseParameters(chedReferenceNumber).DontScrubGuids().DontScrubDateTimes();
+        await Verify(result, _settings).UseParameters(chedReferenceNumber);
     }
 
     [Fact]

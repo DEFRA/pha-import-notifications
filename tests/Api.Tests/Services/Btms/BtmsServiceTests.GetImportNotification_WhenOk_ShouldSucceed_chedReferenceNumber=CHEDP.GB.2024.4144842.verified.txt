@@ -1,53 +1,108 @@
 ﻿{
+  ClearanceRequests: null,
+  ClearanceDecisions: null,
+  _Etag: null,
   CreatedSource: 2024-05-02 12:19:47.06 Utc,
   Created: 2025-01-17 16:45:41.165 Utc,
   Updated: 2025-01-17 16:45:41.165 Utc,
+  AuditEntries: null,
+  Relationships: null,
   CommoditiesSummary: {
+    GmsDeclarationAccepted: null,
+    ConsignedCountryInChargeGroup: null,
     TotalGrossWeight: 10805.46,
     TotalNetWeight: 10225.34,
+    TotalGrossVolume: null,
+    TotalGrossVolumeUnit: null,
     NumberOfPackages: 518,
     Temperature: Chilled,
+    NumberOfAnimals: null,
     IncludeNonAblactedAnimals: false,
     CountryOfOrigin: NZ,
-    ConsignedCountry: NZ
+    CountryOfOriginIsPodCountry: null,
+    IsLowRiskArticle72Country: null,
+    RegionOfOrigin: null,
+    ConsignedCountry: NZ,
+    AnimalsCertifiedAs: null,
+    CommodityIntendedFor: null
   },
   Commodities: [
     {
+      UniqueComplementId: null,
       CommodityDescription: Boneless,
       CommodityId: 02042300,
       ComplementId: 1,
       ComplementName: Ovis aries,
+      EppoCode: null,
+      IsWoodPackaging: null,
       SpeciesId: 167291,
       SpeciesName: Ovis aries,
       SpeciesNomination: Ovis aries,
       SpeciesTypeName: Domestic,
       SpeciesType: 16,
+      SpeciesClassName: null,
       SpeciesClass: 290506,
+      SpeciesFamilyName: null,
+      SpeciesFamily: null,
+      SpeciesCommonName: null,
+      IsCdsMatched: null,
       AdditionalData: {
         ValueKind: Object
       },
       RiskAssesment: {
         RiskDecision: Notrequired,
-        UniqueId: 99166589-2098-43d4-9b3a-df296587fcc2
-      }
+        ExitRiskDecision: null,
+        HmiDecision: null,
+        PhsiDecision: null,
+        PhsiClassification: null,
+        Phsi: null,
+        UniqueId: 99166589-2098-43d4-9b3a-df296587fcc2,
+        EppoCode: null,
+        Variety: null,
+        IsWoody: null,
+        IndoorOutdoor: null,
+        Propagation: null,
+        PhsiRuleType: null
+      },
+      Checks: null
     }
   ],
+  _PointOfEntry: null,
+  _PointOfEntryControlPoint: null,
+  _MatchReference: null,
   IpaffsId: 3212248,
   Etag: 0000000002E6170C,
+  ExternalReferences: null,
   ReferenceNumber: CHEDP.GB.2024.4144842,
   Version: 4,
   UpdatedSource: 2024-05-02 12:19:47.06 Utc,
   LastUpdatedBy: {
     DisplayName: d68c9225253b8fa5d53bf2ae74119bfa14ab8000abfefcc9cc7f59b0cba22cb0,
-    UserId: 7168f31f-b3f1-ee11-904b-000d3aad43e7
+    UserId: 7168f31f-b3f1-ee11-904b-000d3aad43e7,
+    IsControlUser: null
   },
   ImportNotificationType: Cvedp,
+  Replaces: null,
+  ReplacedBy: null,
   Status: Deleted,
+  SplitConsignment: null,
+  ChildNotification: null,
   RiskAssessment: {
     CommodityResults: [
       {
         RiskDecision: Notrequired,
-        UniqueId: 99166589-2098-43d4-9b3a-df296587fcc2
+        ExitRiskDecision: null,
+        HmiDecision: null,
+        PhsiDecision: null,
+        PhsiClassification: null,
+        Phsi: null,
+        UniqueId: 99166589-2098-43d4-9b3a-df296587fcc2,
+        EppoCode: null,
+        Variety: null,
+        IsWoody: null,
+        IndoorOutdoor: null,
+        Propagation: null,
+        PhsiRuleType: null
       }
     ],
     AssessedOn: 2024-04-30 15:51:49.097 Utc
@@ -59,7 +114,9 @@
   },
   IsHighRiskEuImport: false,
   PartOne: {
+    TypeOfImp: null,
     PersonResponsible: {
+      Id: null,
       Name: d68c9225253b8fa5d53bf2ae74119bfa14ab8000abfefcc9cc7f59b0cba22cb0,
       CompanyId: 4bdf3ae4-f338-e911-a958-000d3a454e11,
       ContactId: 7168f31f-b3f1-ee11-904b-000d3aad43e7,
@@ -70,41 +127,70 @@
         9446daa95f8902171680d9a3022c69dd7b2fd7d6d81deb5dd1d62cda1c362623,
         cc019e6d744b392563f3c9d8089281ce2872855dc720d29760f9e84ec6401e82
       ],
+      County: null,
+      PostCode: null,
       Country: GB,
+      City: null,
       TracesId: 1001,
+      Type: null,
+      ApprovalNumber: null,
       Phone: 87a0710ff6dea9c23a21974bbf73248c74d4b552b3adbca983849c831a643a84,
+      Fax: null,
       Email: b3198686407cefde2b07bd820a13b798fcc60d4c720b411108b2a92d5d30568f
     },
+    CustomsReferenceNumber: null,
+    ContainsWoodPackaging: null,
+    ConsignmentArrived: null,
     Consignor: {
       Id: 53d2180e-61de-4edd-b9a6-366919f9d3dd,
       Type: Exporter,
       Status: Nonapproved,
       CompanyName: 20147cde1dd01e9b3c99d1233133fdb5b8490d37fc507ae780c88fab10be94e7,
+      IndividualName: null,
       Address: {
+        Street: null,
         City: 845fd7c4445e3083ba9d4150362de4c966f84cc1a883d053d95bbb71b73a4329,
+        Country: null,
+        PostalCode: null,
         AddressLine1: d13088257b7cb17002ab0177b1de57728edcdda7eb45592faaf537b484f266fd,
         AddressLine2: 43e2e37e575eb7ec778532c29b8d42643fb3c5d64fcccdd0784b9e2a271515ea,
+        AddressLine3: null,
+        PostalZipCode: null,
         CountryIsoCode: 613c0e36acaa2ffad731fc0824c05107a8ce587122f5a2e08295c7f760fc05f7,
         Email: 51a5c4e3874cedf018eaf7c7b32dd893065f361a4fac49b0b8d37c8478f24d94,
-        Telephone: 1a9fc977f6537af7cb10c766e186d2c8948f48323af461831a439782c70fa942
+        UkTelephone: null,
+        Telephone: 1a9fc977f6537af7cb10c766e186d2c8948f48323af461831a439782c70fa942,
+        InternationalTelephone: null
       },
+      ApprovalNumber: null,
+      OtherIdentifier: null,
       TracesId: 10097566
     },
+    ConsignorTwo: null,
+    Packer: null,
     Consignee: {
       Id: 68127f62-62df-4d82-8af3-883b4b561ace,
       Type: Consignee,
       Status: Nonapproved,
       CompanyName: 4864ba0c942bee26aa7cc716523e03b1695fe5368772a59fe30eaf6e91433e61,
+      IndividualName: null,
       Address: {
+        Street: null,
         City: 7dd493a49891e19d1bbc17c75f1e8ab0ef576bb8ebb525d37c72b54eca3127b9,
+        Country: null,
+        PostalCode: null,
         AddressLine1: de2023ea6155120ee33bd9126d4d4e0b5e636b7b960081dc8da3b7b51cf9bc1b,
         AddressLine2: 2a4d027839bfe3309af3b3ad497154a5a6e494db4d71abbcb6192dd8585a12de,
         AddressLine3: 30262c2a4d68bd1d290a19e02e1ce2a20aff53c693105904ec615251963ea727,
         PostalZipCode: cd4b3190a37f787d7b5f061ce7d9b6cbeeecd4306d16f188633c0f54d142df7e,
         CountryIsoCode: b4043b0b8297e379bc559ab33b6ae9c7a9b4ef6519d3baee53270f0c0dd3d960,
         Email: 650df59a4b14a596b935f80bbd474d75fdaa1c453214f3875ba0c325244f0e6c,
-        Telephone: 145c6746e70ade388d105e88177b64cf4724a0cfcf9664f0aa81acea9f0a81b6
+        UkTelephone: null,
+        Telephone: 145c6746e70ade388d105e88177b64cf4724a0cfcf9664f0aa81acea9f0a81b6,
+        InternationalTelephone: null
       },
+      ApprovalNumber: null,
+      OtherIdentifier: null,
       TracesId: 10069004
     },
     Importer: {
@@ -112,16 +198,24 @@
       Type: Consignee,
       Status: Nonapproved,
       CompanyName: 4864ba0c942bee26aa7cc716523e03b1695fe5368772a59fe30eaf6e91433e61,
+      IndividualName: null,
       Address: {
+        Street: null,
         City: 7dd493a49891e19d1bbc17c75f1e8ab0ef576bb8ebb525d37c72b54eca3127b9,
+        Country: null,
+        PostalCode: null,
         AddressLine1: de2023ea6155120ee33bd9126d4d4e0b5e636b7b960081dc8da3b7b51cf9bc1b,
         AddressLine2: 2a4d027839bfe3309af3b3ad497154a5a6e494db4d71abbcb6192dd8585a12de,
         AddressLine3: 30262c2a4d68bd1d290a19e02e1ce2a20aff53c693105904ec615251963ea727,
         PostalZipCode: cd4b3190a37f787d7b5f061ce7d9b6cbeeecd4306d16f188633c0f54d142df7e,
         CountryIsoCode: b4043b0b8297e379bc559ab33b6ae9c7a9b4ef6519d3baee53270f0c0dd3d960,
         Email: 650df59a4b14a596b935f80bbd474d75fdaa1c453214f3875ba0c325244f0e6c,
-        Telephone: 145c6746e70ade388d105e88177b64cf4724a0cfcf9664f0aa81acea9f0a81b6
+        UkTelephone: null,
+        Telephone: 145c6746e70ade388d105e88177b64cf4724a0cfcf9664f0aa81acea9f0a81b6,
+        InternationalTelephone: null
       },
+      ApprovalNumber: null,
+      OtherIdentifier: null,
       TracesId: 10069004
     },
     PlaceOfDestination: {
@@ -129,33 +223,69 @@
       Type: Importer,
       Status: Nonapproved,
       CompanyName: cdc62da9c1ccb1298c0bc991b7c3194eef8741afa4cfcaa797be33c11afdb930,
+      IndividualName: null,
       Address: {
+        Street: null,
         City: 94defefd94e8793e007f350d04a248079f77e1ee44bb3d982c720d2330ac6e9e,
+        Country: null,
+        PostalCode: null,
         AddressLine1: 7e880c52c28b5d414da0a4a797d4b1ec3c68e3a621bcce9432f64aeea8eece0e,
         AddressLine2: 22237eafe121d92f3d939c0b79bbb0f2fc69110a5e11da23d8a6b53dd5f0125b,
         AddressLine3: a39623ab73f4a8a8d354ec252782a7f060514f208e0293e2067e108af5e5d8f8,
         PostalZipCode: fbfbbf49fbbd8514b865c09429172ae47efeb7032e3c67dd1f1f7506350a9903,
         CountryIsoCode: d61bc5a683625b3980e8f48b9141dfb2dfea199059f0df327c8e3a92bcb57f97,
         Email: 73b7aa8ac65eabc6356128198bef2cecbf1efe8bcf8f21f543c0fd676a7fc868,
-        Telephone: 9662f7ddf090d1ffde4f87ac8469eb28a7dac57f16c2b0d9cdb9bde05faf6a32
+        UkTelephone: null,
+        Telephone: 9662f7ddf090d1ffde4f87ac8469eb28a7dac57f16c2b0d9cdb9bde05faf6a32,
+        InternationalTelephone: null
       },
+      ApprovalNumber: null,
+      OtherIdentifier: null,
       TracesId: 10198894
     },
+    Pod: null,
+    PlaceOfOriginHarvest: null,
+    AdditionalPermanentAddresses: null,
+    CphNumber: null,
+    ImportingFromCharity: null,
+    IsPlaceOfDestinationThePermanentAddress: null,
+    IsCatchCertificateRequired: null,
     IsGvmsRoute: false,
     Purpose: {
       ConformsToEU: true,
       InternalMarketPurpose: HumanConsumption,
-      PurposeGroup: ForImport
+      ThirdCountryTranshipment: null,
+      ForNonConforming: null,
+      RegNumber: null,
+      ShipName: null,
+      ShipPort: null,
+      ExitBip: null,
+      ThirdCountry: null,
+      TransitThirdCountries: null,
+      ForImportOrAdmission: null,
+      ExitDate: null,
+      FinalBip: null,
+      PurposeGroup: ForImport,
+      EstimatedArrivesAtPortOfExit: null
     },
     PointOfEntry: GBTEEP1,
-    MeansOfTransport: {},
+    PointOfEntryControlPoint: null,
+    MeansOfTransport: {
+      Type: null,
+      Document: null,
+      Id: null
+    },
+    Transporter: null,
     TransporterDetailsRequired: false,
     MeansOfTransportFromEntryPoint: {
       Type: Ship,
       Document: 720021890,
       Id: MARSA PRIDE
     },
+    EstimatedJourneyTimeInMinutes: null,
+    ResponsibleForTransport: null,
     VeterinaryInformation: {
+      EstablishmentsOfOriginExternalReference: null,
       EstablishmentsOfOrigins: [
         {
           Id: cacf081e-e67f-aeb7-6577-b777ca3751bd,
@@ -168,78 +298,198 @@
           Section: Plants or establishments manufacturing intermediate products
         }
       ],
+      VeterinaryDocument: null,
+      VeterinaryDocumentIssuedOn: null,
+      AccompanyingDocumentNumbers: null,
       AccompanyingDocuments: [
         {
           DocumentType: LatestVeterinaryHealthCertificate,
           DocumentReference: NZL2024/AGL50/842289,
-          DocumentIssuedOn: 2024-03-21 Utc
+          DocumentIssuedOn: 2024-03-21 Utc,
+          AttachmentId: null,
+          AttachmentFilename: null,
+          AttachmentContentType: null,
+          UploadUserId: null,
+          UploadOrganisationId: null,
+          ExternalReference: null
         }
-      ]
+      ],
+      CatchCertificateAttachments: null,
+      IdentificationDetails: null
     },
+    ImporterLocalReferenceNumber: null,
+    Route: null,
+    SealsContainers: null,
     SubmittedOn: 2024-05-02 12:02:29.255 Utc,
     SubmittedBy: {
       DisplayName: d68c9225253b8fa5d53bf2ae74119bfa14ab8000abfefcc9cc7f59b0cba22cb0,
-      UserId: 7168f31f-b3f1-ee11-904b-000d3aad43e7
+      UserId: 7168f31f-b3f1-ee11-904b-000d3aad43e7,
+      IsControlUser: null
     },
     ConsignmentValidations: [
       {
-        Field: uk/gov/defra/tracesx/notificationschema/representation/partone/providectcmrn
+        Field: uk/gov/defra/tracesx/notificationschema/representation/partone/providectcmrn,
+        Code: null
       }
     ],
+    ComplexCommoditySelected: null,
     PortOfEntry: GBLGP,
+    PortOfExit: null,
+    ExitedPortOfOn: null,
     ContactDetails: {
       Name: 6f07daa60648053921f4403b0df81b6a26f9d466cb467edb9558784bba2964b1,
       Telephone: 12a1b962a235280a9bbd3430c7c952b5969dde75c5325f9abb0b083a78476cf3,
-      Email: 675568175dcb76211ced2a602b49b6761ba2b0aacaf2a29ec89170c55fe6b33f
+      Email: 675568175dcb76211ced2a602b49b6761ba2b0aacaf2a29ec89170c55fe6b33f,
+      Agent: null
     },
-    ArrivesAt: 2024-05-03 12:00 Utc
+    NominatedContacts: null,
+    OriginalEstimatedOn: null,
+    BillingInformation: null,
+    IsChargeable: null,
+    WasChargeable: null,
+    CommonUserCharge: null,
+    ProvideCtcMrn: null,
+    ArrivesAt: 2024-05-03 12:00 Utc,
+    DepartedOn: null
   },
+  DecisionBy: null,
+  DecisionDate: null,
   PartTwo: {
     Decision: {
+      ConsignmentAcceptable: null,
+      NotAcceptableAction: null,
+      NotAcceptableActionDestructionReason: null,
+      NotAcceptableActionEntryRefusalReason: null,
+      NotAcceptableActionQuarantineImposedReason: null,
+      NotAcceptableActionSpecialTreatmentReason: null,
+      NotAcceptableActionIndustrialProcessingReason: null,
+      NotAcceptableActionReDispatchReason: null,
+      NotAcceptableActionUseForOtherPurposesReason: null,
+      NotAcceptableDestructionReason: null,
+      NotAcceptableActionOtherReason: null,
+      NotAcceptableActionByDate: null,
+      ChedppNotAcceptableReasons: null,
+      NotAcceptableReasons: null,
+      NotAcceptableCountry: null,
+      NotAcceptableEstablishment: null,
+      NotAcceptableOtherReason: null,
+      DetailsOfControlledDestinations: null,
+      SpecificWarehouseNonConformingConsignment: null,
+      TemporaryDeadline: null,
       DecisionEnum: AcceptableForInternalMarket,
-      FreeCirculationPurpose: HumanConsumption
+      FreeCirculationPurpose: HumanConsumption,
+      DefinitiveImportPurpose: null,
+      IfChanneledOption: null,
+      CustomWarehouseRegisteredNumber: null,
+      FreeWarehouseRegisteredNumber: null,
+      ShipName: null,
+      ShipPortOfExit: null,
+      ShipSupplierRegisteredNumber: null,
+      TranshipmentBip: null,
+      TranshipmentThirdCountry: null,
+      TransitExitBip: null,
+      TransitThirdCountry: null,
+      TransitDestinationThirdCountry: null,
+      TemporaryExitBip: null,
+      HorseReentry: null,
+      TranshipmentEuOrThirdCountry: null
     },
-    ConsignmentCheck: {},
+    ConsignmentCheck: {
+      EuStandard: null,
+      AdditionalGuarantees: null,
+      DocumentCheckResult: null,
+      NationalRequirements: null,
+      IdentityCheckDone: null,
+      IdentityCheckType: null,
+      IdentityCheckResult: null,
+      IdentityCheckNotDoneReason: null,
+      PhysicalCheckDone: null,
+      PhysicalCheckResult: null,
+      PhysicalCheckNotDoneReason: null,
+      PhysicalCheckOtherText: null,
+      WelfareCheck: null,
+      NumberOfAnimalsChecked: null,
+      LaboratoryCheckDone: null,
+      LaboratoryCheckResult: null
+    },
+    ImpactOfTransportOnAnimals: null,
+    LaboratoryTestsRequired: null,
+    LaboratoryTests: null,
+    ResealedContainersIncluded: null,
+    ResealedContainers: null,
+    ResealedContainersMappings: null,
+    ControlAuthority: null,
+    ControlledDestination: null,
+    BipLocalReferenceNumber: null,
+    SignedOnBehalfOf: null,
+    OnwardTransportation: null,
     ConsignmentValidations: [
       {
-        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/decision/consignmentacceptable
+        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/decision/consignmentacceptable,
+        Code: null
       },
       {
-        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/documentcheckresult
+        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/documentcheckresult,
+        Code: null
       },
       {
-        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/physicalcheckdone
+        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/physicalcheckdone,
+        Code: null
       },
       {
-        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/laboratorytestsrequired
+        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/laboratorytestsrequired,
+        Code: null
       },
       {
-        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/identitycheckdone
+        Field: uk/gov/defra/tracesx/notificationschema/representation/parttwo/consignmentcheck/identitycheckdone,
+        Code: null
       }
     ],
-    InspectionRequired: NotRequired
+    CheckedOn: null,
+    AccompanyingDocuments: null,
+    PhsiAutoCleared: null,
+    HmiAutoCleared: null,
+    InspectionRequired: NotRequired,
+    InspectionOverride: null,
+    AutoClearedOn: null
   },
   PartThree: {
-    SealCheckRequired: false
+    ControlStatus: null,
+    Control: null,
+    ConsignmentValidations: null,
+    SealCheckRequired: false,
+    SealCheck: null,
+    SealCheckOverride: null
   },
+  OfficialVeterinarian: null,
   ConsignmentValidations: [
     {
-      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/identitycheckdone
+      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/identitycheckdone,
+      Code: null
     },
     {
-      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/documentcheckresult
+      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/documentcheckresult,
+      Code: null
     },
     {
-      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/physicalcheckdone
+      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/consignmentcheck/physicalcheckdone,
+      Code: null
     },
     {
-      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/laboratorytestsrequired
+      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/laboratorytestsrequired,
+      Code: null
     },
     {
-      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/decision/consignmentacceptable
+      Field: uk/gov/defra/tracesx/notificationschema/representation/notification/parttwo/decision/consignmentacceptable,
+      Code: null
     }
   ],
+  AgencyOrganisationId: null,
   RiskDecisionLockedOn: 2024-05-03 10:00 Utc,
   IsRiskDecisionLocked: false,
-  ChedTypeVersion: 0
+  IsBulkUploadInProgress: null,
+  RequestId: null,
+  IsCdsFullMatched: null,
+  ChedTypeVersion: 0,
+  IsGMRMatched: null
 }
