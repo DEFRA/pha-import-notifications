@@ -22,11 +22,11 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
                 new AnyExpression("_PointOfEntry", bcp),
                 new AnyExpression("importNotificationType", Enum.GetNames<ImportNotificationTypeEnum>()),
                 new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
-                new ComparisonExpression(ComparisonOperator.GreaterOrEqual, "updated", from.ToString("O")),
-                new ComparisonExpression(ComparisonOperator.LessThan, "updated", to.ToString("O")),
+                new ComparisonExpression(ComparisonOperator.GreaterOrEqual, "updatedEntity", from.ToString("O")),
+                new ComparisonExpression(ComparisonOperator.LessThan, "updatedEntity", to.ToString("O")),
             ]
         );
-        var fields = new[] { new FieldExpression("import-notifications", ["updated", "referenceNumber"]) };
+        var fields = new[] { new FieldExpression("import-notifications", ["updatedEntity", "referenceNumber"]) };
 
         var document = await jsonApiClient.Get(
             new RequestUri("api/import-notifications", filter, fields, btmsOptions.Value.PageSize),

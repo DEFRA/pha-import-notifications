@@ -17,6 +17,10 @@ public partial record ImportNotification
     [Description("Date when the notification was created")]
     public required DateTime Created { get; init; }
 
+    [JsonPropertyName("updatedEntity")]
+    [Description("Date when the notification was updated or when related data was linked or updated")]
+    public required DateTime UpdatedEntity { get; init; }
+
     [JsonPropertyName("updated")]
     [Description("Date when the notification was last updated")]
     public required DateTime Updated { get; init; }

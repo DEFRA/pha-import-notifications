@@ -60,7 +60,7 @@ public static class EndpointRouteBuilderExtensions
         );
         var updated = notifications.Select(x => new UpdatedImportNotification
         {
-            Updated = x.Updated,
+            Updated = x.UpdatedEntity,
             ReferenceNumber = x.ReferenceNumber,
             Links = new UpdatedImportNotificationLinks
             {

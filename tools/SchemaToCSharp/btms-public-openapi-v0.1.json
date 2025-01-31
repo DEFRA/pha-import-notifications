@@ -12,6 +12,22 @@
         ],
         "parameters": [
           {
+            "name": "dateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
             "name": "chartsToRender",
             "in": "query",
             "required": true,
@@ -41,19 +57,11 @@
             }
           },
           {
-            "name": "dateFrom",
+            "name": "finalisedOnly",
             "in": "query",
             "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "dateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
+              "type": "boolean",
+              "default": true
             }
           }
         ],
@@ -93,6 +101,22 @@
         ],
         "parameters": [
           {
+            "name": "dateFrom",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          {
             "name": "chedType",
             "in": "query",
             "required": true,
@@ -111,19 +135,11 @@
             }
           },
           {
-            "name": "dateFrom",
+            "name": "finalisedOnly",
             "in": "query",
             "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "dateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
+              "type": "boolean",
+              "default": true
             }
           }
         ],
@@ -263,6 +279,7 @@
                 "Today",
                 "LastMonth",
                 "ThisMonth",
+                "From202411",
                 "All"
               ],
               "allOf": [
@@ -304,6 +321,18 @@
         }
       }
     },
+    "/mgmt/server/forcegc": {
+      "get": {
+        "tags": [
+          "ManagementEndpoints"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/health": {
       "get": {
         "tags": [
@@ -331,6 +360,7 @@
                 "Today",
                 "LastMonth",
                 "ThisMonth",
+                "From202411",
                 "All"
               ],
               "allOf": [
@@ -387,6 +417,7 @@
                 "Today",
                 "LastMonth",
                 "ThisMonth",
+                "From202411",
                 "All"
               ],
               "allOf": [
@@ -428,54 +459,6 @@
         }
       }
     },
-    "/sync/generate-download": {
-      "post": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/DownloadCommand"
-                  }
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/download/{id}": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/sync/gmrs": {
       "get": {
         "tags": [
@@ -491,6 +474,7 @@
                 "Today",
                 "LastMonth",
                 "ThisMonth",
+                "From202411",
                 "All"
               ],
               "allOf": [
@@ -547,6 +531,7 @@
                 "Today",
                 "LastMonth",
                 "ThisMonth",
+                "From202411",
                 "All"
               ],
               "allOf": [
@@ -581,6 +566,111 @@
           },
           "required": true
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/finalisations": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "syncPeriod",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "enum": [
+                "Today",
+                "LastMonth",
+                "ThisMonth",
+                "From202411",
+                "All"
+              ],
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/SyncPeriod"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/SyncFinalisationsCommand"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/generate-download": {
+      "post": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/DownloadCommand"
+                  }
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sync/download/{id}": {
+      "get": {
+        "tags": [
+          "SyncEndpoints"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1071,6 +1161,10 @@
         },
         "additionalProperties": false
       },
+      "AuditContext": {
+        "type": "object",
+        "additionalProperties": false
+      },
       "AuditDiffEntry": {
         "type": "object",
         "properties": {
@@ -1137,7 +1231,7 @@
           "context": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/DecisionContext"
+                "$ref": "#/components/schemas/AuditContext"
               }
             ],
             "nullable": true
@@ -2356,10 +2450,6 @@
               "NoAlvsDecisions",
               "HasMultipleChedTypes",
               "HasMultipleCheds",
-              "AlvsClearanceRequestVersion1NotPresent",
-              "AlvsClearanceRequestVersionsNotComplete",
-              "AlvsDecisionVersion1NotPresent",
-              "AlvsDecisionVersionsNotComplete",
               "InvestigationNeeded",
               "None"
             ],
@@ -2490,6 +2580,7 @@
           "createdSource",
           "id",
           "updated",
+          "updatedEntity",
           "updatedSource",
           "version"
         ],
@@ -2509,6 +2600,10 @@
             "format": "date-time"
           },
           "updated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedEntity": {
             "type": "string",
             "format": "date-time"
           },
@@ -2628,10 +2723,6 @@
           "NoAlvsDecisions",
           "HasMultipleChedTypes",
           "HasMultipleCheds",
-          "AlvsClearanceRequestVersion1NotPresent",
-          "AlvsClearanceRequestVersionsNotComplete",
-          "AlvsDecisionVersion1NotPresent",
-          "AlvsDecisionVersionsNotComplete",
           "InvestigationNeeded",
           "None"
         ],
@@ -2730,6 +2821,7 @@
               "Today",
               "LastMonth",
               "ThisMonth",
+              "From202411",
               "All"
             ],
             "allOf": [
@@ -2966,6 +3058,47 @@
         ],
         "type": "string"
       },
+      "FinalState": {
+        "enum": [
+          "Cleared",
+          "CancelledAfterArrival",
+          "CancelledWhilePreLodged",
+          "Destroyed",
+          "Seized",
+          "ReleasedToKingsWarehouse",
+          "TransferredToMss"
+        ],
+        "type": "string"
+      },
+      "Finalisation": {
+        "required": [
+          "finalState",
+          "manualAction"
+        ],
+        "type": "object",
+        "properties": {
+          "finalState": {
+            "enum": [
+              "Cleared",
+              "CancelledAfterArrival",
+              "CancelledWhilePreLodged",
+              "Destroyed",
+              "Seized",
+              "ReleasedToKingsWarehouse",
+              "TransferredToMss"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FinalState"
+              }
+            ]
+          },
+          "manualAction": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "Header": {
         "type": "object",
         "properties": {
@@ -3143,6 +3276,10 @@
             "nullable": true
           },
           "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedEntity": {
             "type": "string",
             "format": "date-time"
           },
@@ -3913,6 +4050,10 @@
             "format": "date-time",
             "nullable": true
           },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          },
           "entryReference": {
             "type": "string",
             "nullable": true
@@ -3993,9 +4134,27 @@
             "type": "string",
             "format": "date-time"
           },
-          "updated": {
+          "updatedEntity": {
             "type": "string",
             "format": "date-time"
+          },
+          "finalised": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "finalisedSource": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "finalisation": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Finalisation"
+              }
+            ],
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5148,10 +5307,6 @@
       "RelationshipDataItem": {
         "type": "object",
         "properties": {
-          "matched": {
-            "type": "boolean",
-            "nullable": true
-          },
           "type": {
             "type": "string",
             "nullable": true
@@ -5478,6 +5633,7 @@
               "Today",
               "LastMonth",
               "ThisMonth",
+              "From202411",
               "All"
             ],
             "allOf": [
@@ -5520,6 +5676,50 @@
               "Today",
               "LastMonth",
               "ThisMonth",
+              "From202411",
+              "All"
+            ],
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/SyncPeriod"
+              }
+            ]
+          },
+          "rootFolder": {
+            "type": "string",
+            "nullable": true
+          },
+          "jobId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "timespan": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          },
+          "resource": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SyncFinalisationsCommand": {
+        "type": "object",
+        "properties": {
+          "syncPeriod": {
+            "enum": [
+              "Today",
+              "LastMonth",
+              "ThisMonth",
+              "From202411",
               "All"
             ],
             "allOf": [
@@ -5562,6 +5762,7 @@
               "Today",
               "LastMonth",
               "ThisMonth",
+              "From202411",
               "All"
             ],
             "allOf": [
@@ -5604,6 +5805,7 @@
               "Today",
               "LastMonth",
               "ThisMonth",
+              "From202411",
               "All"
             ],
             "allOf": [
@@ -5657,6 +5859,7 @@
           "Today",
           "LastMonth",
           "ThisMonth",
+          "From202411",
           "All"
         ],
         "type": "string"

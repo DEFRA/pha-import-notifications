@@ -8,7 +8,7 @@
       "type": "import-notifications",
       "id": "CHEDA.GB.2024.4792831",
       "attributes": {
-        "updated": "2024-12-11T08:12:58.792Z",
+        "updatedEntity": "2024-12-11T08:12:58.792Z",
         "referenceNumber": "CHEDA.GB.2024.4792831"
       },
       "links": {
@@ -19,7 +19,7 @@
       "type": "import-notifications",
       "id": "CHEDD.GB.2024.5019877",
       "attributes": {
-        "updated": "2024-12-11T08:12:59.114Z",
+        "updatedEntity": "2024-12-11T08:12:59.114Z",
         "referenceNumber": "CHEDD.GB.2024.5019877"
       },
       "links": {
@@ -30,7 +30,7 @@
       "type": "import-notifications",
       "id": "CHEDP.GB.2024.4144842",
       "attributes": {
-        "updated": "2024-12-11T08:12:59.741Z",
+        "updatedEntity": "2024-12-11T08:12:59.741Z",
         "referenceNumber": "CHEDP.GB.2024.4144842"
       },
       "links": {
@@ -41,7 +41,7 @@
       "type": "import-notifications",
       "id": "CHEDPP.GB.2024.3726460",
       "attributes": {
-        "updated": "2024-12-11T08:12:59.947Z",
+        "updatedEntity": "2024-12-11T08:12:59.947Z",
         "referenceNumber": "CHEDPP.GB.2024.3726460"
       },
       "links": {
@@ -52,7 +52,7 @@
       "type": "import-notifications",
       "id": "CHEDA.GB.2024.5129502",
       "attributes": {
-        "updated": "2024-12-11T08:13:00.108Z",
+        "updatedEntity": "2024-12-11T08:13:00.108Z",
         "referenceNumber": "CHEDA.GB.2024.5129502"
       },
       "links": {
@@ -63,7 +63,7 @@
       "type": "import-notifications",
       "id": "CHEDA.GB.2024.011113000003",
       "attributes": {
-        "updated": "2024-12-11T08:13:00.203Z",
+        "updatedEntity": "2024-12-11T08:13:00.203Z",
         "referenceNumber": "CHEDA.GB.2024.011113000003"
       },
       "links": {
@@ -74,7 +74,7 @@
       "type": "import-notifications",
       "id": "CHEDA.GB.2024.011114000001",
       "attributes": {
-        "updated": "2024-12-11T08:13:01.234Z",
+        "updatedEntity": "2024-12-11T08:13:01.234Z",
         "referenceNumber": "CHEDA.GB.2024.011114000001"
       },
       "links": {
@@ -85,7 +85,7 @@
       "type": "import-notifications",
       "id": "CHEDA.GB.2024.011114000002",
       "attributes": {
-        "updated": "2024-12-11T08:13:01.546Z",
+        "updatedEntity": "2024-12-11T08:13:01.546Z",
         "referenceNumber": "CHEDA.GB.2024.011114000002"
       },
       "links": {
@@ -96,7 +96,7 @@
       "type": "import-notifications",
       "id": "CHEDA.GB.2024.011114000003",
       "attributes": {
-        "updated": "2024-12-11T08:13:01.831Z",
+        "updatedEntity": "2024-12-11T08:13:01.831Z",
         "referenceNumber": "CHEDA.GB.2024.011114000003"
       },
       "links": {
@@ -107,7 +107,7 @@
       "type": "import-notifications",
       "id": "CHEDA.GB.2024.011115000001",
       "attributes": {
-        "updated": "2024-12-11T08:13:02.953Z",
+        "updatedEntity": "2024-12-11T08:13:02.953Z",
         "referenceNumber": "CHEDA.GB.2024.011115000001"
       },
       "links": {

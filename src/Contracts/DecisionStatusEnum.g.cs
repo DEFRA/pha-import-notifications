@@ -11,10 +11,6 @@ public enum DecisionStatusEnum
     NoAlvsDecisions,
     HasMultipleChedTypes,
     HasMultipleCheds,
-    AlvsClearanceRequestVersion1NotPresent,
-    AlvsClearanceRequestVersionsNotComplete,
-    AlvsDecisionVersion1NotPresent,
-    AlvsDecisionVersionsNotComplete,
     InvestigationNeeded,
     None
 }

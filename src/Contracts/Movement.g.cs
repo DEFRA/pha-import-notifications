@@ -35,6 +35,10 @@ public partial record Movement
     [Description("Date when the movement was created in ALVS")]
     public DateTime? CreatedSource { get; init; }
 
+    [JsonPropertyName("updated")]
+    [Description("Date when the movement was last updated")]
+    public required DateTime Updated { get; init; }
+
     [JsonPropertyName("entryReference")]
     public string? EntryReference { get; init; }
 
@@ -91,7 +95,16 @@ public partial record Movement
     [Description("Date when the movement was created")]
     public required DateTime Created { get; init; }
 
-    [JsonPropertyName("updated")]
-    [Description("Date when the movement was last updated")]
-    public required DateTime Updated { get; init; }
+    [JsonPropertyName("updatedEntity")]
+    [Description("Date when the movement was updated or when related data was linked or updated")]
+    public required DateTime UpdatedEntity { get; init; }
+
+    [JsonPropertyName("finalised")]
+    public DateTime? Finalised { get; init; }
+
+    [JsonPropertyName("finalisedSource")]
+    public DateTime? FinalisedSource { get; init; }
+
+    [JsonPropertyName("finalisation")]
+    public Finalisation? Finalisation { get; init; }
 }

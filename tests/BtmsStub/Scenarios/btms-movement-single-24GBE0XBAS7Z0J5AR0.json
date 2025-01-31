@@ -386,7 +386,8 @@
       ],
       "localId": null,
       "created": "2025-01-17T16:59:24.711Z",
-      "updated": "2025-01-17T18:53:14.37Z"
+      "updated": "2025-01-17T18:53:14.37Z",
+      "updatedEntity": "2025-01-17T18:54:14.37Z"
     },
     "relationships": {
       "notifications": {

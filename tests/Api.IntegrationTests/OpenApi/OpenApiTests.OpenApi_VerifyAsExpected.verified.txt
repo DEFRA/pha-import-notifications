@@ -2028,7 +2028,8 @@
       "ImportNotificationResponse": {
         "required": [
           "created",
-          "updated"
+          "updated",
+          "updatedEntity"
         ],
         "type": "object",
         "properties": {
@@ -2055,6 +2056,11 @@
           "created": {
             "type": "string",
             "description": "Date when the notification was created",
+            "format": "date-time"
+          },
+          "updatedEntity": {
+            "type": "string",
+            "description": "Date when the notification was updated or when related data was linked or updated",
             "format": "date-time"
           },
           "updated": {
@@ -3781,7 +3787,7 @@
         "properties": {
           "updated": {
             "type": "string",
-            "description": "Date last updated. Format is ISO 8601-1:2019",
+            "description": "Date last updated or when related data was last updated. Format is ISO 8601-1:2019",
             "format": "date-time"
           },
           "referenceNumber": {

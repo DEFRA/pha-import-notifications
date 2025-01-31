@@ -4,6 +4,7 @@
   _Etag: null,
   CreatedSource: 2024-05-02 12:19:47.06 Utc,
   Created: 2025-01-17 16:45:41.165 Utc,
+  UpdatedEntity: 2025-01-17 16:46:41.165 Utc,
   Updated: 2025-01-17 16:45:41.165 Utc,
   AuditEntries: null,
   Relationships: null,
