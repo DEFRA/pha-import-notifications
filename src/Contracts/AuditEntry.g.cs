@@ -27,5 +27,5 @@ public partial record AuditEntry
     public List<AuditDiffEntry>? Diff { get; init; }
 
     [JsonPropertyName("context")]
-    public DecisionContext? Context { get; init; }
+    public AuditContext? Context { get; init; }
 }

@@ -59,11 +59,11 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
                         + "any(_PointOfEntry,'bcp1','bcp2'),"
                         + "any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),"
                         + "not(equals(status,'Draft')),"
-                        + "greaterOrEqual(updated,'2024-12-12T13:10:30.0000000Z'),"
-                        + "lessThan(updated,'2024-12-12T13:40:30.0000000Z')"
+                        + "greaterOrEqual(updatedEntity,'2024-12-12T13:10:30.0000000Z'),"
+                        + "lessThan(updatedEntity,'2024-12-12T13:40:30.0000000Z')"
                         + ")"
                 )
-                .WithJsonApiParam("fields[import-notifications]", "updated,referenceNumber")
+                .WithJsonApiParam("fields[import-notifications]", "updatedEntity,referenceNumber")
                 .WithJsonApiParam("page[size]", "100")
         );
 

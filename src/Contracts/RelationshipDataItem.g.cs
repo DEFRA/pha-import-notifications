@@ -5,9 +5,6 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public partial record RelationshipDataItem
 {
-    [JsonPropertyName("matched")]
-    public bool? Matched { get; init; }
-
     [JsonPropertyName("type")]
     public string? Type { get; init; }
 

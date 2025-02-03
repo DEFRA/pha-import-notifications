@@ -17,6 +17,9 @@ public partial record DecisionImportNotifications
     [JsonPropertyName("updated")]
     public required DateTime Updated { get; init; }
 
+    [JsonPropertyName("updatedEntity")]
+    public required DateTime UpdatedEntity { get; init; }
+
     [JsonPropertyName("createdSource")]
     public required DateTime CreatedSource { get; init; }
 

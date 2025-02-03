@@ -41,7 +41,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
                     fixture
                         .Build<ImportNotificationUpdate>()
                         .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
-                        .With(x => x.Updated, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
+                        .With(x => x.UpdatedEntity, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
                         .Create(),
                 }
             );

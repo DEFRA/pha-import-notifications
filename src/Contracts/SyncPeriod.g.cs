@@ -4,5 +4,6 @@ public enum SyncPeriod
     Today,
     LastMonth,
     ThisMonth,
+    From202411,
     All
 }

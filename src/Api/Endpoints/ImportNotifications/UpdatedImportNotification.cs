@@ -5,7 +5,7 @@ namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
 internal sealed class UpdatedImportNotification
 {
-    [Description("Date last updated. Format is ISO 8601-1:2019")]
+    [Description("Date last updated or when related data was last updated. Format is ISO 8601-1:2019")]
     [Required]
     public required DateTime Updated { get; init; }
 
