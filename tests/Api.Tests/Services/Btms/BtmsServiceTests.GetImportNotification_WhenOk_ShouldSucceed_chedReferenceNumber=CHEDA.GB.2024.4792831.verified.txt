@@ -1,6 +1,7 @@
 ﻿{
   ClearanceRequests: null,
   ClearanceDecisions: null,
+  GoodsMovements: null,
   _Etag: null,
   CreatedSource: 2024-12-04 13:24:39.611 Utc,
   Created: 0001-01-01 Utc,

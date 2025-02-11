@@ -52,15 +52,23 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
         if (document is null)
             return null;
 
-        var tasks = document
-            .GetRelationships(chedReferenceNumber, "movements")
-            .Select(x => jsonApiClient.Get(new RequestUri($"api/movements/{x.Id}"), cancellationToken));
+        async Task<List<TType>> GetRelated<TType>(string type)
+        {
+            var relationships = document.GetRelationships(chedReferenceNumber, type);
 
-        var movements = (await Task.WhenAll(tasks))
-            .ThrowIfAnyNull("At least one movement could not be found")
-            .Select(x => x.GetDataAs<Movement>())
-            .ThrowIfAnyNull("At least one movement could not be deserialized")
-            .ToList();
+            var tasks = relationships.Select(x =>
+                jsonApiClient.Get(new RequestUri($"api/{type}/{x.Id}"), cancellationToken)
+            );
+
+            return (await Task.WhenAll(tasks))
+                .ThrowIfAnyNull($"At least one {type} could not be found")
+                .Select(x => x.GetDataAs<TType>())
+                .ThrowIfAnyNull($"At least one {type} could not be deserialized")
+                .ToList();
+        }
+
+        var movements = await GetRelated<Movement>("movements");
+        var goodsMovements = await GetRelated<Gmr>("gmrs");
 
         var result = document.GetDataAs<ImportNotification>();
         if (result is null)
@@ -70,6 +78,7 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
         {
             ClearanceRequests = movements.SelectMany(x => x.ClearanceRequests ?? []).ToList(),
             ClearanceDecisions = movements.SelectMany(x => x.Decisions ?? []).ToList(),
+            GoodsMovements = goodsMovements,
         };
     }
 
