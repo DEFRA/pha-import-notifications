@@ -52,6 +52,23 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
         if (document is null)
             return null;
 
+        var getMovementsTask = GetRelated<Movement>("movements");
+        var getGoodsMovementsTask = GetRelated<Gmr>("gmrs");
+
+        var movements = await getMovementsTask;
+        var goodsMovements = await getGoodsMovementsTask;
+
+        var result = document.GetDataAs<ImportNotification>();
+        if (result is null)
+            throw new InvalidOperationException("Result was null");
+
+        return result with
+        {
+            ClearanceRequests = movements.SelectMany(x => x.ClearanceRequests ?? []).ToList(),
+            ClearanceDecisions = movements.SelectMany(x => x.Decisions ?? []).ToList(),
+            GoodsMovements = goodsMovements,
+        };
+
         async Task<List<TType>> GetRelated<TType>(string type)
         {
             var relationships = document.GetRelationships(chedReferenceNumber, type);
@@ -66,20 +83,6 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
                 .ThrowIfAnyNull($"At least one {type} could not be deserialized")
                 .ToList();
         }
-
-        var movements = await GetRelated<Movement>("movements");
-        var goodsMovements = await GetRelated<Gmr>("gmrs");
-
-        var result = document.GetDataAs<ImportNotification>();
-        if (result is null)
-            throw new InvalidOperationException("Result was null");
-
-        return result with
-        {
-            ClearanceRequests = movements.SelectMany(x => x.ClearanceRequests ?? []).ToList(),
-            ClearanceDecisions = movements.SelectMany(x => x.Decisions ?? []).ToList(),
-            GoodsMovements = goodsMovements,
-        };
     }
 
     /// <summary>
