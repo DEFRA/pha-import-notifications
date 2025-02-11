@@ -134,7 +134,10 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             "v1",
             new OpenApiInfo
             {
-                Description = "TBC",
+                Description = """
+                The PHA API enforces a rate limit on requests to avoid excessive usage which, if reached, will return a 429 status code.
+                Please get in touch if you encounter this limit.
+                """,
                 Contact = new OpenApiContact
                 {
                     Email = "tbc@defra.gov.uk",
