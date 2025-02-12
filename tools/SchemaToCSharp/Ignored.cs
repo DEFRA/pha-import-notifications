@@ -118,15 +118,14 @@ internal static class Ignored
                 "createdSource",
                 "created",
                 "updatedEntity",
-                // Not required/requested 
+                // Not required/requested
                 "checkedInCrossing",
                 "inspectionRequired",
                 "haulierEORI",
                 "reportToLocations",
                 "direction",
-                "haulierType"
+                "haulierType",
             }
         },
-        
     };
 }
