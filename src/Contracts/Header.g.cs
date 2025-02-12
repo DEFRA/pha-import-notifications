@@ -50,7 +50,4 @@ public partial record Header
     [JsonPropertyName("masterUcr")]
     [JsonIgnore]
     public string? MasterUcr { get; init; }
-
-    [JsonPropertyName("decisionNumber")]
-    public int? DecisionNumber { get; init; }
 }

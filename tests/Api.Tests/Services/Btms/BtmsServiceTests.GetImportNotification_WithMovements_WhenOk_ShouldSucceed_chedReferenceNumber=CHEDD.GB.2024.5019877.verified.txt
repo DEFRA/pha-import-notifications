@@ -15,8 +15,7 @@
         DeclarantName: null,
         DispatchCountryCode: CN,
         GoodsLocationCode: TEEMIDTEE,
-        MasterUcr: null,
-        DecisionNumber: null
+        MasterUcr: null
       },
       Items: [
         {
@@ -58,32 +57,11 @@
       Header: {
         EntryReference: 24GBE0XBAS7Z0J5AR0,
         EntryVersionNumber: 1,
-        PreviousVersionNumber: null,
-        DeclarationUcr: null,
-        DeclarationPartNumber: null,
-        DeclarationType: null,
-        ArrivesAt: null,
-        SubmitterTurn: null,
-        DeclarantId: null,
-        DeclarantName: null,
-        DispatchCountryCode: null,
-        GoodsLocationCode: null,
-        MasterUcr: null,
         DecisionNumber: 1
       },
       Items: [
         {
           ItemNumber: 1,
-          CustomsProcedureCode: null,
-          TaricCommodityCode: null,
-          GoodsDescription: null,
-          ConsigneeId: null,
-          ConsigneeName: null,
-          ItemNetMass: null,
-          ItemSupplementaryUnits: null,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: null,
-          Documents: null,
           Checks: [
             {
               CheckCode: H223,
@@ -97,6 +75,7 @@
       ]
     }
   ],
+  GoodsMovements: null,
   _Etag: null,
   CreatedSource: 2024-12-04 16:14:19.067 Utc,
   Created: 0001-01-01 Utc,

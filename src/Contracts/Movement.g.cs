@@ -17,7 +17,7 @@ public partial record Movement
     public List<CustomsClearanceRequest>? ClearanceRequests { get; init; }
 
     [JsonPropertyName("decisions")]
-    public List<CustomsClearanceRequest>? Decisions { get; init; }
+    public List<CustomsClearanceDecision>? Decisions { get; init; }
 
     [JsonPropertyName("alvsDecisionStatus")]
     [JsonIgnore]

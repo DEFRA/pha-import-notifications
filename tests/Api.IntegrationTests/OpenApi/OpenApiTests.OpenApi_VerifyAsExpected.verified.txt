@@ -291,6 +291,23 @@
         ],
         "type": "string"
       },
+      "ActualCrossing": {
+        "type": "object",
+        "properties": {
+          "routeId": {
+            "type": "string",
+            "description": "The ID of the crossing route, using a routeId from the GVMS reference data",
+            "nullable": true
+          },
+          "arrivesAt": {
+            "type": "string",
+            "description": "The planned date and time of arrival, in local time of the arrival port. Must not include seconds, time zone or UTC marker",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Address": {
         "type": "object",
         "properties": {
@@ -1300,6 +1317,27 @@
         ],
         "type": "string"
       },
+      "CustomsClearanceDecision": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DecisionHeader"
+              }
+            ],
+            "nullable": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DecisionItems"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CustomsClearanceRequest": {
         "type": "object",
         "properties": {
@@ -1608,12 +1646,52 @@
         ],
         "type": "string"
       },
+      "DecisionHeader": {
+        "type": "object",
+        "properties": {
+          "entryReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "entryVersionNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "decisionNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DecisionIfChanneledOptionEnum": {
         "enum": [
           "Article8",
           "Article15"
         ],
         "type": "string"
+      },
+      "DecisionItems": {
+        "required": [
+          "itemNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "itemNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Check"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
       },
       "DecisionNotAcceptableActionDestructionReasonEnum": {
         "enum": [
@@ -1953,6 +2031,81 @@
         ],
         "type": "string"
       },
+      "Gmr": {
+        "required": [
+          "updatedEntity"
+        ],
+        "type": "object",
+        "properties": {
+          "updatedEntity": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "type": "string",
+            "description": "The Goods Movement Record (GMR) ID for this GMR.  Do not include when POSTing a GMR - GVMS will assign an ID.",
+            "nullable": true
+          },
+          "state": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StateEnum"
+              }
+            ],
+            "description": "The state of the GMR",
+            "nullable": true
+          },
+          "updatedSource": {
+            "type": "string",
+            "description": "The date and time that this GMR was last updated.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isUnaccompanied": {
+            "type": "boolean",
+            "description": "Set to true if the vehicle will not be accompanying the trailer(s) during the crossing, or if the vehicle is carrying a container that will be detached and loaded for the crossing.",
+            "nullable": true
+          },
+          "vehicleRegistrationNumber": {
+            "type": "string",
+            "description": "Vehicle registration number of the vehicle that will arrive at port.  If isUnaccompanied is set to false then vehicleRegNum must be provided to check-in.",
+            "nullable": true
+          },
+          "trailerRegistrationNums": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For vehicles carrying trailers, the trailer registration number of each trailer.  If isUnaccompanied is set to true then trailerRegistrationNums or containerReferenceNums must be provided before check-in.",
+            "nullable": true
+          },
+          "containerReferenceNums": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For vehicles arriving with containers that will be detached and loaded, the container reference number of each container in the movement. If isUnaccompanied is set to true then trailerRegistrationNums or containerReferenceNums must be provided before check-in.",
+            "nullable": true
+          },
+          "plannedCrossing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PlannedCrossing"
+              }
+            ],
+            "nullable": true
+          },
+          "actualCrossing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ActualCrossing"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Header": {
         "type": "object",
         "properties": {
@@ -1981,11 +2134,6 @@
           },
           "goodsLocationCode": {
             "type": "string",
-            "nullable": true
-          },
-          "decisionNumber": {
-            "type": "integer",
-            "format": "int32",
             "nullable": true
           }
         },
@@ -2043,7 +2191,14 @@
           "clearanceDecisions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CustomsClearanceRequest"
+              "$ref": "#/components/schemas/CustomsClearanceDecision"
+            },
+            "nullable": true
+          },
+          "goodsMovements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Gmr"
             },
             "nullable": true
           },
@@ -3406,6 +3561,23 @@
         },
         "additionalProperties": false
       },
+      "PlannedCrossing": {
+        "type": "object",
+        "properties": {
+          "routeId": {
+            "type": "string",
+            "description": "The ID of the crossing route, using a routeId from the GVMS reference data",
+            "nullable": true
+          },
+          "departsAt": {
+            "type": "string",
+            "description": "The planned date and time of departure, in local time of the departure port. Must not include seconds, time zone or UTC marker",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PostalAddress": {
         "type": "object",
         "properties": {
@@ -3776,6 +3948,17 @@
           }
         },
         "additionalProperties": false
+      },
+      "StateEnum": {
+        "enum": [
+          "NotFinalisable",
+          "Open",
+          "Finalised",
+          "CheckedIn",
+          "Embarked",
+          "Completed"
+        ],
+        "type": "string"
       },
       "UpdatedImportNotification": {
         "required": [

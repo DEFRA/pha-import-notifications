@@ -187,6 +187,25 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         await Verify(result, _settings).UseParameters(chedReferenceNumber);
     }
 
+    [Theory]
+    [InlineData(ChedReferenceNumbers.ChedAWithGoodsMovement, new[] { GoodsMovementsReferences.GMRId1 })]
+    public async Task GetImportNotification_WithGoodsMovements_WhenOk_ShouldSucceed(
+        string chedReferenceNumber,
+        string[] goodsMovementsReferences
+    )
+    {
+        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
+
+        foreach (var gmrId in goodsMovementsReferences)
+            WireMock.StubGmrs(gmrId: gmrId);
+
+        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
+
+        result.Should().NotBeNull();
+
+        await Verify(result, _settings).UseParameters(chedReferenceNumber);
+    }
+
     [Fact]
     public async Task GetImportNotification_WhenNotFound_ShouldBeNull()
     {

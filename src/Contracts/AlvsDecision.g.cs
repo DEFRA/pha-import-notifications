@@ -6,7 +6,7 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record AlvsDecision
 {
     [JsonPropertyName("decision")]
-    public CustomsClearanceRequest? Decision { get; init; }
+    public CustomsClearanceDecision? Decision { get; init; }
 
     [JsonPropertyName("context")]
     public DecisionContext? Context { get; init; }

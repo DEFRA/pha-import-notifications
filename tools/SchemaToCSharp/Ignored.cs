@@ -82,6 +82,10 @@ internal static class Ignored
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
         },
         {
+            "CdsDecision",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
+        },
+        {
             "Header",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
@@ -103,5 +107,26 @@ internal static class Ignored
                 "DocumentQuantity",
             }
         },
+        {
+            "Gmr",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                // Internal BTMS
+                "_Etag",
+                "AuditEntries",
+                "Relationships",
+                "createdSource",
+                "created",
+                "updatedEntity",
+                // Not required/requested 
+                "checkedInCrossing",
+                "inspectionRequired",
+                "haulierEORI",
+                "reportToLocations",
+                "direction",
+                "haulierType"
+            }
+        },
+        
     };
 }

@@ -95,6 +95,27 @@ public static class WireMockExtensions
         wireMock.Given(request).RespondWith(response);
     }
 
+    public static void StubGmrs(
+        this WireMockServer wireMock,
+        bool shouldFail = false,
+        string gmrId = GoodsMovementsReferences.GMRId1,
+        Func<IRequestBuilder, IRequestBuilder>? transformRequest = null
+    )
+    {
+        var code = shouldFail ? StatusCodes.Status500InternalServerError : StatusCodes.Status200OK;
+        var response = Response.Create().WithStatusCode(code);
+
+        if (!shouldFail)
+            response = response.WithBody(GetBody($"btms-goods-movement-single-{gmrId}.json"));
+
+        var request = Request.Create().WithPath(Endpoints.Gmrs.Get(gmrId)).UsingGet();
+
+        if (transformRequest is not null)
+            request = transformRequest(request);
+
+        wireMock.Given(request).RespondWith(response);
+    }
+
     private static string GetBody(string fileName)
     {
         var type = typeof(WireMockExtensions);

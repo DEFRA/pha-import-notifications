@@ -1,333 +1,37 @@
 ﻿{
-  ClearanceRequests: [
+  ClearanceRequests: null,
+  ClearanceDecisions: null,
+  GoodsMovements: [
     {
-      ServiceHeader: null,
-      Header: {
-        EntryReference: 24GBC1IQDD278IZAR8,
-        EntryVersionNumber: 3,
-        PreviousVersionNumber: 2,
-        DeclarationUcr: null,
-        DeclarationPartNumber: null,
-        DeclarationType: null,
-        ArrivesAt: null,
-        SubmitterTurn: null,
-        DeclarantId: null,
-        DeclarantName: null,
-        DispatchCountryCode: IT,
-        GoodsLocationCode: EUTEUTEUTGVM,
-        MasterUcr: null
+      _Etag: null,
+      CreatedSource: null,
+      Created: null,
+      UpdatedEntity: 2025-02-10 15:26:49.536 Utc,
+      AuditEntries: null,
+      Relationships: null,
+      Id: GMRA00KBHFE0,
+      HaulierEori: null,
+      State: Completed,
+      InspectionRequired: null,
+      ReportToLocations: null,
+      UpdatedSource: 2024-11-11 17:34:50.774 Utc,
+      Direction: null,
+      HaulierType: null,
+      IsUnaccompanied: false,
+      VehicleRegistrationNumber: 241SO1061,
+      TrailerRegistrationNums: null,
+      ContainerReferenceNums: null,
+      PlannedCrossing: {
+        RouteId: 109,
+        DepartsAt: 2024-11-11 14:45 Utc
       },
-      Items: [
-        {
-          ItemNumber: 1,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009110,
-          GoodsDescription: FLAVOURED SAUSAGES,
-          ConsigneeId: GB539035934000,
-          ConsigneeName: GB539035934000,
-          ItemNetMass: 184.0,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.2024.5070767,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      ServiceHeader: null,
-      Header: {
-        EntryReference: 24GBCND8RONCFGAAR3,
-        EntryVersionNumber: 2,
-        PreviousVersionNumber: 1,
-        DeclarationUcr: null,
-        DeclarationPartNumber: null,
-        DeclarationType: null,
-        ArrivesAt: null,
-        SubmitterTurn: null,
-        DeclarantId: null,
-        DeclarantName: null,
-        DispatchCountryCode: IT,
-        GoodsLocationCode: DEUDEUDEUGVM,
-        MasterUcr: null
-      },
-      Items: [
-        {
-          ItemNumber: 4,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009105,
-          GoodsDescription: CURED HAM - FINOCCHIONA,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 206.37,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5146876,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        },
-        {
-          ItemNumber: 5,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009105,
-          GoodsDescription: CURED HAM - FINOCCHIONA,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 26.91,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5144604,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        },
-        {
-          ItemNumber: 6,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 0210121100,
-          GoodsDescription: CURED HAM - PANCETTA TESA,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 206.85,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5144604,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        },
-        {
-          ItemNumber: 7,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009105,
-          GoodsDescription: CURED HAM - PARMA HAM 24 MONTHS,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 21.34,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5146490,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        },
-        {
-          ItemNumber: 8,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009105,
-          GoodsDescription: CURED HAM - SALAME TOSCANO,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 81.88,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5144604,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        }
-      ]
+      CheckedInCrossing: null,
+      ActualCrossing: {
+        RouteId: 32,
+        ArrivesAt: 2024-11-11 18:20 Utc
+      }
     }
   ],
-  ClearanceDecisions: [
-    {
-      ServiceHeader: null,
-      Header: {
-        EntryReference: 24GBC1IQDD278IZAR8,
-        EntryVersionNumber: 3,
-        DecisionNumber: 1
-      },
-      Items: [
-        {
-          ItemNumber: 1,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.2024.5070767). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      ServiceHeader: null,
-      Header: {
-        EntryReference: 24GBCND8RONCFGAAR3,
-        EntryVersionNumber: 2,
-        DecisionNumber: 1
-      },
-      Items: [
-        {
-          ItemNumber: 4,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5146876). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        },
-        {
-          ItemNumber: 5,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        },
-        {
-          ItemNumber: 6,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        },
-        {
-          ItemNumber: 7,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5146490). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        },
-        {
-          ItemNumber: 8,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  GoodsMovements: null,
   _Etag: null,
   CreatedSource: 2024-12-04 09:00:39.511 Utc,
   Created: 0001-01-01 Utc,
@@ -387,7 +91,7 @@
   IpaffsId: 4252422,
   Etag: 00000000044FD874,
   ExternalReferences: null,
-  ReferenceNumber: CHEDA.GB.2024.5129502,
+  ReferenceNumber: CHEDA.GB.2024.5129503,
   Version: 2,
   UpdatedSource: 2024-12-04 09:01:21.089 Utc,
   LastUpdatedBy: {

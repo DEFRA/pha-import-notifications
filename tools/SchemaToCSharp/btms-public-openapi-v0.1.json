@@ -799,6 +799,27 @@
           }
         }
       }
+    },
+    "goods-movements": {
+      "description": "Goods Movement Operations",
+      "get": {
+        "tags": [
+          "GoodsMovements"
+        ],
+        "description": "Get Goods Movements",
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GoodsMovementResourceResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -900,6 +921,23 @@
         ],
         "type": "string"
       },
+      "ActualCrossing": {
+        "type": "object",
+        "properties": {
+          "routeId": {
+            "type": "string",
+            "description": "The ID of the crossing route, using a routeId from the GVMS reference data",
+            "nullable": true
+          },
+          "arrivesAt": {
+            "type": "string",
+            "description": "The planned date and time of arrival, in local time of the arrival port. Must not include seconds, time zone or UTC marker",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Address": {
         "type": "object",
         "properties": {
@@ -985,7 +1023,7 @@
           "decision": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/CdsClearanceRequest"
+                "$ref": "#/components/schemas/CdsDecision"
               }
             ],
             "description": "",
@@ -1383,6 +1421,43 @@
         },
         "additionalProperties": false
       },
+      "CdsDecision": {
+        "required": [
+          "header",
+          "items",
+          "serviceHeader"
+        ],
+        "type": "object",
+        "properties": {
+          "serviceHeader": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ServiceHeader"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "header": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DecisionHeader"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DecisionItems"
+            },
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Check": {
         "type": "object",
         "properties": {
@@ -1410,6 +1485,23 @@
             "items": {
               "type": "string"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CheckedInCrossing": {
+        "type": "object",
+        "properties": {
+          "routeId": {
+            "type": "string",
+            "description": "The ID of the crossing route, using a routeId from the GVMS reference data",
+            "nullable": true
+          },
+          "arrivesAt": {
+            "type": "string",
+            "description": "The planned date and time of arrival, in local time of the arrival port. Must not include seconds, time zone or UTC marker",
+            "format": "date-time",
             "nullable": true
           }
         },
@@ -2441,13 +2533,14 @@
           "decisionStatus": {
             "enum": [
               "BtmsMadeSameDecisionAsAlvs",
+              "BtmMadeSameDecisionTypeAsAlvs",
+              "NoImportNotificationsLinked",
+              "NoAlvsDecisions",
               "ReliesOnCDMS205",
               "ReliesOnCDMS249",
               "HasChedppChecks",
-              "NoImportNotificationsLinked",
               "HasOtherDataErrors",
               "HasGenericDataErrors",
-              "NoAlvsDecisions",
               "HasMultipleChedTypes",
               "HasMultipleCheds",
               "InvestigationNeeded",
@@ -2567,6 +2660,29 @@
         ],
         "type": "string"
       },
+      "DecisionHeader": {
+        "type": "object",
+        "properties": {
+          "entryReference": {
+            "type": "string",
+            "description": "",
+            "nullable": true
+          },
+          "entryVersionNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32",
+            "nullable": true
+          },
+          "decisionNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DecisionIfChanneledOptionEnum": {
         "enum": [
           "Article8",
@@ -2614,6 +2730,25 @@
           "updatedSource": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DecisionItems": {
+        "type": "object",
+        "properties": {
+          "itemNumber": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Check"
+            },
+            "description": "",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2714,13 +2849,14 @@
       "DecisionStatusEnum": {
         "enum": [
           "BtmsMadeSameDecisionAsAlvs",
+          "BtmMadeSameDecisionTypeAsAlvs",
+          "NoImportNotificationsLinked",
+          "NoAlvsDecisions",
           "ReliesOnCDMS205",
           "ReliesOnCDMS249",
           "HasChedppChecks",
-          "NoImportNotificationsLinked",
           "HasOtherDataErrors",
           "HasGenericDataErrors",
-          "NoAlvsDecisions",
           "HasMultipleChedTypes",
           "HasMultipleCheds",
           "InvestigationNeeded",
@@ -2778,6 +2914,15 @@
           "Other",
           "CShipRoad",
           "CShipRail"
+        ],
+        "type": "string"
+      },
+      "DirectionEnum": {
+        "enum": [
+          "UkInbound",
+          "UkOutbound",
+          "GbToNi",
+          "NiToGb"
         ],
         "type": "string"
       },
@@ -3099,6 +3244,200 @@
         },
         "additionalProperties": false
       },
+      "Gmr": {
+        "type": "object",
+        "properties": {
+          "_Etag": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdSource": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedEntity": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "auditEntries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuditEntry"
+            },
+            "nullable": true
+          },
+          "relationships": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/GmrRelationships"
+              }
+            ],
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "description": "The Goods Movement Record (GMR) ID for this GMR.  Do not include when POSTing a GMR - GVMS will assign an ID.",
+            "nullable": true
+          },
+          "haulierEori": {
+            "type": "string",
+            "description": "The EORI of the haulier that is responsible for the vehicle making the goods movement",
+            "nullable": true
+          },
+          "state": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/StateEnum"
+              }
+            ],
+            "description": "The state of the GMR",
+            "nullable": true
+          },
+          "inspectionRequired": {
+            "type": "boolean",
+            "description": "If set to true, indicates that the vehicle requires a customs inspection.  If set to false, indicates that the vehicle does not require a customs inspection.  If not set, indicates the customs inspection decision has not yet been made or is not applicable.  For outbound GMRs, this indicates that the vehicle must present at an inspection facility prior to checking-in at the port.  For Office of Transit inspections for inbound GMRs, a decision may be made to inspect subsequent to a notification that inspection is not required.  In this event a notification will be sent that changes inspectionRequired from false to true.  If this happens after leaving the port of arrival, the inspection should be carried out at the next transit office e.g. the office of destination.",
+            "nullable": true
+          },
+          "reportToLocations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportToLocations"
+            },
+            "description": "A list of one or more inspection types, from GVMS Reference Data, that the vehicle must have carried out, in the order specified.  This means that where there are multiple entries here, the vehicle must report for the first inspection type listed before each subsequent listed inspection.  Each entry includes a list of available locations for the inspection type.",
+            "nullable": true
+          },
+          "updatedSource": {
+            "type": "string",
+            "description": "The date and time that this GMR was last updated.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "direction": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DirectionEnum"
+              }
+            ],
+            "description": "The direction of the movement - into or out of the UK, or between Great Britain and Northern Ireland",
+            "nullable": true
+          },
+          "haulierType": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/HaulierTypeEnum"
+              }
+            ],
+            "description": "The type of haulier moving the goods",
+            "nullable": true
+          },
+          "isUnaccompanied": {
+            "type": "boolean",
+            "description": "Set to true if the vehicle will not be accompanying the trailer(s) during the crossing, or if the vehicle is carrying a container that will be detached and loaded for the crossing.",
+            "nullable": true
+          },
+          "vehicleRegistrationNumber": {
+            "type": "string",
+            "description": "Vehicle registration number of the vehicle that will arrive at port.  If isUnaccompanied is set to false then vehicleRegNum must be provided to check-in.",
+            "nullable": true
+          },
+          "trailerRegistrationNums": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For vehicles carrying trailers, the trailer registration number of each trailer.  If isUnaccompanied is set to true then trailerRegistrationNums or containerReferenceNums must be provided before check-in.",
+            "nullable": true
+          },
+          "containerReferenceNums": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For vehicles arriving with containers that will be detached and loaded, the container reference number of each container in the movement. If isUnaccompanied is set to true then trailerRegistrationNums or containerReferenceNums must be provided before check-in.",
+            "nullable": true
+          },
+          "plannedCrossing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PlannedCrossing"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "checkedInCrossing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CheckedInCrossing"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          },
+          "actualCrossing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ActualCrossing"
+              }
+            ],
+            "description": "",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GmrRelationships": {
+        "type": "object",
+        "properties": {
+          "transits": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TdmRelationshipObject"
+              }
+            ],
+            "nullable": true
+          },
+          "customs": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/TdmRelationshipObject"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GoodsMovementResourceResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Gmr"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HaulierTypeEnum": {
+        "enum": [
+          "Standard",
+          "FpoAsn",
+          "FpoOther",
+          "NatoMod",
+          "Rmg",
+          "Etoe"
+        ],
+        "type": "string"
+      },
       "Header": {
         "type": "object",
         "properties": {
@@ -3168,12 +3507,6 @@
           "masterUcr": {
             "type": "string",
             "description": "",
-            "nullable": true
-          },
-          "decisionNumber": {
-            "type": "integer",
-            "description": "",
-            "format": "int32",
             "nullable": true
           }
         },
@@ -3946,7 +4279,6 @@
       "LinkStatusEnum": {
         "enum": [
           "Error",
-          "NotLinked",
           "PartiallyLinked",
           "MissingLinks",
           "NoLinks",
@@ -4021,7 +4353,7 @@
           "decisions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CdsClearanceRequest"
+              "$ref": "#/components/schemas/CdsDecision"
             },
             "nullable": true
           },
@@ -4203,7 +4535,6 @@
           "linkStatus": {
             "enum": [
               "Error",
-              "NotLinked",
               "PartiallyLinked",
               "MissingLinks",
               "NoLinks",
@@ -5107,6 +5438,23 @@
         },
         "additionalProperties": false
       },
+      "PlannedCrossing": {
+        "type": "object",
+        "properties": {
+          "routeId": {
+            "type": "string",
+            "description": "The ID of the crossing route, using a routeId from the GVMS reference data",
+            "nullable": true
+          },
+          "departsAt": {
+            "type": "string",
+            "description": "The planned date and time of departure, in local time of the departure port. Must not include seconds, time zone or UTC marker",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PostalAddress": {
         "type": "object",
         "properties": {
@@ -5355,6 +5703,25 @@
         },
         "additionalProperties": false
       },
+      "ReportToLocations": {
+        "type": "object",
+        "properties": {
+          "inspectionTypeId": {
+            "type": "string",
+            "description": "An inspectionTypeId from GVMS Reference Data denoting the type of inspection that needs to be performed on the vehicle.",
+            "nullable": true
+          },
+          "locationIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "A list of locationIds from GVMS Reference Data that are available to perform this type of inspection.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ResourceLink": {
         "type": "object",
         "properties": {
@@ -5544,6 +5911,17 @@
           }
         },
         "additionalProperties": false
+      },
+      "StateEnum": {
+        "enum": [
+          "NotFinalisable",
+          "Open",
+          "Finalised",
+          "CheckedIn",
+          "Embarked",
+          "Completed"
+        ],
+        "type": "string"
       },
       "StatusChecker": {
         "type": "object",
