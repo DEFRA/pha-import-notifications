@@ -37,6 +37,8 @@ COPY tests/BtmsStub/BtmsStub.csproj tests/BtmsStub/BtmsStub.csproj
 COPY tests/Testing/Testing.csproj tests/Testing/Testing.csproj
 COPY tests/Api.Tests/Api.Tests.csproj tests/Api.Tests/Api.Tests.csproj
 COPY tests/Api.IntegrationTests/Api.IntegrationTests.csproj tests/Api.IntegrationTests/Api.IntegrationTests.csproj
+COPY tools/BtmsStubScenarios/BtmsStubScenarios.csproj tools/BtmsStubScenarios/BtmsStubScenarios.csproj
+COPY tools/SchemaToCSharp/SchemaToCSharp.csproj tools/SchemaToCSharp/SchemaToCSharp.csproj
 COPY Defra.PhaImportNotifications.sln Defra.PhaImportNotifications.sln
 COPY Directory.Build.props Directory.Build.props
 
