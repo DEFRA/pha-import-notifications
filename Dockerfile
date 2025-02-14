@@ -53,7 +53,7 @@ COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
 RUN dotnet csharpier --check .
 
-RUN dotnet build --no-restore -c Release
+RUN dotnet build src/Api/Api.csproj --no-restore -c Release
 RUN dotnet swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
 RUN vacuum lint -d -r .vacuum.yml openapi.json
 
