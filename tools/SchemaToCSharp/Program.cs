@@ -14,7 +14,7 @@ using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
 const string solutionPath = "../../../../../";
 const string outputPath = $"{solutionPath}src/Contracts/";
-const string inputPath = $"{solutionPath}tools/SchemaToCSharp/btms-public-openapi-v0.1.json";
+const string inputPath = $"{solutionPath}tools/SchemaToCSharp/openapi.json";
 
 Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
