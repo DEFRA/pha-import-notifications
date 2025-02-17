@@ -76,7 +76,6 @@
     }
   ],
   GoodsMovements: null,
-  _Etag: null,
   CreatedSource: 2024-12-04 16:14:19.067 Utc,
   Created: 0001-01-01 Utc,
   UpdatedEntity: 2025-01-17 17:00:25.037 Utc,
@@ -143,9 +142,6 @@
       Checks: null
     }
   ],
-  _PointOfEntry: null,
-  _PointOfEntryControlPoint: null,
-  _MatchReference: null,
   IpaffsId: 4019877,
   Etag: 0000000004692D7E,
   ExternalReferences: null,
@@ -163,26 +159,6 @@
   Status: Validated,
   SplitConsignment: null,
   ChildNotification: null,
-  RiskAssessment: {
-    CommodityResults: [
-      {
-        RiskDecision: Notrequired,
-        ExitRiskDecision: null,
-        HmiDecision: null,
-        PhsiDecision: null,
-        PhsiClassification: null,
-        Phsi: null,
-        UniqueId: 834ec87f-0855-4f34-bc0c-90408b6c0b5f,
-        EppoCode: null,
-        Variety: null,
-        IsWoody: null,
-        IndoorOutdoor: null,
-        Propagation: null,
-        PhsiRuleType: null
-      }
-    ],
-    AssessedOn: 2024-12-04 16:14:19.777 Utc
-  },
   JourneyRiskCategorisation: null,
   IsHighRiskEuImport: false,
   PartOne: {

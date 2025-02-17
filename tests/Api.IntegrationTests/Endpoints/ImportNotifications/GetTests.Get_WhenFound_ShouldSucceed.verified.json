@@ -67,7 +67,6 @@
   "status": "Submitted",
   "splitConsignment": null,
   "childNotification": null,
-  "riskAssessment": null,
   "journeyRiskCategorisation": null,
   "isHighRiskEuImport": true,
   "partOne": {

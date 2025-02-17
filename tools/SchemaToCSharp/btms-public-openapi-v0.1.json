@@ -1,763 +1,10 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "CDMS Public API",
+    "title": "BTMS Public API",
     "version": "v0.1"
   },
   "paths": {
-    "/analytics/dashboard": {
-      "get": {
-        "tags": [
-          "AnalyticsEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "dateFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "dateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "chartsToRender",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "chedType",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/ImportNotificationTypeEnum"
-              }
-            }
-          },
-          {
-            "name": "coo",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "finalisedOnly",
-            "in": "query",
-            "schema": {
-              "type": "boolean",
-              "default": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/analytics/timeline": {
-      "get": {
-        "tags": [
-          "AnalyticsEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "movementId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/analytics/exceptions": {
-      "get": {
-        "tags": [
-          "AnalyticsEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "dateFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "dateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "chedType",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/ImportNotificationTypeEnum"
-              }
-            }
-          },
-          {
-            "name": "country",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "finalisedOnly",
-            "in": "query",
-            "schema": {
-              "type": "boolean",
-              "default": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/analytics/scenarios": {
-      "get": {
-        "tags": [
-          "AnalyticsEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "dateFrom",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "dateTo",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/analytics/record-current-state": {
-      "get": {
-        "tags": [
-          "AnalyticsEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/diagnostics/blob": {
-      "get": {
-        "tags": [
-          "DiagnosticEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/diagnostics/asb": {
-      "get": {
-        "tags": [
-          "DiagnosticEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/mgmt/collections": {
-      "get": {
-        "tags": [
-          "ManagementEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/mgmt/collections/drop": {
-      "get": {
-        "tags": [
-          "ManagementEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/mgmt/environment": {
-      "get": {
-        "tags": [
-          "ManagementEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/mgmt/status": {
-      "get": {
-        "tags": [
-          "ManagementEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/mgmt/initialise": {
-      "get": {
-        "tags": [
-          "ManagementEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "syncPeriod",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "enum": [
-                "Today",
-                "LastMonth",
-                "ThisMonth",
-                "From202411",
-                "All"
-              ],
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SyncPeriod"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/mgmt/asb/start": {
-      "get": {
-        "tags": [
-          "ManagementEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/mgmt/asb/stop": {
-      "get": {
-        "tags": [
-          "ManagementEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/mgmt/server/forcegc": {
-      "get": {
-        "tags": [
-          "ManagementEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/health": {
-      "get": {
-        "tags": [
-          "Program"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/import-notifications": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "syncPeriod",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "enum": [
-                "Today",
-                "LastMonth",
-                "ThisMonth",
-                "From202411",
-                "All"
-              ],
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SyncPeriod"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/SyncNotificationsCommand"
-                  }
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/clearance-requests": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "syncPeriod",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "enum": [
-                "Today",
-                "LastMonth",
-                "ThisMonth",
-                "From202411",
-                "All"
-              ],
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SyncPeriod"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/SyncClearanceRequestsCommand"
-                  }
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/gmrs": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "syncPeriod",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "enum": [
-                "Today",
-                "LastMonth",
-                "ThisMonth",
-                "From202411",
-                "All"
-              ],
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SyncPeriod"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/SyncGmrsCommand"
-                  }
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/decisions": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "syncPeriod",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "enum": [
-                "Today",
-                "LastMonth",
-                "ThisMonth",
-                "From202411",
-                "All"
-              ],
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SyncPeriod"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/SyncDecisionsCommand"
-                  }
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/finalisations": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "syncPeriod",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "enum": [
-                "Today",
-                "LastMonth",
-                "ThisMonth",
-                "From202411",
-                "All"
-              ],
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/SyncPeriod"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/SyncFinalisationsCommand"
-                  }
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/generate-download": {
-      "post": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/DownloadCommand"
-                  }
-                ]
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/download/{id}": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/queue-counts": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/jobs": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/jobs/clear": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/jobs/{jobId}": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "jobId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/sync/jobs/{jobId}/cancel": {
-      "get": {
-        "tags": [
-          "SyncEndpoints"
-        ],
-        "parameters": [
-          {
-            "name": "jobId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "import-notifications": {
       "description": "Notification Operations",
       "get": {
@@ -767,7 +14,7 @@
         "description": "Get Notifications",
         "responses": {
           "200": {
-            "description": "success",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
@@ -788,7 +35,7 @@
         "description": "Get Movements",
         "responses": {
           "200": {
-            "description": "success",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
@@ -809,7 +56,7 @@
         "description": "Get Goods Movements",
         "responses": {
           "200": {
-            "description": "success",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
@@ -1372,23 +619,6 @@
         },
         "additionalProperties": false
       },
-      "CatchCertificates": {
-        "type": "object",
-        "properties": {
-          "certificateNumber": {
-            "type": "string",
-            "description": "The catch certificate number",
-            "nullable": true
-          },
-          "weight": {
-            "type": "number",
-            "description": "The catch certificate weight number",
-            "format": "double",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "CdsClearanceRequest": {
         "type": "object",
         "properties": {
@@ -1473,10 +703,12 @@
           },
           "decisionCode": {
             "type": "string",
+            "description": "",
             "nullable": true
           },
           "decisionsValidUntil": {
             "type": "string",
+            "description": "",
             "format": "date-time",
             "nullable": true
           },
@@ -1485,6 +717,7 @@
             "items": {
               "type": "string"
             },
+            "description": "",
             "nullable": true
           }
         },
@@ -1502,20 +735,6 @@
             "type": "string",
             "description": "The planned date and time of arrival, in local time of the arrival port. Must not include seconds, time zone or UTC marker",
             "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Ched": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "nullable": true
-          },
-          "identifier": {
-            "type": "string",
             "nullable": true
           }
         },
@@ -1793,7 +1012,6 @@
           "additionalData": {
             "type": "object",
             "additionalProperties": { },
-            "description": "",
             "nullable": true
           },
           "riskAssesment": {
@@ -1802,7 +1020,6 @@
                 "$ref": "#/components/schemas/CommodityRiskResult"
               }
             ],
-            "description": "",
             "nullable": true
           },
           "checks": {
@@ -1810,7 +1027,6 @@
             "items": {
               "$ref": "#/components/schemas/InspectionCheck"
             },
-            "description": "",
             "nullable": true
           }
         },
@@ -1956,50 +1172,6 @@
           "wasSentToTradeCharge": {
             "type": "boolean",
             "description": "Indicates whether the last applicable change was successfully send over the interface to Trade Charge",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ComplementParameterSet": {
-        "type": "object",
-        "properties": {
-          "uniqueComplementId": {
-            "type": "string",
-            "description": "UUID used to match commodityComplement to its complementParameter set. CHEDPP only",
-            "nullable": true
-          },
-          "complementId": {
-            "type": "integer",
-            "description": "",
-            "format": "int32",
-            "nullable": true
-          },
-          "speciesId": {
-            "type": "string",
-            "description": "",
-            "nullable": true
-          },
-          "keyDataPairs": {
-            "type": "object",
-            "additionalProperties": { },
-            "description": "",
-            "nullable": true
-          },
-          "catchCertificates": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CatchCertificates"
-            },
-            "description": "Catch certificate details",
-            "nullable": true
-          },
-          "identifiers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Identifiers"
-            },
-            "description": "Data used to identify the complements inside an IMP consignment",
             "nullable": true
           }
         },
@@ -2535,7 +1707,11 @@
               "BtmsMadeSameDecisionAsAlvs",
               "BtmMadeSameDecisionTypeAsAlvs",
               "NoImportNotificationsLinked",
+              "PartialImportNotificationsLinked",
               "NoAlvsDecisions",
+              "DocumentReferenceFormatIncorrect",
+              "DocumentReferenceCaseIncorrect",
+              "AlvsX00NotBtms",
               "ReliesOnCDMS205",
               "ReliesOnCDMS249",
               "HasChedppChecks",
@@ -2851,7 +2027,11 @@
           "BtmsMadeSameDecisionAsAlvs",
           "BtmMadeSameDecisionTypeAsAlvs",
           "NoImportNotificationsLinked",
+          "PartialImportNotificationsLinked",
           "NoAlvsDecisions",
+          "DocumentReferenceFormatIncorrect",
+          "DocumentReferenceCaseIncorrect",
+          "AlvsX00NotBtms",
           "ReliesOnCDMS205",
           "ReliesOnCDMS249",
           "HasChedppChecks",
@@ -2953,73 +2133,6 @@
             "type": "number",
             "description": "",
             "format": "double",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "DownloadCommand": {
-        "type": "object",
-        "properties": {
-          "syncPeriod": {
-            "enum": [
-              "Today",
-              "LastMonth",
-              "ThisMonth",
-              "From202411",
-              "All"
-            ],
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SyncPeriod"
-              }
-            ]
-          },
-          "jobId": {
-            "type": "string",
-            "format": "uuid",
-            "readOnly": true
-          },
-          "timespan": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "resource": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "filter": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DownloadFilter"
-              }
-            ],
-            "nullable": true
-          },
-          "rootFolder": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "DownloadFilter": {
-        "type": "object",
-        "properties": {
-          "mrns": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "cheds": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Ched"
-            },
             "nullable": true
           }
         },
@@ -3213,7 +2326,8 @@
           "ReleasedToKingsWarehouse",
           "TransferredToMss"
         ],
-        "type": "string"
+        "type": "integer",
+        "format": "int32"
       },
       "Finalisation": {
         "required": [
@@ -3247,10 +2361,6 @@
       "Gmr": {
         "type": "object",
         "properties": {
-          "_Etag": {
-            "type": "string",
-            "nullable": true
-          },
           "createdSource": {
             "type": "string",
             "format": "date-time",
@@ -3367,7 +2477,6 @@
                 "$ref": "#/components/schemas/PlannedCrossing"
               }
             ],
-            "description": "",
             "nullable": true
           },
           "checkedInCrossing": {
@@ -3376,7 +2485,6 @@
                 "$ref": "#/components/schemas/CheckedInCrossing"
               }
             ],
-            "description": "",
             "nullable": true
           },
           "actualCrossing": {
@@ -3385,7 +2493,6 @@
                 "$ref": "#/components/schemas/ActualCrossing"
               }
             ],
-            "description": "",
             "nullable": true
           }
         },
@@ -3528,40 +2635,6 @@
         },
         "additionalProperties": false
       },
-      "Identifiers": {
-        "type": "object",
-        "properties": {
-          "speciesNumber": {
-            "type": "integer",
-            "description": "Number used to identify which item the identifiers are related to",
-            "format": "int32",
-            "nullable": true
-          },
-          "data": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "description": "List of identifiers and their keys",
-            "nullable": true
-          },
-          "isPlaceOfDestinationThePermanentAddress": {
-            "type": "boolean",
-            "description": "Is the place of destination the permanent address?",
-            "nullable": true
-          },
-          "permanentAddress": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EconomicOperator"
-              }
-            ],
-            "description": "Permanent address of the species",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ImpactOfTransportOnAnimals": {
         "type": "object",
         "properties": {
@@ -3599,10 +2672,6 @@
       "ImportNotification": {
         "type": "object",
         "properties": {
-          "_Etag": {
-            "type": "string",
-            "nullable": true
-          },
           "createdSource": {
             "type": "string",
             "format": "date-time",
@@ -3648,18 +2717,6 @@
             "items": {
               "$ref": "#/components/schemas/CommodityComplement"
             },
-            "nullable": true
-          },
-          "_PointOfEntry": {
-            "type": "string",
-            "nullable": true
-          },
-          "_PointOfEntryControlPoint": {
-            "type": "string",
-            "nullable": true
-          },
-          "_MatchReference": {
-            "type": "string",
             "nullable": true
           },
           "ipaffsId": {
@@ -3749,15 +2806,6 @@
             "description": "Is this notification a child of a split consignment?",
             "nullable": true
           },
-          "riskAssessment": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RiskAssessmentResult"
-              }
-            ],
-            "description": "Result of risk assessment by the risk scorer",
-            "nullable": true
-          },
           "journeyRiskCategorisation": {
             "allOf": [
               {
@@ -3778,7 +2826,6 @@
                 "$ref": "#/components/schemas/PartOne"
               }
             ],
-            "description": "",
             "nullable": true
           },
           "decisionBy": {
@@ -4447,18 +3494,7 @@
             ],
             "nullable": true
           },
-          "_MatchReferences": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
           "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "_Etag": {
             "type": "string",
             "nullable": true
           },
@@ -5035,7 +4071,6 @@
                 "$ref": "#/components/schemas/BillingInformation"
               }
             ],
-            "description": "",
             "nullable": true
           },
           "isChargeable": {
@@ -5054,7 +4089,6 @@
                 "$ref": "#/components/schemas/CommonUserCharge"
               }
             ],
-            "description": "",
             "nullable": true
           },
           "provideCtcMrn": {
@@ -5529,7 +4563,7 @@
           },
           "regNumber": {
             "type": "string",
-            "description": "There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number.",
+            "description": "There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number. ",
             "nullable": true
           },
           "shipName": {
@@ -5732,26 +4766,6 @@
         },
         "additionalProperties": false
       },
-      "RiskAssessmentResult": {
-        "type": "object",
-        "properties": {
-          "commodityResults": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CommodityRiskResult"
-            },
-            "description": "List of risk assessed commodities",
-            "nullable": true
-          },
-          "assessedOn": {
-            "type": "string",
-            "description": "Date and time of assessment",
-            "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "Route": {
         "type": "object",
         "properties": {
@@ -5760,7 +4774,6 @@
             "items": {
               "type": "string"
             },
-            "description": "",
             "nullable": true
           }
         },
@@ -5802,22 +4815,18 @@
         "properties": {
           "sealNumber": {
             "type": "string",
-            "description": "",
             "nullable": true
           },
           "containerNumber": {
             "type": "string",
-            "description": "",
             "nullable": true
           },
           "officialSeal": {
             "type": "boolean",
-            "description": "",
             "nullable": true
           },
           "resealedSealNumber": {
             "type": "string",
-            "description": "",
             "nullable": true
           }
         },
@@ -6002,245 +5011,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "SyncClearanceRequestsCommand": {
-        "type": "object",
-        "properties": {
-          "syncPeriod": {
-            "enum": [
-              "Today",
-              "LastMonth",
-              "ThisMonth",
-              "From202411",
-              "All"
-            ],
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SyncPeriod"
-              }
-            ]
-          },
-          "rootFolder": {
-            "type": "string",
-            "nullable": true
-          },
-          "jobId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "timespan": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "resource": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SyncDecisionsCommand": {
-        "type": "object",
-        "properties": {
-          "syncPeriod": {
-            "enum": [
-              "Today",
-              "LastMonth",
-              "ThisMonth",
-              "From202411",
-              "All"
-            ],
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SyncPeriod"
-              }
-            ]
-          },
-          "rootFolder": {
-            "type": "string",
-            "nullable": true
-          },
-          "jobId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "timespan": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "resource": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SyncFinalisationsCommand": {
-        "type": "object",
-        "properties": {
-          "syncPeriod": {
-            "enum": [
-              "Today",
-              "LastMonth",
-              "ThisMonth",
-              "From202411",
-              "All"
-            ],
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SyncPeriod"
-              }
-            ]
-          },
-          "rootFolder": {
-            "type": "string",
-            "nullable": true
-          },
-          "jobId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "timespan": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "resource": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SyncGmrsCommand": {
-        "type": "object",
-        "properties": {
-          "syncPeriod": {
-            "enum": [
-              "Today",
-              "LastMonth",
-              "ThisMonth",
-              "From202411",
-              "All"
-            ],
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SyncPeriod"
-              }
-            ]
-          },
-          "rootFolder": {
-            "type": "string",
-            "nullable": true
-          },
-          "jobId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "timespan": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "resource": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SyncNotificationsCommand": {
-        "type": "object",
-        "properties": {
-          "syncPeriod": {
-            "enum": [
-              "Today",
-              "LastMonth",
-              "ThisMonth",
-              "From202411",
-              "All"
-            ],
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/SyncPeriod"
-              }
-            ]
-          },
-          "rootFolder": {
-            "type": "string",
-            "nullable": true
-          },
-          "jobId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "timespan": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "chedTypes": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "resource": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "blobFiles": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SyncPeriod": {
-        "enum": [
-          "Today",
-          "LastMonth",
-          "ThisMonth",
-          "From202411",
-          "All"
-        ],
-        "type": "string"
       },
       "TdmRelationshipObject": {
         "type": "object",

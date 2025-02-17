@@ -80,16 +80,8 @@ public partial record Movement
     [JsonIgnore]
     public MovementTdmRelationships? Relationships { get; init; }
 
-    [JsonPropertyName("_MatchReferences")]
-    [JsonIgnore]
-    public List<string>? _MatchReferences { get; init; }
-
     [JsonPropertyName("id")]
     public string? Id { get; init; }
-
-    [JsonPropertyName("_Etag")]
-    [JsonIgnore]
-    public string? _Etag { get; init; }
 
     [JsonPropertyName("created")]
     [Description("Date when the movement was created")]
