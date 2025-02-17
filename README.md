@@ -55,6 +55,19 @@ Get an import notification:
 http://localhost:8080/import-notifications/CHEDA.GB.2024.4792831
 ```
 
+## Update BTMS Schema
+
+When a schema change in BTMS is made we need to update our models.
+
+At the moment this is a manual process:
+
+1. Check out the [btms-backend](https://github.com/defra/btms-backend)
+2. Run `make generate-openapi-spec`
+3. This will generate an `openapi.json` file in the `btms-backend` folder
+4. In the PHA API repository, copy this to the tools/SchemaToCSharp folder
+5. Run `make update-btms-schema` in the root of the repository
+6. Observe any changes that have been made and commit them
+
 ## Testing
 
 The unit and integration tests can either be run via your IDE or alternatively with `dotnet test .`
