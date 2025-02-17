@@ -1,10 +1,10 @@
 {
   "links": {
-    "self": "/api/movements/24GBE0XBAS7Z0J5AR0"
+    "self": "/api/movements/24GBEGTIWJ6LOYWAR9"
   },
   "data": {
     "type": "movements",
-    "id": "24GBE0XBAS7Z0J5AR0",
+    "id": "24GBEGTIWJ6LOYWAR9",
     "attributes": {
       "btmsStatus": {
         "chedTypes": [
@@ -20,41 +20,41 @@
           "serviceHeader": {
             "sourceSystem": "CDS",
             "destinationSystem": "ALVS",
-            "correlationId": "1358673",
-            "serviceCalled": "2024-12-19T08:49:03Z"
+            "correlationId": "1381549",
+            "serviceCalled": "2024-12-30T11:47:40Z"
           },
           "header": {
-            "entryReference": "24GBE0XBAS7Z0J5AR0",
-            "entryVersionNumber": 1,
-            "previousVersionNumber": null,
-            "declarationUcr": "4GB244049769033-LI42468",
+            "entryReference": "24GBEGTIWJ6LOYWAR9",
+            "entryVersionNumber": 2,
+            "previousVersionNumber": 1,
+            "declarationUcr": "4GB333557108000-OGL6001342879",
             "declarationPartNumber": null,
             "declarationType": "S",
             "arrivesAt": null,
-            "submitterTurn": "GB244049769033",
-            "declarantId": "GB244049769033",
-            "declarantName": "GB244049769033",
-            "dispatchCountryCode": "CN",
-            "goodsLocationCode": "TEEMIDTEE",
-            "masterUcr": "607790951"
+            "submitterTurn": "GB333557108000",
+            "declarantId": "GB333557108000",
+            "declarantName": "GB333557108000",
+            "dispatchCountryCode": "TR",
+            "goodsLocationCode": "HRHHRHHRHGVM",
+            "masterUcr": null
           },
           "items": [
             {
               "itemNumber": 1,
               "customsProcedureCode": "4000000",
-              "taricCommodityCode": "0902400000",
-              "goodsDescription": "TEA",
-              "consigneeId": "GB405696146000",
-              "consigneeName": "GB405696146000",
-              "itemNetMass": 24480,
+              "taricCommodityCode": "0805400019",
+              "goodsDescription": "GRAPEFRUIT",
+              "consigneeId": "GB306253334000",
+              "consigneeName": "GB306253334000",
+              "itemNetMass": 20000,
               "itemSupplementaryUnits": 0,
               "itemThirdQuantity": null,
-              "itemOriginCountryCode": "CN",
+              "itemOriginCountryCode": "TR",
               "documents": [
                 {
                   "documentCode": "C678",
-                  "documentReference": "GBCHD2024.5019877",
-                  "documentStatus": "JP",
+                  "documentReference": "GBCHD2024.5351769",
+                  "documentStatus": "JE",
                   "documentControl": "P",
                   "documentQuantity": null
                 }
@@ -63,7 +63,7 @@
                 {
                   "checkCode": "H223",
                   "departmentCode": null,
-                  "decisionCode": "C03",
+                  "decisionCode": "H01",
                   "decisionsValidUntil": null,
                   "decisionReasons": []
                 }
@@ -77,12 +77,12 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "6dccb98f-02fd-4aeb-b1be-87448e0e0fdc",
+            "correlationId": "a1af570e-6113-49be-859d-fbe7ffe242a6",
             "serviceCalled": "2025-02-14T16:38:21.56Z"
           },
           "header": {
-            "entryReference": "24GBE0XBAS7Z0J5AR0",
-            "entryVersionNumber": 1,
+            "entryReference": "24GBEGTIWJ6LOYWAR9",
+            "entryVersionNumber": 2,
             "decisionNumber": 1
           },
           "items": [
@@ -92,7 +92,7 @@
                 {
                   "checkCode": "H223",
                   "departmentCode": null,
-                  "decisionCode": "C03",
+                  "decisionCode": "H01",
                   "decisionsValidUntil": null,
                   "decisionReasons": []
                 }
@@ -109,11 +109,11 @@
                 "sourceSystem": "ALVS",
                 "destinationSystem": "CDS",
                 "correlationId": "000",
-                "serviceCalled": "2024-12-19T08:49:09.213Z"
+                "serviceCalled": "2024-12-30T11:47:25.002Z"
               },
               "header": {
-                "entryReference": "24GBE0XBAS7Z0J5AR0",
-                "entryVersionNumber": 1,
+                "entryReference": "24GBEGTIWJ6LOYWAR9",
+                "entryVersionNumber": 2,
                 "decisionNumber": 1
               },
               "items": [
@@ -123,7 +123,7 @@
                     {
                       "checkCode": "H223",
                       "departmentCode": null,
-                      "decisionCode": "C03",
+                      "decisionCode": "H01",
                       "decisionsValidUntil": null,
                       "decisionReasons": []
                     }
@@ -137,27 +137,27 @@
                 "anyMatch": true,
                 "allNoMatch": false,
                 "anyNoMatch": false,
-                "allHold": false,
-                "anyHold": false,
+                "allHold": true,
+                "anyHold": true,
                 "allRefuse": false,
                 "anyRefuse": false,
-                "allRelease": true,
-                "anyRelease": true
+                "allRelease": false,
+                "anyRelease": false
               },
               "btmsCheckStatus": {
                 "allMatch": false,
                 "anyMatch": true,
                 "allNoMatch": false,
                 "anyNoMatch": false,
-                "allHold": false,
-                "anyHold": false,
+                "allHold": true,
+                "anyHold": true,
                 "allRefuse": false,
                 "anyRefuse": false,
-                "allRelease": true,
-                "anyRelease": true
+                "allRelease": false,
+                "anyRelease": false
               },
               "alvsDecisionNumber": 1,
-              "entryVersionNumber": 1,
+              "entryVersionNumber": 2,
               "importNotifications": null,
               "decisionComparison": {
                 "paired": true,
@@ -168,8 +168,8 @@
                   {
                     "itemNumber": 1,
                     "checkCode": "H223",
-                    "alvsDecisionCode": "C03",
-                    "btmsDecisionCode": "C03"
+                    "alvsDecisionCode": "H01",
+                    "btmsDecisionCode": "H01"
                   }
                 ]
               }
@@ -178,7 +178,7 @@
         ],
         "context": {
           "alvsDecisionNumber": 1,
-          "entryVersionNumber": 1,
+          "entryVersionNumber": 2,
           "importNotifications": null,
           "decisionComparison": {
             "paired": true,
@@ -189,8 +189,8 @@
               {
                 "itemNumber": 1,
                 "checkCode": "H223",
-                "alvsDecisionCode": "C03",
-                "btmsDecisionCode": "C03"
+                "alvsDecisionCode": "H01",
+                "btmsDecisionCode": "H01"
               }
             ]
           }
@@ -200,19 +200,19 @@
         {
           "itemNumber": 1,
           "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0902400000",
-          "goodsDescription": "TEA",
-          "consigneeId": "GB405696146000",
-          "consigneeName": "GB405696146000",
-          "itemNetMass": 24480,
+          "taricCommodityCode": "0805400019",
+          "goodsDescription": "GRAPEFRUIT",
+          "consigneeId": "GB306253334000",
+          "consigneeName": "GB306253334000",
+          "itemNetMass": 20000,
           "itemSupplementaryUnits": 0,
           "itemThirdQuantity": null,
-          "itemOriginCountryCode": "CN",
+          "itemOriginCountryCode": "TR",
           "documents": [
             {
               "documentCode": "C678",
-              "documentReference": "GBCHD2024.5019877",
-              "documentStatus": "JP",
+              "documentReference": "GBCHD2024.5351769",
+              "documentStatus": "JE",
               "documentControl": "P",
               "documentQuantity": null
             }
@@ -221,34 +221,34 @@
             {
               "checkCode": "H223",
               "departmentCode": null,
-              "decisionCode": "C03",
+              "decisionCode": "H01",
               "decisionsValidUntil": null,
               "decisionReasons": []
             }
           ]
         }
       ],
-      "updatedSource": "2024-12-19T08:49:03Z",
-      "createdSource": "2024-12-19T08:49:03Z",
+      "updatedSource": "2024-12-30T11:47:40Z",
+      "createdSource": "2024-12-30T11:47:40Z",
       "updated": "2025-02-14T16:38:23.753Z",
-      "entryReference": "24GBE0XBAS7Z0J5AR0",
-      "entryVersionNumber": 1,
-      "masterUcr": "607790951",
+      "entryReference": "24GBEGTIWJ6LOYWAR9",
+      "entryVersionNumber": 2,
+      "masterUcr": null,
       "declarationPartNumber": null,
       "declarationType": "S",
       "arrivesAt": null,
-      "submitterTurn": "GB244049769033",
-      "declarantId": "GB244049769033",
-      "declarantName": "GB244049769033",
-      "dispatchCountryCode": "CN",
-      "goodsLocationCode": "TEEMIDTEE",
+      "submitterTurn": "GB333557108000",
+      "declarantId": "GB333557108000",
+      "declarantName": "GB333557108000",
+      "dispatchCountryCode": "TR",
+      "goodsLocationCode": "HRHHRHHRHGVM",
       "auditEntries": [
         {
-          "id": "PhaScenarios/ALVS/24GBE0XBAS7Z0J5AR0-750249bc-daac-45da-a423-db23735f2548.json",
-          "version": 1,
+          "id": "PhaScenarios/ALVS/24GBEGTIWJ6LOYWAR9-8a6bca40-42cd-4910-a8e1-514c9d762627.json",
+          "version": 2,
           "createdBy": "Cds",
-          "createdSource": "2024-12-19T08:49:03Z",
-          "createdLocal": "2025-02-14T16:38:21.506Z",
+          "createdSource": "2024-12-30T11:47:40Z",
+          "createdLocal": "2025-02-14T16:38:21.499Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -264,7 +264,7 @@
           "context": null
         },
         {
-          "id": "PhaScenarios/ALVS/24GBE0XBAS7Z0J5AR0-750249bc-daac-45da-a423-db23735f2548.json",
+          "id": "PhaScenarios/ALVS/24GBEGTIWJ6LOYWAR9-8a6bca40-42cd-4910-a8e1-514c9d762627.json",
           "version": 1,
           "createdBy": "Btms",
           "createdSource": "2025-02-14T16:38:21.56Z",
@@ -276,26 +276,26 @@
             "alvsCheckStatus": null,
             "btmsCheckStatus": null,
             "alvsDecisionNumber": null,
-            "entryVersionNumber": 1,
+            "entryVersionNumber": 2,
             "importNotifications": [
               {
-                "id": "CHEDD.GB.2024.5019877",
+                "id": "CHEDD.GB.2024.5351769",
                 "version": 1,
                 "created": "2025-02-14T16:38:21.163Z",
-                "updated": "2025-02-14T16:38:21.137Z",
+                "updated": "2025-02-14T16:38:21.139Z",
                 "updatedEntity": "2025-02-14T16:38:21.163Z",
-                "createdSource": "2024-12-16T15:05:27.801Z",
-                "updatedSource": "2024-12-16T15:05:27.801Z"
+                "createdSource": "2024-12-30T10:03:18.624Z",
+                "updatedSource": "2024-12-30T10:03:18.624Z"
               }
             ],
             "decisionComparison": null
           }
         },
         {
-          "id": "PhaScenarios/DECISIONS/24GBE0XBAS7Z0J5AR0-8f1e5ddf-2af4-41c8-9603-83042ff7ee1f.json",
+          "id": "PhaScenarios/DECISIONS/24GBEGTIWJ6LOYWAR9-a27af651-8dbe-4dbc-a76d-060fde446086.json",
           "version": 1,
           "createdBy": "Alvs",
-          "createdSource": "2024-12-19T08:49:09.213Z",
+          "createdSource": "2024-12-30T11:47:25.002Z",
           "createdLocal": "2025-02-14T16:38:23.753Z",
           "status": "Decision",
           "diff": [],
@@ -306,27 +306,27 @@
               "anyMatch": true,
               "allNoMatch": false,
               "anyNoMatch": false,
-              "allHold": false,
-              "anyHold": false,
+              "allHold": true,
+              "anyHold": true,
               "allRefuse": false,
               "anyRefuse": false,
-              "allRelease": true,
-              "anyRelease": true
+              "allRelease": false,
+              "anyRelease": false
             },
             "btmsCheckStatus": {
               "allMatch": false,
               "anyMatch": true,
               "allNoMatch": false,
               "anyNoMatch": false,
-              "allHold": false,
-              "anyHold": false,
+              "allHold": true,
+              "anyHold": true,
               "allRefuse": false,
               "anyRefuse": false,
-              "allRelease": true,
-              "anyRelease": true
+              "allRelease": false,
+              "anyRelease": false
             },
             "alvsDecisionNumber": 1,
-            "entryVersionNumber": 1,
+            "entryVersionNumber": 2,
             "importNotifications": null,
             "decisionComparison": {
               "paired": true,
@@ -337,8 +337,8 @@
                 {
                   "itemNumber": 1,
                   "checkCode": "H223",
-                  "alvsDecisionCode": "C03",
-                  "btmsDecisionCode": "C03"
+                  "alvsDecisionCode": "H01",
+                  "btmsDecisionCode": "H01"
                 }
               ]
             }
@@ -355,25 +355,25 @@
     "relationships": {
       "notifications": {
         "links": {
-          "self": "/api/movements/24GBE0XBAS7Z0J5AR0",
-          "related": "/api/movements/24GBE0XBAS7Z0J5AR0/import-notifications"
+          "self": "/api/movements/24GBEGTIWJ6LOYWAR9",
+          "related": "/api/movements/24GBEGTIWJ6LOYWAR9/import-notifications"
         },
         "data": [
           {
             "type": "notifications",
-            "id": "CHEDD.GB.2024.5019877",
+            "id": "CHEDD.GB.2024.5351769",
             "meta": {
               "sourceItem": 1,
               "destinationItem": 1,
               "matchingLevel": 1,
-              "self": "/api/import-notifications/CHEDD.GB.2024.5019877"
+              "self": "/api/import-notifications/CHEDD.GB.2024.5351769"
             }
           }
         ]
       }
     },
     "links": {
-      "self": "/api/movements/24GBE0XBAS7Z0J5AR0"
+      "self": "/api/movements/24GBEGTIWJ6LOYWAR9"
     }
   }
 }
