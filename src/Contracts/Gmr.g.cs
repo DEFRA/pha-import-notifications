@@ -5,10 +5,6 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public partial record Gmr
 {
-    [JsonPropertyName("_Etag")]
-    [JsonIgnore]
-    public string? _Etag { get; init; }
-
     [JsonPropertyName("createdSource")]
     [JsonIgnore]
     public DateTime? CreatedSource { get; init; }
@@ -18,7 +14,8 @@ public partial record Gmr
     public DateTime? Created { get; init; }
 
     [JsonPropertyName("updatedEntity")]
-    public required DateTime UpdatedEntity { get; init; }
+    [JsonIgnore]
+    public DateTime? UpdatedEntity { get; init; }
 
     [JsonPropertyName("auditEntries")]
     [JsonIgnore]
