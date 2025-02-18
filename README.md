@@ -61,12 +61,10 @@ When a schema change in BTMS is made we need to update our models.
 
 At the moment this is a manual process:
 
-1. Check out the [btms-backend](https://github.com/defra/btms-backend)
-2. Run `make generate-openapi-spec`
-3. This will generate an `openapi.json` file in the `btms-backend` folder
-4. In the PHA API repository, copy this to the tools/SchemaToCSharp folder
-5. Run `make update-btms-schema` in the root of the repository
-6. Observe any changes that have been made and commit them
+1. Fetch the `openapi.json` artifact from the latest build of [btms-backend](https://github.com/defra/btms-backend/actions/workflows/publish.yml?query=branch%3Amain)
+2. In the PHA API repository, extract and copy this to the tools/SchemaToCSharp folder
+3. Run `make update-btms-schema` in the root of the repository
+4. Observe any changes that have been made and commit them
 
 ## Development
 
