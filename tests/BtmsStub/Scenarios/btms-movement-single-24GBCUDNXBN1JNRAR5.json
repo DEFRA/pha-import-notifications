@@ -95,9 +95,11 @@
                 {
                   "checkCode": "H222",
                   "departmentCode": null,
-                  "decisionCode": "C03",
+                  "decisionCode": "X00",
                   "decisionsValidUntil": null,
-                  "decisionReasons": []
+                  "decisionReasons": [
+                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5140733). Please correct the Cvedp number(s) entered on your customs declaration."
+                  ]
                 }
               ]
             }
@@ -109,13 +111,56 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "b0c58400-eab2-4894-9c87-ec8a75683545",
-            "serviceCalled": "2025-02-14T16:38:21.56Z"
+            "correlationId": "e3d0268a-3c0c-4b28-a54b-e07e51173652",
+            "serviceCalled": "2025-02-17T15:58:28.739Z"
           },
           "header": {
             "entryReference": "24GBCUDNXBN1JNRAR5",
             "entryVersionNumber": 1,
             "decisionNumber": 1
+          },
+          "items": [
+            {
+              "itemNumber": 1,
+              "checks": [
+                {
+                  "checkCode": "H222",
+                  "departmentCode": null,
+                  "decisionCode": "X00",
+                  "decisionsValidUntil": null,
+                  "decisionReasons": [
+                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5140818). Please correct the Cvedp number(s) entered on your customs declaration."
+                  ]
+                }
+              ]
+            },
+            {
+              "itemNumber": 2,
+              "checks": [
+                {
+                  "checkCode": "H222",
+                  "departmentCode": null,
+                  "decisionCode": "X00",
+                  "decisionsValidUntil": null,
+                  "decisionReasons": [
+                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5140733). Please correct the Cvedp number(s) entered on your customs declaration."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "serviceHeader": {
+            "sourceSystem": "BTMS",
+            "destinationSystem": "CDS",
+            "correlationId": "2574d4b2-b38c-4ef6-bcd4-96c1548c93b0",
+            "serviceCalled": "2025-02-17T15:58:28.784Z"
+          },
+          "header": {
+            "entryReference": "24GBCUDNXBN1JNRAR5",
+            "entryVersionNumber": 1,
+            "decisionNumber": 2
           },
           "items": [
             {
@@ -221,7 +266,7 @@
                 "paired": true,
                 "decisionStatus": "PartialImportNotificationsLinked",
                 "decisionMatched": false,
-                "btmsDecisionNumber": 1,
+                "btmsDecisionNumber": 2,
                 "checks": [
                   {
                     "itemNumber": 1,
@@ -248,7 +293,7 @@
             "paired": true,
             "decisionStatus": "PartialImportNotificationsLinked",
             "decisionMatched": false,
-            "btmsDecisionNumber": 1,
+            "btmsDecisionNumber": 2,
             "checks": [
               {
                 "itemNumber": 1,
@@ -332,7 +377,7 @@
       ],
       "updatedSource": "2024-11-19T14:12:40Z",
       "createdSource": "2024-11-19T14:12:40Z",
-      "updated": "2025-02-14T16:38:23.753Z",
+      "updated": "2025-02-17T15:58:28.807Z",
       "entryReference": "24GBCUDNXBN1JNRAR5",
       "entryVersionNumber": 1,
       "masterUcr": "529744521",
@@ -346,31 +391,49 @@
       "goodsLocationCode": "FXTFXTFXT",
       "auditEntries": [
         {
-          "id": "PhaScenarios/ALVS/24GBCUDNXBN1JNRAR5-3e3e115b-3c4d-4cdb-9fd2-d81a2b9cf0f0.json",
+          "id": "24GBCUDNXBN1JNRAR5",
           "version": 1,
           "createdBy": "Cds",
           "createdSource": "2024-11-19T14:12:40Z",
-          "createdLocal": "2025-02-14T16:38:21.502Z",
+          "createdLocal": "2025-02-17T15:58:28.733Z",
           "status": "Created",
           "diff": [],
           "context": null
         },
         {
+          "id": "24GBCUDNXBN1JNRAR5",
+          "version": 1,
+          "createdBy": "Btms",
+          "createdSource": "2025-02-17T15:58:28.739Z",
+          "createdLocal": "2025-02-17T15:58:28.743Z",
+          "status": "Decision",
+          "diff": [],
+          "context": {
+            "$type": "DecisionContext",
+            "alvsCheckStatus": null,
+            "btmsCheckStatus": null,
+            "alvsDecisionNumber": null,
+            "entryVersionNumber": 1,
+            "importNotifications": [],
+            "decisionComparison": null
+          }
+        },
+        {
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-14T16:38:21.556Z",
-          "createdLocal": "2025-02-14T16:38:21.556Z",
+          "createdSource": "2025-02-17T15:58:28.779Z",
+          "createdLocal": "2025-02-17T15:58:28.779Z",
           "status": "Linked",
           "diff": [],
           "context": null
         },
         {
-          "id": "PhaScenarios/ALVS/24GBCUDNXBN1JNRAR5-3e3e115b-3c4d-4cdb-9fd2-d81a2b9cf0f0.json",
-          "version": 1,
+          "id": "CHEDP.GB.2024.5140733",
+          "version": 2,
           "createdBy": "Btms",
-          "createdSource": "2025-02-14T16:38:21.56Z",
-          "createdLocal": "2025-02-14T16:38:21.56Z",
+          "createdSource": "2025-02-17T15:58:28.784Z",
+          "createdLocal": "2025-02-17T15:58:28.784Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -383,9 +446,9 @@
               {
                 "id": "CHEDP.GB.2024.5140733",
                 "version": 3,
-                "created": "2025-02-14T16:38:21.177Z",
-                "updated": "2025-02-14T16:38:21.174Z",
-                "updatedEntity": "2025-02-14T16:38:21.177Z",
+                "created": "0001-01-01T00:00:00Z",
+                "updated": "2025-02-17T15:58:28.761Z",
+                "updatedEntity": "0001-01-01T00:00:00Z",
                 "createdSource": "2024-11-20T17:12:59.581Z",
                 "updatedSource": "2024-11-20T17:12:59.581Z"
               }
@@ -394,11 +457,11 @@
           }
         },
         {
-          "id": "PhaScenarios/DECISIONS/24GBCUDNXBN1JNRAR5-f104679b-5cdb-4a4f-98e2-95fde6c73182.json",
+          "id": "24GBCUDNXBN1JNRAR5",
           "version": 7,
           "createdBy": "Alvs",
           "createdSource": "2024-11-20T17:15:52.627Z",
-          "createdLocal": "2025-02-14T16:38:23.753Z",
+          "createdLocal": "2025-02-17T15:58:28.807Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -434,7 +497,7 @@
               "paired": true,
               "decisionStatus": "PartialImportNotificationsLinked",
               "decisionMatched": false,
-              "btmsDecisionNumber": 1,
+              "btmsDecisionNumber": 2,
               "checks": [
                 {
                   "itemNumber": 1,
@@ -454,8 +517,8 @@
         }
       ],
       "localId": null,
-      "created": "2025-02-14T16:38:21.574Z",
-      "updatedEntity": "2025-02-14T16:38:23.754Z",
+      "created": "2025-02-17T15:58:28.743Z",
+      "updatedEntity": "2025-02-17T15:58:28.808Z",
       "finalised": null,
       "finalisedSource": null,
       "finalisation": null

@@ -4,9 +4,9 @@
   GoodsMovements: null,
   _Etag: null,
   CreatedSource: 2024-12-04 06:00:04.77 Utc,
-  Created: 2025-02-14 16:38:21.176 Utc,
-  UpdatedEntity: 2025-02-14 16:38:21.176 Utc,
-  Updated: 2025-02-14 16:38:21.174 Utc,
+  Created: 2025-02-17 15:58:28.879 Utc,
+  UpdatedEntity: 2025-02-17 15:58:28.879 Utc,
+  Updated: 2025-02-17 15:58:28.877 Utc,
   AuditEntries: null,
   Relationships: null,
   CommoditiesSummary: {

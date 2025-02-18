@@ -77,8 +77,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "a1af570e-6113-49be-859d-fbe7ffe242a6",
-            "serviceCalled": "2025-02-14T16:38:21.56Z"
+            "correlationId": "5bb01b21-3720-4ff4-92e4-5da05409e177",
+            "serviceCalled": "2025-02-17T15:58:29.11Z"
           },
           "header": {
             "entryReference": "24GBEGTIWJ6LOYWAR9",
@@ -102,97 +102,17 @@
         }
       ],
       "alvsDecisionStatus": {
-        "decisions": [
-          {
-            "decision": {
-              "serviceHeader": {
-                "sourceSystem": "ALVS",
-                "destinationSystem": "CDS",
-                "correlationId": "000",
-                "serviceCalled": "2024-12-30T11:47:25.002Z"
-              },
-              "header": {
-                "entryReference": "24GBEGTIWJ6LOYWAR9",
-                "entryVersionNumber": 2,
-                "decisionNumber": 1
-              },
-              "items": [
-                {
-                  "itemNumber": 1,
-                  "checks": [
-                    {
-                      "checkCode": "H223",
-                      "departmentCode": null,
-                      "decisionCode": "H01",
-                      "decisionsValidUntil": null,
-                      "decisionReasons": []
-                    }
-                  ]
-                }
-              ]
-            },
-            "context": {
-              "alvsCheckStatus": {
-                "allMatch": true,
-                "anyMatch": true,
-                "allNoMatch": false,
-                "anyNoMatch": false,
-                "allHold": true,
-                "anyHold": true,
-                "allRefuse": false,
-                "anyRefuse": false,
-                "allRelease": false,
-                "anyRelease": false
-              },
-              "btmsCheckStatus": {
-                "allMatch": false,
-                "anyMatch": true,
-                "allNoMatch": false,
-                "anyNoMatch": false,
-                "allHold": true,
-                "anyHold": true,
-                "allRefuse": false,
-                "anyRefuse": false,
-                "allRelease": false,
-                "anyRelease": false
-              },
-              "alvsDecisionNumber": 1,
-              "entryVersionNumber": 2,
-              "importNotifications": null,
-              "decisionComparison": {
-                "paired": true,
-                "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
-                "decisionMatched": true,
-                "btmsDecisionNumber": 1,
-                "checks": [
-                  {
-                    "itemNumber": 1,
-                    "checkCode": "H223",
-                    "alvsDecisionCode": "H01",
-                    "btmsDecisionCode": "H01"
-                  }
-                ]
-              }
-            }
-          }
-        ],
+        "decisions": [],
         "context": {
-          "alvsDecisionNumber": 1,
-          "entryVersionNumber": 2,
+          "alvsDecisionNumber": null,
+          "entryVersionNumber": 0,
           "importNotifications": null,
           "decisionComparison": {
-            "paired": true,
-            "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
-            "decisionMatched": true,
-            "btmsDecisionNumber": 1,
-            "checks": [
-              {
-                "itemNumber": 1,
-                "checkCode": "H223",
-                "alvsDecisionCode": "H01",
-                "btmsDecisionCode": "H01"
-              }
-            ]
+            "paired": false,
+            "decisionStatus": "NoAlvsDecisions",
+            "decisionMatched": false,
+            "btmsDecisionNumber": null,
+            "checks": []
           }
         }
       },
@@ -230,7 +150,7 @@
       ],
       "updatedSource": "2024-12-30T11:47:40Z",
       "createdSource": "2024-12-30T11:47:40Z",
-      "updated": "2025-02-14T16:38:23.753Z",
+      "updated": "2025-02-17T15:58:29.11Z",
       "entryReference": "24GBEGTIWJ6LOYWAR9",
       "entryVersionNumber": 2,
       "masterUcr": null,
@@ -244,11 +164,11 @@
       "goodsLocationCode": "HRHHRHHRHGVM",
       "auditEntries": [
         {
-          "id": "PhaScenarios/ALVS/24GBEGTIWJ6LOYWAR9-8a6bca40-42cd-4910-a8e1-514c9d762627.json",
+          "id": "24GBEGTIWJ6LOYWAR9",
           "version": 2,
           "createdBy": "Cds",
           "createdSource": "2024-12-30T11:47:40Z",
-          "createdLocal": "2025-02-14T16:38:21.499Z",
+          "createdLocal": "2025-02-17T15:58:29.107Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -257,18 +177,18 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-14T16:38:21.556Z",
-          "createdLocal": "2025-02-14T16:38:21.556Z",
+          "createdSource": "2025-02-17T15:58:29.11Z",
+          "createdLocal": "2025-02-17T15:58:29.11Z",
           "status": "Linked",
           "diff": [],
           "context": null
         },
         {
-          "id": "PhaScenarios/ALVS/24GBEGTIWJ6LOYWAR9-8a6bca40-42cd-4910-a8e1-514c9d762627.json",
+          "id": "24GBEGTIWJ6LOYWAR9",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-14T16:38:21.56Z",
-          "createdLocal": "2025-02-14T16:38:21.56Z",
+          "createdSource": "2025-02-17T15:58:29.11Z",
+          "createdLocal": "2025-02-17T15:58:29.11Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -281,73 +201,20 @@
               {
                 "id": "CHEDD.GB.2024.5351769",
                 "version": 1,
-                "created": "2025-02-14T16:38:21.163Z",
-                "updated": "2025-02-14T16:38:21.139Z",
-                "updatedEntity": "2025-02-14T16:38:21.163Z",
+                "created": "2025-02-17T15:58:29.1Z",
+                "updated": "2025-02-17T15:58:29.098Z",
+                "updatedEntity": "2025-02-17T15:58:29.1Z",
                 "createdSource": "2024-12-30T10:03:18.624Z",
                 "updatedSource": "2024-12-30T10:03:18.624Z"
               }
             ],
             "decisionComparison": null
           }
-        },
-        {
-          "id": "PhaScenarios/DECISIONS/24GBEGTIWJ6LOYWAR9-a27af651-8dbe-4dbc-a76d-060fde446086.json",
-          "version": 1,
-          "createdBy": "Alvs",
-          "createdSource": "2024-12-30T11:47:25.002Z",
-          "createdLocal": "2025-02-14T16:38:23.753Z",
-          "status": "Decision",
-          "diff": [],
-          "context": {
-            "$type": "DecisionContext",
-            "alvsCheckStatus": {
-              "allMatch": true,
-              "anyMatch": true,
-              "allNoMatch": false,
-              "anyNoMatch": false,
-              "allHold": true,
-              "anyHold": true,
-              "allRefuse": false,
-              "anyRefuse": false,
-              "allRelease": false,
-              "anyRelease": false
-            },
-            "btmsCheckStatus": {
-              "allMatch": false,
-              "anyMatch": true,
-              "allNoMatch": false,
-              "anyNoMatch": false,
-              "allHold": true,
-              "anyHold": true,
-              "allRefuse": false,
-              "anyRefuse": false,
-              "allRelease": false,
-              "anyRelease": false
-            },
-            "alvsDecisionNumber": 1,
-            "entryVersionNumber": 2,
-            "importNotifications": null,
-            "decisionComparison": {
-              "paired": true,
-              "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
-              "decisionMatched": true,
-              "btmsDecisionNumber": 1,
-              "checks": [
-                {
-                  "itemNumber": 1,
-                  "checkCode": "H223",
-                  "alvsDecisionCode": "H01",
-                  "btmsDecisionCode": "H01"
-                }
-              ]
-            }
-          }
         }
       ],
       "localId": null,
-      "created": "2025-02-14T16:38:21.574Z",
-      "updatedEntity": "2025-02-14T16:38:23.754Z",
+      "created": "2025-02-17T15:58:29.112Z",
+      "updatedEntity": "2025-02-17T15:58:29.112Z",
       "finalised": null,
       "finalisedSource": null,
       "finalisation": null

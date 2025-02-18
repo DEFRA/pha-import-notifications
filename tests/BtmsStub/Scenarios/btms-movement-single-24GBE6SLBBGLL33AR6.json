@@ -70,17 +70,19 @@
                 {
                   "checkCode": "H222",
                   "departmentCode": null,
-                  "decisionCode": "C03",
+                  "decisionCode": "X00",
                   "decisionsValidUntil": null,
-                  "decisionReasons": []
+                  "decisionReasons": [
+                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBIUU2024.5328437,GBCHD2024.5328437). Please correct the Cvedp number(s) entered on your customs declaration."
+                  ]
                 },
                 {
                   "checkCode": "H224",
                   "departmentCode": null,
-                  "decisionCode": "C07",
+                  "decisionCode": "X00",
                   "decisionsValidUntil": null,
                   "decisionReasons": [
-                    "IUU Compliant"
+                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBIUU2024.5328437,GBCHD2024.5328437). Please correct the Cvedp number(s) entered on your customs declaration."
                   ]
                 }
               ]
@@ -93,13 +95,51 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "f50a3ded-7f1a-4154-8829-080c51f23945",
-            "serviceCalled": "2025-02-14T16:38:21.56Z"
+            "correlationId": "2550a684-01fb-4426-aadb-3e6a0cf8f132",
+            "serviceCalled": "2025-02-17T15:58:29.075Z"
           },
           "header": {
             "entryReference": "24GBE6SLBBGLL33AR6",
             "entryVersionNumber": 1,
             "decisionNumber": 1
+          },
+          "items": [
+            {
+              "itemNumber": 1,
+              "checks": [
+                {
+                  "checkCode": "H222",
+                  "departmentCode": null,
+                  "decisionCode": "X00",
+                  "decisionsValidUntil": null,
+                  "decisionReasons": [
+                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBIUU2024.5328437,GBCHD2024.5328437). Please correct the Cvedp number(s) entered on your customs declaration."
+                  ]
+                },
+                {
+                  "checkCode": "H224",
+                  "departmentCode": null,
+                  "decisionCode": "X00",
+                  "decisionsValidUntil": null,
+                  "decisionReasons": [
+                    "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBIUU2024.5328437,GBCHD2024.5328437). Please correct the Cvedp number(s) entered on your customs declaration."
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "serviceHeader": {
+            "sourceSystem": "BTMS",
+            "destinationSystem": "CDS",
+            "correlationId": "ab7973ed-af90-4b51-8911-9ffaabd6029f",
+            "serviceCalled": "2025-02-17T15:58:29.081Z"
+          },
+          "header": {
+            "entryReference": "24GBE6SLBBGLL33AR6",
+            "entryVersionNumber": 1,
+            "decisionNumber": 2
           },
           "items": [
             {
@@ -195,7 +235,7 @@
                 "paired": true,
                 "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
                 "decisionMatched": true,
-                "btmsDecisionNumber": 1,
+                "btmsDecisionNumber": 2,
                 "checks": [
                   {
                     "itemNumber": 1,
@@ -222,7 +262,7 @@
             "paired": true,
             "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
             "decisionMatched": true,
-            "btmsDecisionNumber": 1,
+            "btmsDecisionNumber": 2,
             "checks": [
               {
                 "itemNumber": 1,
@@ -290,7 +330,7 @@
       ],
       "updatedSource": "2024-12-23T11:23:30Z",
       "createdSource": "2024-12-23T11:23:30Z",
-      "updated": "2025-02-14T16:38:23.753Z",
+      "updated": "2025-02-17T15:58:29.094Z",
       "entryReference": "24GBE6SLBBGLL33AR6",
       "entryVersionNumber": 1,
       "masterUcr": "557612954",
@@ -304,31 +344,49 @@
       "goodsLocationCode": "FXTFXTFXT",
       "auditEntries": [
         {
-          "id": "PhaScenarios/ALVS/24GBE6SLBBGLL33AR6-cdbf58d0-6090-4d06-b933-3500b526c923.json",
+          "id": "24GBE6SLBBGLL33AR6",
           "version": 1,
           "createdBy": "Cds",
           "createdSource": "2024-12-23T11:23:30Z",
-          "createdLocal": "2025-02-14T16:38:21.505Z",
+          "createdLocal": "2025-02-17T15:58:29.075Z",
           "status": "Created",
           "diff": [],
           "context": null
         },
         {
+          "id": "24GBE6SLBBGLL33AR6",
+          "version": 1,
+          "createdBy": "Btms",
+          "createdSource": "2025-02-17T15:58:29.075Z",
+          "createdLocal": "2025-02-17T15:58:29.075Z",
+          "status": "Decision",
+          "diff": [],
+          "context": {
+            "$type": "DecisionContext",
+            "alvsCheckStatus": null,
+            "btmsCheckStatus": null,
+            "alvsDecisionNumber": null,
+            "entryVersionNumber": 1,
+            "importNotifications": [],
+            "decisionComparison": null
+          }
+        },
+        {
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-14T16:38:21.556Z",
-          "createdLocal": "2025-02-14T16:38:21.556Z",
+          "createdSource": "2025-02-17T15:58:29.08Z",
+          "createdLocal": "2025-02-17T15:58:29.08Z",
           "status": "Linked",
           "diff": [],
           "context": null
         },
         {
-          "id": "PhaScenarios/ALVS/24GBE6SLBBGLL33AR6-cdbf58d0-6090-4d06-b933-3500b526c923.json",
-          "version": 1,
+          "id": "CHEDP.GB.2024.5328437",
+          "version": 2,
           "createdBy": "Btms",
-          "createdSource": "2025-02-14T16:38:21.56Z",
-          "createdLocal": "2025-02-14T16:38:21.56Z",
+          "createdSource": "2025-02-17T15:58:29.081Z",
+          "createdLocal": "2025-02-17T15:58:29.081Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -341,9 +399,9 @@
               {
                 "id": "CHEDP.GB.2024.5328437",
                 "version": 1,
-                "created": "2025-02-14T16:38:21.176Z",
-                "updated": "2025-02-14T16:38:21.173Z",
-                "updatedEntity": "2025-02-14T16:38:21.176Z",
+                "created": "0001-01-01T00:00:00Z",
+                "updated": "2025-02-17T15:58:29.079Z",
+                "updatedEntity": "0001-01-01T00:00:00Z",
                 "createdSource": "2024-12-29T10:05:35.553Z",
                 "updatedSource": "2024-12-29T10:05:35.553Z"
               }
@@ -352,11 +410,11 @@
           }
         },
         {
-          "id": "PhaScenarios/DECISIONS/24GBE6SLBBGLL33AR6-11945c04-b318-4fc3-b447-5a169def9509.json",
+          "id": "24GBE6SLBBGLL33AR6",
           "version": 2,
           "createdBy": "Alvs",
           "createdSource": "2024-12-29T10:14:54.545Z",
-          "createdLocal": "2025-02-14T16:38:23.753Z",
+          "createdLocal": "2025-02-17T15:58:29.089Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -392,7 +450,7 @@
               "paired": true,
               "decisionStatus": "BtmsMadeSameDecisionAsAlvs",
               "decisionMatched": true,
-              "btmsDecisionNumber": 1,
+              "btmsDecisionNumber": 2,
               "checks": [
                 {
                   "itemNumber": 1,
@@ -409,14 +467,42 @@
               ]
             }
           }
+        },
+        {
+          "id": "24GBE6SLBBGLL33AR6",
+          "version": 0,
+          "createdBy": "Cds",
+          "createdSource": "2024-12-29T10:24:56Z",
+          "createdLocal": "2025-02-17T15:58:29.094Z",
+          "status": "Finalisation",
+          "diff": [],
+          "context": {
+            "$type": "CdsFinalisation",
+            "serviceHeader": {
+              "sourceSystem": "CDS",
+              "destinationSystem": "ALVS",
+              "correlationId": "1379123",
+              "serviceCalled": "2024-12-29T10:24:56Z"
+            },
+            "header": {
+              "entryReference": "24GBE6SLBBGLL33AR6",
+              "entryVersionNumber": 1,
+              "decisionNumber": null,
+              "finalState": "Cleared",
+              "manualAction": false
+            }
+          }
         }
       ],
       "localId": null,
-      "created": "2025-02-14T16:38:21.574Z",
-      "updatedEntity": "2025-02-14T16:38:23.754Z",
-      "finalised": null,
-      "finalisedSource": null,
-      "finalisation": null
+      "created": "2025-02-17T15:58:29.075Z",
+      "updatedEntity": "2025-02-17T15:58:29.094Z",
+      "finalised": "2025-02-17T15:58:29.094Z",
+      "finalisedSource": "2024-12-29T10:24:56Z",
+      "finalisation": {
+        "finalState": "Cleared",
+        "manualAction": false
+      }
     },
     "relationships": {
       "notifications": {

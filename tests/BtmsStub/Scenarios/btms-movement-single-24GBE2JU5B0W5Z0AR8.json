@@ -205,8 +205,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "7762a2ef-9ef6-4556-9c33-e0d7dcb637ee",
-            "serviceCalled": "2025-02-14T16:38:21.56Z"
+            "correlationId": "7379b785-77b9-4b88-b723-d5d713c2d952",
+            "serviceCalled": "2025-02-17T15:58:29.054Z"
           },
           "header": {
             "entryReference": "24GBE2JU5B0W5Z0AR8",
@@ -638,7 +638,7 @@
       ],
       "updatedSource": "2024-12-20T12:07:21Z",
       "createdSource": "2024-12-20T12:07:21Z",
-      "updated": "2025-02-14T16:38:23.753Z",
+      "updated": "2025-02-17T15:58:29.069Z",
       "entryReference": "24GBE2JU5B0W5Z0AR8",
       "entryVersionNumber": 1,
       "masterUcr": "554921077",
@@ -652,11 +652,11 @@
       "goodsLocationCode": "FXTFXTFXT",
       "auditEntries": [
         {
-          "id": "PhaScenarios/ALVS/24GBE2JU5B0W5Z0AR8-52586c41-4f48-4bea-80aa-cf32991aec4e.json",
+          "id": "24GBE2JU5B0W5Z0AR8",
           "version": 1,
           "createdBy": "Cds",
           "createdSource": "2024-12-20T12:07:21Z",
-          "createdLocal": "2025-02-14T16:38:21.505Z",
+          "createdLocal": "2025-02-17T15:58:29.049Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -665,18 +665,18 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-14T16:38:21.556Z",
-          "createdLocal": "2025-02-14T16:38:21.556Z",
+          "createdSource": "2025-02-17T15:58:29.054Z",
+          "createdLocal": "2025-02-17T15:58:29.054Z",
           "status": "Linked",
           "diff": [],
           "context": null
         },
         {
-          "id": "PhaScenarios/ALVS/24GBE2JU5B0W5Z0AR8-52586c41-4f48-4bea-80aa-cf32991aec4e.json",
+          "id": "24GBE2JU5B0W5Z0AR8",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-14T16:38:21.56Z",
-          "createdLocal": "2025-02-14T16:38:21.56Z",
+          "createdSource": "2025-02-17T15:58:29.054Z",
+          "createdLocal": "2025-02-17T15:58:29.054Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -689,9 +689,9 @@
               {
                 "id": "CHEDD.GB.2024.5118377",
                 "version": 1,
-                "created": "2025-02-14T16:38:21.163Z",
-                "updated": "2025-02-14T16:38:21.118Z",
-                "updatedEntity": "2025-02-14T16:38:21.163Z",
+                "created": "2025-02-17T15:58:28.998Z",
+                "updated": "2025-02-17T15:58:28.996Z",
+                "updatedEntity": "2025-02-17T15:58:28.998Z",
                 "createdSource": "2024-12-16T20:08:21.082Z",
                 "updatedSource": "2024-12-16T20:08:21.082Z"
               }
@@ -700,11 +700,11 @@
           }
         },
         {
-          "id": "PhaScenarios/DECISIONS/24GBE2JU5B0W5Z0AR8-34d08ee0-6362-4fed-a2f4-6459a0e84175.json",
+          "id": "24GBE2JU5B0W5Z0AR8",
           "version": 1,
           "createdBy": "Alvs",
           "createdSource": "2024-12-20T12:14:36.434Z",
-          "createdLocal": "2025-02-14T16:38:23.753Z",
+          "createdLocal": "2025-02-17T15:58:29.063Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -775,14 +775,42 @@
               ]
             }
           }
+        },
+        {
+          "id": "24GBE2JU5B0W5Z0AR8",
+          "version": 0,
+          "createdBy": "Cds",
+          "createdSource": "2024-12-20T12:24:39Z",
+          "createdLocal": "2025-02-17T15:58:29.069Z",
+          "status": "Finalisation",
+          "diff": [],
+          "context": {
+            "$type": "CdsFinalisation",
+            "serviceHeader": {
+              "sourceSystem": "CDS",
+              "destinationSystem": "ALVS",
+              "correlationId": "1362503",
+              "serviceCalled": "2024-12-20T12:24:39Z"
+            },
+            "header": {
+              "entryReference": "24GBE2JU5B0W5Z0AR8",
+              "entryVersionNumber": 1,
+              "decisionNumber": null,
+              "finalState": "Cleared",
+              "manualAction": false
+            }
+          }
         }
       ],
       "localId": null,
-      "created": "2025-02-14T16:38:21.574Z",
-      "updatedEntity": "2025-02-14T16:38:23.754Z",
-      "finalised": null,
-      "finalisedSource": null,
-      "finalisation": null
+      "created": "2025-02-17T15:58:29.056Z",
+      "updatedEntity": "2025-02-17T15:58:29.069Z",
+      "finalised": "2025-02-17T15:58:29.069Z",
+      "finalisedSource": "2024-12-20T12:24:39Z",
+      "finalisation": {
+        "finalState": "Cleared",
+        "manualAction": false
+      }
     },
     "relationships": {
       "notifications": {
