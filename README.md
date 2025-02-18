@@ -68,6 +68,15 @@ At the moment this is a manual process:
 5. Run `make update-btms-schema` in the root of the repository
 6. Observe any changes that have been made and commit them
 
+## Development
+
+It is possible to configure the PHA API to query a deployed BTMS instance.
+
+Fill out the [BtmsOptions](./src/Api/Configuration/BtmsOptions.cs) configuration to point at a BTMS instance and then
+perform a request to the PHA API whilst connected to the VPN.
+
+The `Username` and `Password` are Basic Auth credentials.
+
 ## Testing
 
 The unit and integration tests can either be run via your IDE or alternatively with `dotnet test .`
