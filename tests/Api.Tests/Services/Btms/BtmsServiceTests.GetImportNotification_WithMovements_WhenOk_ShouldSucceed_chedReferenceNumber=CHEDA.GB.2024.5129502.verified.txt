@@ -1,337 +1,12 @@
 ﻿{
-  ClearanceRequests: [
-    {
-      ServiceHeader: null,
-      Header: {
-        EntryReference: 24GBC1IQDD278IZAR8,
-        EntryVersionNumber: 3,
-        PreviousVersionNumber: 2,
-        DeclarationUcr: null,
-        DeclarationPartNumber: null,
-        DeclarationType: null,
-        ArrivesAt: null,
-        SubmitterTurn: null,
-        DeclarantId: null,
-        DeclarantName: null,
-        DispatchCountryCode: IT,
-        GoodsLocationCode: EUTEUTEUTGVM,
-        MasterUcr: null
-      },
-      Items: [
-        {
-          ItemNumber: 1,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009110,
-          GoodsDescription: FLAVOURED SAUSAGES,
-          ConsigneeId: GB539035934000,
-          ConsigneeName: GB539035934000,
-          ItemNetMass: 184.0,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.2024.5070767,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      ServiceHeader: null,
-      Header: {
-        EntryReference: 24GBCND8RONCFGAAR3,
-        EntryVersionNumber: 2,
-        PreviousVersionNumber: 1,
-        DeclarationUcr: null,
-        DeclarationPartNumber: null,
-        DeclarationType: null,
-        ArrivesAt: null,
-        SubmitterTurn: null,
-        DeclarantId: null,
-        DeclarantName: null,
-        DispatchCountryCode: IT,
-        GoodsLocationCode: DEUDEUDEUGVM,
-        MasterUcr: null
-      },
-      Items: [
-        {
-          ItemNumber: 4,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009105,
-          GoodsDescription: CURED HAM - FINOCCHIONA,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 206.37,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5146876,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        },
-        {
-          ItemNumber: 5,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009105,
-          GoodsDescription: CURED HAM - FINOCCHIONA,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 26.91,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5144604,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        },
-        {
-          ItemNumber: 6,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 0210121100,
-          GoodsDescription: CURED HAM - PANCETTA TESA,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 206.85,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5144604,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        },
-        {
-          ItemNumber: 7,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009105,
-          GoodsDescription: CURED HAM - PARMA HAM 24 MONTHS,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 21.34,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5146490,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        },
-        {
-          ItemNumber: 8,
-          CustomsProcedureCode: 4000000,
-          TaricCommodityCode: 1601009105,
-          GoodsDescription: CURED HAM - SALAME TOSCANO,
-          ConsigneeId: GB302095934000,
-          ConsigneeName: GB302095934000,
-          ItemNetMass: 81.88,
-          ItemSupplementaryUnits: 0.0,
-          ItemThirdQuantity: null,
-          ItemOriginCountryCode: IT,
-          Documents: [
-            {
-              DocumentCode: N853,
-              DocumentReference: GBCHD2024.5144604,
-              DocumentStatus: null,
-              DocumentControl: null,
-              DocumentQuantity: null
-            }
-          ],
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: PHA,
-              DecisionCode: null,
-              DecisionsValidUntil: null,
-              DecisionReasons: null
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  ClearanceDecisions: [
-    {
-      ServiceHeader: null,
-      Header: {
-        EntryReference: 24GBC1IQDD278IZAR8,
-        EntryVersionNumber: 3,
-        DecisionNumber: 1
-      },
-      Items: [
-        {
-          ItemNumber: 1,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.2024.5070767). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      ServiceHeader: null,
-      Header: {
-        EntryReference: 24GBCND8RONCFGAAR3,
-        EntryVersionNumber: 2,
-        DecisionNumber: 1
-      },
-      Items: [
-        {
-          ItemNumber: 4,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5146876). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        },
-        {
-          ItemNumber: 5,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        },
-        {
-          ItemNumber: 6,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        },
-        {
-          ItemNumber: 7,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5146490). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        },
-        {
-          ItemNumber: 8,
-          Checks: [
-            {
-              CheckCode: H222,
-              DepartmentCode: null,
-              DecisionCode: X00,
-              DecisionsValidUntil: null,
-              DecisionReasons: [
-                A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5144604). Please correct the Cvedp number(s) entered on your customs declaration.
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  ClearanceRequests: null,
+  ClearanceDecisions: null,
   GoodsMovements: null,
-  CreatedSource: 2024-12-04 09:00:39.511 Utc,
-  Created: 0001-01-01 Utc,
-  UpdatedEntity: 2025-01-17 16:39:33.739 Utc,
-  Updated: 2025-01-17 16:38:33.739 Utc,
+  _Etag: null,
+  CreatedSource: 2024-12-04 09:01:21.089 Utc,
+  Created: 2025-02-14 16:38:21.163 Utc,
+  UpdatedEntity: 2025-02-14 16:38:21.163 Utc,
+  Updated: 2025-02-14 16:38:21.149 Utc,
   AuditEntries: null,
   Relationships: null,
   CommoditiesSummary: {
@@ -362,13 +37,13 @@
       ComplementName: Canis familiaris,
       EppoCode: null,
       IsWoodPackaging: null,
-      SpeciesId: 129518,
-      SpeciesName: Canis familiaris,
-      SpeciesNomination: Canis familiaris,
+      SpeciesId: 648c38bbad42acd8d666607028d34590e661a0222b95f0f1baecff5f165fdc7a,
+      SpeciesName: ef172b6bc549336564143def933a8cf264fe4e43d3497afcf27f0d251a9e0843,
+      SpeciesNomination: ef172b6bc549336564143def933a8cf264fe4e43d3497afcf27f0d251a9e0843,
       SpeciesTypeName: null,
-      SpeciesType: 2,
+      SpeciesType: 245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f,
       SpeciesClassName: null,
-      SpeciesClass: 189901,
+      SpeciesClass: 228f17d3503fac506ffcf9086e18c2d7d91c06d6fca641191089183da39a80dd,
       SpeciesFamilyName: null,
       SpeciesFamily: null,
       SpeciesCommonName: null,
@@ -380,6 +55,9 @@
       Checks: null
     }
   ],
+  _PointOfEntry: null,
+  _PointOfEntryControlPoint: null,
+  _MatchReference: null,
   IpaffsId: 4252422,
   Etag: 00000000044FD874,
   ExternalReferences: null,
@@ -387,7 +65,7 @@
   Version: 2,
   UpdatedSource: 2024-12-04 09:01:21.089 Utc,
   LastUpdatedBy: {
-    DisplayName: a8b99eed4e2c063ee6aed862e90515b4960f0773e10b0bf2e443dc0c0ae6de16,
+    DisplayName: c1ea999374c7bf01a5718658ad04eff181dadcd9e79b712b02754ea29609f13f,
     UserId: 3dd58971-2d3f-e911-a95d-000d3a454f67,
     IsControlUser: null
   },
@@ -397,21 +75,22 @@
   Status: Validated,
   SplitConsignment: null,
   ChildNotification: null,
+  RiskAssessment: null,
   JourneyRiskCategorisation: null,
   IsHighRiskEuImport: false,
   PartOne: {
     TypeOfImp: null,
     PersonResponsible: {
       Id: null,
-      Name: e5c8f0ff571d9954f11087ba3e877b90c6d613a01ff935ad6b3eb19acb4a4e41,
+      Name: 40a09451a4bdfe0de3da5947b5da3423d130955ad5c5945c77760c325b34cd17,
       CompanyId: c9b402be-1944-e911-a95a-000d3a454977,
       ContactId: 3b973d26-6523-eb11-a813-000d3abb516e,
-      CompanyName: 6ed7846f5ae5a02fa429d9b7d10514dbcf53b06a516d3f986e77f75c1bbaf8fb,
+      CompanyName: 7974763d3d1f3afb885a12ba69d9ff52ec4adf517191436d1b9df191c6375755,
       Addresses: [
-        a4197c3389d41a3acc3b477441e37d0c4daf47c43e859123c1b3736d45e4b95f,
-        6ad1e8f755da9186d48ed2b97b97772081f45ec9c37e8b556fedbbd3e265a6db,
-        07e494b541e2e38f5a7dc17e8f072dd096ec71bc19765b9604ecb6d14220c559,
-        0db86242d62ffdd18bac91fc586a20ed8a4d2f8880a1d1aef564e52e0dc1260f
+        6263a28cd58d24b5047813af197deb230a8a6b9d2101e4200fb38607b8caffb1,
+        315878f1377611472bbe1f3a0892f413b4edc9b7ff5341b506d448d5183830af,
+        305e089004585875785993ca62112f9507200f73f6f0ae3820ba9835e857458e,
+        2a1531eaf59804bdeb34f2c938ce204fae5930bbb5d10473f07d8d3aed795ebc
       ],
       County: null,
       PostCode: null,
@@ -420,9 +99,9 @@
       TracesId: 1001,
       Type: null,
       ApprovalNumber: null,
-      Phone: e6b0a14106022d0786dfed76717f79d28a5af895df938736e1d0b6fa51df526f,
+      Phone: 18dc7964f441177c4a813836ca980256f185527a2c28ba7a9ccec3fa9d1b024d,
       Fax: null,
-      Email: a40608057546434bf77eef5d65e4d4368aeb1d3b2d5e7b5a9debaee626028834
+      Email: a27a35558101cd469ea18c9866eacb0eea5d0fb8dad165ac42807f50d1d6fbdc
     },
     CustomsReferenceNumber: null,
     ContainsWoodPackaging: null,
@@ -431,21 +110,21 @@
       Id: aaf985bc-c384-40b2-9d2d-6ea05be2d201,
       Type: Exporter,
       Status: Nonapproved,
-      CompanyName: 79bcfd345e5106b83ff64e89e518b87d6ad6fe00301d536b8e3c26bfe90fc778,
+      CompanyName: 88bb7bbf6ff7297d9ef71f2779d2e83a53d0413ea3dcd47a5a2db43e2b6f93df,
       IndividualName: null,
       Address: {
         Street: null,
-        City: 518c5350ff8d0c7d4fcbddc5d66f997f93950f4a8a7224326cb9a47f02c422b8,
+        City: 07e4873169034f952a76ee626f76adeb637015d324a1e4e567ddd4186aab3f60,
         Country: null,
         PostalCode: null,
-        AddressLine1: ce9b543e2e31ebd9f0d0675887ed784c83e67708dbed74d2cec96f07a2bb25c3,
-        AddressLine2: d8fb5bfd8ea44e6b4ba22f2d530381151d391c32ec14a8158cc068a6219ea3aa,
+        AddressLine1: 0537bea1b23795c269fad3b6d4804100c2aa48412eabe3f4df02ae1d6e31f601,
+        AddressLine2: 7020119a0e0589f3a434270c9c46a709585b816e2013b6a241232f0298d27083,
         AddressLine3: null,
-        PostalZipCode: 1c66c251b84437c6eb9a11b2b4e488d4583f8e1d0c5f8272fac4863db45e19e7,
-        CountryIsoCode: 9a8bf3ebbe6f826e39772c4763bea0722b18c0e4b5b7ba2fe6813f02f7f0a06a,
-        Email: ef2992d89f4f9d2ccaa20ad4665353abcad87d81a98ebd9d8e84d4911212ec5c,
+        PostalZipCode: c3e82a5dd8dbba702f64e932bd3cb3e4c2ae935fe676245621f60e569465a207,
+        CountryIsoCode: 9bd0de90cfade11042f0c255f7d6e7154a9a8d7eb0f5b855ad71b5918e5a44a8,
+        Email: a9e9e9099d57910a666287ec297dc2ea51856d3e010349c08b9b6c7eaa312962,
         UkTelephone: null,
-        Telephone: 3cca0e93f22845caa1c2594b070a8981721bcccf6718ea0127325932fc45dff1,
+        Telephone: 8f2c3c73d49143b3e510c3fe502cb47342732f465551411116216158429b39ee,
         InternationalTelephone: null
       },
       ApprovalNumber: null,
@@ -458,21 +137,21 @@
       Id: 771b90dc-7a6a-4e69-a67e-a601f0e32e4b,
       Type: Consignee,
       Status: Nonapproved,
-      CompanyName: 79bcfd345e5106b83ff64e89e518b87d6ad6fe00301d536b8e3c26bfe90fc778,
+      CompanyName: 88bb7bbf6ff7297d9ef71f2779d2e83a53d0413ea3dcd47a5a2db43e2b6f93df,
       IndividualName: null,
       Address: {
         Street: null,
-        City: 04f86d2cdb409d56622207c37108f32a6d5a15032248dc8bd11a64a6f71c9d9e,
+        City: 0bf86705f67bad1a902861a5c2c3aa1feed368c49e2e556a6c6d3022f6d87ca4,
         Country: null,
         PostalCode: null,
-        AddressLine1: 468c57b2ed40d69e4ba17059f043e0453c16f8b0b47be674184bf328f29dedb1,
-        AddressLine2: 078f1857b3eccb45b7a56fd4934921c7c05146924a7393207c918ebc8796837e,
-        AddressLine3: 2ad04f697c5ad325dcd6d550665510a4c2de4a15be0653b63dce9a9c7a420ff8,
-        PostalZipCode: cc72294078a5749da3e63e23bc6d5e59bb028d30550ca3ac8e2a3987c8761613,
-        CountryIsoCode: d61bc5a683625b3980e8f48b9141dfb2dfea199059f0df327c8e3a92bcb57f97,
-        Email: ef2992d89f4f9d2ccaa20ad4665353abcad87d81a98ebd9d8e84d4911212ec5c,
+        AddressLine1: 2d57cbbe937e837a820ce854139ce657e207948bbf67b2365497c58b5ac06c85,
+        AddressLine2: c800b2ca3369d58cfbd907b84836df69d8077e249bda98d5c6a77295c6e4083b,
+        AddressLine3: 2f268a3ad23e28f6beebdc5015fca0940504af8259919b4f1bd7ac6e95a60b7c,
+        PostalZipCode: 8ed6ff93c1a93e6066cffdb64b8f31fc65b8890e6ffa08aa5cd7c26eedc04997,
+        CountryIsoCode: 68db039cc4879dfa00ed737f23998f833efdbdec8e11ffa2e528316c11cd8730,
+        Email: a9e9e9099d57910a666287ec297dc2ea51856d3e010349c08b9b6c7eaa312962,
         UkTelephone: null,
-        Telephone: 4a0c4eaf0b4d33985d9ef64e7e26428bde5ed6cbd8254a58547ae985d7b896a4,
+        Telephone: cc092edeffeead54debf22da1b8679b67959727a29959a12be8c184adbc99a44,
         InternationalTelephone: null
       },
       ApprovalNumber: null,
@@ -483,21 +162,21 @@
       Id: 771b90dc-7a6a-4e69-a67e-a601f0e32e4b,
       Type: Consignee,
       Status: Nonapproved,
-      CompanyName: 79bcfd345e5106b83ff64e89e518b87d6ad6fe00301d536b8e3c26bfe90fc778,
+      CompanyName: 88bb7bbf6ff7297d9ef71f2779d2e83a53d0413ea3dcd47a5a2db43e2b6f93df,
       IndividualName: null,
       Address: {
         Street: null,
-        City: 04f86d2cdb409d56622207c37108f32a6d5a15032248dc8bd11a64a6f71c9d9e,
+        City: 0bf86705f67bad1a902861a5c2c3aa1feed368c49e2e556a6c6d3022f6d87ca4,
         Country: null,
         PostalCode: null,
-        AddressLine1: 468c57b2ed40d69e4ba17059f043e0453c16f8b0b47be674184bf328f29dedb1,
-        AddressLine2: 078f1857b3eccb45b7a56fd4934921c7c05146924a7393207c918ebc8796837e,
-        AddressLine3: 2ad04f697c5ad325dcd6d550665510a4c2de4a15be0653b63dce9a9c7a420ff8,
-        PostalZipCode: cc72294078a5749da3e63e23bc6d5e59bb028d30550ca3ac8e2a3987c8761613,
-        CountryIsoCode: d61bc5a683625b3980e8f48b9141dfb2dfea199059f0df327c8e3a92bcb57f97,
-        Email: ef2992d89f4f9d2ccaa20ad4665353abcad87d81a98ebd9d8e84d4911212ec5c,
+        AddressLine1: 2d57cbbe937e837a820ce854139ce657e207948bbf67b2365497c58b5ac06c85,
+        AddressLine2: c800b2ca3369d58cfbd907b84836df69d8077e249bda98d5c6a77295c6e4083b,
+        AddressLine3: 2f268a3ad23e28f6beebdc5015fca0940504af8259919b4f1bd7ac6e95a60b7c,
+        PostalZipCode: 8ed6ff93c1a93e6066cffdb64b8f31fc65b8890e6ffa08aa5cd7c26eedc04997,
+        CountryIsoCode: 68db039cc4879dfa00ed737f23998f833efdbdec8e11ffa2e528316c11cd8730,
+        Email: a9e9e9099d57910a666287ec297dc2ea51856d3e010349c08b9b6c7eaa312962,
         UkTelephone: null,
-        Telephone: 4a0c4eaf0b4d33985d9ef64e7e26428bde5ed6cbd8254a58547ae985d7b896a4,
+        Telephone: cc092edeffeead54debf22da1b8679b67959727a29959a12be8c184adbc99a44,
         InternationalTelephone: null
       },
       ApprovalNumber: null,
@@ -508,21 +187,21 @@
       Id: 771b90dc-7a6a-4e69-a67e-a601f0e32e4b,
       Type: Consignee,
       Status: Nonapproved,
-      CompanyName: 79bcfd345e5106b83ff64e89e518b87d6ad6fe00301d536b8e3c26bfe90fc778,
+      CompanyName: 88bb7bbf6ff7297d9ef71f2779d2e83a53d0413ea3dcd47a5a2db43e2b6f93df,
       IndividualName: null,
       Address: {
         Street: null,
-        City: 04f86d2cdb409d56622207c37108f32a6d5a15032248dc8bd11a64a6f71c9d9e,
+        City: 0bf86705f67bad1a902861a5c2c3aa1feed368c49e2e556a6c6d3022f6d87ca4,
         Country: null,
         PostalCode: null,
-        AddressLine1: 468c57b2ed40d69e4ba17059f043e0453c16f8b0b47be674184bf328f29dedb1,
-        AddressLine2: 078f1857b3eccb45b7a56fd4934921c7c05146924a7393207c918ebc8796837e,
-        AddressLine3: 2ad04f697c5ad325dcd6d550665510a4c2de4a15be0653b63dce9a9c7a420ff8,
-        PostalZipCode: cc72294078a5749da3e63e23bc6d5e59bb028d30550ca3ac8e2a3987c8761613,
-        CountryIsoCode: d61bc5a683625b3980e8f48b9141dfb2dfea199059f0df327c8e3a92bcb57f97,
-        Email: ef2992d89f4f9d2ccaa20ad4665353abcad87d81a98ebd9d8e84d4911212ec5c,
+        AddressLine1: 2d57cbbe937e837a820ce854139ce657e207948bbf67b2365497c58b5ac06c85,
+        AddressLine2: c800b2ca3369d58cfbd907b84836df69d8077e249bda98d5c6a77295c6e4083b,
+        AddressLine3: 2f268a3ad23e28f6beebdc5015fca0940504af8259919b4f1bd7ac6e95a60b7c,
+        PostalZipCode: 8ed6ff93c1a93e6066cffdb64b8f31fc65b8890e6ffa08aa5cd7c26eedc04997,
+        CountryIsoCode: 68db039cc4879dfa00ed737f23998f833efdbdec8e11ffa2e528316c11cd8730,
+        Email: a9e9e9099d57910a666287ec297dc2ea51856d3e010349c08b9b6c7eaa312962,
         UkTelephone: null,
-        Telephone: 4a0c4eaf0b4d33985d9ef64e7e26428bde5ed6cbd8254a58547ae985d7b896a4,
+        Telephone: cc092edeffeead54debf22da1b8679b67959727a29959a12be8c184adbc99a44,
         InternationalTelephone: null
       },
       ApprovalNumber: null,
@@ -554,32 +233,32 @@
       PurposeGroup: ForReImport,
       EstimatedArrivesAtPortOfExit: null
     },
-    PointOfEntry: GBTEEP1,
+    PointOfEntry: GBLGW4,
     PointOfEntryControlPoint: null,
     MeansOfTransport: {
       Type: RoadVehicle,
-      Document: 239-2433 3805,
-      Id: PVT
+      Document: 161a62fc7618c58baf94fc07f75901ae6aa5a06bd1847f302fe3e31bf05dda16,
+      Id: fda25cb06a95619ec01ce1eed18aff67ff4586c9c2940d7cf26b8504ab2d383d
     },
     Transporter: {
       Id: 90d14843-e6b2-4513-a21f-714b6624df29,
       Type: PrivateTransporter,
       Status: Nonapproved,
-      CompanyName: 79bcfd345e5106b83ff64e89e518b87d6ad6fe00301d536b8e3c26bfe90fc778,
+      CompanyName: 88bb7bbf6ff7297d9ef71f2779d2e83a53d0413ea3dcd47a5a2db43e2b6f93df,
       IndividualName: null,
       Address: {
         Street: null,
-        City: 04f86d2cdb409d56622207c37108f32a6d5a15032248dc8bd11a64a6f71c9d9e,
+        City: 0bf86705f67bad1a902861a5c2c3aa1feed368c49e2e556a6c6d3022f6d87ca4,
         Country: null,
         PostalCode: null,
-        AddressLine1: 468c57b2ed40d69e4ba17059f043e0453c16f8b0b47be674184bf328f29dedb1,
-        AddressLine2: 078f1857b3eccb45b7a56fd4934921c7c05146924a7393207c918ebc8796837e,
-        AddressLine3: 2ad04f697c5ad325dcd6d550665510a4c2de4a15be0653b63dce9a9c7a420ff8,
-        PostalZipCode: cc72294078a5749da3e63e23bc6d5e59bb028d30550ca3ac8e2a3987c8761613,
-        CountryIsoCode: d61bc5a683625b3980e8f48b9141dfb2dfea199059f0df327c8e3a92bcb57f97,
-        Email: ef2992d89f4f9d2ccaa20ad4665353abcad87d81a98ebd9d8e84d4911212ec5c,
+        AddressLine1: 2d57cbbe937e837a820ce854139ce657e207948bbf67b2365497c58b5ac06c85,
+        AddressLine2: c800b2ca3369d58cfbd907b84836df69d8077e249bda98d5c6a77295c6e4083b,
+        AddressLine3: 2f268a3ad23e28f6beebdc5015fca0940504af8259919b4f1bd7ac6e95a60b7c,
+        PostalZipCode: 8ed6ff93c1a93e6066cffdb64b8f31fc65b8890e6ffa08aa5cd7c26eedc04997,
+        CountryIsoCode: 68db039cc4879dfa00ed737f23998f833efdbdec8e11ffa2e528316c11cd8730,
+        Email: a9e9e9099d57910a666287ec297dc2ea51856d3e010349c08b9b6c7eaa312962,
         UkTelephone: null,
-        Telephone: 28de6daeefd0c900feab6479eeb6350d1060c8a66e03fb517ebb7ff6253fffb3,
+        Telephone: 86a71a7accc8bdadce086963b4fa76a1ae9ef73409ceae4e65be752aa60c53a3,
         InternationalTelephone: null
       },
       ApprovalNumber: null,
@@ -589,8 +268,8 @@
     TransporterDetailsRequired: null,
     MeansOfTransportFromEntryPoint: {
       Type: Aeroplane,
-      Document: 239-2433 3805,
-      Id: MK42
+      Document: 161a62fc7618c58baf94fc07f75901ae6aa5a06bd1847f302fe3e31bf05dda16,
+      Id: 48fc4dd99fe2eb38f1a24b8ddbba6bb7e54c401de31ba544627d54c6fdb7a5d4
     },
     EstimatedJourneyTimeInMinutes: 90.0,
     ResponsibleForTransport: null,
@@ -603,7 +282,7 @@
       AccompanyingDocuments: [
         {
           DocumentType: LatestVeterinaryHealthCertificate,
-          DocumentReference: 179493G,
+          DocumentReference: 76da1cc6f02259609138db937184ae568d0054efad849ad89f54a907301aafda,
           DocumentIssuedOn: 2024-12-02 Utc,
           AttachmentId: null,
           AttachmentFilename: null,
@@ -625,7 +304,7 @@
     SealsContainers: null,
     SubmittedOn: 2024-11-12 09:14:23.997 Utc,
     SubmittedBy: {
-      DisplayName: e5c8f0ff571d9954f11087ba3e877b90c6d613a01ff935ad6b3eb19acb4a4e41,
+      DisplayName: 40a09451a4bdfe0de3da5947b5da3423d130955ad5c5945c77760c325b34cd17,
       UserId: 3b973d26-6523-eb11-a813-000d3abb516e,
       IsControlUser: null
     },
@@ -646,7 +325,7 @@
     DepartedOn: 2024-12-04 11:00 Utc
   },
   DecisionBy: {
-    DisplayName: a8b99eed4e2c063ee6aed862e90515b4960f0773e10b0bf2e443dc0c0ae6de16,
+    DisplayName: c1ea999374c7bf01a5718658ad04eff181dadcd9e79b712b02754ea29609f13f,
     UserId: 3dd58971-2d3f-e911-a95d-000d3a454f67,
     IsControlUser: null
   },
@@ -723,10 +402,10 @@
     ResealedContainersMappings: null,
     ControlAuthority: {
       OfficialVeterinarian: {
-        FirstName: 6c409eaaa8671e839640a63992e65c648b96bfaf835f219e401202c2402083bc,
-        LastName: 90da53d34199197ff5fb6e20f1d405a20082e55e304cc3f8ba4df1dac1e05ef3,
-        Email: bc0e201e913231cb7a40f6990329b6eac322565f47189f6dc9d894862d9dceb8,
-        Phone: cb21249815755bd039ac9c888ca05aa45e78f944fe2df8671f3f0087cdf70530,
+        FirstName: a2c92bad91ea72027fa4b2ad8f3b351ed141895597901e3743e191390d91ee02,
+        LastName: 96aff8726b711a7e5c2793ab0b057b1e2521cff975f101ed2bcc7ee5f70ea79d,
+        Email: 459037530e3fd6eaa4677b5a64f84f9f2b5d2513216588b0190c56c9bab1c8b1,
+        Phone: 6d88c07dc93ccd8f4ee686df95ad67055d177a001907c65a53fb90b336b9b409,
         Fax: null,
         Signed: 2024-12-04T09:01:21.089465601
       },
@@ -738,7 +417,7 @@
       IuuOption: null
     },
     ControlledDestination: null,
-    BipLocalReferenceNumber: 24/49/001,
+    BipLocalReferenceNumber: 620741d97e0ae82e859e74fefccdc204a3928baaa8e339fb374135bd81430024,
     SignedOnBehalfOf: null,
     OnwardTransportation: null,
     ConsignmentValidations: null,

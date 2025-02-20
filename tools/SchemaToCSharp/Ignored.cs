@@ -127,5 +127,6 @@ internal static class Ignored
                 "haulierType",
             }
         },
+        
     };
 }

@@ -1,14 +1,14 @@
 {
   "links": {
-    "self": "/api/movements/24GBE0XBAS7Z0J5AR0"
+    "self": "/api/movements/24GBDFPJ28XLD8OAR5"
   },
   "data": {
     "type": "movements",
-    "id": "24GBE0XBAS7Z0J5AR0",
+    "id": "24GBDFPJ28XLD8OAR5",
     "attributes": {
       "btmsStatus": {
         "chedTypes": [
-          "Ced"
+          "Cvedp"
         ],
         "linkStatus": "AllLinked",
         "linkStatusDescription": null,
@@ -20,48 +20,48 @@
           "serviceHeader": {
             "sourceSystem": "CDS",
             "destinationSystem": "ALVS",
-            "correlationId": "1358673",
-            "serviceCalled": "2024-12-19T08:49:03Z"
+            "correlationId": "1315561",
+            "serviceCalled": "2024-12-04T12:28:02Z"
           },
           "header": {
-            "entryReference": "24GBE0XBAS7Z0J5AR0",
+            "entryReference": "24GBDFPJ28XLD8OAR5",
             "entryVersionNumber": 1,
             "previousVersionNumber": null,
-            "declarationUcr": "4GB244049769033-LI42468",
-            "declarationPartNumber": null,
+            "declarationUcr": "4GB246936865000-10022786",
+            "declarationPartNumber": "001",
             "declarationType": "S",
             "arrivesAt": null,
-            "submitterTurn": "GB244049769033",
-            "declarantId": "GB244049769033",
-            "declarantName": "GB244049769033",
-            "dispatchCountryCode": "CN",
-            "goodsLocationCode": "TEEMIDTEE",
-            "masterUcr": "607790951"
+            "submitterTurn": null,
+            "declarantId": "GB246936865000",
+            "declarantName": "GB246936865000",
+            "dispatchCountryCode": "BR",
+            "goodsLocationCode": "LGPLGPLGP",
+            "masterUcr": "LGP1C7XGS00102"
           },
           "items": [
             {
               "itemNumber": 1,
               "customsProcedureCode": "4000000",
-              "taricCommodityCode": "0902400000",
-              "goodsDescription": "TEA",
-              "consigneeId": "GB405696146000",
-              "consigneeName": "GB405696146000",
-              "itemNetMass": 24480,
+              "taricCommodityCode": "1602321990",
+              "goodsDescription": "FROZEN CHICKEN",
+              "consigneeId": "GB888420879000",
+              "consigneeName": "GB888420879000",
+              "itemNetMass": 667,
               "itemSupplementaryUnits": 0,
               "itemThirdQuantity": null,
-              "itemOriginCountryCode": "CN",
+              "itemOriginCountryCode": "BR",
               "documents": [
                 {
-                  "documentCode": "C678",
-                  "documentReference": "GBCHD2024.5019877",
-                  "documentStatus": "JP",
+                  "documentCode": "N853",
+                  "documentReference": "GBCVD2024.5137241",
+                  "documentStatus": "AE",
                   "documentControl": "P",
                   "documentQuantity": null
                 }
               ],
               "checks": [
                 {
-                  "checkCode": "H223",
+                  "checkCode": "H222",
                   "departmentCode": null,
                   "decisionCode": "C03",
                   "decisionsValidUntil": null,
@@ -77,11 +77,11 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "db4fa76b-18ee-4acf-9149-33f8c7bb1bc9",
-            "serviceCalled": "2025-02-19T16:19:55.921Z"
+            "correlationId": "31e11a1b-75d3-4626-ac03-a2b73d12c94c",
+            "serviceCalled": "2025-02-19T16:19:55.837Z"
           },
           "header": {
-            "entryReference": "24GBE0XBAS7Z0J5AR0",
+            "entryReference": "24GBDFPJ28XLD8OAR5",
             "entryVersionNumber": 1,
             "decisionNumber": 1
           },
@@ -90,7 +90,7 @@
               "itemNumber": 1,
               "checks": [
                 {
-                  "checkCode": "H223",
+                  "checkCode": "H222",
                   "departmentCode": null,
                   "decisionCode": "C03",
                   "decisionsValidUntil": null,
@@ -109,19 +109,19 @@
                 "sourceSystem": "ALVS",
                 "destinationSystem": "CDS",
                 "correlationId": "000",
-                "serviceCalled": "2024-12-19T08:49:09.213Z"
+                "serviceCalled": "2024-12-04T12:43:18.656Z"
               },
               "header": {
-                "entryReference": "24GBE0XBAS7Z0J5AR0",
+                "entryReference": "24GBDFPJ28XLD8OAR5",
                 "entryVersionNumber": 1,
-                "decisionNumber": 1
+                "decisionNumber": 2
               },
               "items": [
                 {
                   "itemNumber": 1,
                   "checks": [
                     {
-                      "checkCode": "H223",
+                      "checkCode": "H222",
                       "departmentCode": null,
                       "decisionCode": "C03",
                       "decisionsValidUntil": null,
@@ -156,7 +156,7 @@
                 "allRelease": true,
                 "anyRelease": true
               },
-              "alvsDecisionNumber": 1,
+              "alvsDecisionNumber": 2,
               "entryVersionNumber": 1,
               "importNotifications": null,
               "decisionComparison": {
@@ -167,7 +167,7 @@
                 "checks": [
                   {
                     "itemNumber": 1,
-                    "checkCode": "H223",
+                    "checkCode": "H222",
                     "alvsDecisionCode": "C03",
                     "btmsDecisionCode": "C03"
                   }
@@ -177,7 +177,7 @@
           }
         ],
         "context": {
-          "alvsDecisionNumber": 1,
+          "alvsDecisionNumber": 2,
           "entryVersionNumber": 1,
           "importNotifications": null,
           "decisionComparison": {
@@ -188,7 +188,7 @@
             "checks": [
               {
                 "itemNumber": 1,
-                "checkCode": "H223",
+                "checkCode": "H222",
                 "alvsDecisionCode": "C03",
                 "btmsDecisionCode": "C03"
               }
@@ -200,26 +200,26 @@
         {
           "itemNumber": 1,
           "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0902400000",
-          "goodsDescription": "TEA",
-          "consigneeId": "GB405696146000",
-          "consigneeName": "GB405696146000",
-          "itemNetMass": 24480,
+          "taricCommodityCode": "1602321990",
+          "goodsDescription": "FROZEN CHICKEN",
+          "consigneeId": "GB888420879000",
+          "consigneeName": "GB888420879000",
+          "itemNetMass": 667,
           "itemSupplementaryUnits": 0,
           "itemThirdQuantity": null,
-          "itemOriginCountryCode": "CN",
+          "itemOriginCountryCode": "BR",
           "documents": [
             {
-              "documentCode": "C678",
-              "documentReference": "GBCHD2024.5019877",
-              "documentStatus": "JP",
+              "documentCode": "N853",
+              "documentReference": "GBCVD2024.5137241",
+              "documentStatus": "AE",
               "documentControl": "P",
               "documentQuantity": null
             }
           ],
           "checks": [
             {
-              "checkCode": "H223",
+              "checkCode": "H222",
               "departmentCode": null,
               "decisionCode": "C03",
               "decisionsValidUntil": null,
@@ -228,27 +228,27 @@
           ]
         }
       ],
-      "updatedSource": "2024-12-19T08:49:03Z",
-      "createdSource": "2024-12-19T08:49:03Z",
-      "updated": "2025-02-19T16:19:55.932Z",
-      "entryReference": "24GBE0XBAS7Z0J5AR0",
+      "updatedSource": "2024-12-04T12:28:02Z",
+      "createdSource": "2024-12-04T12:28:02Z",
+      "updated": "2025-02-19T16:19:55.846Z",
+      "entryReference": "24GBDFPJ28XLD8OAR5",
       "entryVersionNumber": 1,
-      "masterUcr": "607790951",
+      "masterUcr": "LGP1C7XGS00102",
       "declarationPartNumber": null,
       "declarationType": "S",
       "arrivesAt": null,
-      "submitterTurn": "GB244049769033",
-      "declarantId": "GB244049769033",
-      "declarantName": "GB244049769033",
-      "dispatchCountryCode": "CN",
-      "goodsLocationCode": "TEEMIDTEE",
+      "submitterTurn": null,
+      "declarantId": "GB246936865000",
+      "declarantName": "GB246936865000",
+      "dispatchCountryCode": "BR",
+      "goodsLocationCode": "LGPLGPLGP",
       "auditEntries": [
         {
-          "id": "24GBE0XBAS7Z0J5AR0",
+          "id": "24GBDFPJ28XLD8OAR5",
           "version": 1,
           "createdBy": "Cds",
-          "createdSource": "2024-12-19T08:49:03Z",
-          "createdLocal": "2025-02-19T16:19:55.92Z",
+          "createdSource": "2024-12-04T12:28:02Z",
+          "createdLocal": "2025-02-19T16:19:55.836Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -257,18 +257,18 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.921Z",
-          "createdLocal": "2025-02-19T16:19:55.921Z",
+          "createdSource": "2025-02-19T16:19:55.837Z",
+          "createdLocal": "2025-02-19T16:19:55.837Z",
           "status": "Linked",
           "diff": [],
           "context": null
         },
         {
-          "id": "24GBE0XBAS7Z0J5AR0",
+          "id": "24GBDFPJ28XLD8OAR5",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.921Z",
-          "createdLocal": "2025-02-19T16:19:55.921Z",
+          "createdSource": "2025-02-19T16:19:55.837Z",
+          "createdLocal": "2025-02-19T16:19:55.837Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -279,24 +279,24 @@
             "entryVersionNumber": 1,
             "importNotifications": [
               {
-                "id": "CHEDD.GB.2024.5019877",
+                "id": "CHEDP.GB.2024.5137241",
                 "version": 1,
-                "created": "2025-02-19T16:19:55.893Z",
-                "updated": "2025-02-19T16:19:55.892Z",
-                "updatedEntity": "2025-02-19T16:19:55.893Z",
-                "createdSource": "2024-12-16T15:05:27.801Z",
-                "updatedSource": "2024-12-16T15:05:27.801Z"
+                "created": "2025-02-19T16:19:55.757Z",
+                "updated": "2025-02-19T16:19:55.755Z",
+                "updatedEntity": "2025-02-19T16:19:55.832Z",
+                "createdSource": "2024-11-16T05:33:56.643Z",
+                "updatedSource": "2024-11-16T05:33:56.643Z"
               }
             ],
             "decisionComparison": null
           }
         },
         {
-          "id": "24GBE0XBAS7Z0J5AR0",
-          "version": 1,
+          "id": "24GBDFPJ28XLD8OAR5",
+          "version": 2,
           "createdBy": "Alvs",
-          "createdSource": "2024-12-19T08:49:09.213Z",
-          "createdLocal": "2025-02-19T16:19:55.926Z",
+          "createdSource": "2024-12-04T12:43:18.656Z",
+          "createdLocal": "2025-02-19T16:19:55.846Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -325,7 +325,7 @@
               "allRelease": true,
               "anyRelease": true
             },
-            "alvsDecisionNumber": 1,
+            "alvsDecisionNumber": 2,
             "entryVersionNumber": 1,
             "importNotifications": null,
             "decisionComparison": {
@@ -336,72 +336,44 @@
               "checks": [
                 {
                   "itemNumber": 1,
-                  "checkCode": "H223",
+                  "checkCode": "H222",
                   "alvsDecisionCode": "C03",
                   "btmsDecisionCode": "C03"
                 }
               ]
             }
           }
-        },
-        {
-          "id": "24GBE0XBAS7Z0J5AR0",
-          "version": 0,
-          "createdBy": "Cds",
-          "createdSource": "2024-12-19T08:59:11Z",
-          "createdLocal": "2025-02-19T16:19:55.932Z",
-          "status": "Finalisation",
-          "diff": [],
-          "context": {
-            "$type": "CdsFinalisation",
-            "serviceHeader": {
-              "sourceSystem": "CDS",
-              "destinationSystem": "ALVS",
-              "correlationId": "1358704",
-              "serviceCalled": "2024-12-19T08:59:11Z"
-            },
-            "header": {
-              "entryReference": "24GBE0XBAS7Z0J5AR0",
-              "entryVersionNumber": 1,
-              "decisionNumber": null,
-              "finalState": "Cleared",
-              "manualAction": false
-            }
-          }
         }
       ],
       "localId": null,
-      "created": "2025-02-19T16:19:55.922Z",
-      "updatedEntity": "2025-02-19T16:19:55.932Z",
-      "finalised": "2025-02-19T16:19:55.932Z",
-      "finalisedSource": "2024-12-19T08:59:11Z",
-      "finalisation": {
-        "finalState": "Cleared",
-        "manualAction": false
-      }
+      "created": "2025-02-19T16:19:55.839Z",
+      "updatedEntity": "2025-02-19T16:19:55.846Z",
+      "finalised": null,
+      "finalisedSource": null,
+      "finalisation": null
     },
     "relationships": {
       "notifications": {
         "links": {
-          "self": "/api/movements/24GBE0XBAS7Z0J5AR0",
-          "related": "/api/movements/24GBE0XBAS7Z0J5AR0/import-notifications"
+          "self": "/api/movements/24GBDFPJ28XLD8OAR5",
+          "related": "/api/movements/24GBDFPJ28XLD8OAR5/import-notifications"
         },
         "data": [
           {
             "type": "notifications",
-            "id": "CHEDD.GB.2024.5019877",
+            "id": "CHEDP.GB.2024.5137241",
             "meta": {
               "sourceItem": 1,
               "destinationItem": 1,
               "matchingLevel": 1,
-              "self": "/api/import-notifications/CHEDD.GB.2024.5019877"
+              "self": "/api/import-notifications/CHEDP.GB.2024.5137241"
             }
           }
         ]
       }
     },
     "links": {
-      "self": "/api/movements/24GBE0XBAS7Z0J5AR0"
+      "self": "/api/movements/24GBDFPJ28XLD8OAR5"
     }
   }
 }

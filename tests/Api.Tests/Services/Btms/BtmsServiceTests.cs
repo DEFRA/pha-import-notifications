@@ -163,10 +163,11 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     public static TheoryData<string, string[]> ChedReferenceNumbersWithMovements = new()
     {
         {
-            ChedReferenceNumbers.ChedAWithMovement,
+            ChedReferenceNumbers.ChedPWithMovement,
             [MovementReferenceNumbers.Movement1, MovementReferenceNumbers.Movement2]
         },
         { ChedReferenceNumbers.ChedD, [MovementReferenceNumbers.Movement3] },
+        { ChedReferenceNumbers.ChedPFinalised, [MovementReferenceNumbers.MovementFinalised] },
     };
 
     [Theory, MemberData(nameof(ChedReferenceNumbersWithMovements))]
@@ -187,7 +188,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         await Verify(result, _settings).UseParameters(chedReferenceNumber);
     }
 
-    [Theory]
+    [Theory(Skip = "Stub GMR Data unavailable yet ")]
     [InlineData(ChedReferenceNumbers.ChedAWithGoodsMovement, new[] { GoodsMovementsReferences.GMRId1 })]
     public async Task GetImportNotification_WithGoodsMovements_WhenOk_ShouldSucceed(
         string chedReferenceNumber,

@@ -2031,6 +2031,42 @@
         ],
         "type": "string"
       },
+      "FinalState": {
+        "enum": [
+          "Cleared",
+          "CancelledAfterArrival",
+          "CancelledWhilePreLodged",
+          "Destroyed",
+          "Seized",
+          "ReleasedToKingsWarehouse",
+          "TransferredToMss"
+        ],
+        "type": "string"
+      },
+      "Finalisation": {
+        "required": [
+          "finalState",
+          "manualAction"
+        ],
+        "type": "object",
+        "properties": {
+          "finalState": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FinalState"
+              }
+            ]
+          },
+          "manualAction": {
+            "type": "boolean"
+          },
+          "entryReference": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Gmr": {
         "type": "object",
         "properties": {
@@ -2185,6 +2221,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CustomsClearanceDecision"
+            },
+            "nullable": true
+          },
+          "finalisation": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Finalisation"
             },
             "nullable": true
           },
