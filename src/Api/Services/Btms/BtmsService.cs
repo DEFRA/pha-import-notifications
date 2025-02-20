@@ -62,10 +62,20 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
         if (result is null)
             throw new InvalidOperationException("Result was null");
 
+        var finalisations = movements
+            .Where(x => x.Finalised is not null)
+            .Select(f =>
+            {
+                f.Finalisation!.EntryReference = f.EntryReference;
+                return f.Finalisation;
+            })
+            .ToList();
+
         return result with
         {
             ClearanceRequests = movements.SelectMany(x => x.ClearanceRequests ?? []).ToList(),
             ClearanceDecisions = movements.SelectMany(x => x.Decisions ?? []).ToList(),
+            Finalisations = finalisations,
             GoodsMovements = goodsMovements,
         };
 
