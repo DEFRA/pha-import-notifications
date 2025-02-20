@@ -188,7 +188,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         await Verify(result, _settings).UseParameters(chedReferenceNumber);
     }
 
-    [Theory(Skip = "Stub GMR Data unavailable yet ")]
+    [Theory()]
     [InlineData(ChedReferenceNumbers.ChedAWithGoodsMovement, new[] { GoodsMovementsReferences.GMRId1 })]
     public async Task GetImportNotification_WithGoodsMovements_WhenOk_ShouldSucceed(
         string chedReferenceNumber,
