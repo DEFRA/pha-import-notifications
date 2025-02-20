@@ -3,7 +3,6 @@
   ClearanceDecisions: null,
   Finalisations: null,
   GoodsMovements: null,
-  _Etag: null,
   CreatedSource: 2024-12-04 13:25:01.362 Utc,
   Created: 2025-02-19 16:19:55.851 Utc,
   UpdatedEntity: 2025-02-19 16:19:55.851 Utc,
@@ -56,9 +55,6 @@
       Checks: null
     }
   ],
-  _PointOfEntry: null,
-  _PointOfEntryControlPoint: null,
-  _MatchReference: null,
   IpaffsId: 4255132,
   Etag: 000000000450D15D,
   ExternalReferences: null,
@@ -76,7 +72,6 @@
   Status: Submitted,
   SplitConsignment: null,
   ChildNotification: null,
-  RiskAssessment: null,
   JourneyRiskCategorisation: null,
   IsHighRiskEuImport: true,
   PartOne: {

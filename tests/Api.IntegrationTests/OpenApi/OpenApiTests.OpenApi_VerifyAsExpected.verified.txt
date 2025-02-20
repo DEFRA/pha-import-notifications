@@ -2068,15 +2068,8 @@
         "additionalProperties": false
       },
       "Gmr": {
-        "required": [
-          "updatedEntity"
-        ],
         "type": "object",
         "properties": {
-          "updatedEntity": {
-            "type": "string",
-            "format": "date-time"
-          },
           "id": {
             "type": "string",
             "description": "The Goods Movement Record (GMR) ID for this GMR.  Do not include when POSTing a GMR - GVMS will assign an ID.",
@@ -2366,15 +2359,6 @@
           "childNotification": {
             "type": "boolean",
             "description": "Is this notification a child of a split consignment?",
-            "nullable": true
-          },
-          "riskAssessment": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/RiskAssessmentResult"
-              }
-            ],
-            "description": "Result of risk assessment by the risk scorer",
             "nullable": true
           },
           "journeyRiskCategorisation": {
@@ -3722,7 +3706,7 @@
           },
           "regNumber": {
             "type": "string",
-            "description": "There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number.",
+            "description": "There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number. ",
             "nullable": true
           },
           "shipName": {
@@ -3843,26 +3827,6 @@
           "ForImportNonInternalMarket"
         ],
         "type": "string"
-      },
-      "RiskAssessmentResult": {
-        "type": "object",
-        "properties": {
-          "commodityResults": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CommodityRiskResult"
-            },
-            "description": "List of risk assessed commodities",
-            "nullable": true
-          },
-          "assessedOn": {
-            "type": "string",
-            "description": "Date and time of assessment",
-            "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
       },
       "Route": {
         "type": "object",

@@ -22,7 +22,7 @@ public partial record Purpose
     public PurposeForNonConformingEnum? ForNonConforming { get; init; }
 
     [JsonPropertyName("regNumber")]
-    [Description("There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number.")]
+    [Description("There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number. ")]
     public string? RegNumber { get; init; }
 
     [JsonPropertyName("shipName")]

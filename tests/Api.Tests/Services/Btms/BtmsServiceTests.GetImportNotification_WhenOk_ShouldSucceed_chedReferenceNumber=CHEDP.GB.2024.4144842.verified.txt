@@ -3,7 +3,6 @@
   ClearanceDecisions: null,
   Finalisations: null,
   GoodsMovements: null,
-  _Etag: null,
   CreatedSource: 2024-12-04 10:34:32.203 Utc,
   Created: 2025-02-19 16:19:55.826 Utc,
   UpdatedEntity: 2025-02-19 16:19:55.826 Utc,
@@ -70,9 +69,6 @@
       Checks: null
     }
   ],
-  _PointOfEntry: null,
-  _PointOfEntryControlPoint: null,
-  _MatchReference: null,
   IpaffsId: 4253441,
   Etag: 0000000004502D5A,
   ExternalReferences: null,
@@ -90,7 +86,6 @@
   Status: Cancelled,
   SplitConsignment: null,
   ChildNotification: null,
-  RiskAssessment: null,
   JourneyRiskCategorisation: {
     RiskLevel: Medium,
     RiskLevelMethod: User,

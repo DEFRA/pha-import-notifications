@@ -5,10 +5,6 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public partial record ImportNotification
 {
-    [JsonPropertyName("_Etag")]
-    [JsonIgnore]
-    public string? _Etag { get; init; }
-
     [JsonPropertyName("createdSource")]
     [Description("Date when the notification was created in IPAFFS")]
     public DateTime? CreatedSource { get; init; }
@@ -38,18 +34,6 @@ public partial record ImportNotification
 
     [JsonPropertyName("commodities")]
     public List<CommodityComplement>? Commodities { get; init; }
-
-    [JsonPropertyName("_PointOfEntry")]
-    [JsonIgnore]
-    public string? _PointOfEntry { get; init; }
-
-    [JsonPropertyName("_PointOfEntryControlPoint")]
-    [JsonIgnore]
-    public string? _PointOfEntryControlPoint { get; init; }
-
-    [JsonPropertyName("_MatchReference")]
-    [JsonIgnore]
-    public string? _MatchReference { get; init; }
 
     [JsonPropertyName("ipaffsId")]
     [Description("The IPAFFS ID number for this notification.")]
@@ -102,10 +86,6 @@ public partial record ImportNotification
     [JsonPropertyName("childNotification")]
     [Description("Is this notification a child of a split consignment?")]
     public bool? ChildNotification { get; init; }
-
-    [JsonPropertyName("riskAssessment")]
-    [Description("Result of risk assessment by the risk scorer")]
-    public RiskAssessmentResult? RiskAssessment { get; init; }
 
     [JsonPropertyName("journeyRiskCategorisation")]
     [Description("Details of the risk categorisation level for a notification")]

@@ -37,6 +37,7 @@ COPY tests/BtmsStub/BtmsStub.csproj tests/BtmsStub/BtmsStub.csproj
 COPY tests/Testing/Testing.csproj tests/Testing/Testing.csproj
 COPY tests/Api.Tests/Api.Tests.csproj tests/Api.Tests/Api.Tests.csproj
 COPY tests/Api.IntegrationTests/Api.IntegrationTests.csproj tests/Api.IntegrationTests/Api.IntegrationTests.csproj
+COPY tools/SchemaToCSharp/SchemaToCSharp.csproj tools/SchemaToCSharp/SchemaToCSharp.csproj
 COPY Defra.PhaImportNotifications.sln Defra.PhaImportNotifications.sln
 COPY Directory.Build.props Directory.Build.props
 
@@ -51,7 +52,7 @@ COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
 
 RUN dotnet csharpier --check .
 
-RUN dotnet build --no-restore -c Release
+RUN dotnet build src/Api/Api.csproj --no-restore -c Release
 RUN dotnet swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
 RUN vacuum lint -d -r .vacuum.yml openapi.json
 

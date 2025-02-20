@@ -149,7 +149,6 @@
     }
   ],
   GoodsMovements: null,
-  _Etag: null,
   CreatedSource: 2024-12-04 10:55:42.357 Utc,
   Created: 0001-01-01 Utc,
   UpdatedEntity: 2025-02-19 16:19:54.921 Utc,
@@ -216,9 +215,6 @@
       Checks: null
     }
   ],
-  _PointOfEntry: null,
-  _PointOfEntryControlPoint: null,
-  _MatchReference: null,
   IpaffsId: 4254466,
   Etag: 000000000472209A,
   ExternalReferences: null,
@@ -236,7 +232,6 @@
   Status: Validated,
   SplitConsignment: null,
   ChildNotification: null,
-  RiskAssessment: null,
   JourneyRiskCategorisation: {
     RiskLevel: Medium,
     RiskLevelMethod: User,

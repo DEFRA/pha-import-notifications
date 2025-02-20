@@ -55,6 +55,26 @@ Get an import notification:
 http://localhost:8080/import-notifications/CHEDA.GB.2024.4792831
 ```
 
+## Update BTMS Schema
+
+When a schema change in BTMS is made we need to update our models.
+
+At the moment this is a manual process:
+
+1. Fetch the `openapi.json` artifact from the latest build of [btms-backend](https://github.com/defra/btms-backend/actions/workflows/publish.yml?query=branch%3Amain)
+2. In the PHA API repository, extract and copy this to the tools/SchemaToCSharp folder
+3. Run `make update-btms-schema` in the root of the repository
+4. Observe any changes that have been made and commit them
+
+## Development
+
+It is possible to configure the PHA API to query a deployed BTMS instance.
+
+Fill out the [BtmsOptions](./src/Api/Configuration/BtmsOptions.cs) configuration to point at a BTMS instance and then
+perform a request to the PHA API whilst connected to the VPN.
+
+The `Username` and `Password` are Basic Auth credentials.
+
 ## Testing
 
 The unit and integration tests can either be run via your IDE or alternatively with `dotnet test .`
