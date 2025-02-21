@@ -13,7 +13,8 @@
         "linkStatus": "AllLinked",
         "linkStatusDescription": null,
         "status": null,
-        "segment": null
+        "segment": null,
+        "businessDecisionStatus": "MatchComplete"
       },
       "clearanceRequests": [
         {
@@ -95,8 +96,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "39527245-af3f-46fa-897b-df5e43758712",
-            "serviceCalled": "2025-02-19T16:19:55.955Z"
+            "correlationId": "71d1ac8d-4cdc-4bf5-a03e-69d4ce0656e2",
+            "serviceCalled": "2025-02-21T13:28:39.211Z"
           },
           "header": {
             "entryReference": "24GBE6SLBBGLL33AR6",
@@ -133,8 +134,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "19f5b216-094a-4894-b0b7-6fd874e29d54",
-            "serviceCalled": "2025-02-19T16:19:55.961Z"
+            "correlationId": "543591dc-6de4-45a5-92ef-3ca9ffbe56c7",
+            "serviceCalled": "2025-02-21T13:28:39.216Z"
           },
           "header": {
             "entryReference": "24GBE6SLBBGLL33AR6",
@@ -330,7 +331,7 @@
       ],
       "updatedSource": "2024-12-23T11:23:30Z",
       "createdSource": "2024-12-23T11:23:30Z",
-      "updated": "2025-02-19T16:19:55.97Z",
+      "updated": "2025-02-21T13:28:39.223Z",
       "entryReference": "24GBE6SLBBGLL33AR6",
       "entryVersionNumber": 1,
       "masterUcr": "557612954",
@@ -348,7 +349,7 @@
           "version": 1,
           "createdBy": "Cds",
           "createdSource": "2024-12-23T11:23:30Z",
-          "createdLocal": "2025-02-19T16:19:55.955Z",
+          "createdLocal": "2025-02-21T13:28:39.21Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -357,8 +358,8 @@
           "id": "24GBE6SLBBGLL33AR6",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.955Z",
-          "createdLocal": "2025-02-19T16:19:55.956Z",
+          "createdSource": "2025-02-21T13:28:39.211Z",
+          "createdLocal": "2025-02-21T13:28:39.211Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -375,8 +376,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.96Z",
-          "createdLocal": "2025-02-19T16:19:55.96Z",
+          "createdSource": "2025-02-21T13:28:39.215Z",
+          "createdLocal": "2025-02-21T13:28:39.215Z",
           "status": "Linked",
           "diff": [],
           "context": null
@@ -385,8 +386,8 @@
           "id": "CHEDP.GB.2024.5328437",
           "version": 2,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.961Z",
-          "createdLocal": "2025-02-19T16:19:55.961Z",
+          "createdSource": "2025-02-21T13:28:39.216Z",
+          "createdLocal": "2025-02-21T13:28:39.216Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -400,7 +401,7 @@
                 "id": "CHEDP.GB.2024.5328437",
                 "version": 1,
                 "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-19T16:19:55.959Z",
+                "updated": "2025-02-21T13:28:39.214Z",
                 "updatedEntity": "0001-01-01T00:00:00Z",
                 "createdSource": "2024-12-29T10:05:35.553Z",
                 "updatedSource": "2024-12-29T10:05:35.553Z"
@@ -414,7 +415,7 @@
           "version": 2,
           "createdBy": "Alvs",
           "createdSource": "2024-12-29T10:14:54.545Z",
-          "createdLocal": "2025-02-19T16:19:55.967Z",
+          "createdLocal": "2025-02-21T13:28:39.22Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -473,7 +474,7 @@
           "version": 0,
           "createdBy": "Cds",
           "createdSource": "2024-12-29T10:24:56Z",
-          "createdLocal": "2025-02-19T16:19:55.97Z",
+          "createdLocal": "2025-02-21T13:28:39.223Z",
           "status": "Finalisation",
           "diff": [],
           "context": {
@@ -495,9 +496,9 @@
         }
       ],
       "localId": null,
-      "created": "2025-02-19T16:19:55.956Z",
-      "updatedEntity": "2025-02-19T16:19:55.97Z",
-      "finalised": "2025-02-19T16:19:55.97Z",
+      "created": "2025-02-21T13:28:39.211Z",
+      "updatedEntity": "2025-02-21T13:28:39.223Z",
+      "finalised": "2025-02-21T13:28:39.223Z",
       "finalisedSource": "2024-12-29T10:24:56Z",
       "finalisation": {
         "finalState": "Cleared",
@@ -515,7 +516,6 @@
             "type": "notifications",
             "id": "CHEDP.GB.2024.5328437",
             "meta": {
-              "sourceItem": 1,
               "destinationItem": 1,
               "matchingLevel": 1,
               "self": "/api/import-notifications/CHEDP.GB.2024.5328437"

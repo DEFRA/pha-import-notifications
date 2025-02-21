@@ -13,7 +13,8 @@
         "linkStatus": "PartiallyLinked",
         "linkStatusDescription": null,
         "status": null,
-        "segment": null
+        "segment": null,
+        "businessDecisionStatus": "AlvsReleaseBtmsNotReleased"
       },
       "clearanceRequests": [
         {
@@ -111,8 +112,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "cd534957-8ef7-4d4e-b542-5f86aca667ab",
-            "serviceCalled": "2025-02-19T16:19:55.77Z"
+            "correlationId": "9ffff216-1f7f-4e1d-b81b-62b55ff0bbcd",
+            "serviceCalled": "2025-02-21T13:28:39.057Z"
           },
           "header": {
             "entryReference": "24GBCUDNXBN1JNRAR5",
@@ -154,8 +155,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "bdbce7a7-aac1-4ce9-9532-1239af93572b",
-            "serviceCalled": "2025-02-19T16:19:55.777Z"
+            "correlationId": "05894d06-f044-4284-a6b1-04fa3f022fc6",
+            "serviceCalled": "2025-02-21T13:28:39.061Z"
           },
           "header": {
             "entryReference": "24GBCUDNXBN1JNRAR5",
@@ -377,7 +378,7 @@
       ],
       "updatedSource": "2024-11-19T14:12:40Z",
       "createdSource": "2024-11-19T14:12:40Z",
-      "updated": "2025-02-19T16:19:55.79Z",
+      "updated": "2025-02-21T13:28:39.074Z",
       "entryReference": "24GBCUDNXBN1JNRAR5",
       "entryVersionNumber": 1,
       "masterUcr": "529744521",
@@ -395,7 +396,7 @@
           "version": 1,
           "createdBy": "Cds",
           "createdSource": "2024-11-19T14:12:40Z",
-          "createdLocal": "2025-02-19T16:19:55.769Z",
+          "createdLocal": "2025-02-21T13:28:39.055Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -404,8 +405,8 @@
           "id": "24GBCUDNXBN1JNRAR5",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.77Z",
-          "createdLocal": "2025-02-19T16:19:55.77Z",
+          "createdSource": "2025-02-21T13:28:39.057Z",
+          "createdLocal": "2025-02-21T13:28:39.057Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -422,8 +423,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.775Z",
-          "createdLocal": "2025-02-19T16:19:55.775Z",
+          "createdSource": "2025-02-21T13:28:39.061Z",
+          "createdLocal": "2025-02-21T13:28:39.061Z",
           "status": "Linked",
           "diff": [],
           "context": null
@@ -432,8 +433,8 @@
           "id": "CHEDP.GB.2024.5140733",
           "version": 2,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.777Z",
-          "createdLocal": "2025-02-19T16:19:55.777Z",
+          "createdSource": "2025-02-21T13:28:39.061Z",
+          "createdLocal": "2025-02-21T13:28:39.061Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -447,7 +448,7 @@
                 "id": "CHEDP.GB.2024.5140733",
                 "version": 3,
                 "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-19T16:19:55.774Z",
+                "updated": "2025-02-21T13:28:39.059Z",
                 "updatedEntity": "0001-01-01T00:00:00Z",
                 "createdSource": "2024-11-20T17:12:59.581Z",
                 "updatedSource": "2024-11-20T17:12:59.581Z"
@@ -461,7 +462,7 @@
           "version": 7,
           "createdBy": "Alvs",
           "createdSource": "2024-11-20T17:15:52.627Z",
-          "createdLocal": "2025-02-19T16:19:55.79Z",
+          "createdLocal": "2025-02-21T13:28:39.074Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -517,8 +518,8 @@
         }
       ],
       "localId": null,
-      "created": "2025-02-19T16:19:55.77Z",
-      "updatedEntity": "2025-02-19T16:19:55.79Z",
+      "created": "2025-02-21T13:28:39.057Z",
+      "updatedEntity": "2025-02-21T13:28:39.075Z",
       "finalised": null,
       "finalisedSource": null,
       "finalisation": null
@@ -534,7 +535,6 @@
             "type": "notifications",
             "id": "CHEDP.GB.2024.5140733",
             "meta": {
-              "sourceItem": 2,
               "destinationItem": 1,
               "matchingLevel": 1,
               "self": "/api/import-notifications/CHEDP.GB.2024.5140733"

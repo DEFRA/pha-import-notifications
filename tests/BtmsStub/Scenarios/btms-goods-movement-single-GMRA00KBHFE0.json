@@ -1,0 +1,75 @@
+{
+  "links": {
+    "self": "/api/gmrs/GMRA00KBHFE0"
+  },
+  "data": {
+    "type": "gmrs",
+    "id": "GMRA00KBHFE0",
+    "attributes": {
+      "createdSource": "2024-11-11T17:34:50.774Z",
+      "created": "2025-02-21T13:28:38.994Z",
+      "updatedEntity": "2025-02-21T13:28:38.994Z",
+      "updated": "2025-02-21T13:28:38.985Z",
+      "stringId": "GMRA00KBHFE0",
+      "auditEntries": [
+        {
+          "id": "GMRA00KBHFE0",
+          "version": 1,
+          "createdBy": "Gvms",
+          "createdSource": "2024-11-11T17:34:50.774Z",
+          "createdLocal": "2025-02-21T13:28:38.984Z",
+          "status": "Created",
+          "diff": [],
+          "context": null
+        }
+      ],
+      "haulierEori": "GB074694771000",
+      "state": "Completed",
+      "inspectionRequired": false,
+      "reportToLocations": null,
+      "updatedSource": "2024-11-11T17:34:50.774Z",
+      "direction": "UkInbound",
+      "haulierType": null,
+      "isUnaccompanied": false,
+      "vehicleRegistrationNumber": "241SO1061",
+      "trailerRegistrationNums": null,
+      "containerReferenceNums": null,
+      "plannedCrossing": {
+        "routeId": "109",
+        "departsAt": "2024-11-11T14:45:00"
+      },
+      "checkedInCrossing": {
+        "routeId": "32",
+        "arrivesAt": "2024-11-11T18:20:00"
+      },
+      "actualCrossing": {
+        "routeId": "32",
+        "arrivesAt": "2024-11-11T18:20:00"
+      },
+      "declarations": {
+        "transits": [
+          {
+            "id": "24IEDUB10010972672"
+          }
+        ],
+        "customs": null
+      }
+    },
+    "relationships": {
+      "import-notifications": {
+        "data": [
+          {
+            "type": "import-notifications",
+            "id": "CHEDP.GB.2024.5125476",
+            "meta": {
+              "self": "/api/import-notifications/CHEDP.GB.2024.5125476"
+            }
+          }
+        ]
+      }
+    },
+    "links": {
+      "self": "/api/gmrs/GMRA00KBHFE0"
+    }
+  }
+}

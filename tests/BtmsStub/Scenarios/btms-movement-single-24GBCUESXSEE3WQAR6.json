@@ -13,7 +13,8 @@
         "linkStatus": "AllLinked",
         "linkStatusDescription": null,
         "status": null,
-        "segment": null
+        "segment": null,
+        "businessDecisionStatus": "MatchComplete"
       },
       "clearanceRequests": [
         {
@@ -77,8 +78,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "ac7d8a1f-270c-4341-a804-69b9f6b8caad",
-            "serviceCalled": "2025-02-19T16:19:55.803Z"
+            "correlationId": "35dc83f8-48de-4381-82f9-95dd01af198b",
+            "serviceCalled": "2025-02-21T13:28:39.086Z"
           },
           "header": {
             "entryReference": "24GBCUESXSEE3WQAR6",
@@ -230,7 +231,7 @@
       ],
       "updatedSource": "2024-11-28T11:30:44Z",
       "createdSource": "2024-11-28T11:30:44Z",
-      "updated": "2025-02-19T16:19:55.808Z",
+      "updated": "2025-02-21T13:28:39.091Z",
       "entryReference": "24GBCUESXSEE3WQAR6",
       "entryVersionNumber": 2,
       "masterUcr": "525326357",
@@ -248,7 +249,7 @@
           "version": 2,
           "createdBy": "Cds",
           "createdSource": "2024-11-28T11:30:44Z",
-          "createdLocal": "2025-02-19T16:19:55.802Z",
+          "createdLocal": "2025-02-21T13:28:39.085Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -257,8 +258,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.803Z",
-          "createdLocal": "2025-02-19T16:19:55.803Z",
+          "createdSource": "2025-02-21T13:28:39.086Z",
+          "createdLocal": "2025-02-21T13:28:39.086Z",
           "status": "Linked",
           "diff": [],
           "context": null
@@ -267,8 +268,8 @@
           "id": "24GBCUESXSEE3WQAR6",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.803Z",
-          "createdLocal": "2025-02-19T16:19:55.803Z",
+          "createdSource": "2025-02-21T13:28:39.086Z",
+          "createdLocal": "2025-02-21T13:28:39.086Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -281,9 +282,9 @@
               {
                 "id": "CHEDP.GB.2024.5093007",
                 "version": 1,
-                "created": "2025-02-19T16:19:55.763Z",
-                "updated": "2025-02-19T16:19:55.762Z",
-                "updatedEntity": "2025-02-19T16:19:55.763Z",
+                "created": "2025-02-21T13:28:39.05Z",
+                "updated": "2025-02-21T13:28:39.049Z",
+                "updatedEntity": "2025-02-21T13:28:39.05Z",
                 "createdSource": "2024-11-18T21:54:11.858Z",
                 "updatedSource": "2024-11-18T21:54:11.858Z"
               }
@@ -296,7 +297,7 @@
           "version": 2,
           "createdBy": "Alvs",
           "createdSource": "2024-11-28T11:45:35.76Z",
-          "createdLocal": "2025-02-19T16:19:55.808Z",
+          "createdLocal": "2025-02-21T13:28:39.091Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -346,8 +347,8 @@
         }
       ],
       "localId": null,
-      "created": "2025-02-19T16:19:55.805Z",
-      "updatedEntity": "2025-02-19T16:19:55.808Z",
+      "created": "2025-02-21T13:28:39.087Z",
+      "updatedEntity": "2025-02-21T13:28:39.091Z",
       "finalised": null,
       "finalisedSource": null,
       "finalisation": null
@@ -363,7 +364,6 @@
             "type": "notifications",
             "id": "CHEDP.GB.2024.5093007",
             "meta": {
-              "sourceItem": 1,
               "destinationItem": 1,
               "matchingLevel": 1,
               "self": "/api/import-notifications/CHEDP.GB.2024.5093007"

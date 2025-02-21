@@ -13,7 +13,8 @@
         "linkStatus": "PartiallyLinked",
         "linkStatusDescription": null,
         "status": null,
-        "segment": null
+        "segment": null,
+        "businessDecisionStatus": "AlvsReleaseBtmsNotReleased"
       },
       "clearanceRequests": [
         {
@@ -205,8 +206,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "d58afef8-870a-433d-9146-28c1de87131c",
-            "serviceCalled": "2025-02-19T16:19:55.941Z"
+            "correlationId": "fb24d7d8-15c0-4af2-8392-704d429b062e",
+            "serviceCalled": "2025-02-21T13:28:39.198Z"
           },
           "header": {
             "entryReference": "24GBE2JU5B0W5Z0AR8",
@@ -225,6 +226,18 @@
                   "decisionReasons": [
                     "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5118068). Please correct the Ced number(s) entered on your customs declaration."
                   ]
+                }
+              ]
+            },
+            {
+              "itemNumber": 2,
+              "checks": [
+                {
+                  "checkCode": "H223",
+                  "departmentCode": null,
+                  "decisionCode": "C03",
+                  "decisionsValidUntil": null,
+                  "decisionReasons": []
                 }
               ]
             },
@@ -267,18 +280,6 @@
                   "decisionReasons": [
                     "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5134476). Please correct the Ced number(s) entered on your customs declaration."
                   ]
-                }
-              ]
-            },
-            {
-              "itemNumber": 2,
-              "checks": [
-                {
-                  "checkCode": "H223",
-                  "departmentCode": null,
-                  "decisionCode": "C03",
-                  "decisionsValidUntil": null,
-                  "decisionReasons": []
                 }
               ]
             }
@@ -638,7 +639,7 @@
       ],
       "updatedSource": "2024-12-20T12:07:21Z",
       "createdSource": "2024-12-20T12:07:21Z",
-      "updated": "2025-02-19T16:19:55.952Z",
+      "updated": "2025-02-21T13:28:39.207Z",
       "entryReference": "24GBE2JU5B0W5Z0AR8",
       "entryVersionNumber": 1,
       "masterUcr": "554921077",
@@ -656,7 +657,7 @@
           "version": 1,
           "createdBy": "Cds",
           "createdSource": "2024-12-20T12:07:21Z",
-          "createdLocal": "2025-02-19T16:19:55.936Z",
+          "createdLocal": "2025-02-21T13:28:39.194Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -665,8 +666,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.941Z",
-          "createdLocal": "2025-02-19T16:19:55.941Z",
+          "createdSource": "2025-02-21T13:28:39.198Z",
+          "createdLocal": "2025-02-21T13:28:39.198Z",
           "status": "Linked",
           "diff": [],
           "context": null
@@ -675,8 +676,8 @@
           "id": "24GBE2JU5B0W5Z0AR8",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.941Z",
-          "createdLocal": "2025-02-19T16:19:55.941Z",
+          "createdSource": "2025-02-21T13:28:39.198Z",
+          "createdLocal": "2025-02-21T13:28:39.198Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -689,9 +690,9 @@
               {
                 "id": "CHEDD.GB.2024.5118377",
                 "version": 1,
-                "created": "2025-02-19T16:19:55.899Z",
-                "updated": "2025-02-19T16:19:55.898Z",
-                "updatedEntity": "2025-02-19T16:19:55.899Z",
+                "created": "2025-02-21T13:28:39.165Z",
+                "updated": "2025-02-21T13:28:39.164Z",
+                "updatedEntity": "2025-02-21T13:28:39.165Z",
                 "createdSource": "2024-12-16T20:08:21.082Z",
                 "updatedSource": "2024-12-16T20:08:21.082Z"
               }
@@ -704,7 +705,7 @@
           "version": 1,
           "createdBy": "Alvs",
           "createdSource": "2024-12-20T12:14:36.434Z",
-          "createdLocal": "2025-02-19T16:19:55.947Z",
+          "createdLocal": "2025-02-21T13:28:39.204Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -781,7 +782,7 @@
           "version": 0,
           "createdBy": "Cds",
           "createdSource": "2024-12-20T12:24:39Z",
-          "createdLocal": "2025-02-19T16:19:55.952Z",
+          "createdLocal": "2025-02-21T13:28:39.207Z",
           "status": "Finalisation",
           "diff": [],
           "context": {
@@ -803,9 +804,9 @@
         }
       ],
       "localId": null,
-      "created": "2025-02-19T16:19:55.942Z",
-      "updatedEntity": "2025-02-19T16:19:55.952Z",
-      "finalised": "2025-02-19T16:19:55.952Z",
+      "created": "2025-02-21T13:28:39.199Z",
+      "updatedEntity": "2025-02-21T13:28:39.207Z",
+      "finalised": "2025-02-21T13:28:39.207Z",
       "finalisedSource": "2024-12-20T12:24:39Z",
       "finalisation": {
         "finalState": "Cleared",
@@ -823,7 +824,6 @@
             "type": "notifications",
             "id": "CHEDD.GB.2024.5118377",
             "meta": {
-              "sourceItem": 2,
               "destinationItem": 32822,
               "matchingLevel": 1,
               "self": "/api/import-notifications/CHEDD.GB.2024.5118377"
