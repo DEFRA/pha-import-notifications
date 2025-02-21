@@ -7,9 +7,9 @@
     "id": "CHEDD.GB.2024.5118377",
     "attributes": {
       "createdSource": "2024-12-16T20:08:21.082Z",
-      "created": "2025-02-19T16:19:55.899Z",
-      "updatedEntity": "2025-02-19T16:19:55.941Z",
-      "updated": "2025-02-19T16:19:55.898Z",
+      "created": "2025-02-21T13:28:39.165Z",
+      "updatedEntity": "2025-02-21T13:28:39.198Z",
+      "updated": "2025-02-21T13:28:39.164Z",
       "stringId": "CHEDD.GB.2024.5118377",
       "auditEntries": [
         {
@@ -17,7 +17,7 @@
           "version": 1,
           "createdBy": "Ipaffs",
           "createdSource": "2024-12-16T20:08:21.082Z",
-          "createdLocal": "2025-02-19T16:19:55.898Z",
+          "createdLocal": "2025-02-21T13:28:39.164Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -26,8 +26,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-19T16:19:55.941Z",
-          "createdLocal": "2025-02-19T16:19:55.941Z",
+          "createdSource": "2025-02-21T13:28:39.198Z",
+          "createdLocal": "2025-02-21T13:28:39.198Z",
           "status": "Linked",
           "diff": [],
           "context": null
@@ -104,7 +104,7 @@
       "version": 1,
       "updatedSource": "2024-12-16T20:08:21.082Z",
       "lastUpdatedBy": {
-        "displayName": "5649a967f4540e5c7edac7c23b44d17ad3a4ba2848d4bdddb1c14df30ee14cbe",
+        "displayName": "f2076e17ae1df75da5410409bf4841336083fe0f34d71a8943946efd7b0cf3b8",
         "userId": "7bb2f8d6-fd3f-e911-a955-000d3a454330",
         "isControlUser": null
       },
@@ -120,16 +120,16 @@
         "typeOfImp": null,
         "personResponsible": {
           "id": null,
-          "name": "34b366b62b74bd5cbf596827b06ca0a831b4e6f0e686700ae31d61ab4e7e4b47",
+          "name": "51fe5596e70d21ee75574473653352e97d9ae012d624f540f768f5305935045e",
           "companyId": "3cd6c351-7a56-eb11-a812-000d3a447c3d",
           "contactId": "30d6c351-7a56-eb11-a812-000d3a447c3d",
-          "companyName": "0e482131e5355434a8a79b34ec3d19e2ccce43fb88fe242480ab55e5431882da",
+          "companyName": "d180510851ea5da322f5a23701e7392cc77271f24032dcc737ae34ad9cff3dff",
           "addresses": [
-            "dc82f23a6c1ace60230946ef361f6a3a6ed7ecc92a468a1bd287d89fe550ea2b",
-            "e0086b53572aaca8946b2df5d72a87408324859da5e6b8da43078e948cb74186",
-            "fa463ede9ebb3bdc78e768086cf19a0d176e89c856040f5cf07fd2330aac0c8a",
-            "d3c62e5155e5b2cb472c50ccddc38fa7d30cb2dc2082a44e49bb236ec41f63a0",
-            "3a2baeab877794a994168568ec6150deb5ebdb9f73264d2eb7b6b62d3d5a426c"
+            "8c6240c83d3efc66f81bae702e3d670bbc240586a2ee98b3ec80d8a03bdb1457",
+            "a94060bf723f4e5f525d8b1563d5da2d8ac35dedd7d6ff9e2eb5c3700476cc3e",
+            "b9e6e2e3117e858d72b3c9f107a954fbbe821d299cb958c39599bcd6057dfa51",
+            "543afc18622bd2137ebecf52900b3925215b369c888efca4000875480ae62397",
+            "16743ad75630771a3ad765aac923cbb10f333a42bcdae98439e7e1fe36bcb53d"
           ],
           "county": null,
           "postCode": null,
@@ -138,9 +138,9 @@
           "tracesId": 1001,
           "type": null,
           "approvalNumber": null,
-          "phone": "8a7e599ea2ea2fabc51a1c646590807b48cc7775144f761a28c5eb1ff88a089f",
+          "phone": "ebcefb439caa913b1b9d77a16999c6a335c113ca1a0daf9b83358edaa233132c",
           "fax": null,
-          "email": "e9f79d0b39747211fca1a7502f2f65a9e9bf6944e589d70ba875c64194a0adb9"
+          "email": "caf61f33002ff5fb37409877f1b64062f774dd9a74f6d41b8a26ec5077193cd3"
         },
         "customsReferenceNumber": null,
         "containsWoodPackaging": null,
@@ -149,21 +149,21 @@
           "id": "97f471c2-0d8b-4a1e-9fa0-d87e0a35ca9d",
           "type": "Exporter",
           "status": "Nonapproved",
-          "companyName": "073c8ee851df314333044a6d6e6982f598c635b1688d10f55a89db856e0b1379",
+          "companyName": "5f0e346ba397f640425d339add67a6e6513054580ef4850a9c3f38cd5c79878d",
           "individualName": null,
           "address": {
             "street": null,
-            "city": "d37b42f378645404e2b4201cf72a19dd0f0c13c16d336b964cfe98b6da240806",
+            "city": "a1a137fde727d509282760608eb9511377ab76dd74e9818a586de55117cb5ebf",
             "country": null,
             "postalCode": null,
-            "addressLine1": "da359b02d5fa1e648472a13c22cebb7157036a402f655a1bb5edd5989683621d",
-            "addressLine2": "58e5033460287246dfbf8688743bf408dec5fd6f7c40f3fbe3ec405af4ffd402",
+            "addressLine1": "5966b31bdab485be9fa60759bebc7ed88ce645869b310e9039b295672820d3e7",
+            "addressLine2": "ffc673f66aecaaddeac22e2d011e2ccb9591b97cc1323cc520d7b2ab9202484a",
             "addressLine3": null,
-            "postalZipCode": "2678c4a97cdbeeb449b399753b3bcbd66cf1d833eba8d31e7df57bd798491517",
+            "postalZipCode": "c5639043da8e780aae8a2330f6f037c9d2880ad0e6523e951be820c5ead6b2ae",
             "countryIsoCode": "ff0631802294a9f863fe772883b3ef01870333634afffc12bf92fc5fa41b32e4",
-            "email": "fcf751ad800686cfb1fa4c424ca688378ed44836078ecb237c1ab4550a976491",
+            "email": "0dbf830cbecc7b98cf1553c7323f89610ae9a550d843d5577ed709c5be1e3942",
             "ukTelephone": null,
-            "telephone": "238b3cac0915ea366666f5996ab0bb97f028f07905e739ac0b95c91bf420083c",
+            "telephone": "aa79ab444e7de47ab88d7d1bbdaaccb617c5fba419f5f872572179b096fa272e",
             "internationalTelephone": null
           },
           "approvalNumber": null,
@@ -176,21 +176,21 @@
           "id": "bef7e3e4-35ba-4d7f-8c3a-d30e3b9f73bb",
           "type": "Consignee",
           "status": "Nonapproved",
-          "companyName": "4335d72189ee53cb548950ed06015159e2e4302831c71132f4314768f826636b",
+          "companyName": "bc233948a3972f5496128101e2baec9ad5a6060c0c585fe50c83ee1273427cf0",
           "individualName": null,
           "address": {
             "street": null,
-            "city": "d7ca6aa296d30ad9b7bc9ad10cfe9da664860988c65796ad303d592d078e9c85",
+            "city": "f4e1eb2712c69aa4edaaf83a99626a1dfc101c423fb84511430783e7dbc92d13",
             "country": null,
             "postalCode": null,
-            "addressLine1": "88782860f42a4e8202920e79efc32c5a49feda8220e1e5b34eb03407fd4a0f39",
-            "addressLine2": "b963fb1d89726f7bc65d246bd05c796596826cfd493e00b79eff967784d42d7b",
+            "addressLine1": "31f444a16467f149ee5ecb51a58a0753b61ef5c2d8883afa171621948da3cb15",
+            "addressLine2": "53e1672240fa076af851d9244513be671d3f65cf8ffec2627501d5cffb1ef813",
             "addressLine3": null,
-            "postalZipCode": "f685351ebbc7b8538a5595428b1f0dd3696d4a1300638c995b835e697deca4e1",
+            "postalZipCode": "c337199e6997aa116ace2241c0e1e8069bed98b19c6a562a7cbbd719d0f45572",
             "countryIsoCode": "22004e7b51845da7c49c3527be39dbb2b527154ecf7ce2b12b4a5c3403fc1db3",
-            "email": "cdf603a56565ce40519482659935bc25bdd44253ce578743e0b799f4991e1e4e",
+            "email": "57675aea5ad68a13caf3a000fa787d0cf3af53546672a83c777e06bf1fb4cc5b",
             "ukTelephone": null,
-            "telephone": "e83b259ca4c5e989753caeac5ddd3627b719c7609820dbc0de79e936f9b4bc56",
+            "telephone": "f26a5b00b820f398d68605adb89611117646589818de1b9e54aa648fd2024c2d",
             "internationalTelephone": null
           },
           "approvalNumber": null,
@@ -201,21 +201,21 @@
           "id": "bef7e3e4-35ba-4d7f-8c3a-d30e3b9f73bb",
           "type": "Consignee",
           "status": "Nonapproved",
-          "companyName": "4335d72189ee53cb548950ed06015159e2e4302831c71132f4314768f826636b",
+          "companyName": "bc233948a3972f5496128101e2baec9ad5a6060c0c585fe50c83ee1273427cf0",
           "individualName": null,
           "address": {
             "street": null,
-            "city": "d7ca6aa296d30ad9b7bc9ad10cfe9da664860988c65796ad303d592d078e9c85",
+            "city": "f4e1eb2712c69aa4edaaf83a99626a1dfc101c423fb84511430783e7dbc92d13",
             "country": null,
             "postalCode": null,
-            "addressLine1": "88782860f42a4e8202920e79efc32c5a49feda8220e1e5b34eb03407fd4a0f39",
-            "addressLine2": "b963fb1d89726f7bc65d246bd05c796596826cfd493e00b79eff967784d42d7b",
+            "addressLine1": "31f444a16467f149ee5ecb51a58a0753b61ef5c2d8883afa171621948da3cb15",
+            "addressLine2": "53e1672240fa076af851d9244513be671d3f65cf8ffec2627501d5cffb1ef813",
             "addressLine3": null,
-            "postalZipCode": "f685351ebbc7b8538a5595428b1f0dd3696d4a1300638c995b835e697deca4e1",
+            "postalZipCode": "c337199e6997aa116ace2241c0e1e8069bed98b19c6a562a7cbbd719d0f45572",
             "countryIsoCode": "22004e7b51845da7c49c3527be39dbb2b527154ecf7ce2b12b4a5c3403fc1db3",
-            "email": "cdf603a56565ce40519482659935bc25bdd44253ce578743e0b799f4991e1e4e",
+            "email": "57675aea5ad68a13caf3a000fa787d0cf3af53546672a83c777e06bf1fb4cc5b",
             "ukTelephone": null,
-            "telephone": "e83b259ca4c5e989753caeac5ddd3627b719c7609820dbc0de79e936f9b4bc56",
+            "telephone": "f26a5b00b820f398d68605adb89611117646589818de1b9e54aa648fd2024c2d",
             "internationalTelephone": null
           },
           "approvalNumber": null,
@@ -226,21 +226,21 @@
           "id": "bef7e3e4-35ba-4d7f-8c3a-d30e3b9f73bb",
           "type": "Consignee",
           "status": "Nonapproved",
-          "companyName": "4335d72189ee53cb548950ed06015159e2e4302831c71132f4314768f826636b",
+          "companyName": "bc233948a3972f5496128101e2baec9ad5a6060c0c585fe50c83ee1273427cf0",
           "individualName": null,
           "address": {
             "street": null,
-            "city": "d7ca6aa296d30ad9b7bc9ad10cfe9da664860988c65796ad303d592d078e9c85",
+            "city": "f4e1eb2712c69aa4edaaf83a99626a1dfc101c423fb84511430783e7dbc92d13",
             "country": null,
             "postalCode": null,
-            "addressLine1": "88782860f42a4e8202920e79efc32c5a49feda8220e1e5b34eb03407fd4a0f39",
-            "addressLine2": "b963fb1d89726f7bc65d246bd05c796596826cfd493e00b79eff967784d42d7b",
+            "addressLine1": "31f444a16467f149ee5ecb51a58a0753b61ef5c2d8883afa171621948da3cb15",
+            "addressLine2": "53e1672240fa076af851d9244513be671d3f65cf8ffec2627501d5cffb1ef813",
             "addressLine3": null,
-            "postalZipCode": "f685351ebbc7b8538a5595428b1f0dd3696d4a1300638c995b835e697deca4e1",
+            "postalZipCode": "c337199e6997aa116ace2241c0e1e8069bed98b19c6a562a7cbbd719d0f45572",
             "countryIsoCode": "22004e7b51845da7c49c3527be39dbb2b527154ecf7ce2b12b4a5c3403fc1db3",
-            "email": "cdf603a56565ce40519482659935bc25bdd44253ce578743e0b799f4991e1e4e",
+            "email": "57675aea5ad68a13caf3a000fa787d0cf3af53546672a83c777e06bf1fb4cc5b",
             "ukTelephone": null,
-            "telephone": "e83b259ca4c5e989753caeac5ddd3627b719c7609820dbc0de79e936f9b4bc56",
+            "telephone": "f26a5b00b820f398d68605adb89611117646589818de1b9e54aa648fd2024c2d",
             "internationalTelephone": null
           },
           "approvalNumber": null,
@@ -283,8 +283,8 @@
         "transporterDetailsRequired": false,
         "meansOfTransportFromEntryPoint": {
           "type": "Ship",
-          "document": "a0781a671697aa6242f8b527f7213956e5ac36dd1fe3b3df2c9cae2ddc97d802",
-          "id": "75e51a80d0dfe691a331636150a8277c818a9260148152b3ed0ac3c08be0851c"
+          "document": "bdb6a467cf4de2a68b8d018add64de720e55baf1c30cfc77dab35f16835e4815",
+          "id": "32c50bb976ce287fe84705b89ec618c3b628e01c372ca55a38ca21428a98f154"
         },
         "estimatedJourneyTimeInMinutes": null,
         "responsibleForTransport": null,
@@ -297,7 +297,7 @@
           "accompanyingDocuments": [
             {
               "documentType": "HealthCertificate",
-              "documentReference": "7b2045bdb7df143fdf12e6beca85387f96f20a32cb9f56fee7936fc2ba6a72fa",
+              "documentReference": "77846b610284ab6393d11f3e6b0e7694074492a77a7289bc912011fe5564d44d",
               "documentIssuedOn": "2024-09-09",
               "attachmentId": "04f2d789017cded6d5320127c51f33ce67382a2b865f51bdf61ddd98a2d712bd",
               "attachmentFilename": "cc6c5a728e3a6d6e488c385bb42dc201878b783a69d966d6be97f7a96a99cda1",
@@ -310,19 +310,19 @@
           "catchCertificateAttachments": null,
           "identificationDetails": null
         },
-        "importerLocalReferenceNumber": "47b9d4e88a55efcb1617df9febfc9d3c91aa6117f03542d7b85ab7ceef50a7af",
+        "importerLocalReferenceNumber": "6f75c4bf38cefe7d0a566458e456401e8b8a24c1a125e935ca5e297dce6ec5db",
         "route": null,
         "sealsContainers": [
           {
-            "sealNumber": "eec7b42862581be469b8fb197d9087cf3bb5f099d3e352471dcc4933c6b76ad8",
-            "containerNumber": "fb14461726cd014e43d6331f9d9eda3ad3e8b0d6b5089627540c4b423a85ed99",
+            "sealNumber": "1573b79c43331c449ef7a3ebe1f325ff216e61b173e585fe933a0e58dfe84ed3",
+            "containerNumber": "acfcd01c65c79d2a6dc04474aead2d7bf17a0922680267db9f61a49f196155d1",
             "officialSeal": true,
             "resealedSealNumber": null
           }
         ],
         "submittedOn": "2024-11-08T16:14:04.911Z",
         "submittedBy": {
-          "displayName": "34b366b62b74bd5cbf596827b06ca0a831b4e6f0e686700ae31d61ab4e7e4b47",
+          "displayName": "51fe5596e70d21ee75574473653352e97d9ae012d624f540f768f5305935045e",
           "userId": "30d6c351-7a56-eb11-a812-000d3a447c3d",
           "isControlUser": null
         },
@@ -332,9 +332,9 @@
         "portOfExit": null,
         "exitedPortOfOn": null,
         "contactDetails": {
-          "name": "3241433add8bf9eb44deea881b142eebd8305e7302bbb29ba88293239205e3be",
-          "telephone": "3935c37ff8ba90a598620089209eca0b21a191b6ef246dc29fa5c356752c004f",
-          "email": "9f3c14e4e68aa7c67344115e717e2898ccdc60e128ecbcae108b239755fafca3",
+          "name": "34b366b62b74bd5cbf596827b06ca0a831b4e6f0e686700ae31d61ab4e7e4b47",
+          "telephone": "8a7e599ea2ea2fabc51a1c646590807b48cc7775144f761a28c5eb1ff88a089f",
+          "email": "e9f79d0b39747211fca1a7502f2f65a9e9bf6944e589d70ba875c64194a0adb9",
           "agent": null
         },
         "nominatedContacts": null,
@@ -348,7 +348,7 @@
         "departedOn": null
       },
       "decisionBy": {
-        "displayName": "5649a967f4540e5c7edac7c23b44d17ad3a4ba2848d4bdddb1c14df30ee14cbe",
+        "displayName": "f2076e17ae1df75da5410409bf4841336083fe0f34d71a8943946efd7b0cf3b8",
         "userId": "7bb2f8d6-fd3f-e911-a955-000d3a454330",
         "isControlUser": null
       },
@@ -487,18 +487,18 @@
         "resealedContainers": null,
         "resealedContainersMappings": [
           {
-            "sealNumber": "eec7b42862581be469b8fb197d9087cf3bb5f099d3e352471dcc4933c6b76ad8",
-            "containerNumber": "fb14461726cd014e43d6331f9d9eda3ad3e8b0d6b5089627540c4b423a85ed99",
+            "sealNumber": "1573b79c43331c449ef7a3ebe1f325ff216e61b173e585fe933a0e58dfe84ed3",
+            "containerNumber": "acfcd01c65c79d2a6dc04474aead2d7bf17a0922680267db9f61a49f196155d1",
             "officialSeal": true,
             "resealedSealNumber": "47bfc7f91579f43b693cce9d53f525d936a8d94636583fadda7d8d76ca4c44ec"
           }
         ],
         "controlAuthority": {
           "officialVeterinarian": {
-            "firstName": "a8783637325a575862b2af94b9b2b802cad6f5d5f114d726fc8ef3ead8e60272",
-            "lastName": "1ac48e4f1f9635567320349e93da862ea0c163d4ed4dc6b7181f208cc6a35158",
-            "email": "e29bc76bffa4a3ebc69629b0e0d306a2c0b729ca2e18d5cc313f92e7ba354514",
-            "phone": "b8c7fe3822204400185a20c05c01b299981805ac6ec93cb629dfab684df3c59e",
+            "firstName": "bf86428477e4940b6ad80d780dee9d93b39f59f8fc90c44ba12135bcc8e5f9a4",
+            "lastName": "4aad6472e2b4f26937f4b31deec0db0729167e45b9bd3ad148f64bcdba6044a0",
+            "email": "e36219090aa62ff0861a7bac6633c78524b4b2586399e058189e8c2d0f0e0a64",
+            "phone": "a838e92a5760b0644eb2aa73b9bbbf86d263539fb1f0c33d356423b090513e86",
             "fax": null,
             "signed": "2024-12-16T20:08:21.081986752"
           },
@@ -510,7 +510,7 @@
           "iuuOption": null
         },
         "controlledDestination": null,
-        "bipLocalReferenceNumber": "e1ef3ddf89e5e607f6e4d3759d381addfe889a2f8aa2c5f6fd30f473156b9428",
+        "bipLocalReferenceNumber": "eacca25a21f957b0d6411332ec3ec6e74e2360c2b2466dba75ed42fef59b483a",
         "signedOnBehalfOf": null,
         "onwardTransportation": null,
         "consignmentValidations": null,
@@ -553,7 +553,6 @@
             "id": "24GBE2JU5B0W5Z0AR8",
             "meta": {
               "sourceItem": 32822,
-              "destinationItem": 2,
               "matchingLevel": 1,
               "self": "/api/movements/24GBE2JU5B0W5Z0AR8/import-notifications"
             }
