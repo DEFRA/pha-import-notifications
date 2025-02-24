@@ -51,7 +51,7 @@ public partial record Decision
 
     [JsonPropertyName("notAcceptableActionByDate")]
     [Description("Filled when consignmentAcceptable is set to false")]
-    public string? NotAcceptableActionByDate { get; init; }
+    public DateOnly? NotAcceptableActionByDate { get; init; }
 
     [JsonPropertyName("chedppNotAcceptableReasons")]
     [Description("List of details for individual chedpp not acceptable reasons")]

@@ -7,7 +7,7 @@ public partial record DetailsOnReExport
 {
     [JsonPropertyName("date")]
     [Description("Date of re-export")]
-    public DateTime? Date { get; init; }
+    public DateOnly? Date { get; init; }
 
     [JsonPropertyName("meansOfTransportNo")]
     [Description("Number of vehicle")]

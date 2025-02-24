@@ -15,7 +15,7 @@ public partial record AccompanyingDocument
 
     [JsonPropertyName("documentIssuedOn")]
     [Description("Additional document issue date")]
-    public DateTime? DocumentIssuedOn { get; init; }
+    public DateOnly? DocumentIssuedOn { get; init; }
 
     [JsonPropertyName("attachmentId")]
     [Description("The UUID used for the uploaded file in blob storage")]

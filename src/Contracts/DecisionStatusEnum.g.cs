@@ -16,6 +16,8 @@ public enum DecisionStatusEnum
     HasGenericDataErrors,
     HasMultipleChedTypes,
     HasMultipleCheds,
+    BtmsClearAlvsHold,
+    AlvsClearBtmsHold,
     InvestigationNeeded,
     None
 }

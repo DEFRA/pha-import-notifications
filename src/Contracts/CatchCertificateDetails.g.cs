@@ -15,7 +15,7 @@ public partial record CatchCertificateDetails
 
     [JsonPropertyName("issuedOn")]
     [Description("Catch certificate date of issue")]
-    public DateTime? IssuedOn { get; init; }
+    public DateOnly? IssuedOn { get; init; }
 
     [JsonPropertyName("flagState")]
     [Description("Catch certificate flag state of catching vessel(s)")]

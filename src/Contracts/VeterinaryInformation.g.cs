@@ -19,7 +19,7 @@ public partial record VeterinaryInformation
 
     [JsonPropertyName("veterinaryDocumentIssuedOn")]
     [Description("Veterinary document issue date")]
-    public string? VeterinaryDocumentIssuedOn { get; init; }
+    public DateOnly? VeterinaryDocumentIssuedOn { get; init; }
 
     [JsonPropertyName("accompanyingDocumentNumbers")]
     [Description("Additional documents")]

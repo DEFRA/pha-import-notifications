@@ -214,7 +214,7 @@
           "documentIssuedOn": {
             "type": "string",
             "description": "Additional document issue date",
-            "format": "date-time",
+            "format": "date",
             "nullable": true
           },
           "attachmentId": {
@@ -594,7 +594,7 @@
           "issuedOn": {
             "type": "string",
             "description": "Catch certificate date of issue",
-            "format": "date-time",
+            "format": "date",
             "nullable": true
           },
           "flagState": {
@@ -1317,6 +1317,16 @@
         ],
         "type": "string"
       },
+      "Customs": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CustomsClearanceDecision": {
         "type": "object",
         "properties": {
@@ -1452,6 +1462,7 @@
           "notAcceptableActionByDate": {
             "type": "string",
             "description": "Filled when consignmentAcceptable is set to false",
+            "format": "date",
             "nullable": true
           },
           "chedppNotAcceptableReasons": {
@@ -1786,13 +1797,35 @@
         ],
         "type": "string"
       },
+      "Declarations": {
+        "type": "object",
+        "properties": {
+          "transits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transits"
+            },
+            "description": "A list of declaration ids.",
+            "nullable": true
+          },
+          "customs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Customs"
+            },
+            "description": "A list of declaration ids.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DetailsOnReExport": {
         "type": "object",
         "properties": {
           "date": {
             "type": "string",
             "description": "Date of re-export",
-            "format": "date-time",
+            "format": "date",
             "nullable": true
           },
           "meansOfTransportNo": {
@@ -2068,8 +2101,15 @@
         "additionalProperties": false
       },
       "Gmr": {
+        "required": [
+          "updated"
+        ],
         "type": "object",
         "properties": {
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          },
           "id": {
             "type": "string",
             "description": "The Goods Movement Record (GMR) ID for this GMR.  Do not include when POSTing a GMR - GVMS will assign an ID.",
@@ -2128,6 +2168,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/ActualCrossing"
+              }
+            ],
+            "nullable": true
+          },
+          "declarations": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Declarations"
               }
             ],
             "nullable": true
@@ -2749,7 +2797,7 @@
           "releasedOn": {
             "type": "string",
             "description": "When it was released",
-            "format": "date-time",
+            "format": "date",
             "nullable": true
           },
           "laboratoryTestMethod": {
@@ -2774,7 +2822,7 @@
           "labTestCreatedOn": {
             "type": "string",
             "description": "Date of lab test created in IPAFFS",
-            "format": "date-time",
+            "format": "date",
             "nullable": true
           }
         },
@@ -3749,6 +3797,7 @@
           "exitDate": {
             "type": "string",
             "description": "Exit date when import or admission",
+            "format": "date",
             "nullable": true
           },
           "finalBip": {
@@ -3967,6 +4016,16 @@
         ],
         "type": "string"
       },
+      "Transits": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "UpdatedImportNotification": {
         "required": [
           "links",
@@ -4094,6 +4153,7 @@
           "veterinaryDocumentIssuedOn": {
             "type": "string",
             "description": "Veterinary document issue date",
+            "format": "date",
             "nullable": true
           },
           "accompanyingDocumentNumbers": {

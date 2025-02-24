@@ -426,7 +426,7 @@
         {
           "documentType": "LatestVeterinaryHealthCertificate",
           "documentReference": "764273ba6e0f530452484827a838c427218194b9625aa9702a3867396f53e7f4",
-          "documentIssuedOn": "2024-11-18T00:00:00",
+          "documentIssuedOn": "2024-11-18",
           "attachmentId": "7999228915fdf80cbcd19b61eee9a08b5d50958ed44fae21175aa3a9a8ed262c",
           "attachmentFilename": "e2e321a0743360a7a4106d21cf7be10fc7052bbcef9865bfc26fc2a768ca87d1",
           "attachmentContentType": "application/pdf",
@@ -437,7 +437,7 @@
         {
           "documentType": "CommercialInvoice",
           "documentReference": "8d8f9afd23c3a7da4f61f4d067c8467a67f6a089bc29eb4eb93e974de224c532",
-          "documentIssuedOn": "2024-11-22T00:00:00",
+          "documentIssuedOn": "2024-11-22",
           "attachmentId": "4aaa082bd1b0ea4293985924da0a0407762daf0b9cf507e9ba11819de464bd2f",
           "attachmentFilename": "6578a1abe4e86efd759db3c2d3bf26d583e45201249b126583c9c4108f60df7f",
           "attachmentContentType": "application/pdf",
@@ -448,7 +448,7 @@
         {
           "documentType": "Other",
           "documentReference": "9cc8b4673481cc36e07eefbc61c5e62f9465150b9df8f4afaaa30baea22063d4",
-          "documentIssuedOn": "2024-11-22T00:00:00",
+          "documentIssuedOn": "2024-11-22",
           "attachmentId": "f86a3c0709038c986c3f05f02a526e324d0c5c1748d26b6a84a33df6156fadd9",
           "attachmentFilename": "0ce2e78e3ff4142362157bf3abeec1e89f292e0384fdc12feb056c333e1d6d63",
           "attachmentContentType": "application/pdf",
@@ -459,7 +459,7 @@
         {
           "documentType": "Other",
           "documentReference": "891d96937bc5ba3a32283e9fc8eb6bad853eee8844ede2f72774ae9b311a3a6c",
-          "documentIssuedOn": "2024-11-22T00:00:00",
+          "documentIssuedOn": "2024-11-22",
           "attachmentId": "21278dc885fbbadf59ea3d6ed593dd4be9a1f39467a589c61b06b5fb4b89ebc2",
           "attachmentFilename": "768d7bc23f5a9008dd884777f9fc2bf3979d7d6deb7aaec817f7e9a631393496",
           "attachmentContentType": "application/pdf",
@@ -470,7 +470,7 @@
         {
           "documentType": "ProcessingStatement",
           "documentReference": "7c29bf7899d2ae6c7e7215e35ab891efc208815719bd5e2758dae8c57a3ea077",
-          "documentIssuedOn": "2024-11-15T00:00:00",
+          "documentIssuedOn": "2024-11-15",
           "attachmentId": "c2665a8e189cd8629856ccda57e32d66bdf97a266b8ae312a9b15b44a1bf8965",
           "attachmentFilename": "4aa86e9aa1375d2306ed46e61f909a9882373995e3edda0880369d87e9e3ecae",
           "attachmentContentType": "application/pdf",
@@ -481,7 +481,7 @@
         {
           "documentType": "ProcessingStatement",
           "documentReference": "430676fb9f46673cd090f68d21547f92479694d77f6b31bba6cb7bbb71d0d862",
-          "documentIssuedOn": "2024-11-22T00:00:00",
+          "documentIssuedOn": "2024-11-22",
           "attachmentId": "a23e26cbec99859e8bc3004b4c4fc4a5d0b3997af7496ec2669d73b1589dbb60",
           "attachmentFilename": "c6deff151c6eadd41e3889f106da702a668aa10fbb257f7f1f0edfdb186e43b4",
           "attachmentContentType": "application/pdf",
@@ -492,7 +492,7 @@
         {
           "documentType": "ProcessingStatement",
           "documentReference": "a70e52fbf2148b64e9dcbd8dce1525431f4b8a70060126cdc61914c3c73d2e90",
-          "documentIssuedOn": "2024-11-21T00:00:00",
+          "documentIssuedOn": "2024-11-21",
           "attachmentId": "1edaf5c4c8d9fdd7cc958b751987cc72519deeb6541e8bca9981e285f77e37bd",
           "attachmentFilename": "375413321d927c3763be77ab01978f6dd9beb4c5101122d8d19c6dc2adfc399f",
           "attachmentContentType": "application/pdf",

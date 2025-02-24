@@ -19,4 +19,7 @@ public partial record MovementStatus
 
     [JsonPropertyName("segment")]
     public MovementSegmentEnum? Segment { get; init; }
+
+    [JsonPropertyName("businessDecisionStatus")]
+    public required BusinessDecisionStatusEnum BusinessDecisionStatus { get; init; }
 }

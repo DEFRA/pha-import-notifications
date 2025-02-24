@@ -93,7 +93,12 @@ static string CreateStringReferenceTypeName(OpenApiSchema schema)
         return CreateReferenceTypeName(schema, "string");
     }
 
-    return schema.Format == "date-time" ? "DateTime" : "string";
+    return schema.Format switch
+    {
+        "date-time" => "DateTime",
+        "date" => "DateOnly",
+        _ => "string",
+    };
 }
 
 static string CreateReferenceTypeName(OpenApiSchema schema, string defaultTypeName) =>

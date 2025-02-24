@@ -51,7 +51,7 @@ public partial record Purpose
 
     [JsonPropertyName("exitDate")]
     [Description("Exit date when import or admission")]
-    public string? ExitDate { get; init; }
+    public DateOnly? ExitDate { get; init; }
 
     [JsonPropertyName("finalBip")]
     [Description("Final Border Inspection Post")]

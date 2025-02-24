@@ -496,7 +496,7 @@
         {
           "documentType": "HealthCertificate",
           "documentReference": "77846b610284ab6393d11f3e6b0e7694074492a77a7289bc912011fe5564d44d",
-          "documentIssuedOn": "2024-09-09T00:00:00",
+          "documentIssuedOn": "2024-09-09",
           "attachmentId": "04f2d789017cded6d5320127c51f33ce67382a2b865f51bdf61ddd98a2d712bd",
           "attachmentFilename": "cc6c5a728e3a6d6e488c385bb42dc201878b783a69d966d6be97f7a96a99cda1",
           "attachmentContentType": "application/pdf",
@@ -630,11 +630,11 @@
           },
           "laboratoryTestResult": {
             "sampleUseByDate": "2024-11-29",
-            "releasedOn": "2024-12-16T00:00:00",
+            "releasedOn": "2024-12-16",
             "laboratoryTestMethod": "6e6783d3b6cb3e99dca804828bbd0b0b4a6a4deec97e553f00f5a49ab78d8e9f",
             "results": "e693f28d32b4173f08b31e1e02b8339dc74b0f10d25f8736719c03eb97d98f38",
             "conclusion": "Satisfactory",
-            "labTestCreatedOn": "2024-11-28T00:00:00"
+            "labTestCreatedOn": "2024-11-28"
           }
         },
         {
@@ -662,11 +662,11 @@
           },
           "laboratoryTestResult": {
             "sampleUseByDate": "2024-11-29",
-            "releasedOn": "2024-12-16T00:00:00",
+            "releasedOn": "2024-12-16",
             "laboratoryTestMethod": "890a443e87b8e556ad2b07706c88fd37354f0ab016bbf05e0c3d4eade369463f",
             "results": "0cc4bcf7987659590251cd674974be4a60e6fe4fbcc47d837ae72cec6bb90435",
             "conclusion": "Satisfactory",
-            "labTestCreatedOn": "2024-11-28T00:00:00"
+            "labTestCreatedOn": "2024-11-28"
           }
         }
       ]
