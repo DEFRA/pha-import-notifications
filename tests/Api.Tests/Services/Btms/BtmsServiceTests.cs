@@ -160,7 +160,10 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         await act.Should().ThrowAsync<Exception>();
     }
 
+#pragma warning disable CA2211
+    // Non-constant fields should not be visible - ignoring as it's a test
     public static TheoryData<string, string[]> ChedReferenceNumbersWithMovements = new()
+#pragma warning restore CA2211
     {
         {
             ChedReferenceNumbers.ChedPWithMovement,
@@ -188,7 +191,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         await Verify(result, _settings).UseParameters(chedReferenceNumber);
     }
 
-    [Theory()]
+    [Theory]
     [InlineData(ChedReferenceNumbers.ChedAWithGoodsMovement, new[] { GoodsMovementsReferences.GMRId1 })]
     public async Task GetImportNotification_WithGoodsMovements_WhenOk_ShouldSucceed(
         string chedReferenceNumber,
