@@ -5,6 +5,7 @@ using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using WireMock.Server;
 using Xunit.Abstractions;
+using WireMockExtensions = Defra.PhaImportNotifications.BtmsStub.WireMockExtensions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
@@ -41,6 +42,34 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         // against what our API gives us. It can then be discussed.
 
         await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
+    }
+
+    [Theory]
+    [ClassData(typeof(AllStubChedReferenceNumbers))]
+    public async Task Get_AllStubs_ShouldSucceed(string chedReferenceNumber)
+    {
+        var client = CreateClient();
+
+        WireMock.StubAllMovements();
+        WireMock.StubAllGmrs();
+        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
+
+        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.Get(chedReferenceNumber));
+
+        await VerifyJson(response)
+            .UseParameters(chedReferenceNumber)
+            .UseStrictJson()
+            .DontScrubGuids()
+            .DontScrubDateTimes();
+    }
+
+    public class AllStubChedReferenceNumbers : TheoryData<string>
+    {
+        public AllStubChedReferenceNumbers()
+        {
+            foreach (var chedReferenceNumber in WireMockExtensions.GetAllStubChedReferenceNumbers())
+                Add(chedReferenceNumber);
+        }
     }
 
     [Fact]

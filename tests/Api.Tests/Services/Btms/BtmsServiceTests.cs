@@ -198,7 +198,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
 
         foreach (var gmrId in goodsMovementsReferences)
-            WireMock.StubGmrs(gmrId: gmrId);
+            WireMock.StubSingleGmr(gmrId: gmrId);
 
         var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
 

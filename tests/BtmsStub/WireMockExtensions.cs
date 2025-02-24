@@ -10,6 +10,8 @@ namespace Defra.PhaImportNotifications.BtmsStub;
 [ExcludeFromCodeCoverage]
 public static class WireMockExtensions
 {
+    private static Type Anchor => typeof(WireMockExtensions);
+
     public static void StubSingleImportNotification(
         this WireMockServer wireMock,
         bool shouldFail = false,
@@ -95,7 +97,7 @@ public static class WireMockExtensions
         wireMock.Given(request).RespondWith(response);
     }
 
-    public static void StubGmrs(
+    public static void StubSingleGmr(
         this WireMockServer wireMock,
         bool shouldFail = false,
         string gmrId = GoodsMovementsReferences.GMRId1,
@@ -116,12 +118,39 @@ public static class WireMockExtensions
         wireMock.Given(request).RespondWith(response);
     }
 
+    public static void StubAllGmrs(this WireMockServer wireMock)
+    {
+        foreach (var gmrId in GetAllStubGmrs())
+            wireMock.StubSingleGmr(gmrId: gmrId);
+    }
+
+    public static void StubAllMovements(this WireMockServer wireMock)
+    {
+        foreach (var movementId in GetAllStubMovementIds())
+            wireMock.StubSingleMovement(mrn: movementId);
+    }
+
+    public static IEnumerable<string> GetAllStubChedReferenceNumbers() =>
+        Anchor
+            .Assembly.GetManifestResourceNames()
+            .Where(x => x.StartsWith($"{GetScenarioPrefix()}btms-import-notification-single-"))
+            .Select(x => x.Replace($"{GetScenarioPrefix()}btms-import-notification-single-", "").Replace(".json", ""));
+
+    public static IEnumerable<string> GetAllStubMovementIds() =>
+        Anchor
+            .Assembly.GetManifestResourceNames()
+            .Where(x => x.StartsWith($"{GetScenarioPrefix()}btms-movement-single-"))
+            .Select(x => x.Replace($"{GetScenarioPrefix()}btms-movement-single-", "").Replace(".json", ""));
+
+    public static IEnumerable<string> GetAllStubGmrs() =>
+        Anchor
+            .Assembly.GetManifestResourceNames()
+            .Where(x => x.StartsWith($"{GetScenarioPrefix()}btms-goods-movement-single-"))
+            .Select(x => x.Replace($"{GetScenarioPrefix()}btms-goods-movement-single-", "").Replace(".json", ""));
+
     private static string GetBody(string fileName)
     {
-        var type = typeof(WireMockExtensions);
-        var assembly = type.Assembly;
-
-        using var stream = assembly.GetManifestResourceStream($"{type.Namespace}.Scenarios.{fileName}");
+        using var stream = Anchor.Assembly.GetManifestResourceStream($"{GetScenarioPrefix()}{fileName}");
 
         if (stream is null)
             throw new InvalidOperationException($"Unable to find embedded resource {fileName}");
@@ -130,4 +159,6 @@ public static class WireMockExtensions
 
         return reader.ReadToEnd();
     }
+
+    private static string GetScenarioPrefix() => $"{Anchor.Namespace}.Scenarios.";
 }
