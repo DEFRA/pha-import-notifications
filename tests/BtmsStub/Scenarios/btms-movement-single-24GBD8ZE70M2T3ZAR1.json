@@ -97,8 +97,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "2ec85624-45fc-479a-9c3a-56fe01242c8f",
-            "serviceCalled": "2025-02-21T13:28:39.138Z"
+            "correlationId": "[see BTMS integration test]",
+            "serviceCalled": "2025-02-21T13:28:42.129Z"
           },
           "header": {
             "entryReference": "24GBD8ZE70M2T3ZAR1",
@@ -298,7 +298,7 @@
       ],
       "updatedSource": "2024-12-07T14:34:47Z",
       "createdSource": "2024-12-07T14:34:47Z",
-      "updated": "2025-02-21T13:28:39.142Z",
+      "updated": "2025-02-21T13:28:40.129Z",
       "entryReference": "24GBD8ZE70M2T3ZAR1",
       "entryVersionNumber": 2,
       "masterUcr": null,
@@ -315,8 +315,8 @@
           "id": "24GBD8ZE70M2T3ZAR1",
           "version": 2,
           "createdBy": "Cds",
-          "createdSource": "2024-12-07T14:34:47Z",
-          "createdLocal": "2025-02-21T13:28:39.136Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -325,8 +325,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:39.138Z",
-          "createdLocal": "2025-02-21T13:28:39.138Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Linked",
           "diff": [],
           "context": null
@@ -335,8 +335,8 @@
           "id": "24GBD8ZE70M2T3ZAR1",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:39.138Z",
-          "createdLocal": "2025-02-21T13:28:39.138Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -349,9 +349,9 @@
               {
                 "id": "CHEDD.GB.2024.5226413",
                 "version": 2,
-                "created": "2025-02-21T13:28:39.134Z",
-                "updated": "2025-02-21T13:28:39.132Z",
-                "updatedEntity": "2025-02-21T13:28:39.134Z",
+                "created": "2025-02-21T13:28:39.129Z",
+                "updated": "2025-02-21T13:28:40.129Z",
+                "updatedEntity": "2025-02-21T13:28:41.129Z",
                 "createdSource": "2024-12-07T14:25:30.023Z",
                 "updatedSource": "2024-12-07T14:25:30.023Z"
               }
@@ -363,8 +363,8 @@
           "id": "24GBD8ZE70M2T3ZAR1",
           "version": 10,
           "createdBy": "Alvs",
-          "createdSource": "2024-12-07T14:35:01.579Z",
-          "createdLocal": "2025-02-21T13:28:39.142Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -420,8 +420,8 @@
         }
       ],
       "localId": null,
-      "created": "2025-02-21T13:28:39.139Z",
-      "updatedEntity": "2025-02-21T13:28:39.142Z",
+      "created": "2025-02-21T13:28:39.129Z",
+      "updatedEntity": "2025-02-21T13:28:41.129Z",
       "finalised": null,
       "finalisedSource": null,
       "finalisation": null

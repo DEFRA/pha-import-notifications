@@ -112,8 +112,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "9ffff216-1f7f-4e1d-b81b-62b55ff0bbcd",
-            "serviceCalled": "2025-02-21T13:28:39.057Z"
+            "correlationId": "[see BTMS integration test]",
+            "serviceCalled": "2025-02-21T13:28:42.129Z"
           },
           "header": {
             "entryReference": "24GBCUDNXBN1JNRAR5",
@@ -155,8 +155,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "05894d06-f044-4284-a6b1-04fa3f022fc6",
-            "serviceCalled": "2025-02-21T13:28:39.061Z"
+            "correlationId": "[see BTMS integration test]",
+            "serviceCalled": "2025-02-21T13:28:42.129Z"
           },
           "header": {
             "entryReference": "24GBCUDNXBN1JNRAR5",
@@ -378,7 +378,7 @@
       ],
       "updatedSource": "2024-11-19T14:12:40Z",
       "createdSource": "2024-11-19T14:12:40Z",
-      "updated": "2025-02-21T13:28:39.074Z",
+      "updated": "2025-02-21T13:28:40.129Z",
       "entryReference": "24GBCUDNXBN1JNRAR5",
       "entryVersionNumber": 1,
       "masterUcr": "529744521",
@@ -395,8 +395,8 @@
           "id": "24GBCUDNXBN1JNRAR5",
           "version": 1,
           "createdBy": "Cds",
-          "createdSource": "2024-11-19T14:12:40Z",
-          "createdLocal": "2025-02-21T13:28:39.055Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -405,8 +405,8 @@
           "id": "24GBCUDNXBN1JNRAR5",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:39.057Z",
-          "createdLocal": "2025-02-21T13:28:39.057Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -423,8 +423,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:39.061Z",
-          "createdLocal": "2025-02-21T13:28:39.061Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Linked",
           "diff": [],
           "context": null
@@ -433,8 +433,8 @@
           "id": "CHEDP.GB.2024.5140733",
           "version": 2,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:39.061Z",
-          "createdLocal": "2025-02-21T13:28:39.061Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -447,9 +447,9 @@
               {
                 "id": "CHEDP.GB.2024.5140733",
                 "version": 3,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T13:28:39.059Z",
-                "updatedEntity": "0001-01-01T00:00:00Z",
+                "created": "2025-02-21T13:28:39.129Z",
+                "updated": "2025-02-21T13:28:40.129Z",
+                "updatedEntity": "2025-02-21T13:28:41.129Z",
                 "createdSource": "2024-11-20T17:12:59.581Z",
                 "updatedSource": "2024-11-20T17:12:59.581Z"
               }
@@ -461,8 +461,8 @@
           "id": "24GBCUDNXBN1JNRAR5",
           "version": 7,
           "createdBy": "Alvs",
-          "createdSource": "2024-11-20T17:15:52.627Z",
-          "createdLocal": "2025-02-21T13:28:39.074Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -518,8 +518,8 @@
         }
       ],
       "localId": null,
-      "created": "2025-02-21T13:28:39.057Z",
-      "updatedEntity": "2025-02-21T13:28:39.075Z",
+      "created": "2025-02-21T13:28:39.129Z",
+      "updatedEntity": "2025-02-21T13:28:41.129Z",
       "finalised": null,
       "finalisedSource": null,
       "finalisation": null

@@ -78,8 +78,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "219760ec-39d2-429c-83e8-3cb6642bb412",
-            "serviceCalled": "2025-02-21T10:48:08.872Z"
+            "correlationId": "[see BTMS integration test]",
+            "serviceCalled": "2025-02-21T13:28:42.129Z"
           },
           "header": {
             "entryReference": "24GBDINZW04OAS2AR0",
@@ -105,8 +105,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "2bf1e401-2cc3-4579-a8c2-f930f09075e8",
-            "serviceCalled": "2025-02-21T10:48:08.925Z"
+            "correlationId": "[see BTMS integration test]",
+            "serviceCalled": "2025-02-21T13:28:42.129Z"
           },
           "header": {
             "entryReference": "24GBDINZW04OAS2AR0",
@@ -132,8 +132,8 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "b4b5509c-9992-414d-acbe-65623c558ee8",
-            "serviceCalled": "2025-02-21T10:48:08.963Z"
+            "correlationId": "[see BTMS integration test]",
+            "serviceCalled": "2025-02-21T13:28:42.129Z"
           },
           "header": {
             "entryReference": "24GBDINZW04OAS2AR0",
@@ -159,202 +159,13 @@
           "serviceHeader": {
             "sourceSystem": "BTMS",
             "destinationSystem": "CDS",
-            "correlationId": "fb212b35-d814-44a7-8b2c-692dcf3927de",
-            "serviceCalled": "2025-02-21T10:48:08.979Z"
+            "correlationId": "[see BTMS integration test]",
+            "serviceCalled": "2025-02-21T13:28:42.129Z"
           },
           "header": {
             "entryReference": "24GBDINZW04OAS2AR0",
             "entryVersionNumber": 1,
             "decisionNumber": 4
-          },
-          "items": [
-            {
-              "itemNumber": 1,
-              "checks": [
-                {
-                  "checkCode": "H222",
-                  "departmentCode": null,
-                  "decisionCode": "C03",
-                  "decisionsValidUntil": null,
-                  "decisionReasons": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "serviceHeader": {
-            "sourceSystem": "BTMS",
-            "destinationSystem": "CDS",
-            "correlationId": "a749167f-49ad-4b64-b4a4-edd69ac9da57",
-            "serviceCalled": "2025-02-21T13:28:37.875Z"
-          },
-          "header": {
-            "entryReference": "24GBDINZW04OAS2AR0",
-            "entryVersionNumber": 1,
-            "decisionNumber": 5
-          },
-          "items": [
-            {
-              "itemNumber": 1,
-              "checks": [
-                {
-                  "checkCode": "H222",
-                  "departmentCode": null,
-                  "decisionCode": "C03",
-                  "decisionsValidUntil": null,
-                  "decisionReasons": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "serviceHeader": {
-            "sourceSystem": "BTMS",
-            "destinationSystem": "CDS",
-            "correlationId": "19046c8f-1afa-4a90-9555-ba878b09af27",
-            "serviceCalled": "2025-02-21T13:28:37.966Z"
-          },
-          "header": {
-            "entryReference": "24GBDINZW04OAS2AR0",
-            "entryVersionNumber": 1,
-            "decisionNumber": 6
-          },
-          "items": [
-            {
-              "itemNumber": 1,
-              "checks": [
-                {
-                  "checkCode": "H222",
-                  "departmentCode": null,
-                  "decisionCode": "C03",
-                  "decisionsValidUntil": null,
-                  "decisionReasons": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "serviceHeader": {
-            "sourceSystem": "BTMS",
-            "destinationSystem": "CDS",
-            "correlationId": "31cae33d-36d1-400e-b58e-cbceb8dff81f",
-            "serviceCalled": "2025-02-21T13:28:37.974Z"
-          },
-          "header": {
-            "entryReference": "24GBDINZW04OAS2AR0",
-            "entryVersionNumber": 1,
-            "decisionNumber": 7
-          },
-          "items": [
-            {
-              "itemNumber": 1,
-              "checks": [
-                {
-                  "checkCode": "H222",
-                  "departmentCode": null,
-                  "decisionCode": "C03",
-                  "decisionsValidUntil": null,
-                  "decisionReasons": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "serviceHeader": {
-            "sourceSystem": "BTMS",
-            "destinationSystem": "CDS",
-            "correlationId": "b73b3147-b389-40a5-8421-58c041ddbb0b",
-            "serviceCalled": "2025-02-21T13:28:37.991Z"
-          },
-          "header": {
-            "entryReference": "24GBDINZW04OAS2AR0",
-            "entryVersionNumber": 1,
-            "decisionNumber": 8
-          },
-          "items": [
-            {
-              "itemNumber": 1,
-              "checks": [
-                {
-                  "checkCode": "H222",
-                  "departmentCode": null,
-                  "decisionCode": "C03",
-                  "decisionsValidUntil": null,
-                  "decisionReasons": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "serviceHeader": {
-            "sourceSystem": "BTMS",
-            "destinationSystem": "CDS",
-            "correlationId": "80bd5313-c28f-40e0-bf02-acbb97b2ae4a",
-            "serviceCalled": "2025-02-21T13:28:38.003Z"
-          },
-          "header": {
-            "entryReference": "24GBDINZW04OAS2AR0",
-            "entryVersionNumber": 1,
-            "decisionNumber": 9
-          },
-          "items": [
-            {
-              "itemNumber": 1,
-              "checks": [
-                {
-                  "checkCode": "H222",
-                  "departmentCode": null,
-                  "decisionCode": "C03",
-                  "decisionsValidUntil": null,
-                  "decisionReasons": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "serviceHeader": {
-            "sourceSystem": "BTMS",
-            "destinationSystem": "CDS",
-            "correlationId": "e34b637b-4b66-4c8e-b522-ed8c7d3e9f9a",
-            "serviceCalled": "2025-02-21T13:28:38.018Z"
-          },
-          "header": {
-            "entryReference": "24GBDINZW04OAS2AR0",
-            "entryVersionNumber": 1,
-            "decisionNumber": 10
-          },
-          "items": [
-            {
-              "itemNumber": 1,
-              "checks": [
-                {
-                  "checkCode": "H222",
-                  "departmentCode": null,
-                  "decisionCode": "C03",
-                  "decisionsValidUntil": null,
-                  "decisionReasons": []
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "serviceHeader": {
-            "sourceSystem": "BTMS",
-            "destinationSystem": "CDS",
-            "correlationId": "e70b4414-1058-4428-8f71-4c654ead7fbd",
-            "serviceCalled": "2025-02-21T13:28:38.027Z"
-          },
-          "header": {
-            "entryReference": "24GBDINZW04OAS2AR0",
-            "entryVersionNumber": 1,
-            "decisionNumber": 11
           },
           "items": [
             {
@@ -421,7 +232,7 @@
       ],
       "updatedSource": "2024-12-06T14:08:26Z",
       "createdSource": "2024-12-06T14:08:26Z",
-      "updated": "2025-02-21T13:28:38.034Z",
+      "updated": "2025-02-21T13:28:40.129Z",
       "entryReference": "24GBDINZW04OAS2AR0",
       "entryVersionNumber": 1,
       "masterUcr": "SCT1BKHX400100",
@@ -438,8 +249,8 @@
           "id": "24GBDINZW04OAS2AR0",
           "version": 1,
           "createdBy": "Cds",
-          "createdSource": "2024-12-06T14:08:26Z",
-          "createdLocal": "2025-02-21T10:48:08.859Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -448,8 +259,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T10:48:08.866Z",
-          "createdLocal": "2025-02-21T10:48:08.866Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Linked",
           "diff": [],
           "context": null
@@ -458,8 +269,8 @@
           "id": "24GBDINZW04OAS2AR0",
           "version": 1,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T10:48:08.872Z",
-          "createdLocal": "2025-02-21T10:48:08.876Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -472,9 +283,9 @@
               {
                 "id": "CHEDP.GB.2024.5253621",
                 "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.839Z",
-                "updatedEntity": "2025-02-21T10:48:08.842Z",
+                "created": "2025-02-21T13:28:39.129Z",
+                "updated": "2025-02-21T13:28:40.129Z",
+                "updatedEntity": "2025-02-21T13:28:41.129Z",
                 "createdSource": "2024-12-04T10:55:42.357Z",
                 "updatedSource": "2024-12-06T08:56:41.079Z"
               }
@@ -486,8 +297,8 @@
           "id": "CHEDP.GB.2024.5253621",
           "version": 2,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T10:48:08.925Z",
-          "createdLocal": "2025-02-21T10:48:08.925Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -500,9 +311,9 @@
               {
                 "id": "CHEDP.GB.2024.5253621",
                 "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.911Z",
-                "updatedEntity": "0001-01-01T00:00:00Z",
+                "created": "2025-02-21T13:28:39.129Z",
+                "updated": "2025-02-21T13:28:40.129Z",
+                "updatedEntity": "2025-02-21T13:28:41.129Z",
                 "createdSource": "2024-12-04T10:55:42.357Z",
                 "updatedSource": "2024-12-06T22:03:55.841Z"
               }
@@ -514,8 +325,8 @@
           "id": "24GBDINZW04OAS2AR0",
           "version": 2,
           "createdBy": "Cds",
-          "createdSource": "2024-12-09T08:06:23Z",
-          "createdLocal": "2025-02-21T10:48:08.954Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Updated",
           "diff": [
             {
@@ -605,8 +416,8 @@
           "id": "24GBDINZW04OAS2AR0",
           "version": 3,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T10:48:08.963Z",
-          "createdLocal": "2025-02-21T10:48:08.963Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -619,9 +430,9 @@
               {
                 "id": "CHEDP.GB.2024.5253621",
                 "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.911Z",
-                "updatedEntity": "2025-02-21T10:48:08.925Z",
+                "created": "2025-02-21T13:28:39.129Z",
+                "updated": "2025-02-21T13:28:40.129Z",
+                "updatedEntity": "2025-02-21T13:28:41.129Z",
                 "createdSource": "2024-12-04T10:55:42.357Z",
                 "updatedSource": "2024-12-06T22:03:55.841Z"
               }
@@ -633,8 +444,8 @@
           "id": "CHEDP.GB.2024.5253621",
           "version": 4,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T10:48:08.979Z",
-          "createdLocal": "2025-02-21T10:48:08.979Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Decision",
           "diff": [],
           "context": {
@@ -647,9 +458,9 @@
               {
                 "id": "CHEDP.GB.2024.5253621",
                 "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.976Z",
-                "updatedEntity": "0001-01-01T00:00:00Z",
+                "created": "2025-02-21T13:28:39.129Z",
+                "updated": "2025-02-21T13:28:40.129Z",
+                "updatedEntity": "2025-02-21T13:28:41.129Z",
                 "createdSource": "2024-12-04T10:55:42.357Z",
                 "updatedSource": "2024-12-20T15:12:53.96Z"
               }
@@ -661,250 +472,9 @@
           "id": "24GBDINZW04OAS2AR0",
           "version": 0,
           "createdBy": "Cds",
-          "createdSource": "2024-12-20T15:27:18Z",
-          "createdLocal": "2025-02-21T10:48:08.993Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Finalisation",
-          "diff": [],
-          "context": {
-            "$type": "CdsFinalisation",
-            "serviceHeader": {
-              "sourceSystem": "CDS",
-              "destinationSystem": "ALVS",
-              "correlationId": "1363025",
-              "serviceCalled": "2024-12-20T15:27:18Z"
-            },
-            "header": {
-              "entryReference": "24GBDINZW04OAS2AR0",
-              "entryVersionNumber": 2,
-              "decisionNumber": null,
-              "finalState": "Cleared",
-              "manualAction": false
-            }
-          }
-        },
-        {
-          "id": "CHEDP.GB.2024.5253621",
-          "version": 5,
-          "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:37.875Z",
-          "createdLocal": "2025-02-21T13:28:37.879Z",
-          "status": "Decision",
-          "diff": [],
-          "context": {
-            "$type": "DecisionContext",
-            "alvsCheckStatus": null,
-            "btmsCheckStatus": null,
-            "alvsDecisionNumber": null,
-            "entryVersionNumber": 1,
-            "importNotifications": [
-              {
-                "id": "CHEDP.GB.2024.5253621",
-                "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.976Z",
-                "updatedEntity": "2025-02-21T10:48:08.979Z",
-                "createdSource": "2024-12-04T10:55:42.357Z",
-                "updatedSource": "2024-12-20T15:12:53.96Z"
-              }
-            ],
-            "decisionComparison": null
-          }
-        },
-        {
-          "id": "CHEDP.GB.2024.5253621",
-          "version": 6,
-          "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:37.966Z",
-          "createdLocal": "2025-02-21T13:28:37.966Z",
-          "status": "Decision",
-          "diff": [],
-          "context": {
-            "$type": "DecisionContext",
-            "alvsCheckStatus": null,
-            "btmsCheckStatus": null,
-            "alvsDecisionNumber": null,
-            "entryVersionNumber": 1,
-            "importNotifications": [
-              {
-                "id": "CHEDP.GB.2024.5253621",
-                "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.976Z",
-                "updatedEntity": "2025-02-21T13:28:37.885Z",
-                "createdSource": "2024-12-04T10:55:42.357Z",
-                "updatedSource": "2024-12-20T15:12:53.96Z"
-              }
-            ],
-            "decisionComparison": null
-          }
-        },
-        {
-          "id": "CHEDP.GB.2024.5253621",
-          "version": 7,
-          "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:37.974Z",
-          "createdLocal": "2025-02-21T13:28:37.974Z",
-          "status": "Decision",
-          "diff": [],
-          "context": {
-            "$type": "DecisionContext",
-            "alvsCheckStatus": null,
-            "btmsCheckStatus": null,
-            "alvsDecisionNumber": null,
-            "entryVersionNumber": 1,
-            "importNotifications": [
-              {
-                "id": "CHEDP.GB.2024.5253621",
-                "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.976Z",
-                "updatedEntity": "2025-02-21T13:28:37.966Z",
-                "createdSource": "2024-12-04T10:55:42.357Z",
-                "updatedSource": "2024-12-20T15:12:53.96Z"
-              }
-            ],
-            "decisionComparison": null
-          }
-        },
-        {
-          "id": "24GBDINZW04OAS2AR0",
-          "version": 2,
-          "createdBy": "Cds",
-          "createdSource": "2024-12-06T14:08:26Z",
-          "createdLocal": "2025-02-21T13:28:37.988Z",
-          "status": "Updated",
-          "diff": [],
-          "context": null
-        },
-        {
-          "id": "24GBDINZW04OAS2AR0",
-          "version": 8,
-          "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:37.991Z",
-          "createdLocal": "2025-02-21T13:28:37.991Z",
-          "status": "Decision",
-          "diff": [],
-          "context": {
-            "$type": "DecisionContext",
-            "alvsCheckStatus": null,
-            "btmsCheckStatus": null,
-            "alvsDecisionNumber": null,
-            "entryVersionNumber": 1,
-            "importNotifications": [
-              {
-                "id": "CHEDP.GB.2024.5253621",
-                "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.976Z",
-                "updatedEntity": "2025-02-21T13:28:37.975Z",
-                "createdSource": "2024-12-04T10:55:42.357Z",
-                "updatedSource": "2024-12-20T15:12:53.96Z"
-              }
-            ],
-            "decisionComparison": null
-          }
-        },
-        {
-          "id": "CHEDP.GB.2024.5253621",
-          "version": 9,
-          "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:38.003Z",
-          "createdLocal": "2025-02-21T13:28:38.003Z",
-          "status": "Decision",
-          "diff": [],
-          "context": {
-            "$type": "DecisionContext",
-            "alvsCheckStatus": null,
-            "btmsCheckStatus": null,
-            "alvsDecisionNumber": null,
-            "entryVersionNumber": 1,
-            "importNotifications": [
-              {
-                "id": "CHEDP.GB.2024.5253621",
-                "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.976Z",
-                "updatedEntity": "2025-02-21T13:28:37.991Z",
-                "createdSource": "2024-12-04T10:55:42.357Z",
-                "updatedSource": "2024-12-20T15:12:53.96Z"
-              }
-            ],
-            "decisionComparison": null
-          }
-        },
-        {
-          "id": "24GBDINZW04OAS2AR0",
-          "version": 2,
-          "createdBy": "Cds",
-          "createdSource": "2024-12-06T14:08:26Z",
-          "createdLocal": "2025-02-21T13:28:38.016Z",
-          "status": "Updated",
-          "diff": [],
-          "context": null
-        },
-        {
-          "id": "24GBDINZW04OAS2AR0",
-          "version": 10,
-          "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:38.018Z",
-          "createdLocal": "2025-02-21T13:28:38.018Z",
-          "status": "Decision",
-          "diff": [],
-          "context": {
-            "$type": "DecisionContext",
-            "alvsCheckStatus": null,
-            "btmsCheckStatus": null,
-            "alvsDecisionNumber": null,
-            "entryVersionNumber": 1,
-            "importNotifications": [
-              {
-                "id": "CHEDP.GB.2024.5253621",
-                "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.976Z",
-                "updatedEntity": "2025-02-21T13:28:38.003Z",
-                "createdSource": "2024-12-04T10:55:42.357Z",
-                "updatedSource": "2024-12-20T15:12:53.96Z"
-              }
-            ],
-            "decisionComparison": null
-          }
-        },
-        {
-          "id": "CHEDP.GB.2024.5253621",
-          "version": 11,
-          "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:38.027Z",
-          "createdLocal": "2025-02-21T13:28:38.027Z",
-          "status": "Decision",
-          "diff": [],
-          "context": {
-            "$type": "DecisionContext",
-            "alvsCheckStatus": null,
-            "btmsCheckStatus": null,
-            "alvsDecisionNumber": null,
-            "entryVersionNumber": 1,
-            "importNotifications": [
-              {
-                "id": "CHEDP.GB.2024.5253621",
-                "version": 2,
-                "created": "0001-01-01T00:00:00Z",
-                "updated": "2025-02-21T10:48:08.976Z",
-                "updatedEntity": "2025-02-21T13:28:38.018Z",
-                "createdSource": "2024-12-04T10:55:42.357Z",
-                "updatedSource": "2024-12-20T15:12:53.96Z"
-              }
-            ],
-            "decisionComparison": null
-          }
-        },
-        {
-          "id": "24GBDINZW04OAS2AR0",
-          "version": 0,
-          "createdBy": "Cds",
-          "createdSource": "2024-12-20T15:27:18Z",
-          "createdLocal": "2025-02-21T13:28:38.034Z",
-          "status": "Finalisation Discarded",
           "diff": [],
           "context": {
             "$type": "CdsFinalisation",
@@ -925,9 +495,9 @@
         }
       ],
       "localId": null,
-      "created": "2025-02-21T10:48:08.881Z",
-      "updatedEntity": "2025-02-21T13:28:38.034Z",
-      "finalised": "2025-02-21T10:48:08.993Z",
+      "created": "2025-02-21T13:28:39.129Z",
+      "updatedEntity": "2025-02-21T13:28:41.129Z",
+      "finalised": "2025-02-24T16:05:42.709Z",
       "finalisedSource": "2024-12-20T15:27:18Z",
       "finalisation": {
         "finalState": "Cleared",
