@@ -7,17 +7,17 @@
     "id": "CHEDD.GB.2024.5351769",
     "attributes": {
       "createdSource": "2024-12-30T10:03:18.624Z",
-      "created": "2025-02-21T13:28:39.229Z",
-      "updatedEntity": "2025-02-21T13:28:39.233Z",
-      "updated": "2025-02-21T13:28:39.227Z",
+      "created": "2025-02-21T13:28:39.129Z",
+      "updatedEntity": "2025-02-21T13:28:41.129Z",
+      "updated": "2025-02-21T13:28:40.129Z",
       "stringId": "CHEDD.GB.2024.5351769",
       "auditEntries": [
         {
           "id": "CHEDD.GB.2024.5351769",
           "version": 1,
           "createdBy": "Ipaffs",
-          "createdSource": "2024-12-30T10:03:18.624Z",
-          "createdLocal": "2025-02-21T13:28:39.227Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Created",
           "diff": [],
           "context": null
@@ -26,8 +26,8 @@
           "id": "",
           "version": null,
           "createdBy": "Btms",
-          "createdSource": "2025-02-21T13:28:39.233Z",
-          "createdLocal": "2025-02-21T13:28:39.233Z",
+          "createdSource": "2025-02-21T13:28:39.129Z",
+          "createdLocal": "2025-02-21T13:28:39.129Z",
           "status": "Linked",
           "diff": [],
           "context": null

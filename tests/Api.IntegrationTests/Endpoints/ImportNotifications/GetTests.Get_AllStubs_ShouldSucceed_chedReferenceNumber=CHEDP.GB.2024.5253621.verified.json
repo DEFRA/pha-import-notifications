@@ -119,146 +119,6 @@
           ]
         }
       ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBDINZW04OAS2AR0",
-        "entryVersionNumber": 1,
-        "decisionNumber": 5
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBDINZW04OAS2AR0",
-        "entryVersionNumber": 1,
-        "decisionNumber": 6
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBDINZW04OAS2AR0",
-        "entryVersionNumber": 1,
-        "decisionNumber": 7
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBDINZW04OAS2AR0",
-        "entryVersionNumber": 1,
-        "decisionNumber": 8
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBDINZW04OAS2AR0",
-        "entryVersionNumber": 1,
-        "decisionNumber": 9
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBDINZW04OAS2AR0",
-        "entryVersionNumber": 1,
-        "decisionNumber": 10
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBDINZW04OAS2AR0",
-        "entryVersionNumber": 1,
-        "decisionNumber": 11
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
     }
   ],
   "finalisation": [
@@ -269,9 +129,9 @@
     }
   ],
   "createdSource": "2024-12-04T10:55:42.357Z",
-  "created": "0001-01-01T00:00:00Z",
-  "updatedEntity": "2025-02-21T13:28:38.027Z",
-  "updated": "2025-02-21T10:48:08.976Z",
+  "created": "2025-02-21T13:28:39.129Z",
+  "updatedEntity": "2025-02-21T13:28:41.129Z",
+  "updated": "2025-02-21T13:28:40.129Z",
   "commoditiesSummary": {
     "gmsDeclarationAccepted": null,
     "consignedCountryInChargeGroup": null,

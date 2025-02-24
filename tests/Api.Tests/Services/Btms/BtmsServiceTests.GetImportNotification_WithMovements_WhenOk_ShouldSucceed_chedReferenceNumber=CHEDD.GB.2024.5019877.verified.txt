@@ -84,9 +84,9 @@
   ],
   GoodsMovements: null,
   CreatedSource: 2024-12-16 15:05:27.801 Utc,
-  Created: 2025-02-21 13:28:39.159 Utc,
-  UpdatedEntity: 2025-02-21 13:28:39.183 Utc,
-  Updated: 2025-02-21 13:28:39.153 Utc,
+  Created: 2025-02-21 13:28:39.129 Utc,
+  UpdatedEntity: 2025-02-21 13:28:41.129 Utc,
+  Updated: 2025-02-21 13:28:40.129 Utc,
   AuditEntries: null,
   Relationships: null,
   CommoditiesSummary: {

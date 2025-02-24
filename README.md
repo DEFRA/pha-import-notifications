@@ -66,6 +66,21 @@ At the moment this is a manual process:
 3. Run `make update-btms-schema` in the root of the repository
 4. Observe any changes that have been made and commit them
 
+## Update BTMS Stub Scenarios
+
+Following a schema change, we need to update the response JSON that BTMS will give us.
+
+At the moment this is a manual process:
+
+1. Checkout main from [btms-backend](https://github.com/defra/btms-backend)
+2. Locate the integration test called `ShouldImportPhaStubScenario`
+3. Update the test so it will save the generated output
+4. Understand and act on any redaction work needed before committing anything
+5. Run the test and take the output from the generated `PhaScenarioTestsOutput` folder
+6. Replace the [BtmsStub/Scenarios folder](tests/BtmsStub/Scenarios) in this repo with the contents of the folder above
+7. Do the same for the [Btms Stub Scenarios](https://github.com/DEFRA/btms-backend-stub/tree/main/src/BtmsBackendStub/Scenarios)
+8. Observe any changes that have been made and commit them
+
 ## Development
 
 It is possible to configure the PHA API to query a deployed BTMS instance.
