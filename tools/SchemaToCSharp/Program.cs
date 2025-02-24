@@ -27,9 +27,9 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
 {
     var syntax = schema.Type switch
     {
-        "integer" => CreateEnumSyntax(),
-        "string" => CreateEnumSyntax(),
-        "object" => CreateTypeSyntax(),
+        OpenApiTypes.Integer => CreateEnumSyntax(),
+        OpenApiTypes.String => CreateEnumSyntax(),
+        OpenApiTypes.Object => CreateTypeSyntax(),
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
 
@@ -72,32 +72,32 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 
     var typeName = schema.Type switch
     {
-        "string" => CreateStringReferenceTypeName(schema),
-        "integer" => CreateReferenceTypeName(schema, "int"),
-        "number" => "decimal",
-        "boolean" => "bool",
-        "object" => CreateReferenceTypeName(schema, schema.Type),
-        "array" => CreateReferenceTypeName(schema.Items, schema.Items.Type),
-        _ => "object",
+        OpenApiTypes.String => CreateStringReferenceTypeName(schema),
+        OpenApiTypes.Integer => CreateReferenceTypeName(schema, DotNetTypes.Int),
+        OpenApiTypes.Number => DotNetTypes.Decimal,
+        OpenApiTypes.Boolean => DotNetTypes.Bool,
+        OpenApiTypes.Object => CreateReferenceTypeName(schema, schema.Type),
+        OpenApiTypes.Array => CreateReferenceTypeName(schema.Items, schema.Items.Type),
+        _ => DotNetTypes.Object,
     };
 
     typeName = CreateTypeName(typeName);
 
-    return ParseTypeName(schema.Type == "array" ? $"List<{typeName}>" : typeName);
+    return ParseTypeName(schema.Type == OpenApiTypes.Array ? $"List<{typeName}>" : typeName);
 }
 
 static string CreateStringReferenceTypeName(OpenApiSchema schema)
 {
     if (schema.Enum.Any())
     {
-        return CreateReferenceTypeName(schema, "string");
+        return CreateReferenceTypeName(schema, DotNetTypes.String);
     }
 
     return schema.Format switch
     {
-        "date-time" => "DateTime",
-        "date" => "DateOnly",
-        _ => "string",
+        OpenApiFormats.DateTime => DotNetTypes.DateTime,
+        OpenApiFormats.Date => DotNetTypes.DateOnly,
+        _ => DotNetTypes.String,
     };
 }
 
