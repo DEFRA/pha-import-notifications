@@ -61,7 +61,7 @@
       ]
     }
   ],
-  "finalisation": [
+  "finalisations": [
     {
       "finalState": "Cleared",
       "manualAction": false,

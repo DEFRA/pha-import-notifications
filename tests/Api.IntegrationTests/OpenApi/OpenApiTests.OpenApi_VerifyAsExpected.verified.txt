@@ -2272,7 +2272,7 @@
             },
             "nullable": true
           },
-          "finalisation": {
+          "finalisations": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Finalisation"
