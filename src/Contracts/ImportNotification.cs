@@ -10,7 +10,7 @@ public partial record ImportNotification
     [JsonPropertyName("clearanceDecisions")]
     public IReadOnlyList<CustomsClearanceDecision>? ClearanceDecisions { get; init; }
 
-    [JsonPropertyName("finalisation")]
+    [JsonPropertyName("finalisations")]
     public IReadOnlyList<Finalisation>? Finalisations { get; init; }
 
     [JsonPropertyName("goodsMovements")]
