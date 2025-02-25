@@ -7,6 +7,7 @@
       CreatedSource: null,
       Created: null,
       UpdatedEntity: null,
+      Updated: 2025-02-21 13:28:40.129 Utc,
       AuditEntries: null,
       Relationships: null,
       Id: GMRA00KBHFE0,
@@ -29,6 +30,14 @@
       ActualCrossing: {
         RouteId: 32,
         ArrivesAt: 2024-11-11 18:20
+      },
+      Declarations: {
+        Transits: [
+          {
+            Id: 24IEDUB10010972672
+          }
+        ],
+        Customs: null
       }
     }
   ],

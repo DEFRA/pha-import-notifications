@@ -7,4 +7,7 @@ public partial record NotificationTdmRelationships
 {
     [JsonPropertyName("movements")]
     public TdmRelationshipObject? Movements { get; init; }
+
+    [JsonPropertyName("gmrs")]
+    public TdmRelationshipObject? Gmrs { get; init; }
 }

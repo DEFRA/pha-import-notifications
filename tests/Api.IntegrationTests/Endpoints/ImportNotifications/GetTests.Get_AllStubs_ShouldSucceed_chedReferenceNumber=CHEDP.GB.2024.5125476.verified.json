@@ -1,6 +1,7 @@
 ﻿{
   "goodsMovements": [
     {
+      "updated": "2025-02-21T13:28:40.129Z",
       "id": "GMRA00KBHFE0",
       "state": "Completed",
       "updatedSource": "2024-11-11T17:34:50.774Z",
@@ -15,6 +16,14 @@
       "actualCrossing": {
         "routeId": "32",
         "arrivesAt": "2024-11-11T18:20:00"
+      },
+      "declarations": {
+        "transits": [
+          {
+            "id": "24IEDUB10010972672"
+          }
+        ],
+        "customs": null
       }
     }
   ],
@@ -458,7 +467,7 @@
         {
           "documentType": "LatestVeterinaryHealthCertificate",
           "documentReference": "c48a4885909fa7f105566e398d633fd10c4e06e7c56582b5566beb20323e69a8",
-          "documentIssuedOn": "2024-11-11T00:00:00",
+          "documentIssuedOn": "2024-11-11",
           "attachmentId": "6936766e4fc5f60aad91579a4c87b3b1fee75c06a0f16e470c1a0722d32aed85",
           "attachmentFilename": "17913c2cac77aa0b9cc9c21bd6797786cbeea4f812ac9fb46dd6ad75e8941451",
           "attachmentContentType": "application/pdf",
@@ -469,7 +478,7 @@
         {
           "documentType": "Other",
           "documentReference": "6f9c1dd780e9c23fd81535bc9d0c18200b3a0d1fef88e14baed11a5188734cd2",
-          "documentIssuedOn": "2024-11-11T00:00:00",
+          "documentIssuedOn": "2024-11-11",
           "attachmentId": "fc8ac44c87b3f4ccf645b7763caeb880d46b31a2bac04edeee8abf74e5b90587",
           "attachmentFilename": "ccce0b56f39fe9cacc5024b3417d0170da7ff52d01007d683dfa9923a7405b12",
           "attachmentContentType": "application/pdf",
@@ -480,7 +489,7 @@
         {
           "documentType": "Other",
           "documentReference": "6f9c1dd780e9c23fd81535bc9d0c18200b3a0d1fef88e14baed11a5188734cd2",
-          "documentIssuedOn": "2024-11-11T00:00:00",
+          "documentIssuedOn": "2024-11-11",
           "attachmentId": "f4ab67cea0da87b172b3cb7f5d91510d1307f7bca54f82dd15a156967560d031",
           "attachmentFilename": "e1cd8d6705800909ce331836a34bde3002e8522697dd535c470906ed07e6bae3",
           "attachmentContentType": "application/pdf",

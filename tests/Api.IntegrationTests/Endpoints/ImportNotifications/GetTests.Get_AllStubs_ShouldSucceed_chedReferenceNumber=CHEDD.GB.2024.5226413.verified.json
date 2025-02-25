@@ -346,7 +346,7 @@
         {
           "documentType": "CommercialInvoice",
           "documentReference": "e31c11bc1edb70ef356a187dec01aa2aa3889e7eaf481c52aa9440d4d60f2f63",
-          "documentIssuedOn": "2024-11-27T00:00:00",
+          "documentIssuedOn": "2024-11-27",
           "attachmentId": "a029aac7f3311e98fe647afd34bd3e5d11b07e4ad57e34ad4d59eaeda7e5c136",
           "attachmentFilename": "003b568fd50fe9ef55a390d9df09fde7e6d40507979f0acc0cd138915c2a5b70",
           "attachmentContentType": "application/pdf",

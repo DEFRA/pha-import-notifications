@@ -11,7 +11,7 @@ public partial record LaboratoryTestResult
 
     [JsonPropertyName("releasedOn")]
     [Description("When it was released")]
-    public DateTime? ReleasedOn { get; init; }
+    public DateOnly? ReleasedOn { get; init; }
 
     [JsonPropertyName("laboratoryTestMethod")]
     [Description("Laboratory test method")]
@@ -27,5 +27,5 @@ public partial record LaboratoryTestResult
 
     [JsonPropertyName("labTestCreatedOn")]
     [Description("Date of lab test created in IPAFFS")]
-    public DateTime? LabTestCreatedOn { get; init; }
+    public DateOnly? LabTestCreatedOn { get; init; }
 }

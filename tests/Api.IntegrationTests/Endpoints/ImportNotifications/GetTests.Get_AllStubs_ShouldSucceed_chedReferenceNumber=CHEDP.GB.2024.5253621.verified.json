@@ -400,7 +400,7 @@
         {
           "documentType": "Other",
           "documentReference": "9b0feb8987d903dfb4855869ff45e40718cbb9e567d65e78a7fda5e244bf5334",
-          "documentIssuedOn": "2024-12-04T00:00:00",
+          "documentIssuedOn": "2024-12-04",
           "attachmentId": "8f79b243-1399-4d2d-8274-7349f1db14cf",
           "attachmentFilename": "SKM_C450i24120411400.pdf",
           "attachmentContentType": "application/pdf",
@@ -411,7 +411,7 @@
         {
           "documentType": "LatestVeterinaryHealthCertificate",
           "documentReference": "a1a8c1d3589670d2f26a68a70bf0d9ab11c04d9f6c10c158c41745c08b6ac2e5",
-          "documentIssuedOn": "2024-11-13T00:00:00",
+          "documentIssuedOn": "2024-11-13",
           "attachmentId": null,
           "attachmentFilename": null,
           "attachmentContentType": null,

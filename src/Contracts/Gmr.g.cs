@@ -17,6 +17,9 @@ public partial record Gmr
     [JsonIgnore]
     public DateTime? UpdatedEntity { get; init; }
 
+    [JsonPropertyName("updated")]
+    public required DateTime Updated { get; init; }
+
     [JsonPropertyName("auditEntries")]
     [JsonIgnore]
     public List<AuditEntry>? AuditEntries { get; init; }
@@ -87,4 +90,7 @@ public partial record Gmr
 
     [JsonPropertyName("actualCrossing")]
     public ActualCrossing? ActualCrossing { get; init; }
+
+    [JsonPropertyName("declarations")]
+    public Declarations? Declarations { get; init; }
 }

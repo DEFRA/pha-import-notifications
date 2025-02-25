@@ -333,7 +333,7 @@
         {
           "documentType": "LatestVeterinaryHealthCertificate",
           "documentReference": "a589ecb082d731c8e0c49baaa0932de7ddd19555e2b31d62f4dd2303adfc3ff9",
-          "documentIssuedOn": "2024-10-16T00:00:00",
+          "documentIssuedOn": "2024-10-16",
           "attachmentId": "5f50325983654d9632974500107efda4b1b2925e062459d10e506b00209c84fa",
           "attachmentFilename": "d993508ace633cbfb44d77efb72e15b3465cb9b0cd647d43c4cf677eedefae56",
           "attachmentContentType": "application/pdf",
@@ -344,7 +344,7 @@
         {
           "documentType": "Other",
           "documentReference": "65a30cdecc4d51346fcc1846e27d7d28052dbdc75a5715c3b114c7778df9445b",
-          "documentIssuedOn": "2024-11-04T00:00:00",
+          "documentIssuedOn": "2024-11-04",
           "attachmentId": "5b80ec4fd59e9edcbe1a44c0c15f7834699b25e85b5e908b6c40b7c47b300ee2",
           "attachmentFilename": "961ae7923779a30cdf38bbeedc766048e3116db502c87fd97893a049abff9302",
           "attachmentContentType": "application/pdf",

@@ -279,7 +279,7 @@
         {
           "documentType": "LatestVeterinaryHealthCertificate",
           "documentReference": "e16e7dc409c3684ae64aa0675a34a896a175fb5d9f06703c7df867de4f553d29",
-          "documentIssuedOn": "2024-12-05T00:00:00",
+          "documentIssuedOn": "2024-12-05",
           "attachmentId": "4f9a3623048cee23b587faf8645064911b31a662b952129b3614a36b8c935e92",
           "attachmentFilename": "4f6d3b87451b763f39ae639faca213c9cd50b995f15da4507f03615d597ab18f",
           "attachmentContentType": "application/pdf",

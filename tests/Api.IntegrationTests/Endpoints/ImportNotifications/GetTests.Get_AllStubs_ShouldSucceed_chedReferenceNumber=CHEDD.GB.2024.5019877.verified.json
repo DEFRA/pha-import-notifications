@@ -322,7 +322,7 @@
         {
           "documentType": "CommercialInvoice",
           "documentReference": "74cb5dd82f1447269211903e4783b359554696e1da0815ca82c8c727e1629a01",
-          "documentIssuedOn": "2024-10-05T00:00:00",
+          "documentIssuedOn": "2024-10-05",
           "attachmentId": "9923b835cf806587236e95327a9770fdee40fa2a5aacde9659fdd5cf470ae42f",
           "attachmentFilename": "52bd182b6da862683f80ecb199ef6bd7df122b7bd10fa49237074d7f17f544a8",
           "attachmentContentType": "application/pdf",
@@ -333,7 +333,7 @@
         {
           "documentType": "PackingList",
           "documentReference": "ec3a2a752d313b9d5ab28e466a1ce9f744e568a9e37a325f5df009b23e3be18a",
-          "documentIssuedOn": "2024-10-05T00:00:00",
+          "documentIssuedOn": "2024-10-05",
           "attachmentId": "29870dfbb0a6c9e8240a5eec213a37a864151c09789029af026c8f3fbfce309d",
           "attachmentFilename": "f2390b243437c0438ddb08461b6ba9a6d53e4c5ed6ba182c55f046c59da9c09c",
           "attachmentContentType": "application/pdf",
@@ -344,7 +344,7 @@
         {
           "documentType": "BillOfLading",
           "documentReference": "bc589386d680aea446d36754437a004051533f226538ea44250a6ed01ac43b3c",
-          "documentIssuedOn": "2024-10-08T00:00:00",
+          "documentIssuedOn": "2024-10-08",
           "attachmentId": "0caf0a657f485727dd7b60300433c804efbdd61fa1ea88984315e22c9d8c70b7",
           "attachmentFilename": "cc265ea11e510c568c8af2b97cf279f307fbe7a4ac6b7addaa592e22324ffcff",
           "attachmentContentType": "application/pdf",
@@ -355,7 +355,7 @@
         {
           "documentType": "PhytosanitaryCertificate",
           "documentReference": "13ec04773890d89598bb938c85674b73f8f1fd379c57ea2a19bb2ec516d71106",
-          "documentIssuedOn": "2024-09-24T00:00:00",
+          "documentIssuedOn": "2024-09-24",
           "attachmentId": "9d5a87a204d2c487407f5660a56b257c378fc0b04f87ae5c3d812f0b013aa9c1",
           "attachmentFilename": "383d6f25bf1eb0d181b335917885e14062286c44c98dabc7128e831302630cc9",
           "attachmentContentType": "application/pdf",
@@ -366,7 +366,7 @@
         {
           "documentType": "OriginCertificate",
           "documentReference": "068e40551ec64d89dba617490a965108d05a414345fadd4cd4b71939a90887c0",
-          "documentIssuedOn": "2024-10-10T00:00:00",
+          "documentIssuedOn": "2024-10-10",
           "attachmentId": "4dfbaf78654f4f891a72d4152dd7cee883b100d073b7e65b34ac5b8c51b3b4bf",
           "attachmentFilename": "0da247f4dfed523a34a892059da9a31d3f6b13b279471500e4f0008bcde8bcd4",
           "attachmentContentType": "application/pdf",

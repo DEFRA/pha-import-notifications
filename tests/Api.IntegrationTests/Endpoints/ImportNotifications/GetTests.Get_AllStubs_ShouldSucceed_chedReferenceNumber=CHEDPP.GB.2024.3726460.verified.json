@@ -289,7 +289,7 @@
         {
           "documentType": "PhytosanitaryCertificate",
           "documentReference": "257df25c243825547f15207ab3904d3d22280e16354ed2baeadb106d24e45fe3",
-          "documentIssuedOn": "2023-12-13T00:00:00",
+          "documentIssuedOn": "2023-12-13",
           "attachmentId": "3bb4789f161a28793539c52c1a8e7fcd24c9ec4f914a1ac3e8afb15c9476fe43",
           "attachmentFilename": "38675d9f8074f4ea34cad78600c3075bb56240e4b0e2b9e30e77322d74cce9ca",
           "attachmentContentType": "application/pdf",
@@ -300,7 +300,7 @@
         {
           "documentType": "CommercialInvoice",
           "documentReference": "84bd2258901c94635ee3ff740e00a02d3f45cd38987722d376c2dd794282f37e",
-          "documentIssuedOn": "2023-12-18T00:00:00",
+          "documentIssuedOn": "2023-12-18",
           "attachmentId": "8c51b863187448f91e5587fcc3b063b5dbd286e8e242dad26b54e98368230162",
           "attachmentFilename": "7cd10ac90d29968c99ea065e8d13a82435fdbcd38c6ab3cc783c2fa375b94e7d",
           "attachmentContentType": "application/pdf",

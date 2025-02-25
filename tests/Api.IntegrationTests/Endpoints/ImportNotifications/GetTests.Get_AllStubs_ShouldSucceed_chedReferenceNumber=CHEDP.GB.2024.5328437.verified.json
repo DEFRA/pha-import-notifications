@@ -409,7 +409,7 @@
         {
           "documentType": "LatestVeterinaryHealthCertificate",
           "documentReference": "251846972b2d5ca51900ead3458bd7f81292357dab43e83f7d7f1f4d59767328",
-          "documentIssuedOn": "2024-10-28T00:00:00",
+          "documentIssuedOn": "2024-10-28",
           "attachmentId": null,
           "attachmentFilename": null,
           "attachmentContentType": null,

@@ -267,7 +267,7 @@
         {
           "documentType": "LatestVeterinaryHealthCertificate",
           "documentReference": "9b3dae56d091a018266803052c10fe85f85e6b9bb72b1909c48c55609dfca840",
-          "documentIssuedOn": "2024-11-11T00:00:00",
+          "documentIssuedOn": "2024-11-11",
           "attachmentId": "8c67a2e5fefa4b629ad5eb65cf18761175a409660d952680bef4d1cb281e9e89",
           "attachmentFilename": "734cf101677129e75afa5ef9b1090483ce15c4a42f96e8debf9162597a6d25b7",
           "attachmentContentType": "application/pdf",
@@ -278,7 +278,7 @@
         {
           "documentType": "CommercialInvoice",
           "documentReference": "b8ecbc0adf2537651d6f52172f6ff871b97f58a893bb375d92119ffbeea54ebf",
-          "documentIssuedOn": "2024-11-11T00:00:00",
+          "documentIssuedOn": "2024-11-11",
           "attachmentId": "8f922d627310d65c98c8f17a7ac7b67c4f2cc0759fae18c3a4dd0fd2474cefb6",
           "attachmentFilename": "d2f49912db4e8afb6e7deb188beda0a6a3f725dd50434f5b9aa6fa0649ea8912",
           "attachmentContentType": "application/pdf",
@@ -289,7 +289,7 @@
         {
           "documentType": "Other",
           "documentReference": "1c4cc57d6db62864cc55065592d58f15db7b0b4c3c137eff56ead805e78cf88c",
-          "documentIssuedOn": "2024-11-11T00:00:00",
+          "documentIssuedOn": "2024-11-11",
           "attachmentId": "552a744557222f3a17d49bbf9636f53a44da384eee7ce988bc6ff93409a573a6",
           "attachmentFilename": "5b09071db6e62d3cc88edcd1902d0cf7d3a46d8cbdd979f991aa5265324167ff",
           "attachmentContentType": "application/pdf",
