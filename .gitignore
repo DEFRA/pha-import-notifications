@@ -269,5 +269,6 @@ library.db
 .envrc
 
 openapi.json
+!tools/SchemaToCSharp/openapi.json
 
 *.received.*

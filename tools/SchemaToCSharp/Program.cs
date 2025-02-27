@@ -23,7 +23,7 @@ var openApiDocument = new OpenApiStreamReader().Read(stream, out _);
 
 var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
 
-foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
+foreach (var (_, schema) in openApiDocument.Components.Schemas)
 {
     var syntax = schema.Type switch
     {
@@ -33,22 +33,22 @@ foreach (var (schemaName, schema) in openApiDocument.Components.Schemas)
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
 
-    await using var streamWriter = new StreamWriter($"{outputPath}/{CreateTypeName(schemaName)}.g.cs", false);
+    await using var streamWriter = new StreamWriter($"{outputPath}/{CreateTypeName(schema.Title)}.g.cs", false);
     syntax.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
     continue;
 
     SyntaxNode CreateEnumSyntax()
     {
-        var values = schema.Enum.Select(v => CreateEnumValue(schemaName, (v as OpenApiString)!.Value));
-        var @enum = CreateEnum(schemaName).AddMembers(values.Where(x => x != null).Select(x => x!).ToArray());
+        var values = schema.Enum.Select(v => CreateEnumValue(schema.Title, (v as OpenApiString)!.Value));
+        var @enum = CreateEnum(schema.Title).AddMembers(values.Where(x => x != null).Select(x => x!).ToArray());
 
         return namespaceDeclaration.AddMembers(@enum);
     }
 
     SyntaxNode CreateTypeSyntax()
     {
-        var properties = schema.Properties.Select(p => CreateProperty(schemaName, p.Key, p.Value));
-        var @class = CreateRecord(schemaName)
+        var properties = schema.Properties.Select(p => CreateProperty(schema.Title, p.Key, p.Value));
+        var @class = CreateRecord(schema.Title)
             .WithOpenBraceToken(Token(SyntaxKind.OpenBraceToken))
             .AddMembers(properties.ToArray<MemberDeclarationSyntax>())
             .WithCloseBraceToken(Token(SyntaxKind.CloseBraceToken));
@@ -101,8 +101,7 @@ static string CreateStringReferenceTypeName(OpenApiSchema schema)
     };
 }
 
-static string CreateReferenceTypeName(OpenApiSchema schema, string defaultTypeName) =>
-    schema.Reference?.ReferenceV3?.Split("/").Last() ?? defaultTypeName;
+static string CreateReferenceTypeName(OpenApiSchema schema, string defaultTypeName) => schema.Title ?? defaultTypeName;
 
 static EnumMemberDeclarationSyntax? CreateEnumValue(string schemaName, string name)
 {
