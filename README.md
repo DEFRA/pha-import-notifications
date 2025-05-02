@@ -100,7 +100,7 @@ A SonarCloud setup will run static analysis on the code when raising a PR.
 
 We use [CSharpier](https://csharpier.com) to lint our code.
 
-You can run the linter with `dotnet csharpier .`
+You can run the linter with `dotnet csharpier check .`
 
 ## License
 

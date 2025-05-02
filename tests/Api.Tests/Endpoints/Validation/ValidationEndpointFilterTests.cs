@@ -61,8 +61,8 @@ public class ValidationEndpointFilterTests
         var arg1 = new object();
         var context = EndpointFilterInvocationContext.Create(new DefaultHttpContext(), arg0, arg1);
 
-        await Assert.ThrowsAsync<TestValidationEndpointFilter.ArgumentNotFoundAtIndexException>(
-            async () => await filter.InvokeAsync(context, OkResult)
+        await Assert.ThrowsAsync<TestValidationEndpointFilter.ArgumentNotFoundAtIndexException>(async () =>
+            await filter.InvokeAsync(context, OkResult)
         );
     }
 }
