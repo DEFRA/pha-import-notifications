@@ -31,8 +31,8 @@ The solution requires:
    ```
    docker build -t pha-import-notifications .
    docker run -p 8080:8080 \
-    -e ASPNETCORE_ENVIRONMENT=Development
-    -e ENVIRONMENT=Local
+    -e ASPNETCORE_ENVIRONMENT=Development \
+    -e ENVIRONMENT=Local \
     pha-import-notifications
    ```
 2. Navigate to http://localhost:8080/redoc
