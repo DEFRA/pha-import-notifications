@@ -8,7 +8,7 @@ EXPOSE 443
 # CDP PLATFORM HEALTHCHECK REQUIREMENT
 RUN apt update && \
     apt upgrade -y && \
-    apt install curl -y && \
+    apt --no-install-recommends install curl -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
