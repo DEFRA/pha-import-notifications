@@ -16,8 +16,8 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 ARG VACUUM_VERSION=0.14.2
 WORKDIR /tmp/vacuum
-RUN wget "https://github.com/daveshanley/vacuum/releases/download/v${VACUUM_VERSION}/vacuum_${VACUUM_VERSION}_linux_x86_64.tar.gz" -q -O vacuum.tar.gz && \
-    tar zxvf "vacuum.tar.gz" && \
+ADD "https://github.com/daveshanley/vacuum/releases/download/v${VACUUM_VERSION}/vacuum_${VACUUM_VERSION}_linux_x86_64.tar.gz" vacuum.tar.gz
+RUN tar zxvf "vacuum.tar.gz" && \
     mv vacuum /usr/bin/vacuum
 
 WORKDIR /src
