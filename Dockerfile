@@ -66,10 +66,7 @@ ENV ASPNETCORE_FORWARDEDHEADERS_ENABLED=true
 
 FROM base AS final
 
-# Create a dotnet user and run as that user
-RUN addgroup -gid 1000 dotnet && \
-    adduser -uid 1000 --ingroup dotnet --shell /bin/sh --disabled-password dotnet
-USER dotnet
+USER app
 
 WORKDIR /app
 
