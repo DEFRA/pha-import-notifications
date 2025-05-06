@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -7,12 +6,10 @@
     <AssemblyName>Defra.PhaImportNotifications.Api.Tests</AssemblyName>
     <RootNamespace>Defra.PhaImportNotifications.Api.Tests</RootNamespace>
   </PropertyGroup>
-
   <ItemGroup>
     <Using Include="Xunit" />
     <Using Include="FluentAssertions" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="7.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.3" />
@@ -26,21 +23,17 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\Api\Api.csproj" />
     <ProjectReference Include="..\BtmsStub\BtmsStub.csproj" />
     <ProjectReference Include="..\Testing\Testing.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <None Update="JsonApi\**\*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="Endpoints\" />
   </ItemGroup>
-  
 </Project>

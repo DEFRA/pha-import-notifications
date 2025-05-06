@@ -31,8 +31,8 @@ The solution requires:
    ```
    docker build -t pha-import-notifications .
    docker run -p 8080:8080 \
-    -e ASPNETCORE_ENVIRONMENT=Development
-    -e ENVIRONMENT=Local
+    -e ASPNETCORE_ENVIRONMENT=Development \
+    -e ENVIRONMENT=Local \
     pha-import-notifications
    ```
 2. Navigate to http://localhost:8080/redoc
@@ -100,7 +100,7 @@ A SonarCloud setup will run static analysis on the code when raising a PR.
 
 We use [CSharpier](https://csharpier.com) to lint our code.
 
-You can run the linter with `dotnet csharpier .`
+You can run the linter with `dotnet csharpier check .`
 
 ## License
 
