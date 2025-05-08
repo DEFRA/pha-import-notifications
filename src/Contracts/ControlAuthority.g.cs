@@ -31,6 +31,9 @@ public partial record ControlAuthority
     public bool? IuuCheckRequired { get; init; }
 
     [JsonPropertyName("iuuOption")]
+    [ExampleValue("Iuuok")]
+    [ExampleValue("Iuuna")]
+    [ExampleValue("IUUNotCompliant")]
     [Description("Result of Illegal, Unreported and Unregulated (IUU) check")]
-    public ControlAuthorityIuuOptionEnum? IuuOption { get; init; }
+    public string? IuuOption { get; init; }
 }

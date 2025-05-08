@@ -12,7 +12,12 @@ public partial record AuditEntry
     public int? Version { get; init; }
 
     [JsonPropertyName("createdBy")]
-    public required CreatedBySystem CreatedBy { get; init; }
+    [ExampleValue("Btms")]
+    [ExampleValue("Ipaffs")]
+    [ExampleValue("Alvs")]
+    [ExampleValue("Cds")]
+    [ExampleValue("Gvms")]
+    public required string CreatedBy { get; init; }
 
     [JsonPropertyName("createdSource")]
     public DateTime? CreatedSource { get; init; }

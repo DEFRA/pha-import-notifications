@@ -70,6 +70,10 @@ public partial record Commodities
     public string? AnimalsCertifiedAs { get; init; }
 
     [JsonPropertyName("commodityIntendedFor")]
+    [ExampleValue("Human")]
+    [ExampleValue("Feedingstuff")]
+    [ExampleValue("Further")]
+    [ExampleValue("Other")]
     [Description("What the commodity is intended for")]
-    public CommoditiesCommodityIntendedForEnum? CommodityIntendedFor { get; init; }
+    public string? CommodityIntendedFor { get; init; }
 }

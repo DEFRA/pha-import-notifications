@@ -50,8 +50,10 @@ public partial record Party
     public int? TracesId { get; init; }
 
     [JsonPropertyName("type")]
+    [ExampleValue("CommercialTransporter")]
+    [ExampleValue("PrivateTransporter")]
     [Description("Type of party")]
-    public PartyTypeEnum? Type { get; init; }
+    public string? Type { get; init; }
 
     [JsonPropertyName("approvalNumber")]
     [Description("Approval number")]

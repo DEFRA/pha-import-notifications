@@ -10,36 +10,80 @@ public partial record Decision
     public bool? ConsignmentAcceptable { get; init; }
 
     [JsonPropertyName("notAcceptableAction")]
+    [ExampleValue("Slaughter")]
+    [ExampleValue("Reexport")]
+    [ExampleValue("Euthanasia")]
+    [ExampleValue("Redispatching")]
+    [ExampleValue("Destruction")]
+    [ExampleValue("Transformation")]
+    [ExampleValue("Other")]
+    [ExampleValue("EntryRefusal")]
+    [ExampleValue("QuarantineImposed")]
+    [ExampleValue("SpecialTreatment")]
+    [ExampleValue("IndustrialProcessing")]
+    [ExampleValue("ReDispatch")]
+    [ExampleValue("UseForOtherPurposes")]
     [Description("Filled if consignmentAcceptable is set to false")]
-    public DecisionNotAcceptableActionEnum? NotAcceptableAction { get; init; }
+    public string? NotAcceptableAction { get; init; }
 
     [JsonPropertyName("notAcceptableActionDestructionReason")]
+    [ExampleValue("ContaminatedProducts")]
+    [ExampleValue("InterceptedPart")]
+    [ExampleValue("PackagingMaterial")]
+    [ExampleValue("Other")]
     [Description("Filled if not acceptable action is set to destruction")]
-    public DecisionNotAcceptableActionDestructionReasonEnum? NotAcceptableActionDestructionReason { get; init; }
+    public string? NotAcceptableActionDestructionReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionEntryRefusalReason")]
+    [ExampleValue("ContaminatedProducts")]
+    [ExampleValue("InterceptedPart")]
+    [ExampleValue("PackagingMaterial")]
+    [ExampleValue("MeansOfTransport")]
+    [ExampleValue("Other")]
     [Description("Filled if not acceptable action is set to entry refusal")]
-    public DecisionNotAcceptableActionEntryRefusalReasonEnum? NotAcceptableActionEntryRefusalReason { get; init; }
+    public string? NotAcceptableActionEntryRefusalReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionQuarantineImposedReason")]
+    [ExampleValue("ContaminatedProducts")]
+    [ExampleValue("InterceptedPart")]
+    [ExampleValue("PackagingMaterial")]
+    [ExampleValue("Other")]
     [Description("Filled if not acceptable action is set to quarantine imposed")]
-    public DecisionNotAcceptableActionQuarantineImposedReasonEnum? NotAcceptableActionQuarantineImposedReason { get; init; }
+    public string? NotAcceptableActionQuarantineImposedReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionSpecialTreatmentReason")]
+    [ExampleValue("ContaminatedProducts")]
+    [ExampleValue("InterceptedPart")]
+    [ExampleValue("PackagingMaterial")]
+    [ExampleValue("Other")]
     [Description("Filled if not acceptable action is set to special treatment")]
-    public DecisionNotAcceptableActionSpecialTreatmentReasonEnum? NotAcceptableActionSpecialTreatmentReason { get; init; }
+    public string? NotAcceptableActionSpecialTreatmentReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionIndustrialProcessingReason")]
+    [ExampleValue("ContaminatedProducts")]
+    [ExampleValue("InterceptedPart")]
+    [ExampleValue("PackagingMaterial")]
+    [ExampleValue("Other")]
     [Description("Filled if not acceptable action is set to industrial processing")]
-    public DecisionNotAcceptableActionIndustrialProcessingReasonEnum? NotAcceptableActionIndustrialProcessingReason { get; init; }
+    public string? NotAcceptableActionIndustrialProcessingReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionReDispatchReason")]
+    [ExampleValue("ContaminatedProducts")]
+    [ExampleValue("InterceptedPart")]
+    [ExampleValue("PackagingMaterial")]
+    [ExampleValue("MeansOfTransport")]
+    [ExampleValue("Other")]
     [Description("Filled if not acceptable action is set to re-dispatch")]
-    public DecisionNotAcceptableActionReDispatchReasonEnum? NotAcceptableActionReDispatchReason { get; init; }
+    public string? NotAcceptableActionReDispatchReason { get; init; }
 
     [JsonPropertyName("notAcceptableActionUseForOtherPurposesReason")]
+    [ExampleValue("ContaminatedProducts")]
+    [ExampleValue("InterceptedPart")]
+    [ExampleValue("PackagingMaterial")]
+    [ExampleValue("MeansOfTransport")]
+    [ExampleValue("Other")]
     [Description("Filled if not acceptable action is set to use for other purposes")]
-    public DecisionNotAcceptableActionUseForOtherPurposesReasonEnum? NotAcceptableActionUseForOtherPurposesReason { get; init; }
+    public string? NotAcceptableActionUseForOtherPurposesReason { get; init; }
 
     [JsonPropertyName("notAcceptableDestructionReason")]
     [Description("Filled when notAcceptableAction is equal to destruction")]
@@ -78,28 +122,53 @@ public partial record Decision
     public Party? DetailsOfControlledDestinations { get; init; }
 
     [JsonPropertyName("specificWarehouseNonConformingConsignment")]
+    [ExampleValue("CustomWarehouse")]
+    [ExampleValue("FreeZoneOrFreeWarehouse")]
+    [ExampleValue("ShipSupplier")]
+    [ExampleValue("Ship")]
     [Description("Filled if consignment is set to acceptable and decision type is Specific Warehouse")]
-    public DecisionSpecificWarehouseNonConformingConsignmentEnum? SpecificWarehouseNonConformingConsignment { get; init; }
+    public string? SpecificWarehouseNonConformingConsignment { get; init; }
 
     [JsonPropertyName("temporaryDeadline")]
     [Description("Deadline when consignment has to leave borders")]
     public string? TemporaryDeadline { get; init; }
 
     [JsonPropertyName("decisionEnum")]
+    [ExampleValue("NonAcceptable")]
+    [ExampleValue("AcceptableForInternalMarket")]
+    [ExampleValue("AcceptableIfChanneled")]
+    [ExampleValue("AcceptableForTranshipment")]
+    [ExampleValue("AcceptableForTransit")]
+    [ExampleValue("AcceptableForTemporaryImport")]
+    [ExampleValue("AcceptableForSpecificWarehouse")]
+    [ExampleValue("AcceptableForPrivateImport")]
+    [ExampleValue("AcceptableForTransfer")]
+    [ExampleValue("HorseReEntry")]
     [Description("Detailed decision for consignment")]
-    public DecisionDecisionEnum? DecisionEnum { get; init; }
+    public string? DecisionEnum { get; init; }
 
     [JsonPropertyName("freeCirculationPurpose")]
+    [ExampleValue("AnimalFeedingStuff")]
+    [ExampleValue("HumanConsumption")]
+    [ExampleValue("PharmaceuticalUse")]
+    [ExampleValue("TechnicalUse")]
+    [ExampleValue("FurtherProcess")]
+    [ExampleValue("Other")]
     [Description("Decision over purpose of free circulation in country")]
-    public DecisionFreeCirculationPurposeEnum? FreeCirculationPurpose { get; init; }
+    public string? FreeCirculationPurpose { get; init; }
 
     [JsonPropertyName("definitiveImportPurpose")]
+    [ExampleValue("Slaughter")]
+    [ExampleValue("Approvedbodies")]
+    [ExampleValue("Quarantine")]
     [Description("Decision over purpose of definitive import")]
-    public DecisionDefinitiveImportPurposeEnum? DefinitiveImportPurpose { get; init; }
+    public string? DefinitiveImportPurpose { get; init; }
 
     [JsonPropertyName("ifChanneledOption")]
+    [ExampleValue("Article8")]
+    [ExampleValue("Article15")]
     [Description("Decision channeled option based on (article8, article15)")]
-    public DecisionIfChanneledOptionEnum? IfChanneledOption { get; init; }
+    public string? IfChanneledOption { get; init; }
 
     [JsonPropertyName("customWarehouseRegisteredNumber")]
     [Description("Custom warehouse registered number")]
