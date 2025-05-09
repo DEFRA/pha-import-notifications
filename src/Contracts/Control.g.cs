@@ -18,6 +18,9 @@ public partial record Control
     public OfficialInspector? OfficialInspector { get; init; }
 
     [JsonPropertyName("consignmentLeave")]
+    [ExampleValue("Yes")]
+    [ExampleValue("No")]
+    [ExampleValue("ItHasBeenDestroyed")]
     [Description("Is the consignment leaving UK borders?")]
-    public ControlConsignmentLeaveEnum? ConsignmentLeave { get; init; }
+    public string? ConsignmentLeave { get; init; }
 }

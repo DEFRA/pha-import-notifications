@@ -6,8 +6,12 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record FeedbackInformation
 {
     [JsonPropertyName("authorityType")]
+    [ExampleValue("Exitbip")]
+    [ExampleValue("Finalbip")]
+    [ExampleValue("Localvetunit")]
+    [ExampleValue("Inspunit")]
     [Description("Type of authority")]
-    public FeedbackInformationAuthorityTypeEnum? AuthorityType { get; init; }
+    public string? AuthorityType { get; init; }
 
     [JsonPropertyName("consignmentArrival")]
     [Description("Did the consignment arrive")]

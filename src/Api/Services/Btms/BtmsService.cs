@@ -1,3 +1,4 @@
+using System.Reflection;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.JsonApi;
@@ -9,6 +10,12 @@ namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
 public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btmsOptions) : IBtmsService
 {
+    private static readonly string[] importNotificationTypes = typeof(ImportNotification)
+        .GetProperty(nameof(ImportNotification.ImportNotificationType))!
+        .GetCustomAttributes<ExampleValueAttribute>()
+        .Select(v => v.Value)
+        .ToArray();
+
     public async Task<IEnumerable<ImportNotificationUpdate>> GetImportNotificationUpdates(
         string[] bcp,
         DateTime from,
@@ -20,7 +27,7 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
             LogicalOperator.And,
             [
                 new AnyExpression("_PointOfEntry", bcp),
-                new AnyExpression("importNotificationType", Enum.GetNames<ImportNotificationTypeEnum>()),
+                new AnyExpression("importNotificationType", importNotificationTypes),
                 new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
                 new ComparisonExpression(ComparisonOperator.GreaterOrEqual, "updatedEntity", from.ToString("O")),
                 new ComparisonExpression(ComparisonOperator.LessThan, "updatedEntity", to.ToString("O")),

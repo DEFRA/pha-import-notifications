@@ -6,12 +6,17 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record JourneyRiskCategorisationResult
 {
     [JsonPropertyName("riskLevel")]
+    [ExampleValue("High")]
+    [ExampleValue("Medium")]
+    [ExampleValue("Low")]
     [Description("Risk Level is defined using enum values High,Medium,Low")]
-    public JourneyRiskCategorisationResultRiskLevelEnum? RiskLevel { get; init; }
+    public string? RiskLevel { get; init; }
 
     [JsonPropertyName("riskLevelMethod")]
+    [ExampleValue("System")]
+    [ExampleValue("User")]
     [Description("Indicator of whether the risk level was determined by the system or by the user")]
-    public JourneyRiskCategorisationResultRiskLevelMethodEnum? RiskLevelMethod { get; init; }
+    public string? RiskLevelMethod { get; init; }
 
     [JsonPropertyName("riskLevelSetFor")]
     [Description("The date and time the risk level has been set for a notification")]

@@ -14,8 +14,15 @@ public partial record DetailsOnReExport
     public string? MeansOfTransportNo { get; init; }
 
     [JsonPropertyName("transportType")]
+    [ExampleValue("Rail")]
+    [ExampleValue("Plane")]
+    [ExampleValue("Ship")]
+    [ExampleValue("Road")]
+    [ExampleValue("Other")]
+    [ExampleValue("CShipRoad")]
+    [ExampleValue("CShipRail")]
     [Description("Type of transport to be used")]
-    public DetailsOnReExportTransportTypeEnum? TransportType { get; init; }
+    public string? TransportType { get; init; }
 
     [JsonPropertyName("document")]
     [Description("Document issued for re-export")]

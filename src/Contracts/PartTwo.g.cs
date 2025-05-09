@@ -79,8 +79,11 @@ public partial record PartTwo
     public bool? HmiAutoCleared { get; init; }
 
     [JsonPropertyName("inspectionRequired")]
+    [ExampleValue("Required")]
+    [ExampleValue("Inconclusive")]
+    [ExampleValue("NotRequired")]
     [Description("Inspection required")]
-    public InspectionRequiredEnum? InspectionRequired { get; init; }
+    public string? InspectionRequired { get; init; }
 
     [JsonPropertyName("inspectionOverride")]
     [Description("Details about the manual inspection override")]

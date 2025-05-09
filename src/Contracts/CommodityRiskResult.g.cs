@@ -6,24 +6,38 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record CommodityRiskResult
 {
     [JsonPropertyName("riskDecision")]
+    [ExampleValue("Required")]
+    [ExampleValue("Notrequired")]
+    [ExampleValue("Inconclusive")]
+    [ExampleValue("ReenforcedCheck")]
     [Description("CHED-A, CHED-D, CHED-P - what is the commodity complement risk decision")]
-    public CommodityRiskResultRiskDecisionEnum? RiskDecision { get; init; }
+    public string? RiskDecision { get; init; }
 
     [JsonPropertyName("exitRiskDecision")]
+    [ExampleValue("Required")]
+    [ExampleValue("Notrequired")]
+    [ExampleValue("Inconclusive")]
     [Description("Transit CHED - what is the commodity complement exit risk decision")]
-    public CommodityRiskResultExitRiskDecisionEnum? ExitRiskDecision { get; init; }
+    public string? ExitRiskDecision { get; init; }
 
     [JsonPropertyName("hmiDecision")]
+    [ExampleValue("Required")]
+    [ExampleValue("Notrequired")]
     [Description("HMI decision required")]
-    public CommodityRiskResultHmiDecisionEnum? HmiDecision { get; init; }
+    public string? HmiDecision { get; init; }
 
     [JsonPropertyName("phsiDecision")]
+    [ExampleValue("Required")]
+    [ExampleValue("Notrequired")]
     [Description("PHSI decision required")]
-    public CommodityRiskResultPhsiDecisionEnum? PhsiDecision { get; init; }
+    public string? PhsiDecision { get; init; }
 
     [JsonPropertyName("phsiClassification")]
+    [ExampleValue("Mandatory")]
+    [ExampleValue("Reduced")]
+    [ExampleValue("Controlled")]
     [Description("PHSI classification")]
-    public CommodityRiskResultPhsiClassificationEnum? PhsiClassification { get; init; }
+    public string? PhsiClassification { get; init; }
 
     [JsonPropertyName("phsi")]
     [Description("PHSI Decision Breakdown")]

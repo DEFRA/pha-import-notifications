@@ -6,8 +6,12 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record ExternalReference
 {
     [JsonPropertyName("system")]
+    [ExampleValue("Ecert")]
+    [ExampleValue("Ephyto")]
+    [ExampleValue("Enotification")]
+    [ExampleValue("Ncts")]
     [Description("Identifier of the external system to which the reference relates")]
-    public ExternalReferenceSystemEnum? System { get; init; }
+    public string? System { get; init; }
 
     [JsonPropertyName("reference")]
     [Description("Reference which is added to the notification when either sent to the downstream system or received from it")]

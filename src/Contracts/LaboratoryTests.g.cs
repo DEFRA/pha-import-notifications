@@ -10,8 +10,14 @@ public partial record LaboratoryTests
     public DateTime? TestedOn { get; init; }
 
     [JsonPropertyName("testReason")]
+    [ExampleValue("Random")]
+    [ExampleValue("Suspicious")]
+    [ExampleValue("ReEnforced")]
+    [ExampleValue("IntensifiedControls")]
+    [ExampleValue("Required")]
+    [ExampleValue("LatentInfectionSampling")]
     [Description("Reason for test")]
-    public LaboratoryTestsTestReasonEnum? TestReason { get; init; }
+    public string? TestReason { get; init; }
 
     [JsonPropertyName("singleLaboratoryTests")]
     [Description("List of details of individual tests performed or to be performed")]
