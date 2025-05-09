@@ -68,7 +68,6 @@ public partial record ImportNotification
     [ExampleValue("Cvedp")]
     [ExampleValue("Chedpp")]
     [ExampleValue("Ced")]
-    [ExampleValue("Imp")]
     [Description("The Type of notification that has been submitted")]
     public string? ImportNotificationType { get; init; }
 
@@ -81,7 +80,6 @@ public partial record ImportNotification
     public string? ReplacedBy { get; init; }
 
     [JsonPropertyName("status")]
-    [ExampleValue("Draft")]
     [ExampleValue("Submitted")]
     [ExampleValue("Validated")]
     [ExampleValue("Rejected")]

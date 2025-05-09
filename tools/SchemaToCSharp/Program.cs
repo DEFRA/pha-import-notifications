@@ -189,9 +189,14 @@ static void AddEnumExampleValueAttributes(
     if (schema.AllOf.Any())
     {
         var enumSchemaName = schema.AllOf[0].Title;
+        Ignored.Properties.TryGetValue(enumSchemaName, out var ignoredProperties);
         if (exampleValues.TryGetValue(enumSchemaName, out var enumValues))
         {
-            attributes.AddRange(enumValues.Select(v => CreateSimpleAttributeList("ExampleValue", v)));
+            attributes.AddRange(
+                enumValues
+                    .Where(v => ignoredProperties?.Contains(v) != true)
+                    .Select(v => CreateSimpleAttributeList("ExampleValue", v))
+            );
         }
     }
 }
