@@ -109,7 +109,11 @@ static string CreateStringReferenceTypeName(OpenApiSchema schema)
 }
 
 static string CreateReferenceTypeName(OpenApiSchema schema, string defaultTypeName) =>
-    schema.Title is not null && schema.Enum.Count == 0 ? schema.Title : defaultTypeName;
+    // Special case FinalState for now because it is the only integer enum
+    (schema.Title is not null && schema.Enum.Count == 0)
+    || schema.Title == "FinalState"
+        ? schema.Title
+        : defaultTypeName;
 
 static EnumMemberDeclarationSyntax? CreateEnumValue(string schemaName, string name)
 {
