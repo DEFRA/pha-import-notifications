@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Text.Json;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -18,22 +17,16 @@ Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
 var stream = new FileStream(inputPath, FileMode.Open);
 var openApiDocument = new OpenApiStreamReader().Read(stream, out _);
-
-var exampleValues = new Dictionary<string, IEnumerable<string>>();
-var schemas = openApiDocument.Components.Schemas.Select(d => d.Value);
-foreach (var schema in schemas.Where(s => s.Type == OpenApiTypes.String))
-{
-    AddSchemaExampleValues(schema, exampleValues);
-}
-
 var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName(outputNamespace));
+
+var schemas = openApiDocument.Components.Schemas.Select(d => d.Value);
 foreach (var schema in schemas)
 {
     var syntax = schema.Type switch
     {
         OpenApiTypes.String => null,
         OpenApiTypes.Integer => CreateEnumSyntax(schema),
-        OpenApiTypes.Object => CreateTypeSyntax(schema, exampleValues),
+        OpenApiTypes.Object => CreateTypeSyntax(schema),
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
 
@@ -54,9 +47,9 @@ SyntaxNode CreateEnumSyntax(OpenApiSchema schema)
     return namespaceDeclaration.AddMembers(@enum);
 }
 
-SyntaxNode CreateTypeSyntax(OpenApiSchema schema, Dictionary<string, IEnumerable<string>> exampleValues)
+SyntaxNode CreateTypeSyntax(OpenApiSchema schema)
 {
-    var properties = schema.Properties.Select(p => CreateProperty(schema.Title, p.Key, p.Value, exampleValues));
+    var properties = schema.Properties.Select(p => CreateProperty(schema.Title, p.Key, p.Value));
     var @class = CreateRecord(schema.Title)
         .WithOpenBraceToken(Token(SyntaxKind.OpenBraceToken))
         .AddMembers(properties.ToArray<MemberDeclarationSyntax>())
@@ -67,12 +60,6 @@ SyntaxNode CreateTypeSyntax(OpenApiSchema schema, Dictionary<string, IEnumerable
         .WithLeadingTrivia(Trivia(NullableDirectiveTrivia(Token(SyntaxKind.EnableKeyword), true)))
         .AddMembers(namespaceDeclaration)
         .AddMembers(@class);
-}
-
-static void AddSchemaExampleValues(OpenApiSchema schema, Dictionary<string, IEnumerable<string>> exampleValues)
-{
-    var values = schema.Enum.Select(e => ((OpenApiString)e).Value);
-    exampleValues.Add(schema.Title, values);
 }
 
 static TypeSyntax CreatePropertyType(OpenApiSchema schema)
@@ -122,12 +109,7 @@ static EnumMemberDeclarationSyntax? CreateEnumValue(string schemaName, string na
     return ignored ? null : EnumMemberDeclaration(name);
 }
 
-static PropertyDeclarationSyntax CreateProperty(
-    string schemaName,
-    string name,
-    OpenApiSchema schema,
-    Dictionary<string, IEnumerable<string>> exampleValues
-)
+static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, OpenApiSchema schema)
 {
     var typeSyntax = CreatePropertyType(schema);
     var modifiers = new List<SyntaxToken> { Token(SyntaxKind.PublicKeyword) };
@@ -144,7 +126,7 @@ static PropertyDeclarationSyntax CreateProperty(
 
     var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };
 
-    AddEnumExampleValueAttributes(schema, exampleValues, attributes);
+    AddEnumExampleValueAttributes(schema, attributes);
 
     if (ignored)
         attributes.Add(AttributeList(SingletonSeparatedList(Attribute(ParseName("JsonIgnore")))));
@@ -180,24 +162,17 @@ static UsingDirectiveSyntax CreateUsing(string fqn) => UsingDirective(ParseName(
 static EnumDeclarationSyntax CreateEnum(string name) =>
     EnumDeclaration(name).AddModifiers(Token(SyntaxKind.PublicKeyword));
 
-static void AddEnumExampleValueAttributes(
-    OpenApiSchema schema,
-    Dictionary<string, IEnumerable<string>> exampleValues,
-    List<AttributeListSyntax> attributes
-)
+static void AddEnumExampleValueAttributes(OpenApiSchema schema, List<AttributeListSyntax> attributes)
 {
-    if (schema.AllOf.Any())
+    if (schema.AllOf?.FirstOrDefault()?.Enum.Any() == true)
     {
-        var enumSchemaName = schema.AllOf[0].Title;
-        Ignored.Properties.TryGetValue(enumSchemaName, out var ignoredProperties);
-        if (exampleValues.TryGetValue(enumSchemaName, out var enumValues))
-        {
-            attributes.AddRange(
-                enumValues
-                    .Where(v => ignoredProperties?.Contains(v) != true)
-                    .Select(v => CreateSimpleAttributeList("ExampleValue", v))
-            );
-        }
+        var enumSchema = schema.AllOf[0];
+        Ignored.Properties.TryGetValue(enumSchema.Title, out var ignoredProperties);
+        var enumValues = enumSchema
+            .Enum.OfType<OpenApiString>()
+            .Select(s => s.Value)
+            .Where(v => ignoredProperties?.Contains(v) != true);
+        attributes.AddRange(enumValues.Select(v => CreateSimpleAttributeList("ExampleValue", v)));
     }
 }
 
