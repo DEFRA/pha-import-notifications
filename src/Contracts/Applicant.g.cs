@@ -30,8 +30,11 @@ public partial record Applicant
     public string? SampleBatchNumber { get; init; }
 
     [JsonPropertyName("analysisType")]
+    [ExampleValue("InitialAnalysis")]
+    [ExampleValue("CounterAnalysis")]
+    [ExampleValue("SecondExpertAnalysis")]
     [Description("Type of analysis")]
-    public ApplicantAnalysisTypeEnum? AnalysisType { get; init; }
+    public string? AnalysisType { get; init; }
 
     [JsonPropertyName("numberOfSamples")]
     [Description("Number of samples analysed")]
@@ -42,8 +45,11 @@ public partial record Applicant
     public string? SampleType { get; init; }
 
     [JsonPropertyName("conservationOfSample")]
+    [ExampleValue("Ambient")]
+    [ExampleValue("Chilled")]
+    [ExampleValue("Frozen")]
     [Description("Conservation of sample")]
-    public ApplicantConservationOfSampleEnum? ConservationOfSample { get; init; }
+    public string? ConservationOfSample { get; init; }
 
     [JsonPropertyName("inspector")]
     [Description("inspector")]

@@ -198,12 +198,42 @@
         "type": "object",
         "properties": {
           "documentType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AccompanyingDocumentDocumentTypeEnum"
-              }
+            "enum": [
+              "AirWaybill",
+              "BillOfLading",
+              "CargoManifest",
+              "CatchCertificate",
+              "CommercialDocument",
+              "CommercialInvoice",
+              "ConformityCertificate",
+              "ContainerManifest",
+              "CustomsDeclaration",
+              "Docom",
+              "HealthCertificate",
+              "HeatTreatmentCertificate",
+              "ImportPermit",
+              "InspectionCertificate",
+              "Itahc",
+              "JourneyLog",
+              "LaboratorySamplingResultsForAflatoxin",
+              "LatestVeterinaryHealthCertificate",
+              "LetterOfAuthority",
+              "LicenseOrAuthorisation",
+              "MycotoxinCertification",
+              "OriginCertificate",
+              "Other",
+              "PhytosanitaryCertificate",
+              "ProcessingStatement",
+              "ProofOfStorage",
+              "RailwayBill",
+              "SeaWaybill",
+              "VeterinaryHealthCertificate",
+              "ListOfIngredients",
+              "PackingList",
+              "RoadConsignmentNote"
             ],
-            "description": "Additional document type",
+            "type": "string",
+            "description": "Additional document type\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "documentReference": {
@@ -253,43 +283,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "AccompanyingDocumentDocumentTypeEnum": {
-        "enum": [
-          "AirWaybill",
-          "BillOfLading",
-          "CargoManifest",
-          "CatchCertificate",
-          "CommercialDocument",
-          "CommercialInvoice",
-          "ConformityCertificate",
-          "ContainerManifest",
-          "CustomsDeclaration",
-          "Docom",
-          "HealthCertificate",
-          "HeatTreatmentCertificate",
-          "ImportPermit",
-          "InspectionCertificate",
-          "Itahc",
-          "JourneyLog",
-          "LaboratorySamplingResultsForAflatoxin",
-          "LatestVeterinaryHealthCertificate",
-          "LetterOfAuthority",
-          "LicenseOrAuthorisation",
-          "MycotoxinCertification",
-          "OriginCertificate",
-          "Other",
-          "PhytosanitaryCertificate",
-          "ProcessingStatement",
-          "ProofOfStorage",
-          "RailwayBill",
-          "SeaWaybill",
-          "VeterinaryHealthCertificate",
-          "ListOfIngredients",
-          "PackingList",
-          "RoadConsignmentNote"
-        ],
-        "type": "string"
       },
       "ActualCrossing": {
         "type": "object",
@@ -417,12 +410,13 @@
             "nullable": true
           },
           "analysisType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ApplicantAnalysisTypeEnum"
-              }
+            "enum": [
+              "InitialAnalysis",
+              "CounterAnalysis",
+              "SecondExpertAnalysis"
             ],
-            "description": "Type of analysis",
+            "type": "string",
+            "description": "Type of analysis\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "numberOfSamples": {
@@ -437,12 +431,13 @@
             "nullable": true
           },
           "conservationOfSample": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ApplicantConservationOfSampleEnum"
-              }
+            "enum": [
+              "Ambient",
+              "Chilled",
+              "Frozen"
             ],
-            "description": "Conservation of sample",
+            "type": "string",
+            "description": "Conservation of sample\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "inspector": {
@@ -462,22 +457,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "ApplicantAnalysisTypeEnum": {
-        "enum": [
-          "InitialAnalysis",
-          "CounterAnalysis",
-          "SecondExpertAnalysis"
-        ],
-        "type": "string"
-      },
-      "ApplicantConservationOfSampleEnum": {
-        "enum": [
-          "Ambient",
-          "Chilled",
-          "Frozen"
-        ],
-        "type": "string"
       },
       "ApprovedEstablishment": {
         "type": "object",
@@ -647,67 +626,53 @@
         "type": "object",
         "properties": {
           "reason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChedppNotAcceptableReasonReasonEnum"
-              }
+            "enum": [
+              "DocPhmdm",
+              "DocPhmdii",
+              "DocPa",
+              "DocPic",
+              "DocPill",
+              "DocPed",
+              "DocPmod",
+              "DocPfi",
+              "DocPnol",
+              "DocPcne",
+              "DocPadm",
+              "DocPadi",
+              "DocPpni",
+              "DocPf",
+              "DocPo",
+              "DocNcevd",
+              "DocNcpqefi",
+              "DocNcpqebec",
+              "DocNcts",
+              "DocNco",
+              "DocOrii",
+              "DocOrsr",
+              "OriOrrnu",
+              "PhyOrpp",
+              "PhyOrho",
+              "PhyIs",
+              "PhyOrsr",
+              "OthCnl",
+              "OthO"
             ],
-            "description": "reason for refusal",
+            "type": "string",
+            "description": "reason for refusal\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "commodityOrPackage": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ChedppNotAcceptableReasonCommodityOrPackageEnum"
-              }
+            "enum": [
+              "C",
+              "P",
+              "Cp"
             ],
-            "description": "commodity or package",
+            "type": "string",
+            "description": "commodity or package\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           }
         },
         "additionalProperties": false
-      },
-      "ChedppNotAcceptableReasonCommodityOrPackageEnum": {
-        "enum": [
-          "C",
-          "P",
-          "Cp"
-        ],
-        "type": "string"
-      },
-      "ChedppNotAcceptableReasonReasonEnum": {
-        "enum": [
-          "DocPhmdm",
-          "DocPhmdii",
-          "DocPa",
-          "DocPic",
-          "DocPill",
-          "DocPed",
-          "DocPmod",
-          "DocPfi",
-          "DocPnol",
-          "DocPcne",
-          "DocPadm",
-          "DocPadi",
-          "DocPpni",
-          "DocPf",
-          "DocPo",
-          "DocNcevd",
-          "DocNcpqefi",
-          "DocNcpqebec",
-          "DocNcts",
-          "DocNco",
-          "DocOrii",
-          "DocOrsr",
-          "OriOrrnu",
-          "PhyOrpp",
-          "PhyOrho",
-          "PhyIs",
-          "PhyOrsr",
-          "OthCnl",
-          "OthO"
-        ],
-        "type": "string"
       },
       "Commodities": {
         "type": "object",
@@ -798,25 +763,18 @@
             "nullable": true
           },
           "commodityIntendedFor": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CommoditiesCommodityIntendedForEnum"
-              }
+            "enum": [
+              "Human",
+              "Feedingstuff",
+              "Further",
+              "Other"
             ],
-            "description": "What the commodity is intended for",
+            "type": "string",
+            "description": "What the commodity is intended for\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           }
         },
         "additionalProperties": false
-      },
-      "CommoditiesCommodityIntendedForEnum": {
-        "enum": [
-          "Human",
-          "Feedingstuff",
-          "Further",
-          "Other"
-        ],
-        "type": "string"
       },
       "CommodityComplement": {
         "type": "object",
@@ -937,48 +895,52 @@
         "type": "object",
         "properties": {
           "riskDecision": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CommodityRiskResultRiskDecisionEnum"
-              }
+            "enum": [
+              "Required",
+              "Notrequired",
+              "Inconclusive",
+              "ReenforcedCheck"
             ],
-            "description": "CHED-A, CHED-D, CHED-P - what is the commodity complement risk decision",
+            "type": "string",
+            "description": "CHED-A, CHED-D, CHED-P - what is the commodity complement risk decision\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "exitRiskDecision": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CommodityRiskResultExitRiskDecisionEnum"
-              }
+            "enum": [
+              "Required",
+              "Notrequired",
+              "Inconclusive"
             ],
-            "description": "Transit CHED - what is the commodity complement exit risk decision",
+            "type": "string",
+            "description": "Transit CHED - what is the commodity complement exit risk decision\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "hmiDecision": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CommodityRiskResultHmiDecisionEnum"
-              }
+            "enum": [
+              "Required",
+              "Notrequired"
             ],
-            "description": "HMI decision required",
+            "type": "string",
+            "description": "HMI decision required\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "phsiDecision": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CommodityRiskResultPhsiDecisionEnum"
-              }
+            "enum": [
+              "Required",
+              "Notrequired"
             ],
-            "description": "PHSI decision required",
+            "type": "string",
+            "description": "PHSI decision required\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "phsiClassification": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CommodityRiskResultPhsiClassificationEnum"
-              }
+            "enum": [
+              "Mandatory",
+              "Reduced",
+              "Controlled"
             ],
-            "description": "PHSI classification",
+            "type": "string",
+            "description": "PHSI classification\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "phsi": {
@@ -1017,45 +979,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "CommodityRiskResultExitRiskDecisionEnum": {
-        "enum": [
-          "Required",
-          "Notrequired",
-          "Inconclusive"
-        ],
-        "type": "string"
-      },
-      "CommodityRiskResultHmiDecisionEnum": {
-        "enum": [
-          "Required",
-          "Notrequired"
-        ],
-        "type": "string"
-      },
-      "CommodityRiskResultPhsiClassificationEnum": {
-        "enum": [
-          "Mandatory",
-          "Reduced",
-          "Controlled"
-        ],
-        "type": "string"
-      },
-      "CommodityRiskResultPhsiDecisionEnum": {
-        "enum": [
-          "Required",
-          "Notrequired"
-        ],
-        "type": "string"
-      },
-      "CommodityRiskResultRiskDecisionEnum": {
-        "enum": [
-          "Required",
-          "Notrequired",
-          "Inconclusive",
-          "ReenforcedCheck"
-        ],
-        "type": "string"
       },
       "CommonUserCharge": {
         "type": "object",
@@ -1097,12 +1020,13 @@
             "nullable": true
           },
           "identityCheckType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ConsignmentCheckIdentityCheckTypeEnum"
-              }
+            "enum": [
+              "SealCheck",
+              "FullIdentityCheck",
+              "NotDone"
             ],
-            "description": "Type of identity check performed",
+            "type": "string",
+            "description": "Type of identity check performed\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "identityCheckResult": {
@@ -1111,12 +1035,12 @@
             "nullable": true
           },
           "identityCheckNotDoneReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ConsignmentCheckIdentityCheckNotDoneReasonEnum"
-              }
+            "enum": [
+              "ReducedChecksRegime",
+              "NotRequired"
             ],
-            "description": "What was the reason for skipping identity check",
+            "type": "string",
+            "description": "What was the reason for skipping identity check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "physicalCheckDone": {
@@ -1130,12 +1054,12 @@
             "nullable": true
           },
           "physicalCheckNotDoneReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ConsignmentCheckPhysicalCheckNotDoneReasonEnum"
-              }
+            "enum": [
+              "ReducedChecksRegime",
+              "Other"
             ],
-            "description": "What was the reason for skipping physical check",
+            "type": "string",
+            "description": "What was the reason for skipping physical check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "physicalCheckOtherText": {
@@ -1166,28 +1090,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "ConsignmentCheckIdentityCheckNotDoneReasonEnum": {
-        "enum": [
-          "ReducedChecksRegime",
-          "NotRequired"
-        ],
-        "type": "string"
-      },
-      "ConsignmentCheckIdentityCheckTypeEnum": {
-        "enum": [
-          "SealCheck",
-          "FullIdentityCheck",
-          "NotDone"
-        ],
-        "type": "string"
-      },
-      "ConsignmentCheckPhysicalCheckNotDoneReasonEnum": {
-        "enum": [
-          "ReducedChecksRegime",
-          "Other"
-        ],
-        "type": "string"
       },
       "ContactDetails": {
         "type": "object",
@@ -1246,12 +1148,13 @@
             "nullable": true
           },
           "consignmentLeave": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ControlConsignmentLeaveEnum"
-              }
+            "enum": [
+              "Yes",
+              "No",
+              "ItHasBeenDestroyed"
             ],
-            "description": "Is the consignment leaving UK borders?",
+            "type": "string",
+            "description": "Is the consignment leaving UK borders?\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           }
         },
@@ -1290,32 +1193,17 @@
             "nullable": true
           },
           "iuuOption": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ControlAuthorityIuuOptionEnum"
-              }
+            "enum": [
+              "Iuuok",
+              "Iuuna",
+              "IUUNotCompliant"
             ],
-            "description": "Result of Illegal, Unreported and Unregulated (IUU) check",
+            "type": "string",
+            "description": "Result of Illegal, Unreported and Unregulated (IUU) check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           }
         },
         "additionalProperties": false
-      },
-      "ControlAuthorityIuuOptionEnum": {
-        "enum": [
-          "Iuuok",
-          "Iuuna",
-          "IUUNotCompliant"
-        ],
-        "type": "string"
-      },
-      "ControlConsignmentLeaveEnum": {
-        "enum": [
-          "Yes",
-          "No",
-          "ItHasBeenDestroyed"
-        ],
-        "type": "string"
       },
       "Customs": {
         "type": "object",
@@ -1378,75 +1266,103 @@
             "nullable": true
           },
           "notAcceptableAction": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionNotAcceptableActionEnum"
-              }
+            "enum": [
+              "Slaughter",
+              "Reexport",
+              "Euthanasia",
+              "Redispatching",
+              "Destruction",
+              "Transformation",
+              "Other",
+              "EntryRefusal",
+              "QuarantineImposed",
+              "SpecialTreatment",
+              "IndustrialProcessing",
+              "ReDispatch",
+              "UseForOtherPurposes"
             ],
-            "description": "Filled if consignmentAcceptable is set to false",
+            "type": "string",
+            "description": "Filled if consignmentAcceptable is set to false\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionDestructionReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionNotAcceptableActionDestructionReasonEnum"
-              }
+            "enum": [
+              "ContaminatedProducts",
+              "InterceptedPart",
+              "PackagingMaterial",
+              "Other"
             ],
-            "description": "Filled if not acceptable action is set to destruction",
+            "type": "string",
+            "description": "Filled if not acceptable action is set to destruction\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionEntryRefusalReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionNotAcceptableActionEntryRefusalReasonEnum"
-              }
+            "enum": [
+              "ContaminatedProducts",
+              "InterceptedPart",
+              "PackagingMaterial",
+              "MeansOfTransport",
+              "Other"
             ],
-            "description": "Filled if not acceptable action is set to entry refusal",
+            "type": "string",
+            "description": "Filled if not acceptable action is set to entry refusal\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionQuarantineImposedReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionNotAcceptableActionQuarantineImposedReasonEnum"
-              }
+            "enum": [
+              "ContaminatedProducts",
+              "InterceptedPart",
+              "PackagingMaterial",
+              "Other"
             ],
-            "description": "Filled if not acceptable action is set to quarantine imposed",
+            "type": "string",
+            "description": "Filled if not acceptable action is set to quarantine imposed\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionSpecialTreatmentReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionNotAcceptableActionSpecialTreatmentReasonEnum"
-              }
+            "enum": [
+              "ContaminatedProducts",
+              "InterceptedPart",
+              "PackagingMaterial",
+              "Other"
             ],
-            "description": "Filled if not acceptable action is set to special treatment",
+            "type": "string",
+            "description": "Filled if not acceptable action is set to special treatment\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionIndustrialProcessingReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionNotAcceptableActionIndustrialProcessingReasonEnum"
-              }
+            "enum": [
+              "ContaminatedProducts",
+              "InterceptedPart",
+              "PackagingMaterial",
+              "Other"
             ],
-            "description": "Filled if not acceptable action is set to industrial processing",
+            "type": "string",
+            "description": "Filled if not acceptable action is set to industrial processing\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionReDispatchReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionNotAcceptableActionReDispatchReasonEnum"
-              }
+            "enum": [
+              "ContaminatedProducts",
+              "InterceptedPart",
+              "PackagingMaterial",
+              "MeansOfTransport",
+              "Other"
             ],
-            "description": "Filled if not acceptable action is set to re-dispatch",
+            "type": "string",
+            "description": "Filled if not acceptable action is set to re-dispatch\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionUseForOtherPurposesReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionNotAcceptableActionUseForOtherPurposesReasonEnum"
-              }
+            "enum": [
+              "ContaminatedProducts",
+              "InterceptedPart",
+              "PackagingMaterial",
+              "MeansOfTransport",
+              "Other"
             ],
-            "description": "Filled if not acceptable action is set to use for other purposes",
+            "type": "string",
+            "description": "Filled if not acceptable action is set to use for other purposes\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableDestructionReason": {
@@ -1506,12 +1422,14 @@
             "nullable": true
           },
           "specificWarehouseNonConformingConsignment": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionSpecificWarehouseNonConformingConsignmentEnum"
-              }
+            "enum": [
+              "CustomWarehouse",
+              "FreeZoneOrFreeWarehouse",
+              "ShipSupplier",
+              "Ship"
             ],
-            "description": "Filled if consignment is set to acceptable and decision type is Specific Warehouse",
+            "type": "string",
+            "description": "Filled if consignment is set to acceptable and decision type is Specific Warehouse\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "temporaryDeadline": {
@@ -1520,39 +1438,52 @@
             "nullable": true
           },
           "decisionEnum": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionDecisionEnum"
-              }
+            "enum": [
+              "NonAcceptable",
+              "AcceptableForInternalMarket",
+              "AcceptableIfChanneled",
+              "AcceptableForTranshipment",
+              "AcceptableForTransit",
+              "AcceptableForTemporaryImport",
+              "AcceptableForSpecificWarehouse",
+              "AcceptableForPrivateImport",
+              "AcceptableForTransfer",
+              "HorseReEntry"
             ],
-            "description": "Detailed decision for consignment",
+            "type": "string",
+            "description": "Detailed decision for consignment\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "freeCirculationPurpose": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionFreeCirculationPurposeEnum"
-              }
+            "enum": [
+              "AnimalFeedingStuff",
+              "HumanConsumption",
+              "PharmaceuticalUse",
+              "TechnicalUse",
+              "FurtherProcess",
+              "Other"
             ],
-            "description": "Decision over purpose of free circulation in country",
+            "type": "string",
+            "description": "Decision over purpose of free circulation in country\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "definitiveImportPurpose": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionDefinitiveImportPurposeEnum"
-              }
+            "enum": [
+              "Slaughter",
+              "Approvedbodies",
+              "Quarantine"
             ],
-            "description": "Decision over purpose of definitive import",
+            "type": "string",
+            "description": "Decision over purpose of definitive import\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "ifChanneledOption": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionIfChanneledOptionEnum"
-              }
+            "enum": [
+              "Article8",
+              "Article15"
             ],
-            "description": "Decision channeled option based on (article8, article15)",
+            "type": "string",
+            "description": "Decision channeled option based on (article8, article15)\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "customWarehouseRegisteredNumber": {
@@ -1623,40 +1554,6 @@
         },
         "additionalProperties": false
       },
-      "DecisionDecisionEnum": {
-        "enum": [
-          "NonAcceptable",
-          "AcceptableForInternalMarket",
-          "AcceptableIfChanneled",
-          "AcceptableForTranshipment",
-          "AcceptableForTransit",
-          "AcceptableForTemporaryImport",
-          "AcceptableForSpecificWarehouse",
-          "AcceptableForPrivateImport",
-          "AcceptableForTransfer",
-          "HorseReEntry"
-        ],
-        "type": "string"
-      },
-      "DecisionDefinitiveImportPurposeEnum": {
-        "enum": [
-          "Slaughter",
-          "Approvedbodies",
-          "Quarantine"
-        ],
-        "type": "string"
-      },
-      "DecisionFreeCirculationPurposeEnum": {
-        "enum": [
-          "AnimalFeedingStuff",
-          "HumanConsumption",
-          "PharmaceuticalUse",
-          "TechnicalUse",
-          "FurtherProcess",
-          "Other"
-        ],
-        "type": "string"
-      },
       "DecisionHeader": {
         "type": "object",
         "properties": {
@@ -1677,13 +1574,6 @@
         },
         "additionalProperties": false
       },
-      "DecisionIfChanneledOptionEnum": {
-        "enum": [
-          "Article8",
-          "Article15"
-        ],
-        "type": "string"
-      },
       "DecisionItems": {
         "required": [
           "itemNumber"
@@ -1703,99 +1593,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "DecisionNotAcceptableActionDestructionReasonEnum": {
-        "enum": [
-          "ContaminatedProducts",
-          "InterceptedPart",
-          "PackagingMaterial",
-          "Other"
-        ],
-        "type": "string"
-      },
-      "DecisionNotAcceptableActionEntryRefusalReasonEnum": {
-        "enum": [
-          "ContaminatedProducts",
-          "InterceptedPart",
-          "PackagingMaterial",
-          "MeansOfTransport",
-          "Other"
-        ],
-        "type": "string"
-      },
-      "DecisionNotAcceptableActionEnum": {
-        "enum": [
-          "Slaughter",
-          "Reexport",
-          "Euthanasia",
-          "Redispatching",
-          "Destruction",
-          "Transformation",
-          "Other",
-          "EntryRefusal",
-          "QuarantineImposed",
-          "SpecialTreatment",
-          "IndustrialProcessing",
-          "ReDispatch",
-          "UseForOtherPurposes"
-        ],
-        "type": "string"
-      },
-      "DecisionNotAcceptableActionIndustrialProcessingReasonEnum": {
-        "enum": [
-          "ContaminatedProducts",
-          "InterceptedPart",
-          "PackagingMaterial",
-          "Other"
-        ],
-        "type": "string"
-      },
-      "DecisionNotAcceptableActionQuarantineImposedReasonEnum": {
-        "enum": [
-          "ContaminatedProducts",
-          "InterceptedPart",
-          "PackagingMaterial",
-          "Other"
-        ],
-        "type": "string"
-      },
-      "DecisionNotAcceptableActionReDispatchReasonEnum": {
-        "enum": [
-          "ContaminatedProducts",
-          "InterceptedPart",
-          "PackagingMaterial",
-          "MeansOfTransport",
-          "Other"
-        ],
-        "type": "string"
-      },
-      "DecisionNotAcceptableActionSpecialTreatmentReasonEnum": {
-        "enum": [
-          "ContaminatedProducts",
-          "InterceptedPart",
-          "PackagingMaterial",
-          "Other"
-        ],
-        "type": "string"
-      },
-      "DecisionNotAcceptableActionUseForOtherPurposesReasonEnum": {
-        "enum": [
-          "ContaminatedProducts",
-          "InterceptedPart",
-          "PackagingMaterial",
-          "MeansOfTransport",
-          "Other"
-        ],
-        "type": "string"
-      },
-      "DecisionSpecificWarehouseNonConformingConsignmentEnum": {
-        "enum": [
-          "CustomWarehouse",
-          "FreeZoneOrFreeWarehouse",
-          "ShipSupplier",
-          "Ship"
-        ],
-        "type": "string"
       },
       "Declarations": {
         "type": "object",
@@ -1834,12 +1631,17 @@
             "nullable": true
           },
           "transportType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DetailsOnReExportTransportTypeEnum"
-              }
+            "enum": [
+              "Rail",
+              "Plane",
+              "Ship",
+              "Road",
+              "Other",
+              "CShipRoad",
+              "CShipRail"
             ],
-            "description": "Type of transport to be used",
+            "type": "string",
+            "description": "Type of transport to be used\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "document": {
@@ -1859,18 +1661,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "DetailsOnReExportTransportTypeEnum": {
-        "enum": [
-          "Rail",
-          "Plane",
-          "Ship",
-          "Road",
-          "Other",
-          "CShipRoad",
-          "CShipRail"
-        ],
-        "type": "string"
       },
       "Document": {
         "type": "object",
@@ -1895,21 +1685,33 @@
             "nullable": true
           },
           "type": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EconomicOperatorTypeEnum"
-              }
+            "enum": [
+              "Consignee",
+              "Destination",
+              "Exporter",
+              "Importer",
+              "Charity",
+              "CommercialTransporter",
+              "CommercialTransporterUserAdded",
+              "PrivateTransporter",
+              "TemporaryAddress",
+              "PremisesOfOrigin",
+              "OrganisationBranchAddress",
+              "Packer",
+              "Pod"
             ],
-            "description": "Type of organisation",
+            "type": "string",
+            "description": "Type of organisation\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/EconomicOperatorStatusEnum"
-              }
+            "enum": [
+              "Approved",
+              "Nonapproved",
+              "Suspended"
             ],
-            "description": "Status of organisation",
+            "type": "string",
+            "description": "Status of organisation\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "companyName": {
@@ -1950,42 +1752,18 @@
         },
         "additionalProperties": false
       },
-      "EconomicOperatorStatusEnum": {
-        "enum": [
-          "Approved",
-          "Nonapproved",
-          "Suspended"
-        ],
-        "type": "string"
-      },
-      "EconomicOperatorTypeEnum": {
-        "enum": [
-          "Consignee",
-          "Destination",
-          "Exporter",
-          "Importer",
-          "Charity",
-          "CommercialTransporter",
-          "CommercialTransporterUserAdded",
-          "PrivateTransporter",
-          "TemporaryAddress",
-          "PremisesOfOrigin",
-          "OrganisationBranchAddress",
-          "Packer",
-          "Pod"
-        ],
-        "type": "string"
-      },
       "ExternalReference": {
         "type": "object",
         "properties": {
           "system": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ExternalReferenceSystemEnum"
-              }
+            "enum": [
+              "Ecert",
+              "Ephyto",
+              "Enotification",
+              "Ncts"
             ],
-            "description": "Identifier of the external system to which the reference relates",
+            "type": "string",
+            "description": "Identifier of the external system to which the reference relates\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "reference": {
@@ -2011,25 +1789,18 @@
         },
         "additionalProperties": false
       },
-      "ExternalReferenceSystemEnum": {
-        "enum": [
-          "Ecert",
-          "Ephyto",
-          "Enotification",
-          "Ncts"
-        ],
-        "type": "string"
-      },
       "FeedbackInformation": {
         "type": "object",
         "properties": {
           "authorityType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FeedbackInformationAuthorityTypeEnum"
-              }
+            "enum": [
+              "Exitbip",
+              "Finalbip",
+              "Localvetunit",
+              "Inspunit"
             ],
-            "description": "Type of authority",
+            "type": "string",
+            "description": "Type of authority\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "consignmentArrival": {
@@ -2054,15 +1825,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "FeedbackInformationAuthorityTypeEnum": {
-        "enum": [
-          "Exitbip",
-          "Finalbip",
-          "Localvetunit",
-          "Inspunit"
-        ],
-        "type": "string"
       },
       "FinalState": {
         "enum": [
@@ -2116,12 +1878,16 @@
             "nullable": true
           },
           "state": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/StateEnum"
-              }
+            "enum": [
+              "NotFinalisable",
+              "Open",
+              "Finalised",
+              "CheckedIn",
+              "Embarked",
+              "Completed"
             ],
-            "description": "The state of the GMR",
+            "type": "string",
+            "description": "The state of the GMR\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "updatedSource": {
@@ -2368,12 +2134,14 @@
             "nullable": true
           },
           "importNotificationType": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ImportNotificationTypeEnum"
-              }
+            "enum": [
+              "Cveda",
+              "Cvedp",
+              "Chedpp",
+              "Ced"
             ],
-            "description": "The Type of notification that has been submitted",
+            "type": "string",
+            "description": "The Type of notification that has been submitted\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "replaces": {
@@ -2387,12 +2155,21 @@
             "nullable": true
           },
           "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ImportNotificationStatusEnum"
-              }
+            "enum": [
+              "Submitted",
+              "Validated",
+              "Rejected",
+              "InProgress",
+              "Amend",
+              "Modify",
+              "Replaced",
+              "Cancelled",
+              "Deleted",
+              "PartiallyRejected",
+              "SplitConsignment"
             ],
-            "description": "Current status of the notification. When created by an importer, the notification has the status 'SUBMITTED'. Before submission of the notification it has the status 'DRAFT'. When the BIP starts validation of the notification it has the status 'IN PROGRESS' Once the BIP validates the notification, it gets the status 'VALIDATED'. 'AMEND' is set when the Part-1 user is modifying the notification. 'MODIFY' is set when Part-2 user is modifying the notification. Replaced - When the notification is replaced by another notification. Rejected - Notification moves to Rejected status when rejected by a Part-2 user. ",
+            "type": "string",
+            "description": "Current status of the notification. When created by an importer, the notification has the status 'SUBMITTED'. Before submission of the notification it has the status 'DRAFT'. When the BIP starts validation of the notification it has the status 'IN PROGRESS' Once the BIP validates the notification, it gets the status 'VALIDATED'. 'AMEND' is set when the Part-1 user is modifying the notification. 'MODIFY' is set when Part-2 user is modifying the notification. Replaced - When the notification is replaced by another notification. Rejected - Notification moves to Rejected status when rejected by a Part-2 user. \n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "splitConsignment": {
@@ -2516,50 +2293,32 @@
         },
         "additionalProperties": false
       },
-      "ImportNotificationStatusEnum": {
-        "enum": [
-          "Submitted",
-          "Validated",
-          "Rejected",
-          "InProgress",
-          "Amend",
-          "Modify",
-          "Replaced",
-          "Cancelled",
-          "Deleted",
-          "PartiallyRejected",
-          "SplitConsignment"
-        ],
-        "type": "string"
-      },
-      "ImportNotificationTypeEnum": {
-        "enum": [
-          "Cveda",
-          "Cvedp",
-          "Chedpp",
-          "Ced"
-        ],
-        "type": "string"
-      },
       "InspectionCheck": {
         "type": "object",
         "properties": {
           "type": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/InspectionCheckTypeEnum"
-              }
+            "enum": [
+              "PhsiDocument",
+              "PhsiIdentity",
+              "PhsiPhysical",
+              "Hmi"
             ],
-            "description": "Type of check",
+            "type": "string",
+            "description": "Type of check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/InspectionCheckStatusEnum"
-              }
+            "enum": [
+              "ToDo",
+              "Compliant",
+              "AutoCleared",
+              "NonCompliant",
+              "NotInspected",
+              "ToBeInspected",
+              "Hold"
             ],
-            "description": "Status of the check",
+            "type": "string",
+            "description": "Status of the check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "reason": {
@@ -2584,27 +2343,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "InspectionCheckStatusEnum": {
-        "enum": [
-          "ToDo",
-          "Compliant",
-          "AutoCleared",
-          "NonCompliant",
-          "NotInspected",
-          "ToBeInspected",
-          "Hold"
-        ],
-        "type": "string"
-      },
-      "InspectionCheckTypeEnum": {
-        "enum": [
-          "PhsiDocument",
-          "PhsiIdentity",
-          "PhsiPhysical",
-          "Hmi"
-        ],
-        "type": "string"
       },
       "InspectionOverride": {
         "type": "object",
@@ -2631,14 +2369,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "InspectionRequiredEnum": {
-        "enum": [
-          "Required",
-          "Inconclusive",
-          "NotRequired"
-        ],
-        "type": "string"
       },
       "Inspector": {
         "type": "object",
@@ -2745,21 +2475,22 @@
         "type": "object",
         "properties": {
           "riskLevel": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/JourneyRiskCategorisationResultRiskLevelEnum"
-              }
+            "enum": [
+              "High",
+              "Medium",
+              "Low"
             ],
-            "description": "Risk Level is defined using enum values High,Medium,Low",
+            "type": "string",
+            "description": "Risk Level is defined using enum values High,Medium,Low\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "riskLevelMethod": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/JourneyRiskCategorisationResultRiskLevelMethodEnum"
-              }
+            "enum": [
+              "System",
+              "User"
             ],
-            "description": "Indicator of whether the risk level was determined by the system or by the user",
+            "type": "string",
+            "description": "Indicator of whether the risk level was determined by the system or by the user\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "riskLevelSetFor": {
@@ -2770,21 +2501,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "JourneyRiskCategorisationResultRiskLevelEnum": {
-        "enum": [
-          "High",
-          "Medium",
-          "Low"
-        ],
-        "type": "string"
-      },
-      "JourneyRiskCategorisationResultRiskLevelMethodEnum": {
-        "enum": [
-          "System",
-          "User"
-        ],
-        "type": "string"
       },
       "LaboratoryTestResult": {
         "type": "object",
@@ -2811,12 +2527,14 @@
             "nullable": true
           },
           "conclusion": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LaboratoryTestResultConclusionEnum"
-              }
+            "enum": [
+              "Satisfactory",
+              "NotSatisfactory",
+              "NotInterpretable",
+              "Pending"
             ],
-            "description": "Conclusion of laboratory test",
+            "type": "string",
+            "description": "Conclusion of laboratory test\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "labTestCreatedOn": {
@@ -2828,15 +2546,6 @@
         },
         "additionalProperties": false
       },
-      "LaboratoryTestResultConclusionEnum": {
-        "enum": [
-          "Satisfactory",
-          "NotSatisfactory",
-          "NotInterpretable",
-          "Pending"
-        ],
-        "type": "string"
-      },
       "LaboratoryTests": {
         "type": "object",
         "properties": {
@@ -2847,12 +2556,16 @@
             "nullable": true
           },
           "testReason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/LaboratoryTestsTestReasonEnum"
-              }
+            "enum": [
+              "Random",
+              "Suspicious",
+              "ReEnforced",
+              "IntensifiedControls",
+              "Required",
+              "LatentInfectionSampling"
             ],
-            "description": "Reason for test",
+            "type": "string",
+            "description": "Reason for test\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "singleLaboratoryTests": {
@@ -2866,27 +2579,22 @@
         },
         "additionalProperties": false
       },
-      "LaboratoryTestsTestReasonEnum": {
-        "enum": [
-          "Random",
-          "Suspicious",
-          "ReEnforced",
-          "IntensifiedControls",
-          "Required",
-          "LatentInfectionSampling"
-        ],
-        "type": "string"
-      },
       "MeansOfTransport": {
         "type": "object",
         "properties": {
           "type": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/MeansOfTransportTypeEnum"
-              }
+            "enum": [
+              "Aeroplane",
+              "RoadVehicle",
+              "RailwayWagon",
+              "Ship",
+              "Other",
+              "RoadVehicleAeroplane",
+              "ShipRailwayWagon",
+              "ShipRoadVehicle"
             ],
-            "description": "Type of transport",
+            "type": "string",
+            "description": "Type of transport\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "document": {
@@ -2901,19 +2609,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "MeansOfTransportTypeEnum": {
-        "enum": [
-          "Aeroplane",
-          "RoadVehicle",
-          "RailwayWagon",
-          "Ship",
-          "Other",
-          "RoadVehicleAeroplane",
-          "ShipRailwayWagon",
-          "ShipRoadVehicle"
-        ],
-        "type": "string"
       },
       "NominatedContact": {
         "type": "object",
@@ -3272,12 +2967,13 @@
             "nullable": true
           },
           "provideCtcMrn": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PartOneProvideCtcMrnEnum"
-              }
+            "enum": [
+              "Yes",
+              "YesAddLater",
+              "No"
             ],
-            "description": "When the NCTS MRN will be added for the Common Transit Convention (CTC)",
+            "type": "string",
+            "description": "When the NCTS MRN will be added for the Common Transit Convention (CTC)\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "arrivesAt": {
@@ -3295,24 +2991,16 @@
         },
         "additionalProperties": false
       },
-      "PartOneProvideCtcMrnEnum": {
-        "enum": [
-          "Yes",
-          "YesAddLater",
-          "No"
-        ],
-        "type": "string"
-      },
       "PartThree": {
         "type": "object",
         "properties": {
           "controlStatus": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PartThreeControlStatusEnum"
-              }
+            "enum": [
+              "Required",
+              "Completed"
             ],
-            "description": "Control status enum",
+            "type": "string",
+            "description": "Control status enum\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "control": {
@@ -3357,13 +3045,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "PartThreeControlStatusEnum": {
-        "enum": [
-          "Required",
-          "Completed"
-        ],
-        "type": "string"
       },
       "PartTwo": {
         "type": "object",
@@ -3488,12 +3169,13 @@
             "nullable": true
           },
           "inspectionRequired": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/InspectionRequiredEnum"
-              }
+            "enum": [
+              "Required",
+              "Inconclusive",
+              "NotRequired"
             ],
-            "description": "Inspection required",
+            "type": "string",
+            "description": "Inspection required\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "inspectionOverride": {
@@ -3577,12 +3259,12 @@
             "nullable": true
           },
           "type": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PartyTypeEnum"
-              }
+            "enum": [
+              "CommercialTransporter",
+              "PrivateTransporter"
             ],
-            "description": "Type of party",
+            "type": "string",
+            "description": "Type of party\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "approvalNumber": {
@@ -3607,13 +3289,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "PartyTypeEnum": {
-        "enum": [
-          "CommercialTransporter",
-          "PrivateTransporter"
-        ],
-        "type": "string"
       },
       "Phsi": {
         "type": "object",
@@ -3730,12 +3405,28 @@
             "nullable": true
           },
           "internalMarketPurpose": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PurposeInternalMarketPurposeEnum"
-              }
+            "enum": [
+              "AnimalFeedingStuff",
+              "HumanConsumption",
+              "PharmaceuticalUse",
+              "TechnicalUse",
+              "Other",
+              "CommercialSale",
+              "CommercialSaleOrChangeOfOwnership",
+              "Rescue",
+              "Breeding",
+              "Research",
+              "RacingOrCompetition",
+              "ApprovedPremisesOrBody",
+              "CompanionAnimalNotForResaleOrRehoming",
+              "Production",
+              "Slaughter",
+              "Fattening",
+              "GameRestocking",
+              "RegisteredHorses"
             ],
-            "description": "Detailed purpose of internal market purpose group",
+            "type": "string",
+            "description": "Detailed purpose of internal market purpose group\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "thirdCountryTranshipment": {
@@ -3744,12 +3435,14 @@
             "nullable": true
           },
           "forNonConforming": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PurposeForNonConformingEnum"
-              }
+            "enum": [
+              "CustomsWarehouse",
+              "FreeZoneOrFreeWarehouse",
+              "ShipSupplier",
+              "Ship"
             ],
-            "description": "Detailed purpose for non conforming purpose group",
+            "type": "string",
+            "description": "Detailed purpose for non conforming purpose group\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "regNumber": {
@@ -3786,12 +3479,13 @@
             "nullable": true
           },
           "forImportOrAdmission": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PurposeForImportOrAdmissionEnum"
-              }
+            "enum": [
+              "DefinitiveImport",
+              "HorsesReEntry",
+              "TemporaryAdmissionHorses"
             ],
-            "description": "Specification of Import or admission purpose",
+            "type": "string",
+            "description": "Specification of Import or admission purpose\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "exitDate": {
@@ -3806,12 +3500,19 @@
             "nullable": true
           },
           "purposeGroup": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PurposePurposeGroupEnum"
-              }
+            "enum": [
+              "ForImport",
+              "ForNONConformingConsignments",
+              "ForTranshipmentTo",
+              "ForTransitTo3rdCountry",
+              "ForReImport",
+              "ForPrivateImport",
+              "ForTransferTo",
+              "ForImportReConformityCheck",
+              "ForImportNonInternalMarket"
             ],
-            "description": "Purpose group of consignment (general purpose)",
+            "type": "string",
+            "description": "Purpose group of consignment (general purpose)\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "estimatedArrivesAtPortOfExit": {
@@ -3822,60 +3523,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "PurposeForImportOrAdmissionEnum": {
-        "enum": [
-          "DefinitiveImport",
-          "HorsesReEntry",
-          "TemporaryAdmissionHorses"
-        ],
-        "type": "string"
-      },
-      "PurposeForNonConformingEnum": {
-        "enum": [
-          "CustomsWarehouse",
-          "FreeZoneOrFreeWarehouse",
-          "ShipSupplier",
-          "Ship"
-        ],
-        "type": "string"
-      },
-      "PurposeInternalMarketPurposeEnum": {
-        "enum": [
-          "AnimalFeedingStuff",
-          "HumanConsumption",
-          "PharmaceuticalUse",
-          "TechnicalUse",
-          "Other",
-          "CommercialSale",
-          "CommercialSaleOrChangeOfOwnership",
-          "Rescue",
-          "Breeding",
-          "Research",
-          "RacingOrCompetition",
-          "ApprovedPremisesOrBody",
-          "CompanionAnimalNotForResaleOrRehoming",
-          "Production",
-          "Slaughter",
-          "Fattening",
-          "GameRestocking",
-          "RegisteredHorses"
-        ],
-        "type": "string"
-      },
-      "PurposePurposeGroupEnum": {
-        "enum": [
-          "ForImport",
-          "ForNONConformingConsignments",
-          "ForTranshipmentTo",
-          "ForTransitTo3rdCountry",
-          "ForReImport",
-          "ForPrivateImport",
-          "ForTransferTo",
-          "ForImportReConformityCheck",
-          "ForImportNonInternalMarket"
-        ],
-        "type": "string"
       },
       "Route": {
         "type": "object",
@@ -4004,17 +3651,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "StateEnum": {
-        "enum": [
-          "NotFinalisable",
-          "Open",
-          "Finalised",
-          "CheckedIn",
-          "Embarked",
-          "Completed"
-        ],
-        "type": "string"
       },
       "Transits": {
         "type": "object",

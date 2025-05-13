@@ -9,7 +9,26 @@ public partial record DecisionComparison
     public required bool Paired { get; init; }
 
     [JsonPropertyName("decisionStatus")]
-    public required DecisionStatusEnum DecisionStatus { get; init; }
+    [ExampleValue("BtmsMadeSameDecisionAsAlvs")]
+    [ExampleValue("BtmMadeSameDecisionTypeAsAlvs")]
+    [ExampleValue("NoImportNotificationsLinked")]
+    [ExampleValue("PartialImportNotificationsLinked")]
+    [ExampleValue("NoAlvsDecisions")]
+    [ExampleValue("DocumentReferenceFormatIncorrect")]
+    [ExampleValue("DocumentReferenceCaseIncorrect")]
+    [ExampleValue("AlvsX00NotBtms")]
+    [ExampleValue("ReliesOnCDMS205")]
+    [ExampleValue("ReliesOnCDMS249")]
+    [ExampleValue("HasChedppChecks")]
+    [ExampleValue("HasOtherDataErrors")]
+    [ExampleValue("HasGenericDataErrors")]
+    [ExampleValue("HasMultipleChedTypes")]
+    [ExampleValue("HasMultipleCheds")]
+    [ExampleValue("BtmsClearAlvsHold")]
+    [ExampleValue("AlvsClearBtmsHold")]
+    [ExampleValue("InvestigationNeeded")]
+    [ExampleValue("None")]
+    public required string DecisionStatus { get; init; }
 
     [JsonPropertyName("decisionMatched")]
     public required bool DecisionMatched { get; init; }

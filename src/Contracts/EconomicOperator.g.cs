@@ -10,12 +10,28 @@ public partial record EconomicOperator
     public string? Id { get; init; }
 
     [JsonPropertyName("type")]
+    [ExampleValue("Consignee")]
+    [ExampleValue("Destination")]
+    [ExampleValue("Exporter")]
+    [ExampleValue("Importer")]
+    [ExampleValue("Charity")]
+    [ExampleValue("CommercialTransporter")]
+    [ExampleValue("CommercialTransporterUserAdded")]
+    [ExampleValue("PrivateTransporter")]
+    [ExampleValue("TemporaryAddress")]
+    [ExampleValue("PremisesOfOrigin")]
+    [ExampleValue("OrganisationBranchAddress")]
+    [ExampleValue("Packer")]
+    [ExampleValue("Pod")]
     [Description("Type of organisation")]
-    public EconomicOperatorTypeEnum? Type { get; init; }
+    public string? Type { get; init; }
 
     [JsonPropertyName("status")]
+    [ExampleValue("Approved")]
+    [ExampleValue("Nonapproved")]
+    [ExampleValue("Suspended")]
     [Description("Status of organisation")]
-    public EconomicOperatorStatusEnum? Status { get; init; }
+    public string? Status { get; init; }
 
     [JsonPropertyName("companyName")]
     [Description("Name of organisation")]

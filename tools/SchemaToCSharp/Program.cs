@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using System.Data;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.OpenApi.Any;
@@ -7,67 +8,65 @@ using Microsoft.OpenApi.Readers;
 using SchemaToCSharp;
 using static Microsoft.CodeAnalysis.CSharp.SyntaxFactory;
 
-#pragma warning disable CS8321 // Local function is declared but never used
-#pragma warning disable S1172
-#pragma warning disable S6608
-#pragma warning disable S125
-
 const string solutionPath = "../../../../../";
 const string outputPath = $"{solutionPath}src/Contracts/";
 const string inputPath = $"{solutionPath}tools/SchemaToCSharp/openapi.json";
+const string outputNamespace = "Defra.PhaImportNotifications.Contracts";
 
 Directory.GetFiles(outputPath, "*.g.cs").ToList().ForEach(File.Delete);
 
 var stream = new FileStream(inputPath, FileMode.Open);
 var openApiDocument = new OpenApiStreamReader().Read(stream, out _);
+var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName(outputNamespace));
 
-var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName("Defra.PhaImportNotifications.Contracts"));
-
-foreach (var (_, schema) in openApiDocument.Components.Schemas)
+var schemas = openApiDocument.Components.Schemas.Select(d => d.Value);
+foreach (var schema in schemas)
 {
     var syntax = schema.Type switch
     {
-        OpenApiTypes.Integer => CreateEnumSyntax(),
-        OpenApiTypes.String => CreateEnumSyntax(),
-        OpenApiTypes.Object => CreateTypeSyntax(),
+        OpenApiTypes.String => null,
+        OpenApiTypes.Integer => CreateEnumSyntax(schema),
+        OpenApiTypes.Object => CreateTypeSyntax(schema),
         _ => throw new ArgumentOutOfRangeException(schema.Type, "Unknown schema type"),
     };
 
-    await using var streamWriter = new StreamWriter($"{outputPath}/{CreateTypeName(schema.Title)}.g.cs", false);
-    syntax.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
-    continue;
-
-    SyntaxNode CreateEnumSyntax()
+    if (syntax is not null)
     {
-        var values = schema.Enum.Select(v => CreateEnumValue(schema.Title, (v as OpenApiString)!.Value));
-        var @enum = CreateEnum(schema.Title).AddMembers(values.Where(x => x != null).Select(x => x!).ToArray());
-
-        return namespaceDeclaration.AddMembers(@enum);
-    }
-
-    SyntaxNode CreateTypeSyntax()
-    {
-        var properties = schema.Properties.Select(p => CreateProperty(schema.Title, p.Key, p.Value));
-        var @class = CreateRecord(schema.Title)
-            .WithOpenBraceToken(Token(SyntaxKind.OpenBraceToken))
-            .AddMembers(properties.ToArray<MemberDeclarationSyntax>())
-            .WithCloseBraceToken(Token(SyntaxKind.CloseBraceToken));
-
-        return CompilationUnit()
-            .AddUsings(CreateUsing("System.Text.Json.Serialization"), CreateUsing("System.ComponentModel"))
-            .WithLeadingTrivia(Trivia(NullableDirectiveTrivia(Token(SyntaxKind.EnableKeyword), true)))
-            .AddMembers(namespaceDeclaration)
-            .AddMembers(@class);
+        await using var streamWriter = new StreamWriter($"{outputPath}/{CreateTypeName(schema.Title)}.g.cs", false);
+        syntax.NormalizeWhitespace().WithTrailingTrivia(ElasticCarriageReturnLineFeed).WriteTo(streamWriter);
     }
 }
 
 return;
 
+SyntaxNode CreateEnumSyntax(OpenApiSchema schema)
+{
+    var values = schema.Enum.Select(v => CreateEnumValue(schema.Title, (v as OpenApiString)!.Value));
+    var @enum = CreateEnum(schema.Title).AddMembers(values.Where(x => x != null).Select(x => x!).ToArray());
+
+    return namespaceDeclaration.AddMembers(@enum);
+}
+
+SyntaxNode CreateTypeSyntax(OpenApiSchema schema)
+{
+    var properties = schema.Properties.Select(p => CreateProperty(schema.Title, p.Key, p.Value));
+    var @class = CreateRecord(schema.Title)
+        .WithOpenBraceToken(Token(SyntaxKind.OpenBraceToken))
+        .AddMembers(properties.ToArray<MemberDeclarationSyntax>())
+        .WithCloseBraceToken(Token(SyntaxKind.CloseBraceToken));
+
+    return CompilationUnit()
+        .AddUsings(CreateUsing("System.Text.Json.Serialization"), CreateUsing("System.ComponentModel"))
+        .WithLeadingTrivia(Trivia(NullableDirectiveTrivia(Token(SyntaxKind.EnableKeyword), true)))
+        .AddMembers(namespaceDeclaration)
+        .AddMembers(@class);
+}
+
 static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 {
     if (schema.AllOf.Any())
     {
-        return CreatePropertyType(schema.AllOf.First());
+        return CreatePropertyType(schema.AllOf[0]);
     }
 
     var typeName = schema.Type switch
@@ -88,11 +87,6 @@ static TypeSyntax CreatePropertyType(OpenApiSchema schema)
 
 static string CreateStringReferenceTypeName(OpenApiSchema schema)
 {
-    if (schema.Enum.Any())
-    {
-        return CreateReferenceTypeName(schema, DotNetTypes.String);
-    }
-
     return schema.Format switch
     {
         OpenApiFormats.DateTime => DotNetTypes.DateTime,
@@ -101,7 +95,12 @@ static string CreateStringReferenceTypeName(OpenApiSchema schema)
     };
 }
 
-static string CreateReferenceTypeName(OpenApiSchema schema, string defaultTypeName) => schema.Title ?? defaultTypeName;
+static string CreateReferenceTypeName(OpenApiSchema schema, string defaultTypeName) =>
+    // Special case FinalState for now because it is the only integer enum
+    (schema.Title is not null && schema.Enum.Count == 0)
+    || schema.Title == "FinalState"
+        ? schema.Title
+        : defaultTypeName;
 
 static EnumMemberDeclarationSyntax? CreateEnumValue(string schemaName, string name)
 {
@@ -126,6 +125,8 @@ static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, 
     }
 
     var attributes = new List<AttributeListSyntax> { CreateSimpleAttributeList("JsonPropertyName", name) };
+
+    AddEnumExampleValueAttributes(schema, attributes);
 
     if (ignored)
         attributes.Add(AttributeList(SingletonSeparatedList(Attribute(ParseName("JsonIgnore")))));
@@ -152,10 +153,6 @@ static PropertyDeclarationSyntax CreateProperty(string schemaName, string name, 
         );
 }
 
-static ClassDeclarationSyntax CreateClass(string name) =>
-    ClassDeclaration(Identifier(CreateTypeName(name)))
-        .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
-
 static RecordDeclarationSyntax CreateRecord(string name) =>
     RecordDeclaration(Token(SyntaxKind.RecordKeyword), Identifier(CreateTypeName(name)))
         .AddModifiers(Token(SyntaxKind.PublicKeyword), Token(SyntaxKind.PartialKeyword));
@@ -164,6 +161,20 @@ static UsingDirectiveSyntax CreateUsing(string fqn) => UsingDirective(ParseName(
 
 static EnumDeclarationSyntax CreateEnum(string name) =>
     EnumDeclaration(name).AddModifiers(Token(SyntaxKind.PublicKeyword));
+
+static void AddEnumExampleValueAttributes(OpenApiSchema schema, List<AttributeListSyntax> attributes)
+{
+    if (schema.AllOf?.FirstOrDefault()?.Enum.Any() == true)
+    {
+        var enumSchema = schema.AllOf[0];
+        Ignored.Properties.TryGetValue(enumSchema.Title, out var ignoredProperties);
+        var enumValues = enumSchema
+            .Enum.OfType<OpenApiString>()
+            .Select(s => s.Value)
+            .Where(v => ignoredProperties?.Contains(v) != true);
+        attributes.AddRange(enumValues.Select(v => CreateSimpleAttributeList("ExampleValue", v)));
+    }
+}
 
 static AttributeListSyntax CreateSimpleAttributeList(string type, string arg1) =>
     AttributeList(SingletonSeparatedList(CreateSimpleAttribute(type, arg1)));

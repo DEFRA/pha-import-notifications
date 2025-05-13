@@ -38,8 +38,14 @@ public partial record Gmr
     public string? HaulierEori { get; init; }
 
     [JsonPropertyName("state")]
+    [ExampleValue("NotFinalisable")]
+    [ExampleValue("Open")]
+    [ExampleValue("Finalised")]
+    [ExampleValue("CheckedIn")]
+    [ExampleValue("Embarked")]
+    [ExampleValue("Completed")]
     [Description("The state of the GMR")]
-    public StateEnum? State { get; init; }
+    public string? State { get; init; }
 
     [JsonPropertyName("inspectionRequired")]
     [JsonIgnore]
@@ -56,14 +62,24 @@ public partial record Gmr
     public DateTime? UpdatedSource { get; init; }
 
     [JsonPropertyName("direction")]
+    [ExampleValue("UkInbound")]
+    [ExampleValue("UkOutbound")]
+    [ExampleValue("GbToNi")]
+    [ExampleValue("NiToGb")]
     [JsonIgnore]
     [Description("The direction of the movement - into or out of the UK, or between Great Britain and Northern Ireland")]
-    public DirectionEnum? Direction { get; init; }
+    public string? Direction { get; init; }
 
     [JsonPropertyName("haulierType")]
+    [ExampleValue("Standard")]
+    [ExampleValue("FpoAsn")]
+    [ExampleValue("FpoOther")]
+    [ExampleValue("NatoMod")]
+    [ExampleValue("Rmg")]
+    [ExampleValue("Etoe")]
     [JsonIgnore]
     [Description("The type of haulier moving the goods")]
-    public HaulierTypeEnum? HaulierType { get; init; }
+    public string? HaulierType { get; init; }
 
     [JsonPropertyName("isUnaccompanied")]
     [Description("Set to true if the vehicle will not be accompanying the trailer(s) during the crossing, or if the vehicle is carrying a container that will be detached and loaded for the crossing.")]

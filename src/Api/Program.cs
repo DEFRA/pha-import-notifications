@@ -129,6 +129,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         c.IncludeXmlComments(typeof(ImportNotification).Assembly);
         c.DocumentFilter<TagsDocumentFilter>();
         c.SchemaFilter<DescriptionSchemaFilter>();
+        c.SchemaFilter<ExampleValueSchemaFilter>();
         c.UseAllOfToExtendReferenceSchemas();
         c.SwaggerDoc(
             "v1",

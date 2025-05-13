@@ -6,9 +6,12 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record PartOne
 {
     [JsonPropertyName("typeOfImp")]
+    [ExampleValue("A")]
+    [ExampleValue("P")]
+    [ExampleValue("D")]
     [JsonIgnore]
     [Description("Used to indicate what type of EU Import the notification is - Live Animals, Product Of Animal Origin or High Risk Food Not Of Animal Origin")]
-    public PartOneTypeOfImpEnum? TypeOfImp { get; init; }
+    public string? TypeOfImp { get; init; }
 
     [JsonPropertyName("personResponsible")]
     [Description("The individual who has submitted the notification")]
@@ -199,8 +202,11 @@ public partial record PartOne
     public CommonUserCharge? CommonUserCharge { get; init; }
 
     [JsonPropertyName("provideCtcMrn")]
+    [ExampleValue("Yes")]
+    [ExampleValue("YesAddLater")]
+    [ExampleValue("No")]
     [Description("When the NCTS MRN will be added for the Common Transit Convention (CTC)")]
-    public PartOneProvideCtcMrnEnum? ProvideCtcMrn { get; init; }
+    public string? ProvideCtcMrn { get; init; }
 
     [JsonPropertyName("arrivesAt")]
     [Description("DateTime")]
