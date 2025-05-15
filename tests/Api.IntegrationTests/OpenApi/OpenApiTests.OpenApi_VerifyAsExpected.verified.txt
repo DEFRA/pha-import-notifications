@@ -1,5 +1,5 @@
 ﻿{
-  "openapi": "3.0.1",
+  "openapi": "3.0.4",
   "info": {
     "title": "PHA Import Notifications",
     "description": "The PHA API enforces a rate limit on requests to avoid excessive usage which, if reached, will return a 429 status code.\nPlease get in touch if you encounter this limit.",
