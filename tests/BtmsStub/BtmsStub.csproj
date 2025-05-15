@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -6,7 +6,7 @@
     <RootNamespace>Defra.PhaImportNotifications.BtmsStub</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="WireMock.Net" Version="1.7.4" />
+    <PackageReference Include="WireMock.Net" Version="1.8.4" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scenarios\*.json" />
