@@ -120,7 +120,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
 
         var response = await client.GetAsync(
-            Testing.Endpoints.ImportNotifications.GetUpdatedValid(new[] { "bcp1", "bcp2", "bcp-no-access" })
+            Testing.Endpoints.ImportNotifications.GetUpdatedValid(["bcp1", "bcp2", "bcp-no-access"])
         );
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
