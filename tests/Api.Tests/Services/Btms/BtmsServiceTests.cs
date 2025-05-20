@@ -48,15 +48,17 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
         };
 
-    [Fact]
-    public async Task GetImportNotificationUpdates_WhenOk_ShouldSucceed()
+    [Theory]
+    [InlineData("noBcps")]
+    [InlineData("FilterByBcp", "bcp1", "bcp2")]
+    public async Task GetImportNotificationUpdates_WhenOk_ShouldSucceed(string testName, params string[] bcps)
     {
         WireMock.StubImportNotificationUpdates(transformRequest: builder =>
             builder
                 .WithParam(
                     "filter",
                     "and("
-                        + "any(_PointOfEntry,'bcp1','bcp2'),"
+                        + (bcps.Length == 0 ? "" : "any(_PointOfEntry,'bcp1','bcp2'),")
                         + "any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),"
                         + "not(equals(status,'Draft')),"
                         + "greaterOrEqual(updatedEntity,'2024-12-12T13:10:30.0000000Z'),"
@@ -68,7 +70,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         );
 
         var result = await Subject.GetImportNotificationUpdates(
-            ValidRequest.Bcp,
+            bcps,
             ValidRequest.From,
             ValidRequest.To,
             CancellationToken.None
@@ -77,7 +79,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         // If this fails, check the expected filter or fields as it may have changed
         result.Should().HaveCount(10);
 
-        await Verify(result, _settings);
+        await Verify(result, _settings).UseParameters(testName);
     }
 
     [Fact]
@@ -87,7 +89,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         StubSubsequentUpdatesRequestForPage(2);
 
         var result = await Subject.GetImportNotificationUpdates(
-            ValidRequest.Bcp,
+            ValidRequest.Bcp!,
             ValidRequest.From,
             ValidRequest.To,
             CancellationToken.None
@@ -104,7 +106,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
 
         var act = () =>
             Subject.GetImportNotificationUpdates(
-                ValidRequest.Bcp,
+                ValidRequest.Bcp!,
                 ValidRequest.From,
                 ValidRequest.To,
                 CancellationToken.None
@@ -160,18 +162,16 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         await act.Should().ThrowAsync<Exception>();
     }
 
-#pragma warning disable CA2211
-    // Non-constant fields should not be visible - ignoring as it's a test
-    public static TheoryData<string, string[]> ChedReferenceNumbersWithMovements = new()
-#pragma warning restore CA2211
-    {
+    public static TheoryData<string, string[]> ChedReferenceNumbersWithMovements =>
+        new()
         {
-            ChedReferenceNumbers.ChedPWithMovement,
-            [MovementReferenceNumbers.Movement1, MovementReferenceNumbers.Movement2]
-        },
-        { ChedReferenceNumbers.ChedD, [MovementReferenceNumbers.Movement3] },
-        { ChedReferenceNumbers.ChedPFinalised, [MovementReferenceNumbers.MovementFinalised] },
-    };
+            {
+                ChedReferenceNumbers.ChedPWithMovement,
+                [MovementReferenceNumbers.Movement1, MovementReferenceNumbers.Movement2]
+            },
+            { ChedReferenceNumbers.ChedD, [MovementReferenceNumbers.Movement3] },
+            { ChedReferenceNumbers.ChedPFinalised, [MovementReferenceNumbers.MovementFinalised] },
+        };
 
     [Theory, MemberData(nameof(ChedReferenceNumbersWithMovements))]
     public async Task GetImportNotification_WithMovements_WhenOk_ShouldSucceed(

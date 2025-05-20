@@ -23,20 +23,21 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
         CancellationToken cancellationToken
     )
     {
-        var filter = new FilterExpression(
-            LogicalOperator.And,
+        IEnumerable<IExpression> bcpFilter = bcp.Length > 0 ? [new AnyExpression("_PointOfEntry", bcp)] : [];
+        var filters = bcpFilter.Concat(
             [
-                new AnyExpression("_PointOfEntry", bcp),
                 new AnyExpression("importNotificationType", importNotificationTypes),
                 new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
                 new ComparisonExpression(ComparisonOperator.GreaterOrEqual, "updatedEntity", from.ToString("O")),
                 new ComparisonExpression(ComparisonOperator.LessThan, "updatedEntity", to.ToString("O")),
             ]
         );
+
+        var filterExpression = new FilterExpression(LogicalOperator.And, filters);
         var fields = new[] { new FieldExpression("import-notifications", ["updatedEntity", "referenceNumber"]) };
 
         var document = await jsonApiClient.Get(
-            new RequestUri("api/import-notifications", filter, fields, btmsOptions.Value.PageSize),
+            new RequestUri("api/import-notifications", filterExpression, fields, btmsOptions.Value.PageSize),
             cancellationToken
         );
 
