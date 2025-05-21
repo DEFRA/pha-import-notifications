@@ -2,8 +2,8 @@ namespace Defra.PhaImportNotifications.Api.JsonApi;
 
 public record FilterExpression(
     LogicalOperator Operator,
-    IReadOnlyList<IExpression> Expressions,
-    IReadOnlyList<FilterExpression>? NestedExpressions = null
+    IEnumerable<IExpression> Expressions,
+    IEnumerable<FilterExpression>? NestedExpressions = null
 )
 {
     public override string ToString()

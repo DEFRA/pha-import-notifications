@@ -8,10 +8,13 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications";
 
-        public static string GetUpdatedValid(string[]? bcp = null, string? from = null, string? to = null) =>
-            GetUpdatedBetween(bcp ?? ["bcp"], from ?? "2024-12-11T13:00:00Z", to ?? "2024-12-11T13:30:00Z");
+        public static string GetUpdatedValid(
+            string[]? bcp = null,
+            string from = "2024-12-11T13:00:00Z",
+            string to = "2024-12-11T13:30:00Z"
+        ) => GetUpdatedBetween(bcp, from, to);
 
-        public static string GetUpdatedBetween(string[]? bcp = null, string? from = null, string? to = null)
+        public static string GetUpdatedBetween(string[]? bcp, string from, string to)
         {
             var query = new QueryBuilder();
 
@@ -19,11 +22,9 @@ public static class Endpoints
                 foreach (var se in bcp)
                     query.Add("bcp", se);
 
-            if (from is not null)
-                query.Add("from", from);
+            query.Add("from", from);
 
-            if (to is not null)
-                query.Add("to", to);
+            query.Add("to", to);
 
             return $"{Root}{query}";
         }

@@ -35,7 +35,7 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
     /// <param name="services"></param>
     protected virtual void ConfigureTestServices(IServiceCollection services) { }
 
-    protected HttpClient CreateClient()
+    protected HttpClient CreateClient(string clientId = "pha")
     {
         var builder = _factory.WithWebHostBuilder(builder =>
         {
@@ -44,14 +44,18 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
 
         var client = builder.CreateClient();
 
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GenerateJwt());
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GenerateJwt(clientId));
 
         return client;
     }
 
-    private static string GenerateJwt()
+    private static string GenerateJwt(string clientId)
     {
-        var claims = new[] { new Claim(JwtRegisteredClaimNames.Sub, "pha"), new Claim(PhaClaimTypes.ClientId, "pha") };
+        var claims = new[]
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, clientId),
+            new Claim(PhaClaimTypes.ClientId, clientId),
+        };
 
         var rand = new byte[32];
         using (var rng = RandomNumberGenerator.Create())
