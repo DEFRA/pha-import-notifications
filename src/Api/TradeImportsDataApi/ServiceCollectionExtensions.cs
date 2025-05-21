@@ -1,10 +1,9 @@
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
-using Defra.PhaImportNotifications.Api.JsonApi.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace Defra.PhaImportNotifications.Api.TradeDataApi;
+namespace Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 
 public static class ServiceCollectionExtensions
 {
@@ -14,7 +13,7 @@ public static class ServiceCollectionExtensions
             .AddHttpClient<TradeDataHttpClient, TradeDataHttpClient>(
                 (sp, httpClient) =>
                 {
-                    var options = sp.GetRequiredService<IOptions<TradeDataApiOptions>>().Value;
+                    var options = sp.GetRequiredService<IOptions<TradeImportsDataApiOptions>>().Value;
 
                     httpClient.BaseAddress = new Uri(options.BaseUrl);
                     httpClient.DefaultRequestHeaders.Accept.Add(
