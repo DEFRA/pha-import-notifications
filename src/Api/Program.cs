@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 using Defra.PhaImportNotifications.Api.Configuration;
@@ -170,7 +172,28 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         .BindConfiguration("TradeImportsDataApi")
         .ValidateOptions(!generatingOpenApiFromCli);
 
-    builder.Services.AddTradeImportsDataApiHttpClient();
+    builder
+        .Services.AddHttpClient<TradeDataHttpClient, TradeDataHttpClient>(
+            (sp, httpClient) =>
+            {
+                var options = sp.GetRequiredService<IOptions<TradeImportsDataApiOptions>>().Value;
+
+                httpClient.BaseAddress = new Uri(options.BaseUrl);
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                if (options.Username is not null)
+                {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                        "Basic",
+                        Convert.ToBase64String(Encoding.UTF8.GetBytes($"{options.Username}:{options.Password}"))
+                    );
+                }
+
+                if (httpClient.BaseAddress.Scheme.Equals("https", StringComparison.OrdinalIgnoreCase))
+                    httpClient.DefaultRequestVersion = HttpVersion.Version20;
+            }
+        )
+        .AddHeaderPropagation();
 
     ServiceCollectionExtensions.AddJsonApiClient(
         builder.Services,
