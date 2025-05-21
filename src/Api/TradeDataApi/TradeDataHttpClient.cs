@@ -1,4 +1,4 @@
-namespace Defra.PhaImportNotifications.Api.TradeDataApi;
+namespace Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 
 public class TradeDataHttpClient(HttpClient client)
 {

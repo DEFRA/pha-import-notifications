@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Nodes;
-using Defra.PhaImportNotifications.Api.TradeDataApi;
+using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Microsoft.AspNetCore.Http;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;

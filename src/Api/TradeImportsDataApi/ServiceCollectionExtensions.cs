@@ -7,7 +7,7 @@ namespace Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 
 public static class ServiceCollectionExtensions
 {
-    public static IHttpClientBuilder AddTradeDataHttpClient(this IServiceCollection services)
+    public static IHttpClientBuilder AddTradeImportsDataApiHttpClient(this IServiceCollection services)
     {
         return services
             .AddHttpClient<TradeDataHttpClient, TradeDataHttpClient>(

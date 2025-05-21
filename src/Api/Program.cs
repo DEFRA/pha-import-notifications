@@ -7,7 +7,7 @@ using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.OpenApi;
 using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Api.Services.Btms;
-using Defra.PhaImportNotifications.Api.TradeDataApi;
+using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
@@ -166,11 +166,11 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
     builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder
-        .Services.AddOptions<TradeDataApiOptions>()
-        .BindConfiguration("TradeDataApi")
+        .Services.AddOptions<TradeImportsDataApiOptions>()
+        .BindConfiguration("TradeImportsDataApi")
         .ValidateOptions(!generatingOpenApiFromCli);
 
-    builder.Services.AddTradeDataHttpClient();
+    builder.Services.AddTradeImportsDataApiHttpClient();
 
     ServiceCollectionExtensions.AddJsonApiClient(
         builder.Services,

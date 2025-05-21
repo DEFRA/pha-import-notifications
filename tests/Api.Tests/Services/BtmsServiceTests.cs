@@ -3,7 +3,7 @@ using Argon;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
-using Defra.PhaImportNotifications.Api.TradeDataApi;
+using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using Microsoft.Extensions.Logging.Abstractions;

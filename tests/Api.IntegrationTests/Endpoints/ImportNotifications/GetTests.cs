@@ -138,7 +138,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
             new Dictionary<string, string?>
             {
                 { "Btms:BaseUrl", HttpClient.BaseAddress?.ToString() },
-                { "TradeDataApi:BaseUrl", HttpClient.BaseAddress?.ToString() },
+                { "TradeImportsDataApi:BaseUrl", HttpClient.BaseAddress?.ToString() },
             }
         );
 

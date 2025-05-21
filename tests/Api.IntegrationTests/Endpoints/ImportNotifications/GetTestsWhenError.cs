@@ -1,5 +1,5 @@
 using System.Net;
-using Defra.PhaImportNotifications.Api.TradeDataApi;
+using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;

@@ -2,7 +2,7 @@ using System.Net;
 using System.Reflection;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.JsonApi;
-using Defra.PhaImportNotifications.Api.TradeDataApi;
+using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.Extensions.Options;
 using Document = Defra.PhaImportNotifications.Api.JsonApi.Document;
