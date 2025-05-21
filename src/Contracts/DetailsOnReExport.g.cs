@@ -14,14 +14,14 @@ public partial record DetailsOnReExport
     public string? MeansOfTransportNo { get; init; }
 
     [JsonPropertyName("transportType")]
-    [ExampleValue("Rail")]
-    [ExampleValue("Plane")]
-    [ExampleValue("Ship")]
-    [ExampleValue("Road")]
-    [ExampleValue("Other")]
-    [ExampleValue("CShipRoad")]
-    [ExampleValue("CShipRail")]
-    [Description("Type of transport to be used")]
+    [ExampleValue("rail")]
+    [ExampleValue("plane")]
+    [ExampleValue("ship")]
+    [ExampleValue("road")]
+    [ExampleValue("other")]
+    [ExampleValue("c_ship_road")]
+    [ExampleValue("c_ship_rail")]
+    [Description("Type of transport to be used. Possible values taken from IPAFFS schema version 17.5.")]
     public string? TransportType { get; init; }
 
     [JsonPropertyName("document")]

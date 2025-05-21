@@ -1,6 +1,0 @@
-﻿[
-  {
-    ResourceType: books,
-    Id: 111
-  }
-]

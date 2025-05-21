@@ -6,21 +6,10 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record InspectionCheck
 {
     [JsonPropertyName("type")]
-    [ExampleValue("PhsiDocument")]
-    [ExampleValue("PhsiIdentity")]
-    [ExampleValue("PhsiPhysical")]
-    [ExampleValue("Hmi")]
     [Description("Type of check")]
     public string? Type { get; init; }
 
     [JsonPropertyName("status")]
-    [ExampleValue("ToDo")]
-    [ExampleValue("Compliant")]
-    [ExampleValue("AutoCleared")]
-    [ExampleValue("NonCompliant")]
-    [ExampleValue("NotInspected")]
-    [ExampleValue("ToBeInspected")]
-    [ExampleValue("Hold")]
     [Description("Status of the check")]
     public string? Status { get; init; }
 

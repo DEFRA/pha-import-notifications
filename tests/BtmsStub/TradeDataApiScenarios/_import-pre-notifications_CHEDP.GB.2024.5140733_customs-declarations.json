@@ -1,0 +1,118 @@
+{
+  "customsDeclarations": [
+    {
+      "movementReferenceNumber": "24GBCUDNXBN1JNRAR5",
+      "clearanceRequest": {
+        "externalCorrelationId": "1273314",
+        "messageSentAt": "2024-11-19T14:12:40Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB933903421000-BSFL131913",
+        "declarationPartNumber": null,
+        "declarationType": "S",
+        "arrivesAt": null,
+        "submitterTurn": "GB933903421000",
+        "declarantId": "GB933903421000",
+        "declarantName": "GB933903421000",
+        "dispatchCountryCode": "NZ",
+        "goodsLocationCode": "FXTFXTFXT",
+        "masterUcr": "529744521",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0208903000",
+            "goodsDescription": "MEAT AND EDIBLE MEAT OFFAL OTHER MEAT AND EDIBLE MEAT OFFAL, FRESH, CHILLED OR FROZEN OTHER OF GAME, OTHER THAN OF RABBITS OR HARES",
+            "consigneeId": "GB342022509000",
+            "consigneeName": "GB342022509000",
+            "netMass": 1922.62,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "NZ",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5140818",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 2,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0204431010",
+            "goodsDescription": "MEAT AND EDIBLE MEAT OFFAL MEAT OF SHEEP OR GOATS, FRESH, CHILLED OR FROZEN OTHER MEAT OF SHEEP, FROZEN BONELESS OF LAMB OF DOMESTIC SHEEP",
+            "consigneeId": "GB342022509000",
+            "consigneeName": "GB342022509000",
+            "netMass": 10336,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "NZ",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5140733",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5140733:201124051259:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CVEDP(s) have been submitted to Port Health (for CVEDP number(s) GBCHD2024.5140818). Please correct the CVEDP number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 2,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionReasons": [],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
+      },
+      "finalisation": null,
+      "inboundError": null,
+      "created": "2025-02-21T13:28:39.129Z",
+      "updated": "2025-02-21T13:28:40.129Z"
+    }
+  ]
+}

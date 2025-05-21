@@ -199,41 +199,41 @@
         "properties": {
           "documentType": {
             "enum": [
-              "AirWaybill",
-              "BillOfLading",
-              "CargoManifest",
-              "CatchCertificate",
-              "CommercialDocument",
-              "CommercialInvoice",
-              "ConformityCertificate",
-              "ContainerManifest",
-              "CustomsDeclaration",
-              "Docom",
-              "HealthCertificate",
-              "HeatTreatmentCertificate",
-              "ImportPermit",
-              "InspectionCertificate",
-              "Itahc",
-              "JourneyLog",
-              "LaboratorySamplingResultsForAflatoxin",
-              "LatestVeterinaryHealthCertificate",
-              "LetterOfAuthority",
-              "LicenseOrAuthorisation",
-              "MycotoxinCertification",
-              "OriginCertificate",
-              "Other",
-              "PhytosanitaryCertificate",
-              "ProcessingStatement",
-              "ProofOfStorage",
-              "RailwayBill",
-              "SeaWaybill",
-              "VeterinaryHealthCertificate",
-              "ListOfIngredients",
-              "PackingList",
-              "RoadConsignmentNote"
+              "airWaybill",
+              "billOfLading",
+              "cargoManifest",
+              "catchCertificate",
+              "commercialDocument",
+              "commercialInvoice",
+              "conformityCertificate",
+              "containerManifest",
+              "customsDeclaration",
+              "docom",
+              "healthCertificate",
+              "heatTreatmentCertificate",
+              "importPermit",
+              "inspectionCertificate",
+              "itahc",
+              "journeyLog",
+              "laboratorySamplingResultsForAflatoxin",
+              "latestVeterinaryHealthCertificate",
+              "letterOfAuthority",
+              "licenseOrAuthorisation",
+              "mycotoxinCertification",
+              "originCertificate",
+              "other",
+              "phytosanitaryCertificate",
+              "processingStatement",
+              "proofOfStorage",
+              "railwayBill",
+              "seaWaybill",
+              "veterinaryHealthCertificate",
+              "listOfIngredients",
+              "packingList",
+              "roadConsignmentNote"
             ],
             "type": "string",
-            "description": "Additional document type\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Additional document type. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "documentReference": {
@@ -411,12 +411,12 @@
           },
           "analysisType": {
             "enum": [
-              "InitialAnalysis",
-              "CounterAnalysis",
-              "SecondExpertAnalysis"
+              "Initial analysis",
+              "Counter analysis",
+              "Second expert analysis"
             ],
             "type": "string",
-            "description": "Type of analysis\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Type of analysis. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "numberOfSamples": {
@@ -437,7 +437,7 @@
               "Frozen"
             ],
             "type": "string",
-            "description": "Conservation of sample\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Conservation of sample. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "inspector": {
@@ -592,14 +592,105 @@
         },
         "additionalProperties": false
       },
-      "Check": {
+      "ChedppNotAcceptableReason": {
         "type": "object",
         "properties": {
-          "checkCode": {
+          "reason": {
+            "enum": [
+              "doc-phmdm",
+              "doc-phmdii",
+              "doc-pa",
+              "doc-pic",
+              "doc-pill",
+              "doc-ped",
+              "doc-pmod",
+              "doc-pfi",
+              "doc-pnol",
+              "doc-pcne",
+              "doc-padm",
+              "doc-padi",
+              "doc-ppni",
+              "doc-pf",
+              "doc-po",
+              "doc-ncevd",
+              "doc-ncpqefi",
+              "doc-ncpqebec",
+              "doc-ncts",
+              "doc-nco",
+              "doc-orii",
+              "doc-orsr",
+              "ori-orrnu",
+              "phy-orpp",
+              "phy-orho",
+              "phy-is",
+              "phy-orsr",
+              "oth-cnl",
+              "oth-o"
+            ],
+            "type": "string",
+            "description": "reason for refusal. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "commodityOrPackage": {
+            "enum": [
+              "c",
+              "p",
+              "cp"
+            ],
+            "type": "string",
+            "description": "commodity or package. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClearanceDecision": {
+        "required": [
+          "items",
+          "timestamp"
+        ],
+        "type": "object",
+        "properties": {
+          "externalCorrelationId": {
             "type": "string",
             "nullable": true
           },
-          "departmentCode": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "externalVersionNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "decisionNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "sourceVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClearanceDecisionItem"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClearanceDecisionCheck": {
+        "required": [
+          "checkCode",
+          "decisionCode"
+        ],
+        "type": "object",
+        "properties": {
+          "checkCode": {
             "type": "string",
             "nullable": true
           },
@@ -618,57 +709,108 @@
               "type": "string"
             },
             "nullable": true
+          },
+          "decisionInternalFurtherDetail": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ChedppNotAcceptableReason": {
+      "ClearanceDecisionItem": {
+        "required": [
+          "checks",
+          "itemNumber"
+        ],
         "type": "object",
         "properties": {
-          "reason": {
-            "enum": [
-              "DocPhmdm",
-              "DocPhmdii",
-              "DocPa",
-              "DocPic",
-              "DocPill",
-              "DocPed",
-              "DocPmod",
-              "DocPfi",
-              "DocPnol",
-              "DocPcne",
-              "DocPadm",
-              "DocPadi",
-              "DocPpni",
-              "DocPf",
-              "DocPo",
-              "DocNcevd",
-              "DocNcpqefi",
-              "DocNcpqebec",
-              "DocNcts",
-              "DocNco",
-              "DocOrii",
-              "DocOrsr",
-              "OriOrrnu",
-              "PhyOrpp",
-              "PhyOrho",
-              "PhyIs",
-              "PhyOrsr",
-              "OthCnl",
-              "OthO"
-            ],
+          "itemNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClearanceDecisionCheck"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClearanceRequest": {
+        "required": [
+          "messageSentAt"
+        ],
+        "type": "object",
+        "properties": {
+          "externalCorrelationId": {
             "type": "string",
-            "description": "reason for refusal\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
-          "commodityOrPackage": {
-            "enum": [
-              "C",
-              "P",
-              "Cp"
-            ],
+          "messageSentAt": {
             "type": "string",
-            "description": "commodity or package\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "format": "date-time"
+          },
+          "externalVersion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "previousExternalVersion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "declarationUcr": {
+            "type": "string",
+            "nullable": true
+          },
+          "declarationPartNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "declarationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "arrivesAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "submitterTurn": {
+            "type": "string",
+            "nullable": true
+          },
+          "declarantId": {
+            "type": "string",
+            "nullable": true
+          },
+          "declarantName": {
+            "type": "string",
+            "nullable": true
+          },
+          "dispatchCountryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "goodsLocationCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "masterUcr": {
+            "type": "string",
+            "nullable": true
+          },
+          "commodities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Commodity"
+            },
             "nullable": true
           }
         },
@@ -764,13 +906,93 @@
           },
           "commodityIntendedFor": {
             "enum": [
-              "Human",
-              "Feedingstuff",
-              "Further",
-              "Other"
+              "human",
+              "feedingstuff",
+              "further",
+              "other"
             ],
             "type": "string",
-            "description": "What the commodity is intended for\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "What the commodity is intended for. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "commodityComplement": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommodityComplement"
+            },
+            "description": "Holder for additional parameters of a commodity",
+            "nullable": true
+          },
+          "complementParameterSet": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComplementParameterSet"
+            },
+            "description": "Additional data for commodityComplement part containing such data as net weight",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Commodity": {
+        "type": "object",
+        "properties": {
+          "itemNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "customsProcedureCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "taricCommodityCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "goodsDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "consigneeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "consigneeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "netMass": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "supplementaryUnits": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "thirdQuantity": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "originCountryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ImportDocument"
+            },
+            "nullable": true
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CustomsCommodityCheck"
+            },
             "nullable": true
           }
         },
@@ -869,24 +1091,6 @@
             "type": "boolean",
             "description": "Has commodity been matched with corresponding CDS declaration",
             "nullable": true
-          },
-          "additionalData": {
-            "nullable": true
-          },
-          "riskAssesment": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/CommodityRiskResult"
-              }
-            ],
-            "nullable": true
-          },
-          "checks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/InspectionCheck"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -896,41 +1100,41 @@
         "properties": {
           "riskDecision": {
             "enum": [
-              "Required",
-              "Notrequired",
-              "Inconclusive",
-              "ReenforcedCheck"
+              "REQUIRED",
+              "NOTREQUIRED",
+              "INCONCLUSIVE",
+              "REENFORCED_CHECK"
             ],
             "type": "string",
-            "description": "CHED-A, CHED-D, CHED-P - what is the commodity complement risk decision\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "CHED-A, CHED-D, CHED-P - what is the commodity complement risk decision. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "exitRiskDecision": {
             "enum": [
-              "Required",
-              "Notrequired",
-              "Inconclusive"
+              "REQUIRED",
+              "NOTREQUIRED",
+              "INCONCLUSIVE"
             ],
             "type": "string",
-            "description": "Transit CHED - what is the commodity complement exit risk decision\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Transit CHED - what is the commodity complement exit risk decision. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "hmiDecision": {
             "enum": [
-              "Required",
-              "Notrequired"
+              "REQUIRED",
+              "NOTREQUIRED"
             ],
             "type": "string",
-            "description": "HMI decision required\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "HMI decision required. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "phsiDecision": {
             "enum": [
-              "Required",
-              "Notrequired"
+              "REQUIRED",
+              "NOTREQUIRED"
             ],
             "type": "string",
-            "description": "PHSI decision required\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "PHSI decision required. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "phsiClassification": {
@@ -940,7 +1144,7 @@
               "Controlled"
             ],
             "type": "string",
-            "description": "PHSI classification\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "PHSI classification. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "phsi": {
@@ -991,27 +1195,99 @@
         },
         "additionalProperties": false
       },
+      "ComplementParameterSet": {
+        "type": "object",
+        "properties": {
+          "uniqueComplementID": {
+            "type": "string",
+            "description": "UUID used to match commodityComplement to its complementParameter set. CHEDPP only",
+            "nullable": true
+          },
+          "complementID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "speciesID": {
+            "type": "string",
+            "nullable": true
+          },
+          "keyDataPair": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KeyDataPair"
+            },
+            "nullable": true
+          },
+          "identifiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Identifiers"
+            },
+            "description": "Data used to identify the complements inside an IMP consignment",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ConsignmentCheck": {
         "type": "object",
         "properties": {
           "euStandard": {
+            "enum": [
+              "Satisfactory",
+              "Satisfactory following official intervention",
+              "Not Satisfactory",
+              "Not Done",
+              "Derogation",
+              "Not Set"
+            ],
             "type": "string",
-            "description": "Does it conform EU standards",
+            "description": "Does it conform EU standards. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "additionalGuarantees": {
+            "enum": [
+              "Satisfactory",
+              "Satisfactory following official intervention",
+              "Not Satisfactory",
+              "Not Done",
+              "Derogation",
+              "Not Set"
+            ],
             "type": "string",
-            "description": "Result of additional guarantees",
+            "description": "Result of additional guarantees. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "documentCheckAdditionalDetails": {
+            "type": "string",
+            "description": "Additional details for document check",
             "nullable": true
           },
           "documentCheckResult": {
+            "enum": [
+              "Satisfactory",
+              "Satisfactory following official intervention",
+              "Not Satisfactory",
+              "Not Done",
+              "Derogation",
+              "Not Set"
+            ],
             "type": "string",
-            "description": "Result of document check",
+            "description": "Result of document check. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "nationalRequirements": {
+            "enum": [
+              "Satisfactory",
+              "Satisfactory following official intervention",
+              "Not Satisfactory",
+              "Not Done",
+              "Derogation",
+              "Not Set"
+            ],
             "type": "string",
-            "description": "Result of national requirements check",
+            "description": "Result of national requirements check. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "identityCheckDone": {
@@ -1021,26 +1297,35 @@
           },
           "identityCheckType": {
             "enum": [
-              "SealCheck",
-              "FullIdentityCheck",
-              "NotDone"
+              "Seal Check",
+              "Full Identity Check",
+              "Not Done"
             ],
             "type": "string",
-            "description": "Type of identity check performed\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Type of identity check performed. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "identityCheckResult": {
+            "enum": [
+              "Satisfactory",
+              "Satisfactory following official intervention",
+              "Not Satisfactory",
+              "Not Done",
+              "Derogation",
+              "Not Set"
+            ],
             "type": "string",
-            "description": "Result of identity check",
+            "description": "Result of identity check. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "identityCheckNotDoneReason": {
             "enum": [
-              "ReducedChecksRegime",
-              "NotRequired"
+              "Reduced checks regime",
+              "Not required",
+              "Chilled equine semen facilitation scheme"
             ],
             "type": "string",
-            "description": "What was the reason for skipping identity check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "What was the reason for skipping identity check. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "physicalCheckDone": {
@@ -1049,17 +1334,25 @@
             "nullable": true
           },
           "physicalCheckResult": {
+            "enum": [
+              "Satisfactory",
+              "Satisfactory following official intervention",
+              "Not Satisfactory",
+              "Not Done",
+              "Derogation",
+              "Not Set"
+            ],
             "type": "string",
-            "description": "Result of physical check",
+            "description": "Result of physical check. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "physicalCheckNotDoneReason": {
             "enum": [
-              "ReducedChecksRegime",
+              "Reduced checks regime",
               "Other"
             ],
             "type": "string",
-            "description": "What was the reason for skipping physical check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "What was the reason for skipping physical check. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "physicalCheckOtherText": {
@@ -1068,8 +1361,16 @@
             "nullable": true
           },
           "welfareCheck": {
+            "enum": [
+              "Satisfactory",
+              "Satisfactory following official intervention",
+              "Not Satisfactory",
+              "Not Done",
+              "Derogation",
+              "Not Set"
+            ],
             "type": "string",
-            "description": "Welfare check",
+            "description": "Welfare check. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "numberOfAnimalsChecked": {
@@ -1084,8 +1385,16 @@
             "nullable": true
           },
           "laboratoryCheckResult": {
+            "enum": [
+              "Satisfactory",
+              "Satisfactory following official intervention",
+              "Not Satisfactory",
+              "Not Done",
+              "Derogation",
+              "Not Set"
+            ],
             "type": "string",
-            "description": "Result of laboratory tests",
+            "description": "Result of laboratory tests. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           }
         },
@@ -1149,12 +1458,12 @@
           },
           "consignmentLeave": {
             "enum": [
-              "Yes",
-              "No",
-              "ItHasBeenDestroyed"
+              "YES",
+              "NO",
+              "It has been destroyed"
             ],
             "type": "string",
-            "description": "Is the consignment leaving UK borders?\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Is the consignment leaving UK borders?. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           }
         },
@@ -1194,12 +1503,12 @@
           },
           "iuuOption": {
             "enum": [
-              "Iuuok",
-              "Iuuna",
+              "IUUOK",
+              "IUUNA",
               "IUUNotCompliant"
             ],
             "type": "string",
-            "description": "Result of Illegal, Unreported and Unregulated (IUU) check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Result of Illegal, Unreported and Unregulated (IUU) check. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           }
         },
@@ -1215,49 +1524,462 @@
         },
         "additionalProperties": false
       },
-      "CustomsClearanceDecision": {
+      "CustomsCommodityCheck": {
         "type": "object",
         "properties": {
-          "header": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DecisionHeader"
-              }
-            ],
+          "checkCode": {
+            "type": "string",
             "nullable": true
           },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DecisionItems"
-            },
+          "departmentCode": {
+            "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "CustomsClearanceRequest": {
+      "CustomsDeclarationData": {
         "type": "object",
         "properties": {
-          "header": {
+          "movementReferenceNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "clearanceRequest": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Header"
+                "$ref": "#/components/schemas/ClearanceRequest"
               }
             ],
             "nullable": true
           },
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Items"
-            },
+          "clearanceDecision": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ClearanceDecision"
+              }
+            ],
+            "nullable": true
+          },
+          "finalisation": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Finalisation"
+              }
+            ],
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "Decision": {
+      "Declarations": {
+        "type": "object",
+        "properties": {
+          "transits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transits"
+            },
+            "description": "A list of declaration ids.",
+            "nullable": true
+          },
+          "customs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Customs"
+            },
+            "description": "A list of declaration ids.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetailsOnReExport": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "Date of re-export",
+            "format": "date",
+            "nullable": true
+          },
+          "meansOfTransportNo": {
+            "type": "string",
+            "description": "Number of vehicle",
+            "nullable": true
+          },
+          "transportType": {
+            "enum": [
+              "rail",
+              "plane",
+              "ship",
+              "road",
+              "other",
+              "c_ship_road",
+              "c_ship_rail"
+            ],
+            "type": "string",
+            "description": "Type of transport to be used. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "document": {
+            "type": "string",
+            "description": "Document issued for re-export",
+            "nullable": true
+          },
+          "countryOfReDispatching": {
+            "type": "string",
+            "description": "Two letter ISO code for country of re-dispatching",
+            "nullable": true
+          },
+          "exitBip": {
+            "type": "string",
+            "description": "Exit BIP (where consignment will leave the country)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "EconomicOperator": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier of this organisation",
+            "nullable": true
+          },
+          "type": {
+            "enum": [
+              "consignee",
+              "destination",
+              "exporter",
+              "importer",
+              "charity",
+              "commercial transporter",
+              "commercial transporter - user added",
+              "private transporter",
+              "temporary address",
+              "premises of origin",
+              "organisation branch address",
+              "packer",
+              "pod"
+            ],
+            "type": "string",
+            "description": "Type of organisation. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "status": {
+            "enum": [
+              "approved",
+              "nonapproved",
+              "suspended"
+            ],
+            "type": "string",
+            "description": "Status of organisation. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "companyName": {
+            "type": "string",
+            "description": "Name of organisation",
+            "nullable": true
+          },
+          "individualName": {
+            "type": "string",
+            "description": "Individual name",
+            "nullable": true
+          },
+          "address": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ],
+            "description": "Address of economic operator",
+            "nullable": true
+          },
+          "approvalNumber": {
+            "type": "string",
+            "description": "Approval Number which identifies an Economic Operator unambiguously per type of organisation per country.",
+            "nullable": true
+          },
+          "otherIdentifier": {
+            "type": "string",
+            "description": "Optional Business General Number, often named Aggregation Code, which identifies an Economic Operator.",
+            "nullable": true
+          },
+          "tracesId": {
+            "type": "integer",
+            "description": "Traces Id of the economic operator generated by IPAFFS",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExternalReference": {
+        "type": "object",
+        "properties": {
+          "system": {
+            "enum": [
+              "E-CERT",
+              "E-PHYTO",
+              "E-NOTIFICATION",
+              "NCTS"
+            ],
+            "type": "string",
+            "description": "Identifier of the external system to which the reference relates. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "reference": {
+            "type": "string",
+            "description": "Reference which is added to the notification when either sent to the downstream system or received from it",
+            "nullable": true
+          },
+          "exactMatch": {
+            "type": "boolean",
+            "description": "Details whether there's an exact match between the external source and IPAFFS data",
+            "nullable": true
+          },
+          "verifiedByImporter": {
+            "type": "boolean",
+            "description": "Details whether an importer has verified the data from an external source",
+            "nullable": true
+          },
+          "verifiedByInspector": {
+            "type": "boolean",
+            "description": "Details whether an inspector has verified the data from an external source",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FeedbackInformation": {
+        "type": "object",
+        "properties": {
+          "authorityType": {
+            "enum": [
+              "exitbip",
+              "finalbip",
+              "localvetunit",
+              "inspunit"
+            ],
+            "type": "string",
+            "description": "Type of authority. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "consignmentArrival": {
+            "type": "boolean",
+            "description": "Did the consignment arrive",
+            "nullable": true
+          },
+          "consignmentConformity": {
+            "type": "boolean",
+            "description": "Does the consignment conform",
+            "nullable": true
+          },
+          "consignmentNoArrivalReason": {
+            "type": "string",
+            "description": "Reason for consignment not arriving at the entry point",
+            "nullable": true
+          },
+          "destructionDate": {
+            "type": "string",
+            "description": "Date of consignment destruction",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Finalisation": {
+        "required": [
+          "externalVersion",
+          "finalState",
+          "isManualRelease",
+          "messageSentAt"
+        ],
+        "type": "object",
+        "properties": {
+          "externalCorrelationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "messageSentAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "externalVersion": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "decisionNumber": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "finalState": {
+            "enum": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            "type": "string",
+            "description": "Possible values taken from Finalisation schema version v1.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "isManualRelease": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Gmr": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The Goods Movement Record (GMR) ID for this GMR.  Do not include when POSTing a GMR - GVMS will assign an ID.",
+            "nullable": true
+          },
+          "state": {
+            "enum": [
+              "NOT_FINALISABLE",
+              "OPEN",
+              "CHECKED_IN",
+              "EMBARKED",
+              "COMPLETED"
+            ],
+            "type": "string",
+            "description": "The state of the GMR. Possible values taken from GVMS schema version v1.0 (private beta).\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "nullable": true
+          },
+          "updatedSource": {
+            "type": "string",
+            "description": "The date and time that this GMR was last updated.",
+            "format": "date-time",
+            "nullable": true
+          },
+          "isUnaccompanied": {
+            "type": "boolean",
+            "description": "Set to true if the vehicle will not be accompanying the trailer(s) during the crossing, or if the vehicle is carrying a container that will be detached and loaded for the crossing.",
+            "nullable": true
+          },
+          "vehicleRegistrationNumber": {
+            "type": "string",
+            "description": "Vehicle registration number of the vehicle that will arrive at port.  If isUnaccompanied is set to false then vehicleRegNum must be provided to check-in.",
+            "nullable": true
+          },
+          "trailerRegistrationNums": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For vehicles carrying trailers, the trailer registration number of each trailer.  If isUnaccompanied is set to true then trailerRegistrationNums or containerReferenceNums must be provided before check-in.",
+            "nullable": true
+          },
+          "containerReferenceNums": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "For vehicles arriving with containers that will be detached and loaded, the container reference number of each container in the movement. If isUnaccompanied is set to true then trailerRegistrationNums or containerReferenceNums must be provided before check-in.",
+            "nullable": true
+          },
+          "plannedCrossing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PlannedCrossing"
+              }
+            ],
+            "nullable": true
+          },
+          "actualCrossing": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ActualCrossing"
+              }
+            ],
+            "nullable": true
+          },
+          "declarations": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Declarations"
+              }
+            ],
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Identifiers": {
+        "type": "object",
+        "properties": {
+          "speciesNumber": {
+            "type": "integer",
+            "description": "Number used to identify which item the identifiers are related to",
+            "format": "int32",
+            "nullable": true
+          },
+          "data": {
+            "description": "List of identifiers and their keys",
+            "nullable": true
+          },
+          "isPlaceOfDestinationThePermanentAddress": {
+            "type": "boolean",
+            "description": "Is the place of destination the permanent address?",
+            "nullable": true
+          },
+          "permanentAddress": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EconomicOperator"
+              }
+            ],
+            "description": "Permanent address of the species",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImpactOfTransportOnAnimals": {
+        "type": "object",
+        "properties": {
+          "numberOfDeadAnimals": {
+            "type": "integer",
+            "description": "Number of dead animals specified by units",
+            "format": "int32",
+            "nullable": true
+          },
+          "numberOfDeadAnimalsUnit": {
+            "type": "string",
+            "description": "Unit used for specifying number of dead animals (percent or units)",
+            "nullable": true
+          },
+          "numberOfUnfitAnimals": {
+            "type": "integer",
+            "description": "Number of unfit animals",
+            "format": "int32",
+            "nullable": true
+          },
+          "numberOfUnfitAnimalsUnit": {
+            "type": "string",
+            "description": "Unit used for specifying number of unfit animals (percent or units)",
+            "nullable": true
+          },
+          "numberOfBirthOrAbortion": {
+            "type": "integer",
+            "description": "Number of births or abortions (unit)",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ImportDecision": {
         "type": "object",
         "properties": {
           "consignmentAcceptable": {
@@ -1267,22 +1989,22 @@
           },
           "notAcceptableAction": {
             "enum": [
-              "Slaughter",
-              "Reexport",
-              "Euthanasia",
-              "Redispatching",
-              "Destruction",
-              "Transformation",
-              "Other",
-              "EntryRefusal",
-              "QuarantineImposed",
-              "SpecialTreatment",
-              "IndustrialProcessing",
-              "ReDispatch",
-              "UseForOtherPurposes"
+              "slaughter",
+              "reexport",
+              "euthanasia",
+              "redispatching",
+              "destruction",
+              "transformation",
+              "other",
+              "entry-refusal",
+              "quarantine-imposed",
+              "special-treatment",
+              "industrial-processing",
+              "re-dispatch",
+              "use-for-other-purposes"
             ],
             "type": "string",
-            "description": "Filled if consignmentAcceptable is set to false\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if consignmentAcceptable is set to false. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionDestructionReason": {
@@ -1293,7 +2015,7 @@
               "Other"
             ],
             "type": "string",
-            "description": "Filled if not acceptable action is set to destruction\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if not acceptable action is set to destruction. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionEntryRefusalReason": {
@@ -1305,7 +2027,7 @@
               "Other"
             ],
             "type": "string",
-            "description": "Filled if not acceptable action is set to entry refusal\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if not acceptable action is set to entry refusal. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionQuarantineImposedReason": {
@@ -1316,7 +2038,7 @@
               "Other"
             ],
             "type": "string",
-            "description": "Filled if not acceptable action is set to quarantine imposed\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if not acceptable action is set to quarantine imposed. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionSpecialTreatmentReason": {
@@ -1327,7 +2049,7 @@
               "Other"
             ],
             "type": "string",
-            "description": "Filled if not acceptable action is set to special treatment\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if not acceptable action is set to special treatment. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionIndustrialProcessingReason": {
@@ -1338,7 +2060,7 @@
               "Other"
             ],
             "type": "string",
-            "description": "Filled if not acceptable action is set to industrial processing\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if not acceptable action is set to industrial processing. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionReDispatchReason": {
@@ -1350,7 +2072,7 @@
               "Other"
             ],
             "type": "string",
-            "description": "Filled if not acceptable action is set to re-dispatch\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if not acceptable action is set to re-dispatch. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableActionUseForOtherPurposesReason": {
@@ -1362,7 +2084,7 @@
               "Other"
             ],
             "type": "string",
-            "description": "Filled if not acceptable action is set to use for other purposes\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if not acceptable action is set to use for other purposes. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "notAcceptableDestructionReason": {
@@ -1429,7 +2151,7 @@
               "Ship"
             ],
             "type": "string",
-            "description": "Filled if consignment is set to acceptable and decision type is Specific Warehouse\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Filled if consignment is set to acceptable and decision type is Specific Warehouse. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "temporaryDeadline": {
@@ -1437,53 +2159,53 @@
             "description": "Deadline when consignment has to leave borders",
             "nullable": true
           },
-          "decisionEnum": {
+          "decision": {
             "enum": [
-              "NonAcceptable",
-              "AcceptableForInternalMarket",
-              "AcceptableIfChanneled",
-              "AcceptableForTranshipment",
-              "AcceptableForTransit",
-              "AcceptableForTemporaryImport",
-              "AcceptableForSpecificWarehouse",
-              "AcceptableForPrivateImport",
-              "AcceptableForTransfer",
-              "HorseReEntry"
+              "Non Acceptable",
+              "Acceptable for Internal Market",
+              "Acceptable if Channeled",
+              "Acceptable for Transhipment",
+              "Acceptable for Transit",
+              "Acceptable for Temporary Import",
+              "Acceptable for Specific Warehouse",
+              "Acceptable for Private Import",
+              "Acceptable for Transfer",
+              "Horse Re-entry"
             ],
             "type": "string",
-            "description": "Detailed decision for consignment\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Detailed decision for consignment. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "freeCirculationPurpose": {
             "enum": [
-              "AnimalFeedingStuff",
-              "HumanConsumption",
-              "PharmaceuticalUse",
-              "TechnicalUse",
-              "FurtherProcess",
+              "Animal Feeding Stuff",
+              "Human Consumption",
+              "Pharmaceutical Use",
+              "Technical Use",
+              "Further Process",
               "Other"
             ],
             "type": "string",
-            "description": "Decision over purpose of free circulation in country\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Decision over purpose of free circulation in country. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "definitiveImportPurpose": {
             "enum": [
-              "Slaughter",
-              "Approvedbodies",
-              "Quarantine"
+              "slaughter",
+              "approvedbodies",
+              "quarantine"
             ],
             "type": "string",
-            "description": "Decision over purpose of definitive import\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Decision over purpose of definitive import. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "ifChanneledOption": {
             "enum": [
-              "Article8",
-              "Article15"
+              "article8",
+              "article15"
             ],
             "type": "string",
-            "description": "Decision channeled option based on (article8, article15)\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Decision channeled option based on (article8, article15). Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "customWarehouseRegisteredNumber": {
@@ -1554,115 +2276,7 @@
         },
         "additionalProperties": false
       },
-      "DecisionHeader": {
-        "type": "object",
-        "properties": {
-          "entryReference": {
-            "type": "string",
-            "nullable": true
-          },
-          "entryVersionNumber": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "decisionNumber": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "DecisionItems": {
-        "required": [
-          "itemNumber"
-        ],
-        "type": "object",
-        "properties": {
-          "itemNumber": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "checks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Check"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Declarations": {
-        "type": "object",
-        "properties": {
-          "transits": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Transits"
-            },
-            "description": "A list of declaration ids.",
-            "nullable": true
-          },
-          "customs": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Customs"
-            },
-            "description": "A list of declaration ids.",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "DetailsOnReExport": {
-        "type": "object",
-        "properties": {
-          "date": {
-            "type": "string",
-            "description": "Date of re-export",
-            "format": "date",
-            "nullable": true
-          },
-          "meansOfTransportNo": {
-            "type": "string",
-            "description": "Number of vehicle",
-            "nullable": true
-          },
-          "transportType": {
-            "enum": [
-              "Rail",
-              "Plane",
-              "Ship",
-              "Road",
-              "Other",
-              "CShipRoad",
-              "CShipRail"
-            ],
-            "type": "string",
-            "description": "Type of transport to be used\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
-            "nullable": true
-          },
-          "document": {
-            "type": "string",
-            "description": "Document issued for re-export",
-            "nullable": true
-          },
-          "countryOfReDispatching": {
-            "type": "string",
-            "description": "Two letter ISO code for country of re-dispatching",
-            "nullable": true
-          },
-          "exitBip": {
-            "type": "string",
-            "description": "Exit BIP (where consignment will leave the country)",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Document": {
+      "ImportDocument": {
         "type": "object",
         "properties": {
           "documentCode": {
@@ -1672,376 +2286,30 @@
           "documentReference": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "EconomicOperator": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The unique identifier of this organisation",
-            "nullable": true
           },
-          "type": {
-            "enum": [
-              "Consignee",
-              "Destination",
-              "Exporter",
-              "Importer",
-              "Charity",
-              "CommercialTransporter",
-              "CommercialTransporterUserAdded",
-              "PrivateTransporter",
-              "TemporaryAddress",
-              "PremisesOfOrigin",
-              "OrganisationBranchAddress",
-              "Packer",
-              "Pod"
-            ],
-            "type": "string",
-            "description": "Type of organisation\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
-            "nullable": true
-          },
-          "status": {
-            "enum": [
-              "Approved",
-              "Nonapproved",
-              "Suspended"
-            ],
-            "type": "string",
-            "description": "Status of organisation\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
-            "nullable": true
-          },
-          "companyName": {
-            "type": "string",
-            "description": "Name of organisation",
-            "nullable": true
-          },
-          "individualName": {
-            "type": "string",
-            "description": "Individual name",
-            "nullable": true
-          },
-          "address": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Address"
-              }
-            ],
-            "description": "Address of economic operator",
-            "nullable": true
-          },
-          "approvalNumber": {
-            "type": "string",
-            "description": "Approval Number which identifies an Economic Operator unambiguously per type of organisation per country.",
-            "nullable": true
-          },
-          "otherIdentifier": {
-            "type": "string",
-            "description": "Optional Business General Number, often named Aggregation Code, which identifies an Economic Operator.",
-            "nullable": true
-          },
-          "tracesId": {
-            "type": "integer",
-            "description": "Traces Id of the economic operator generated by IPAFFS",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ExternalReference": {
-        "type": "object",
-        "properties": {
-          "system": {
-            "enum": [
-              "Ecert",
-              "Ephyto",
-              "Enotification",
-              "Ncts"
-            ],
-            "type": "string",
-            "description": "Identifier of the external system to which the reference relates\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
-            "nullable": true
-          },
-          "reference": {
-            "type": "string",
-            "description": "Reference which is added to the notification when either sent to the downstream system or received from it",
-            "nullable": true
-          },
-          "exactMatch": {
-            "type": "boolean",
-            "description": "Details whether there's an exact match between the external source and IPAFFS data",
-            "nullable": true
-          },
-          "verifiedByImporter": {
-            "type": "boolean",
-            "description": "Details whether an importer has verified the data from an external source",
-            "nullable": true
-          },
-          "verifiedByInspector": {
-            "type": "boolean",
-            "description": "Details whether an inspector has verified the data from an external source",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "FeedbackInformation": {
-        "type": "object",
-        "properties": {
-          "authorityType": {
-            "enum": [
-              "Exitbip",
-              "Finalbip",
-              "Localvetunit",
-              "Inspunit"
-            ],
-            "type": "string",
-            "description": "Type of authority\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
-            "nullable": true
-          },
-          "consignmentArrival": {
-            "type": "boolean",
-            "description": "Did the consignment arrive",
-            "nullable": true
-          },
-          "consignmentConformity": {
-            "type": "boolean",
-            "description": "Does the consignment conform",
-            "nullable": true
-          },
-          "consignmentNoArrivalReason": {
-            "type": "string",
-            "description": "Reason for consignment not arriving at the entry point",
-            "nullable": true
-          },
-          "destructionDate": {
-            "type": "string",
-            "description": "Date of consignment destruction",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "FinalState": {
-        "enum": [
-          "Cleared",
-          "CancelledAfterArrival",
-          "CancelledWhilePreLodged",
-          "Destroyed",
-          "Seized",
-          "ReleasedToKingsWarehouse",
-          "TransferredToMss"
-        ],
-        "type": "string"
-      },
-      "Finalisation": {
-        "required": [
-          "finalState",
-          "manualAction"
-        ],
-        "type": "object",
-        "properties": {
-          "finalState": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/FinalState"
-              }
-            ]
-          },
-          "manualAction": {
-            "type": "boolean"
-          },
-          "entryReference": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Gmr": {
-        "required": [
-          "updated"
-        ],
-        "type": "object",
-        "properties": {
-          "updated": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "id": {
-            "type": "string",
-            "description": "The Goods Movement Record (GMR) ID for this GMR.  Do not include when POSTing a GMR - GVMS will assign an ID.",
-            "nullable": true
-          },
-          "state": {
-            "enum": [
-              "NotFinalisable",
-              "Open",
-              "Finalised",
-              "CheckedIn",
-              "Embarked",
-              "Completed"
-            ],
-            "type": "string",
-            "description": "The state of the GMR\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
-            "nullable": true
-          },
-          "updatedSource": {
-            "type": "string",
-            "description": "The date and time that this GMR was last updated.",
-            "format": "date-time",
-            "nullable": true
-          },
-          "isUnaccompanied": {
-            "type": "boolean",
-            "description": "Set to true if the vehicle will not be accompanying the trailer(s) during the crossing, or if the vehicle is carrying a container that will be detached and loaded for the crossing.",
-            "nullable": true
-          },
-          "vehicleRegistrationNumber": {
-            "type": "string",
-            "description": "Vehicle registration number of the vehicle that will arrive at port.  If isUnaccompanied is set to false then vehicleRegNum must be provided to check-in.",
-            "nullable": true
-          },
-          "trailerRegistrationNums": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "For vehicles carrying trailers, the trailer registration number of each trailer.  If isUnaccompanied is set to true then trailerRegistrationNums or containerReferenceNums must be provided before check-in.",
-            "nullable": true
-          },
-          "containerReferenceNums": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "For vehicles arriving with containers that will be detached and loaded, the container reference number of each container in the movement. If isUnaccompanied is set to true then trailerRegistrationNums or containerReferenceNums must be provided before check-in.",
-            "nullable": true
-          },
-          "plannedCrossing": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/PlannedCrossing"
-              }
-            ],
-            "nullable": true
-          },
-          "actualCrossing": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ActualCrossing"
-              }
-            ],
-            "nullable": true
-          },
-          "declarations": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Declarations"
-              }
-            ],
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Header": {
-        "type": "object",
-        "properties": {
-          "entryReference": {
+          "documentStatus": {
             "type": "string",
             "nullable": true
           },
-          "entryVersionNumber": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "previousVersionNumber": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "arrivesAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "dispatchCountryCode": {
+          "documentControl": {
             "type": "string",
             "nullable": true
           },
-          "goodsLocationCode": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ImpactOfTransportOnAnimals": {
-        "type": "object",
-        "properties": {
-          "numberOfDeadAnimals": {
-            "type": "integer",
-            "description": "Number of dead animals specified by units",
-            "format": "int32",
-            "nullable": true
-          },
-          "numberOfDeadAnimalsUnit": {
-            "type": "string",
-            "description": "Unit used for specifying number of dead animals (percent or units)",
-            "nullable": true
-          },
-          "numberOfUnfitAnimals": {
-            "type": "integer",
-            "description": "Number of unfit animals",
-            "format": "int32",
-            "nullable": true
-          },
-          "numberOfUnfitAnimalsUnit": {
-            "type": "string",
-            "description": "Unit used for specifying number of unfit animals (percent or units)",
-            "nullable": true
-          },
-          "numberOfBirthOrAbortion": {
-            "type": "integer",
-            "description": "Number of births or abortions (unit)",
-            "format": "int32",
+          "documentQuantity": {
+            "type": "number",
+            "format": "double",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
       "ImportNotificationResponse": {
-        "required": [
-          "created",
-          "updated",
-          "updatedEntity"
-        ],
         "type": "object",
         "properties": {
           "clearanceRequests": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CustomsClearanceRequest"
-            },
-            "nullable": true
-          },
-          "clearanceDecisions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CustomsClearanceDecision"
-            },
-            "nullable": true
-          },
-          "finalisations": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Finalisation"
+              "$ref": "#/components/schemas/CustomsDeclarationData"
             },
             "nullable": true
           },
@@ -2049,42 +2317,6 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Gmr"
-            },
-            "nullable": true
-          },
-          "createdSource": {
-            "type": "string",
-            "description": "Date when the notification was created in IPAFFS",
-            "format": "date-time",
-            "nullable": true
-          },
-          "created": {
-            "type": "string",
-            "description": "Date when the notification was created",
-            "format": "date-time"
-          },
-          "updatedEntity": {
-            "type": "string",
-            "description": "Date when the notification was updated or when related data was linked or updated",
-            "format": "date-time"
-          },
-          "updated": {
-            "type": "string",
-            "description": "Date when the notification was last updated",
-            "format": "date-time"
-          },
-          "commoditiesSummary": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Commodities"
-              }
-            ],
-            "nullable": true
-          },
-          "commodities": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CommodityComplement"
             },
             "nullable": true
           },
@@ -2120,7 +2352,7 @@
           },
           "updatedSource": {
             "type": "string",
-            "description": "Date when the notification was last updated in IPAFFS",
+            "description": "Date when the notification was last updated.",
             "format": "date-time",
             "nullable": true
           },
@@ -2135,13 +2367,13 @@
           },
           "importNotificationType": {
             "enum": [
-              "Cveda",
-              "Cvedp",
-              "Chedpp",
-              "Ced"
+              "CVEDA",
+              "CVEDP",
+              "CHEDPP",
+              "CED"
             ],
             "type": "string",
-            "description": "The Type of notification that has been submitted\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "The Type of notification that has been submitted. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "replaces": {
@@ -2156,20 +2388,20 @@
           },
           "status": {
             "enum": [
-              "Submitted",
-              "Validated",
-              "Rejected",
-              "InProgress",
-              "Amend",
-              "Modify",
-              "Replaced",
-              "Cancelled",
-              "Deleted",
-              "PartiallyRejected",
-              "SplitConsignment"
+              "SUBMITTED",
+              "VALIDATED",
+              "REJECTED",
+              "IN_PROGRESS",
+              "AMEND",
+              "MODIFY",
+              "REPLACED",
+              "CANCELLED",
+              "DELETED",
+              "PARTIALLY_REJECTED",
+              "SPLIT_CONSIGNMENT"
             ],
             "type": "string",
-            "description": "Current status of the notification. When created by an importer, the notification has the status 'SUBMITTED'. Before submission of the notification it has the status 'DRAFT'. When the BIP starts validation of the notification it has the status 'IN PROGRESS' Once the BIP validates the notification, it gets the status 'VALIDATED'. 'AMEND' is set when the Part-1 user is modifying the notification. 'MODIFY' is set when Part-2 user is modifying the notification. Replaced - When the notification is replaced by another notification. Rejected - Notification moves to Rejected status when rejected by a Part-2 user. \n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Current status of the notification. When created by an importer, the notification has the status 'SUBMITTED'. Before submission of the notification it has the status 'DRAFT'. When the BIP starts validation of the notification it has the status 'IN PROGRESS' Once the BIP validates the notification, it gets the status 'VALIDATED'. 'AMEND' is set when the Part-1 user is modifying the notification. 'MODIFY' is set when Part-2 user is modifying the notification. Replaced - When the notification is replaced by another notification. Rejected - Notification moves to Rejected status when rejected by a Part-2 user. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "splitConsignment": {
@@ -2184,6 +2416,15 @@
           "childNotification": {
             "type": "boolean",
             "description": "Is this notification a child of a split consignment?",
+            "nullable": true
+          },
+          "riskAssessment": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RiskAssessmentResult"
+              }
+            ],
+            "description": "Result of risk assessment by the risk scorer",
             "nullable": true
           },
           "journeyRiskCategorisation": {
@@ -2269,6 +2510,16 @@
             "description": "is the risk decision locked?",
             "nullable": true
           },
+          "isAutoClearanceExempted": {
+            "type": "boolean",
+            "description": "Boolean flag that indicates whether CHED is exempted from autoclearance",
+            "nullable": true
+          },
+          "isBulkUploadInProgress": {
+            "type": "boolean",
+            "description": "Boolean flag that indicates whether a bulk upload is in progress",
+            "nullable": true
+          },
           "requestId": {
             "type": "string",
             "description": "Request UUID to trace bulk upload",
@@ -2297,28 +2548,13 @@
         "type": "object",
         "properties": {
           "type": {
-            "enum": [
-              "PhsiDocument",
-              "PhsiIdentity",
-              "PhsiPhysical",
-              "Hmi"
-            ],
             "type": "string",
-            "description": "Type of check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Type of check",
             "nullable": true
           },
           "status": {
-            "enum": [
-              "ToDo",
-              "Compliant",
-              "AutoCleared",
-              "NonCompliant",
-              "NotInspected",
-              "ToBeInspected",
-              "Hold"
-            ],
             "type": "string",
-            "description": "Status of the check\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Status of the check",
             "nullable": true
           },
           "reason": {
@@ -2407,70 +2643,6 @@
         },
         "additionalProperties": false
       },
-      "Items": {
-        "type": "object",
-        "properties": {
-          "itemNumber": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "customsProcedureCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "taricCommodityCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "goodsDescription": {
-            "type": "string",
-            "nullable": true
-          },
-          "consigneeId": {
-            "type": "string",
-            "nullable": true
-          },
-          "consigneeName": {
-            "type": "string",
-            "nullable": true
-          },
-          "itemNetMass": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "itemSupplementaryUnits": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "itemThirdQuantity": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "itemOriginCountryCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "documents": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Document"
-            },
-            "nullable": true
-          },
-          "checks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Check"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "JourneyRiskCategorisationResult": {
         "type": "object",
         "properties": {
@@ -2481,7 +2653,7 @@
               "Low"
             ],
             "type": "string",
-            "description": "Risk Level is defined using enum values High,Medium,Low\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Risk Level is defined using enum values High,Medium,Low. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "riskLevelMethod": {
@@ -2490,13 +2662,27 @@
               "User"
             ],
             "type": "string",
-            "description": "Indicator of whether the risk level was determined by the system or by the user\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Indicator of whether the risk level was determined by the system or by the user. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "riskLevelSetFor": {
             "type": "string",
             "description": "The date and time the risk level has been set for a notification",
             "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KeyDataPair": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -2529,12 +2715,12 @@
           "conclusion": {
             "enum": [
               "Satisfactory",
-              "NotSatisfactory",
-              "NotInterpretable",
+              "Not satisfactory",
+              "Not interpretable",
               "Pending"
             ],
             "type": "string",
-            "description": "Conclusion of laboratory test\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Conclusion of laboratory test. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "labTestCreatedOn": {
@@ -2559,13 +2745,13 @@
             "enum": [
               "Random",
               "Suspicious",
-              "ReEnforced",
-              "IntensifiedControls",
+              "Re-enforced",
+              "Intensified controls",
               "Required",
-              "LatentInfectionSampling"
+              "Latent infection sampling"
             ],
             "type": "string",
-            "description": "Reason for test\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Reason for test. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "singleLaboratoryTests": {
@@ -2585,16 +2771,16 @@
           "type": {
             "enum": [
               "Aeroplane",
-              "RoadVehicle",
-              "RailwayWagon",
+              "Road Vehicle",
+              "Railway Wagon",
               "Ship",
               "Other",
-              "RoadVehicleAeroplane",
-              "ShipRailwayWagon",
-              "ShipRoadVehicle"
+              "Road vehicle Aeroplane",
+              "Ship Railway wagon",
+              "Ship Road vehicle"
             ],
             "type": "string",
-            "description": "Type of transport\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Type of transport. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "document": {
@@ -2627,6 +2813,32 @@
             "type": "string",
             "description": "Telephone number of nominated contact",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NotificationCommodityCheck": {
+        "required": [
+          "validityPeriod"
+        ],
+        "type": "object",
+        "properties": {
+          "uniqueComplementId": {
+            "type": "string",
+            "description": "UUID used to match the commodityChecks to the commodityComplement",
+            "nullable": true
+          },
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InspectionCheck"
+            },
+            "nullable": true
+          },
+          "validityPeriod": {
+            "type": "integer",
+            "description": "Manually entered validity period, allowed if risk decision is INSPECTION_REQUIRED and HMI check status 'Compliant' or 'Not inspected'",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -2798,6 +3010,14 @@
             "description": "Is GVMS route?",
             "nullable": true
           },
+          "commodities": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Commodities"
+              }
+            ],
+            "nullable": true
+          },
           "purpose": {
             "allOf": [
               {
@@ -2876,6 +3096,15 @@
               }
             ],
             "description": "Contains countries and transfer points that consignment is going through",
+            "nullable": true
+          },
+          "storeTransporterContact": {
+            "enum": [
+              "YES",
+              "NO"
+            ],
+            "type": "string",
+            "description": "Whether the importer wishes to store transporter contact details. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "submittedOn": {
@@ -2968,12 +3197,12 @@
           },
           "provideCtcMrn": {
             "enum": [
-              "Yes",
-              "YesAddLater",
-              "No"
+              "YES",
+              "YES_ADD_LATER",
+              "NO"
             ],
             "type": "string",
-            "description": "When the NCTS MRN will be added for the Common Transit Convention (CTC)\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "When the NCTS MRN will be added for the Common Transit Convention (CTC). Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "arrivesAt": {
@@ -2996,11 +3225,11 @@
         "properties": {
           "controlStatus": {
             "enum": [
-              "Required",
-              "Completed"
+              "REQUIRED",
+              "COMPLETED"
             ],
             "type": "string",
-            "description": "Control status enum\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Control status enum. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "control": {
@@ -3052,7 +3281,7 @@
           "decision": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/Decision"
+                "$ref": "#/components/schemas/ImportDecision"
               }
             ],
             "description": "Decision on the consignment",
@@ -3158,6 +3387,13 @@
             "description": "Accompanying documents",
             "nullable": true
           },
+          "commodityChecks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NotificationCommodityCheck"
+            },
+            "nullable": true
+          },
           "phsiAutoCleared": {
             "type": "boolean",
             "description": "Have the PHSI regulated commodities been auto cleared?",
@@ -3172,10 +3408,10 @@
             "enum": [
               "Required",
               "Inconclusive",
-              "NotRequired"
+              "Not required"
             ],
             "type": "string",
-            "description": "Inspection required\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Inspection required. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "inspectionOverride": {
@@ -3260,11 +3496,11 @@
           },
           "type": {
             "enum": [
-              "CommercialTransporter",
-              "PrivateTransporter"
+              "Commercial transporter",
+              "Private transporter"
             ],
             "type": "string",
-            "description": "Type of party\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Type of party. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "approvalNumber": {
@@ -3406,27 +3642,27 @@
           },
           "internalMarketPurpose": {
             "enum": [
-              "AnimalFeedingStuff",
-              "HumanConsumption",
-              "PharmaceuticalUse",
-              "TechnicalUse",
+              "Animal Feeding Stuff",
+              "Human Consumption",
+              "Pharmaceutical Use",
+              "Technical Use",
               "Other",
-              "CommercialSale",
-              "CommercialSaleOrChangeOfOwnership",
+              "Commercial Sale",
+              "Commercial sale or change of ownership",
               "Rescue",
               "Breeding",
               "Research",
-              "RacingOrCompetition",
-              "ApprovedPremisesOrBody",
-              "CompanionAnimalNotForResaleOrRehoming",
+              "Racing or Competition",
+              "Approved Premises or Body",
+              "Companion Animal not for Resale or Rehoming",
               "Production",
               "Slaughter",
               "Fattening",
-              "GameRestocking",
-              "RegisteredHorses"
+              "Game Restocking",
+              "Registered Horses"
             ],
             "type": "string",
-            "description": "Detailed purpose of internal market purpose group\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Detailed purpose of internal market purpose group. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "thirdCountryTranshipment": {
@@ -3436,18 +3672,18 @@
           },
           "forNonConforming": {
             "enum": [
-              "CustomsWarehouse",
-              "FreeZoneOrFreeWarehouse",
-              "ShipSupplier",
+              "Customs Warehouse",
+              "Free Zone or Free Warehouse",
+              "Ship Supplier",
               "Ship"
             ],
             "type": "string",
-            "description": "Detailed purpose for non conforming purpose group\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Detailed purpose for non conforming purpose group. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "regNumber": {
             "type": "string",
-            "description": "There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number. ",
+            "description": "There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number.",
             "nullable": true
           },
           "shipName": {
@@ -3480,12 +3716,12 @@
           },
           "forImportOrAdmission": {
             "enum": [
-              "DefinitiveImport",
-              "HorsesReEntry",
-              "TemporaryAdmissionHorses"
+              "Definitive import",
+              "Horses Re-entry",
+              "Temporary admission horses"
             ],
             "type": "string",
-            "description": "Specification of Import or admission purpose\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Specification of Import or admission purpose. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "exitDate": {
@@ -3499,25 +3735,49 @@
             "description": "Final Border Inspection Post",
             "nullable": true
           },
+          "pointOfExit": {
+            "type": "string",
+            "description": "Place of departure",
+            "nullable": true
+          },
           "purposeGroup": {
             "enum": [
-              "ForImport",
-              "ForNONConformingConsignments",
-              "ForTranshipmentTo",
-              "ForTransitTo3rdCountry",
-              "ForReImport",
-              "ForPrivateImport",
-              "ForTransferTo",
-              "ForImportReConformityCheck",
-              "ForImportNonInternalMarket"
+              "For Import",
+              "For NON-Conforming Consignments",
+              "For Transhipment to",
+              "For Transit to 3rd Country",
+              "For Re-Import",
+              "For Private Import",
+              "For Transfer To",
+              "For Import Re-Conformity Check"
             ],
             "type": "string",
-            "description": "Purpose group of consignment (general purpose)\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
+            "description": "Purpose group of consignment (general purpose). Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
           "estimatedArrivesAtPortOfExit": {
             "type": "string",
             "description": "DateTime",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RiskAssessmentResult": {
+        "type": "object",
+        "properties": {
+          "commodityResults": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommodityRiskResult"
+            },
+            "description": "List of risk assessed commodities",
+            "nullable": true
+          },
+          "assessedOn": {
+            "type": "string",
+            "description": "Date and time of assessment",
             "format": "date-time",
             "nullable": true
           }

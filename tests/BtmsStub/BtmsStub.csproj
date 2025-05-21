@@ -11,4 +11,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Scenarios\*.json" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TradeDataApiScenarios\*.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Api\Api.csproj" />
+  </ItemGroup>
 </Project>

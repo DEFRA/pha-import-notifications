@@ -1,0 +1,77 @@
+{
+  "customsDeclarations": [
+    {
+      "movementReferenceNumber": "24GBEGTIWJ6LOYWAR9",
+      "clearanceRequest": {
+        "externalCorrelationId": "1381549",
+        "messageSentAt": "2024-12-30T11:47:40Z",
+        "externalVersion": 2,
+        "previousExternalVersion": 1,
+        "declarationUcr": "4GB333557108000-OGL6001342879",
+        "declarationPartNumber": null,
+        "declarationType": "S",
+        "arrivesAt": null,
+        "submitterTurn": "GB333557108000",
+        "declarantId": "GB333557108000",
+        "declarantName": "GB333557108000",
+        "dispatchCountryCode": "TR",
+        "goodsLocationCode": "HRHHRHHRHGVM",
+        "masterUcr": null,
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0805400019",
+            "goodsDescription": "GRAPEFRUIT",
+            "consigneeId": "GB306253334000",
+            "consigneeName": "GB306253334000",
+            "netMass": 20000,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "TR",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5351769",
+                "documentStatus": "JE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 2,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDD.GB.2024.5351769:301224100318:CR-VERSION-2",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "H01",
+                "decisionsValidUntil": null,
+                "decisionReasons": [],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
+      },
+      "finalisation": null,
+      "inboundError": null,
+      "created": "2025-02-21T13:28:39.129Z",
+      "updated": "2025-02-21T13:28:40.129Z"
+    }
+  ]
+}

@@ -2,23 +2,26 @@ using System.Text.Json.Serialization;
 
 namespace Defra.PhaImportNotifications.Contracts;
 
-public partial record ImportNotification
+public partial record ImportPreNotification
 {
     [JsonPropertyName("clearanceRequests")]
-    public IReadOnlyList<CustomsClearanceRequest>? ClearanceRequests { get; init; }
-
-    [JsonPropertyName("clearanceDecisions")]
-    public IReadOnlyList<CustomsClearanceDecision>? ClearanceDecisions { get; init; }
-
-    [JsonPropertyName("finalisations")]
-    public IReadOnlyList<Finalisation>? Finalisations { get; init; }
+    public IList<CustomsDeclarationData>? CustomsDeclarations { get; set; }
 
     [JsonPropertyName("goodsMovements")]
-    public IReadOnlyList<Gmr>? GoodsMovements { get; init; }
+    public IList<Gmr>? GoodsMovements { get; set; }
 }
 
-public partial record Finalisation
+public record CustomsDeclarationData
 {
-    [JsonPropertyName("entryReference")]
-    public string? EntryReference { get; set; }
+    [JsonPropertyName("movementReferenceNumber")]
+    public string? MovementReferenceNumber { get; init; }
+
+    [JsonPropertyName("clearanceRequest")]
+    public ClearanceRequest? ClearanceRequest { get; init; }
+
+    [JsonPropertyName("clearanceDecision")]
+    public ClearanceDecision? ClearanceDecision { get; init; }
+
+    [JsonPropertyName("finalisation")]
+    public Finalisation? Finalisation { get; init; }
 }

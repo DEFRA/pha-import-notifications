@@ -4,9 +4,10 @@ using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Extensions;
-using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.OpenApi;
+using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Api.Services.Btms;
+using Defra.PhaImportNotifications.Api.TradeDataApi;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using ServiceCollectionExtensions = Defra.PhaImportNotifications.Api.JsonApi.ServiceCollectionExtensions;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
@@ -126,7 +128,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             }
         );
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
-        c.IncludeXmlComments(typeof(ImportNotification).Assembly);
+        c.IncludeXmlComments(typeof(ImportPreNotification).Assembly);
         c.DocumentFilter<TagsDocumentFilter>();
         c.SchemaFilter<DescriptionSchemaFilter>();
         c.SchemaFilter<ExampleValueSchemaFilter>();
@@ -163,7 +165,15 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
     });
     builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
-    builder.Services.AddJsonApiClient(
+    builder
+        .Services.AddOptions<TradeDataApiOptions>()
+        .BindConfiguration("TradeDataApi")
+        .ValidateOptions(!generatingOpenApiFromCli);
+
+    builder.Services.AddTradeDataHttpClient();
+
+    ServiceCollectionExtensions.AddJsonApiClient(
+        builder.Services,
         (sp, options) =>
         {
             var btmsOptions = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
@@ -174,7 +184,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             );
         }
     );
-    builder.Services.AddTransient<IBtmsService, BtmsService>();
+    builder.Services.AddTransient<ITradeImportsDataService, BtmsService>();
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)

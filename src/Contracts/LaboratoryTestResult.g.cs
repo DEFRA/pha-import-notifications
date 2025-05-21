@@ -23,10 +23,10 @@ public partial record LaboratoryTestResult
 
     [JsonPropertyName("conclusion")]
     [ExampleValue("Satisfactory")]
-    [ExampleValue("NotSatisfactory")]
-    [ExampleValue("NotInterpretable")]
+    [ExampleValue("Not satisfactory")]
+    [ExampleValue("Not interpretable")]
     [ExampleValue("Pending")]
-    [Description("Conclusion of laboratory test")]
+    [Description("Conclusion of laboratory test. Possible values taken from IPAFFS schema version 17.5.")]
     public string? Conclusion { get; init; }
 
     [JsonPropertyName("labTestCreatedOn")]

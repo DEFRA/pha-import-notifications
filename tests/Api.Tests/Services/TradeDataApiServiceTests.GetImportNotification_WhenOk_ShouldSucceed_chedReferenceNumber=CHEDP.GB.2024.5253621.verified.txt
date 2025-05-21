@@ -1,0 +1,568 @@
+﻿{
+  CustomsDeclarations: [
+    {
+      MovementReferenceNumber: 24GBDINZW04OAS2AR0,
+      ClearanceRequest: {
+        ExternalCorrelationId: 1328640,
+        MessageSentAt: 2024-12-09 08:06:23 Utc,
+        ExternalVersion: 2,
+        PreviousExternalVersion: 1,
+        DeclarationUcr: 4GB334115102000-GRAJ0338944,
+        DeclarationPartNumber: null,
+        DeclarationType: S,
+        ArrivesAt: null,
+        SubmitterTurn: GB334115102000,
+        DeclarantId: GB334115102000,
+        DeclarantName: GB334115102000,
+        DispatchCountryCode: HN,
+        GoodsLocationCode: SOUSTNSOU,
+        MasterUcr: SCT1BKHX400100,
+        Commodities: [
+          {
+            ItemNumber: 1,
+            CustomsProcedureCode: 4000000,
+            TaricCommodityCode: 0306179290,
+            GoodsDescription: FROZEN RAW SHRIMP,
+            ConsigneeId: GB639571015000,
+            ConsigneeName: GB639571015000,
+            NetMass: 20000.0,
+            SupplementaryUnits: 0.0,
+            ThirdQuantity: null,
+            OriginCountryCode: HN,
+            Documents: [
+              {
+                DocumentCode: N853,
+                DocumentReference: null,
+                DocumentStatus: AE,
+                DocumentControl: P,
+                DocumentQuantity: null
+              }
+            ],
+            Checks: [
+              {
+                CheckCode: H222,
+                DepartmentCode: PHA
+              }
+            ]
+          }
+        ]
+      },
+      ClearanceDecision: {
+        ExternalCorrelationId: null,
+        Timestamp: 2025-02-21 13:28:41.129 Utc,
+        ExternalVersionNumber: 2,
+        DecisionNumber: 1,
+        SourceVersion: CHEDP.GB.2024.5253621:201224031253:CR-VERSION-2,
+        Items: [
+          {
+            ItemNumber: 1,
+            Checks: [
+              {
+                CheckCode: H222,
+                DecisionCode: C03,
+                DecisionsValidUntil: null,
+                DecisionReasons: null,
+                DecisionInternalFurtherDetail: null
+              }
+            ]
+          }
+        ]
+      },
+      Finalisation: {
+        ExternalCorrelationId: 1363025,
+        MessageSentAt: 2024-12-20 15:27:18 Utc,
+        ExternalVersion: 2,
+        DecisionNumber: null,
+        FinalState: 0,
+        IsManualRelease: false
+      }
+    }
+  ],
+  GoodsMovements: null,
+  IpaffsId: 4254466,
+  Etag: 000000000472209A,
+  ExternalReferences: null,
+  ReferenceNumber: CHEDP.GB.2024.5253621,
+  Version: 2,
+  UpdatedSource: 2024-12-20 15:12:53.96 Utc,
+  LastUpdatedBy: {
+    DisplayName: 5a3f5290d014587bd4107c7e84e0aa4fabe7d048fbd8f9707646c469aa791366,
+    UserId: 7158ac68-b939-e911-a958-000d3a454e11,
+    IsControlUser: null
+  },
+  ImportNotificationType: CVEDP,
+  Replaces: null,
+  ReplacedBy: null,
+  Status: VALIDATED,
+  SplitConsignment: null,
+  ChildNotification: null,
+  RiskAssessment: {
+    CommodityResults: [
+      {
+        RiskDecision: REQUIRED,
+        ExitRiskDecision: null,
+        HmiDecision: null,
+        PhsiDecision: null,
+        PhsiClassification: null,
+        Phsi: null,
+        UniqueId: cf0d571d-bc1d-4084-84b2-937342d7d93c,
+        EppoCode: null,
+        Variety: null,
+        IsWoody: null,
+        IndoorOutdoor: null,
+        Propagation: null,
+        PhsiRuleType: null
+      }
+    ],
+    AssessedOn: 2024-12-04 10:55:43
+  },
+  JourneyRiskCategorisation: {
+    RiskLevel: Medium,
+    RiskLevelMethod: User,
+    RiskLevelSetFor: 2024-12-04 10:51:24
+  },
+  IsHighRiskEuImport: false,
+  PartOne: {
+    TypeOfImp: null,
+    PersonResponsible: {
+      Id: null,
+      Name: 399e26680fb2dabf1934a6f0c370dec44587c03a2b5b66b071f414e7fc02e79e,
+      CompanyId: 5d5193c4-8345-e911-a956-000d3a454330,
+      ContactId: b7a7c1e3-b4db-ea11-a813-000d3aab25ce,
+      CompanyName: 6b64b503dda928afef33f0eb9a9b89637fdd7063a50d68fb7aaec111757653a2,
+      Addresses: [
+        06cd8080b8bba084c55487049614d84f07adbd6176d0b9cd6821734d533f63ef,
+        0011d0000b74beab4a279b97ab067045e2b52b826ece700569e7d38f816cd54a,
+        dbb27380116cedff4c0042f77b828d0f64236d5d3a11574ac9a0b6164c97b810,
+        418f5c6f45ab445ba1612a269f1b2de4934f7eb6820640ca3625a384a3c6f500,
+        d5adebb55eafeda92ba2f9dfedf1137826f8293e2f58be5e08d4b225fd2b9da9
+      ],
+      County: null,
+      PostCode: null,
+      Country: GB,
+      City: null,
+      TracesId: 1001,
+      Type: null,
+      ApprovalNumber: null,
+      Phone: 781679696eec1d31e0b788c5f3368ed07e4c5a1d41cfe1b5d33b0e5e57fecf2a,
+      Fax: null,
+      Email: fe9a8b9905155ac1f0ac6f3cb7dce400b69d12c48ad8463e9ddc040319db4487
+    },
+    CustomsReferenceNumber: null,
+    ContainsWoodPackaging: null,
+    ConsignmentArrived: null,
+    Consignor: {
+      Id: e67ed3ae-4b68-443e-ad58-c808b742129b,
+      Type: exporter,
+      Status: nonapproved,
+      CompanyName: a32d3aef5d11bdbfd9f104bd16ac380130ecdefb098ab2c9bdd89652d2b49587,
+      IndividualName: null,
+      Address: {
+        Street: null,
+        City: d8ed808e235554a1217dbff4547dfe91e58663ff1e9924cc57b2ff968a50a00c,
+        Country: null,
+        PostalCode: null,
+        AddressLine1: 2c0642bed3f466c53ae240181112eeb035c723318f13893d0fadbdf688223ef0,
+        AddressLine2: b2a7e7ecf326ad2ab88c09154663e88e97e4f34d0a0f669773217fea66e51bb5,
+        AddressLine3: 2e0c96c3dcf27322b225d0f32085c0bc4de857d8e3611ce6fb83d1d3c973654e,
+        PostalZipCode: fd8622c651c847e2297fa3192eca63530eb04f040aeff848a313a87f02a3cda4,
+        CountryIsoCode: HN,
+        Email: a4383d06376a1fc2ba5f09b5b059c08a5b606de07f930614ebf6cd088658a0c6,
+        UkTelephone: null,
+        Telephone: f6435f30725923d7eaa8c0d827f10126a32ad6a65ed448d476949992d00374f5,
+        InternationalTelephone: null
+      },
+      ApprovalNumber: null,
+      OtherIdentifier: null,
+      TracesId: 10137934
+    },
+    ConsignorTwo: null,
+    Packer: null,
+    Consignee: {
+      Id: ef1132ac-62d9-4284-b5f6-b5ceccd89a2c,
+      Type: consignee,
+      Status: nonapproved,
+      CompanyName: 4b38036f1544f85d7b22670ab699a0adf695493246d93a3e7cc58fa9203390fe,
+      IndividualName: null,
+      Address: {
+        Street: null,
+        City: eac50ed6aaeb9b9aa976b5d3f0896cfc53d92c4fcbdd78e913fd1a731fca7038,
+        Country: null,
+        PostalCode: null,
+        AddressLine1: 4e257d56faa25bdaf6125cfe48e82f98576f71921bf9acea7285dc7d064e6533,
+        AddressLine2: 1c4a265a1cff4052f84ecf4328c3dc85492ce859722ad3385de701ee9dd9ee0c,
+        AddressLine3: null,
+        PostalZipCode: 1e124e9c337ea6bf7361f0ce62fd8c51e4cf98332911a2818f777642c3bbd16d,
+        CountryIsoCode: GB,
+        Email: 8a9ba30ba64fdb23ce05f71cd24d4fcc6af5d6dfc2f9bece61114490e1c60a29,
+        UkTelephone: null,
+        Telephone: 50c711342e3f9c209d9d7e1ba325d8a34924ae56835f493d9774ad9870cb8aa4,
+        InternationalTelephone: null
+      },
+      ApprovalNumber: null,
+      OtherIdentifier: null,
+      TracesId: 10001058
+    },
+    Importer: {
+      Id: ef1132ac-62d9-4284-b5f6-b5ceccd89a2c,
+      Type: consignee,
+      Status: nonapproved,
+      CompanyName: 4b38036f1544f85d7b22670ab699a0adf695493246d93a3e7cc58fa9203390fe,
+      IndividualName: null,
+      Address: {
+        Street: null,
+        City: eac50ed6aaeb9b9aa976b5d3f0896cfc53d92c4fcbdd78e913fd1a731fca7038,
+        Country: null,
+        PostalCode: null,
+        AddressLine1: 4e257d56faa25bdaf6125cfe48e82f98576f71921bf9acea7285dc7d064e6533,
+        AddressLine2: 1c4a265a1cff4052f84ecf4328c3dc85492ce859722ad3385de701ee9dd9ee0c,
+        AddressLine3: null,
+        PostalZipCode: 1e124e9c337ea6bf7361f0ce62fd8c51e4cf98332911a2818f777642c3bbd16d,
+        CountryIsoCode: GB,
+        Email: 8a9ba30ba64fdb23ce05f71cd24d4fcc6af5d6dfc2f9bece61114490e1c60a29,
+        UkTelephone: null,
+        Telephone: 50c711342e3f9c209d9d7e1ba325d8a34924ae56835f493d9774ad9870cb8aa4,
+        InternationalTelephone: null
+      },
+      ApprovalNumber: null,
+      OtherIdentifier: null,
+      TracesId: 10001058
+    },
+    PlaceOfDestination: {
+      Id: adaa299d-ea34-410e-9843-dd12c40cec03,
+      Type: destination,
+      Status: nonapproved,
+      CompanyName: 4b38036f1544f85d7b22670ab699a0adf695493246d93a3e7cc58fa9203390fe,
+      IndividualName: null,
+      Address: {
+        Street: null,
+        City: 5598aee58fe8c5e884d465c126cfd9733da4aa4851771f7f735673e707a81b42,
+        Country: null,
+        PostalCode: null,
+        AddressLine1: ac00c3523d74c5ab30c75a6137a924426175dddde691e992bea61e55edc87245,
+        AddressLine2: e907c5840bc58e339062c7318bed6765d67fcb5446fc3316ed9a642a73e63564,
+        AddressLine3: 662cf369607106806fc93fc229176f027b88c0d667ed297b613b9d3cc914538d,
+        PostalZipCode: a7b0d84d20f7cf7e146fb07a81b7664e4fa79fa605c71b086a33a7a31dc5f1fc,
+        CountryIsoCode: GB-ENG,
+        Email: c72874bf0c4909afb5067d791b5c2845acc4d3ced05e8f00b1a7a9980186e6e7,
+        UkTelephone: null,
+        Telephone: 7e306d8d74a412e703cb1d09b9a71a0be1585407ee130fd389596d876413ac63,
+        InternationalTelephone: null
+      },
+      ApprovalNumber: null,
+      OtherIdentifier: null,
+      TracesId: 10296037
+    },
+    Pod: null,
+    PlaceOfOriginHarvest: null,
+    AdditionalPermanentAddresses: null,
+    CphNumber: null,
+    ImportingFromCharity: null,
+    IsPlaceOfDestinationThePermanentAddress: null,
+    IsCatchCertificateRequired: false,
+    IsGvmsRoute: false,
+    Commodities: {
+      GmsDeclarationAccepted: null,
+      ConsignedCountryInChargeGroup: null,
+      TotalGrossWeight: 24500.0,
+      TotalNetWeight: 20000.0,
+      TotalGrossVolume: null,
+      TotalGrossVolumeUnit: null,
+      NumberOfPackages: 2000,
+      Temperature: Frozen,
+      NumberOfAnimals: null,
+      IncludeNonAblactedAnimals: false,
+      CountryOfOrigin: HN,
+      CountryOfOriginIsPodCountry: null,
+      IsLowRiskArticle72Country: null,
+      RegionOfOrigin: null,
+      ConsignedCountry: HN,
+      AnimalsCertifiedAs: null,
+      CommodityIntendedFor: null,
+      CommodityComplement: [
+        {
+          UniqueComplementId: null,
+          CommodityDescription: Shrimps of the genus Penaeus,
+          CommodityId: 03061792,
+          ComplementId: 1,
+          ComplementName: Penaeus (Litopenaeus) vannamei,
+          EppoCode: null,
+          IsWoodPackaging: null,
+          SpeciesId: 346776,
+          SpeciesName: Penaeus (Litopenaeus) vannamei,
+          SpeciesNomination: Penaeus (Litopenaeus) vannamei,
+          SpeciesTypeName: Farmed stock,
+          SpeciesType: 20,
+          SpeciesClassName: null,
+          SpeciesClass: 363409,
+          SpeciesFamilyName: null,
+          SpeciesFamily: null,
+          SpeciesCommonName: null,
+          IsCdsMatched: true
+        }
+      ],
+      ComplementParameterSet: [
+        {
+          UniqueComplementID: cf0d571d-bc1d-4084-84b2-937342d7d93c,
+          ComplementID: 1,
+          SpeciesID: 346776,
+          KeyDataPair: [
+            {
+              Key: netweight,
+              Data: 20000
+            },
+            {
+              Key: number_package,
+              Data: 2000
+            },
+            {
+              Key: type_package,
+              Data: Carton
+            },
+            {
+              Key: is_catch_certificate_required,
+              Data: false
+            }
+          ],
+          CatchCertificates: null,
+          Identifiers: null
+        }
+      ]
+    },
+    Purpose: {
+      ConformsToEU: true,
+      InternalMarketPurpose: Human Consumption,
+      ThirdCountryTranshipment: null,
+      ForNonConforming: null,
+      RegNumber: null,
+      ShipName: null,
+      ShipPort: null,
+      ExitBip: null,
+      ThirdCountry: null,
+      TransitThirdCountries: null,
+      ForImportOrAdmission: null,
+      ExitDate: null,
+      FinalBip: null,
+      PointOfExit: null,
+      PurposeGroup: For Import,
+      EstimatedArrivesAtPortOfExit: null
+    },
+    PointOfEntry: GBTEEP1,
+    PointOfEntryControlPoint: null,
+    MeansOfTransport: {
+      Type: null,
+      Document: null,
+      Id: null
+    },
+    Transporter: null,
+    TransporterDetailsRequired: false,
+    MeansOfTransportFromEntryPoint: {
+      Type: Ship,
+      Document: 9d53c5a079d08ae3b6c17db680a95967f23058e3f2346b2cc77b8c339856b3f7,
+      Id: 2b9586301e4297b52824e23bc518c1898cd2640582f243c5040bce4e59c2ffea
+    },
+    EstimatedJourneyTimeInMinutes: null,
+    ResponsibleForTransport: null,
+    VeterinaryInformation: {
+      EstablishmentsOfOriginExternalReference: null,
+      EstablishmentsOfOrigins: [
+        {
+          Id: 00aa8686-aa25-8991-aeb5-577ffe337b8a,
+          Name: Service And Trading Business,
+          Country: HN,
+          Types: [
+            Processing Plant
+          ],
+          ApprovalNumber: 81-C,
+          Section: Fishery products
+        }
+      ],
+      VeterinaryDocument: null,
+      VeterinaryDocumentIssuedOn: null,
+      AccompanyingDocumentNumbers: null,
+      AccompanyingDocuments: [
+        {
+          DocumentType: other,
+          DocumentReference: 9b0feb8987d903dfb4855869ff45e40718cbb9e567d65e78a7fda5e244bf5334,
+          DocumentIssuedOn: 2024-12-04,
+          AttachmentId: 8f79b243-1399-4d2d-8274-7349f1db14cf,
+          AttachmentFilename: SKM_C450i24120411400.pdf,
+          AttachmentContentType: application/pdf,
+          UploadUserId: b7a7c1e3-b4db-ea11-a813-000d3aab25ce,
+          UploadOrganisationId: 5d5193c4-8345-e911-a956-000d3a454330,
+          ExternalReference: null
+        },
+        {
+          DocumentType: latestVeterinaryHealthCertificate,
+          DocumentReference: a1a8c1d3589670d2f26a68a70bf0d9ab11c04d9f6c10c158c41745c08b6ac2e5,
+          DocumentIssuedOn: 2024-11-13,
+          AttachmentId: null,
+          AttachmentFilename: null,
+          AttachmentContentType: null,
+          UploadUserId: null,
+          UploadOrganisationId: null,
+          ExternalReference: null
+        }
+      ],
+      CatchCertificateAttachments: null,
+      IdentificationDetails: null
+    },
+    ImporterLocalReferenceNumber: 313956a87de9e8042377c4a7c6337873373cb7d640f6f4c1758ff2364bd92cb2,
+    Route: null,
+    SealsContainers: null,
+    StoreTransporterContact: null,
+    SubmittedOn: 2024-12-06 08:56:41.05 Utc,
+    SubmittedBy: {
+      DisplayName: 399e26680fb2dabf1934a6f0c370dec44587c03a2b5b66b071f414e7fc02e79e,
+      UserId: b7a7c1e3-b4db-ea11-a813-000d3aab25ce,
+      IsControlUser: null
+    },
+    ConsignmentValidations: null,
+    ComplexCommoditySelected: null,
+    PortOfEntry: GBSOU,
+    PortOfExit: null,
+    ExitedPortOfOn: null,
+    ContactDetails: {
+      Name: 011c8ef30e6cfc4a5e5adff1d58c6c854d5424435862e02ae96db94f2e3fd4fe,
+      Telephone: 61dfc743db9a7cdf38857ec53b501a8da6d78363c694e4dab1eec97c7020a19f,
+      Email: daf284b5a3575880a18a70d47e94ad9bddd2acf125f713275b06cc15420cd170,
+      Agent: null
+    },
+    NominatedContacts: null,
+    OriginalEstimatedOn: null,
+    BillingInformation: null,
+    IsChargeable: null,
+    WasChargeable: null,
+    CommonUserCharge: null,
+    ProvideCtcMrn: NO,
+    ArrivesAt: 2024-12-07,
+    DepartedOn: null
+  },
+  DecisionBy: {
+    DisplayName: 5a3f5290d014587bd4107c7e84e0aa4fabe7d048fbd8f9707646c469aa791366,
+    UserId: 7158ac68-b939-e911-a958-000d3a454e11,
+    IsControlUser: null
+  },
+  DecisionDate: 2024-12-20T15:12:53.923654485Z,
+  PartTwo: {
+    Decision: {
+      ConsignmentAcceptable: true,
+      NotAcceptableAction: null,
+      NotAcceptableActionDestructionReason: null,
+      NotAcceptableActionEntryRefusalReason: null,
+      NotAcceptableActionQuarantineImposedReason: null,
+      NotAcceptableActionSpecialTreatmentReason: null,
+      NotAcceptableActionIndustrialProcessingReason: null,
+      NotAcceptableActionReDispatchReason: null,
+      NotAcceptableActionUseForOtherPurposesReason: null,
+      NotAcceptableDestructionReason: null,
+      NotAcceptableActionOtherReason: null,
+      NotAcceptableActionByDate: null,
+      ChedppNotAcceptableReasons: null,
+      NotAcceptableReasons: null,
+      NotAcceptableCountry: null,
+      NotAcceptableEstablishment: null,
+      NotAcceptableOtherReason: null,
+      DetailsOfControlledDestinations: null,
+      SpecificWarehouseNonConformingConsignment: null,
+      TemporaryDeadline: null,
+      Decision: Acceptable for Internal Market,
+      FreeCirculationPurpose: Human Consumption,
+      DefinitiveImportPurpose: null,
+      IfChanneledOption: null,
+      CustomWarehouseRegisteredNumber: null,
+      FreeWarehouseRegisteredNumber: null,
+      ShipName: null,
+      ShipPortOfExit: null,
+      ShipSupplierRegisteredNumber: null,
+      TranshipmentBip: null,
+      TranshipmentThirdCountry: null,
+      TransitExitBip: null,
+      TransitThirdCountry: null,
+      TransitDestinationThirdCountry: null,
+      TemporaryExitBip: null,
+      HorseReentry: null,
+      TranshipmentEuOrThirdCountry: null
+    },
+    ConsignmentCheck: {
+      EuStandard: null,
+      AdditionalGuarantees: null,
+      DocumentCheckAdditionalDetails: null,
+      DocumentCheckResult: Satisfactory,
+      NationalRequirements: null,
+      IdentityCheckDone: null,
+      IdentityCheckType: Not Done,
+      IdentityCheckResult: Not Done,
+      IdentityCheckNotDoneReason: Reduced checks regime,
+      PhysicalCheckDone: null,
+      PhysicalCheckResult: Not Done,
+      PhysicalCheckNotDoneReason: Reduced checks regime,
+      PhysicalCheckOtherText: null,
+      WelfareCheck: null,
+      NumberOfAnimalsChecked: null,
+      LaboratoryCheckDone: null,
+      LaboratoryCheckResult: null
+    },
+    ImpactOfTransportOnAnimals: null,
+    LaboratoryTestsRequired: false,
+    LaboratoryTests: null,
+    ResealedContainersIncluded: false,
+    ResealedContainers: null,
+    ResealedContainersMappings: [
+      {
+        SealNumber: 8698343229720024c2fdd725ee36c13a4215b28dcd5335598beb016535d409d4,
+        ContainerNumber: 616d736dcb3fa2e05aff6b1ab366fb60a22aa2d2b1a667d1dd75d1fac75fade9,
+        OfficialSeal: true,
+        ResealedSealNumber: null
+      }
+    ],
+    ControlAuthority: {
+      OfficialVeterinarian: {
+        FirstName: 47b09ccd2769952e70246b481620f6a4797eea29e9fcedc98682584e211b5570,
+        LastName: a98f4cc1a5dc7593f66bee16281301d3faaeb50bab826c2917079010de2c3c51,
+        Email: a87cd38866dad7dd27d15873faf75bd95f3982804387d6151e42a4a39cb56d1a,
+        Phone: 62541d660ada8af8a46b43bf49c65ed1cf7d4f207ac776fae5db28448a525502,
+        Fax: null,
+        Signed: 2024-12-20T15:12:53.950111906
+      },
+      CustomsReferenceNo: null,
+      ContainerResealed: null,
+      NewSealNumber: null,
+      IuuFishingReference: null,
+      IuuCheckRequired: true,
+      IuuOption: IUUNA
+    },
+    ControlledDestination: null,
+    BipLocalReferenceNumber: 6daba65061361dd326183238c8c9e8a76e05966450935ae11dd9a52b8d0143bf,
+    SignedOnBehalfOf: null,
+    OnwardTransportation: null,
+    ConsignmentValidations: null,
+    CheckedOn: 2024-12-20 12:00 Utc,
+    AccompanyingDocuments: null,
+    CommodityChecks: null,
+    PhsiAutoCleared: null,
+    HmiAutoCleared: null,
+    InspectionRequired: Required,
+    InspectionOverride: null,
+    AutoClearedOn: null
+  },
+  PartThree: {
+    ControlStatus: null,
+    Control: null,
+    ConsignmentValidations: null,
+    SealCheckRequired: false,
+    SealCheck: null,
+    SealCheckOverride: null
+  },
+  OfficialVeterinarian: null,
+  ConsignmentValidations: null,
+  AgencyOrganisationId: null,
+  RiskDecisionLockedOn: 2024-12-06 22:00 Utc,
+  IsRiskDecisionLocked: true,
+  IsAutoClearanceExempted: true,
+  IsBulkUploadInProgress: null,
+  RequestId: null,
+  IsCdsFullMatched: true,
+  ChedTypeVersion: 1,
+  IsGMRMatched: null
+}

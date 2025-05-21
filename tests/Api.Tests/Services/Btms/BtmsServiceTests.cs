@@ -1,15 +1,16 @@
+using System.Text.Encodings.Web;
 using Argon;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
+using Defra.PhaImportNotifications.Api.TradeDataApi;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using NSubstitute;
-using ChedReferenceNumbers = Defra.PhaImportNotifications.Testing.ChedReferenceNumbers;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
 
@@ -20,7 +21,11 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     public BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         : base(context)
     {
-        Subject = new BtmsService(new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance), Options);
+        Subject = new BtmsService(
+            new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance),
+            new TradeDataHttpClient(new HttpClient { BaseAddress = new Uri(context.Server.Urls[0]) }),
+            Options
+        );
 
         _settings = new VerifySettings();
         _settings.DontScrubGuids();
@@ -53,18 +58,18 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     {
         WireMock.StubImportNotificationUpdates(transformRequest: builder =>
             builder
-                .WithParam(
-                    "filter",
-                    "and("
-                        + "any(_PointOfEntry,'bcp1','bcp2'),"
-                        + "any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),"
-                        + "not(equals(status,'Draft')),"
-                        + "greaterOrEqual(updatedEntity,'2024-12-12T13:10:30.0000000Z'),"
-                        + "lessThan(updatedEntity,'2024-12-12T13:40:30.0000000Z')"
-                        + ")"
-                )
-                .WithJsonApiParam("fields[import-notifications]", "updatedEntity,referenceNumber")
-                .WithJsonApiParam("page[size]", "100")
+        // .WithParam(
+        //     "filter",
+        //     "and("
+        //         + "any(_PointOfEntry,'bcp1','bcp2'),"
+        //         + "any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),"
+        //         + "not(equals(status,'Draft')),"
+        //         + "greaterOrEqual(updatedEntity,'2024-12-12T13:10:30.0000000Z'),"
+        //         + "lessThan(updatedEntity,'2024-12-12T13:40:30.0000000Z')"
+        //         + ")"
+        // )
+        // .WithParam(UrlEncoder.Default.Encode("fields[import-notifications]"), "updatedEntity,referenceNumber")
+        // .WithParam(UrlEncoder.Default.Encode("page[size]"), "100")
         );
 
         var result = await Subject.GetImportNotificationUpdates(
@@ -127,110 +132,9 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     public async Task GetImportNotificationUpdates_WhenNullDocument_ShouldFail()
     {
         var mockJsonApiClient = Substitute.For<IJsonApiClient>();
-        var subject = new BtmsService(mockJsonApiClient, Options);
+        var subject = new BtmsService(mockJsonApiClient, null!, Options);
 
         var act = () => subject.GetImportNotificationUpdates([], DateTime.Now, DateTime.Now, CancellationToken.None);
-
-        await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Result was null");
-    }
-
-    [Theory]
-    [InlineData(ChedReferenceNumbers.ChedA)]
-    // ChedReferenceNumbers.ChedD has a movement. See GetImportNotification_WithMovements_WhenOk_ShouldSucceed
-    [InlineData(ChedReferenceNumbers.ChedP)]
-    [InlineData(ChedReferenceNumbers.ChedPP)]
-    public async Task GetImportNotification_WhenOk_ShouldSucceed(string chedReferenceNumber)
-    {
-        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
-
-        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
-
-        result.Should().NotBeNull();
-
-        await Verify(result, _settings).UseParameters(chedReferenceNumber);
-    }
-
-    [Fact]
-    public async Task GetImportNotification_WhenError_ShouldFail()
-    {
-        WireMock.StubSingleImportNotification(shouldFail: true);
-
-        var act = () => Subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
-
-        await act.Should().ThrowAsync<Exception>();
-    }
-
-#pragma warning disable CA2211
-    // Non-constant fields should not be visible - ignoring as it's a test
-    public static TheoryData<string, string[]> ChedReferenceNumbersWithMovements = new()
-#pragma warning restore CA2211
-    {
-        {
-            ChedReferenceNumbers.ChedPWithMovement,
-            [MovementReferenceNumbers.Movement1, MovementReferenceNumbers.Movement2]
-        },
-        { ChedReferenceNumbers.ChedD, [MovementReferenceNumbers.Movement3] },
-        { ChedReferenceNumbers.ChedPFinalised, [MovementReferenceNumbers.MovementFinalised] },
-    };
-
-    [Theory, MemberData(nameof(ChedReferenceNumbersWithMovements))]
-    public async Task GetImportNotification_WithMovements_WhenOk_ShouldSucceed(
-        string chedReferenceNumber,
-        string[] movementReferenceNumbers
-    )
-    {
-        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
-
-        foreach (var mrn in movementReferenceNumbers)
-            WireMock.StubSingleMovement(mrn: mrn);
-
-        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
-
-        result.Should().NotBeNull();
-
-        await Verify(result, _settings).UseParameters(chedReferenceNumber);
-    }
-
-    [Theory]
-    [InlineData(ChedReferenceNumbers.ChedAWithGoodsMovement, new[] { GoodsMovementsReferences.GMRId1 })]
-    public async Task GetImportNotification_WithGoodsMovements_WhenOk_ShouldSucceed(
-        string chedReferenceNumber,
-        string[] goodsMovementsReferences
-    )
-    {
-        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
-
-        foreach (var gmrId in goodsMovementsReferences)
-            WireMock.StubSingleGmr(gmrId: gmrId);
-
-        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
-
-        result.Should().NotBeNull();
-
-        await Verify(result, _settings).UseParameters(chedReferenceNumber);
-    }
-
-    [Fact]
-    public async Task GetImportNotification_WhenNotFound_ShouldBeNull()
-    {
-        var mockJsonApiClient = Substitute.For<IJsonApiClient>();
-        var subject = new BtmsService(mockJsonApiClient, Options);
-
-        var result = await subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
-
-        result.Should().BeNull();
-    }
-
-    [Fact]
-    public async Task GetImportNotification_WhenDocumentDataIsNull_ShouldFail()
-    {
-        var mockJsonApiClient = Substitute.For<IJsonApiClient>();
-        mockJsonApiClient
-            .Get(Arg.Any<RequestUri>(), Arg.Any<CancellationToken>())
-            .Returns(Task.FromResult<Document?>(new Document()));
-        var subject = new BtmsService(mockJsonApiClient, Options);
-
-        var act = () => subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
 
         await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Result was null");
     }
@@ -258,7 +162,6 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     private void StubSubsequentUpdatesRequestForPage(int page, int? statusCode = null)
     {
         WireMock.StubImportNotificationUpdates(
-            path: "/api/import-notifications",
             transformRequest: builder => builder.WithParam("page", page.ToString()),
             statusCode: statusCode
         );

@@ -76,13 +76,4 @@ public partial record CommodityComplement
     [JsonPropertyName("isCdsMatched")]
     [Description("Has commodity been matched with corresponding CDS declaration")]
     public bool? IsCdsMatched { get; init; }
-
-    [JsonPropertyName("additionalData")]
-    public object? AdditionalData { get; init; }
-
-    [JsonPropertyName("riskAssesment")]
-    public CommodityRiskResult? RiskAssesment { get; init; }
-
-    [JsonPropertyName("checks")]
-    public List<InspectionCheck>? Checks { get; init; }
 }

@@ -10,25 +10,25 @@ public partial record Purpose
     public bool? ConformsToEU { get; init; }
 
     [JsonPropertyName("internalMarketPurpose")]
-    [ExampleValue("AnimalFeedingStuff")]
-    [ExampleValue("HumanConsumption")]
-    [ExampleValue("PharmaceuticalUse")]
-    [ExampleValue("TechnicalUse")]
+    [ExampleValue("Animal Feeding Stuff")]
+    [ExampleValue("Human Consumption")]
+    [ExampleValue("Pharmaceutical Use")]
+    [ExampleValue("Technical Use")]
     [ExampleValue("Other")]
-    [ExampleValue("CommercialSale")]
-    [ExampleValue("CommercialSaleOrChangeOfOwnership")]
+    [ExampleValue("Commercial Sale")]
+    [ExampleValue("Commercial sale or change of ownership")]
     [ExampleValue("Rescue")]
     [ExampleValue("Breeding")]
     [ExampleValue("Research")]
-    [ExampleValue("RacingOrCompetition")]
-    [ExampleValue("ApprovedPremisesOrBody")]
-    [ExampleValue("CompanionAnimalNotForResaleOrRehoming")]
+    [ExampleValue("Racing or Competition")]
+    [ExampleValue("Approved Premises or Body")]
+    [ExampleValue("Companion Animal not for Resale or Rehoming")]
     [ExampleValue("Production")]
     [ExampleValue("Slaughter")]
     [ExampleValue("Fattening")]
-    [ExampleValue("GameRestocking")]
-    [ExampleValue("RegisteredHorses")]
-    [Description("Detailed purpose of internal market purpose group")]
+    [ExampleValue("Game Restocking")]
+    [ExampleValue("Registered Horses")]
+    [Description("Detailed purpose of internal market purpose group. Possible values taken from IPAFFS schema version 17.5.")]
     public string? InternalMarketPurpose { get; init; }
 
     [JsonPropertyName("thirdCountryTranshipment")]
@@ -36,15 +36,15 @@ public partial record Purpose
     public string? ThirdCountryTranshipment { get; init; }
 
     [JsonPropertyName("forNonConforming")]
-    [ExampleValue("CustomsWarehouse")]
-    [ExampleValue("FreeZoneOrFreeWarehouse")]
-    [ExampleValue("ShipSupplier")]
+    [ExampleValue("Customs Warehouse")]
+    [ExampleValue("Free Zone or Free Warehouse")]
+    [ExampleValue("Ship Supplier")]
     [ExampleValue("Ship")]
-    [Description("Detailed purpose for non conforming purpose group")]
+    [Description("Detailed purpose for non conforming purpose group. Possible values taken from IPAFFS schema version 17.5.")]
     public string? ForNonConforming { get; init; }
 
     [JsonPropertyName("regNumber")]
-    [Description("There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number. ")]
+    [Description("There are 3 types of registration number based on the purpose of consignment. Customs registration number, Free zone registration number and Shipping supplier registration number.")]
     public string? RegNumber { get; init; }
 
     [JsonPropertyName("shipName")]
@@ -68,10 +68,10 @@ public partial record Purpose
     public List<string>? TransitThirdCountries { get; init; }
 
     [JsonPropertyName("forImportOrAdmission")]
-    [ExampleValue("DefinitiveImport")]
-    [ExampleValue("HorsesReEntry")]
-    [ExampleValue("TemporaryAdmissionHorses")]
-    [Description("Specification of Import or admission purpose")]
+    [ExampleValue("Definitive import")]
+    [ExampleValue("Horses Re-entry")]
+    [ExampleValue("Temporary admission horses")]
+    [Description("Specification of Import or admission purpose. Possible values taken from IPAFFS schema version 17.5.")]
     public string? ForImportOrAdmission { get; init; }
 
     [JsonPropertyName("exitDate")]
@@ -82,17 +82,20 @@ public partial record Purpose
     [Description("Final Border Inspection Post")]
     public string? FinalBip { get; init; }
 
+    [JsonPropertyName("pointOfExit")]
+    [Description("Place of departure")]
+    public string? PointOfExit { get; init; }
+
     [JsonPropertyName("purposeGroup")]
-    [ExampleValue("ForImport")]
-    [ExampleValue("ForNONConformingConsignments")]
-    [ExampleValue("ForTranshipmentTo")]
-    [ExampleValue("ForTransitTo3rdCountry")]
-    [ExampleValue("ForReImport")]
-    [ExampleValue("ForPrivateImport")]
-    [ExampleValue("ForTransferTo")]
-    [ExampleValue("ForImportReConformityCheck")]
-    [ExampleValue("ForImportNonInternalMarket")]
-    [Description("Purpose group of consignment (general purpose)")]
+    [ExampleValue("For Import")]
+    [ExampleValue("For NON-Conforming Consignments")]
+    [ExampleValue("For Transhipment to")]
+    [ExampleValue("For Transit to 3rd Country")]
+    [ExampleValue("For Re-Import")]
+    [ExampleValue("For Private Import")]
+    [ExampleValue("For Transfer To")]
+    [ExampleValue("For Import Re-Conformity Check")]
+    [Description("Purpose group of consignment (general purpose). Possible values taken from IPAFFS schema version 17.5.")]
     public string? PurposeGroup { get; init; }
 
     [JsonPropertyName("estimatedArrivesAtPortOfExit")]

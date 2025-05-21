@@ -1,0 +1,42 @@
+{
+  "gmrs": [
+    {
+      "gmr": {
+        "id": "GMRA00KBHFE0",
+        "haulierEori": "GB074694771000",
+        "state": "COMPLETED",
+        "inspectionRequired": false,
+        "reportToLocations": null,
+        "updatedSource": "2024-11-11T17:34:50.774Z",
+        "direction": "UK_INBOUND",
+        "haulierType": null,
+        "isUnaccompanied": false,
+        "vehicleRegistrationNumber": "241SO1061",
+        "trailerRegistrationNums": null,
+        "containerReferenceNums": null,
+        "plannedCrossing": {
+          "routeId": "109",
+          "departsAt": "2024-11-11T14:45:00"
+        },
+        "checkedInCrossing": {
+          "routeId": "32",
+          "arrivesAt": "2024-11-11T18:20:00"
+        },
+        "actualCrossing": {
+          "routeId": "32",
+          "arrivesAt": "2024-11-11T18:20:00"
+        },
+        "declarations": {
+          "transits": [
+            {
+              "id": "24IEDUB10010972672"
+            }
+          ],
+          "customs": null
+        }
+      },
+      "created": "2025-02-21T13:28:39.129Z",
+      "updated": "2025-02-21T13:28:40.129Z"
+    }
+  ]
+}

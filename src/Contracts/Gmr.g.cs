@@ -5,29 +5,6 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public partial record Gmr
 {
-    [JsonPropertyName("createdSource")]
-    [JsonIgnore]
-    public DateTime? CreatedSource { get; init; }
-
-    [JsonPropertyName("created")]
-    [JsonIgnore]
-    public DateTime? Created { get; init; }
-
-    [JsonPropertyName("updatedEntity")]
-    [JsonIgnore]
-    public DateTime? UpdatedEntity { get; init; }
-
-    [JsonPropertyName("updated")]
-    public required DateTime Updated { get; init; }
-
-    [JsonPropertyName("auditEntries")]
-    [JsonIgnore]
-    public List<AuditEntry>? AuditEntries { get; init; }
-
-    [JsonPropertyName("relationships")]
-    [JsonIgnore]
-    public GmrRelationships? Relationships { get; init; }
-
     [JsonPropertyName("id")]
     [Description("The Goods Movement Record (GMR) ID for this GMR.  Do not include when POSTing a GMR - GVMS will assign an ID.")]
     public string? Id { get; init; }
@@ -38,13 +15,12 @@ public partial record Gmr
     public string? HaulierEori { get; init; }
 
     [JsonPropertyName("state")]
-    [ExampleValue("NotFinalisable")]
-    [ExampleValue("Open")]
-    [ExampleValue("Finalised")]
-    [ExampleValue("CheckedIn")]
-    [ExampleValue("Embarked")]
-    [ExampleValue("Completed")]
-    [Description("The state of the GMR")]
+    [ExampleValue("NOT_FINALISABLE")]
+    [ExampleValue("OPEN")]
+    [ExampleValue("CHECKED_IN")]
+    [ExampleValue("EMBARKED")]
+    [ExampleValue("COMPLETED")]
+    [Description("The state of the GMR. Possible values taken from GVMS schema version v1.0 (private beta).")]
     public string? State { get; init; }
 
     [JsonPropertyName("inspectionRequired")]
@@ -62,23 +38,23 @@ public partial record Gmr
     public DateTime? UpdatedSource { get; init; }
 
     [JsonPropertyName("direction")]
-    [ExampleValue("UkInbound")]
-    [ExampleValue("UkOutbound")]
-    [ExampleValue("GbToNi")]
-    [ExampleValue("NiToGb")]
+    [ExampleValue("UK_INBOUND")]
+    [ExampleValue("UK_OUTBOUND")]
+    [ExampleValue("GB_TO_NI")]
+    [ExampleValue("NI_TO_GB")]
     [JsonIgnore]
-    [Description("The direction of the movement - into or out of the UK, or between Great Britain and Northern Ireland")]
+    [Description("The direction of the movement - into or out of the UK, or between Great Britain and Northern Ireland. Possible values taken from GVMS schema version v1.0 (private beta).")]
     public string? Direction { get; init; }
 
     [JsonPropertyName("haulierType")]
-    [ExampleValue("Standard")]
-    [ExampleValue("FpoAsn")]
-    [ExampleValue("FpoOther")]
-    [ExampleValue("NatoMod")]
-    [ExampleValue("Rmg")]
-    [ExampleValue("Etoe")]
+    [ExampleValue("STANDARD")]
+    [ExampleValue("FPO_ASN")]
+    [ExampleValue("FPO_OTHER")]
+    [ExampleValue("NATO_MOD")]
+    [ExampleValue("RMG")]
+    [ExampleValue("ETOE")]
     [JsonIgnore]
-    [Description("The type of haulier moving the goods")]
+    [Description("The type of haulier moving the goods. Possible values taken from GVMS schema version v1.0 (private beta).")]
     public string? HaulierType { get; init; }
 
     [JsonPropertyName("isUnaccompanied")]

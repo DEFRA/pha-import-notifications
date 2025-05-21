@@ -7,7 +7,7 @@ public partial record PartTwo
 {
     [JsonPropertyName("decision")]
     [Description("Decision on the consignment")]
-    public Decision? Decision { get; init; }
+    public ImportDecision? Decision { get; init; }
 
     [JsonPropertyName("consignmentCheck")]
     [Description("Consignment check")]
@@ -70,6 +70,9 @@ public partial record PartTwo
     [Description("Accompanying documents")]
     public List<AccompanyingDocument>? AccompanyingDocuments { get; init; }
 
+    [JsonPropertyName("commodityChecks")]
+    public List<NotificationCommodityCheck>? CommodityChecks { get; init; }
+
     [JsonPropertyName("phsiAutoCleared")]
     [Description("Have the PHSI regulated commodities been auto cleared?")]
     public bool? PhsiAutoCleared { get; init; }
@@ -81,8 +84,8 @@ public partial record PartTwo
     [JsonPropertyName("inspectionRequired")]
     [ExampleValue("Required")]
     [ExampleValue("Inconclusive")]
-    [ExampleValue("NotRequired")]
-    [Description("Inspection required")]
+    [ExampleValue("Not required")]
+    [Description("Inspection required. Possible values taken from IPAFFS schema version 17.5.")]
     public string? InspectionRequired { get; init; }
 
     [JsonPropertyName("inspectionOverride")]

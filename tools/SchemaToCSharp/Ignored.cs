@@ -56,12 +56,12 @@ internal static class Ignored
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IuuFishingReference" }
         },
         {
-            "ImportNotificationTypeEnum",
+            "ImportPreNotification.importNotificationType",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IMP" }
         },
         {
-            "ImportNotificationStatusEnum",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Draft" }
+            "ImportPreNotification.status",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Draft", "SUBMITTED,IN_PROGRESS,MODIFY" }
         },
         {
             "Movement",
@@ -76,14 +76,6 @@ internal static class Ignored
                 "BtmsStatus",
                 "AlvsDecisionStatus",
             }
-        },
-        {
-            "CdsClearanceRequest",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
-        },
-        {
-            "CdsDecision",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
         },
         {
             "Header",

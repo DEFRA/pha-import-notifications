@@ -8,6 +8,8 @@ public static class Endpoints
     {
         private const string Root = "/import-notifications";
 
+        public static string Get(string chedReferenceNumber) => $"/import-notifications/{chedReferenceNumber}";
+
         public static string GetUpdatedValid(string[]? bcp = null, string? from = null, string? to = null) =>
             GetUpdatedBetween(bcp ?? ["bcp"], from ?? "2024-12-11T13:00:00Z", to ?? "2024-12-11T13:30:00Z");
 
@@ -27,8 +29,5 @@ public static class Endpoints
 
             return $"{Root}{query}";
         }
-
-        public static string Get(string chedReferenceNumber = ChedReferenceNumbers.ChedA) =>
-            $"{Root}/{chedReferenceNumber}";
     }
 }

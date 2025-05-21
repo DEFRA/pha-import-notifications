@@ -1,0 +1,150 @@
+{
+  "customsDeclarations": [
+    {
+      "movementReferenceNumber": "24GBDFPD8F0ECL9AR8",
+      "clearanceRequest": {
+        "externalCorrelationId": "1315539",
+        "messageSentAt": "2024-12-04T12:23:32Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB648766188000-10022786",
+        "declarationPartNumber": null,
+        "declarationType": "S",
+        "arrivesAt": null,
+        "submitterTurn": null,
+        "declarantId": "GB648766188000",
+        "declarantName": "GB648766188000",
+        "dispatchCountryCode": "BR",
+        "goodsLocationCode": "LGPLGPLGP",
+        "masterUcr": "LGP1C7XGS00101",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "1602321990",
+            "goodsDescription": "FROZEN CHICKEN",
+            "consigneeId": "GB246936865000",
+            "consigneeName": "GB246936865000",
+            "netMass": 19493,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "BR",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5137241",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5137241:161124053356:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionReasons": [],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
+      },
+      "finalisation": null,
+      "inboundError": null,
+      "created": "2025-02-21T13:28:39.129Z",
+      "updated": "2025-02-21T13:28:40.129Z"
+    },
+    {
+      "movementReferenceNumber": "24GBDFPJ28XLD8OAR5",
+      "clearanceRequest": {
+        "externalCorrelationId": "1315561",
+        "messageSentAt": "2024-12-04T12:28:02Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB246936865000-10022786",
+        "declarationPartNumber": "001",
+        "declarationType": "S",
+        "arrivesAt": null,
+        "submitterTurn": null,
+        "declarantId": "GB246936865000",
+        "declarantName": "GB246936865000",
+        "dispatchCountryCode": "BR",
+        "goodsLocationCode": "LGPLGPLGP",
+        "masterUcr": "LGP1C7XGS00102",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "1602321990",
+            "goodsDescription": "FROZEN CHICKEN",
+            "consigneeId": "GB888420879000",
+            "consigneeName": "GB888420879000",
+            "netMass": 667,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "BR",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCVD2024.5137241",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5137241:161124053356:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionReasons": [],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
+      },
+      "finalisation": null,
+      "inboundError": null,
+      "created": "2025-02-21T13:28:39.129Z",
+      "updated": "2025-02-21T13:28:40.129Z"
+    }
+  ]
+}

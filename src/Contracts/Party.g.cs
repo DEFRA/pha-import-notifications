@@ -50,9 +50,9 @@ public partial record Party
     public int? TracesId { get; init; }
 
     [JsonPropertyName("type")]
-    [ExampleValue("CommercialTransporter")]
-    [ExampleValue("PrivateTransporter")]
-    [Description("Type of party")]
+    [ExampleValue("Commercial transporter")]
+    [ExampleValue("Private transporter")]
+    [Description("Type of party. Possible values taken from IPAFFS schema version 17.5.")]
     public string? Type { get; init; }
 
     [JsonPropertyName("approvalNumber")]

@@ -6,19 +6,47 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record ConsignmentCheck
 {
     [JsonPropertyName("euStandard")]
-    [Description("Does it conform EU standards")]
+    [ExampleValue("Satisfactory")]
+    [ExampleValue("Satisfactory following official intervention")]
+    [ExampleValue("Not Satisfactory")]
+    [ExampleValue("Not Done")]
+    [ExampleValue("Derogation")]
+    [ExampleValue("Not Set")]
+    [Description("Does it conform EU standards. Possible values taken from IPAFFS schema version 17.5.")]
     public string? EuStandard { get; init; }
 
     [JsonPropertyName("additionalGuarantees")]
-    [Description("Result of additional guarantees")]
+    [ExampleValue("Satisfactory")]
+    [ExampleValue("Satisfactory following official intervention")]
+    [ExampleValue("Not Satisfactory")]
+    [ExampleValue("Not Done")]
+    [ExampleValue("Derogation")]
+    [ExampleValue("Not Set")]
+    [Description("Result of additional guarantees. Possible values taken from IPAFFS schema version 17.5.")]
     public string? AdditionalGuarantees { get; init; }
 
+    [JsonPropertyName("documentCheckAdditionalDetails")]
+    [Description("Additional details for document check")]
+    public string? DocumentCheckAdditionalDetails { get; init; }
+
     [JsonPropertyName("documentCheckResult")]
-    [Description("Result of document check")]
+    [ExampleValue("Satisfactory")]
+    [ExampleValue("Satisfactory following official intervention")]
+    [ExampleValue("Not Satisfactory")]
+    [ExampleValue("Not Done")]
+    [ExampleValue("Derogation")]
+    [ExampleValue("Not Set")]
+    [Description("Result of document check. Possible values taken from IPAFFS schema version 17.5.")]
     public string? DocumentCheckResult { get; init; }
 
     [JsonPropertyName("nationalRequirements")]
-    [Description("Result of national requirements check")]
+    [ExampleValue("Satisfactory")]
+    [ExampleValue("Satisfactory following official intervention")]
+    [ExampleValue("Not Satisfactory")]
+    [ExampleValue("Not Done")]
+    [ExampleValue("Derogation")]
+    [ExampleValue("Not Set")]
+    [Description("Result of national requirements check. Possible values taken from IPAFFS schema version 17.5.")]
     public string? NationalRequirements { get; init; }
 
     [JsonPropertyName("identityCheckDone")]
@@ -26,20 +54,27 @@ public partial record ConsignmentCheck
     public bool? IdentityCheckDone { get; init; }
 
     [JsonPropertyName("identityCheckType")]
-    [ExampleValue("SealCheck")]
-    [ExampleValue("FullIdentityCheck")]
-    [ExampleValue("NotDone")]
-    [Description("Type of identity check performed")]
+    [ExampleValue("Seal Check")]
+    [ExampleValue("Full Identity Check")]
+    [ExampleValue("Not Done")]
+    [Description("Type of identity check performed. Possible values taken from IPAFFS schema version 17.5.")]
     public string? IdentityCheckType { get; init; }
 
     [JsonPropertyName("identityCheckResult")]
-    [Description("Result of identity check")]
+    [ExampleValue("Satisfactory")]
+    [ExampleValue("Satisfactory following official intervention")]
+    [ExampleValue("Not Satisfactory")]
+    [ExampleValue("Not Done")]
+    [ExampleValue("Derogation")]
+    [ExampleValue("Not Set")]
+    [Description("Result of identity check. Possible values taken from IPAFFS schema version 17.5.")]
     public string? IdentityCheckResult { get; init; }
 
     [JsonPropertyName("identityCheckNotDoneReason")]
-    [ExampleValue("ReducedChecksRegime")]
-    [ExampleValue("NotRequired")]
-    [Description("What was the reason for skipping identity check")]
+    [ExampleValue("Reduced checks regime")]
+    [ExampleValue("Not required")]
+    [ExampleValue("Chilled equine semen facilitation scheme")]
+    [Description("What was the reason for skipping identity check. Possible values taken from IPAFFS schema version 17.5.")]
     public string? IdentityCheckNotDoneReason { get; init; }
 
     [JsonPropertyName("physicalCheckDone")]
@@ -47,13 +82,19 @@ public partial record ConsignmentCheck
     public bool? PhysicalCheckDone { get; init; }
 
     [JsonPropertyName("physicalCheckResult")]
-    [Description("Result of physical check")]
+    [ExampleValue("Satisfactory")]
+    [ExampleValue("Satisfactory following official intervention")]
+    [ExampleValue("Not Satisfactory")]
+    [ExampleValue("Not Done")]
+    [ExampleValue("Derogation")]
+    [ExampleValue("Not Set")]
+    [Description("Result of physical check. Possible values taken from IPAFFS schema version 17.5.")]
     public string? PhysicalCheckResult { get; init; }
 
     [JsonPropertyName("physicalCheckNotDoneReason")]
-    [ExampleValue("ReducedChecksRegime")]
+    [ExampleValue("Reduced checks regime")]
     [ExampleValue("Other")]
-    [Description("What was the reason for skipping physical check")]
+    [Description("What was the reason for skipping physical check. Possible values taken from IPAFFS schema version 17.5.")]
     public string? PhysicalCheckNotDoneReason { get; init; }
 
     [JsonPropertyName("physicalCheckOtherText")]
@@ -61,7 +102,13 @@ public partial record ConsignmentCheck
     public string? PhysicalCheckOtherText { get; init; }
 
     [JsonPropertyName("welfareCheck")]
-    [Description("Welfare check")]
+    [ExampleValue("Satisfactory")]
+    [ExampleValue("Satisfactory following official intervention")]
+    [ExampleValue("Not Satisfactory")]
+    [ExampleValue("Not Done")]
+    [ExampleValue("Derogation")]
+    [ExampleValue("Not Set")]
+    [Description("Welfare check. Possible values taken from IPAFFS schema version 17.5.")]
     public string? WelfareCheck { get; init; }
 
     [JsonPropertyName("numberOfAnimalsChecked")]
@@ -73,6 +120,12 @@ public partial record ConsignmentCheck
     public bool? LaboratoryCheckDone { get; init; }
 
     [JsonPropertyName("laboratoryCheckResult")]
-    [Description("Result of laboratory tests")]
+    [ExampleValue("Satisfactory")]
+    [ExampleValue("Satisfactory following official intervention")]
+    [ExampleValue("Not Satisfactory")]
+    [ExampleValue("Not Done")]
+    [ExampleValue("Derogation")]
+    [ExampleValue("Not Set")]
+    [Description("Result of laboratory tests. Possible values taken from IPAFFS schema version 17.5.")]
     public string? LaboratoryCheckResult { get; init; }
 }

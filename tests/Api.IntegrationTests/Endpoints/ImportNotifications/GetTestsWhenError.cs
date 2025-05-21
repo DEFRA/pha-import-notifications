@@ -1,9 +1,12 @@
 using System.Net;
+using Defra.PhaImportNotifications.Api.TradeDataApi;
 using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WireMock.RequestBuilders;
+using WireMock.ResponseBuilders;
 using WireMock.Server;
 using Xunit.Abstractions;
 
@@ -27,9 +30,16 @@ public class GetTestsWhenError : EndpointTestBase, IClassFixture<WireMockContext
     {
         var client = CreateClient();
 
-        WireMock.StubSingleImportNotification(shouldFail: true);
+        WireMock
+            .Given(
+                Request
+                    .Create()
+                    .WithPath(TradeDataHttpClient.Endpoints.ImportNotification(ChedReferenceNumbers.ChedA))
+                    .UsingGet()
+            )
+            .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.InternalServerError));
 
-        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+        var response = await client.GetAsync($"/import-notifications/{ChedReferenceNumbers.ChedA}");
 
         response.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
 

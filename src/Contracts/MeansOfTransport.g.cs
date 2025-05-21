@@ -7,14 +7,14 @@ public partial record MeansOfTransport
 {
     [JsonPropertyName("type")]
     [ExampleValue("Aeroplane")]
-    [ExampleValue("RoadVehicle")]
-    [ExampleValue("RailwayWagon")]
+    [ExampleValue("Road Vehicle")]
+    [ExampleValue("Railway Wagon")]
     [ExampleValue("Ship")]
     [ExampleValue("Other")]
-    [ExampleValue("RoadVehicleAeroplane")]
-    [ExampleValue("ShipRailwayWagon")]
-    [ExampleValue("ShipRoadVehicle")]
-    [Description("Type of transport")]
+    [ExampleValue("Road vehicle Aeroplane")]
+    [ExampleValue("Ship Railway wagon")]
+    [ExampleValue("Ship Road vehicle")]
+    [Description("Type of transport. Possible values taken from IPAFFS schema version 17.5.")]
     public string? Type { get; init; }
 
     [JsonPropertyName("document")]

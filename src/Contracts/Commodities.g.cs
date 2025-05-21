@@ -70,10 +70,18 @@ public partial record Commodities
     public string? AnimalsCertifiedAs { get; init; }
 
     [JsonPropertyName("commodityIntendedFor")]
-    [ExampleValue("Human")]
-    [ExampleValue("Feedingstuff")]
-    [ExampleValue("Further")]
-    [ExampleValue("Other")]
-    [Description("What the commodity is intended for")]
+    [ExampleValue("human")]
+    [ExampleValue("feedingstuff")]
+    [ExampleValue("further")]
+    [ExampleValue("other")]
+    [Description("What the commodity is intended for. Possible values taken from IPAFFS schema version 17.5.")]
     public string? CommodityIntendedFor { get; init; }
+
+    [JsonPropertyName("commodityComplement")]
+    [Description("Holder for additional parameters of a commodity")]
+    public List<CommodityComplement>? CommodityComplement { get; init; }
+
+    [JsonPropertyName("complementParameterSet")]
+    [Description("Additional data for commodityComplement part containing such data as net weight")]
+    public List<ComplementParameterSet>? ComplementParameterSet { get; init; }
 }
