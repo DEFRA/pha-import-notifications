@@ -1,307 +1,244 @@
 ﻿{
   "clearanceRequests": [
     {
-      "header": {
-        "entryReference": "24GBE2JU5B0W5Z0AR8",
-        "entryVersionNumber": 1,
-        "previousVersionNumber": null,
+      "movementReferenceNumber": "24GBE2JU5B0W5Z0AR8",
+      "clearanceRequest": {
+        "externalCorrelationId": "1362474",
+        "messageSentAt": "2024-12-20T12:07:21Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB778182389000-MSI24100179",
+        "declarationPartNumber": null,
+        "declarationType": "S",
         "arrivesAt": null,
+        "submitterTurn": "GB778182389000",
+        "declarantId": "GB778182389000",
+        "declarantName": "GB778182389000",
         "dispatchCountryCode": "IN",
-        "goodsLocationCode": "FXTFXTFXT"
+        "goodsLocationCode": "FXTFXTFXT",
+        "masterUcr": "554921077",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904220019",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 750,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5118068",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 2,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904220019",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 2650,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5118377",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 3,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904219020",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 970,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5134337",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 4,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904219020",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 1410,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5134435",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 5,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904219020",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 1990,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5134476",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0904220019",
-          "goodsDescription": "STC 573 BAGS CHILLI POWDER",
-          "consigneeId": "GB159080500000",
-          "consigneeName": "GB159080500000",
-          "itemNetMass": 750,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "IN",
-          "documents": [
-            {
-              "documentCode": "C678",
-              "documentReference": "GBCHD2024.5118068"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5118068). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 2,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0904220019",
-          "goodsDescription": "STC 573 BAGS CHILLI POWDER",
-          "consigneeId": "GB159080500000",
-          "consigneeName": "GB159080500000",
-          "itemNetMass": 2650,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "IN",
-          "documents": [
-            {
-              "documentCode": "C678",
-              "documentReference": "GBCHD2024.5118377"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        },
-        {
-          "itemNumber": 3,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0904219020",
-          "goodsDescription": "STC 573 BAGS CHILLI POWDER",
-          "consigneeId": "GB159080500000",
-          "consigneeName": "GB159080500000",
-          "itemNetMass": 970,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "IN",
-          "documents": [
-            {
-              "documentCode": "C678",
-              "documentReference": "GBCHD2024.5134337"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5134337). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 4,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0904219020",
-          "goodsDescription": "STC 573 BAGS CHILLI POWDER",
-          "consigneeId": "GB159080500000",
-          "consigneeName": "GB159080500000",
-          "itemNetMass": 1410,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "IN",
-          "documents": [
-            {
-              "documentCode": "C678",
-              "documentReference": "GBCHD2024.5134435"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5134435). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 5,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0904219020",
-          "goodsDescription": "STC 573 BAGS CHILLI POWDER",
-          "consigneeId": "GB159080500000",
-          "consigneeName": "GB159080500000",
-          "itemNetMass": 1990,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "IN",
-          "documents": [
-            {
-              "documentCode": "C678",
-              "documentReference": "GBCHD2024.5134476"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5134476). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "clearanceDecisions": [
-    {
-      "header": {
-        "entryReference": "24GBE2JU5B0W5Z0AR8",
-        "entryVersionNumber": 1,
-        "decisionNumber": 1
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDD.GB.2024.5118377:161224080821:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5118068). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 2,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 3,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5134337). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 4,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5134435). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 5,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5134476). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5118068). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 2,
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        },
-        {
-          "itemNumber": 3,
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5134337). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 4,
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5134435). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 5,
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5134476). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "finalisations": [
-    {
-      "finalState": "Cleared",
-      "manualAction": false,
-      "entryReference": "24GBE2JU5B0W5Z0AR8"
-    }
-  ],
-  "createdSource": "2024-12-16T20:08:21.082Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 2676.5,
-    "totalNetWeight": 2650,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 106,
-    "temperature": "Ambient",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "IN",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": false,
-    "regionOfOrigin": null,
-    "consignedCountry": "IN",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": "Human"
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Other",
-      "commodityId": "0904220019",
-      "complementId": 32822,
-      "complementName": null,
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": null,
-      "speciesName": null,
-      "speciesNomination": null,
-      "speciesTypeName": null,
-      "speciesType": "245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f",
-      "speciesClassName": null,
-      "speciesClass": "6e4522c004fed120c4ff3b743b9e5f516df6bd2dcb9b98bf954c2804c31e7632",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": 2650,
-        "numberPackage": 106,
-        "typePackage": "Bag"
-      },
-      "riskAssesment": {
-        "riskDecision": "Notrequired",
-        "exitRiskDecision": null,
-        "hmiDecision": null,
-        "phsiDecision": null,
-        "phsiClassification": null,
-        "phsi": null,
-        "uniqueId": "ca75c85c-b375-4c8b-8b2c-8afcb79f0704",
-        "eppoCode": null,
-        "variety": null,
-        "propagation": null,
-        "phsiRuleType": null
-      },
-      "checks": null
+      "finalisation": {
+        "externalCorrelationId": "1362503",
+        "messageSentAt": "2024-12-20T12:24:39Z",
+        "externalVersion": 1,
+        "decisionNumber": null,
+        "finalState": "0",
+        "isManualRelease": false
+      }
     }
   ],
   "ipaffsId": 4118377,
@@ -315,12 +252,30 @@
     "userId": "7bb2f8d6-fd3f-e911-a955-000d3a454330",
     "isControlUser": null
   },
-  "importNotificationType": "Ced",
+  "importNotificationType": "CED",
   "replaces": null,
   "replacedBy": null,
-  "status": "Validated",
+  "status": "VALIDATED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": "NOTREQUIRED",
+        "exitRiskDecision": null,
+        "hmiDecision": null,
+        "phsiDecision": null,
+        "phsiClassification": null,
+        "phsi": null,
+        "uniqueId": "ca75c85c-b375-4c8b-8b2c-8afcb79f0704",
+        "eppoCode": null,
+        "variety": null,
+        "propagation": null,
+        "phsiRuleType": null
+      }
+    ],
+    "assessedOn": "2024-11-08T16:14:08"
+  },
   "journeyRiskCategorisation": null,
   "isHighRiskEuImport": false,
   "partOne": {
@@ -351,8 +306,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "97f471c2-0d8b-4a1e-9fa0-d87e0a35ca9d",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "5f0e346ba397f640425d339add67a6e6513054580ef4850a9c3f38cd5c79878d",
       "individualName": null,
       "address": {
@@ -377,8 +332,8 @@
     "packer": null,
     "consignee": {
       "id": "bef7e3e4-35ba-4d7f-8c3a-d30e3b9f73bb",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "bc233948a3972f5496128101e2baec9ad5a6060c0c585fe50c83ee1273427cf0",
       "individualName": null,
       "address": {
@@ -402,8 +357,8 @@
     },
     "importer": {
       "id": "bef7e3e4-35ba-4d7f-8c3a-d30e3b9f73bb",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "bc233948a3972f5496128101e2baec9ad5a6060c0c585fe50c83ee1273427cf0",
       "individualName": null,
       "address": {
@@ -427,8 +382,8 @@
     },
     "placeOfDestination": {
       "id": "bef7e3e4-35ba-4d7f-8c3a-d30e3b9f73bb",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "bc233948a3972f5496128101e2baec9ad5a6060c0c585fe50c83ee1273427cf0",
       "individualName": null,
       "address": {
@@ -454,6 +409,69 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": false,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 2676.5,
+      "totalNetWeight": 2650,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 106,
+      "temperature": "Ambient",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "IN",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": false,
+      "regionOfOrigin": null,
+      "consignedCountry": "IN",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": "human",
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Other",
+          "commodityId": "0904220019",
+          "complementId": 32822,
+          "complementName": null,
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": null,
+          "speciesName": null,
+          "speciesNomination": null,
+          "speciesTypeName": null,
+          "speciesType": "245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f",
+          "speciesClassName": null,
+          "speciesClass": "6e4522c004fed120c4ff3b743b9e5f516df6bd2dcb9b98bf954c2804c31e7632",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "ca75c85c-b375-4c8b-8b2c-8afcb79f0704",
+          "complementID": 32822,
+          "speciesID": null,
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "2650"
+            },
+            {
+              "key": "number_package",
+              "data": "106"
+            },
+            {
+              "key": "type_package",
+              "data": "Bag"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": null,
       "internalMarketPurpose": null,
@@ -468,7 +486,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -494,7 +513,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "HealthCertificate",
+          "documentType": "healthCertificate",
           "documentReference": "77846b610284ab6393d11f3e6b0e7694074492a77a7289bc912011fe5564d44d",
           "documentIssuedOn": "2024-09-09",
           "attachmentId": "04f2d789017cded6d5320127c51f33ce67382a2b865f51bdf61ddd98a2d712bd",
@@ -509,6 +528,7 @@
     },
     "importerLocalReferenceNumber": "6f75c4bf38cefe7d0a566458e456401e8b8a24c1a125e935ca5e297dce6ec5db",
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-11-08T16:14:04.911Z",
     "submittedBy": {
       "displayName": "51fe5596e70d21ee75574473653352e97d9ae012d624f540f768f5305935045e",
@@ -531,7 +551,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "No",
+    "provideCtcMrn": "NO",
     "arrivesAt": "2024-11-15T12:00:00",
     "departedOn": null
   },
@@ -563,8 +583,8 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForInternalMarket",
-      "freeCirculationPurpose": "HumanConsumption",
+      "decision": "Acceptable for Internal Market",
+      "freeCirculationPurpose": "Human Consumption",
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
       "customWarehouseRegisteredNumber": null,
@@ -584,6 +604,7 @@
     "consignmentCheck": {
       "euStandard": null,
       "additionalGuarantees": null,
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": "Satisfactory",
       "nationalRequirements": null,
       "identityCheckDone": true,
@@ -617,7 +638,7 @@
             "laboratoryPhoneNumber": "95c7182d9d99f2378af5e1c4ac94611a829f0351778b0d5718086b2f67da5166",
             "laboratoryEmail": "78e4b372e251c1a41376bd78794fe7e493d4ef4a910b82f9a5638b45c9b158a1",
             "sampleBatchNumber": "f80e1c34abfe5d2f965ee7a9728f9d0641bc36f162b9db6d31abf28963bc89e2",
-            "analysisType": "InitialAnalysis",
+            "analysisType": "Initial analysis",
             "numberOfSamples": 1,
             "sampleType": "ad82f2fee28bd744fa1f94afd1f7548240342e82eb704e26d3c16affc1b92554",
             "conservationOfSample": "Ambient",
@@ -649,7 +670,7 @@
             "laboratoryPhoneNumber": "95c7182d9d99f2378af5e1c4ac94611a829f0351778b0d5718086b2f67da5166",
             "laboratoryEmail": "78e4b372e251c1a41376bd78794fe7e493d4ef4a910b82f9a5638b45c9b158a1",
             "sampleBatchNumber": "53ccf410f512da35dc694cf691b5e28c54af2ae8aec465c7ef9a3678ac05c1fa",
-            "analysisType": "InitialAnalysis",
+            "analysisType": "Initial analysis",
             "numberOfSamples": 1,
             "sampleType": "ad82f2fee28bd744fa1f94afd1f7548240342e82eb704e26d3c16affc1b92554",
             "conservationOfSample": "Ambient",
@@ -702,9 +723,10 @@
     "consignmentValidations": null,
     "checkedOn": "2024-12-16T20:08:00Z",
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
-    "inspectionRequired": "NotRequired",
+    "inspectionRequired": "Not required",
     "inspectionOverride": null,
     "autoClearedOn": null
   },
@@ -721,6 +743,8 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": null,
   "isRiskDecisionLocked": null,
+  "isAutoClearanceExempted": null,
+  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 2,

@@ -1,78 +1,4 @@
 ﻿{
-  "createdSource": "2024-12-04T06:00:04.77Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": true,
-    "totalGrossWeight": 3667,
-    "totalNetWeight": 3530,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 80,
-    "temperature": null,
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "NL",
-    "countryOfOriginIsPodCountry": true,
-    "isLowRiskArticle72Country": false,
-    "regionOfOrigin": null,
-    "consignedCountry": "NL",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Seeds of herbaceous plants cultivated principally for their flowers",
-      "commodityId": "12093000",
-      "complementId": 5,
-      "complementName": "plants (general)",
-      "eppoCode": "XXXXX",
-      "isWoodPackaging": null,
-      "speciesId": "10a097c5b26feee00b64b1508e70e645eeea94667b31be2db710acf36bd0ec88",
-      "speciesName": "39b788fe2f33e0289dd90ab8d000e51fda6d5d2f80c135f1e8f2e99b0d3f178f",
-      "speciesNomination": "39b788fe2f33e0289dd90ab8d000e51fda6d5d2f80c135f1e8f2e99b0d3f178f",
-      "speciesTypeName": null,
-      "speciesType": null,
-      "speciesClassName": null,
-      "speciesClass": null,
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "regulatoryAuthority": "PHSI",
-        "requiresTestAndTrialData": "true",
-        "propagation": "Seed",
-        "commodityGroup": "Seed & Tissue Culture",
-        "typePackage": "Package",
-        "netWeight": 3530,
-        "numberPackage": 80,
-        "quantity": 3667,
-        "typeQuantity": "Kilograms"
-      },
-      "riskAssesment": {
-        "riskDecision": null,
-        "exitRiskDecision": null,
-        "hmiDecision": "Notrequired",
-        "phsiDecision": "Required",
-        "phsiClassification": "Reduced",
-        "phsi": {
-          "documentCheck": true,
-          "identityCheck": true,
-          "physicalCheck": true
-        },
-        "uniqueId": "40805d5b-27de-40ea-9e4f-b80d96ab874b",
-        "eppoCode": "XXXXX",
-        "variety": null,
-        "propagation": "Seed",
-        "phsiRuleType": "Commodity"
-      },
-      "checks": null
-    }
-  ],
   "ipaffsId": 2726460,
   "etag": "00000000044F9E93",
   "externalReferences": null,
@@ -84,12 +10,34 @@
     "userId": "3dd58971-2d3f-e911-a95d-000d3a454f67",
     "isControlUser": null
   },
-  "importNotificationType": "Chedpp",
+  "importNotificationType": "CHEDPP",
   "replaces": null,
   "replacedBy": null,
-  "status": "Validated",
+  "status": "VALIDATED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": null,
+        "exitRiskDecision": null,
+        "hmiDecision": "NOTREQUIRED",
+        "phsiDecision": "REQUIRED",
+        "phsiClassification": "Reduced",
+        "phsi": {
+          "documentCheck": true,
+          "identityCheck": true,
+          "physicalCheck": true
+        },
+        "uniqueId": "40805d5b-27de-40ea-9e4f-b80d96ab874b",
+        "eppoCode": "XXXXX",
+        "variety": null,
+        "propagation": "Seed",
+        "phsiRuleType": "Commodity"
+      }
+    ],
+    "assessedOn": "2024-11-29T06:00:09"
+  },
   "journeyRiskCategorisation": null,
   "isHighRiskEuImport": null,
   "partOne": {
@@ -120,8 +68,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "87b4fb30-a791-4fbf-8074-2eecf332189f",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "8fcf276f140a41145948205cea333af0a25a66f0db7f7ac43927a1b409fe04f6",
       "individualName": null,
       "address": {
@@ -146,7 +94,7 @@
     "packer": null,
     "consignee": {
       "id": "422d9201-5780-ec11-8d21-00224881bb2d",
-      "type": "Consignee",
+      "type": "consignee",
       "status": null,
       "companyName": "e93435154e44be8091920905966e5a311e0b2c78f3f394e6e6bf44c7c2676863",
       "individualName": null,
@@ -171,7 +119,7 @@
     },
     "importer": {
       "id": "422d9201-5780-ec11-8d21-00224881bb2d",
-      "type": "Importer",
+      "type": "importer",
       "status": null,
       "companyName": "e93435154e44be8091920905966e5a311e0b2c78f3f394e6e6bf44c7c2676863",
       "individualName": null,
@@ -196,8 +144,8 @@
     },
     "placeOfDestination": {
       "id": "b54d2093-930f-43c2-a203-91b716980aa8",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "76ecae0d7734dea1c71551eb27b3e89bf946afd1181581f761222bc527fb6b60",
       "individualName": null,
       "address": {
@@ -221,8 +169,8 @@
     },
     "pod": {
       "id": "82e9c08a-d81b-4bfd-bd46-54a7de83e080",
-      "type": "Pod",
-      "status": "Approved",
+      "type": "pod",
+      "status": "approved",
       "companyName": "e93435154e44be8091920905966e5a311e0b2c78f3f394e6e6bf44c7c2676863",
       "individualName": null,
       "address": {
@@ -247,6 +195,93 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": null,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": true,
+      "totalGrossWeight": 3667,
+      "totalNetWeight": 3530,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 80,
+      "temperature": null,
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "NL",
+      "countryOfOriginIsPodCountry": true,
+      "isLowRiskArticle72Country": false,
+      "regionOfOrigin": null,
+      "consignedCountry": "NL",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Seeds of herbaceous plants cultivated principally for their flowers",
+          "commodityId": "12093000",
+          "complementId": 5,
+          "complementName": "plants (general)",
+          "eppoCode": "XXXXX",
+          "isWoodPackaging": null,
+          "speciesId": "10a097c5b26feee00b64b1508e70e645eeea94667b31be2db710acf36bd0ec88",
+          "speciesName": "39b788fe2f33e0289dd90ab8d000e51fda6d5d2f80c135f1e8f2e99b0d3f178f",
+          "speciesNomination": "39b788fe2f33e0289dd90ab8d000e51fda6d5d2f80c135f1e8f2e99b0d3f178f",
+          "speciesTypeName": null,
+          "speciesType": null,
+          "speciesClassName": null,
+          "speciesClass": null,
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "40805d5b-27de-40ea-9e4f-b80d96ab874b",
+          "complementID": 5,
+          "speciesID": "1436533",
+          "keyDataPair": [
+            {
+              "key": "regulatory_authority",
+              "data": "PHSI"
+            },
+            {
+              "key": "requires_test_and_trial_data",
+              "data": "true"
+            },
+            {
+              "key": "propagation",
+              "data": "Seed"
+            },
+            {
+              "key": "commodity_group",
+              "data": "Seed & Tissue Culture"
+            },
+            {
+              "key": "type_package",
+              "data": "Package"
+            },
+            {
+              "key": "netweight",
+              "data": "3530"
+            },
+            {
+              "key": "number_package",
+              "data": "80"
+            },
+            {
+              "key": "quantity",
+              "data": "3667"
+            },
+            {
+              "key": "type_quantity",
+              "data": "Kilograms"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": null,
       "internalMarketPurpose": null,
@@ -261,7 +296,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -274,7 +310,7 @@
     "transporter": null,
     "transporterDetailsRequired": null,
     "meansOfTransportFromEntryPoint": {
-      "type": "RoadVehicle",
+      "type": "Road Vehicle",
       "document": "5512eaaaa2487a30fdb69d5b42d8c688be7c1472b0882de2d2e4399b9fc6ba78",
       "id": "eaaf61e8c9bb483caa4b4d5ff5fb019e6a0f581d78f832512e4dc92a36993c4a"
     },
@@ -287,7 +323,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "PhytosanitaryCertificate",
+          "documentType": "phytosanitaryCertificate",
           "documentReference": "257df25c243825547f15207ab3904d3d22280e16354ed2baeadb106d24e45fe3",
           "documentIssuedOn": "2023-12-13",
           "attachmentId": "3bb4789f161a28793539c52c1a8e7fcd24c9ec4f914a1ac3e8afb15c9476fe43",
@@ -298,7 +334,7 @@
           "externalReference": null
         },
         {
-          "documentType": "CommercialInvoice",
+          "documentType": "commercialInvoice",
           "documentReference": "84bd2258901c94635ee3ff740e00a02d3f45cd38987722d376c2dd794282f37e",
           "documentIssuedOn": "2023-12-18",
           "attachmentId": "8c51b863187448f91e5587fcc3b063b5dbd286e8e242dad26b54e98368230162",
@@ -313,6 +349,7 @@
     },
     "importerLocalReferenceNumber": null,
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-01-02T11:38:57.009Z",
     "submittedBy": {
       "displayName": "b014feff350f31ea0d0adb3c6c6c676bb19fcc3798f37dd2c4cebc12ebe3a8f8",
@@ -384,6 +421,38 @@
     "consignmentValidations": null,
     "checkedOn": null,
     "accompanyingDocuments": null,
+    "commodityChecks": [
+      {
+        "uniqueComplementId": "40805d5b-27de-40ea-9e4f-b80d96ab874b",
+        "checks": [
+          {
+            "type": "PHSI_DOCUMENT",
+            "status": "Compliant",
+            "reason": null,
+            "otherReason": null,
+            "isSelectedForChecks": null,
+            "hasChecksComplete": null
+          },
+          {
+            "type": "PHSI_IDENTITY",
+            "status": "Auto cleared",
+            "reason": null,
+            "otherReason": null,
+            "isSelectedForChecks": null,
+            "hasChecksComplete": true
+          },
+          {
+            "type": "PHSI_PHYSICAL",
+            "status": "Auto cleared",
+            "reason": null,
+            "otherReason": null,
+            "isSelectedForChecks": null,
+            "hasChecksComplete": true
+          }
+        ],
+        "validityPeriod": 0
+      }
+    ],
     "phsiAutoCleared": true,
     "hmiAutoCleared": true,
     "inspectionRequired": "Required",
@@ -403,6 +472,8 @@
   "agencyOrganisationId": "23144089-9f8c-eb11-b1ac-000d3a4cdb57",
   "riskDecisionLockedOn": null,
   "isRiskDecisionLocked": null,
+  "isAutoClearanceExempted": null,
+  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 0,

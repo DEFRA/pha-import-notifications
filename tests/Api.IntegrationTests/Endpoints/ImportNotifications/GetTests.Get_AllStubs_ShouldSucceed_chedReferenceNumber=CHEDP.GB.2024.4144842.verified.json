@@ -1,68 +1,4 @@
 ﻿{
-  "createdSource": "2024-12-04T10:34:32.203Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 10805.46,
-    "totalNetWeight": 10225.34,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 518,
-    "temperature": "Chilled",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "NZ",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": null,
-    "regionOfOrigin": null,
-    "consignedCountry": "NZ",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Boneless",
-      "commodityId": "02042300",
-      "complementId": 1,
-      "complementName": "Ovis aries",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "2030e5d98cd2d06e7ddcee05a71e1134f46221bd168fe28707613eaf035c1d66",
-      "speciesName": "0e26f5c7b9064ec78492097f9b0908bc49f358efac812e6fa0a6d13ce67bafaf",
-      "speciesNomination": "0e26f5c7b9064ec78492097f9b0908bc49f358efac812e6fa0a6d13ce67bafaf",
-      "speciesTypeName": "c798140abbebcbba6ddccdd9aa4064311a8514d93ea32d5a35403f01cfdb2c2a",
-      "speciesType": "6ac9d1c824be1dd8a4c9c19a476fa56f70387ff078105f21e4a7aa4be3bdc042",
-      "speciesClassName": null,
-      "speciesClass": "a58757a7cf8948304ad48ae1689f4c0cb8ca5878d733b5f04a1880e029941eec",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": "10225.34",
-        "numberPackage": 518,
-        "typePackage": "Carton"
-      },
-      "riskAssesment": {
-        "riskDecision": "Notrequired",
-        "exitRiskDecision": null,
-        "hmiDecision": null,
-        "phsiDecision": null,
-        "phsiClassification": null,
-        "phsi": null,
-        "uniqueId": "99166589-2098-43d4-9b3a-df296587fcc2",
-        "eppoCode": null,
-        "variety": null,
-        "propagation": null,
-        "phsiRuleType": null
-      },
-      "checks": null
-    }
-  ],
   "ipaffsId": 4253441,
   "etag": "0000000004502D5A",
   "externalReferences": null,
@@ -74,12 +10,30 @@
     "userId": "db092b42-1f3c-e911-a95d-000d3a454f67",
     "isControlUser": null
   },
-  "importNotificationType": "Cvedp",
+  "importNotificationType": "CVEDP",
   "replaces": null,
   "replacedBy": null,
-  "status": "Cancelled",
+  "status": "CANCELLED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": "NOTREQUIRED",
+        "exitRiskDecision": null,
+        "hmiDecision": null,
+        "phsiDecision": null,
+        "phsiClassification": null,
+        "phsi": null,
+        "uniqueId": "99166589-2098-43d4-9b3a-df296587fcc2",
+        "eppoCode": null,
+        "variety": null,
+        "propagation": null,
+        "phsiRuleType": null
+      }
+    ],
+    "assessedOn": "2024-04-30T15:51:49"
+  },
   "journeyRiskCategorisation": {
     "riskLevel": "Medium",
     "riskLevelMethod": "User",
@@ -113,8 +67,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "53d2180e-61de-4edd-b9a6-366919f9d3dd",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "3883a6217934fa8aadffde2d372f27dbe7452fcfe6715975ccd71d0f5f41eac0",
       "individualName": null,
       "address": {
@@ -139,8 +93,8 @@
     "packer": null,
     "consignee": {
       "id": "68127f62-62df-4d82-8af3-883b4b561ace",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "799afe83e1c6f295560a3401b39fb0373b0c1df31a58e5a5d783a9e4e377ff77",
       "individualName": null,
       "address": {
@@ -164,8 +118,8 @@
     },
     "importer": {
       "id": "68127f62-62df-4d82-8af3-883b4b561ace",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "799afe83e1c6f295560a3401b39fb0373b0c1df31a58e5a5d783a9e4e377ff77",
       "individualName": null,
       "address": {
@@ -189,8 +143,8 @@
     },
     "placeOfDestination": {
       "id": "9259b176-3807-4818-ad44-ae46bbfc99da",
-      "type": "Importer",
-      "status": "Nonapproved",
+      "type": "importer",
+      "status": "nonapproved",
       "companyName": "cc98b1b99706cf56183c67104108be0adf55d9b29d3371b4f5f394e2570ad09e",
       "individualName": null,
       "address": {
@@ -216,9 +170,72 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": false,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 10805.46,
+      "totalNetWeight": 10225.34,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 518,
+      "temperature": "Chilled",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "NZ",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": null,
+      "regionOfOrigin": null,
+      "consignedCountry": "NZ",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Boneless",
+          "commodityId": "02042300",
+          "complementId": 1,
+          "complementName": "Ovis aries",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "2030e5d98cd2d06e7ddcee05a71e1134f46221bd168fe28707613eaf035c1d66",
+          "speciesName": "0e26f5c7b9064ec78492097f9b0908bc49f358efac812e6fa0a6d13ce67bafaf",
+          "speciesNomination": "0e26f5c7b9064ec78492097f9b0908bc49f358efac812e6fa0a6d13ce67bafaf",
+          "speciesTypeName": "c798140abbebcbba6ddccdd9aa4064311a8514d93ea32d5a35403f01cfdb2c2a",
+          "speciesType": "6ac9d1c824be1dd8a4c9c19a476fa56f70387ff078105f21e4a7aa4be3bdc042",
+          "speciesClassName": null,
+          "speciesClass": "a58757a7cf8948304ad48ae1689f4c0cb8ca5878d733b5f04a1880e029941eec",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "99166589-2098-43d4-9b3a-df296587fcc2",
+          "complementID": 1,
+          "speciesID": "167291",
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "10225.34"
+            },
+            {
+              "key": "number_package",
+              "data": "518"
+            },
+            {
+              "key": "type_package",
+              "data": "Carton"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": true,
-      "internalMarketPurpose": "HumanConsumption",
+      "internalMarketPurpose": "Human Consumption",
       "thirdCountryTranshipment": null,
       "forNonConforming": null,
       "regNumber": null,
@@ -230,7 +247,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -267,7 +285,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "LatestVeterinaryHealthCertificate",
+          "documentType": "latestVeterinaryHealthCertificate",
           "documentReference": "f28c7d080ab8914162bb189bcab266dc48b700f2671c371f092a48663815bb14",
           "documentIssuedOn": "2024-03-21",
           "attachmentId": null,
@@ -282,6 +300,7 @@
     },
     "importerLocalReferenceNumber": null,
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-05-02T12:02:29.255Z",
     "submittedBy": {
       "displayName": "3897baa3a7f95fc5b1e91e06f33823d97c05f1883331bc5d0c3a12185225ea8b",
@@ -304,7 +323,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "No",
+    "provideCtcMrn": "NO",
     "arrivesAt": "2024-05-03T12:00:00",
     "departedOn": null
   },
@@ -332,8 +351,8 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForInternalMarket",
-      "freeCirculationPurpose": "HumanConsumption",
+      "decision": "Acceptable for Internal Market",
+      "freeCirculationPurpose": "Human Consumption",
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
       "customWarehouseRegisteredNumber": null,
@@ -353,6 +372,7 @@
     "consignmentCheck": {
       "euStandard": null,
       "additionalGuarantees": null,
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": null,
       "nationalRequirements": null,
       "identityCheckDone": null,
@@ -420,9 +440,10 @@
     ],
     "checkedOn": null,
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
-    "inspectionRequired": "NotRequired",
+    "inspectionRequired": "Not required",
     "inspectionOverride": null,
     "autoClearedOn": null
   },
@@ -460,6 +481,8 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-05-03T09:00:00Z",
   "isRiskDecisionLocked": false,
+  "isAutoClearanceExempted": null,
+  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

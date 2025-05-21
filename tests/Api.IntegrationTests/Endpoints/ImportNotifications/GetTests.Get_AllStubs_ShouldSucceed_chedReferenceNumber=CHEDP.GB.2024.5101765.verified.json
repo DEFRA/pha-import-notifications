@@ -1,61 +1,9 @@
 ﻿{
-  "createdSource": "2024-11-12T15:23:48.963Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 2313,
-    "totalNetWeight": 2143.6,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 96,
-    "temperature": "Chilled",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "DE",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": false,
-    "regionOfOrigin": "DE-1",
-    "consignedCountry": "DE",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Boneless",
-      "commodityId": "02031955",
-      "complementId": 8,
-      "complementName": "Sus scrofa domesticus",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "c698cf5ed4723e6833bf066d75ac8f38048e887462600272e14cbc2a517a44ce",
-      "speciesName": "bd59382f9a25891a47ee169091317899f09d483de8bb7232ed9280307f6763f9",
-      "speciesNomination": "bd59382f9a25891a47ee169091317899f09d483de8bb7232ed9280307f6763f9",
-      "speciesTypeName": null,
-      "speciesType": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
-      "speciesClassName": null,
-      "speciesClass": "c698cf5ed4723e6833bf066d75ac8f38048e887462600272e14cbc2a517a44ce",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": "2143.60",
-        "numberPackage": 96,
-        "typePackage": "Carton"
-      },
-      "riskAssesment": null,
-      "checks": null
-    }
-  ],
   "ipaffsId": 4101765,
   "etag": "000000000423F744",
   "externalReferences": [
     {
-      "system": "Ncts",
+      "system": "NCTS",
       "reference": "24GBCKA5ATE1O2FAR4",
       "exactMatch": true,
       "verifiedByImporter": true,
@@ -70,12 +18,13 @@
     "userId": "11ed5ccb-5f39-eb11-a813-000d3aab241b",
     "isControlUser": null
   },
-  "importNotificationType": "Cvedp",
+  "importNotificationType": "CVEDP",
   "replaces": null,
   "replacedBy": null,
-  "status": "Submitted",
+  "status": "SUBMITTED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": null,
   "journeyRiskCategorisation": {
     "riskLevel": "Medium",
     "riskLevelMethod": "User",
@@ -110,8 +59,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "1b0562ab-9cf7-4582-8ed2-fa84cd7b28be",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "e03cf7aaeaadd1764549171a995be2df07c288dbd0acd2e0df9edd6cefbba440",
       "individualName": null,
       "address": {
@@ -136,8 +85,8 @@
     "packer": null,
     "consignee": {
       "id": "da6b8808-e827-4e7f-90e4-76dd6e082d1b",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "5778c5eadd845fe288706195fad4b0e7a248e839b479b352bb5076b2d017aac7",
       "individualName": null,
       "address": {
@@ -161,8 +110,8 @@
     },
     "importer": {
       "id": "c5c2c400-fc6a-417e-aca1-130a580385c8",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "398336597f2a381b965520a793cb350d7af02d14e5936d6afafc6f7e1230e385",
       "individualName": null,
       "address": {
@@ -186,8 +135,8 @@
     },
     "placeOfDestination": {
       "id": "da6b8808-e827-4e7f-90e4-76dd6e082d1b",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "5778c5eadd845fe288706195fad4b0e7a248e839b479b352bb5076b2d017aac7",
       "individualName": null,
       "address": {
@@ -213,9 +162,72 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": true,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 2313,
+      "totalNetWeight": 2143.6,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 96,
+      "temperature": "Chilled",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "DE",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": false,
+      "regionOfOrigin": "DE-1",
+      "consignedCountry": "DE",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Boneless",
+          "commodityId": "02031955",
+          "complementId": 8,
+          "complementName": "Sus scrofa domesticus",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "c698cf5ed4723e6833bf066d75ac8f38048e887462600272e14cbc2a517a44ce",
+          "speciesName": "bd59382f9a25891a47ee169091317899f09d483de8bb7232ed9280307f6763f9",
+          "speciesNomination": "bd59382f9a25891a47ee169091317899f09d483de8bb7232ed9280307f6763f9",
+          "speciesTypeName": null,
+          "speciesType": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35",
+          "speciesClassName": null,
+          "speciesClass": "c698cf5ed4723e6833bf066d75ac8f38048e887462600272e14cbc2a517a44ce",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "6139186d-3f55-4e4c-97fe-92beeae5648b",
+          "complementID": 8,
+          "speciesID": "57118",
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "2143.60"
+            },
+            {
+              "key": "number_package",
+              "data": "96"
+            },
+            {
+              "key": "type_package",
+              "data": "Carton"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": true,
-      "internalMarketPurpose": "HumanConsumption",
+      "internalMarketPurpose": "Human Consumption",
       "thirdCountryTranshipment": null,
       "forNonConforming": null,
       "regNumber": null,
@@ -227,7 +239,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -240,7 +253,7 @@
     "transporter": null,
     "transporterDetailsRequired": false,
     "meansOfTransportFromEntryPoint": {
-      "type": "RoadVehicle",
+      "type": "Road Vehicle",
       "document": "1c4cc57d6db62864cc55065592d58f15db7b0b4c3c137eff56ead805e78cf88c",
       "id": "204a68b88949e6ec61d98fbddd7445cf5d104bedbdd800ada410525f52cb2e05"
     },
@@ -265,7 +278,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "LatestVeterinaryHealthCertificate",
+          "documentType": "latestVeterinaryHealthCertificate",
           "documentReference": "9b3dae56d091a018266803052c10fe85f85e6b9bb72b1909c48c55609dfca840",
           "documentIssuedOn": "2024-11-11",
           "attachmentId": "8c67a2e5fefa4b629ad5eb65cf18761175a409660d952680bef4d1cb281e9e89",
@@ -276,7 +289,7 @@
           "externalReference": null
         },
         {
-          "documentType": "CommercialInvoice",
+          "documentType": "commercialInvoice",
           "documentReference": "b8ecbc0adf2537651d6f52172f6ff871b97f58a893bb375d92119ffbeea54ebf",
           "documentIssuedOn": "2024-11-11",
           "attachmentId": "8f922d627310d65c98c8f17a7ac7b67c4f2cc0759fae18c3a4dd0fd2474cefb6",
@@ -287,7 +300,7 @@
           "externalReference": null
         },
         {
-          "documentType": "Other",
+          "documentType": "other",
           "documentReference": "1c4cc57d6db62864cc55065592d58f15db7b0b4c3c137eff56ead805e78cf88c",
           "documentIssuedOn": "2024-11-11",
           "attachmentId": "552a744557222f3a17d49bbf9636f53a44da384eee7ce988bc6ff93409a573a6",
@@ -302,6 +315,7 @@
     },
     "importerLocalReferenceNumber": null,
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-11-12T15:23:48.937Z",
     "submittedBy": {
       "displayName": "8f8cb368827bf654d5301eddb2d24678d2ec4d70410ec1552f1f67644d71a79f",
@@ -340,7 +354,7 @@
     "commonUserCharge": {
       "wasSentToTradeCharge": true
     },
-    "provideCtcMrn": "Yes",
+    "provideCtcMrn": "YES",
     "arrivesAt": "2024-11-13T06:00:00",
     "departedOn": null
   },
@@ -353,6 +367,8 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-11-13T04:00:00Z",
   "isRiskDecisionLocked": false,
+  "isAutoClearanceExempted": null,
+  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

@@ -1,186 +1,142 @@
 ﻿{
   "clearanceRequests": [
     {
-      "header": {
-        "entryReference": "24GBDFPD8F0ECL9AR8",
-        "entryVersionNumber": 1,
-        "previousVersionNumber": null,
+      "movementReferenceNumber": "24GBDFPD8F0ECL9AR8",
+      "clearanceRequest": {
+        "externalCorrelationId": "1315539",
+        "messageSentAt": "2024-12-04T12:23:32Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB648766188000-10022786",
+        "declarationPartNumber": null,
+        "declarationType": "S",
         "arrivesAt": null,
+        "submitterTurn": null,
+        "declarantId": "GB648766188000",
+        "declarantName": "GB648766188000",
         "dispatchCountryCode": "BR",
-        "goodsLocationCode": "LGPLGPLGP"
+        "goodsLocationCode": "LGPLGPLGP",
+        "masterUcr": "LGP1C7XGS00101",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "1602321990",
+            "goodsDescription": "FROZEN CHICKEN",
+            "consigneeId": "GB246936865000",
+            "consigneeName": "GB246936865000",
+            "netMass": 19493,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "BR",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5137241",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "1602321990",
-          "goodsDescription": "FROZEN CHICKEN",
-          "consigneeId": "GB246936865000",
-          "consigneeName": "GB246936865000",
-          "itemNetMass": 19493,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "BR",
-          "documents": [
-            {
-              "documentCode": "N853",
-              "documentReference": "GBCHD2024.5137241"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5137241:161124053356:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
+      },
+      "finalisation": null
     },
     {
-      "header": {
-        "entryReference": "24GBDFPJ28XLD8OAR5",
-        "entryVersionNumber": 1,
-        "previousVersionNumber": null,
+      "movementReferenceNumber": "24GBDFPJ28XLD8OAR5",
+      "clearanceRequest": {
+        "externalCorrelationId": "1315561",
+        "messageSentAt": "2024-12-04T12:28:02Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB246936865000-10022786",
+        "declarationPartNumber": "001",
+        "declarationType": "S",
         "arrivesAt": null,
+        "submitterTurn": null,
+        "declarantId": "GB246936865000",
+        "declarantName": "GB246936865000",
         "dispatchCountryCode": "BR",
-        "goodsLocationCode": "LGPLGPLGP"
+        "goodsLocationCode": "LGPLGPLGP",
+        "masterUcr": "LGP1C7XGS00102",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "1602321990",
+            "goodsDescription": "FROZEN CHICKEN",
+            "consigneeId": "GB888420879000",
+            "consigneeName": "GB888420879000",
+            "netMass": 667,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "BR",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCVD2024.5137241",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "1602321990",
-          "goodsDescription": "FROZEN CHICKEN",
-          "consigneeId": "GB888420879000",
-          "consigneeName": "GB888420879000",
-          "itemNetMass": 667,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "BR",
-          "documents": [
-            {
-              "documentCode": "N853",
-              "documentReference": "GBCVD2024.5137241"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "clearanceDecisions": [
-    {
-      "header": {
-        "entryReference": "24GBDFPD8F0ECL9AR8",
-        "entryVersionNumber": 1,
-        "decisionNumber": 1
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5137241:161124053356:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBDFPJ28XLD8OAR5",
-        "entryVersionNumber": 1,
-        "decisionNumber": 1
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "createdSource": "2024-11-16T05:33:56.643Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 21813.12,
-    "totalNetWeight": 20160,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 2016,
-    "temperature": "Frozen",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "BR",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": false,
-    "regionOfOrigin": "BR-2",
-    "consignedCountry": "BR",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Of fowls of the species Gallus domesticus",
-      "commodityId": "160232",
-      "complementId": 1,
-      "complementName": "Aves",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "84b29ed57635428e10161d923dd9824ef4701819ddc022c417cdd647c217340e",
-      "speciesName": "6da1384d8aba9e50273bf26e1951e1ab4ea6633d426fe8a6954315350988b99b",
-      "speciesNomination": "6da1384d8aba9e50273bf26e1951e1ab4ea6633d426fe8a6954315350988b99b",
-      "speciesTypeName": "cbf31b0c8f40f0963d78ae7ab60088615c736f283a838c09e75d8d52f59bc59a",
-      "speciesType": "1283c251a28f2a64609941fa66f28dcc241d0e6fec4345ae5df73e900229e4ca",
-      "speciesClassName": null,
-      "speciesClass": "84b29ed57635428e10161d923dd9824ef4701819ddc022c417cdd647c217340e",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": 20160,
-        "numberPackage": 2016,
-        "typePackage": "Carton"
-      },
-      "riskAssesment": {
-        "riskDecision": "Notrequired",
-        "exitRiskDecision": null,
-        "hmiDecision": null,
-        "phsiDecision": null,
-        "phsiClassification": null,
-        "phsi": null,
-        "uniqueId": "9e979d90-2608-48a0-be67-7e74016f04a3",
-        "eppoCode": null,
-        "variety": null,
-        "propagation": null,
-        "phsiRuleType": null
-      },
-      "checks": null
+      "finalisation": null
     }
   ],
   "ipaffsId": 4137241,
@@ -194,12 +150,30 @@
     "userId": "8107143f-4c14-eb11-a813-000d3abb516e",
     "isControlUser": null
   },
-  "importNotificationType": "Cvedp",
+  "importNotificationType": "CVEDP",
   "replaces": null,
   "replacedBy": null,
-  "status": "Validated",
+  "status": "VALIDATED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": "NOTREQUIRED",
+        "exitRiskDecision": null,
+        "hmiDecision": null,
+        "phsiDecision": null,
+        "phsiClassification": null,
+        "phsi": null,
+        "uniqueId": "9e979d90-2608-48a0-be67-7e74016f04a3",
+        "eppoCode": null,
+        "variety": null,
+        "propagation": null,
+        "phsiRuleType": null
+      }
+    ],
+    "assessedOn": "2024-11-15T00:00:12"
+  },
   "journeyRiskCategorisation": {
     "riskLevel": "Medium",
     "riskLevelMethod": "User",
@@ -233,8 +207,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "b6e8cfb2-28fb-451c-90ea-e0be601bfda2",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "e216db15b923624777dd9e1586538a349b5260d6bd61db181f9e1c584ee5a89a",
       "individualName": null,
       "address": {
@@ -259,8 +233,8 @@
     "packer": null,
     "consignee": {
       "id": "45f5a332-2dcc-4013-8b66-3219bed27dee",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "b7379b7092c0c7879f0961acf9f24c2646d40fe6b3cbd590e859f45d1f3926f8",
       "individualName": null,
       "address": {
@@ -284,8 +258,8 @@
     },
     "importer": {
       "id": "45f5a332-2dcc-4013-8b66-3219bed27dee",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "b7379b7092c0c7879f0961acf9f24c2646d40fe6b3cbd590e859f45d1f3926f8",
       "individualName": null,
       "address": {
@@ -309,8 +283,8 @@
     },
     "placeOfDestination": {
       "id": "415c6fd6-f671-490c-835c-e37271237123",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "21c44f3368960c676cbbcd081d658dd83a51e4db4408f0e5e937d68165ec9881",
       "individualName": null,
       "address": {
@@ -336,9 +310,72 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": false,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 21813.12,
+      "totalNetWeight": 20160,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 2016,
+      "temperature": "Frozen",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "BR",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": false,
+      "regionOfOrigin": "BR-2",
+      "consignedCountry": "BR",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Of fowls of the species Gallus domesticus",
+          "commodityId": "160232",
+          "complementId": 1,
+          "complementName": "Aves",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "84b29ed57635428e10161d923dd9824ef4701819ddc022c417cdd647c217340e",
+          "speciesName": "6da1384d8aba9e50273bf26e1951e1ab4ea6633d426fe8a6954315350988b99b",
+          "speciesNomination": "6da1384d8aba9e50273bf26e1951e1ab4ea6633d426fe8a6954315350988b99b",
+          "speciesTypeName": "cbf31b0c8f40f0963d78ae7ab60088615c736f283a838c09e75d8d52f59bc59a",
+          "speciesType": "1283c251a28f2a64609941fa66f28dcc241d0e6fec4345ae5df73e900229e4ca",
+          "speciesClassName": null,
+          "speciesClass": "84b29ed57635428e10161d923dd9824ef4701819ddc022c417cdd647c217340e",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "9e979d90-2608-48a0-be67-7e74016f04a3",
+          "complementID": 1,
+          "speciesID": "256860",
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "20160"
+            },
+            {
+              "key": "number_package",
+              "data": "2016"
+            },
+            {
+              "key": "type_package",
+              "data": "Carton"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": true,
-      "internalMarketPurpose": "HumanConsumption",
+      "internalMarketPurpose": "Human Consumption",
       "thirdCountryTranshipment": null,
       "forNonConforming": null,
       "regNumber": null,
@@ -350,7 +387,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -387,7 +425,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "LatestVeterinaryHealthCertificate",
+          "documentType": "latestVeterinaryHealthCertificate",
           "documentReference": "66ff86f2d298118d3e1db3e43d74e91c5b8a189c14180664544745fa96c4a64a",
           "documentIssuedOn": "2024-10-21",
           "attachmentId": null,
@@ -402,6 +440,7 @@
     },
     "importerLocalReferenceNumber": "90850e3345384b5eb0d777e3acd78c3b6bed7e6539943d97ae67834d011986c7",
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-11-13T10:44:09.372Z",
     "submittedBy": {
       "displayName": "d22684079b38977633240c8d2ce3d6abc91842a2de656b09fb3c647c48a47ada",
@@ -424,7 +463,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "No",
+    "provideCtcMrn": "NO",
     "arrivesAt": "2024-11-20T00:00:00",
     "departedOn": null
   },
@@ -456,8 +495,8 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForInternalMarket",
-      "freeCirculationPurpose": "HumanConsumption",
+      "decision": "Acceptable for Internal Market",
+      "freeCirculationPurpose": "Human Consumption",
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
       "customWarehouseRegisteredNumber": null,
@@ -477,15 +516,16 @@
     "consignmentCheck": {
       "euStandard": null,
       "additionalGuarantees": null,
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": "Satisfactory",
       "nationalRequirements": null,
       "identityCheckDone": null,
-      "identityCheckType": "NotDone",
+      "identityCheckType": "Not Done",
       "identityCheckResult": "Not Done",
-      "identityCheckNotDoneReason": "ReducedChecksRegime",
+      "identityCheckNotDoneReason": "Reduced checks regime",
       "physicalCheckDone": null,
       "physicalCheckResult": "Not Done",
-      "physicalCheckNotDoneReason": "ReducedChecksRegime",
+      "physicalCheckNotDoneReason": "Reduced checks regime",
       "physicalCheckOtherText": null,
       "welfareCheck": null,
       "numberOfAnimalsChecked": null,
@@ -526,9 +566,10 @@
     "consignmentValidations": null,
     "checkedOn": "2024-11-16T05:33:00Z",
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
-    "inspectionRequired": "NotRequired",
+    "inspectionRequired": "Not required",
     "inspectionOverride": null,
     "autoClearedOn": null
   },
@@ -545,6 +586,8 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-11-19T22:00:00Z",
   "isRiskDecisionLocked": false,
+  "isAutoClearanceExempted": null,
+  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

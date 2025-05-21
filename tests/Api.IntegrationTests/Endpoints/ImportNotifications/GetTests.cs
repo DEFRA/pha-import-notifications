@@ -67,10 +67,8 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     {
         public AllStubChedReferenceNumbers()
         {
-            Add(ChedReferenceNumbers.ChedA);
-
-            // foreach (var chedReferenceNumber in WireMockExtensions.GetAllStubChedReferenceNumbers())
-            //     Add(chedReferenceNumber);
+            foreach (var chedReferenceNumber in WireMockExtensions.GetAllStubChedReferenceNumbers())
+                Add(chedReferenceNumber);
         }
     }
 

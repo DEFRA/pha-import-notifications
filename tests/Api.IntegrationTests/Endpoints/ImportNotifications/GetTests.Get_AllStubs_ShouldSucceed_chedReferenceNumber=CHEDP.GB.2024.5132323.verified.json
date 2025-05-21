@@ -1,88 +1,9 @@
 ﻿{
-  "createdSource": "2024-11-12T17:41:13.974Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 2049.5,
-    "totalNetWeight": 1964,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 135,
-    "temperature": "Chilled",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "NL",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": false,
-    "regionOfOrigin": "NL-0",
-    "consignedCountry": "NL",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Salted or in brine, Of domestic swine",
-      "commodityId": "02101211",
-      "complementId": 3,
-      "complementName": "Suidae",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "f24354b5637edf5a00d9b7fcd7d757706f2c88993c0395c0bcc7702fb7c0cb92",
-      "speciesName": "36883c437034910bfe5eec93502a0fdaae0bdd22bc54835e2d940f6ec9a0f16c",
-      "speciesNomination": "36883c437034910bfe5eec93502a0fdaae0bdd22bc54835e2d940f6ec9a0f16c",
-      "speciesTypeName": "e3aea5769a28f95a8683bd337e3cf911c7441cf0c9cb34a98419a757084a86a7",
-      "speciesType": "c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894",
-      "speciesClassName": null,
-      "speciesClass": "f24354b5637edf5a00d9b7fcd7d757706f2c88993c0395c0bcc7702fb7c0cb92",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": "1048.2",
-        "numberPackage": 45,
-        "typePackage": "Carton"
-      },
-      "riskAssesment": null,
-      "checks": null
-    },
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Loins and cuts thereof, Salted or in brine, Of domestic swine",
-      "commodityId": "02101940",
-      "complementId": 4,
-      "complementName": "Suidae",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "4b38e2da11910625dc5f3fc2b9bf86afbba63c88ff9384c3d79882b733782c49",
-      "speciesName": "36883c437034910bfe5eec93502a0fdaae0bdd22bc54835e2d940f6ec9a0f16c",
-      "speciesNomination": "36883c437034910bfe5eec93502a0fdaae0bdd22bc54835e2d940f6ec9a0f16c",
-      "speciesTypeName": "e3aea5769a28f95a8683bd337e3cf911c7441cf0c9cb34a98419a757084a86a7",
-      "speciesType": "c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894",
-      "speciesClassName": null,
-      "speciesClass": "679b028b890ed80caec9694b23e36caed003034bc53f8055dbb4410dbf9cbd70",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": "915.8",
-        "numberPackage": 90,
-        "typePackage": "Carton"
-      },
-      "riskAssesment": null,
-      "checks": null
-    }
-  ],
   "ipaffsId": 4132323,
   "etag": "0000000004245E80",
   "externalReferences": [
     {
-      "system": "Ncts",
+      "system": "NCTS",
       "reference": "24GBCKDFNY5GC1QAR0",
       "exactMatch": true,
       "verifiedByImporter": true,
@@ -97,12 +18,13 @@
     "userId": "11ed5ccb-5f39-eb11-a813-000d3aab241b",
     "isControlUser": null
   },
-  "importNotificationType": "Cvedp",
+  "importNotificationType": "CVEDP",
   "replaces": null,
   "replacedBy": null,
-  "status": "Submitted",
+  "status": "SUBMITTED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": null,
   "journeyRiskCategorisation": {
     "riskLevel": "Medium",
     "riskLevelMethod": "User",
@@ -137,8 +59,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "21da2f7e-53cc-450f-92c4-ddfab953234f",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "899e83117182ce27bdc5fc10f022ee4e2250593999b20134fe18ac780419f5aa",
       "individualName": null,
       "address": {
@@ -163,8 +85,8 @@
     "packer": null,
     "consignee": {
       "id": "0ec14244-fa1b-49be-a40e-63dc3c96eddf",
-      "type": "Importer",
-      "status": "Nonapproved",
+      "type": "importer",
+      "status": "nonapproved",
       "companyName": "398336597f2a381b965520a793cb350d7af02d14e5936d6afafc6f7e1230e385",
       "individualName": null,
       "address": {
@@ -188,8 +110,8 @@
     },
     "importer": {
       "id": "0ec14244-fa1b-49be-a40e-63dc3c96eddf",
-      "type": "Importer",
-      "status": "Nonapproved",
+      "type": "importer",
+      "status": "nonapproved",
       "companyName": "398336597f2a381b965520a793cb350d7af02d14e5936d6afafc6f7e1230e385",
       "individualName": null,
       "address": {
@@ -213,8 +135,8 @@
     },
     "placeOfDestination": {
       "id": "0ec14244-fa1b-49be-a40e-63dc3c96eddf",
-      "type": "Importer",
-      "status": "Nonapproved",
+      "type": "importer",
+      "status": "nonapproved",
       "companyName": "398336597f2a381b965520a793cb350d7af02d14e5936d6afafc6f7e1230e385",
       "individualName": null,
       "address": {
@@ -240,9 +162,112 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": true,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 2049.5,
+      "totalNetWeight": 1964,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 135,
+      "temperature": "Chilled",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "NL",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": false,
+      "regionOfOrigin": "NL-0",
+      "consignedCountry": "NL",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Salted or in brine, Of domestic swine",
+          "commodityId": "02101211",
+          "complementId": 3,
+          "complementName": "Suidae",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "f24354b5637edf5a00d9b7fcd7d757706f2c88993c0395c0bcc7702fb7c0cb92",
+          "speciesName": "36883c437034910bfe5eec93502a0fdaae0bdd22bc54835e2d940f6ec9a0f16c",
+          "speciesNomination": "36883c437034910bfe5eec93502a0fdaae0bdd22bc54835e2d940f6ec9a0f16c",
+          "speciesTypeName": "e3aea5769a28f95a8683bd337e3cf911c7441cf0c9cb34a98419a757084a86a7",
+          "speciesType": "c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894",
+          "speciesClassName": null,
+          "speciesClass": "f24354b5637edf5a00d9b7fcd7d757706f2c88993c0395c0bcc7702fb7c0cb92",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        },
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Loins and cuts thereof, Salted or in brine, Of domestic swine",
+          "commodityId": "02101940",
+          "complementId": 4,
+          "complementName": "Suidae",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "4b38e2da11910625dc5f3fc2b9bf86afbba63c88ff9384c3d79882b733782c49",
+          "speciesName": "36883c437034910bfe5eec93502a0fdaae0bdd22bc54835e2d940f6ec9a0f16c",
+          "speciesNomination": "36883c437034910bfe5eec93502a0fdaae0bdd22bc54835e2d940f6ec9a0f16c",
+          "speciesTypeName": "e3aea5769a28f95a8683bd337e3cf911c7441cf0c9cb34a98419a757084a86a7",
+          "speciesType": "c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894",
+          "speciesClassName": null,
+          "speciesClass": "679b028b890ed80caec9694b23e36caed003034bc53f8055dbb4410dbf9cbd70",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "295a8cda-4dc3-43fc-a2fd-93a8c07fa568",
+          "complementID": 3,
+          "speciesID": "64200",
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "1048.2"
+            },
+            {
+              "key": "number_package",
+              "data": "45"
+            },
+            {
+              "key": "type_package",
+              "data": "Carton"
+            }
+          ],
+          "identifiers": null
+        },
+        {
+          "uniqueComplementID": "0bc96d78-f88a-424f-9fea-606d2c8439d7",
+          "complementID": 4,
+          "speciesID": "492124",
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "915.8"
+            },
+            {
+              "key": "number_package",
+              "data": "90"
+            },
+            {
+              "key": "type_package",
+              "data": "Carton"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": true,
-      "internalMarketPurpose": "HumanConsumption",
+      "internalMarketPurpose": "Human Consumption",
       "thirdCountryTranshipment": null,
       "forNonConforming": null,
       "regNumber": null,
@@ -254,7 +279,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -267,7 +293,7 @@
     "transporter": null,
     "transporterDetailsRequired": false,
     "meansOfTransportFromEntryPoint": {
-      "type": "RoadVehicle",
+      "type": "Road Vehicle",
       "document": "9deaa34326a253e841d801f8341e10a00d3f48c5314fc97ad30c6acb47a176fb",
       "id": "8ddda20cc378492407e0d1e80f5ade74f376652db3d37a105565e038bef74a9e"
     },
@@ -312,7 +338,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "LatestVeterinaryHealthCertificate",
+          "documentType": "latestVeterinaryHealthCertificate",
           "documentReference": "2fe472a58cff14c602d38e4e29ff6d4214a6081c8464f6c5c5e671485690cf4a",
           "documentIssuedOn": "2024-11-12",
           "attachmentId": "713b003906f1afa6947c3f4068b78c84b695a279f957c93b41f47d827a736e5e",
@@ -323,7 +349,7 @@
           "externalReference": null
         },
         {
-          "documentType": "CommercialInvoice",
+          "documentType": "commercialInvoice",
           "documentReference": "a9a2630ea14352e02e460e6f632c0ac44fd83b034b85701fd2bfd76ca3a05e62",
           "documentIssuedOn": "2024-11-11",
           "attachmentId": "a8e6d2dbd895e4cee2b0373469d2d13e1e09c874acd5f1d0d42e1799a225c297",
@@ -334,7 +360,7 @@
           "externalReference": null
         },
         {
-          "documentType": "Other",
+          "documentType": "other",
           "documentReference": "9deaa34326a253e841d801f8341e10a00d3f48c5314fc97ad30c6acb47a176fb",
           "documentIssuedOn": "2024-11-11",
           "attachmentId": "769b502ca4219b85d5cce199ee2e34af954dbe6924b964f5ad07e07c118f06c8",
@@ -349,6 +375,7 @@
     },
     "importerLocalReferenceNumber": null,
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-11-12T17:41:13.943Z",
     "submittedBy": {
       "displayName": "8f8cb368827bf654d5301eddb2d24678d2ec4d70410ec1552f1f67644d71a79f",
@@ -387,7 +414,7 @@
     "commonUserCharge": {
       "wasSentToTradeCharge": true
     },
-    "provideCtcMrn": "Yes",
+    "provideCtcMrn": "YES",
     "arrivesAt": "2024-11-13T06:00:00",
     "departedOn": null
   },
@@ -400,6 +427,8 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-11-13T04:00:00Z",
   "isRiskDecisionLocked": false,
+  "isAutoClearanceExempted": null,
+  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

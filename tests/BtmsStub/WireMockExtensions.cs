@@ -113,11 +113,15 @@ public static class WireMockExtensions
         wireMock.Given(request).RespondWith(response);
     }
 
-    // public static IEnumerable<string> GetAllStubChedReferenceNumbers() =>
-    //     Anchor
-    //         .Assembly.GetManifestResourceNames()
-    //         .Where(x => x.StartsWith($"{GetScenarioPrefix()}btms-import-notification-single-"))
-    //         .Select(x => x.Replace($"{GetScenarioPrefix()}btms-import-notification-single-", "").Replace(".json", ""));
+    public static IEnumerable<string> GetAllStubChedReferenceNumbers() =>
+        Anchor
+            .Assembly.GetManifestResourceNames()
+            .Where(x => x.StartsWith($"{Anchor.Namespace}.TradeDataApiScenarios._import-pre-notifications_"))
+            .Select(x =>
+                x.Replace($"{Anchor.Namespace}.TradeDataApiScenarios._import-pre-notifications_", "")
+                    .Replace(".json", "")
+            )
+            .Where(x => char.IsDigit(x.Last()));
 
     private static string GetUpdatesBody(string fileName) =>
         GetManifestResource($"{Anchor.Namespace}.Scenarios.{fileName}");

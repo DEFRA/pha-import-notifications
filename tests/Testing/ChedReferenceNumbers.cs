@@ -7,7 +7,7 @@ public static class ChedReferenceNumbers
 
     public const string ChedAWithGoodsMovement = "CHEDP.GB.2024.5125476";
 
-    // public const string ChedD = "CHEDD.GB.2024.5019877";
+    public const string ChedD = "CHEDD.GB.2024.5019877";
     public const string ChedP = "CHEDP.GB.2024.4144842";
 
     public const string ChedPFinalised = "CHEDP.GB.2024.5253621";

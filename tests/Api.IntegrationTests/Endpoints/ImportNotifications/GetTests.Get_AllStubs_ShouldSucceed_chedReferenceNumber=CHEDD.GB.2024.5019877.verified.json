@@ -1,135 +1,80 @@
 ﻿{
   "clearanceRequests": [
     {
-      "header": {
-        "entryReference": "24GBE0XBAS7Z0J5AR0",
-        "entryVersionNumber": 1,
-        "previousVersionNumber": null,
+      "movementReferenceNumber": "24GBE0XBAS7Z0J5AR0",
+      "clearanceRequest": {
+        "externalCorrelationId": "1358673",
+        "messageSentAt": "2024-12-19T08:49:03Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB244049769033-LI42468",
+        "declarationPartNumber": null,
+        "declarationType": "S",
         "arrivesAt": null,
+        "submitterTurn": "GB244049769033",
+        "declarantId": "GB244049769033",
+        "declarantName": "GB244049769033",
         "dispatchCountryCode": "CN",
-        "goodsLocationCode": "TEEMIDTEE"
+        "goodsLocationCode": "TEEMIDTEE",
+        "masterUcr": "607790951",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0902400000",
+            "goodsDescription": "TEA",
+            "consigneeId": "GB405696146000",
+            "consigneeName": "GB405696146000",
+            "netMass": 24480,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "CN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5019877",
+                "documentStatus": "JP",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0902400000",
-          "goodsDescription": "TEA",
-          "consigneeId": "GB405696146000",
-          "consigneeName": "GB405696146000",
-          "itemNetMass": 24480,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "CN",
-          "documents": [
-            {
-              "documentCode": "C678",
-              "documentReference": "GBCHD2024.5019877"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "clearanceDecisions": [
-    {
-      "header": {
-        "entryReference": "24GBE0XBAS7Z0J5AR0",
-        "entryVersionNumber": 1,
-        "decisionNumber": 1
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDD.GB.2024.5019877:161224030527:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "finalisations": [
-    {
-      "finalState": "Cleared",
-      "manualAction": false,
-      "entryReference": "24GBE0XBAS7Z0J5AR0"
-    }
-  ],
-  "createdSource": "2024-12-16T15:05:27.801Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 25056,
-    "totalNetWeight": 24480,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 720,
-    "temperature": "Ambient",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "CN",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": null,
-    "regionOfOrigin": null,
-    "consignedCountry": "CN",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": "Human"
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Tea, whether or not flavoured",
-      "commodityId": "0902",
-      "complementId": 1,
-      "complementName": null,
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": null,
-      "speciesName": null,
-      "speciesNomination": null,
-      "speciesTypeName": null,
-      "speciesType": "0127ac4224cabcd72be2bbc6470fbe50c13d49c5c63f16225a663ebbf17e3474",
-      "speciesClassName": null,
-      "speciesClass": "0127ac4224cabcd72be2bbc6470fbe50c13d49c5c63f16225a663ebbf17e3474",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": 24480,
-        "numberPackage": 720,
-        "typePackage": "Bag"
-      },
-      "riskAssesment": {
-        "riskDecision": "Notrequired",
-        "exitRiskDecision": null,
-        "hmiDecision": null,
-        "phsiDecision": null,
-        "phsiClassification": null,
-        "phsi": null,
-        "uniqueId": "834ec87f-0855-4f34-bc0c-90408b6c0b5f",
-        "eppoCode": null,
-        "variety": null,
-        "propagation": null,
-        "phsiRuleType": null
-      },
-      "checks": null
+      "finalisation": {
+        "externalCorrelationId": "1358704",
+        "messageSentAt": "2024-12-19T08:59:11Z",
+        "externalVersion": 1,
+        "decisionNumber": null,
+        "finalState": "0",
+        "isManualRelease": false
+      }
     }
   ],
   "ipaffsId": 4019877,
@@ -143,12 +88,30 @@
     "userId": "99758a54-453b-e911-a958-000d3a454e11",
     "isControlUser": null
   },
-  "importNotificationType": "Ced",
+  "importNotificationType": "CED",
   "replaces": null,
   "replacedBy": null,
-  "status": "Validated",
+  "status": "VALIDATED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": "NOTREQUIRED",
+        "exitRiskDecision": null,
+        "hmiDecision": null,
+        "phsiDecision": null,
+        "phsiClassification": null,
+        "phsi": null,
+        "uniqueId": "834ec87f-0855-4f34-bc0c-90408b6c0b5f",
+        "eppoCode": null,
+        "variety": null,
+        "propagation": null,
+        "phsiRuleType": null
+      }
+    ],
+    "assessedOn": "2024-12-04T16:14:19"
+  },
   "journeyRiskCategorisation": null,
   "isHighRiskEuImport": false,
   "partOne": {
@@ -177,8 +140,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "06540f5c-c97c-4bcc-94ef-999a178d1b38",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "4eee09354f4b677da1aa161ae1d6829ddf5ef56de1bdb22c10d9308d1b66c4c9",
       "individualName": null,
       "address": {
@@ -203,8 +166,8 @@
     "packer": null,
     "consignee": {
       "id": "cddf7494-1548-4921-a39e-ead1b40f310b",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "2c640afd70ad25c12116e163eb9ae44ea032af115ba9bb619df1505abb96a4ad",
       "individualName": null,
       "address": {
@@ -228,8 +191,8 @@
     },
     "importer": {
       "id": "cddf7494-1548-4921-a39e-ead1b40f310b",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "2c640afd70ad25c12116e163eb9ae44ea032af115ba9bb619df1505abb96a4ad",
       "individualName": null,
       "address": {
@@ -253,8 +216,8 @@
     },
     "placeOfDestination": {
       "id": "cddf7494-1548-4921-a39e-ead1b40f310b",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "2c640afd70ad25c12116e163eb9ae44ea032af115ba9bb619df1505abb96a4ad",
       "individualName": null,
       "address": {
@@ -280,6 +243,69 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": false,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 25056,
+      "totalNetWeight": 24480,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 720,
+      "temperature": "Ambient",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "CN",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": null,
+      "regionOfOrigin": null,
+      "consignedCountry": "CN",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": "human",
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Tea, whether or not flavoured",
+          "commodityId": "0902",
+          "complementId": 1,
+          "complementName": null,
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": null,
+          "speciesName": null,
+          "speciesNomination": null,
+          "speciesTypeName": null,
+          "speciesType": "0127ac4224cabcd72be2bbc6470fbe50c13d49c5c63f16225a663ebbf17e3474",
+          "speciesClassName": null,
+          "speciesClass": "0127ac4224cabcd72be2bbc6470fbe50c13d49c5c63f16225a663ebbf17e3474",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "834ec87f-0855-4f34-bc0c-90408b6c0b5f",
+          "complementID": 1,
+          "speciesID": null,
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "24480"
+            },
+            {
+              "key": "number_package",
+              "data": "720"
+            },
+            {
+              "key": "type_package",
+              "data": "Bag"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": null,
       "internalMarketPurpose": null,
@@ -294,7 +320,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -320,7 +347,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "CommercialInvoice",
+          "documentType": "commercialInvoice",
           "documentReference": "74cb5dd82f1447269211903e4783b359554696e1da0815ca82c8c727e1629a01",
           "documentIssuedOn": "2024-10-05",
           "attachmentId": "9923b835cf806587236e95327a9770fdee40fa2a5aacde9659fdd5cf470ae42f",
@@ -331,7 +358,7 @@
           "externalReference": null
         },
         {
-          "documentType": "PackingList",
+          "documentType": "packingList",
           "documentReference": "ec3a2a752d313b9d5ab28e466a1ce9f744e568a9e37a325f5df009b23e3be18a",
           "documentIssuedOn": "2024-10-05",
           "attachmentId": "29870dfbb0a6c9e8240a5eec213a37a864151c09789029af026c8f3fbfce309d",
@@ -342,7 +369,7 @@
           "externalReference": null
         },
         {
-          "documentType": "BillOfLading",
+          "documentType": "billOfLading",
           "documentReference": "bc589386d680aea446d36754437a004051533f226538ea44250a6ed01ac43b3c",
           "documentIssuedOn": "2024-10-08",
           "attachmentId": "0caf0a657f485727dd7b60300433c804efbdd61fa1ea88984315e22c9d8c70b7",
@@ -353,7 +380,7 @@
           "externalReference": null
         },
         {
-          "documentType": "PhytosanitaryCertificate",
+          "documentType": "phytosanitaryCertificate",
           "documentReference": "13ec04773890d89598bb938c85674b73f8f1fd379c57ea2a19bb2ec516d71106",
           "documentIssuedOn": "2024-09-24",
           "attachmentId": "9d5a87a204d2c487407f5660a56b257c378fc0b04f87ae5c3d812f0b013aa9c1",
@@ -364,7 +391,7 @@
           "externalReference": null
         },
         {
-          "documentType": "OriginCertificate",
+          "documentType": "originCertificate",
           "documentReference": "068e40551ec64d89dba617490a965108d05a414345fadd4cd4b71939a90887c0",
           "documentIssuedOn": "2024-10-10",
           "attachmentId": "4dfbaf78654f4f891a72d4152dd7cee883b100d073b7e65b34ac5b8c51b3b4bf",
@@ -379,6 +406,7 @@
     },
     "importerLocalReferenceNumber": "9515805e8df862fcc8573850eec78b527711b37ea47b28b976ac7ba6671a8c50",
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-12-04T16:14:19.035Z",
     "submittedBy": {
       "displayName": "9254f362f1bfc2591309cffa620042553b6da7a9b7f4ed69cc352969cd55891a",
@@ -401,7 +429,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "No",
+    "provideCtcMrn": "NO",
     "arrivesAt": "2024-12-09T10:00:00",
     "departedOn": null
   },
@@ -433,8 +461,8 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForInternalMarket",
-      "freeCirculationPurpose": "HumanConsumption",
+      "decision": "Acceptable for Internal Market",
+      "freeCirculationPurpose": "Human Consumption",
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
       "customWarehouseRegisteredNumber": null,
@@ -454,6 +482,7 @@
     "consignmentCheck": {
       "euStandard": null,
       "additionalGuarantees": null,
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": "Satisfactory",
       "nationalRequirements": null,
       "identityCheckDone": false,
@@ -503,9 +532,10 @@
     "consignmentValidations": null,
     "checkedOn": "2024-12-16T15:05:00Z",
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
-    "inspectionRequired": "NotRequired",
+    "inspectionRequired": "Not required",
     "inspectionOverride": null,
     "autoClearedOn": null
   },
@@ -522,6 +552,8 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-12-09T08:00:00Z",
   "isRiskDecisionLocked": true,
+  "isAutoClearanceExempted": null,
+  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 2,
