@@ -9,6 +9,6 @@ public static class BcpAccessAuthorisationExtensions
     {
         var bcpClaims = user.Claims.Where(c => c.Type == PhaClaimTypes.Bcp).Select(c => c.Value);
 
-        return bcps.All(bcp => bcpClaims.Contains(bcp));
+        return (bcpClaims.Contains("*")) || (bcps.Count != 0 && bcps.All(bcp => bcpClaims.Contains(bcp)));
     }
 }
