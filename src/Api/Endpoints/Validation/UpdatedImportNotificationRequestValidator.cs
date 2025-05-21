@@ -18,8 +18,6 @@ public class UpdatedImportNotificationRequestValidator : ValidationEndpointFilte
         RuleFor(x => x.To)
             .Must(x => x < DateTime.UtcNow.AddSeconds(-30))
             .WithMessage("Must be more than 30 seconds before UTC now");
-
-        RuleFor(x => x.Bcp).Must(x => x.Length > 0).WithMessage("At least one BCP must be specified");
     }
 
     protected override int ArgumentIndex => 0;

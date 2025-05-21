@@ -32,7 +32,7 @@
             Documents: [
               {
                 DocumentCode: N853,
-                DocumentReference: null,
+                DocumentReference: GBCHD2024.5137241,
                 DocumentStatus: AE,
                 DocumentControl: P,
                 DocumentQuantity: null
@@ -102,7 +102,7 @@
             Documents: [
               {
                 DocumentCode: N853,
-                DocumentReference: null,
+                DocumentReference: GBCVD2024.5137241,
                 DocumentStatus: AE,
                 DocumentControl: P,
                 DocumentQuantity: null

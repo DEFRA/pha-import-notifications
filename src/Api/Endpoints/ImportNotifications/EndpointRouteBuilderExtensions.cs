@@ -50,11 +50,12 @@ public static class EndpointRouteBuilderExtensions
         CancellationToken cancellationToken
     )
     {
-        if (!httpContext.User.ClientHasAccessTo(request.Bcp.ToList()))
+        var bcps = request.Bcp ?? [];
+        if (!httpContext.User.ClientHasAccessTo(bcps.ToList()))
             return Results.Forbid();
 
         var notifications = await btmsService.GetImportNotificationUpdates(
-            request.Bcp,
+            bcps,
             request.From,
             request.To,
             cancellationToken

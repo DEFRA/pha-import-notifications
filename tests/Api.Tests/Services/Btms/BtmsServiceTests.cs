@@ -53,27 +53,29 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
         };
 
-    [Fact]
-    public async Task GetImportNotificationUpdates_WhenOk_ShouldSucceed()
+    [Theory]
+    [InlineData("noBcps")]
+    [InlineData("FilterByBcp", "bcp1", "bcp2")]
+    public async Task GetImportNotificationUpdates_WhenOk_ShouldSucceed(string testName, params string[] bcps)
     {
         WireMock.StubImportNotificationUpdates(transformRequest: builder =>
             builder
-        // .WithParam(
-        //     "filter",
-        //     "and("
-        //         + "any(_PointOfEntry,'bcp1','bcp2'),"
-        //         + "any(importNotificationType,'Cveda','Cvedp','Chedpp','Ced'),"
-        //         + "not(equals(status,'Draft')),"
-        //         + "greaterOrEqual(updatedEntity,'2024-12-12T13:10:30.0000000Z'),"
-        //         + "lessThan(updatedEntity,'2024-12-12T13:40:30.0000000Z')"
-        //         + ")"
-        // )
-        // .WithParam(UrlEncoder.Default.Encode("fields[import-notifications]"), "updatedEntity,referenceNumber")
-        // .WithParam(UrlEncoder.Default.Encode("page[size]"), "100")
+                .WithParam(
+                    "filter",
+                    "and("
+                        + (bcps.Length == 0 ? "" : "any(_PointOfEntry,'bcp1','bcp2'),")
+                        + "any(importNotificationType,'CVEDA','CVEDP','CHEDPP','CED'),"
+                        + "not(equals(status,'Draft')),"
+                        + "greaterOrEqual(updatedEntity,'2024-12-12T13:10:30.0000000Z'),"
+                        + "lessThan(updatedEntity,'2024-12-12T13:40:30.0000000Z')"
+                        + ")"
+                )
+                .WithParam(UrlEncoder.Default.Encode("fields[import-notifications]"), "updatedEntity,referenceNumber")
+                .WithParam(UrlEncoder.Default.Encode("page[size]"), "100")
         );
 
         var result = await Subject.GetImportNotificationUpdates(
-            ValidRequest.Bcp,
+            bcps,
             ValidRequest.From,
             ValidRequest.To,
             CancellationToken.None
@@ -82,7 +84,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         // If this fails, check the expected filter or fields as it may have changed
         result.Should().HaveCount(10);
 
-        await Verify(result, _settings);
+        await Verify(result, _settings).UseParameters(testName);
     }
 
     [Fact]
@@ -92,7 +94,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
         StubSubsequentUpdatesRequestForPage(2);
 
         var result = await Subject.GetImportNotificationUpdates(
-            ValidRequest.Bcp,
+            ValidRequest.Bcp!,
             ValidRequest.From,
             ValidRequest.To,
             CancellationToken.None
@@ -109,7 +111,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
 
         var act = () =>
             Subject.GetImportNotificationUpdates(
-                ValidRequest.Bcp,
+                ValidRequest.Bcp!,
                 ValidRequest.From,
                 ValidRequest.To,
                 CancellationToken.None

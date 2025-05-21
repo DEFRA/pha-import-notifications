@@ -21,7 +21,6 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     public async Task Get_ShouldSucceed()
     {
         var client = CreateClient();
-        var fixture = new Fixture();
         var validRequest = new UpdatedImportNotificationRequest
         {
             Bcp = ["bcp1", "bcp2"],
@@ -29,23 +28,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
         };
 
-        MockBtmsService
-            .GetImportNotificationUpdates(
-                Arg.Is<string[]>(x => x.SequenceEqual(validRequest.Bcp)),
-                validRequest.From,
-                validRequest.To,
-                Arg.Any<CancellationToken>()
-            )
-            .Returns(
-                new List<ImportNotificationUpdate>
-                {
-                    fixture
-                        .Build<ImportNotificationUpdate>()
-                        .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
-                        .With(x => x.UpdatedEntity, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
-                        .Create(),
-                }
-            );
+        SetUpMockBtmsForSuccess(validRequest.Bcp, validRequest.From, validRequest.To);
 
         var url = Testing.Endpoints.ImportNotifications.GetUpdatedValid(
             validRequest.Bcp,
@@ -61,11 +44,10 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [InlineData("2024-12-11T10:00:00.000", "2024-12-11T10:30:00.000", new[] { "bcp1" }, "Utc")]
     [InlineData("2024-12-11T10:00:00.000Z", "2024-12-11T09:30:00.000Z", new[] { "bcp1" }, "FromBeforeTo")]
     [InlineData("2024-12-11T10:00:00.000Z", "2024-12-11T11:00:00.001Z", new[] { "bcp1" }, "FromToRange")]
-    [InlineData("2024-12-11T10:00:00.000Z", "2024-12-11T10:30:00.000Z", null, "NoBcp")]
     public async Task Get_WhenRequestParamsAreInvalid_ShouldBeBadRequest(
-        string? from,
-        string? to,
-        string[]? bcp,
+        string from,
+        string to,
+        string[] bcp,
         string name
     )
     {
@@ -95,6 +77,34 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     }
 
     [Fact]
+    public async Task Get_WhenBcpParameterIsNotProvided_AndAuthorisedForAllBcps_ShouldSucceed()
+    {
+        var client = CreateClient("fsa");
+        var from = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc);
+        var to = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc);
+
+        SetUpMockBtmsForSuccess(bcps: [], from, to);
+
+        var url = Testing.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
+        var response = await client.GetStringAsync(url);
+
+        await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
+    }
+
+    [Fact]
+    public async Task Get_WhenBcpParameterIsNotProvided_AndNotAuthorisedForAllBcps_ReturnsForbidden()
+    {
+        var client = CreateClient("pha");
+        var from = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc);
+        var to = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc);
+
+        var url = Testing.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
+        var response = await client.GetAsync(url);
+
+        response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
+    }
+
+    [Fact]
     public async Task Get_WhenNotAuthenticated_ReturnsUnauthorized()
     {
         var client = CreateClient();
@@ -111,7 +121,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
 
         var response = await client.GetAsync(
-            Testing.Endpoints.ImportNotifications.GetUpdatedValid(new[] { "bcp1", "bcp2", "bcp-no-access" })
+            Testing.Endpoints.ImportNotifications.GetUpdatedValid(["bcp1", "bcp2", "bcp-no-access"])
         );
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
@@ -122,5 +132,25 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         base.ConfigureTestServices(services);
 
         services.AddTransient<ITradeImportsDataService>(_ => MockBtmsService);
+    }
+
+    private void SetUpMockBtmsForSuccess(string[] bcps, DateTime from, DateTime to)
+    {
+        MockBtmsService
+            .GetImportNotificationUpdates(
+                Arg.Is<string[]>(x => x.SequenceEqual(bcps)),
+                from,
+                to,
+                Arg.Any<CancellationToken>()
+            )
+            .Returns(
+                [
+                    new Fixture()
+                        .Build<ImportNotificationUpdate>()
+                        .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
+                        .With(x => x.UpdatedEntity, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
+                        .Create(),
+                ]
+            );
     }
 }
