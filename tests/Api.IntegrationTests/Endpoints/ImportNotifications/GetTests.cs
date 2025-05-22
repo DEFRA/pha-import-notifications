@@ -78,7 +78,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         var chedReferenceNumber = Testing.ChedReferenceNumbers.ChedA;
         var client = CreateClient("fsa");
 
-        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
+        WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
 
         var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get(chedReferenceNumber));
 
