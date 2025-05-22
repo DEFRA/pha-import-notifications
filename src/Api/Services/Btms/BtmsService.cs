@@ -88,7 +88,7 @@ public class BtmsService(
         var goodsMovementsResponse = await getGoodsMovements;
 
         importNotification.CustomsDeclarations = customsDeclarationsResponse!
-            .CustomsDeclarations.Select(cdr => new CustomsDeclarationData()
+            .CustomsDeclarations.Select(cdr => new CustomsDeclarationData
             {
                 MovementReferenceNumber = cdr.MovementReferenceNumber,
                 ClearanceRequest = cdr.ClearanceRequest,

@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace Defra.PhaImportNotifications.Contracts;
 
-public partial record ImportPreNotification
+public partial record ImportPreNotification()
 {
     [JsonPropertyName("clearanceRequests")]
     public IList<CustomsDeclarationData>? CustomsDeclarations { get; set; }
@@ -11,7 +11,7 @@ public partial record ImportPreNotification
     public IList<Gmr>? GoodsMovements { get; set; }
 }
 
-public record CustomsDeclarationData
+public record CustomsDeclarationData()
 {
     [JsonPropertyName("movementReferenceNumber")]
     public string? MovementReferenceNumber { get; init; }
