@@ -50,7 +50,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     [ClassData(typeof(AllStubChedReferenceNumbers))]
     public async Task Get_AllStubs_ShouldSucceed(string chedReferenceNumber)
     {
-        var client = CreateClient();
+        var client = CreateClient("pha");
 
         WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
 
@@ -70,6 +70,19 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
             foreach (var chedReferenceNumber in WireMockExtensions.GetAllStubChedReferenceNumbers())
                 Add(chedReferenceNumber);
         }
+    }
+
+    [Fact]
+    public async Task Get_WhenAuthorisedForAllBcps_ShouldSucceed()
+    {
+        var chedReferenceNumber = Testing.ChedReferenceNumbers.ChedA;
+        var client = CreateClient("fsa");
+
+        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
+
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get(chedReferenceNumber));
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
     }
 
     [Fact]

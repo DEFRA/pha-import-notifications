@@ -3,7 +3,6 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 using Defra.PhaImportNotifications.Api.Configuration;
-using Defra.PhaImportNotifications.Api.Endpoints;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.OpenApi;
@@ -219,7 +218,6 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
     app.UseAuthorization();
 
     app.MapHealthChecks("/health");
-    app.MapExampleEndpoints();
     app.MapImportNotificationsEndpoints();
 
     app.UseSwagger(options =>
