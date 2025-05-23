@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace SchemaToCSharp;
 
+[ExcludeFromCodeCoverage]
 internal static class Ignored
 {
     public static readonly Dictionary<string, HashSet<string>> Properties = new(StringComparer.OrdinalIgnoreCase)
