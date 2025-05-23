@@ -6,7 +6,7 @@ using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 
-namespace Defra.PhaImportNotifications.BtmsStub;
+namespace Defra.PhaImportNotifications.Tests.BtmsStub;
 
 [ExcludeFromCodeCoverage]
 public static class WireMockExtensions

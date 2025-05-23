@@ -3,26 +3,36 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsTestProject>true</IsTestProject>
-    <AssemblyName>Defra.PhaImportNotifications.Api.IntegrationTests</AssemblyName>
-    <RootNamespace>Defra.PhaImportNotifications.Api.IntegrationTests</RootNamespace>
+    <AssemblyName>Defra.PhaImportNotifications.Tests</AssemblyName>
+    <RootNamespace>Defra.PhaImportNotifications.Tests</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Using Include="Xunit" />
+    <Using Include="FluentAssertions" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoFixture.Xunit2" Version="4.18.1" />
     <PackageReference Include="FluentAssertions" Version="7.2.0" />
+    <PackageReference Include="MartinCostello.Logging.XUnit" Version="0.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="NSubstitute" Version="5.3.0" />
+    <PackageReference Include="Verify.Xunit" Version="30.1.0" />
+    <PackageReference Include="WireMock.Net" Version="1.8.6" />
+    <PackageReference Include="WireMock.Net.FluentAssertions" Version="1.8.6" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\src\Api\Api.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Api\Api.csproj" />
-    <ProjectReference Include="..\BtmsStub\BtmsStub.csproj" />
-    <ProjectReference Include="..\Testing\Testing.csproj" />
+    <EmbeddedResource Include="BtmsStub\Scenarios\*.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BtmsStub\TradeDataApiScenarios\*.json" />
   </ItemGroup>
 </Project>

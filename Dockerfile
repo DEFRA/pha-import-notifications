@@ -32,10 +32,7 @@ RUN dotnet tool restore
 
 COPY src/Api/Api.csproj src/Api/Api.csproj
 COPY src/Contracts/Contracts.csproj src/Contracts/Contracts.csproj
-COPY tests/BtmsStub/BtmsStub.csproj tests/BtmsStub/BtmsStub.csproj
-COPY tests/Testing/Testing.csproj tests/Testing/Testing.csproj
-COPY tests/Api.Tests/Api.Tests.csproj tests/Api.Tests/Api.Tests.csproj
-COPY tests/Api.IntegrationTests/Api.IntegrationTests.csproj tests/Api.IntegrationTests/Api.IntegrationTests.csproj
+COPY tests/PhaImportNotifcations.Tests.csproj tests/PhaImportNotifcations.Tests.csproj
 COPY tools/SchemaToCSharp/SchemaToCSharp.csproj tools/SchemaToCSharp/SchemaToCSharp.csproj
 COPY Defra.PhaImportNotifications.sln Defra.PhaImportNotifications.sln
 COPY Directory.Build.props Directory.Build.props
@@ -44,10 +41,7 @@ RUN dotnet restore
 
 COPY src/Api src/Api
 COPY src/Contracts src/Contracts
-COPY tests/BtmsStub tests/BtmsStub
-COPY tests/Testing tests/Testing
-COPY tests/Api.Tests tests/Api.Tests
-COPY tests/Api.IntegrationTests tests/Api.IntegrationTests
+COPY tests tests
 
 RUN dotnet csharpier check .
 
@@ -55,8 +49,7 @@ RUN dotnet build src/Api/Api.csproj --no-restore -c Release
 RUN dotnet swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
 RUN vacuum lint -d -r .vacuum.yml openapi.json
 
-RUN dotnet test --no-restore tests/Api.Tests
-RUN dotnet test --no-restore tests/Api.IntegrationTests
+RUN dotnet test --no-restore tests/PhaImportNotifcations.Tests.csproj
 
 FROM build AS publish
 

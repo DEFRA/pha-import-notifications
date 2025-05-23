@@ -1,11 +1,10 @@
 using System.Net;
-using Defra.PhaImportNotifications.BtmsStub;
 using Defra.PhaImportNotifications.Testing;
-using FluentAssertions;
+using Defra.PhaImportNotifications.Tests.BtmsStub;
 using Microsoft.Extensions.Configuration;
 using WireMock.Server;
 using Xunit.Abstractions;
-using WireMockExtensions = Defra.PhaImportNotifications.BtmsStub.WireMockExtensions;
+using WireMockExtensions = Defra.PhaImportNotifications.Tests.BtmsStub.WireMockExtensions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
