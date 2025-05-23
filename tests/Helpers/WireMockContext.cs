@@ -25,6 +25,7 @@ public class WireMockContext : IDisposable
 
     public void Dispose()
     {
+        GC.SuppressFinalize(this);
         Server.Stop();
         Server.Dispose();
         HttpClient.Dispose();
