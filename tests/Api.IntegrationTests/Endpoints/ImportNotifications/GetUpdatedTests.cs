@@ -2,13 +2,12 @@ using System.Net;
 using AutoFixture;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Services;
-using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
 using Defra.PhaImportNotifications.Tests.Helpers;
-using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Xunit.Abstractions;
+using Helpers = Defra.PhaImportNotifications.Tests.Helpers;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
@@ -30,7 +29,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
 
         SetUpMockBtmsForSuccess(validRequest.Bcp, validRequest.From, validRequest.To);
 
-        var url = PhaImportNotifications.Tests.Helpers.Endpoints.ImportNotifications.GetUpdatedValid(
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(
             validRequest.Bcp,
             validRequest.From.ToString("O"),
             validRequest.To.ToString("O")
@@ -52,7 +51,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     )
     {
         var client = CreateClient();
-        var url = PhaImportNotifications.Tests.Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(bcp, from, to);
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(bcp, from, to);
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -64,7 +63,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     public async Task Get_WhenRequestParamsAreInvalid_ToTooCloseToUtcNow_ShouldBeBadRequest()
     {
         var client = CreateClient();
-        var url = PhaImportNotifications.Tests.Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
             ["bcp1"],
             DateTime.UtcNow.AddSeconds(-60).ToString("O"),
             DateTime.UtcNow.AddSeconds(-29).ToString("O")
@@ -85,10 +84,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
 
         SetUpMockBtmsForSuccess(bcps: [], from, to);
 
-        var url = PhaImportNotifications.Tests.Helpers.Endpoints.ImportNotifications.GetUpdatedValid(
-            from: from.ToString("O"),
-            to: to.ToString("O")
-        );
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
         var response = await client.GetStringAsync(url);
 
         await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
@@ -101,10 +97,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var from = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc);
         var to = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc);
 
-        var url = PhaImportNotifications.Tests.Helpers.Endpoints.ImportNotifications.GetUpdatedValid(
-            from: from.ToString("O"),
-            to: to.ToString("O")
-        );
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
         var response = await client.GetAsync(url);
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
@@ -116,9 +109,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
         client.DefaultRequestHeaders.Authorization = null;
 
-        var response = await client.GetAsync(
-            PhaImportNotifications.Tests.Helpers.Endpoints.ImportNotifications.GetUpdatedValid()
-        );
+        var response = await client.GetAsync(Helpers.Endpoints.ImportNotifications.GetUpdatedValid());
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
@@ -129,9 +120,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
 
         var response = await client.GetAsync(
-            PhaImportNotifications.Tests.Helpers.Endpoints.ImportNotifications.GetUpdatedValid(
-                ["bcp1", "bcp2", "bcp-no-access"]
-            )
+            Helpers.Endpoints.ImportNotifications.GetUpdatedValid(["bcp1", "bcp2", "bcp-no-access"])
         );
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
