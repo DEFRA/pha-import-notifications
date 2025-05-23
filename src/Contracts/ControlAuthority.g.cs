@@ -31,9 +31,9 @@ public partial record ControlAuthority
     public bool? IuuCheckRequired { get; init; }
 
     [JsonPropertyName("iuuOption")]
-    [ExampleValue("Iuuok")]
-    [ExampleValue("Iuuna")]
+    [ExampleValue("IUUOK")]
+    [ExampleValue("IUUNA")]
     [ExampleValue("IUUNotCompliant")]
-    [Description("Result of Illegal, Unreported and Unregulated (IUU) check")]
+    [Description("Result of Illegal, Unreported and Unregulated (IUU) check. Possible values taken from IPAFFS schema version 17.5.")]
     public string? IuuOption { get; init; }
 }

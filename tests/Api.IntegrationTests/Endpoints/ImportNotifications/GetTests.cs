@@ -27,9 +27,11 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     {
         var client = CreateClient();
 
-        WireMock.StubSingleImportNotification();
+        WireMock.StubImportNotificationAndSubPaths(ChedReferenceNumbers.ChedA);
 
-        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.Get());
+        var response = await client.GetStringAsync(
+            Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA)
+        );
 
         // We mock BTMS with WireMock in order to test our APIs deserialisation
         // process. Rather than just mocking the service response itself. This
@@ -50,9 +52,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     {
         var client = CreateClient("pha");
 
-        WireMock.StubAllMovements();
-        WireMock.StubAllGmrs();
-        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
+        WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
 
         var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.Get(chedReferenceNumber));
 
@@ -78,7 +78,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         var chedReferenceNumber = Testing.ChedReferenceNumbers.ChedA;
         var client = CreateClient("fsa");
 
-        WireMock.StubSingleImportNotification(chedReferenceNumber: chedReferenceNumber);
+        WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
 
         var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get(chedReferenceNumber));
 
@@ -90,7 +90,9 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     {
         var client = CreateClient();
 
-        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+        var response = await client.GetAsync(
+            Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedPWithMovement)
+        );
 
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
@@ -101,7 +103,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         var client = CreateClient();
         client.DefaultRequestHeaders.Authorization = null;
 
-        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA));
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
@@ -111,13 +113,16 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     {
         var client = CreateClient();
 
-        WireMock.StubSingleImportNotification(transformResponse: responseBody =>
-        {
-            responseBody["data"]!["attributes"]!["partOne"]!["pointOfEntry"] = "NOTALLOWED";
-            return responseBody;
-        });
+        WireMock.StubImportNotificationAndSubPaths(
+            ChedReferenceNumbers.ChedP,
+            transformImportNotificationResponse: responseBody =>
+            {
+                responseBody["importPreNotification"]!["partOne"]!["pointOfEntry"] = "NOTALLOWED";
+                return responseBody;
+            }
+        );
 
-        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedP));
 
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
@@ -128,11 +133,14 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         var client = CreateClient();
         client.DefaultRequestHeaders.Add("x-cdp-request-id", "REQUEST-ID");
 
-        WireMock.StubSingleImportNotification(transformRequest: request =>
-            request.WithHeader("x-cdp-request-id", "REQUEST-ID")
+        WireMock.StubImportNotificationAndSubPaths(
+            ChedReferenceNumbers.ChedPFinalised,
+            transformRequest: request => request.WithHeader("x-cdp-request-id", "REQUEST-ID")
         );
 
-        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get());
+        var response = await client.GetAsync(
+            Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedPFinalised)
+        );
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
     }
@@ -140,7 +148,11 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     protected override void ConfigureHostConfiguration(IConfigurationBuilder config)
     {
         config.AddInMemoryCollection(
-            new Dictionary<string, string?> { { "Btms:BaseUrl", HttpClient.BaseAddress?.ToString() } }
+            new Dictionary<string, string?>
+            {
+                { "Btms:BaseUrl", HttpClient.BaseAddress?.ToString() },
+                { "TradeImportsDataApi:BaseUrl", HttpClient.BaseAddress?.ToString() },
+            }
         );
 
         base.ConfigureHostConfiguration(config);

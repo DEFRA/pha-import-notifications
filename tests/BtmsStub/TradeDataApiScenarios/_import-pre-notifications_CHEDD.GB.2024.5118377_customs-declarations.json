@@ -1,0 +1,248 @@
+{
+  "customsDeclarations": [
+    {
+      "movementReferenceNumber": "24GBE2JU5B0W5Z0AR8",
+      "clearanceRequest": {
+        "externalCorrelationId": "1362474",
+        "messageSentAt": "2024-12-20T12:07:21Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB778182389000-MSI24100179",
+        "declarationPartNumber": null,
+        "declarationType": "S",
+        "arrivesAt": null,
+        "submitterTurn": "GB778182389000",
+        "declarantId": "GB778182389000",
+        "declarantName": "GB778182389000",
+        "dispatchCountryCode": "IN",
+        "goodsLocationCode": "FXTFXTFXT",
+        "masterUcr": "554921077",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904220019",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 750,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5118068",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 2,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904220019",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 2650,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5118377",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 3,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904219020",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 970,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5134337",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 4,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904219020",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 1410,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5134435",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 5,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0904219020",
+            "goodsDescription": "STC 573 BAGS CHILLI POWDER",
+            "consigneeId": "GB159080500000",
+            "consigneeName": "GB159080500000",
+            "netMass": 1990,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "IN",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5134476",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDD.GB.2024.5118377:161224080821:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5118068). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 2,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionReasons": [],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 3,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5134337). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 4,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5134435). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 5,
+            "checks": [
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5134476). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
+      },
+      "finalisation": {
+        "externalCorrelationId": "1362503",
+        "messageSentAt": "2024-12-20T12:24:39Z",
+        "externalVersion": 1,
+        "decisionNumber": null,
+        "finalState": "0",
+        "isManualRelease": false
+      },
+      "inboundError": null,
+      "created": "2025-02-21T13:28:39.129Z",
+      "updated": "2025-02-21T13:28:40.129Z"
+    }
+  ]
+}

@@ -1,11 +1,14 @@
+using System.Net;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Extensions;
-using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.OpenApi;
+using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Api.Services.Btms;
+using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
@@ -17,6 +20,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using ServiceCollectionExtensions = Defra.PhaImportNotifications.Api.JsonApi.ServiceCollectionExtensions;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
@@ -125,7 +129,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             }
         );
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
-        c.IncludeXmlComments(typeof(ImportNotification).Assembly);
+        c.IncludeXmlComments(typeof(ImportPreNotification).Assembly);
         c.DocumentFilter<TagsDocumentFilter>();
         c.SchemaFilter<DescriptionSchemaFilter>();
         c.SchemaFilter<ExampleValueSchemaFilter>();
@@ -162,7 +166,36 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
     });
     builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
-    builder.Services.AddJsonApiClient(
+    builder
+        .Services.AddOptions<TradeImportsDataApiOptions>()
+        .BindConfiguration("TradeImportsDataApi")
+        .ValidateOptions(!generatingOpenApiFromCli);
+
+    builder
+        .Services.AddHttpClient<TradeDataHttpClient, TradeDataHttpClient>(
+            (sp, httpClient) =>
+            {
+                var options = sp.GetRequiredService<IOptions<TradeImportsDataApiOptions>>().Value;
+
+                httpClient.BaseAddress = new Uri(options.BaseUrl);
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                if (options.Username is not null)
+                {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                        "Basic",
+                        Convert.ToBase64String(Encoding.UTF8.GetBytes($"{options.Username}:{options.Password}"))
+                    );
+                }
+
+                if (httpClient.BaseAddress.Scheme.Equals("https", StringComparison.OrdinalIgnoreCase))
+                    httpClient.DefaultRequestVersion = HttpVersion.Version20;
+            }
+        )
+        .AddHeaderPropagation();
+
+    ServiceCollectionExtensions.AddJsonApiClient(
+        builder.Services,
         (sp, options) =>
         {
             var btmsOptions = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
@@ -173,7 +206,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             );
         }
     );
-    builder.Services.AddTransient<IBtmsService, BtmsService>();
+    builder.Services.AddTransient<ITradeImportsDataService, BtmsService>();
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)

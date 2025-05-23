@@ -1,156 +1,83 @@
 ﻿{
   "clearanceRequests": [
     {
-      "header": {
-        "entryReference": "24GBD8ZE70M2T3ZAR1",
-        "entryVersionNumber": 2,
-        "previousVersionNumber": 1,
+      "movementReferenceNumber": "24GBD8ZE70M2T3ZAR1",
+      "clearanceRequest": {
+        "externalCorrelationId": "1325085",
+        "messageSentAt": "2024-12-07T14:34:47Z",
+        "externalVersion": 2,
+        "previousExternalVersion": 1,
         "arrivesAt": null,
         "dispatchCountryCode": "TR",
-        "goodsLocationCode": "FXTFXTFXT"
+        "goodsLocationCode": "FXTFXTFXT",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0805501010",
+            "goodsDescription": "LEMON",
+            "consigneeId": "GB160167235000",
+            "consigneeName": "GB160167235000",
+            "netMass": 16430,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "TR",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5226413"
+              },
+              {
+                "documentCode": "N002",
+                "documentReference": "GBCHD2024.5226441"
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H218",
+                "departmentCode": "HMI"
+              },
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0805501010",
-          "goodsDescription": "LEMON",
-          "consigneeId": "GB160167235000",
-          "consigneeName": "GB160167235000",
-          "itemNetMass": 16430,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "TR",
-          "documents": [
-            {
-              "documentCode": "C678",
-              "documentReference": "GBCHD2024.5226413"
-            },
-            {
-              "documentCode": "N002",
-              "documentReference": "GBCHD2024.5226441"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H218",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5226413,GBCHD2024.5226441). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            },
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5226413,GBCHD2024.5226441). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "clearanceDecisions": [
-    {
-      "header": {
-        "entryReference": "24GBD8ZE70M2T3ZAR1",
-        "entryVersionNumber": 2,
-        "decisionNumber": 1
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 2,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDD.GB.2024.5226413:071224022530:CR-VERSION-2",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H218",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5226413, GBCHD2024.5226441). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              },
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5226413, GBCHD2024.5226441). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H218",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5226413,GBCHD2024.5226441). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            },
-            {
-              "checkCode": "H223",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Ced(s) have been submitted to Port Health (for Ced number(s) GBCHD2024.5226413,GBCHD2024.5226441). Please correct the Ced number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "createdSource": "2024-12-07T14:25:30.023Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 17600,
-    "totalNetWeight": 16430,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 1150,
-    "temperature": "Chilled",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "TR",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": null,
-    "regionOfOrigin": null,
-    "consignedCountry": "TR",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": "Human"
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Lemons (Citrus limon, Citrus limonum)",
-      "commodityId": "08055010",
-      "complementId": 2,
-      "complementName": null,
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": null,
-      "speciesName": null,
-      "speciesNomination": null,
-      "speciesTypeName": null,
-      "speciesType": "441153a1029f2c486ae1aeaec7c0a1352dae82afe80c56c4db8e9c627d8f3755",
-      "speciesClassName": null,
-      "speciesClass": "441153a1029f2c486ae1aeaec7c0a1352dae82afe80c56c4db8e9c627d8f3755",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": true,
-      "additionalData": {
-        "netWeight": 16430,
-        "numberPackage": 1150,
-        "typePackage": "Package"
-      },
-      "riskAssesment": {
-        "riskDecision": "Notrequired",
-        "exitRiskDecision": null,
-        "hmiDecision": null,
-        "phsiDecision": null,
-        "phsiClassification": null,
-        "phsi": null,
-        "uniqueId": "287917bd-c4f3-4de8-9c37-68f85e47cfa9",
-        "eppoCode": null,
-        "variety": null,
-        "propagation": null,
-        "phsiRuleType": null
-      },
-      "checks": null
+      "finalisation": null
     }
   ],
   "ipaffsId": 4255666,
@@ -164,12 +91,30 @@
     "userId": "91a127fd-fe3f-e911-a958-000d3a454e11",
     "isControlUser": null
   },
-  "importNotificationType": "Ced",
+  "importNotificationType": "CED",
   "replaces": null,
   "replacedBy": null,
-  "status": "Validated",
+  "status": "VALIDATED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": "NOTREQUIRED",
+        "exitRiskDecision": null,
+        "hmiDecision": null,
+        "phsiDecision": null,
+        "phsiClassification": null,
+        "phsi": null,
+        "uniqueId": "287917bd-c4f3-4de8-9c37-68f85e47cfa9",
+        "eppoCode": null,
+        "variety": null,
+        "propagation": null,
+        "phsiRuleType": null
+      }
+    ],
+    "assessedOn": "2024-12-04T14:28:48"
+  },
   "journeyRiskCategorisation": null,
   "isHighRiskEuImport": false,
   "partOne": {
@@ -201,8 +146,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "ca74d341-36c0-42f9-ae72-96ea5214b244",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "da457c322a2aa9eaeeaafc4040fef53fd3a91cc13bacb12a38ee0b8eff369f24",
       "individualName": null,
       "address": {
@@ -227,8 +172,8 @@
     "packer": null,
     "consignee": {
       "id": "4f9cabc5-d295-4531-966d-2e8b3ec074ca",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "18ba3e70aee291f2e496c93c60543af7836aef2112fb6972b01ecb0bf91e0f7c",
       "individualName": null,
       "address": {
@@ -252,8 +197,8 @@
     },
     "importer": {
       "id": "4f9cabc5-d295-4531-966d-2e8b3ec074ca",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "18ba3e70aee291f2e496c93c60543af7836aef2112fb6972b01ecb0bf91e0f7c",
       "individualName": null,
       "address": {
@@ -277,8 +222,8 @@
     },
     "placeOfDestination": {
       "id": "4f9cabc5-d295-4531-966d-2e8b3ec074ca",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "18ba3e70aee291f2e496c93c60543af7836aef2112fb6972b01ecb0bf91e0f7c",
       "individualName": null,
       "address": {
@@ -304,6 +249,69 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": true,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 17600,
+      "totalNetWeight": 16430,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 1150,
+      "temperature": "Chilled",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "TR",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": null,
+      "regionOfOrigin": null,
+      "consignedCountry": "TR",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": "human",
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Lemons (Citrus limon, Citrus limonum)",
+          "commodityId": "08055010",
+          "complementId": 2,
+          "complementName": null,
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": null,
+          "speciesName": null,
+          "speciesNomination": null,
+          "speciesTypeName": null,
+          "speciesType": "441153a1029f2c486ae1aeaec7c0a1352dae82afe80c56c4db8e9c627d8f3755",
+          "speciesClassName": null,
+          "speciesClass": "441153a1029f2c486ae1aeaec7c0a1352dae82afe80c56c4db8e9c627d8f3755",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": true
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "287917bd-c4f3-4de8-9c37-68f85e47cfa9",
+          "complementID": 2,
+          "speciesID": null,
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "16430"
+            },
+            {
+              "key": "number_package",
+              "data": "1150"
+            },
+            {
+              "key": "type_package",
+              "data": "Package"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": null,
       "internalMarketPurpose": null,
@@ -318,7 +326,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -331,7 +340,7 @@
     "transporter": null,
     "transporterDetailsRequired": false,
     "meansOfTransportFromEntryPoint": {
-      "type": "RoadVehicle",
+      "type": "Road Vehicle",
       "document": "6f0e571c798735f7a87bfbf38876b7d27144df8ff98d45a2d1d6147d22a3c5d6",
       "id": "7e96171cedc7380b5e6d42f9094b69dae25d43a38ec76f75414a27bf3b24287e"
     },
@@ -344,7 +353,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "CommercialInvoice",
+          "documentType": "commercialInvoice",
           "documentReference": "e31c11bc1edb70ef356a187dec01aa2aa3889e7eaf481c52aa9440d4d60f2f63",
           "documentIssuedOn": "2024-11-27",
           "attachmentId": "a029aac7f3311e98fe647afd34bd3e5d11b07e4ad57e34ad4d59eaeda7e5c136",
@@ -359,6 +368,7 @@
     },
     "importerLocalReferenceNumber": "8f694d640d6625da0e0730fd3936bcfa01af4f36c551ff185a3bd4e29e90e0c3",
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-12-04T14:28:47.582Z",
     "submittedBy": {
       "displayName": "e06aa0ebf15c14dc4c1f3890ff6b671312834820f6a54f313352bcd3231e56e1",
@@ -387,7 +397,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "No",
+    "provideCtcMrn": "NO",
     "arrivesAt": "2024-12-01T14:00:00",
     "departedOn": null
   },
@@ -419,8 +429,8 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForInternalMarket",
-      "freeCirculationPurpose": "HumanConsumption",
+      "decision": "Acceptable for Internal Market",
+      "freeCirculationPurpose": "Human Consumption",
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
       "customWarehouseRegisteredNumber": null,
@@ -440,6 +450,7 @@
     "consignmentCheck": {
       "euStandard": null,
       "additionalGuarantees": null,
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": "Satisfactory",
       "nationalRequirements": null,
       "identityCheckDone": false,
@@ -489,9 +500,10 @@
     "consignmentValidations": null,
     "checkedOn": "2024-12-07T14:25:00Z",
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
-    "inspectionRequired": "NotRequired",
+    "inspectionRequired": "Not required",
     "inspectionOverride": null,
     "autoClearedOn": null
   },
@@ -508,6 +520,7 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-12-01T12:00:00Z",
   "isRiskDecisionLocked": true,
+  "isAutoClearanceExempted": null,
   "requestId": null,
   "isCdsFullMatched": true,
   "chedTypeVersion": 2,

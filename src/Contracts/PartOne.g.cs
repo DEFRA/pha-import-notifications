@@ -10,7 +10,7 @@ public partial record PartOne
     [ExampleValue("P")]
     [ExampleValue("D")]
     [JsonIgnore]
-    [Description("Used to indicate what type of EU Import the notification is - Live Animals, Product Of Animal Origin or High Risk Food Not Of Animal Origin")]
+    [Description("Used to indicate what type of EU Import the notification is - Live Animals, Product Of Animal Origin or High Risk Food Not Of Animal Origin. Possible values taken from IPAFFS schema version 17.5.")]
     public string? TypeOfImp { get; init; }
 
     [JsonPropertyName("personResponsible")]
@@ -92,6 +92,9 @@ public partial record PartOne
     [Description("Is GVMS route?")]
     public bool? IsGvmsRoute { get; init; }
 
+    [JsonPropertyName("commodities")]
+    public Commodities? Commodities { get; init; }
+
     [JsonPropertyName("purpose")]
     [Description("Purpose of consignment details")]
     public Purpose? Purpose { get; init; }
@@ -145,6 +148,12 @@ public partial record PartOne
     [JsonIgnore]
     [Description("Array that contains pair of seal number and container number")]
     public List<SealContainer>? SealsContainers { get; init; }
+
+    [JsonPropertyName("storeTransporterContact")]
+    [ExampleValue("YES")]
+    [ExampleValue("NO")]
+    [Description("Whether the importer wishes to store transporter contact details. Possible values taken from IPAFFS schema version 17.5.")]
+    public string? StoreTransporterContact { get; init; }
 
     [JsonPropertyName("submittedOn")]
     [Description("Date and time when the notification was submitted")]
@@ -202,10 +211,10 @@ public partial record PartOne
     public CommonUserCharge? CommonUserCharge { get; init; }
 
     [JsonPropertyName("provideCtcMrn")]
-    [ExampleValue("Yes")]
-    [ExampleValue("YesAddLater")]
-    [ExampleValue("No")]
-    [Description("When the NCTS MRN will be added for the Common Transit Convention (CTC)")]
+    [ExampleValue("YES")]
+    [ExampleValue("YES_ADD_LATER")]
+    [ExampleValue("NO")]
+    [Description("When the NCTS MRN will be added for the Common Transit Convention (CTC). Possible values taken from IPAFFS schema version 17.5.")]
     public string? ProvideCtcMrn { get; init; }
 
     [JsonPropertyName("arrivesAt")]

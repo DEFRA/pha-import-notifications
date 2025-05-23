@@ -30,10 +30,10 @@ public partial record Applicant
     public string? SampleBatchNumber { get; init; }
 
     [JsonPropertyName("analysisType")]
-    [ExampleValue("InitialAnalysis")]
-    [ExampleValue("CounterAnalysis")]
-    [ExampleValue("SecondExpertAnalysis")]
-    [Description("Type of analysis")]
+    [ExampleValue("Initial analysis")]
+    [ExampleValue("Counter analysis")]
+    [ExampleValue("Second expert analysis")]
+    [Description("Type of analysis. Possible values taken from IPAFFS schema version 17.5.")]
     public string? AnalysisType { get; init; }
 
     [JsonPropertyName("numberOfSamples")]
@@ -48,7 +48,7 @@ public partial record Applicant
     [ExampleValue("Ambient")]
     [ExampleValue("Chilled")]
     [ExampleValue("Frozen")]
-    [Description("Conservation of sample")]
+    [Description("Conservation of sample. Possible values taken from IPAFFS schema version 17.5.")]
     public string? ConservationOfSample { get; init; }
 
     [JsonPropertyName("inspector")]

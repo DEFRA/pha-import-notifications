@@ -6,11 +6,11 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record ExternalReference
 {
     [JsonPropertyName("system")]
-    [ExampleValue("Ecert")]
-    [ExampleValue("Ephyto")]
-    [ExampleValue("Enotification")]
-    [ExampleValue("Ncts")]
-    [Description("Identifier of the external system to which the reference relates")]
+    [ExampleValue("E-CERT")]
+    [ExampleValue("E-PHYTO")]
+    [ExampleValue("E-NOTIFICATION")]
+    [ExampleValue("NCTS")]
+    [Description("Identifier of the external system to which the reference relates. Possible values taken from IPAFFS schema version 17.5.")]
     public string? System { get; init; }
 
     [JsonPropertyName("reference")]

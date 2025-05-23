@@ -1,6 +1,7 @@
 using System.Net;
 using AutoFixture;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
+using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Contracts;
 using Defra.PhaImportNotifications.Testing;
@@ -14,7 +15,7 @@ namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNoti
 public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
     : EndpointTestBase(factory, outputHelper)
 {
-    private IBtmsService MockBtmsService { get; } = Substitute.For<IBtmsService>();
+    private ITradeImportsDataService MockBtmsService { get; } = Substitute.For<ITradeImportsDataService>();
 
     [Fact]
     public async Task Get_ShouldSucceed()
@@ -130,7 +131,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         base.ConfigureTestServices(services);
 
-        services.AddTransient(_ => MockBtmsService);
+        services.AddTransient<ITradeImportsDataService>(_ => MockBtmsService);
     }
 
     private void SetUpMockBtmsForSuccess(string[] bcps, DateTime from, DateTime to)

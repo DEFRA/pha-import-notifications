@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 using Defra.PhaImportNotifications.Api.Extensions;
+using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,7 +45,7 @@ public static class EndpointRouteBuilderExtensions
     [HttpGet]
     private static async Task<IResult> GetUpdated(
         [AsParameters] UpdatedImportNotificationRequest request,
-        [FromServices] IBtmsService btmsService,
+        [FromServices] ITradeImportsDataService btmsService,
         HttpContext httpContext,
         CancellationToken cancellationToken
     )
@@ -82,7 +83,7 @@ public static class EndpointRouteBuilderExtensions
         [Description("CHED Reference Number")]
         [RegularExpression($"^{Regexes.ChedReferenceNumber}$")]
             string chedReferenceNumber,
-        [FromServices] IBtmsService btmsService,
+        [FromServices] ITradeImportsDataService btmsService,
         HttpContext httpContext,
         CancellationToken cancellationToken
     )

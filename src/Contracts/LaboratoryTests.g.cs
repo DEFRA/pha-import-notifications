@@ -12,11 +12,11 @@ public partial record LaboratoryTests
     [JsonPropertyName("testReason")]
     [ExampleValue("Random")]
     [ExampleValue("Suspicious")]
-    [ExampleValue("ReEnforced")]
-    [ExampleValue("IntensifiedControls")]
+    [ExampleValue("Re-enforced")]
+    [ExampleValue("Intensified controls")]
     [ExampleValue("Required")]
-    [ExampleValue("LatentInfectionSampling")]
-    [Description("Reason for test")]
+    [ExampleValue("Latent infection sampling")]
+    [Description("Reason for test. Possible values taken from IPAFFS schema version 17.5.")]
     public string? TestReason { get; init; }
 
     [JsonPropertyName("singleLaboratoryTests")]

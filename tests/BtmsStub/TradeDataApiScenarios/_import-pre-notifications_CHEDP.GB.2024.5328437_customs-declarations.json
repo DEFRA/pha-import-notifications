@@ -1,0 +1,104 @@
+{
+  "customsDeclarations": [
+    {
+      "movementReferenceNumber": "24GBE6SLBBGLL33AR6",
+      "clearanceRequest": {
+        "externalCorrelationId": "1368588",
+        "messageSentAt": "2024-12-23T11:23:30Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "declarationUcr": "4GB751008171000-TIJ048763",
+        "declarationPartNumber": null,
+        "declarationType": "S",
+        "arrivesAt": null,
+        "submitterTurn": "GB751008171000",
+        "declarantId": "GB751008171000",
+        "declarantName": "GB751008171000",
+        "dispatchCountryCode": "PH",
+        "goodsLocationCode": "FXTFXTFXT",
+        "masterUcr": "557612954",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "1604142800",
+            "goodsDescription": "TUNA IN BRINE",
+            "consigneeId": "GB519640635000",
+            "consigneeName": "GB519640635000",
+            "netMass": 15797.6,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "PH",
+            "documents": [
+              {
+                "documentCode": "C673",
+                "documentReference": "GBIUU2024.5328437",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              },
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5328437",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              },
+              {
+                "checkCode": "H224",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5328437:291224100535-CHEDP.GB.2024.5328437:291224100535:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionReasons": [],
+                "decisionInternalFurtherDetail": null
+              },
+              {
+                "checkCode": "H224",
+                "decisionCode": "C07",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "IUU Compliant"
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
+      },
+      "finalisation": {
+        "externalCorrelationId": "1379123",
+        "messageSentAt": "2024-12-29T10:24:56Z",
+        "externalVersion": 1,
+        "decisionNumber": null,
+        "finalState": "0",
+        "isManualRelease": false
+      },
+      "inboundError": null,
+      "created": "2025-02-21T13:28:39.129Z",
+      "updated": "2025-02-21T13:28:40.129Z"
+    }
+  ]
+}

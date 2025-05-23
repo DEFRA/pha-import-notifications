@@ -1,22 +1,15 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace SchemaToCSharp;
 
+[ExcludeFromCodeCoverage]
 internal static class Ignored
 {
     public static readonly Dictionary<string, HashSet<string>> Properties = new(StringComparer.OrdinalIgnoreCase)
     {
         {
-            "ImportNotification",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-            {
-                "_Etag",
-                "_Ts",
-                "_PointOfEntry",
-                "_PointOfEntryControlPoint",
-                "_MatchReference",
-                "AuditEntries",
-                "Relationships",
-                "IsBulkUploadInProgress",
-            }
+            "ImportPreNotification",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IsBulkUploadInProgress" }
         },
         {
             "PartOne",
@@ -56,37 +49,15 @@ internal static class Ignored
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IuuFishingReference" }
         },
         {
-            "ImportNotificationTypeEnum",
+            "ImportPreNotification.importNotificationType",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IMP" }
         },
         {
-            "ImportNotificationStatusEnum",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Draft" }
+            "ImportPreNotification.status",
+            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Draft", "SUBMITTED,IN_PROGRESS,MODIFY" }
         },
         {
-            "Movement",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-            {
-                "_Etag",
-                "_MatchReferences",
-                "AuditEntries",
-                "Relationships",
-                "Type",
-                "Items",
-                "BtmsStatus",
-                "AlvsDecisionStatus",
-            }
-        },
-        {
-            "CdsClearanceRequest",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
-        },
-        {
-            "CdsDecision",
-            new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ServiceHeader" }
-        },
-        {
-            "Header",
+            "ClearanceRequest",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
                 "DeclarationUcr",
@@ -99,7 +70,7 @@ internal static class Ignored
             }
         },
         {
-            "Document",
+            "ImportDocument",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
                 "DocumentStatus",
@@ -111,13 +82,6 @@ internal static class Ignored
             "Gmr",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
-                // Internal BTMS
-                "_Etag",
-                "AuditEntries",
-                "Relationships",
-                "createdSource",
-                "created",
-                "updatedEntity",
                 // Not required/requested
                 "checkedInCrossing",
                 "inspectionRequired",

@@ -1,74 +1,9 @@
 ﻿{
-  "createdSource": "2024-12-08T17:48:17.453Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 1388.64,
-    "totalNetWeight": 1042,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 9500,
-    "temperature": "Chilled",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "PL",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": false,
-    "regionOfOrigin": null,
-    "consignedCountry": "PL",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Smoked fish, including fillets Other than 03054100; 03054200; 03054300; 03054410; 03054490; 03054910; 03054920; 03054930",
-      "commodityId": "03054980",
-      "complementId": 1,
-      "complementName": "Salmo trutta",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "095a9e7c334539d829d8465b1792afaa0126c89523ac2e87767fc6a7de0576f1",
-      "speciesName": "4e85365697bfbc02530c0bf8d6c82b6356f53831003c7420b1d3399a885c9a22",
-      "speciesNomination": "4e85365697bfbc02530c0bf8d6c82b6356f53831003c7420b1d3399a885c9a22",
-      "speciesTypeName": null,
-      "speciesType": "245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f",
-      "speciesClassName": null,
-      "speciesClass": "1dc10d7cec830b924e80752b4a05f846711a7c52522da1e8c7a771c1ea2d4fc0",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": 1042,
-        "numberPackage": 9500,
-        "typePackage": "Tray",
-        "isCatchCertificateRequired": "false"
-      },
-      "riskAssesment": {
-        "riskDecision": "Required",
-        "exitRiskDecision": "Notrequired",
-        "hmiDecision": null,
-        "phsiDecision": null,
-        "phsiClassification": null,
-        "phsi": null,
-        "uniqueId": "55f3e6cd-dd70-4888-af8b-ba1739d06e2f",
-        "eppoCode": null,
-        "variety": null,
-        "propagation": null,
-        "phsiRuleType": null
-      },
-      "checks": null
-    }
-  ],
   "ipaffsId": 4272806,
   "etag": "00000000045988A5",
   "externalReferences": [
     {
-      "system": "Ncts",
+      "system": "NCTS",
       "reference": "24PL412020NS3F6XM0",
       "exactMatch": true,
       "verifiedByImporter": true,
@@ -83,12 +18,30 @@
     "userId": "7fe520d1-0467-ec11-8f8f-6045bd8a3e2e",
     "isControlUser": null
   },
-  "importNotificationType": "Cvedp",
+  "importNotificationType": "CVEDP",
   "replaces": null,
   "replacedBy": null,
-  "status": "InProgress",
+  "status": "IN_PROGRESS",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": "REQUIRED",
+        "exitRiskDecision": "NOTREQUIRED",
+        "hmiDecision": null,
+        "phsiDecision": null,
+        "phsiClassification": null,
+        "phsi": null,
+        "uniqueId": "55f3e6cd-dd70-4888-af8b-ba1739d06e2f",
+        "eppoCode": null,
+        "variety": null,
+        "propagation": null,
+        "phsiRuleType": null
+      }
+    ],
+    "assessedOn": "2024-12-06T17:26:17"
+  },
   "journeyRiskCategorisation": {
     "riskLevel": "Medium",
     "riskLevelMethod": "User",
@@ -120,8 +73,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "7ef3da2d-b64c-4de8-a3fe-fe6fc00baf66",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "8c868b30d856ec53cc643ca796ee414a379b72d173dd37ddad0a88673b1a6bd1",
       "individualName": null,
       "address": {
@@ -146,8 +99,8 @@
     "packer": null,
     "consignee": {
       "id": "d072cc97-7fb5-4a13-9e16-a97c475e6b90",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "27e2c8c4a9cb18d50980309655cb06e4d7313854f8a6c0bd944ba228a2717fad",
       "individualName": null,
       "address": {
@@ -171,8 +124,8 @@
     },
     "importer": {
       "id": "d072cc97-7fb5-4a13-9e16-a97c475e6b90",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "27e2c8c4a9cb18d50980309655cb06e4d7313854f8a6c0bd944ba228a2717fad",
       "individualName": null,
       "address": {
@@ -196,8 +149,8 @@
     },
     "placeOfDestination": {
       "id": "d072cc97-7fb5-4a13-9e16-a97c475e6b90",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "27e2c8c4a9cb18d50980309655cb06e4d7313854f8a6c0bd944ba228a2717fad",
       "individualName": null,
       "address": {
@@ -223,6 +176,73 @@
     "cphNumber": null,
     "isCatchCertificateRequired": false,
     "isGvmsRoute": true,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 1388.64,
+      "totalNetWeight": 1042,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 9500,
+      "temperature": "Chilled",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "PL",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": false,
+      "regionOfOrigin": null,
+      "consignedCountry": "PL",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Smoked fish, including fillets Other than 03054100; 03054200; 03054300; 03054410; 03054490; 03054910; 03054920; 03054930",
+          "commodityId": "03054980",
+          "complementId": 1,
+          "complementName": "Salmo trutta",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "095a9e7c334539d829d8465b1792afaa0126c89523ac2e87767fc6a7de0576f1",
+          "speciesName": "4e85365697bfbc02530c0bf8d6c82b6356f53831003c7420b1d3399a885c9a22",
+          "speciesNomination": "4e85365697bfbc02530c0bf8d6c82b6356f53831003c7420b1d3399a885c9a22",
+          "speciesTypeName": null,
+          "speciesType": "245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f",
+          "speciesClassName": null,
+          "speciesClass": "1dc10d7cec830b924e80752b4a05f846711a7c52522da1e8c7a771c1ea2d4fc0",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "55f3e6cd-dd70-4888-af8b-ba1739d06e2f",
+          "complementID": 1,
+          "speciesID": "429336",
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "1042"
+            },
+            {
+              "key": "number_package",
+              "data": "9500"
+            },
+            {
+              "key": "type_package",
+              "data": "Tray"
+            },
+            {
+              "key": "is_catch_certificate_required",
+              "data": "false"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": false,
       "internalMarketPurpose": null,
@@ -239,7 +259,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForTransitTo3rdCountry",
+      "pointOfExit": null,
+      "purposeGroup": "For Transit to 3rd Country",
       "estimatedArrivesAtPortOfExit": "2024-12-09T09:00:00Z"
     },
     "pointOfEntry": "GBTEEP1",
@@ -277,7 +298,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "LatestVeterinaryHealthCertificate",
+          "documentType": "latestVeterinaryHealthCertificate",
           "documentReference": "e16e7dc409c3684ae64aa0675a34a896a175fb5d9f06703c7df867de4f553d29",
           "documentIssuedOn": "2024-12-05",
           "attachmentId": "4f9a3623048cee23b587faf8645064911b31a662b952129b3614a36b8c935e92",
@@ -292,6 +313,7 @@
     },
     "importerLocalReferenceNumber": "e4600fb95521821ca67cbbb55f65258da6b86c96ab25b3d9424c2867895cd598",
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-12-07T14:38:40.535Z",
     "submittedBy": {
       "displayName": "1296ef837d6149db3c68a9ca010fa872734f23d721547211f82806262ab030bb",
@@ -314,7 +336,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "Yes",
+    "provideCtcMrn": "YES",
     "arrivesAt": "2024-12-08T19:45:00",
     "departedOn": null
   },
@@ -342,7 +364,7 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForTransit",
+      "decision": "Acceptable for Transit",
       "freeCirculationPurpose": null,
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
@@ -363,6 +385,7 @@
     "consignmentCheck": {
       "euStandard": null,
       "additionalGuarantees": null,
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": null,
       "nationalRequirements": null,
       "identityCheckDone": null,
@@ -412,6 +435,7 @@
     ],
     "checkedOn": null,
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
     "inspectionRequired": "Required",
@@ -452,6 +476,7 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-12-08T17:45:00Z",
   "isRiskDecisionLocked": true,
+  "isAutoClearanceExempted": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

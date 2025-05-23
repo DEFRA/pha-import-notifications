@@ -1,211 +1,101 @@
 ﻿{
   "clearanceRequests": [
     {
-      "header": {
-        "entryReference": "24GBCUDNXBN1JNRAR5",
-        "entryVersionNumber": 1,
-        "previousVersionNumber": null,
+      "movementReferenceNumber": "24GBCUDNXBN1JNRAR5",
+      "clearanceRequest": {
+        "externalCorrelationId": "1273314",
+        "messageSentAt": "2024-11-19T14:12:40Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
         "arrivesAt": null,
         "dispatchCountryCode": "NZ",
-        "goodsLocationCode": "FXTFXTFXT"
+        "goodsLocationCode": "FXTFXTFXT",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0208903000",
+            "goodsDescription": "MEAT AND EDIBLE MEAT OFFAL OTHER MEAT AND EDIBLE MEAT OFFAL, FRESH, CHILLED OR FROZEN OTHER OF GAME, OTHER THAN OF RABBITS OR HARES",
+            "consigneeId": "GB342022509000",
+            "consigneeName": "GB342022509000",
+            "netMass": 1922.62,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "NZ",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5140818"
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          },
+          {
+            "itemNumber": 2,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0204431010",
+            "goodsDescription": "MEAT AND EDIBLE MEAT OFFAL MEAT OF SHEEP OR GOATS, FRESH, CHILLED OR FROZEN OTHER MEAT OF SHEEP, FROZEN BONELESS OF LAMB OF DOMESTIC SHEEP",
+            "consigneeId": "GB342022509000",
+            "consigneeName": "GB342022509000",
+            "netMass": 10336,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "NZ",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5140733"
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0208903000",
-          "goodsDescription": "MEAT AND EDIBLE MEAT OFFAL OTHER MEAT AND EDIBLE MEAT OFFAL, FRESH, CHILLED OR FROZEN OTHER OF GAME, OTHER THAN OF RABBITS OR HARES",
-          "consigneeId": "GB342022509000",
-          "consigneeName": "GB342022509000",
-          "itemNetMass": 1922.62,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "NZ",
-          "documents": [
-            {
-              "documentCode": "N853",
-              "documentReference": "GBCHD2024.5140818"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5140818). Please correct the Cvedp number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 2,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "0204431010",
-          "goodsDescription": "MEAT AND EDIBLE MEAT OFFAL MEAT OF SHEEP OR GOATS, FRESH, CHILLED OR FROZEN OTHER MEAT OF SHEEP, FROZEN BONELESS OF LAMB OF DOMESTIC SHEEP",
-          "consigneeId": "GB342022509000",
-          "consigneeName": "GB342022509000",
-          "itemNetMass": 10336,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "NZ",
-          "documents": [
-            {
-              "documentCode": "N853",
-              "documentReference": "GBCHD2024.5140733"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5140733). Please correct the Cvedp number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "clearanceDecisions": [
-    {
-      "header": {
-        "entryReference": "24GBCUDNXBN1JNRAR5",
-        "entryVersionNumber": 1,
-        "decisionNumber": 1
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5140733:201124051259:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CVEDP(s) have been submitted to Port Health (for CVEDP number(s) GBCHD2024.5140818). Please correct the CVEDP number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          },
+          {
+            "itemNumber": 2,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5140818). Please correct the Cvedp number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 2,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5140733). Please correct the Cvedp number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "header": {
-        "entryReference": "24GBCUDNXBN1JNRAR5",
-        "entryVersionNumber": 1,
-        "decisionNumber": 2
-      },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "X00",
-              "decisionsValidUntil": null,
-              "decisionReasons": [
-                "A Customs Declaration has been submitted however no matching Cvedp(s) have been submitted to Port Health (for Cvedp number(s) GBCHD2024.5140818). Please correct the Cvedp number(s) entered on your customs declaration."
-              ]
-            }
-          ]
-        },
-        {
-          "itemNumber": 2,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "createdSource": "2024-11-20T17:12:59.581Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 10556.4,
-    "totalNetWeight": 10336,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 380,
-    "temperature": "Frozen",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "NZ",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": null,
-    "regionOfOrigin": null,
-    "consignedCountry": "NZ",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Of lamb",
-      "commodityId": "02044310",
-      "complementId": 1,
-      "complementName": "Ovis aries",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "d69faae9b2697beadeb950490d2bd9acc3ad54b0397bc3e6f7af7d374342df55",
-      "speciesName": "0e26f5c7b9064ec78492097f9b0908bc49f358efac812e6fa0a6d13ce67bafaf",
-      "speciesNomination": "0e26f5c7b9064ec78492097f9b0908bc49f358efac812e6fa0a6d13ce67bafaf",
-      "speciesTypeName": "c798140abbebcbba6ddccdd9aa4064311a8514d93ea32d5a35403f01cfdb2c2a",
-      "speciesType": "6ac9d1c824be1dd8a4c9c19a476fa56f70387ff078105f21e4a7aa4be3bdc042",
-      "speciesClassName": null,
-      "speciesClass": "38d5d0fa407fa80643b805fadac3e1cc8e946a80bde328ab2a12d0360712fc8c",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": true,
-      "additionalData": {
-        "netWeight": 10336,
-        "numberPackage": 380,
-        "typePackage": "Carton"
-      },
-      "riskAssesment": {
-        "riskDecision": "Inconclusive",
-        "exitRiskDecision": null,
-        "hmiDecision": null,
-        "phsiDecision": null,
-        "phsiClassification": null,
-        "phsi": null,
-        "uniqueId": "87f8fe67-141d-40e6-be89-27ceb4e214e9",
-        "eppoCode": null,
-        "variety": null,
-        "propagation": null,
-        "phsiRuleType": null
-      },
-      "checks": null
+      "finalisation": null
     }
   ],
   "ipaffsId": 4176459,
@@ -219,12 +109,30 @@
     "userId": "c5a6d011-d274-ef11-a671-002248851761",
     "isControlUser": null
   },
-  "importNotificationType": "Cvedp",
+  "importNotificationType": "CVEDP",
   "replaces": null,
   "replacedBy": null,
-  "status": "Validated",
+  "status": "VALIDATED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": "INCONCLUSIVE",
+        "exitRiskDecision": null,
+        "hmiDecision": null,
+        "phsiDecision": null,
+        "phsiClassification": null,
+        "phsi": null,
+        "uniqueId": "87f8fe67-141d-40e6-be89-27ceb4e214e9",
+        "eppoCode": null,
+        "variety": null,
+        "propagation": null,
+        "phsiRuleType": null
+      }
+    ],
+    "assessedOn": "2024-11-13T15:50:13"
+  },
   "journeyRiskCategorisation": {
     "riskLevel": "Medium",
     "riskLevelMethod": "User",
@@ -258,8 +166,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "2dc42ba1-fa61-47be-9438-e1d8bc55032e",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "c682e303a40a4fa6d2db51795e11a120ab4c65131dc58175e055c9ccc57091fe",
       "individualName": null,
       "address": {
@@ -284,8 +192,8 @@
     "packer": null,
     "consignee": {
       "id": "68127f62-62df-4d82-8af3-883b4b561ace",
-      "type": "Consignee",
-      "status": "Nonapproved",
+      "type": "consignee",
+      "status": "nonapproved",
       "companyName": "799afe83e1c6f295560a3401b39fb0373b0c1df31a58e5a5d783a9e4e377ff77",
       "individualName": null,
       "address": {
@@ -309,8 +217,8 @@
     },
     "importer": {
       "id": "68127f62-62df-4d82-8af3-883b4b561ace",
-      "type": "Importer",
-      "status": "Nonapproved",
+      "type": "importer",
+      "status": "nonapproved",
       "companyName": "799afe83e1c6f295560a3401b39fb0373b0c1df31a58e5a5d783a9e4e377ff77",
       "individualName": null,
       "address": {
@@ -334,8 +242,8 @@
     },
     "placeOfDestination": {
       "id": "9a71f000-cc72-4f07-93f6-27a54d881473",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "3b7fc7dcc20c27c12f4f280702d59db95afaed7ed54fcc3a825d310a9162d76c",
       "individualName": null,
       "address": {
@@ -361,9 +269,72 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": false,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 10556.4,
+      "totalNetWeight": 10336,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 380,
+      "temperature": "Frozen",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "NZ",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": null,
+      "regionOfOrigin": null,
+      "consignedCountry": "NZ",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Of lamb",
+          "commodityId": "02044310",
+          "complementId": 1,
+          "complementName": "Ovis aries",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "d69faae9b2697beadeb950490d2bd9acc3ad54b0397bc3e6f7af7d374342df55",
+          "speciesName": "0e26f5c7b9064ec78492097f9b0908bc49f358efac812e6fa0a6d13ce67bafaf",
+          "speciesNomination": "0e26f5c7b9064ec78492097f9b0908bc49f358efac812e6fa0a6d13ce67bafaf",
+          "speciesTypeName": "c798140abbebcbba6ddccdd9aa4064311a8514d93ea32d5a35403f01cfdb2c2a",
+          "speciesType": "6ac9d1c824be1dd8a4c9c19a476fa56f70387ff078105f21e4a7aa4be3bdc042",
+          "speciesClassName": null,
+          "speciesClass": "38d5d0fa407fa80643b805fadac3e1cc8e946a80bde328ab2a12d0360712fc8c",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": true
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "87f8fe67-141d-40e6-be89-27ceb4e214e9",
+          "complementID": 1,
+          "speciesID": "167408",
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "10336"
+            },
+            {
+              "key": "number_package",
+              "data": "380"
+            },
+            {
+              "key": "type_package",
+              "data": "Carton"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": true,
-      "internalMarketPurpose": "HumanConsumption",
+      "internalMarketPurpose": "Human Consumption",
       "thirdCountryTranshipment": null,
       "forNonConforming": null,
       "regNumber": null,
@@ -375,7 +346,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -414,7 +386,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "BillOfLading",
+          "documentType": "billOfLading",
           "documentReference": null,
           "documentIssuedOn": null,
           "attachmentId": "03ef433cdb1f195abdcb821251530cd7a27e80ef39d3cb1a54db0dce2dad659e",
@@ -425,7 +397,7 @@
           "externalReference": null
         },
         {
-          "documentType": "CommercialInvoice",
+          "documentType": "commercialInvoice",
           "documentReference": null,
           "documentIssuedOn": null,
           "attachmentId": "0b28e6fa804274a17054bfd7c254c00e6f9b8cf6b92e5a3bbdc11f93566fea0f",
@@ -436,7 +408,7 @@
           "externalReference": null
         },
         {
-          "documentType": "Other",
+          "documentType": "other",
           "documentReference": null,
           "documentIssuedOn": null,
           "attachmentId": "d172005dc50402497f62f3bafff6c90345b1d0cfa43169c1e29c098ca86df8dd",
@@ -447,7 +419,7 @@
           "externalReference": null
         },
         {
-          "documentType": "LatestVeterinaryHealthCertificate",
+          "documentType": "latestVeterinaryHealthCertificate",
           "documentReference": "ada5519c8fa052472d5fbdb45cae245a1167588365adc2997078d19105bb7b79",
           "documentIssuedOn": "2024-09-23",
           "attachmentId": null,
@@ -462,6 +434,7 @@
     },
     "importerLocalReferenceNumber": "5510bcdd5c9113610b87304006e306d29d807b0a745bff7d0f53fe6c3583f950",
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-11-20T15:42:51.52Z",
     "submittedBy": {
       "displayName": "3897baa3a7f95fc5b1e91e06f33823d97c05f1883331bc5d0c3a12185225ea8b",
@@ -484,7 +457,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "No",
+    "provideCtcMrn": "NO",
     "arrivesAt": "2024-11-16T12:00:00",
     "departedOn": null
   },
@@ -516,8 +489,8 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForInternalMarket",
-      "freeCirculationPurpose": "HumanConsumption",
+      "decision": "Acceptable for Internal Market",
+      "freeCirculationPurpose": "Human Consumption",
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
       "customWarehouseRegisteredNumber": null,
@@ -537,10 +510,11 @@
     "consignmentCheck": {
       "euStandard": null,
       "additionalGuarantees": null,
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": "Satisfactory",
       "nationalRequirements": null,
       "identityCheckDone": null,
-      "identityCheckType": "FullIdentityCheck",
+      "identityCheckType": "Full Identity Check",
       "identityCheckResult": "Satisfactory",
       "identityCheckNotDoneReason": null,
       "physicalCheckDone": null,
@@ -586,6 +560,7 @@
     "consignmentValidations": null,
     "checkedOn": "2024-11-20T17:12:00Z",
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
     "inspectionRequired": "Required",
@@ -605,6 +580,7 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-11-16T10:00:00Z",
   "isRiskDecisionLocked": true,
+  "isAutoClearanceExempted": true,
   "requestId": null,
   "isCdsFullMatched": true,
   "chedTypeVersion": 1,

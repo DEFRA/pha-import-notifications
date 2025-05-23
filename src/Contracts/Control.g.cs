@@ -18,9 +18,9 @@ public partial record Control
     public OfficialInspector? OfficialInspector { get; init; }
 
     [JsonPropertyName("consignmentLeave")]
-    [ExampleValue("Yes")]
-    [ExampleValue("No")]
-    [ExampleValue("ItHasBeenDestroyed")]
-    [Description("Is the consignment leaving UK borders?")]
+    [ExampleValue("YES")]
+    [ExampleValue("NO")]
+    [ExampleValue("It has been destroyed")]
+    [Description("Is the consignment leaving UK borders?. Possible values taken from IPAFFS schema version 17.5.")]
     public string? ConsignmentLeave { get; init; }
 }

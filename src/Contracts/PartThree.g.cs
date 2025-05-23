@@ -6,9 +6,9 @@ namespace Defra.PhaImportNotifications.Contracts;
 public partial record PartThree
 {
     [JsonPropertyName("controlStatus")]
-    [ExampleValue("Required")]
-    [ExampleValue("Completed")]
-    [Description("Control status enum")]
+    [ExampleValue("REQUIRED")]
+    [ExampleValue("COMPLETED")]
+    [Description("Control status enum. Possible values taken from IPAFFS schema version 17.5.")]
     public string? ControlStatus { get; init; }
 
     [JsonPropertyName("control")]

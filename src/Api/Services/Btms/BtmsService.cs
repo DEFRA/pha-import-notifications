@@ -1,17 +1,22 @@
+using System.Net;
 using System.Reflection;
 using Defra.PhaImportNotifications.Api.Configuration;
-using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.JsonApi;
+using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.Extensions.Options;
 using Document = Defra.PhaImportNotifications.Api.JsonApi.Document;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
-public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btmsOptions) : IBtmsService
+public class BtmsService(
+    IJsonApiClient jsonApiClient,
+    TradeDataHttpClient tradeDataHttpClient,
+    IOptions<BtmsOptions> btmsOptions
+) : ITradeImportsDataService
 {
-    private static readonly string[] importNotificationTypes = typeof(ImportNotification)
-        .GetProperty(nameof(ImportNotification.ImportNotificationType))!
+    private static readonly string[] importNotificationTypes = typeof(ImportPreNotification)
+        .GetProperty(nameof(ImportPreNotification.ImportNotificationType))!
         .GetCustomAttributes<ExampleValueAttribute>()
         .Select(v => v.Value)
         .ToArray();
@@ -47,60 +52,54 @@ public class BtmsService(IJsonApiClient jsonApiClient, IOptions<BtmsOptions> btm
         return await CollectImportNotificationUpdatesFromAllPages(document, cancellationToken);
     }
 
-    public async Task<ImportNotification?> GetImportNotification(
+    public async Task<ImportPreNotification?> GetImportNotification(
         string chedReferenceNumber,
         CancellationToken cancellationToken
     )
     {
-        var document = await jsonApiClient.Get(
-            new RequestUri($"api/import-notifications/{chedReferenceNumber}"),
-            cancellationToken
+        ImportPreNotification importNotification;
+
+        try
+        {
+            var importPreNotificationResponse =
+                await tradeDataHttpClient.Client.GetFromJsonAsync<ImportPreNotificationResponse>(
+                    TradeDataHttpClient.Endpoints.ImportNotification(chedReferenceNumber),
+                    cancellationToken: cancellationToken
+                );
+
+            importNotification = importPreNotificationResponse!.ImportPreNotification;
+        }
+        catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
+        {
+            return null;
+        }
+
+        var getCustomsDeclarations = tradeDataHttpClient.Client.GetFromJsonAsync<CustomsDeclarationsResponse>(
+            TradeDataHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber),
+            cancellationToken: cancellationToken
         );
 
-        if (document is null)
-            return null;
+        var getGoodsMovements = tradeDataHttpClient.Client.GetFromJsonAsync<GmrsResponse>(
+            TradeDataHttpClient.Endpoints.GoodsMovements(chedReferenceNumber),
+            cancellationToken: cancellationToken
+        );
 
-        var getMovementsTask = GetRelated<Movement>("movements");
-        var getGoodsMovementsTask = GetRelated<Gmr>("gmrs");
+        var customsDeclarationsResponse = await getCustomsDeclarations;
+        var goodsMovementsResponse = await getGoodsMovements;
 
-        var movements = await getMovementsTask;
-        var goodsMovements = await getGoodsMovementsTask;
-
-        var result = document.GetDataAs<ImportNotification>();
-        if (result is null)
-            throw new InvalidOperationException("Result was null");
-
-        var finalisations = movements
-            .Where(x => x.Finalised is not null)
-            .Select(f =>
+        importNotification.CustomsDeclarations = customsDeclarationsResponse!
+            .CustomsDeclarations.Select(cdr => new CustomsDeclarationData
             {
-                f.Finalisation!.EntryReference = f.EntryReference;
-                return f.Finalisation;
+                MovementReferenceNumber = cdr.MovementReferenceNumber,
+                ClearanceRequest = cdr.ClearanceRequest,
+                ClearanceDecision = cdr.ClearanceDecision,
+                Finalisation = cdr.Finalisation,
             })
             .ToList();
 
-        return result with
-        {
-            ClearanceRequests = movements.SelectMany(x => x.ClearanceRequests ?? []).ToList(),
-            ClearanceDecisions = movements.SelectMany(x => x.Decisions ?? []).ToList(),
-            Finalisations = finalisations,
-            GoodsMovements = goodsMovements,
-        };
+        importNotification.GoodsMovements = goodsMovementsResponse!.Gmrs.Select(g => g.Gmr).ToList();
 
-        async Task<List<TType>> GetRelated<TType>(string type)
-        {
-            var relationships = document.GetRelationships(chedReferenceNumber, type);
-
-            var tasks = relationships.Select(x =>
-                jsonApiClient.Get(new RequestUri($"api/{type}/{x.Id}"), cancellationToken)
-            );
-
-            return (await Task.WhenAll(tasks))
-                .ThrowIfAnyNull($"At least one {type} could not be found")
-                .Select(x => x.GetDataAs<TType>())
-                .ThrowIfAnyNull($"At least one {type} could not be deserialized")
-                .ToList();
-        }
+        return importNotification;
     }
 
     /// <summary>

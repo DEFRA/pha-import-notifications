@@ -1,7 +1,0 @@
-﻿[
-  {
-    Id: 111,
-    Title: Frankenstein,
-    PublishYear: 1818
-  }
-]

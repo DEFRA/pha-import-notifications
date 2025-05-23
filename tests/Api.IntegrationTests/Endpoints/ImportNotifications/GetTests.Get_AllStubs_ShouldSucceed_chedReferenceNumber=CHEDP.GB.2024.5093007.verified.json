@@ -1,129 +1,63 @@
 ﻿{
   "clearanceRequests": [
     {
-      "header": {
-        "entryReference": "24GBCUESXSEE3WQAR6",
-        "entryVersionNumber": 2,
-        "previousVersionNumber": 1,
+      "movementReferenceNumber": "24GBCUESXSEE3WQAR6",
+      "clearanceRequest": {
+        "externalCorrelationId": "1297776",
+        "messageSentAt": "2024-11-28T11:30:44Z",
+        "externalVersion": 2,
+        "previousExternalVersion": 1,
         "arrivesAt": null,
         "dispatchCountryCode": "VN",
-        "goodsLocationCode": "FXTFXTFXT"
+        "goodsLocationCode": "FXTFXTFXT",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "1605211099",
+            "goodsDescription": "VIETNAMESE FROZEN SHRIMP",
+            "consigneeId": "GB696470292000",
+            "consigneeName": "GB696470292000",
+            "netMass": 13500,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "VN",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5093007"
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "customsProcedureCode": "4000000",
-          "taricCommodityCode": "1605211099",
-          "goodsDescription": "VIETNAMESE FROZEN SHRIMP",
-          "consigneeId": "GB696470292000",
-          "consigneeName": "GB696470292000",
-          "itemNetMass": 13500,
-          "itemSupplementaryUnits": 0,
-          "itemThirdQuantity": null,
-          "itemOriginCountryCode": "VN",
-          "documents": [
-            {
-              "documentCode": "N853",
-              "documentReference": "GBCHD2024.5093007"
-            }
-          ],
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "clearanceDecisions": [
-    {
-      "header": {
-        "entryReference": "24GBCUESXSEE3WQAR6",
-        "entryVersionNumber": 2,
-        "decisionNumber": 1
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 2,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5093007:181124095411:CR-VERSION-2",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
       },
-      "items": [
-        {
-          "itemNumber": 1,
-          "checks": [
-            {
-              "checkCode": "H222",
-              "departmentCode": null,
-              "decisionCode": "C03",
-              "decisionsValidUntil": null
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "createdSource": "2024-11-18T21:54:11.858Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": 18208,
-    "totalNetWeight": 13500,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 2700,
-    "temperature": "Frozen",
-    "numberOfAnimals": null,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "VN",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": null,
-    "regionOfOrigin": null,
-    "consignedCountry": "VN",
-    "animalsCertifiedAs": null,
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "In immediate packings of a net content not exceeding 2kg",
-      "commodityId": "16052110",
-      "complementId": 1,
-      "complementName": "Penaeus vannamei",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "92a92b392d384d1bfa89ee2c58ec4b64fea4814a470b28c8a688c4f7d56e9290",
-      "speciesName": "84a4f966fad01744c90c84539f99dd1759befd3f5f292c8ceda271250b12bf87",
-      "speciesNomination": "84a4f966fad01744c90c84539f99dd1759befd3f5f292c8ceda271250b12bf87",
-      "speciesTypeName": null,
-      "speciesType": "245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f",
-      "speciesClassName": null,
-      "speciesClass": "4c8cc92bb04d27060d58b55546cbcf5dc803693df4f288d1db4b44fcf03b6499",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "netWeight": 13500,
-        "numberPackage": 2700,
-        "typePackage": "Carton",
-        "isCatchCertificateRequired": "false"
-      },
-      "riskAssesment": {
-        "riskDecision": "Notrequired",
-        "exitRiskDecision": null,
-        "hmiDecision": null,
-        "phsiDecision": null,
-        "phsiClassification": null,
-        "phsi": null,
-        "uniqueId": "e40ade9e-c29b-474f-939e-f409841c3da5",
-        "eppoCode": null,
-        "variety": null,
-        "propagation": null,
-        "phsiRuleType": null
-      },
-      "checks": null
+      "finalisation": null
     }
   ],
   "ipaffsId": 4093007,
@@ -137,12 +71,30 @@
     "userId": "d74f45eb-6104-ee11-8f6e-000d3abd8f0e",
     "isControlUser": null
   },
-  "importNotificationType": "Cvedp",
+  "importNotificationType": "CVEDP",
   "replaces": null,
   "replacedBy": null,
-  "status": "Validated",
+  "status": "VALIDATED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": {
+    "commodityResults": [
+      {
+        "riskDecision": "NOTREQUIRED",
+        "exitRiskDecision": null,
+        "hmiDecision": null,
+        "phsiDecision": null,
+        "phsiClassification": null,
+        "phsi": null,
+        "uniqueId": "e40ade9e-c29b-474f-939e-f409841c3da5",
+        "eppoCode": null,
+        "variety": null,
+        "propagation": null,
+        "phsiRuleType": null
+      }
+    ],
+    "assessedOn": "2024-11-04T15:52:38"
+  },
   "journeyRiskCategorisation": {
     "riskLevel": "Medium",
     "riskLevelMethod": "User",
@@ -177,8 +129,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "f0bdab7a-3901-4ec4-ace9-e5aa0bf9a9f4",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "2ae83d214a53723cb1afe1f4245983e268cb92f4543033732249e3a2a64fb579",
       "individualName": null,
       "address": {
@@ -203,8 +155,8 @@
     "packer": null,
     "consignee": {
       "id": "c89b86f7-774e-4919-8e3c-89a58e793cd9",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "84c86ea11f7199d6270e3ed91ee0968a593a38ac39851ff89d701a2fc235377b",
       "individualName": null,
       "address": {
@@ -228,8 +180,8 @@
     },
     "importer": {
       "id": "c89b86f7-774e-4919-8e3c-89a58e793cd9",
-      "type": "Importer",
-      "status": "Nonapproved",
+      "type": "importer",
+      "status": "nonapproved",
       "companyName": "84c86ea11f7199d6270e3ed91ee0968a593a38ac39851ff89d701a2fc235377b",
       "individualName": null,
       "address": {
@@ -253,8 +205,8 @@
     },
     "placeOfDestination": {
       "id": "c89b86f7-774e-4919-8e3c-89a58e793cd9",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "84c86ea11f7199d6270e3ed91ee0968a593a38ac39851ff89d701a2fc235377b",
       "individualName": null,
       "address": {
@@ -280,9 +232,76 @@
     "cphNumber": null,
     "isCatchCertificateRequired": false,
     "isGvmsRoute": false,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": 18208,
+      "totalNetWeight": 13500,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 2700,
+      "temperature": "Frozen",
+      "numberOfAnimals": null,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "VN",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": null,
+      "regionOfOrigin": null,
+      "consignedCountry": "VN",
+      "animalsCertifiedAs": null,
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "In immediate packings of a net content not exceeding 2kg",
+          "commodityId": "16052110",
+          "complementId": 1,
+          "complementName": "Penaeus vannamei",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "92a92b392d384d1bfa89ee2c58ec4b64fea4814a470b28c8a688c4f7d56e9290",
+          "speciesName": "84a4f966fad01744c90c84539f99dd1759befd3f5f292c8ceda271250b12bf87",
+          "speciesNomination": "84a4f966fad01744c90c84539f99dd1759befd3f5f292c8ceda271250b12bf87",
+          "speciesTypeName": null,
+          "speciesType": "245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f",
+          "speciesClassName": null,
+          "speciesClass": "4c8cc92bb04d27060d58b55546cbcf5dc803693df4f288d1db4b44fcf03b6499",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "e40ade9e-c29b-474f-939e-f409841c3da5",
+          "complementID": 1,
+          "speciesID": "484614",
+          "keyDataPair": [
+            {
+              "key": "netweight",
+              "data": "13500"
+            },
+            {
+              "key": "number_package",
+              "data": "2700"
+            },
+            {
+              "key": "type_package",
+              "data": "Carton"
+            },
+            {
+              "key": "is_catch_certificate_required",
+              "data": "false"
+            }
+          ],
+          "identifiers": null
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": true,
-      "internalMarketPurpose": "HumanConsumption",
+      "internalMarketPurpose": "Human Consumption",
       "thirdCountryTranshipment": null,
       "forNonConforming": null,
       "regNumber": null,
@@ -294,7 +313,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -331,7 +351,7 @@
       "accompanyingDocumentNumbers": null,
       "accompanyingDocuments": [
         {
-          "documentType": "LatestVeterinaryHealthCertificate",
+          "documentType": "latestVeterinaryHealthCertificate",
           "documentReference": "a589ecb082d731c8e0c49baaa0932de7ddd19555e2b31d62f4dd2303adfc3ff9",
           "documentIssuedOn": "2024-10-16",
           "attachmentId": "5f50325983654d9632974500107efda4b1b2925e062459d10e506b00209c84fa",
@@ -342,7 +362,7 @@
           "externalReference": null
         },
         {
-          "documentType": "Other",
+          "documentType": "other",
           "documentReference": "65a30cdecc4d51346fcc1846e27d7d28052dbdc75a5715c3b114c7778df9445b",
           "documentIssuedOn": "2024-11-04",
           "attachmentId": "5b80ec4fd59e9edcbe1a44c0c15f7834699b25e85b5e908b6c40b7c47b300ee2",
@@ -357,6 +377,7 @@
     },
     "importerLocalReferenceNumber": "3f544c574e7dce14a99ecbcb25a8fb5dd13a079260e0664ddf2d20258771c6c5",
     "route": null,
+    "storeTransporterContact": null,
     "submittedOn": "2024-11-04T15:52:38.65Z",
     "submittedBy": {
       "displayName": "fd9475729918b0f4f1f222a7a56bfbd1729157e7b9da66efd2961d046067c35f",
@@ -379,7 +400,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "No",
+    "provideCtcMrn": "NO",
     "arrivesAt": "2024-11-22T06:00:00",
     "departedOn": null
   },
@@ -411,8 +432,8 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForInternalMarket",
-      "freeCirculationPurpose": "HumanConsumption",
+      "decision": "Acceptable for Internal Market",
+      "freeCirculationPurpose": "Human Consumption",
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
       "customWarehouseRegisteredNumber": null,
@@ -432,15 +453,16 @@
     "consignmentCheck": {
       "euStandard": null,
       "additionalGuarantees": null,
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": "Satisfactory",
       "nationalRequirements": null,
       "identityCheckDone": null,
-      "identityCheckType": "NotDone",
+      "identityCheckType": "Not Done",
       "identityCheckResult": "Not Done",
-      "identityCheckNotDoneReason": "ReducedChecksRegime",
+      "identityCheckNotDoneReason": "Reduced checks regime",
       "physicalCheckDone": null,
       "physicalCheckResult": "Not Done",
-      "physicalCheckNotDoneReason": "ReducedChecksRegime",
+      "physicalCheckNotDoneReason": "Reduced checks regime",
       "physicalCheckOtherText": null,
       "welfareCheck": null,
       "numberOfAnimalsChecked": null,
@@ -472,7 +494,7 @@
       "containerResealed": null,
       "newSealNumber": null,
       "iuuCheckRequired": true,
-      "iuuOption": "Iuuna"
+      "iuuOption": "IUUNA"
     },
     "controlledDestination": null,
     "bipLocalReferenceNumber": "843d490a2ef144ff672a8fb9cc0d3ced52d9989a452190e382e413fd453a068b",
@@ -481,9 +503,10 @@
     "consignmentValidations": null,
     "checkedOn": "2024-11-18T21:54:00Z",
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
-    "inspectionRequired": "NotRequired",
+    "inspectionRequired": "Not required",
     "inspectionOverride": null,
     "autoClearedOn": null
   },
@@ -500,6 +523,7 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2024-11-22T04:00:00Z",
   "isRiskDecisionLocked": false,
+  "isAutoClearanceExempted": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

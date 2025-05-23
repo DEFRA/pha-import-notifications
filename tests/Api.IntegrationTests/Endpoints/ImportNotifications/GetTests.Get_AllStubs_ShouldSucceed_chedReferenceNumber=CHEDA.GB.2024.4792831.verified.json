@@ -1,55 +1,4 @@
 ﻿{
-  "createdSource": "2024-12-04T13:25:01.362Z",
-  "created": "2025-02-21T13:28:39.129Z",
-  "updatedEntity": "2025-02-21T13:28:41.129Z",
-  "updated": "2025-02-21T13:28:40.129Z",
-  "commoditiesSummary": {
-    "gmsDeclarationAccepted": null,
-    "consignedCountryInChargeGroup": null,
-    "totalGrossWeight": null,
-    "totalNetWeight": null,
-    "totalGrossVolume": null,
-    "totalGrossVolumeUnit": null,
-    "numberOfPackages": 0,
-    "temperature": null,
-    "numberOfAnimals": 1,
-    "includeNonAblactedAnimals": false,
-    "countryOfOrigin": "BE",
-    "countryOfOriginIsPodCountry": null,
-    "isLowRiskArticle72Country": null,
-    "regionOfOrigin": null,
-    "consignedCountry": null,
-    "animalsCertifiedAs": "Registered",
-    "commodityIntendedFor": null
-  },
-  "commodities": [
-    {
-      "uniqueComplementId": null,
-      "commodityDescription": "Live horses, asses, mules and hinnies",
-      "commodityId": "0101",
-      "complementId": 1,
-      "complementName": "Equus caballus",
-      "eppoCode": null,
-      "isWoodPackaging": null,
-      "speciesId": "a9bc612b25e0f1fa60de92e7bf33c7343f3d30d20db57c27657334d4e65b2a36",
-      "speciesName": "caefd63e72a5967d044ad7fefa59ac3c4b619dbc8cc04d0337d29b1e4737de22",
-      "speciesNomination": "caefd63e72a5967d044ad7fefa59ac3c4b619dbc8cc04d0337d29b1e4737de22",
-      "speciesTypeName": null,
-      "speciesType": "245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f",
-      "speciesClassName": null,
-      "speciesClass": "a9bc612b25e0f1fa60de92e7bf33c7343f3d30d20db57c27657334d4e65b2a36",
-      "speciesFamilyName": null,
-      "speciesFamily": null,
-      "speciesCommonName": null,
-      "isCdsMatched": null,
-      "additionalData": {
-        "numberPackage": 0,
-        "numberAnimal": 1
-      },
-      "riskAssesment": null,
-      "checks": null
-    }
-  ],
   "ipaffsId": 4255132,
   "etag": "000000000450D15D",
   "externalReferences": null,
@@ -61,12 +10,13 @@
     "userId": "20e42cdb-0a50-eb11-a812-000d3aab241b",
     "isControlUser": null
   },
-  "importNotificationType": "Cveda",
+  "importNotificationType": "CVEDA",
   "replaces": null,
   "replacedBy": null,
-  "status": "Submitted",
+  "status": "SUBMITTED",
   "splitConsignment": null,
   "childNotification": null,
+  "riskAssessment": null,
   "journeyRiskCategorisation": null,
   "isHighRiskEuImport": true,
   "partOne": {
@@ -97,8 +47,8 @@
     "consignmentArrived": null,
     "consignor": {
       "id": "d13d87e1-6618-4d7e-9282-a826fd5223fe",
-      "type": "Exporter",
-      "status": "Nonapproved",
+      "type": "exporter",
+      "status": "nonapproved",
       "companyName": "5ccb3ac4141059c804211c120848e516c709ceff4ca84f34e0e99e05195a19db",
       "individualName": null,
       "address": {
@@ -123,8 +73,8 @@
     "packer": null,
     "consignee": {
       "id": "ca3b7b64-1742-444c-93a6-e64a63bb039b",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "05e803514fe7c2d48fc296c80ab144868c71bc4be0099fcb92673bd7cfb4ec0b",
       "individualName": null,
       "address": {
@@ -148,8 +98,8 @@
     },
     "importer": {
       "id": "7a48027d-85be-4b35-ab51-93ca1566ad1a",
-      "type": "Importer",
-      "status": "Nonapproved",
+      "type": "importer",
+      "status": "nonapproved",
       "companyName": "d82d11745daee2050c26f8abff01302025693cd8227c6573e097743991c5aa46",
       "individualName": null,
       "address": {
@@ -173,8 +123,8 @@
     },
     "placeOfDestination": {
       "id": "ca3b7b64-1742-444c-93a6-e64a63bb039b",
-      "type": "Destination",
-      "status": "Nonapproved",
+      "type": "destination",
+      "status": "nonapproved",
       "companyName": "05e803514fe7c2d48fc296c80ab144868c71bc4be0099fcb92673bd7cfb4ec0b",
       "individualName": null,
       "address": {
@@ -200,9 +150,79 @@
     "cphNumber": null,
     "isCatchCertificateRequired": null,
     "isGvmsRoute": null,
+    "commodities": {
+      "gmsDeclarationAccepted": null,
+      "consignedCountryInChargeGroup": null,
+      "totalGrossWeight": null,
+      "totalNetWeight": null,
+      "totalGrossVolume": null,
+      "totalGrossVolumeUnit": null,
+      "numberOfPackages": 0,
+      "temperature": null,
+      "numberOfAnimals": 1,
+      "includeNonAblactedAnimals": false,
+      "countryOfOrigin": "BE",
+      "countryOfOriginIsPodCountry": null,
+      "isLowRiskArticle72Country": null,
+      "regionOfOrigin": null,
+      "consignedCountry": null,
+      "animalsCertifiedAs": "Registered",
+      "commodityIntendedFor": null,
+      "commodityComplement": [
+        {
+          "uniqueComplementId": null,
+          "commodityDescription": "Live horses, asses, mules and hinnies",
+          "commodityId": "0101",
+          "complementId": 1,
+          "complementName": "Equus caballus",
+          "eppoCode": null,
+          "isWoodPackaging": null,
+          "speciesId": "a9bc612b25e0f1fa60de92e7bf33c7343f3d30d20db57c27657334d4e65b2a36",
+          "speciesName": "caefd63e72a5967d044ad7fefa59ac3c4b619dbc8cc04d0337d29b1e4737de22",
+          "speciesNomination": "caefd63e72a5967d044ad7fefa59ac3c4b619dbc8cc04d0337d29b1e4737de22",
+          "speciesTypeName": null,
+          "speciesType": "245c24459f5c8395036d1490324b625a3c013f3d81a70ffa8a345718681c822f",
+          "speciesClassName": null,
+          "speciesClass": "a9bc612b25e0f1fa60de92e7bf33c7343f3d30d20db57c27657334d4e65b2a36",
+          "speciesFamilyName": null,
+          "speciesFamily": null,
+          "speciesCommonName": null,
+          "isCdsMatched": null
+        }
+      ],
+      "complementParameterSet": [
+        {
+          "uniqueComplementID": "0725b2d1-40f9-40b2-8b52-fd313aabfeb1",
+          "complementID": 1,
+          "speciesID": "147603",
+          "keyDataPair": [
+            {
+              "key": "number_package",
+              "data": "0"
+            },
+            {
+              "key": "number_animal",
+              "data": "1"
+            }
+          ],
+          "identifiers": [
+            {
+              "speciesNumber": 1,
+              "data": {
+                "horse_name": "SHEERAN WL",
+                "microchip": "958000010356220",
+                "passport": "826002160878795"
+              },
+              "isPlaceOfDestinationThePermanentAddress": null,
+              "permanentAddress": null
+            }
+          ]
+        }
+      ]
+    },
     "purpose": {
       "conformsToEU": null,
-      "internalMarketPurpose": "RegisteredHorses",
+      "internalMarketPurpose": "Registered Horses",
       "thirdCountryTranshipment": null,
       "forNonConforming": null,
       "regNumber": null,
@@ -214,7 +234,8 @@
       "forImportOrAdmission": null,
       "exitDate": null,
       "finalBip": null,
-      "purposeGroup": "ForImport",
+      "pointOfExit": null,
+      "purposeGroup": "For Import",
       "estimatedArrivesAtPortOfExit": null
     },
     "pointOfEntry": "GBTEEP1",
@@ -226,8 +247,8 @@
     },
     "transporter": {
       "id": "3e6cdd71-9dd6-4cf6-8b37-fc42047c0826",
-      "type": "CommercialTransporterUserAdded",
-      "status": "Nonapproved",
+      "type": "commercial transporter - user added",
+      "status": "nonapproved",
       "companyName": "05e803514fe7c2d48fc296c80ab144868c71bc4be0099fcb92673bd7cfb4ec0b",
       "individualName": null,
       "address": {
@@ -251,7 +272,7 @@
     },
     "transporterDetailsRequired": null,
     "meansOfTransportFromEntryPoint": {
-      "type": "RoadVehicle",
+      "type": "Road Vehicle",
       "document": "1cd99ed3a267847bee9bfa0a032d74fad7219a1be7fd503c89d064f9794285fe",
       "id": "1cd99ed3a267847bee9bfa0a032d74fad7219a1be7fd503c89d064f9794285fe"
     },
@@ -272,6 +293,7 @@
         "FR"
       ]
     },
+    "storeTransporterContact": null,
     "submittedOn": "2024-12-04T13:25:01.332Z",
     "submittedBy": {
       "displayName": "654c300fdbd4d276291018e57e80789086a48953fe01aa8e84b276e622540c89",
@@ -289,7 +311,7 @@
     "isChargeable": null,
     "wasChargeable": null,
     "commonUserCharge": null,
-    "provideCtcMrn": "No",
+    "provideCtcMrn": "NO",
     "arrivesAt": "2025-01-30T22:00:00",
     "departedOn": null
   },
@@ -317,7 +339,7 @@
       "detailsOfControlledDestinations": null,
       "specificWarehouseNonConformingConsignment": null,
       "temporaryDeadline": null,
-      "decisionEnum": "AcceptableForInternalMarket",
+      "decision": "Acceptable for Internal Market",
       "freeCirculationPurpose": null,
       "definitiveImportPurpose": null,
       "ifChanneledOption": null,
@@ -338,6 +360,7 @@
     "consignmentCheck": {
       "euStandard": "Not Set",
       "additionalGuarantees": "Not Set",
+      "documentCheckAdditionalDetails": null,
       "documentCheckResult": null,
       "nationalRequirements": "Not Set",
       "identityCheckDone": null,
@@ -401,6 +424,7 @@
     ],
     "checkedOn": null,
     "accompanyingDocuments": null,
+    "commodityChecks": null,
     "phsiAutoCleared": null,
     "hmiAutoCleared": null,
     "inspectionRequired": null,
@@ -445,6 +469,7 @@
   "agencyOrganisationId": null,
   "riskDecisionLockedOn": "2025-01-30T20:00:00Z",
   "isRiskDecisionLocked": false,
+  "isAutoClearanceExempted": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

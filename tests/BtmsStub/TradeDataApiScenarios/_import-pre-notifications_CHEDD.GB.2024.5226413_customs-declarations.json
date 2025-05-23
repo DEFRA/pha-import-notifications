@@ -1,0 +1,99 @@
+{
+  "customsDeclarations": [
+    {
+      "movementReferenceNumber": "24GBD8ZE70M2T3ZAR1",
+      "clearanceRequest": {
+        "externalCorrelationId": "1325085",
+        "messageSentAt": "2024-12-07T14:34:47Z",
+        "externalVersion": 2,
+        "previousExternalVersion": 1,
+        "declarationUcr": "4GB943952494000-BER047493",
+        "declarationPartNumber": null,
+        "declarationType": "S",
+        "arrivesAt": null,
+        "submitterTurn": "GB943952494000",
+        "declarantId": "GB943952494000",
+        "declarantName": "GB943952494000",
+        "dispatchCountryCode": "TR",
+        "goodsLocationCode": "FXTFXTFXT",
+        "masterUcr": null,
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0805501010",
+            "goodsDescription": "LEMON",
+            "consigneeId": "GB160167235000",
+            "consigneeName": "GB160167235000",
+            "netMass": 16430,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "TR",
+            "documents": [
+              {
+                "documentCode": "C678",
+                "documentReference": "GBCHD2024.5226413",
+                "documentStatus": "AE",
+                "documentControl": "P",
+                "documentQuantity": null
+              },
+              {
+                "documentCode": "N002",
+                "documentReference": "GBCHD2024.5226441",
+                "documentStatus": "AG",
+                "documentControl": "P",
+                "documentQuantity": null
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H218",
+                "departmentCode": "HMI"
+              },
+              {
+                "checkCode": "H223",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "externalCorrelationId": null,
+        "timestamp": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 2,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDD.GB.2024.5226413:071224022530:CR-VERSION-2",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H218",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5226413, GBCHD2024.5226441). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              },
+              {
+                "checkCode": "H223",
+                "decisionCode": "X00",
+                "decisionsValidUntil": null,
+                "decisionReasons": [
+                  "A Customs Declaration has been submitted however no matching CED(s) have been submitted to Port Health (for CED number(s) GBCHD2024.5226413, GBCHD2024.5226441). Please correct the CED number(s) entered on your customs declaration."
+                ],
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ]
+      },
+      "finalisation": null,
+      "inboundError": null,
+      "created": "2025-02-21T13:28:39.129Z",
+      "updated": "2025-02-21T13:28:40.129Z"
+    }
+  ]
+}
