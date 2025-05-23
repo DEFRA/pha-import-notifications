@@ -1,6 +1,6 @@
 using WireMock.Server;
 
-namespace Defra.PhaImportNotifications.Testing;
+namespace Defra.PhaImportNotifications.Tests.Helpers;
 
 public class WireMockTestBase<T> : IClassFixture<T>
     where T : WireMockContext, new()

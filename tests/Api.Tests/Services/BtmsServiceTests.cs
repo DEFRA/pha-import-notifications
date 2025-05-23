@@ -4,13 +4,13 @@ using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.JsonApi;
 using Defra.PhaImportNotifications.Api.Services.Btms;
 using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
-using Defra.PhaImportNotifications.Testing;
 using Defra.PhaImportNotifications.Tests.BtmsStub;
+using Defra.PhaImportNotifications.Tests.Helpers;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
-using ChedReferenceNumbers = Defra.PhaImportNotifications.Testing.ChedReferenceNumbers;
+using ChedReferenceNumbers = Defra.PhaImportNotifications.Tests.Helpers.ChedReferenceNumbers;
 
 namespace Defra.PhaImportNotifications.Api.Tests.Services;
 
