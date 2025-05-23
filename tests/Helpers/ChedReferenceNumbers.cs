@@ -1,5 +1,5 @@
 // ReSharper disable InconsistentNaming
-namespace Defra.PhaImportNotifications.Testing;
+namespace Defra.PhaImportNotifications.Tests.Helpers;
 
 public static class ChedReferenceNumbers
 {

@@ -2,7 +2,7 @@ using WireMock.Server;
 using WireMock.Settings;
 using WireMock.Types;
 
-namespace Defra.PhaImportNotifications.Testing;
+namespace Defra.PhaImportNotifications.Tests.Helpers;
 
 #pragma warning disable S3881
 public class WireMockContext : IDisposable
@@ -25,6 +25,7 @@ public class WireMockContext : IDisposable
 
     public void Dispose()
     {
+        GC.SuppressFinalize(this);
         Server.Stop();
         Server.Dispose();
         HttpClient.Dispose();
