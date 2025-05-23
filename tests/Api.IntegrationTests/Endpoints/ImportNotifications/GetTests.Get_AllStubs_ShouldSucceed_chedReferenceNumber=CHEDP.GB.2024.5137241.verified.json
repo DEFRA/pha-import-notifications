@@ -7,16 +7,9 @@
         "messageSentAt": "2024-12-04T12:23:32Z",
         "externalVersion": 1,
         "previousExternalVersion": null,
-        "declarationUcr": "4GB648766188000-10022786",
-        "declarationPartNumber": null,
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": null,
-        "declarantId": "GB648766188000",
-        "declarantName": "GB648766188000",
         "dispatchCountryCode": "BR",
         "goodsLocationCode": "LGPLGPLGP",
-        "masterUcr": "LGP1C7XGS00101",
         "commodities": [
           {
             "itemNumber": 1,
@@ -32,10 +25,7 @@
             "documents": [
               {
                 "documentCode": "N853",
-                "documentReference": "GBCHD2024.5137241",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5137241"
               }
             ],
             "checks": [
@@ -76,16 +66,9 @@
         "messageSentAt": "2024-12-04T12:28:02Z",
         "externalVersion": 1,
         "previousExternalVersion": null,
-        "declarationUcr": "4GB246936865000-10022786",
-        "declarationPartNumber": "001",
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": null,
-        "declarantId": "GB246936865000",
-        "declarantName": "GB246936865000",
         "dispatchCountryCode": "BR",
         "goodsLocationCode": "LGPLGPLGP",
-        "masterUcr": "LGP1C7XGS00102",
         "commodities": [
           {
             "itemNumber": 1,
@@ -101,10 +84,7 @@
             "documents": [
               {
                 "documentCode": "N853",
-                "documentReference": "GBCVD2024.5137241",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCVD2024.5137241"
               }
             ],
             "checks": [
@@ -587,7 +567,6 @@
   "riskDecisionLockedOn": "2024-11-19T22:00:00Z",
   "isRiskDecisionLocked": false,
   "isAutoClearanceExempted": null,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

@@ -128,6 +128,7 @@ public partial record ImportPreNotification
     public bool? IsAutoClearanceExempted { get; init; }
 
     [JsonPropertyName("isBulkUploadInProgress")]
+    [JsonIgnore]
     [Description("Boolean flag that indicates whether a bulk upload is in progress")]
     public bool? IsBulkUploadInProgress { get; init; }
 

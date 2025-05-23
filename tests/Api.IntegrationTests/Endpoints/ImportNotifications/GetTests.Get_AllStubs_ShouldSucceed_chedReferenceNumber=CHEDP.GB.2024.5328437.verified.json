@@ -7,16 +7,9 @@
         "messageSentAt": "2024-12-23T11:23:30Z",
         "externalVersion": 1,
         "previousExternalVersion": null,
-        "declarationUcr": "4GB751008171000-TIJ048763",
-        "declarationPartNumber": null,
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": "GB751008171000",
-        "declarantId": "GB751008171000",
-        "declarantName": "GB751008171000",
         "dispatchCountryCode": "PH",
         "goodsLocationCode": "FXTFXTFXT",
-        "masterUcr": "557612954",
         "commodities": [
           {
             "itemNumber": 1,
@@ -32,17 +25,11 @@
             "documents": [
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUU2024.5328437",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUU2024.5328437"
               },
               {
                 "documentCode": "N853",
-                "documentReference": "GBCHD2024.5328437",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5328437"
               }
             ],
             "checks": [
@@ -568,7 +555,6 @@
   "riskDecisionLockedOn": "2024-12-20T04:00:00Z",
   "isRiskDecisionLocked": true,
   "isAutoClearanceExempted": true,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

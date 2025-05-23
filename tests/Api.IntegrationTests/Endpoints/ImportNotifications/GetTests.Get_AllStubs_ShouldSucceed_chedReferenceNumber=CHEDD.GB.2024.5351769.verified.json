@@ -7,16 +7,9 @@
         "messageSentAt": "2024-12-30T11:47:40Z",
         "externalVersion": 2,
         "previousExternalVersion": 1,
-        "declarationUcr": "4GB333557108000-OGL6001342879",
-        "declarationPartNumber": null,
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": "GB333557108000",
-        "declarantId": "GB333557108000",
-        "declarantName": "GB333557108000",
         "dispatchCountryCode": "TR",
         "goodsLocationCode": "HRHHRHHRHGVM",
-        "masterUcr": null,
         "commodities": [
           {
             "itemNumber": 1,
@@ -32,10 +25,7 @@
             "documents": [
               {
                 "documentCode": "C678",
-                "documentReference": "GBCHD2024.5351769",
-                "documentStatus": "JE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5351769"
               }
             ],
             "checks": [
@@ -578,7 +568,6 @@
   "riskDecisionLockedOn": "2024-12-30T10:00:00Z",
   "isRiskDecisionLocked": true,
   "isAutoClearanceExempted": null,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 2,

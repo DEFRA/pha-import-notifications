@@ -20,9 +20,7 @@ var namespaceDeclaration = FileScopedNamespaceDeclaration(ParseName(outputNamesp
 
 foreach (var (key, componentsSchema) in openApiDocument.Components.Schemas)
 {
-#pragma warning disable S6608
-    componentsSchema.Title = CreateTypeName(key.Split(".").Last());
-#pragma warning restore S6608
+    componentsSchema.Title = CreateTypeName(key.Split(".").AsEnumerable().Last());
 }
 
 foreach (var (_, componentsSchema) in openApiDocument.Components.Schemas)

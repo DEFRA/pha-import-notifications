@@ -428,7 +428,6 @@
   "riskDecisionLockedOn": "2024-11-13T04:00:00Z",
   "isRiskDecisionLocked": false,
   "isAutoClearanceExempted": null,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

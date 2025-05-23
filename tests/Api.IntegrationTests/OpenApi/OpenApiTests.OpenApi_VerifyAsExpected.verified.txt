@@ -764,33 +764,9 @@
             "format": "int32",
             "nullable": true
           },
-          "declarationUcr": {
-            "type": "string",
-            "nullable": true
-          },
-          "declarationPartNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "declarationType": {
-            "type": "string",
-            "nullable": true
-          },
           "arrivesAt": {
             "type": "string",
             "format": "date-time",
-            "nullable": true
-          },
-          "submitterTurn": {
-            "type": "string",
-            "nullable": true
-          },
-          "declarantId": {
-            "type": "string",
-            "nullable": true
-          },
-          "declarantName": {
-            "type": "string",
             "nullable": true
           },
           "dispatchCountryCode": {
@@ -798,10 +774,6 @@
             "nullable": true
           },
           "goodsLocationCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "masterUcr": {
             "type": "string",
             "nullable": true
           },
@@ -2285,19 +2257,6 @@
           "documentReference": {
             "type": "string",
             "nullable": true
-          },
-          "documentStatus": {
-            "type": "string",
-            "nullable": true
-          },
-          "documentControl": {
-            "type": "string",
-            "nullable": true
-          },
-          "documentQuantity": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -2512,11 +2471,6 @@
           "isAutoClearanceExempted": {
             "type": "boolean",
             "description": "Boolean flag that indicates whether CHED is exempted from autoclearance",
-            "nullable": true
-          },
-          "isBulkUploadInProgress": {
-            "type": "boolean",
-            "description": "Boolean flag that indicates whether a bulk upload is in progress",
             "nullable": true
           },
           "requestId": {

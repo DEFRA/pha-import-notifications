@@ -7,16 +7,9 @@
         "messageSentAt": "2024-12-12T22:50:28Z",
         "externalVersion": 2,
         "previousExternalVersion": 1,
-        "declarationUcr": "4GB988063278000-F869744PO019255",
-        "declarationPartNumber": null,
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": "GB238060183000",
-        "declarantId": "GB238060183000",
-        "declarantName": "GB238060183000",
         "dispatchCountryCode": "ID",
         "goodsLocationCode": "FXTFXTFXT",
-        "masterUcr": "550292923",
         "commodities": [
           {
             "itemNumber": 1,
@@ -32,66 +25,39 @@
             "documents": [
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUUID-A051-LA-09-240919-A006-SUB0",
-                "documentStatus": "IP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUUID-A051-LA-09-240919-A006-SUB0"
               },
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUUID-A051-LA-13-240919-A006-SUB0",
-                "documentStatus": "IP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUUID-A051-LA-13-240919-A006-SUB0"
               },
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUUID-A051-LA-14-240919-A006-SUB0",
-                "documentStatus": "IP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUUID-A051-LA-14-240919-A006-SUB0"
               },
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUUID-A051-LA-15-240919-A006-SUB0",
-                "documentStatus": "IP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUUID-A051-LA-15-240919-A006-SUB0"
               },
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUUID-A051-LA-16-240919-A006-SUB0",
-                "documentStatus": "IP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUUID-A051-LA-16-240919-A006-SUB0"
               },
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUUID-A051-LA-18-240919-A006-SUB0",
-                "documentStatus": "IP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUUID-A051-LA-18-240919-A006-SUB0"
               },
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUUID-A051-LA-20-240919-A006-SUB0",
-                "documentStatus": "IP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUUID-A051-LA-20-240919-A006-SUB0"
               },
               {
                 "documentCode": "C673",
-                "documentReference": "GBIUUID-A051-LA-21-240919-A006-SUB0",
-                "documentStatus": "IP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBIUUID-A051-LA-21-240919-A006-SUB0"
               },
               {
                 "documentCode": "N853",
-                "documentReference": "GBCHD2024.5249145",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5249145"
               }
             ],
             "checks": [
@@ -725,7 +691,6 @@
   "riskDecisionLockedOn": "2024-12-11T19:00:00Z",
   "isRiskDecisionLocked": true,
   "isAutoClearanceExempted": true,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 1,

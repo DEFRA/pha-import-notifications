@@ -7,16 +7,16 @@
         MessageSentAt: 2024-12-09 08:06:23 Utc,
         ExternalVersion: 1,
         PreviousExternalVersion: null,
-        DeclarationUcr: 4GB334115102000-GRAJ0338944,
+        DeclarationUcr: null,
         DeclarationPartNumber: null,
-        DeclarationType: S,
+        DeclarationType: null,
         ArrivesAt: null,
-        SubmitterTurn: GB334115102000,
-        DeclarantId: GB334115102000,
-        DeclarantName: GB334115102000,
+        SubmitterTurn: null,
+        DeclarantId: null,
+        DeclarantName: null,
         DispatchCountryCode: HN,
         GoodsLocationCode: SOUSTNSOU,
-        MasterUcr: SCT1BKHX400100,
+        MasterUcr: null,
         Commodities: [
           {
             ItemNumber: 1,
@@ -33,8 +33,8 @@
               {
                 DocumentCode: N853,
                 DocumentReference: GBCHD2024.5125476,
-                DocumentStatus: AE,
-                DocumentControl: P,
+                DocumentStatus: null,
+                DocumentControl: null,
                 DocumentQuantity: null
               }
             ],

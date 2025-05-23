@@ -18,24 +18,30 @@ public partial record ClearanceRequest
     public int? PreviousExternalVersion { get; init; }
 
     [JsonPropertyName("declarationUcr")]
+    [JsonIgnore]
     public string? DeclarationUcr { get; init; }
 
     [JsonPropertyName("declarationPartNumber")]
+    [JsonIgnore]
     public string? DeclarationPartNumber { get; init; }
 
     [JsonPropertyName("declarationType")]
+    [JsonIgnore]
     public string? DeclarationType { get; init; }
 
     [JsonPropertyName("arrivesAt")]
     public DateTime? ArrivesAt { get; init; }
 
     [JsonPropertyName("submitterTurn")]
+    [JsonIgnore]
     public string? SubmitterTurn { get; init; }
 
     [JsonPropertyName("declarantId")]
+    [JsonIgnore]
     public string? DeclarantId { get; init; }
 
     [JsonPropertyName("declarantName")]
+    [JsonIgnore]
     public string? DeclarantName { get; init; }
 
     [JsonPropertyName("dispatchCountryCode")]
@@ -45,6 +51,7 @@ public partial record ClearanceRequest
     public string? GoodsLocationCode { get; init; }
 
     [JsonPropertyName("masterUcr")]
+    [JsonIgnore]
     public string? MasterUcr { get; init; }
 
     [JsonPropertyName("commodities")]

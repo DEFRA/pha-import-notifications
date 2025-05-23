@@ -7,16 +7,9 @@
         "messageSentAt": "2024-11-19T14:12:40Z",
         "externalVersion": 1,
         "previousExternalVersion": null,
-        "declarationUcr": "4GB933903421000-BSFL131913",
-        "declarationPartNumber": null,
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": "GB933903421000",
-        "declarantId": "GB933903421000",
-        "declarantName": "GB933903421000",
         "dispatchCountryCode": "NZ",
         "goodsLocationCode": "FXTFXTFXT",
-        "masterUcr": "529744521",
         "commodities": [
           {
             "itemNumber": 1,
@@ -32,10 +25,7 @@
             "documents": [
               {
                 "documentCode": "N853",
-                "documentReference": "GBCHD2024.5140818",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5140818"
               }
             ],
             "checks": [
@@ -59,10 +49,7 @@
             "documents": [
               {
                 "documentCode": "N853",
-                "documentReference": "GBCHD2024.5140733",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5140733"
               }
             ],
             "checks": [
@@ -594,7 +581,6 @@
   "riskDecisionLockedOn": "2024-11-16T10:00:00Z",
   "isRiskDecisionLocked": true,
   "isAutoClearanceExempted": true,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": true,
   "chedTypeVersion": 1,

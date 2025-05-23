@@ -7,16 +7,9 @@
         "messageSentAt": "2024-12-20T12:07:21Z",
         "externalVersion": 1,
         "previousExternalVersion": null,
-        "declarationUcr": "4GB778182389000-MSI24100179",
-        "declarationPartNumber": null,
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": "GB778182389000",
-        "declarantId": "GB778182389000",
-        "declarantName": "GB778182389000",
         "dispatchCountryCode": "IN",
         "goodsLocationCode": "FXTFXTFXT",
-        "masterUcr": "554921077",
         "commodities": [
           {
             "itemNumber": 1,
@@ -32,10 +25,7 @@
             "documents": [
               {
                 "documentCode": "C678",
-                "documentReference": "GBCHD2024.5118068",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5118068"
               }
             ],
             "checks": [
@@ -59,10 +49,7 @@
             "documents": [
               {
                 "documentCode": "C678",
-                "documentReference": "GBCHD2024.5118377",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5118377"
               }
             ],
             "checks": [
@@ -86,10 +73,7 @@
             "documents": [
               {
                 "documentCode": "C678",
-                "documentReference": "GBCHD2024.5134337",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5134337"
               }
             ],
             "checks": [
@@ -113,10 +97,7 @@
             "documents": [
               {
                 "documentCode": "C678",
-                "documentReference": "GBCHD2024.5134435",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5134435"
               }
             ],
             "checks": [
@@ -140,10 +121,7 @@
             "documents": [
               {
                 "documentCode": "C678",
-                "documentReference": "GBCHD2024.5134476",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5134476"
               }
             ],
             "checks": [
@@ -744,7 +722,6 @@
   "riskDecisionLockedOn": null,
   "isRiskDecisionLocked": null,
   "isAutoClearanceExempted": null,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 2,

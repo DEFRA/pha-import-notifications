@@ -7,16 +7,9 @@
         "messageSentAt": "2024-12-07T14:34:47Z",
         "externalVersion": 2,
         "previousExternalVersion": 1,
-        "declarationUcr": "4GB943952494000-BER047493",
-        "declarationPartNumber": null,
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": "GB943952494000",
-        "declarantId": "GB943952494000",
-        "declarantName": "GB943952494000",
         "dispatchCountryCode": "TR",
         "goodsLocationCode": "FXTFXTFXT",
-        "masterUcr": null,
         "commodities": [
           {
             "itemNumber": 1,
@@ -32,17 +25,11 @@
             "documents": [
               {
                 "documentCode": "C678",
-                "documentReference": "GBCHD2024.5226413",
-                "documentStatus": "AE",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5226413"
               },
               {
                 "documentCode": "N002",
-                "documentReference": "GBCHD2024.5226441",
-                "documentStatus": "AG",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5226441"
               }
             ],
             "checks": [
@@ -534,7 +521,6 @@
   "riskDecisionLockedOn": "2024-12-01T12:00:00Z",
   "isRiskDecisionLocked": true,
   "isAutoClearanceExempted": null,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": true,
   "chedTypeVersion": 2,

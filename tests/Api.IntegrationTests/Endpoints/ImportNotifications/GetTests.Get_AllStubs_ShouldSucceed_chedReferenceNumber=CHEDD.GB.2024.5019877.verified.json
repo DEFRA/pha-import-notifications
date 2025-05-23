@@ -7,16 +7,9 @@
         "messageSentAt": "2024-12-19T08:49:03Z",
         "externalVersion": 1,
         "previousExternalVersion": null,
-        "declarationUcr": "4GB244049769033-LI42468",
-        "declarationPartNumber": null,
-        "declarationType": "S",
         "arrivesAt": null,
-        "submitterTurn": "GB244049769033",
-        "declarantId": "GB244049769033",
-        "declarantName": "GB244049769033",
         "dispatchCountryCode": "CN",
         "goodsLocationCode": "TEEMIDTEE",
-        "masterUcr": "607790951",
         "commodities": [
           {
             "itemNumber": 1,
@@ -32,10 +25,7 @@
             "documents": [
               {
                 "documentCode": "C678",
-                "documentReference": "GBCHD2024.5019877",
-                "documentStatus": "JP",
-                "documentControl": "P",
-                "documentQuantity": null
+                "documentReference": "GBCHD2024.5019877"
               }
             ],
             "checks": [
@@ -553,7 +543,6 @@
   "riskDecisionLockedOn": "2024-12-09T08:00:00Z",
   "isRiskDecisionLocked": true,
   "isAutoClearanceExempted": null,
-  "isBulkUploadInProgress": null,
   "requestId": null,
   "isCdsFullMatched": null,
   "chedTypeVersion": 2,
