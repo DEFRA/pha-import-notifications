@@ -1,8 +1,6 @@
 using System.Net;
 using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
-using Defra.PhaImportNotifications.BtmsStub;
-using Defra.PhaImportNotifications.Testing;
-using FluentAssertions;
+using Defra.PhaImportNotifications.Tests.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WireMock.RequestBuilders;

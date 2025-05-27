@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http.Extensions;
 
-namespace Defra.PhaImportNotifications.Testing;
+namespace Defra.PhaImportNotifications.Tests.Helpers;
 
 public static class Endpoints
 {

@@ -1,11 +1,11 @@
 using System.Net;
-using Defra.PhaImportNotifications.BtmsStub;
-using Defra.PhaImportNotifications.Testing;
-using FluentAssertions;
+using Defra.PhaImportNotifications.Tests.BtmsStub;
+using Defra.PhaImportNotifications.Tests.Helpers;
 using Microsoft.Extensions.Configuration;
 using WireMock.Server;
 using Xunit.Abstractions;
-using WireMockExtensions = Defra.PhaImportNotifications.BtmsStub.WireMockExtensions;
+using Helpers = Defra.PhaImportNotifications.Tests.Helpers;
+using WireMockExtensions = Defra.PhaImportNotifications.Tests.BtmsStub.WireMockExtensions;
 
 namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
 
@@ -30,7 +30,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         WireMock.StubImportNotificationAndSubPaths(ChedReferenceNumbers.ChedA);
 
         var response = await client.GetStringAsync(
-            Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA)
+            Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA)
         );
 
         // We mock BTMS with WireMock in order to test our APIs deserialisation
@@ -54,7 +54,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
 
         WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
 
-        var response = await client.GetStringAsync(Testing.Endpoints.ImportNotifications.Get(chedReferenceNumber));
+        var response = await client.GetStringAsync(Helpers.Endpoints.ImportNotifications.Get(chedReferenceNumber));
 
         await VerifyJson(response)
             .UseParameters(chedReferenceNumber)
@@ -75,12 +75,12 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     [Fact]
     public async Task Get_WhenAuthorisedForAllBcps_ShouldSucceed()
     {
-        var chedReferenceNumber = Testing.ChedReferenceNumbers.ChedA;
+        var chedReferenceNumber = ChedReferenceNumbers.ChedA;
         var client = CreateClient("fsa");
 
         WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
 
-        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get(chedReferenceNumber));
+        var response = await client.GetAsync(Helpers.Endpoints.ImportNotifications.Get(chedReferenceNumber));
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
     }
@@ -91,7 +91,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         var client = CreateClient();
 
         var response = await client.GetAsync(
-            Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedPWithMovement)
+            Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedPWithMovement)
         );
 
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
@@ -103,7 +103,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         var client = CreateClient();
         client.DefaultRequestHeaders.Authorization = null;
 
-        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA));
+        var response = await client.GetAsync(Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA));
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
@@ -122,7 +122,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
             }
         );
 
-        var response = await client.GetAsync(Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedP));
+        var response = await client.GetAsync(Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedP));
 
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
@@ -139,7 +139,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
         );
 
         var response = await client.GetAsync(
-            Testing.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedPFinalised)
+            Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedPFinalised)
         );
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
