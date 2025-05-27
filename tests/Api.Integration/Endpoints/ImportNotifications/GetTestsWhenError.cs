@@ -8,7 +8,7 @@ using WireMock.ResponseBuilders;
 using WireMock.Server;
 using Xunit.Abstractions;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
+namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNotifications;
 
 public class GetTestsWhenError : EndpointTestBase, IClassFixture<WireMockContext>
 {

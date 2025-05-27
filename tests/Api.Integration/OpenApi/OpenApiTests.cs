@@ -1,4 +1,4 @@
-namespace Defra.PhaImportNotifications.Api.IntegrationTests.OpenApi;
+namespace Defra.PhaImportNotifications.Tests.Api.Integration.OpenApi;
 
 public class OpenApiTests(ApiWebApplicationFactory factory) : IClassFixture<ApiWebApplicationFactory>
 {

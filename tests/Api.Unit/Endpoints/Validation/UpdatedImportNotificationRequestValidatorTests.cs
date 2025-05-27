@@ -1,7 +1,7 @@
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Endpoints.Validation;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Endpoints.Validation;
 
 public class UpdatedImportNotificationRequestValidatorTests
 {

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests;
+namespace Defra.PhaImportNotifications.Tests.Api.Integration;
 
 public class TestWebApplicationFactory<T> : WebApplicationFactory<T>, ITestOutputHelperAccessor
     where T : class

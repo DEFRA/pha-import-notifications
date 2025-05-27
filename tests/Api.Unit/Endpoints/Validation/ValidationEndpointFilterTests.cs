@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Endpoints.Validation;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Endpoints.Validation;
 
 public class ValidationEndpointFilterTests
 {

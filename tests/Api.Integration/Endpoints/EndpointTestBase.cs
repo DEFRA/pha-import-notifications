@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Xunit.Abstractions;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints;
+namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints;
 
 public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
 {
