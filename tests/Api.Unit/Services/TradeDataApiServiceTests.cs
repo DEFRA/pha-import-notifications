@@ -12,7 +12,7 @@ using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using ChedReferenceNumbers = Defra.PhaImportNotifications.Tests.Helpers.ChedReferenceNumbers;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Services;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services;
 
 public class TradeDataApiServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
 {

@@ -7,9 +7,8 @@ using Defra.PhaImportNotifications.Tests.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Xunit.Abstractions;
-using Helpers = Defra.PhaImportNotifications.Tests.Helpers;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
+namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNotifications;
 
 public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
     : EndpointTestBase(factory, outputHelper)

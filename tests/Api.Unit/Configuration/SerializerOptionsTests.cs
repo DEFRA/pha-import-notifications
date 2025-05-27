@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Microsoft.AspNetCore.Http.Json;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Configuration;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Configuration;
 
 public class SerializerOptionsTests
 {

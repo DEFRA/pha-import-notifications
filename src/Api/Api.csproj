@@ -9,8 +9,8 @@
     <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <InternalsVisibleTo Include="Defra.PhaImportNotifications.Api.IntegrationTests" />
-    <InternalsVisibleTo Include="Defra.PhaImportNotifications.Api.Tests" />
+    <InternalsVisibleTo Include="Defra.PhaImportNotifications.Tests.Api.Integration" />
+    <InternalsVisibleTo Include="Defra.PhaImportNotifications.Tests.Api.Unit" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Elastic.CommonSchema.Serilog" Version="8.12.3" />

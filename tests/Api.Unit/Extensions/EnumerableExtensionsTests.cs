@@ -1,6 +1,6 @@
 using Defra.PhaImportNotifications.Api.Extensions;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Extensions;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Extensions;
 
 public class EnumerableExtensionsTests
 {

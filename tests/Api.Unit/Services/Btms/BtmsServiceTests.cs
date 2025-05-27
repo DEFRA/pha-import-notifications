@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using NSubstitute;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Services.Btms;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services.Btms;
 
 public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
 {

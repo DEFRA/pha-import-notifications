@@ -2,7 +2,7 @@ using System.Security.Claims;
 using Defra.PhaImportNotifications.Api.Authentication;
 using Defra.PhaImportNotifications.Api.Extensions;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Authorisation;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Authorisation;
 
 public class BcpAccessAuthorisationExtensionsTests
 {

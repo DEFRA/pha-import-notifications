@@ -1,9 +1,9 @@
 using Microsoft.Extensions.Hosting;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests;
+namespace Defra.PhaImportNotifications.Tests.Api.Integration;
 
 // ReSharper disable once ClassNeverInstantiated.Global
-public class ApiWebApplicationFactory : TestWebApplicationFactory<Program>
+public class ApiWebApplicationFactory : TestWebApplicationFactory<PhaImportNotifications.Api.Program>
 {
     private static readonly Lock s_lock = new();
 

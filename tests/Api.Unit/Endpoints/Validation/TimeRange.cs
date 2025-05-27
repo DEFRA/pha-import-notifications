@@ -1,6 +1,6 @@
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
-namespace Defra.PhaImportNotifications.Api.Tests.Endpoints.Validation;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Endpoints.Validation;
 
 public record TimeRange(DateTime From, DateTime To) : IDateTimeRangeDefinition;
 

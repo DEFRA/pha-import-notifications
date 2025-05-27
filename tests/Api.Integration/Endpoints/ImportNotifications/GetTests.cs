@@ -4,10 +4,9 @@ using Defra.PhaImportNotifications.Tests.Helpers;
 using Microsoft.Extensions.Configuration;
 using WireMock.Server;
 using Xunit.Abstractions;
-using Helpers = Defra.PhaImportNotifications.Tests.Helpers;
 using WireMockExtensions = Defra.PhaImportNotifications.Tests.BtmsStub.WireMockExtensions;
 
-namespace Defra.PhaImportNotifications.Api.IntegrationTests.Endpoints.ImportNotifications;
+namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNotifications;
 
 public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
 {
