@@ -13,7 +13,7 @@ namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNot
 public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
     : EndpointTestBase(factory, outputHelper)
 {
-    private ITradeImportsDataService MockBtmsService { get; } = Substitute.For<ITradeImportsDataService>();
+    private ITradeImportsDataService MockTradeImportsDataService { get; } = Substitute.For<ITradeImportsDataService>();
 
     [Fact]
     public async Task Get_ShouldSucceed()
@@ -26,7 +26,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
         };
 
-        SetUpMockBtmsForSuccess(validRequest.Bcp, validRequest.From, validRequest.To);
+        SetUpMockTradeImportsDataServiceForSuccess(validRequest.Bcp, validRequest.From, validRequest.To);
 
         var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(
             validRequest.Bcp,
@@ -81,7 +81,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var from = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc);
         var to = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc);
 
-        SetUpMockBtmsForSuccess(bcps: [], from, to);
+        SetUpMockTradeImportsDataServiceForSuccess(bcps: [], from, to);
 
         var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
         var response = await client.GetStringAsync(url);
@@ -129,12 +129,12 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         base.ConfigureTestServices(services);
 
-        services.AddTransient<ITradeImportsDataService>(_ => MockBtmsService);
+        services.AddTransient<ITradeImportsDataService>(_ => MockTradeImportsDataService);
     }
 
-    private void SetUpMockBtmsForSuccess(string[] bcps, DateTime from, DateTime to)
+    private void SetUpMockTradeImportsDataServiceForSuccess(string[] bcps, DateTime from, DateTime to)
     {
-        MockBtmsService
+        MockTradeImportsDataService
             .GetImportNotificationUpdates(
                 Arg.Is<string[]>(x => x.SequenceEqual(bcps)),
                 from,

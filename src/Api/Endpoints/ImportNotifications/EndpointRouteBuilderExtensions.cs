@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations;
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.Services;
-using Defra.PhaImportNotifications.Api.Services.Btms;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
@@ -39,13 +38,13 @@ public static class EndpointRouteBuilderExtensions
     }
 
     /// <param name="request">Request</param>
-    /// <param name="btmsService">BTMS Service</param>
+    /// <param name="tradeImportsDataService">Trade Imports Data Service</param>
     /// <param name="httpContext">HTTP Context</param>
     /// <param name="cancellationToken">Cancellation Token</param>
     [HttpGet]
     private static async Task<IResult> GetUpdated(
         [AsParameters] UpdatedImportNotificationRequest request,
-        [FromServices] ITradeImportsDataService btmsService,
+        [FromServices] ITradeImportsDataService tradeImportsDataService,
         HttpContext httpContext,
         CancellationToken cancellationToken
     )
@@ -54,7 +53,7 @@ public static class EndpointRouteBuilderExtensions
         if (!httpContext.User.ClientHasAccessTo(bcps.ToList()))
             return Results.Forbid();
 
-        var notifications = await btmsService.GetImportNotificationUpdates(
+        var notifications = await tradeImportsDataService.GetImportNotificationUpdates(
             bcps,
             request.From,
             request.To,
@@ -74,7 +73,7 @@ public static class EndpointRouteBuilderExtensions
     }
 
     /// <param name="chedReferenceNumber" example="CHEDA.GB.2024.1020304">CHED Reference Number</param>
-    /// <param name="btmsService">BTMS Service</param>
+    /// <param name="tradeImportsDataService">Trade Imports Data Service</param>
     /// <param name="httpContext">HTTP Context</param>
     /// <param name="cancellationToken">Cancellation Token</param>
     [HttpGet]
@@ -83,12 +82,12 @@ public static class EndpointRouteBuilderExtensions
         [Description("CHED Reference Number")]
         [RegularExpression($"^{Regexes.ChedReferenceNumber}$")]
             string chedReferenceNumber,
-        [FromServices] ITradeImportsDataService btmsService,
+        [FromServices] ITradeImportsDataService tradeImportsDataService,
         HttpContext httpContext,
         CancellationToken cancellationToken
     )
     {
-        var notification = await btmsService.GetImportNotification(chedReferenceNumber, cancellationToken);
+        var notification = await tradeImportsDataService.GetImportNotification(chedReferenceNumber, cancellationToken);
         var bcp = notification?.PartOne?.PointOfEntry;
 
         if (bcp is null)

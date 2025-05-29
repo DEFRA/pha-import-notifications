@@ -21,7 +21,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     public BtmsServiceTests(WireMockContextQueryParameterNoComma context)
         : base(context)
     {
-        Subject = new BtmsService(
+        Subject = new TradeDataImportsService(
             new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance),
             new TradeDataHttpClient(new HttpClient { BaseAddress = new Uri(context.Server.Urls[0]) }),
             Options
@@ -43,7 +43,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
                 PageSize = 100,
             }
         );
-    private BtmsService Subject { get; }
+    private TradeDataImportsService Subject { get; }
 
     private UpdatedImportNotificationRequest ValidRequest { get; } =
         new()
@@ -134,7 +134,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     public async Task GetImportNotificationUpdates_WhenNullDocument_ShouldFail()
     {
         var mockJsonApiClient = Substitute.For<IJsonApiClient>();
-        var subject = new BtmsService(mockJsonApiClient, null!, Options);
+        var subject = new TradeDataImportsService(mockJsonApiClient, null!, Options);
 
         var act = () => subject.GetImportNotificationUpdates([], DateTime.Now, DateTime.Now, CancellationToken.None);
 

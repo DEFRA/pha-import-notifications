@@ -9,7 +9,7 @@ using Document = Defra.PhaImportNotifications.Api.JsonApi.Document;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
-public class BtmsService(
+public class TradeDataImportsService(
     IJsonApiClient jsonApiClient,
     TradeDataHttpClient tradeDataHttpClient,
     IOptions<BtmsOptions> btmsOptions
