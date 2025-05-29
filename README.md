@@ -55,37 +55,37 @@ Get an import notification:
 http://localhost:8080/import-notifications/CHEDA.GB.2024.4792831
 ```
 
-## Update BTMS Schema
+## Update Trade Imports Data Schema
 
-When a schema change in BTMS is made we need to update our models.
+When a schema change in Trade Data Imports is made we need to update our models.
 
 At the moment this is a manual process:
 
-1. Fetch the `openapi.json` artifact from the latest build of [btms-backend](https://github.com/defra/btms-backend/actions/workflows/publish.yml?query=branch%3Amain)
+1. Fetch the `openapi.json` artifact from the latest build of [trade-imports-data-api](https://github.com/defra/trade-imports-data-api/actions/workflows/publish.yml?query=branch%3Amain)
 2. In the PHA API repository, extract and copy this to the tools/SchemaToCSharp folder
-3. Run `make update-btms-schema` in the root of the repository
+3. Run `make update-tradeimportsdata-schema` in the root of the repository
 4. Observe any changes that have been made and commit them
 
-## Update BTMS Stub Scenarios
+## Update Trade Imports Data Stub Scenarios
 
-Following a schema change, we need to update the response JSON that BTMS will give us.
+Following a schema change, we need to update the response JSON that Trade Imports Data will give us.
 
 At the moment this is a manual process:
 
-1. Checkout main from [btms-backend](https://github.com/defra/btms-backend)
+1. Checkout main from [trade-imports-data-api](https://github.com/defra/trade-imports-data-api)
 2. Locate the integration test called `ShouldImportPhaStubScenario`
 3. Update the test so it will save the generated output
 4. Understand and act on any redaction work needed before committing anything
 5. Run the test and take the output from the generated `PhaScenarioTestsOutput` folder
-6. Replace the [BtmsStub/Scenarios folder](tests/BtmsStub/Scenarios) in this repo with the contents of the folder above
-7. Do the same for the [Btms Stub Scenarios](https://github.com/DEFRA/btms-backend-stub/tree/main/src/BtmsBackendStub/Scenarios)
+6. Replace the [TradeImportsDataStub/Scenarios folder](tests/TradeImportsDataStub/Scenarios) in this repo with the contents of the folder above
+7. Do the same for the [Trade Imports Data Stub Scenarios](https://github.com/DEFRA/trade-imports-data-api-stub/tree/main/src/Stub/Scenarios)
 8. Observe any changes that have been made and commit them
 
 ## Development
 
-It is possible to configure the PHA API to query a deployed BTMS instance.
+It is possible to configure the PHA API to query a deployed Trade Imports Data instance.
 
-Fill out the [BtmsOptions](./src/Api/Configuration/BtmsOptions.cs) configuration to point at a BTMS instance and then
+Fill out the [TradeImportsDataOptions](./src/Api/Configuration/TradeImportsDataOptions.cs) configuration to point at a Trade Imports Data instance and then
 perform a request to the PHA API whilst connected to the VPN.
 
 The `Username` and `Password` are Basic Auth credentials.

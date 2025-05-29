@@ -11,6 +11,6 @@ lint-openapi-spec: generate-openapi-spec
 lint-openapi-spec-errors: generate-openapi-spec
 	docker run --rm -v "$(PWD):/work:ro" dshanley/vacuum lint -d -e -r .vacuum.yml openapi.json
 
-update-btms-schema:
+update-tradeimportsdata-schema:
 	dotnet build -c Release tools/SchemaToCSharp
 	cd tools/SchemaToCSharp/bin/Release/net9.0 && dotnet ./SchemaToCSharp.dll
