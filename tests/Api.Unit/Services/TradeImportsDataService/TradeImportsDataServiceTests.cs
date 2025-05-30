@@ -1,3 +1,4 @@
+using System.Net;
 using System.Text.Encodings.Web;
 using Argon;
 using Defra.PhaImportNotifications.Api.Configuration;
@@ -11,27 +12,37 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using NSubstitute;
+using WireMock.RequestBuilders;
+using WireMock.ResponseBuilders;
+using ChedReferenceNumbers = Defra.PhaImportNotifications.Tests.Helpers.ChedReferenceNumbers;
 
-namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services.Btms;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services;
 
-public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
+public class TradeImportsDataServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
 {
     private readonly VerifySettings _settings;
 
-    public BtmsServiceTests(WireMockContextQueryParameterNoComma context)
+    public TradeImportsDataServiceTests(WireMockContextQueryParameterNoComma context)
         : base(context)
     {
-        Subject = new TradeDataImportsService(
+        Subject = new TradeImportsDataService(
             new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance),
-            new TradeDataHttpClient(new HttpClient { BaseAddress = new Uri(context.Server.Urls[0]) }),
+            new TradeImportsDataHttpClient(new HttpClient { BaseAddress = new Uri(context.Server.Urls[0]) }),
             Options
         );
-
         _settings = new VerifySettings();
         _settings.DontScrubGuids();
         _settings.DontScrubDateTimes();
         _settings.AddExtraSettings(settings => settings.DefaultValueHandling = DefaultValueHandling.Include);
     }
+
+    private UpdatedImportNotificationRequest ValidRequest { get; } =
+        new()
+        {
+            Bcp = ["bcp1", "bcp2"],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+        };
 
     private static IOptions<BtmsOptions> Options { get; } =
         new OptionsWrapper<BtmsOptions>(
@@ -43,15 +54,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
                 PageSize = 100,
             }
         );
-    private TradeDataImportsService Subject { get; }
-
-    private UpdatedImportNotificationRequest ValidRequest { get; } =
-        new()
-        {
-            Bcp = ["bcp1", "bcp2"],
-            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
-            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
-        };
+    private TradeImportsDataService Subject { get; }
 
     [Theory]
     [InlineData("noBcps")]
@@ -134,11 +137,62 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     public async Task GetImportNotificationUpdates_WhenNullDocument_ShouldFail()
     {
         var mockJsonApiClient = Substitute.For<IJsonApiClient>();
-        var subject = new TradeDataImportsService(mockJsonApiClient, null!, Options);
+        var subject = new TradeImportsDataService(mockJsonApiClient, null!, Options);
 
         var act = () => subject.GetImportNotificationUpdates([], DateTime.Now, DateTime.Now, CancellationToken.None);
 
         await act.Should().ThrowAsync<InvalidOperationException>().WithMessage("Result was null");
+    }
+
+    [Theory]
+    [InlineData(ChedReferenceNumbers.ChedA)]
+    // ChedReferenceNumbers.ChedD has a movement. See GetImportNotification_WithMovements_WhenOk_ShouldSucceed
+    [InlineData(ChedReferenceNumbers.ChedP)]
+    [InlineData(ChedReferenceNumbers.ChedPP)]
+    [InlineData(ChedReferenceNumbers.ChedPWithMovement)]
+    [InlineData(ChedReferenceNumbers.ChedPFinalised)]
+    [InlineData(ChedReferenceNumbers.ChedAWithGoodsMovement)]
+    public async Task GetImportNotification_WhenOk_ShouldSucceed(string chedReferenceNumber)
+    {
+        WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
+
+        var result = await Subject.GetImportNotification(chedReferenceNumber, CancellationToken.None);
+
+        result.Should().NotBeNull();
+        await Verify(result, _settings).UseParameters(chedReferenceNumber);
+    }
+
+    [Fact]
+    public async Task GetImportNotification_WhenError_ShouldFail()
+    {
+        WireMock
+            .Given(
+                Request
+                    .Create()
+                    .WithPath(TradeImportsDataHttpClient.Endpoints.ImportNotification(ChedReferenceNumbers.ChedA))
+                    .UsingGet()
+            )
+            .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.InternalServerError));
+
+        var act = () => Subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
+
+        await act.Should().ThrowAsync<Exception>();
+    }
+
+    [Fact]
+    public async Task GetImportNotification_WhenNotFound_ShouldBeNull()
+    {
+        WireMock
+            .Given(
+                Request
+                    .Create()
+                    .WithPath(TradeImportsDataHttpClient.Endpoints.ImportNotification(ChedReferenceNumbers.ChedA))
+                    .UsingGet()
+            )
+            .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.NotFound));
+
+        var result = await Subject.GetImportNotification(ChedReferenceNumbers.ChedA, CancellationToken.None);
+        result.Should().BeNull();
     }
 
     /// <summary>

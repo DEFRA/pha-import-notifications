@@ -9,9 +9,9 @@ using Document = Defra.PhaImportNotifications.Api.JsonApi.Document;
 
 namespace Defra.PhaImportNotifications.Api.Services.Btms;
 
-public class TradeDataImportsService(
+public class TradeImportsDataService(
     IJsonApiClient jsonApiClient,
-    TradeDataHttpClient tradeDataHttpClient,
+    TradeImportsDataHttpClient tradeImportsDataHttpClient,
     IOptions<BtmsOptions> btmsOptions
 ) : ITradeImportsDataService
 {
@@ -62,8 +62,8 @@ public class TradeDataImportsService(
         try
         {
             var importPreNotificationResponse =
-                await tradeDataHttpClient.Client.GetFromJsonAsync<ImportPreNotificationResponse>(
-                    TradeDataHttpClient.Endpoints.ImportNotification(chedReferenceNumber),
+                await tradeImportsDataHttpClient.Client.GetFromJsonAsync<ImportPreNotificationResponse>(
+                    TradeImportsDataHttpClient.Endpoints.ImportNotification(chedReferenceNumber),
                     cancellationToken: cancellationToken
                 );
 
@@ -74,13 +74,13 @@ public class TradeDataImportsService(
             return null;
         }
 
-        var getCustomsDeclarations = tradeDataHttpClient.Client.GetFromJsonAsync<CustomsDeclarationsResponse>(
-            TradeDataHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber),
+        var getCustomsDeclarations = tradeImportsDataHttpClient.Client.GetFromJsonAsync<CustomsDeclarationsResponse>(
+            TradeImportsDataHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber),
             cancellationToken: cancellationToken
         );
 
-        var getGoodsMovements = tradeDataHttpClient.Client.GetFromJsonAsync<GmrsResponse>(
-            TradeDataHttpClient.Endpoints.GoodsMovements(chedReferenceNumber),
+        var getGoodsMovements = tradeImportsDataHttpClient.Client.GetFromJsonAsync<GmrsResponse>(
+            TradeImportsDataHttpClient.Endpoints.GoodsMovements(chedReferenceNumber),
             cancellationToken: cancellationToken
         );
 

@@ -1,6 +1,6 @@
 namespace Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 
-public class TradeImportsDataApiOptions
+public class TradeImportsDataOptions
 {
     public required string BaseUrl { get; set; }
     public string? Username { get; set; }

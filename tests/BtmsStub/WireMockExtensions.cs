@@ -41,7 +41,7 @@ public static class WireMockExtensions
 
         var request = Request
             .Create()
-            .WithPath(TradeDataHttpClient.Endpoints.ImportNotification(chedReferenceNumber))
+            .WithPath(TradeImportsDataHttpClient.Endpoints.ImportNotification(chedReferenceNumber))
             .UsingGet();
 
         if (transformRequest is not null)
@@ -61,7 +61,7 @@ public static class WireMockExtensions
             .Given(
                 Request
                     .Create()
-                    .WithPath(TradeDataHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber))
+                    .WithPath(TradeImportsDataHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber))
                     .UsingGet()
             )
             .RespondWith(Response.Create().WithBody(responseBody).WithStatusCode(StatusCodes.Status200OK));
@@ -73,7 +73,10 @@ public static class WireMockExtensions
 
         wireMock
             .Given(
-                Request.Create().WithPath(TradeDataHttpClient.Endpoints.GoodsMovements(chedReferenceNumber)).UsingGet()
+                Request
+                    .Create()
+                    .WithPath(TradeImportsDataHttpClient.Endpoints.GoodsMovements(chedReferenceNumber))
+                    .UsingGet()
             )
             .RespondWith(Response.Create().WithBody(responseBody).WithStatusCode(StatusCodes.Status200OK));
     }

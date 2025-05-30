@@ -167,15 +167,15 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
     builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions(!generatingOpenApiFromCli);
     builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder
-        .Services.AddOptions<TradeImportsDataApiOptions>()
+        .Services.AddOptions<TradeImportsDataOptions>()
         .BindConfiguration("TradeImportsDataApi")
         .ValidateOptions(!generatingOpenApiFromCli);
 
     builder
-        .Services.AddHttpClient<TradeDataHttpClient, TradeDataHttpClient>(
+        .Services.AddHttpClient<TradeImportsDataHttpClient, TradeImportsDataHttpClient>(
             (sp, httpClient) =>
             {
-                var options = sp.GetRequiredService<IOptions<TradeImportsDataApiOptions>>().Value;
+                var options = sp.GetRequiredService<IOptions<TradeImportsDataOptions>>().Value;
 
                 httpClient.BaseAddress = new Uri(options.BaseUrl);
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -206,7 +206,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             );
         }
     );
-    builder.Services.AddTransient<ITradeImportsDataService, TradeDataImportsService>();
+    builder.Services.AddTransient<ITradeImportsDataService, TradeImportsDataService>();
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)

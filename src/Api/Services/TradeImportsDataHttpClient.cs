@@ -1,6 +1,6 @@
 namespace Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 
-public class TradeDataHttpClient(HttpClient client)
+public class TradeImportsDataHttpClient(HttpClient client)
 {
     public HttpClient Client { get; } = client;
 

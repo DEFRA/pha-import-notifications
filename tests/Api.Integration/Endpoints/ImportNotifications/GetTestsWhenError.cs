@@ -32,7 +32,7 @@ public class GetTestsWhenError : EndpointTestBase, IClassFixture<WireMockContext
             .Given(
                 Request
                     .Create()
-                    .WithPath(TradeDataHttpClient.Endpoints.ImportNotification(ChedReferenceNumbers.ChedA))
+                    .WithPath(TradeImportsDataHttpClient.Endpoints.ImportNotification(ChedReferenceNumbers.ChedA))
                     .UsingGet()
             )
             .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.InternalServerError));
