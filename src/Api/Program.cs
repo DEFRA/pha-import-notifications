@@ -206,7 +206,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             );
         }
     );
-    builder.Services.AddTransient<ITradeImportsDataService, BtmsService>();
+    builder.Services.AddTransient<ITradeImportsDataService, TradeImportsDataApiService>();
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)

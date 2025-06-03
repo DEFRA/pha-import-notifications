@@ -14,14 +14,14 @@ using NSubstitute;
 
 namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services.Btms;
 
-public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
+public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
 {
     private readonly VerifySettings _settings;
 
-    public BtmsServiceTests(WireMockContextQueryParameterNoComma context)
+    public TradeImportsDataApiServiceTests(WireMockContextQueryParameterNoComma context)
         : base(context)
     {
-        Subject = new BtmsService(
+        Subject = new TradeImportsDataApiService(
             new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance),
             new TradeDataHttpClient(new HttpClient { BaseAddress = new Uri(context.Server.Urls[0]) }),
             Options
@@ -43,7 +43,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
                 PageSize = 100,
             }
         );
-    private BtmsService Subject { get; }
+    private TradeImportsDataApiService Subject { get; }
 
     private UpdatedImportNotificationRequest ValidRequest { get; } =
         new()
@@ -134,7 +134,7 @@ public class BtmsServiceTests : WireMockTestBase<WireMockContextQueryParameterNo
     public async Task GetImportNotificationUpdates_WhenNullDocument_ShouldFail()
     {
         var mockJsonApiClient = Substitute.For<IJsonApiClient>();
-        var subject = new BtmsService(mockJsonApiClient, null!, Options);
+        var subject = new TradeImportsDataApiService(mockJsonApiClient, null!, Options);
 
         var act = () => subject.GetImportNotificationUpdates([], DateTime.Now, DateTime.Now, CancellationToken.None);
 
