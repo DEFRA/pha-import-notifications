@@ -21,7 +21,7 @@ public class TradeDataApiServiceTests : WireMockTestBase<WireMockContextQueryPar
     public TradeDataApiServiceTests(WireMockContextQueryParameterNoComma context)
         : base(context)
     {
-        Subject = new BtmsService(
+        Subject = new TradeImportsDataApiService(
             new JsonApiClient(context.HttpClient, NullLogger<JsonApiClient>.Instance),
             new TradeDataHttpClient(new HttpClient { BaseAddress = new Uri(context.Server.Urls[0]) }),
             Options
@@ -42,7 +42,7 @@ public class TradeDataApiServiceTests : WireMockTestBase<WireMockContextQueryPar
                 PageSize = 100,
             }
         );
-    private BtmsService Subject { get; }
+    private TradeImportsDataApiService Subject { get; }
 
     [Theory]
     [InlineData(ChedReferenceNumbers.ChedA)]
