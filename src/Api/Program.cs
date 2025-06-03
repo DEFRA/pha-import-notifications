@@ -18,7 +18,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using ServiceCollectionExtensions = Defra.PhaImportNotifications.Api.JsonApi.ServiceCollectionExtensions;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
@@ -191,20 +190,6 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         )
         .AddHeaderPropagation();
 
-    ServiceCollectionExtensions.AddJsonApiClient(
-        builder.Services,
-        (sp, options) =>
-        {
-            var btmsOptions = sp.GetRequiredService<
-                IOptions<Defra.PhaImportNotifications.Api.Configuration.TradeImportsDataApiOptions>
-            >().Value;
-
-            options.BaseUrl = btmsOptions.BaseUrl;
-            options.BasicAuthCredential = Convert.ToBase64String(
-                Encoding.UTF8.GetBytes($"{btmsOptions.Username}:{btmsOptions.Password}")
-            );
-        }
-    );
     builder.Services.AddTransient<ITradeImportsDataApiService, TradeImportsDataApiService>();
 }
 
