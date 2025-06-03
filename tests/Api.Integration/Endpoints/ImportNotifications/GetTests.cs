@@ -32,7 +32,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
             Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA)
         );
 
-        // We mock depndencies with WireMock in order to test our APIs deserialisation
+        // We mock dependencies with WireMock in order to test our APIs deserialisation
         // process. Rather than just mocking the service response itself. This
         // is so we can compare what is stubbed from dependencies against our verified
         // response below. If there are extended changes to what is stubbed
