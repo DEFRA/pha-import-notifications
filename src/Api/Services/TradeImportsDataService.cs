@@ -1,19 +1,12 @@
 using System.Net;
 using System.Reflection;
-using Defra.PhaImportNotifications.Api.Configuration;
-using Defra.PhaImportNotifications.Api.JsonApi;
-using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.Contracts;
-using Microsoft.Extensions.Options;
-using Document = Defra.PhaImportNotifications.Api.JsonApi.Document;
+using Microsoft.AspNetCore.Http.Extensions;
 
-namespace Defra.PhaImportNotifications.Api.Services.Btms;
+namespace Defra.PhaImportNotifications.Api.Services;
 
-public class TradeImportsDataService(
-    IJsonApiClient jsonApiClient,
-    TradeImportsDataHttpClient tradeImportsDataHttpClient,
-    IOptions<BtmsOptions> btmsOptions
-) : ITradeImportsDataService
+public class TradeImportsDataApiService(TradeImportsDataApiHttpClient tradeImportsDataApiHttpClient)
+    : ITradeImportsDataApiService
 {
     private static readonly string[] importNotificationTypes = typeof(ImportPreNotification)
         .GetProperty(nameof(ImportPreNotification.ImportNotificationType))!
@@ -28,28 +21,22 @@ public class TradeImportsDataService(
         CancellationToken cancellationToken
     )
     {
-        IEnumerable<IExpression> bcpFilter = bcp.Length > 0 ? [new AnyExpression("_PointOfEntry", bcp)] : [];
-        var filters = bcpFilter.Concat(
+        QueryBuilder qb = new(
             [
-                new AnyExpression("importNotificationType", importNotificationTypes),
-                new NotExpression(new ComparisonExpression(ComparisonOperator.Equals, "status", "Draft")),
-                new ComparisonExpression(ComparisonOperator.GreaterOrEqual, "updatedEntity", from.ToString("O")),
-                new ComparisonExpression(ComparisonOperator.LessThan, "updatedEntity", to.ToString("O")),
+                .. importNotificationTypes.Select(t => new KeyValuePair<string, string>("type", t)),
+                .. bcp.Select(b => new KeyValuePair<string, string>("pointOfEntry", b)),
+                new KeyValuePair<string, string>("excludeStatus", "DRAFT"),
+                new KeyValuePair<string, string>("from", from.ToString("O")),
+                new KeyValuePair<string, string>("to", to.ToString("O")),
             ]
         );
+        var response =
+            await tradeImportsDataApiHttpClient.Client.GetFromJsonAsync<ImportPreNotificationUpdatesResponse>(
+                TradeImportsDataApiHttpClient.Endpoints.ImportNotificationUpdates() + qb,
+                cancellationToken
+            );
 
-        var filterExpression = new FilterExpression(LogicalOperator.And, filters);
-        var fields = new[] { new FieldExpression("import-notifications", ["updatedEntity", "referenceNumber"]) };
-
-        var document = await jsonApiClient.Get(
-            new RequestUri("api/import-notifications", filterExpression, fields, btmsOptions.Value.PageSize),
-            cancellationToken
-        );
-
-        if (document is null)
-            throw new InvalidOperationException("Result was null");
-
-        return await CollectImportNotificationUpdatesFromAllPages(document, cancellationToken);
+        return response?.ImportPreNotificationUpdates.Select(u => u.ToImportNotificationUpdate()) ?? [];
     }
 
     public async Task<ImportPreNotification?> GetImportNotification(
@@ -62,8 +49,8 @@ public class TradeImportsDataService(
         try
         {
             var importPreNotificationResponse =
-                await tradeImportsDataHttpClient.Client.GetFromJsonAsync<ImportPreNotificationResponse>(
-                    TradeImportsDataHttpClient.Endpoints.ImportNotification(chedReferenceNumber),
+                await tradeImportsDataApiHttpClient.Client.GetFromJsonAsync<ImportPreNotificationResponse>(
+                    TradeImportsDataApiHttpClient.Endpoints.ImportNotification(chedReferenceNumber),
                     cancellationToken: cancellationToken
                 );
 
@@ -74,13 +61,13 @@ public class TradeImportsDataService(
             return null;
         }
 
-        var getCustomsDeclarations = tradeImportsDataHttpClient.Client.GetFromJsonAsync<CustomsDeclarationsResponse>(
-            TradeImportsDataHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber),
+        var getCustomsDeclarations = tradeImportsDataApiHttpClient.Client.GetFromJsonAsync<CustomsDeclarationsResponse>(
+            TradeImportsDataApiHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber),
             cancellationToken: cancellationToken
         );
 
-        var getGoodsMovements = tradeImportsDataHttpClient.Client.GetFromJsonAsync<GmrsResponse>(
-            TradeImportsDataHttpClient.Endpoints.GoodsMovements(chedReferenceNumber),
+        var getGoodsMovements = tradeImportsDataApiHttpClient.Client.GetFromJsonAsync<GmrsResponse>(
+            TradeImportsDataApiHttpClient.Endpoints.GoodsMovements(chedReferenceNumber),
             cancellationToken: cancellationToken
         );
 
@@ -100,38 +87,5 @@ public class TradeImportsDataService(
         importNotification.GoodsMovements = goodsMovementsResponse!.Gmrs.Select(g => g.Gmr).ToList();
 
         return importNotification;
-    }
-
-    /// <summary>
-    /// This method is knowingly sequential currently. Given the behaviour of a JSON.API we need
-    /// to make a request to then be told if there are more results via the Next link. If there are,
-    /// we request the data, and so on. If we preempted the pagination and used the total results
-    /// number in the metadata of the response, we could retrieve data in parallel and improve
-    /// performance. This has not been done yet.
-    /// </summary>
-    /// <param name="document"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    private async Task<IList<ImportNotificationUpdate>> CollectImportNotificationUpdatesFromAllPages(
-        Document document,
-        CancellationToken cancellationToken
-    )
-    {
-        var results = new List<ImportNotificationUpdate>(document.GetDataAsList<ImportNotificationUpdate>());
-        var nextRequestUri = document.Links?.Next;
-
-        while (!string.IsNullOrEmpty(nextRequestUri))
-        {
-            var next = await jsonApiClient.Get(nextRequestUri, cancellationToken);
-
-            if (next is null)
-                throw new InvalidOperationException("Next page was null");
-
-            results.AddRange(next.GetDataAsList<ImportNotificationUpdate>());
-
-            nextRequestUri = next.Links?.Next;
-        }
-
-        return results;
     }
 }

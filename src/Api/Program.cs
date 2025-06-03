@@ -7,8 +7,6 @@ using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.OpenApi;
 using Defra.PhaImportNotifications.Api.Services;
-using Defra.PhaImportNotifications.Api.Services.Btms;
-using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
@@ -165,17 +163,16 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             options.Headers.Add(traceHeader);
     });
     builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions(!generatingOpenApiFromCli);
-    builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder
-        .Services.AddOptions<TradeImportsDataOptions>()
+        .Services.AddOptions<TradeImportsDataApiOptions>()
         .BindConfiguration("TradeImportsDataApi")
         .ValidateOptions(!generatingOpenApiFromCli);
 
     builder
-        .Services.AddHttpClient<TradeImportsDataHttpClient, TradeImportsDataHttpClient>(
+        .Services.AddHttpClient<TradeImportsDataApiHttpClient, TradeImportsDataApiHttpClient>(
             (sp, httpClient) =>
             {
-                var options = sp.GetRequiredService<IOptions<TradeImportsDataOptions>>().Value;
+                var options = sp.GetRequiredService<IOptions<TradeImportsDataApiOptions>>().Value;
 
                 httpClient.BaseAddress = new Uri(options.BaseUrl);
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -198,7 +195,9 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         builder.Services,
         (sp, options) =>
         {
-            var btmsOptions = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
+            var btmsOptions = sp.GetRequiredService<
+                IOptions<Defra.PhaImportNotifications.Api.Configuration.TradeImportsDataApiOptions>
+            >().Value;
 
             options.BaseUrl = btmsOptions.BaseUrl;
             options.BasicAuthCredential = Convert.ToBase64String(
@@ -206,7 +205,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             );
         }
     );
-    builder.Services.AddTransient<ITradeImportsDataService, TradeImportsDataService>();
+    builder.Services.AddTransient<ITradeImportsDataApiService, TradeImportsDataApiService>();
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)

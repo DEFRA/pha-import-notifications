@@ -63,7 +63,7 @@ At the moment this is a manual process:
 
 1. Fetch the `openapi.json` artifact from the latest build of [trade-imports-data-api](https://github.com/defra/trade-imports-data-api/actions/workflows/publish.yml?query=branch%3Amain)
 2. In the PHA API repository, extract and copy this to the tools/SchemaToCSharp folder
-3. Run `make update-tradeimportsdata-schema` in the root of the repository
+3. Run `make update-tradeimportsdataapi-schema` in the root of the repository
 4. Observe any changes that have been made and commit them
 
 ## Update Trade Imports Data Stub Scenarios
@@ -77,7 +77,7 @@ At the moment this is a manual process:
 3. Update the test so it will save the generated output
 4. Understand and act on any redaction work needed before committing anything
 5. Run the test and take the output from the generated `PhaScenarioTestsOutput` folder
-6. Replace the [TradeImportsDataStub/Scenarios folder](tests/TradeImportsDataStub/Scenarios) in this repo with the contents of the folder above
+6. Replace the [TradeImportsDataApiStub/Scenarios folder](tests/TradeImportsDataApiStub/Scenarios) in this repo with the contents of the folder above
 7. Do the same for the [Trade Imports Data Stub Scenarios](https://github.com/DEFRA/trade-imports-data-api-stub/tree/main/src/Stub/Scenarios)
 8. Observe any changes that have been made and commit them
 
@@ -85,7 +85,7 @@ At the moment this is a manual process:
 
 It is possible to configure the PHA API to query a deployed Trade Imports Data instance.
 
-Fill out the [TradeImportsDataOptions](./src/Api/Configuration/TradeImportsDataOptions.cs) configuration to point at a Trade Imports Data instance and then
+Fill out the [TradeImportsDataApiOptions](./src/Api/Configuration/TradeImportsDataApiOptions.cs) configuration to point at a Trade Imports Data instance and then
 perform a request to the PHA API whilst connected to the VPN.
 
 The `Username` and `Password` are Basic Auth credentials.

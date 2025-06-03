@@ -1,10 +1,10 @@
 using System.Net;
-using Defra.PhaImportNotifications.Tests.BtmsStub;
 using Defra.PhaImportNotifications.Tests.Helpers;
+using Defra.PhaImportNotifications.Tests.TradeImportsDataApiStub;
 using Microsoft.Extensions.Configuration;
 using WireMock.Server;
 using Xunit.Abstractions;
-using WireMockExtensions = Defra.PhaImportNotifications.Tests.BtmsStub.WireMockExtensions;
+using WireMockExtensions = Defra.PhaImportNotifications.Tests.TradeImportsDataApiStub.WireMockExtensions;
 
 namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNotifications;
 
@@ -147,11 +147,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     protected override void ConfigureHostConfiguration(IConfigurationBuilder config)
     {
         config.AddInMemoryCollection(
-            new Dictionary<string, string?>
-            {
-                { "Btms:BaseUrl", HttpClient.BaseAddress?.ToString() },
-                { "TradeImportsDataApi:BaseUrl", HttpClient.BaseAddress?.ToString() },
-            }
+            new Dictionary<string, string?> { { "TradeImportsDataApi:BaseUrl", HttpClient.BaseAddress?.ToString() } }
         );
 
         base.ConfigureHostConfiguration(config);
