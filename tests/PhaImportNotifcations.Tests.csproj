@@ -32,7 +32,4 @@
   <ItemGroup>
     <EmbeddedResource Include="TradeImportsDataApiStub\Scenarios\*.json" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="TradeImportsDataApiStub\BtmsScenarios\*.json" />
-  </ItemGroup>
 </Project>

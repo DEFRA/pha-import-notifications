@@ -32,14 +32,14 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
             Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA)
         );
 
-        // We mock BTMS with WireMock in order to test our APIs deserialisation
+        // We mock depndencies with WireMock in order to test our APIs deserialisation
         // process. Rather than just mocking the service response itself. This
-        // is so we can compare what is stubbed from BTMS against our verified
+        // is so we can compare what is stubbed from dependencies against our verified
         // response below. If there are extended changes to what is stubbed
         // then it should be compared against our response below to ensure no
         // unexpected differences are introduced.
 
-        // This test can also be used to compare what we are stubbing for BTMS
+        // This test can also be used to compare what we are stubbing
         // against what our API gives us. It can then be discussed.
 
         await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
