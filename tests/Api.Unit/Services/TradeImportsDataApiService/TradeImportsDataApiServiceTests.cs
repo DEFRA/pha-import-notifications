@@ -4,7 +4,6 @@ using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Tests.Helpers;
 using Defra.PhaImportNotifications.Tests.TradeImportsDataApiStub;
-using WireMock.Matchers;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using ChedReferenceNumbers = Defra.PhaImportNotifications.Tests.Helpers.ChedReferenceNumbers;

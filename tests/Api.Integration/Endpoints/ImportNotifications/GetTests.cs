@@ -41,8 +41,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
 
         // This test can also be used to compare what we are stubbing
         // against what our API gives us. It can then be discussed.
-
-        await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
+        await VerifyJson(response, _verifySettings);
     }
 
     [Theory]
@@ -55,11 +54,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
 
         var response = await client.GetStringAsync(Helpers.Endpoints.ImportNotifications.Get(chedReferenceNumber));
 
-        await VerifyJson(response)
-            .UseParameters(chedReferenceNumber)
-            .UseStrictJson()
-            .DontScrubGuids()
-            .DontScrubDateTimes();
+        await VerifyJson(response, _verifySettings).UseParameters(chedReferenceNumber);
     }
 
     public class AllStubChedReferenceNumbers : TheoryData<string>

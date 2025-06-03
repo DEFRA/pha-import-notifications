@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Security.Cryptography;
+using Argon;
 using Defra.PhaImportNotifications.Api.Authentication;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
@@ -16,11 +17,20 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
 {
     private readonly ApiWebApplicationFactory _factory;
 
+    protected readonly VerifySettings _verifySettings;
+
     protected EndpointTestBase(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
     {
         _factory = factory;
         _factory.OutputHelper = outputHelper;
         _factory.ConfigureHostConfiguration = ConfigureHostConfiguration;
+
+        _verifySettings = new VerifySettings();
+        _verifySettings.UseStrictJson();
+        _verifySettings.DontScrubGuids();
+        _verifySettings.DontScrubDateTimes();
+        _verifySettings.AddExtraSettings(settings => settings.DefaultValueHandling = DefaultValueHandling.Include);
+        _verifySettings.UseDirectory("Verified");
     }
 
     /// <summary>

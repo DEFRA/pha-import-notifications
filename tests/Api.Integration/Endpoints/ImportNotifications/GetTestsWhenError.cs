@@ -41,7 +41,7 @@ public class GetTestsWhenError : EndpointTestBase, IClassFixture<WireMockContext
 
         response.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
 
-        await VerifyJson(await response.Content.ReadAsStringAsync()).UseStrictJson().ScrubMember("traceId");
+        await VerifyJson(await response.Content.ReadAsStringAsync(), _verifySettings).ScrubMember("traceId");
     }
 
     protected override void ConfigureHostConfiguration(IConfigurationBuilder config)

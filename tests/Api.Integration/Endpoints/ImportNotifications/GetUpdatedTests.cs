@@ -36,7 +36,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         );
 
         var response = await client.GetStringAsync(url);
-        await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
+        await VerifyJson(response, _verifySettings);
     }
 
     [Theory]
@@ -56,7 +56,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
 
-        await VerifyJson(content).UseParameters(name).UseStrictJson().ScrubMember("traceId");
+        await VerifyJson(content, _verifySettings).UseParameters(name).ScrubMember("traceId");
     }
 
     [Fact]
@@ -72,7 +72,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
 
-        await VerifyJson(content).UseStrictJson().ScrubMember("traceId");
+        await VerifyJson(content, _verifySettings).ScrubMember("traceId");
     }
 
     [Fact]
@@ -87,7 +87,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
         var response = await client.GetStringAsync(url);
 
-        await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
+        await VerifyJson(response, _verifySettings);
     }
 
     [Fact]
