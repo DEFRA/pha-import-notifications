@@ -27,6 +27,8 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
         _settings.UseDirectory("Verified");
     }
 
+    private readonly string[] _importNotificationTypes = ["type1", "type2", "type3"];
+
     private UpdatedImportNotificationRequest ValidRequest { get; } =
         new()
         {
@@ -48,7 +50,7 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
                 .WithParam("from", "2024-12-12T13:10:30.0000000Z")
                 .WithParam("to", "2024-12-12T13:40:30.0000000Z")
                 .WithParam("excludeStatus", "DRAFT")
-                .WithParam("type", "CVEDA", "CVEDP", "CHEDPP", "CED");
+                .WithParam("type", "type1", "type2", "type3");
             if (bcps.Length > 0)
             {
                 builder.WithParam("pointOfEntry", "bcp1", "bcp2");
@@ -57,6 +59,7 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
         });
 
         var result = await Subject.GetImportNotificationUpdates(
+            _importNotificationTypes,
             bcps,
             ValidRequest.From,
             ValidRequest.To,
@@ -74,7 +77,14 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
     {
         WireMock.StubImportNotificationUpdates(shouldFail: true);
 
-        var act = () => Subject.GetImportNotificationUpdates([], DateTime.Now, DateTime.Now, CancellationToken.None);
+        var act = () =>
+            Subject.GetImportNotificationUpdates(
+                _importNotificationTypes,
+                [],
+                DateTime.Now,
+                DateTime.Now,
+                CancellationToken.None
+            );
 
         await act.Should().ThrowAsync<HttpRequestException>();
     }

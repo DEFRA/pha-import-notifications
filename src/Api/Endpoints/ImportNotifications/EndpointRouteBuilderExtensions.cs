@@ -1,14 +1,24 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.Services;
+using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
 public static class EndpointRouteBuilderExtensions
 {
+    private static readonly string[] s_importNotificationTypes =
+    [
+        .. typeof(ImportPreNotification)
+            .GetProperty(nameof(ImportPreNotification.ImportNotificationType))!
+            .GetCustomAttributes<ExampleValueAttribute>()
+            .Select(v => v.Value),
+    ];
+
     public static void MapImportNotificationsEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("import-notifications", GetUpdated)
@@ -54,6 +64,7 @@ public static class EndpointRouteBuilderExtensions
             return Results.Forbid();
 
         var notifications = await tradeImportsDataApiService.GetImportNotificationUpdates(
+            s_importNotificationTypes,
             bcps,
             request.From,
             request.To,

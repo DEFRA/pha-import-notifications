@@ -1,5 +1,4 @@
 using System.Net;
-using System.Reflection;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Http.Extensions;
 
@@ -8,13 +7,8 @@ namespace Defra.PhaImportNotifications.Api.Services;
 public class TradeImportsDataApiService(TradeImportsDataApiHttpClient tradeImportsDataApiHttpClient)
     : ITradeImportsDataApiService
 {
-    private static readonly string[] importNotificationTypes = typeof(ImportPreNotification)
-        .GetProperty(nameof(ImportPreNotification.ImportNotificationType))!
-        .GetCustomAttributes<ExampleValueAttribute>()
-        .Select(v => v.Value)
-        .ToArray();
-
     public async Task<IEnumerable<ImportNotificationUpdate>> GetImportNotificationUpdates(
+        string[] importNotificationTypes,
         string[] bcp,
         DateTime from,
         DateTime to,
