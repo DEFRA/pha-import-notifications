@@ -1,5 +1,5 @@
 using System.Net;
-using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
+using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Tests.Helpers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +32,7 @@ public class GetTestsWhenError : EndpointTestBase, IClassFixture<WireMockContext
             .Given(
                 Request
                     .Create()
-                    .WithPath(TradeDataHttpClient.Endpoints.ImportNotification(ChedReferenceNumbers.ChedA))
+                    .WithPath(TradeImportsDataApiHttpClient.Endpoints.ImportNotification(ChedReferenceNumbers.ChedA))
                     .UsingGet()
             )
             .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.InternalServerError));
@@ -41,13 +41,13 @@ public class GetTestsWhenError : EndpointTestBase, IClassFixture<WireMockContext
 
         response.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
 
-        await VerifyJson(await response.Content.ReadAsStringAsync()).UseStrictJson().ScrubMember("traceId");
+        await VerifyJson(await response.Content.ReadAsStringAsync(), _verifySettings).ScrubMember("traceId");
     }
 
     protected override void ConfigureHostConfiguration(IConfigurationBuilder config)
     {
         config.AddInMemoryCollection(
-            new Dictionary<string, string?> { { "Btms:BaseUrl", HttpClient.BaseAddress?.ToString() } }
+            new Dictionary<string, string?> { { "TradeImportsDataApi:BaseUrl", HttpClient.BaseAddress?.ToString() } }
         );
 
         base.ConfigureHostConfiguration(config);

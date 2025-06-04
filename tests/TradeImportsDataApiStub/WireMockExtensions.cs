@@ -1,12 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Nodes;
-using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
+using Defra.PhaImportNotifications.Api.Services;
 using Microsoft.AspNetCore.Http;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 
-namespace Defra.PhaImportNotifications.Tests.BtmsStub;
+namespace Defra.PhaImportNotifications.Tests.TradeImportsDataApiStub;
 
 [ExcludeFromCodeCoverage]
 public static class WireMockExtensions
@@ -41,7 +41,7 @@ public static class WireMockExtensions
 
         var request = Request
             .Create()
-            .WithPath(TradeDataHttpClient.Endpoints.ImportNotification(chedReferenceNumber))
+            .WithPath(TradeImportsDataApiHttpClient.Endpoints.ImportNotification(chedReferenceNumber))
             .UsingGet();
 
         if (transformRequest is not null)
@@ -61,7 +61,7 @@ public static class WireMockExtensions
             .Given(
                 Request
                     .Create()
-                    .WithPath(TradeDataHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber))
+                    .WithPath(TradeImportsDataApiHttpClient.Endpoints.CustomsDeclarations(chedReferenceNumber))
                     .UsingGet()
             )
             .RespondWith(Response.Create().WithBody(responseBody).WithStatusCode(StatusCodes.Status200OK));
@@ -73,7 +73,10 @@ public static class WireMockExtensions
 
         wireMock
             .Given(
-                Request.Create().WithPath(TradeDataHttpClient.Endpoints.GoodsMovements(chedReferenceNumber)).UsingGet()
+                Request
+                    .Create()
+                    .WithPath(TradeImportsDataApiHttpClient.Endpoints.GoodsMovements(chedReferenceNumber))
+                    .UsingGet()
             )
             .RespondWith(Response.Create().WithBody(responseBody).WithStatusCode(StatusCodes.Status200OK));
     }
@@ -91,7 +94,7 @@ public static class WireMockExtensions
 
         if (!shouldFail)
         {
-            var body = GetUpdatesBody("btms-import-notification-updates.json");
+            var body = GetUpdatesBody("_import-pre-notifications-updates.json");
 
             if (transformBody != null)
             {
@@ -105,7 +108,7 @@ public static class WireMockExtensions
             response = response.WithBody(body);
         }
 
-        var request = Request.Create().WithPath("/api/import-notifications").UsingGet();
+        var request = Request.Create().WithPath("/import-pre-notification-updates").UsingGet();
 
         if (transformRequest is not null)
             request = transformRequest(request);
@@ -116,18 +119,14 @@ public static class WireMockExtensions
     public static IEnumerable<string> GetAllStubChedReferenceNumbers() =>
         Anchor
             .Assembly.GetManifestResourceNames()
-            .Where(x => x.StartsWith($"{Anchor.Namespace}.TradeDataApiScenarios._import-pre-notifications_"))
-            .Select(x =>
-                x.Replace($"{Anchor.Namespace}.TradeDataApiScenarios._import-pre-notifications_", "")
-                    .Replace(".json", "")
-            )
+            .Where(x => x.StartsWith($"{Anchor.Namespace}.Scenarios._import-pre-notifications_"))
+            .Select(x => x.Replace($"{Anchor.Namespace}.Scenarios._import-pre-notifications_", "").Replace(".json", ""))
             .Where(x => char.IsDigit(x.Last()));
 
     private static string GetUpdatesBody(string fileName) =>
         GetManifestResource($"{Anchor.Namespace}.Scenarios.{fileName}");
 
-    private static string GetBody(string fileName) =>
-        GetManifestResource($"{Anchor.Namespace}.TradeDataApiScenarios.{fileName}");
+    private static string GetBody(string fileName) => GetManifestResource($"{Anchor.Namespace}.Scenarios.{fileName}");
 
     private static string GetManifestResource(string name)
     {

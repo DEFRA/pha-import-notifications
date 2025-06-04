@@ -1,9 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Defra.PhaImportNotifications.Api.Configuration;
 
-public class BtmsOptions
+public class TradeImportsDataApiOptions
 {
     [Required]
     public required string BaseUrl { get; init; }

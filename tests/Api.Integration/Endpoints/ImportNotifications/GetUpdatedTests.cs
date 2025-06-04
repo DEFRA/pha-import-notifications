@@ -13,7 +13,10 @@ namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNot
 public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
     : EndpointTestBase(factory, outputHelper)
 {
-    private ITradeImportsDataService MockBtmsService { get; } = Substitute.For<ITradeImportsDataService>();
+    private readonly string[] _importNotificationTypes = ["CVEDA", "CVEDP", "CHEDPP", "CED"];
+
+    private ITradeImportsDataApiService MockTradeImportsDataApiService { get; } =
+        Substitute.For<ITradeImportsDataApiService>();
 
     [Fact]
     public async Task Get_ShouldSucceed()
@@ -26,7 +29,12 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
         };
 
-        SetUpMockBtmsForSuccess(validRequest.Bcp, validRequest.From, validRequest.To);
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _importNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To
+        );
 
         var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(
             validRequest.Bcp,
@@ -35,7 +43,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         );
 
         var response = await client.GetStringAsync(url);
-        await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
+        await VerifyJson(response, _verifySettings);
     }
 
     [Theory]
@@ -55,7 +63,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
 
-        await VerifyJson(content).UseParameters(name).UseStrictJson().ScrubMember("traceId");
+        await VerifyJson(content, _verifySettings).UseParameters(name).ScrubMember("traceId");
     }
 
     [Fact]
@@ -71,7 +79,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
 
-        await VerifyJson(content).UseStrictJson().ScrubMember("traceId");
+        await VerifyJson(content, _verifySettings).ScrubMember("traceId");
     }
 
     [Fact]
@@ -81,12 +89,12 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var from = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc);
         var to = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc);
 
-        SetUpMockBtmsForSuccess(bcps: [], from, to);
+        SetUpMockTradeImportsDataApiServiceForSuccess(_importNotificationTypes, bcps: [], from, to);
 
         var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
         var response = await client.GetStringAsync(url);
 
-        await VerifyJson(response).UseStrictJson().DontScrubGuids().DontScrubDateTimes();
+        await VerifyJson(response, _verifySettings);
     }
 
     [Fact]
@@ -129,13 +137,19 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         base.ConfigureTestServices(services);
 
-        services.AddTransient<ITradeImportsDataService>(_ => MockBtmsService);
+        services.AddTransient<ITradeImportsDataApiService>(_ => MockTradeImportsDataApiService);
     }
 
-    private void SetUpMockBtmsForSuccess(string[] bcps, DateTime from, DateTime to)
+    private void SetUpMockTradeImportsDataApiServiceForSuccess(
+        string[] importNotificationTypes,
+        string[] bcps,
+        DateTime from,
+        DateTime to
+    )
     {
-        MockBtmsService
+        MockTradeImportsDataApiService
             .GetImportNotificationUpdates(
+                Arg.Is<string[]>(x => x.SequenceEqual(importNotificationTypes)),
                 Arg.Is<string[]>(x => x.SequenceEqual(bcps)),
                 from,
                 to,

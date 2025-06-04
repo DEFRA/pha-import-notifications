@@ -1,15 +1,24 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 using Defra.PhaImportNotifications.Api.Endpoints.Validation;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.Services;
-using Defra.PhaImportNotifications.Api.Services.Btms;
+using Defra.PhaImportNotifications.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
 public static class EndpointRouteBuilderExtensions
 {
+    private static readonly string[] s_importNotificationTypes =
+    [
+        .. typeof(ImportPreNotification)
+            .GetProperty(nameof(ImportPreNotification.ImportNotificationType))!
+            .GetCustomAttributes<ExampleValueAttribute>()
+            .Select(v => v.Value),
+    ];
+
     public static void MapImportNotificationsEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapGet("import-notifications", GetUpdated)
@@ -39,13 +48,13 @@ public static class EndpointRouteBuilderExtensions
     }
 
     /// <param name="request">Request</param>
-    /// <param name="btmsService">BTMS Service</param>
+    /// <param name="tradeImportsDataApiService">Trade Imports Data API Service</param>
     /// <param name="httpContext">HTTP Context</param>
     /// <param name="cancellationToken">Cancellation Token</param>
     [HttpGet]
     private static async Task<IResult> GetUpdated(
         [AsParameters] UpdatedImportNotificationRequest request,
-        [FromServices] ITradeImportsDataService btmsService,
+        [FromServices] ITradeImportsDataApiService tradeImportsDataApiService,
         HttpContext httpContext,
         CancellationToken cancellationToken
     )
@@ -54,7 +63,8 @@ public static class EndpointRouteBuilderExtensions
         if (!httpContext.User.ClientHasAccessTo(bcps.ToList()))
             return Results.Forbid();
 
-        var notifications = await btmsService.GetImportNotificationUpdates(
+        var notifications = await tradeImportsDataApiService.GetImportNotificationUpdates(
+            s_importNotificationTypes,
             bcps,
             request.From,
             request.To,
@@ -74,7 +84,7 @@ public static class EndpointRouteBuilderExtensions
     }
 
     /// <param name="chedReferenceNumber" example="CHEDA.GB.2024.1020304">CHED Reference Number</param>
-    /// <param name="btmsService">BTMS Service</param>
+    /// <param name="tradeImportsDataApiService">Trade Imports Data API Service</param>
     /// <param name="httpContext">HTTP Context</param>
     /// <param name="cancellationToken">Cancellation Token</param>
     [HttpGet]
@@ -83,12 +93,15 @@ public static class EndpointRouteBuilderExtensions
         [Description("CHED Reference Number")]
         [RegularExpression($"^{Regexes.ChedReferenceNumber}$")]
             string chedReferenceNumber,
-        [FromServices] ITradeImportsDataService btmsService,
+        [FromServices] ITradeImportsDataApiService tradeImportsDataApiService,
         HttpContext httpContext,
         CancellationToken cancellationToken
     )
     {
-        var notification = await btmsService.GetImportNotification(chedReferenceNumber, cancellationToken);
+        var notification = await tradeImportsDataApiService.GetImportNotification(
+            chedReferenceNumber,
+            cancellationToken
+        );
         var bcp = notification?.PartOne?.PointOfEntry;
 
         if (bcp is null)

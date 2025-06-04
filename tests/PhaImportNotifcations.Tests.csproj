@@ -30,9 +30,6 @@
     <ProjectReference Include="..\src\Api\Api.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="BtmsStub\Scenarios\*.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="BtmsStub\TradeDataApiScenarios\*.json" />
+    <EmbeddedResource Include="TradeImportsDataApiStub\Scenarios\*.json" />
   </ItemGroup>
 </Project>

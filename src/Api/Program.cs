@@ -7,8 +7,6 @@ using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.OpenApi;
 using Defra.PhaImportNotifications.Api.Services;
-using Defra.PhaImportNotifications.Api.Services.Btms;
-using Defra.PhaImportNotifications.Api.TradeImportsDataApi;
 using Defra.PhaImportNotifications.Api.Utils;
 using Defra.PhaImportNotifications.Api.Utils.Logging;
 using Defra.PhaImportNotifications.Contracts;
@@ -20,7 +18,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using ServiceCollectionExtensions = Defra.PhaImportNotifications.Api.JsonApi.ServiceCollectionExtensions;
 
 Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
@@ -165,14 +162,13 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             options.Headers.Add(traceHeader);
     });
     builder.Services.AddOptions<AclOptions>().BindConfiguration("Acl").ValidateOptions(!generatingOpenApiFromCli);
-    builder.Services.AddOptions<BtmsOptions>().BindConfiguration("Btms").ValidateOptions(!generatingOpenApiFromCli);
     builder
         .Services.AddOptions<TradeImportsDataApiOptions>()
         .BindConfiguration("TradeImportsDataApi")
         .ValidateOptions(!generatingOpenApiFromCli);
 
     builder
-        .Services.AddHttpClient<TradeDataHttpClient, TradeDataHttpClient>(
+        .Services.AddHttpClient<TradeImportsDataApiHttpClient, TradeImportsDataApiHttpClient>(
             (sp, httpClient) =>
             {
                 var options = sp.GetRequiredService<IOptions<TradeImportsDataApiOptions>>().Value;
@@ -194,19 +190,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         )
         .AddHeaderPropagation();
 
-    ServiceCollectionExtensions.AddJsonApiClient(
-        builder.Services,
-        (sp, options) =>
-        {
-            var btmsOptions = sp.GetRequiredService<IOptions<BtmsOptions>>().Value;
-
-            options.BaseUrl = btmsOptions.BaseUrl;
-            options.BasicAuthCredential = Convert.ToBase64String(
-                Encoding.UTF8.GetBytes($"{btmsOptions.Username}:{btmsOptions.Password}")
-            );
-        }
-    );
-    builder.Services.AddTransient<ITradeImportsDataService, TradeImportsDataApiService>();
+    builder.Services.AddTransient<ITradeImportsDataApiService, TradeImportsDataApiService>();
 }
 
 static WebApplication BuildWebApplication(WebApplicationBuilder builder)
