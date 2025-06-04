@@ -21,15 +21,14 @@ public class TradeImportsDataApiService(TradeImportsDataApiHttpClient tradeImpor
         CancellationToken cancellationToken
     )
     {
-        QueryBuilder qb = new(
-            [
-                .. importNotificationTypes.Select(t => new KeyValuePair<string, string>("type", t)),
-                .. bcp.Select(b => new KeyValuePair<string, string>("pointOfEntry", b)),
-                new KeyValuePair<string, string>("excludeStatus", "DRAFT"),
-                new KeyValuePair<string, string>("from", from.ToString("O")),
-                new KeyValuePair<string, string>("to", to.ToString("O")),
-            ]
-        );
+        var qb = new QueryBuilder()
+        {
+            { "type", importNotificationTypes },
+            { "pointOfEntry", bcp },
+            { "excludeStatus", "DRAFT" },
+            { "from", from.ToString("O") },
+            { "to", to.ToString("O") },
+        };
         var response =
             await tradeImportsDataApiHttpClient.Client.GetFromJsonAsync<ImportPreNotificationUpdatesResponse>(
                 TradeImportsDataApiHttpClient.Endpoints.ImportNotificationUpdates() + qb,
