@@ -200,7 +200,7 @@
       ConsignedCountry: NZ,
       AnimalsCertifiedAs: null,
       CommodityIntendedFor: null,
-      CommodityComplement: [
+      CommodityComplements: [
         {
           UniqueComplementId: null,
           CommodityDescription: Boneless,
@@ -222,11 +222,11 @@
           IsCdsMatched: null
         }
       ],
-      ComplementParameterSet: [
+      ComplementParameterSets: [
         {
-          UniqueComplementID: 99166589-2098-43d4-9b3a-df296587fcc2,
-          ComplementID: 1,
-          SpeciesID: 167291,
+          UniqueComplementId: 99166589-2098-43d4-9b3a-df296587fcc2,
+          ComplementId: 1,
+          SpeciesId: 167291,
           KeyDataPair: [
             {
               Key: netweight,

@@ -46,8 +46,8 @@
         ]
       },
       "clearanceDecision": {
-        "externalCorrelationId": null,
-        "timestamp": "2025-02-21T13:28:41.129Z",
+        "correlationId": "1368588",
+        "created": "2025-02-21T13:28:41.129Z",
         "externalVersionNumber": 1,
         "decisionNumber": 1,
         "sourceVersion": "CHEDP.GB.2024.5328437:291224100535-CHEDP.GB.2024.5328437:291224100535:CR-VERSION-1",
@@ -275,7 +275,7 @@
       "consignedCountry": "PH",
       "animalsCertifiedAs": null,
       "commodityIntendedFor": null,
-      "commodityComplement": [
+      "commodityComplements": [
         {
           "uniqueComplementId": null,
           "commodityDescription": "other",
@@ -297,11 +297,11 @@
           "isCdsMatched": false
         }
       ],
-      "complementParameterSet": [
+      "complementParameterSets": [
         {
-          "uniqueComplementID": "d1aa9e66-3d4b-4fed-a973-de0cd63a2724",
-          "complementID": 1,
-          "speciesID": "494252",
+          "uniqueComplementId": "d1aa9e66-3d4b-4fed-a973-de0cd63a2724",
+          "complementId": 1,
+          "speciesId": "494252",
           "keyDataPair": [
             {
               "key": "netweight",

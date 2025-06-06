@@ -243,7 +243,7 @@
         "consignedCountry": "PL",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": null,
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Other than 16041210; 16041291",
@@ -325,11 +325,11 @@
             "isCdsMatched": null
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "0b4290cf-d015-43ee-a0db-f8a221255d80",
-            "complementID": 1,
-            "speciesID": null,
+            "uniqueComplementId": "0b4290cf-d015-43ee-a0db-f8a221255d80",
+            "complementId": 1,
+            "speciesId": null,
             "keyDataPair": [
               {
                 "key": "netweight",
@@ -356,9 +356,9 @@
             "identifiers": null
           },
           {
-            "uniqueComplementID": "b57cfabc-a65e-431f-b52b-b124e262691c",
-            "complementID": 1,
-            "speciesID": "486648",
+            "uniqueComplementId": "b57cfabc-a65e-431f-b52b-b124e262691c",
+            "complementId": 1,
+            "speciesId": "486648",
             "keyDataPair": [
               {
                 "key": "netweight",
@@ -385,9 +385,9 @@
             "identifiers": null
           },
           {
-            "uniqueComplementID": "33a6de7d-b687-4cf7-ba0b-b95867a69072",
-            "complementID": 2,
-            "speciesID": "485376",
+            "uniqueComplementId": "33a6de7d-b687-4cf7-ba0b-b95867a69072",
+            "complementId": 2,
+            "speciesId": "485376",
             "keyDataPair": [
               {
                 "key": "netweight",
@@ -414,9 +414,9 @@
             "identifiers": null
           },
           {
-            "uniqueComplementID": "c537e8f9-9cf9-4570-bfe0-e2deee13af5d",
-            "complementID": 3,
-            "speciesID": "489918",
+            "uniqueComplementId": "c537e8f9-9cf9-4570-bfe0-e2deee13af5d",
+            "complementId": 3,
+            "speciesId": "489918",
             "keyDataPair": [
               {
                 "key": "netweight",

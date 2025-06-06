@@ -38,8 +38,8 @@
         ]
       },
       "clearanceDecision": {
-        "externalCorrelationId": null,
-        "timestamp": "2025-02-21T13:28:41.129Z",
+        "correlationId": "1315539",
+        "created": "2025-02-21T13:28:41.129Z",
         "externalVersionNumber": 1,
         "decisionNumber": 1,
         "sourceVersion": "CHEDP.GB.2024.5137241:161124053356:CR-VERSION-1",
@@ -97,8 +97,8 @@
         ]
       },
       "clearanceDecision": {
-        "externalCorrelationId": null,
-        "timestamp": "2025-02-21T13:28:41.129Z",
+        "correlationId": "1315561",
+        "created": "2025-02-21T13:28:41.129Z",
         "externalVersionNumber": 1,
         "decisionNumber": 1,
         "sourceVersion": "CHEDP.GB.2024.5137241:161124053356:CR-VERSION-1",
@@ -308,7 +308,7 @@
       "consignedCountry": "BR",
       "animalsCertifiedAs": null,
       "commodityIntendedFor": null,
-      "commodityComplement": [
+      "commodityComplements": [
         {
           "uniqueComplementId": null,
           "commodityDescription": "Of fowls of the species Gallus domesticus",
@@ -330,11 +330,11 @@
           "isCdsMatched": null
         }
       ],
-      "complementParameterSet": [
+      "complementParameterSets": [
         {
-          "uniqueComplementID": "9e979d90-2608-48a0-be67-7e74016f04a3",
-          "complementID": 1,
-          "speciesID": "256860",
+          "uniqueComplementId": "9e979d90-2608-48a0-be67-7e74016f04a3",
+          "complementId": 1,
+          "speciesId": "256860",
           "keyDataPair": [
             {
               "key": "netweight",

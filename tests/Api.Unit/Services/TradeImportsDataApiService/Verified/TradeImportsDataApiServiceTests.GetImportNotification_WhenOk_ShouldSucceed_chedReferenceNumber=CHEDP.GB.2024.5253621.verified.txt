@@ -48,8 +48,8 @@
         ]
       },
       ClearanceDecision: {
-        ExternalCorrelationId: null,
-        Timestamp: 2025-02-21 13:28:41.129 Utc,
+        CorrelationId: 1328640,
+        Created: 2025-02-21 13:28:41.129 Utc,
         ExternalVersionNumber: 2,
         DecisionNumber: 1,
         SourceVersion: CHEDP.GB.2024.5253621:201224031253:CR-VERSION-2,
@@ -279,7 +279,7 @@
       ConsignedCountry: HN,
       AnimalsCertifiedAs: null,
       CommodityIntendedFor: null,
-      CommodityComplement: [
+      CommodityComplements: [
         {
           UniqueComplementId: null,
           CommodityDescription: Shrimps of the genus Penaeus,
@@ -301,11 +301,11 @@
           IsCdsMatched: true
         }
       ],
-      ComplementParameterSet: [
+      ComplementParameterSets: [
         {
-          UniqueComplementID: cf0d571d-bc1d-4084-84b2-937342d7d93c,
-          ComplementID: 1,
-          SpeciesID: 346776,
+          UniqueComplementId: cf0d571d-bc1d-4084-84b2-937342d7d93c,
+          ComplementId: 1,
+          SpeciesId: 346776,
           KeyDataPair: [
             {
               Key: netweight,

@@ -167,7 +167,7 @@
       "consignedCountry": null,
       "animalsCertifiedAs": "Other",
       "commodityIntendedFor": null,
-      "commodityComplement": [
+      "commodityComplements": [
         {
           "uniqueComplementId": null,
           "commodityDescription": "Other",
@@ -189,11 +189,11 @@
           "isCdsMatched": null
         }
       ],
-      "complementParameterSet": [
+      "complementParameterSets": [
         {
-          "uniqueComplementID": "a161bb2b-096c-4500-bda5-d471ee47fae3",
-          "complementID": 1,
-          "speciesID": "129518",
+          "uniqueComplementId": "a161bb2b-096c-4500-bda5-d471ee47fae3",
+          "complementId": 1,
+          "speciesId": "129518",
           "keyDataPair": [
             {
               "key": "number_package",

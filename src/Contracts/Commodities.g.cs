@@ -77,11 +77,11 @@ public partial record Commodities
     [Description("What the commodity is intended for. Possible values taken from IPAFFS schema version 17.5.")]
     public string? CommodityIntendedFor { get; init; }
 
-    [JsonPropertyName("commodityComplement")]
+    [JsonPropertyName("commodityComplements")]
     [Description("Holder for additional parameters of a commodity")]
-    public List<CommodityComplement>? CommodityComplement { get; init; }
+    public List<CommodityComplements>? CommodityComplements { get; init; }
 
-    [JsonPropertyName("complementParameterSet")]
+    [JsonPropertyName("complementParameterSets")]
     [Description("Additional data for commodityComplement part containing such data as net weight")]
-    public List<ComplementParameterSet>? ComplementParameterSet { get; init; }
+    public List<ComplementParameterSets>? ComplementParameterSets { get; init; }
 }

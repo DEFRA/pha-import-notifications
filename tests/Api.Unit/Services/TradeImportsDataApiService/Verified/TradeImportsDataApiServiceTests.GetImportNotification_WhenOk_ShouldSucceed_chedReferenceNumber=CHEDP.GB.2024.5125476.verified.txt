@@ -48,8 +48,8 @@
         ]
       },
       ClearanceDecision: {
-        ExternalCorrelationId: null,
-        Timestamp: 2025-02-21 13:28:41.129 Utc,
+        CorrelationId: 1328641,
+        Created: 2025-02-21 13:28:41.129 Utc,
         ExternalVersionNumber: 1,
         DecisionNumber: 1,
         SourceVersion: CHEDP.GB.2024.5125476:111124035243:CR-VERSION-1,
@@ -356,7 +356,7 @@
       ConsignedCountry: IE,
       AnimalsCertifiedAs: null,
       CommodityIntendedFor: null,
-      CommodityComplement: [
+      CommodityComplements: [
         {
           UniqueComplementId: null,
           CommodityDescription: Boneless,
@@ -438,11 +438,11 @@
           IsCdsMatched: null
         }
       ],
-      ComplementParameterSet: [
+      ComplementParameterSets: [
         {
-          UniqueComplementID: 5b7a5c47-244f-43ad-a8f8-a7dd4b894b32,
-          ComplementID: 2,
-          SpeciesID: 25682,
+          UniqueComplementId: 5b7a5c47-244f-43ad-a8f8-a7dd4b894b32,
+          ComplementId: 2,
+          SpeciesId: 25682,
           KeyDataPair: [
             {
               Key: netweight,
@@ -461,9 +461,9 @@
           Identifiers: null
         },
         {
-          UniqueComplementID: 612c274a-1d60-41cd-bda7-d43731041345,
-          ComplementID: 4,
-          SpeciesID: 25743,
+          UniqueComplementId: 612c274a-1d60-41cd-bda7-d43731041345,
+          ComplementId: 4,
+          SpeciesId: 25743,
           KeyDataPair: [
             {
               Key: netweight,
@@ -482,9 +482,9 @@
           Identifiers: null
         },
         {
-          UniqueComplementID: 7dab74e0-fe60-410b-84fe-bbfa24238fb9,
-          ComplementID: 5,
-          SpeciesID: 21152,
+          UniqueComplementId: 7dab74e0-fe60-410b-84fe-bbfa24238fb9,
+          ComplementId: 5,
+          SpeciesId: 21152,
           KeyDataPair: [
             {
               Key: netweight,
@@ -503,9 +503,9 @@
           Identifiers: null
         },
         {
-          UniqueComplementID: a1d8c0b4-171a-4699-839f-d89fb8a8ca31,
-          ComplementID: 6,
-          SpeciesID: 25678,
+          UniqueComplementId: a1d8c0b4-171a-4699-839f-d89fb8a8ca31,
+          ComplementId: 6,
+          SpeciesId: 25678,
           KeyDataPair: [
             {
               Key: netweight,

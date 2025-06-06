@@ -48,8 +48,8 @@
         ]
       },
       "clearanceDecision": {
-        "externalCorrelationId": null,
-        "timestamp": "2025-02-21T13:28:41.129Z",
+        "correlationId": "1358673",
+        "created": "2025-02-21T13:28:41.129Z",
         "externalVersionNumber": 1,
         "decisionNumber": 1,
         "sourceVersion": "CHEDD.GB.2024.5019877:161224030527:CR-VERSION-1",
@@ -76,7 +76,7 @@
         "finalState": "0",
         "isManualRelease": false
       },
-      "inboundError": null,
+      "externalErrors": null,
       "created": "2025-02-21T13:28:39.129Z",
       "updated": "2025-02-21T13:28:40.129Z"
     }

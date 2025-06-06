@@ -189,7 +189,7 @@
         "consignedCountry": "DE",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": null,
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Boneless",
@@ -211,11 +211,11 @@
             "isCdsMatched": null
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "6139186d-3f55-4e4c-97fe-92beeae5648b",
-            "complementID": 8,
-            "speciesID": "57118",
+            "uniqueComplementId": "6139186d-3f55-4e4c-97fe-92beeae5648b",
+            "complementId": 8,
+            "speciesId": "57118",
             "keyDataPair": [
               {
                 "key": "netweight",

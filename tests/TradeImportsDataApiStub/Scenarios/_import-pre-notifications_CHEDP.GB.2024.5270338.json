@@ -205,7 +205,7 @@
         "consignedCountry": "PL",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": null,
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Smoked fish, including fillets Other than 03054100; 03054200; 03054300; 03054410; 03054490; 03054910; 03054920; 03054930",
@@ -227,11 +227,11 @@
             "isCdsMatched": null
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "55f3e6cd-dd70-4888-af8b-ba1739d06e2f",
-            "complementID": 1,
-            "speciesID": "429336",
+            "uniqueComplementId": "55f3e6cd-dd70-4888-af8b-ba1739d06e2f",
+            "complementId": 1,
+            "speciesId": "429336",
             "keyDataPair": [
               {
                 "key": "netweight",

@@ -201,7 +201,7 @@
         "consignedCountry": "PH",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": null,
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "other",
@@ -223,11 +223,11 @@
             "isCdsMatched": false
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "d1aa9e66-3d4b-4fed-a973-de0cd63a2724",
-            "complementID": 1,
-            "speciesID": "494252",
+            "uniqueComplementId": "d1aa9e66-3d4b-4fed-a973-de0cd63a2724",
+            "complementId": 1,
+            "speciesId": "494252",
             "keyDataPair": [
               {
                 "key": "netweight",

@@ -688,6 +688,18 @@
               },
               "description": "Filter import pre notifications by status. Multiple should be specified as status=A&status=B etc."
             }
+          },
+          {
+            "name": "excludeStatus",
+            "in": "query",
+            "description": "Filter import pre notifications by NOT IN status. Multiple should be specified as excludeStatus=A&excludeStatus=B etc.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Filter import pre notifications by NOT IN status. Multiple should be specified as excludeStatus=A&excludeStatus=B etc."
+            }
           }
         ],
         "responses": {
@@ -814,11 +826,10 @@
           "content": {
             "application/json": {
               "schema": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ProcessingError"
-                  }
-                ]
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ProcessingError"
+                }
               }
             }
           },
@@ -1445,11 +1456,11 @@
         ],
         "type": "object",
         "properties": {
-          "externalCorrelationId": {
+          "correlationId": {
             "type": "string",
             "nullable": true
           },
-          "timestamp": {
+          "created": {
             "type": "string",
             "format": "date-time"
           },
@@ -1701,18 +1712,18 @@
             "description": "What the commodity is intended for. Possible values taken from IPAFFS schema version 17.5.",
             "nullable": true
           },
-          "commodityComplement": {
+          "commodityComplements": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.CommodityComplement"
+              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.CommodityComplements"
             },
             "description": "Holder for additional parameters of a commodity",
             "nullable": true
           },
-          "complementParameterSet": {
+          "complementParameterSets": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ComplementParameterSet"
+              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ComplementParameterSets"
             },
             "description": "Additional data for commodityComplement part containing such data as net weight",
             "nullable": true
@@ -1784,7 +1795,7 @@
         },
         "additionalProperties": false
       },
-      "Defra.TradeImportsDataApi.CommodityComplement": {
+      "Defra.TradeImportsDataApi.CommodityComplements": {
         "type": "object",
         "properties": {
           "uniqueComplementId": {
@@ -1993,20 +2004,20 @@
         },
         "additionalProperties": false
       },
-      "Defra.TradeImportsDataApi.ComplementParameterSet": {
+      "Defra.TradeImportsDataApi.ComplementParameterSets": {
         "type": "object",
         "properties": {
-          "uniqueComplementID": {
+          "uniqueComplementId": {
             "type": "string",
             "description": "UUID used to match commodityComplement to its complementParameter set. CHEDPP only",
             "nullable": true
           },
-          "complementID": {
+          "complementId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "speciesID": {
+          "speciesId": {
             "type": "string",
             "nullable": true
           },
@@ -2380,12 +2391,11 @@
             ],
             "nullable": true
           },
-          "inboundError": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Defra.TradeImportsDataApi.InboundError"
-              }
-            ],
+          "externalErrors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ExternalError"
+            },
             "nullable": true
           }
         },
@@ -2421,12 +2431,11 @@
             ],
             "nullable": true
           },
-          "inboundError": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Defra.TradeImportsDataApi.InboundError"
-              }
-            ],
+          "externalErrors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ExternalError"
+            },
             "nullable": true
           },
           "created": {
@@ -2908,10 +2917,14 @@
         },
         "additionalProperties": false
       },
-      "Defra.TradeImportsDataApi.ErrorNotification": {
+      "Defra.TradeImportsDataApi.ExternalError": {
         "type": "object",
         "properties": {
           "externalCorrelationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceCorrelationId": {
             "type": "string",
             "nullable": true
           },
@@ -2920,19 +2933,15 @@
             "format": "int32",
             "nullable": true
           },
-          "created": {
+          "messageSentAt": {
             "type": "string",
-            "format": "date-time",
-            "nullable": true
+            "format": "date-time"
           },
           "errors": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ErrorItem"
-            }
-          },
-          "message": {
-            "type": "string",
+            },
             "nullable": true
           }
         },
@@ -3625,19 +3634,6 @@
             "items": {
               "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ImportPreNotificationResponse"
             }
-          }
-        },
-        "additionalProperties": false
-      },
-      "Defra.TradeImportsDataApi.InboundError": {
-        "type": "object",
-        "properties": {
-          "notifications": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ErrorNotification"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -4800,11 +4796,32 @@
       "Defra.TradeImportsDataApi.ProcessingError": {
         "type": "object",
         "properties": {
-          "notifications": {
+          "correlationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceExternalCorrelationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "externalVersion": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "errors": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ErrorNotification"
-            },
+              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ErrorItem"
+            }
+          },
+          "message": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -4816,12 +4833,11 @@
           "movementReferenceNumber": {
             "type": "string"
           },
-          "processingError": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ProcessingError"
-              }
-            ]
+          "processingErrors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Defra.TradeImportsDataApi.ProcessingError"
+            }
           },
           "created": {
             "type": "string",

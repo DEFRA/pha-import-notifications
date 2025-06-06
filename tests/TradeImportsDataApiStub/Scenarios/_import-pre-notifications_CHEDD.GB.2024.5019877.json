@@ -194,7 +194,7 @@
         "consignedCountry": "CN",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": "human",
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Tea, whether or not flavoured",
@@ -216,11 +216,11 @@
             "isCdsMatched": null
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "834ec87f-0855-4f34-bc0c-90408b6c0b5f",
-            "complementID": 1,
-            "speciesID": null,
+            "uniqueComplementId": "834ec87f-0855-4f34-bc0c-90408b6c0b5f",
+            "complementId": 1,
+            "speciesId": null,
             "keyDataPair": [
               {
                 "key": "netweight",
