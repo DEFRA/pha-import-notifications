@@ -14,6 +14,6 @@ public partial record CustomsDeclaration
     [JsonPropertyName("finalisation")]
     public Finalisation? Finalisation { get; init; }
 
-    [JsonPropertyName("inboundError")]
-    public InboundError? InboundError { get; init; }
+    [JsonPropertyName("externalErrors")]
+    public List<ExternalError>? ExternalErrors { get; init; }
 }

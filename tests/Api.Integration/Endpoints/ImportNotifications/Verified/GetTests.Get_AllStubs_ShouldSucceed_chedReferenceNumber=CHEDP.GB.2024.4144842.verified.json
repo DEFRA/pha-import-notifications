@@ -188,7 +188,7 @@
       "consignedCountry": "NZ",
       "animalsCertifiedAs": null,
       "commodityIntendedFor": null,
-      "commodityComplement": [
+      "commodityComplements": [
         {
           "uniqueComplementId": null,
           "commodityDescription": "Boneless",
@@ -210,11 +210,11 @@
           "isCdsMatched": null
         }
       ],
-      "complementParameterSet": [
+      "complementParameterSets": [
         {
-          "uniqueComplementID": "99166589-2098-43d4-9b3a-df296587fcc2",
-          "complementID": 1,
-          "speciesID": "167291",
+          "uniqueComplementId": "99166589-2098-43d4-9b3a-df296587fcc2",
+          "complementId": 1,
+          "speciesId": "167291",
           "keyDataPair": [
             {
               "key": "netweight",

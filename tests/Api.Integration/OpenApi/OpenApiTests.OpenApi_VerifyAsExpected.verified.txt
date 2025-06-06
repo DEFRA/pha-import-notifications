@@ -645,16 +645,16 @@
       },
       "ClearanceDecision": {
         "required": [
-          "items",
-          "timestamp"
+          "created",
+          "items"
         ],
         "type": "object",
         "properties": {
-          "externalCorrelationId": {
+          "correlationId": {
             "type": "string",
             "nullable": true
           },
-          "timestamp": {
+          "created": {
             "type": "string",
             "format": "date-time"
           },
@@ -886,18 +886,18 @@
             "description": "What the commodity is intended for. Possible values taken from IPAFFS schema version 17.5.\n\nEnum values represent current example values but additional values may also be returned as underlying systems evolve. Consuming clients should cater for this possibility.",
             "nullable": true
           },
-          "commodityComplement": {
+          "commodityComplements": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/CommodityComplement"
+              "$ref": "#/components/schemas/CommodityComplements"
             },
             "description": "Holder for additional parameters of a commodity",
             "nullable": true
           },
-          "complementParameterSet": {
+          "complementParameterSets": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ComplementParameterSet"
+              "$ref": "#/components/schemas/ComplementParameterSets"
             },
             "description": "Additional data for commodityComplement part containing such data as net weight",
             "nullable": true
@@ -969,7 +969,7 @@
         },
         "additionalProperties": false
       },
-      "CommodityComplement": {
+      "CommodityComplements": {
         "type": "object",
         "properties": {
           "uniqueComplementId": {
@@ -1166,20 +1166,20 @@
         },
         "additionalProperties": false
       },
-      "ComplementParameterSet": {
+      "ComplementParameterSets": {
         "type": "object",
         "properties": {
-          "uniqueComplementID": {
+          "uniqueComplementId": {
             "type": "string",
             "description": "UUID used to match commodityComplement to its complementParameter set. CHEDPP only",
             "nullable": true
           },
-          "complementID": {
+          "complementId": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "speciesID": {
+          "speciesId": {
             "type": "string",
             "nullable": true
           },

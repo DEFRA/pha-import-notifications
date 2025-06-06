@@ -37,7 +37,7 @@ internal static class Ignored
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "IdentificationDetails" }
         },
         {
-            "ComplementParameterSet",
+            "ComplementParameterSets",
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "CatchCertificates" }
         },
         {

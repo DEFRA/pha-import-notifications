@@ -108,8 +108,8 @@
         ]
       },
       "clearanceDecision": {
-        "externalCorrelationId": null,
-        "timestamp": "2025-02-21T13:28:41.129Z",
+        "correlationId": "1340244",
+        "created": "2025-02-21T13:28:41.129Z",
         "externalVersionNumber": 2,
         "decisionNumber": 1,
         "sourceVersion": "CHEDP.GB.2024.5249145:181224013506-CHEDP.GB.2024.5249145:181224013506:CR-VERSION-2",
@@ -138,7 +138,7 @@
         ]
       },
       "finalisation": null,
-      "inboundError": null,
+      "externalErrors": null,
       "created": "2025-02-21T13:28:39.129Z",
       "updated": "2025-02-21T13:28:40.129Z"
     }

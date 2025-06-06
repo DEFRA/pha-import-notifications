@@ -62,8 +62,8 @@
         ]
       },
       "clearanceDecision": {
-        "externalCorrelationId": null,
-        "timestamp": "2025-02-21T13:28:41.129Z",
+        "correlationId": "1273314",
+        "created": "2025-02-21T13:28:41.129Z",
         "externalVersionNumber": 1,
         "decisionNumber": 1,
         "sourceVersion": "CHEDP.GB.2024.5140733:201124051259:CR-VERSION-1",
@@ -287,7 +287,7 @@
       "consignedCountry": "NZ",
       "animalsCertifiedAs": null,
       "commodityIntendedFor": null,
-      "commodityComplement": [
+      "commodityComplements": [
         {
           "uniqueComplementId": null,
           "commodityDescription": "Of lamb",
@@ -309,11 +309,11 @@
           "isCdsMatched": true
         }
       ],
-      "complementParameterSet": [
+      "complementParameterSets": [
         {
-          "uniqueComplementID": "87f8fe67-141d-40e6-be89-27ceb4e214e9",
-          "complementID": 1,
-          "speciesID": "167408",
+          "uniqueComplementId": "87f8fe67-141d-40e6-be89-27ceb4e214e9",
+          "complementId": 1,
+          "speciesId": "167408",
           "keyDataPair": [
             {
               "key": "netweight",

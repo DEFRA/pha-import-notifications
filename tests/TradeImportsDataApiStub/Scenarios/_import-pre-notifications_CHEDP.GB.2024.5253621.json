@@ -200,7 +200,7 @@
         "consignedCountry": "HN",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": null,
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Shrimps of the genus Penaeus",
@@ -222,11 +222,11 @@
             "isCdsMatched": true
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "cf0d571d-bc1d-4084-84b2-937342d7d93c",
-            "complementID": 1,
-            "speciesID": "346776",
+            "uniqueComplementId": "cf0d571d-bc1d-4084-84b2-937342d7d93c",
+            "complementId": 1,
+            "speciesId": "346776",
             "keyDataPair": [
               {
                 "key": "netweight",

@@ -38,8 +38,8 @@
         ]
       },
       "clearanceDecision": {
-        "externalCorrelationId": null,
-        "timestamp": "2025-02-21T13:28:41.129Z",
+        "correlationId": "1358673",
+        "created": "2025-02-21T13:28:41.129Z",
         "externalVersionNumber": 1,
         "decisionNumber": 1,
         "sourceVersion": "CHEDD.GB.2024.5019877:161224030527:CR-VERSION-1",
@@ -251,7 +251,7 @@
       "consignedCountry": "CN",
       "animalsCertifiedAs": null,
       "commodityIntendedFor": "human",
-      "commodityComplement": [
+      "commodityComplements": [
         {
           "uniqueComplementId": null,
           "commodityDescription": "Tea, whether or not flavoured",
@@ -273,11 +273,11 @@
           "isCdsMatched": null
         }
       ],
-      "complementParameterSet": [
+      "complementParameterSets": [
         {
-          "uniqueComplementID": "834ec87f-0855-4f34-bc0c-90408b6c0b5f",
-          "complementID": 1,
-          "speciesID": null,
+          "uniqueComplementId": "834ec87f-0855-4f34-bc0c-90408b6c0b5f",
+          "complementId": 1,
+          "speciesId": null,
           "keyDataPair": [
             {
               "key": "netweight",

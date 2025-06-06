@@ -189,7 +189,7 @@
         "consignedCountry": "NL",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": null,
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Salted or in brine, Of domestic swine",
@@ -231,11 +231,11 @@
             "isCdsMatched": null
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "295a8cda-4dc3-43fc-a2fd-93a8c07fa568",
-            "complementID": 3,
-            "speciesID": "64200",
+            "uniqueComplementId": "295a8cda-4dc3-43fc-a2fd-93a8c07fa568",
+            "complementId": 3,
+            "speciesId": "64200",
             "keyDataPair": [
               {
                 "key": "netweight",
@@ -254,9 +254,9 @@
             "identifiers": null
           },
           {
-            "uniqueComplementID": "0bc96d78-f88a-424f-9fea-606d2c8439d7",
-            "complementID": 4,
-            "speciesID": "492124",
+            "uniqueComplementId": "0bc96d78-f88a-424f-9fea-606d2c8439d7",
+            "complementId": 4,
+            "speciesId": "492124",
             "keyDataPair": [
               {
                 "key": "netweight",

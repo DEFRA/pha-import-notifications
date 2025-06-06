@@ -213,7 +213,7 @@
       "consignedCountry": "NL",
       "animalsCertifiedAs": null,
       "commodityIntendedFor": null,
-      "commodityComplement": [
+      "commodityComplements": [
         {
           "uniqueComplementId": null,
           "commodityDescription": "Seeds of herbaceous plants cultivated principally for their flowers",
@@ -235,11 +235,11 @@
           "isCdsMatched": null
         }
       ],
-      "complementParameterSet": [
+      "complementParameterSets": [
         {
-          "uniqueComplementID": "40805d5b-27de-40ea-9e4f-b80d96ab874b",
-          "complementID": 5,
-          "speciesID": "1436533",
+          "uniqueComplementId": "40805d5b-27de-40ea-9e4f-b80d96ab874b",
+          "complementId": 5,
+          "speciesId": "1436533",
           "keyDataPair": [
             {
               "key": "regulatory_authority",

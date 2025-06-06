@@ -8,8 +8,8 @@ public partial record ProcessingErrorResponse
     [JsonPropertyName("movementReferenceNumber")]
     public required string MovementReferenceNumber { get; init; }
 
-    [JsonPropertyName("processingError")]
-    public required ProcessingError ProcessingError { get; init; }
+    [JsonPropertyName("processingErrors")]
+    public required List<ProcessingError> ProcessingErrors { get; init; }
 
     [JsonPropertyName("created")]
     public required DateTime Created { get; init; }

@@ -5,11 +5,11 @@ using System.ComponentModel;
 namespace Defra.PhaImportNotifications.Contracts;
 public partial record ClearanceDecision
 {
-    [JsonPropertyName("externalCorrelationId")]
-    public string? ExternalCorrelationId { get; init; }
+    [JsonPropertyName("correlationId")]
+    public string? CorrelationId { get; init; }
 
-    [JsonPropertyName("timestamp")]
-    public required DateTime Timestamp { get; init; }
+    [JsonPropertyName("created")]
+    public required DateTime Created { get; init; }
 
     [JsonPropertyName("externalVersionNumber")]
     public int? ExternalVersionNumber { get; init; }

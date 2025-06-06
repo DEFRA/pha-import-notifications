@@ -197,7 +197,7 @@
         "consignedCountry": "TR",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": "human",
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Lemons (Citrus limon, Citrus limonum)",
@@ -219,11 +219,11 @@
             "isCdsMatched": true
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "287917bd-c4f3-4de8-9c37-68f85e47cfa9",
-            "complementID": 2,
-            "speciesID": null,
+            "uniqueComplementId": "287917bd-c4f3-4de8-9c37-68f85e47cfa9",
+            "complementId": 2,
+            "speciesId": null,
             "keyDataPair": [
               {
                 "key": "netweight",

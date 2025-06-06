@@ -202,7 +202,7 @@
         "consignedCountry": "TR",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": "human",
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Pink",
@@ -224,11 +224,11 @@
             "isCdsMatched": null
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "40da26e2-7431-432a-b140-ff6cf9563cf9",
-            "complementID": 1,
-            "speciesID": null,
+            "uniqueComplementId": "40da26e2-7431-432a-b140-ff6cf9563cf9",
+            "complementId": 1,
+            "speciesId": null,
             "keyDataPair": [
               {
                 "key": "netweight",

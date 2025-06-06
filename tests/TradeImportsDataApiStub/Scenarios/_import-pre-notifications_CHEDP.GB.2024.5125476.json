@@ -252,7 +252,7 @@
         "consignedCountry": "IE",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": null,
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "Boneless",
@@ -334,11 +334,11 @@
             "isCdsMatched": null
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "5b7a5c47-244f-43ad-a8f8-a7dd4b894b32",
-            "complementID": 2,
-            "speciesID": "25682",
+            "uniqueComplementId": "5b7a5c47-244f-43ad-a8f8-a7dd4b894b32",
+            "complementId": 2,
+            "speciesId": "25682",
             "keyDataPair": [
               {
                 "key": "netweight",
@@ -357,9 +357,9 @@
             "identifiers": null
           },
           {
-            "uniqueComplementID": "612c274a-1d60-41cd-bda7-d43731041345",
-            "complementID": 4,
-            "speciesID": "25743",
+            "uniqueComplementId": "612c274a-1d60-41cd-bda7-d43731041345",
+            "complementId": 4,
+            "speciesId": "25743",
             "keyDataPair": [
               {
                 "key": "netweight",
@@ -378,9 +378,9 @@
             "identifiers": null
           },
           {
-            "uniqueComplementID": "7dab74e0-fe60-410b-84fe-bbfa24238fb9",
-            "complementID": 5,
-            "speciesID": "21152",
+            "uniqueComplementId": "7dab74e0-fe60-410b-84fe-bbfa24238fb9",
+            "complementId": 5,
+            "speciesId": "21152",
             "keyDataPair": [
               {
                 "key": "netweight",
@@ -399,9 +399,9 @@
             "identifiers": null
           },
           {
-            "uniqueComplementID": "a1d8c0b4-171a-4699-839f-d89fb8a8ca31",
-            "complementID": 6,
-            "speciesID": "25678",
+            "uniqueComplementId": "a1d8c0b4-171a-4699-839f-d89fb8a8ca31",
+            "complementId": 6,
+            "speciesId": "25678",
             "keyDataPair": [
               {
                 "key": "netweight",

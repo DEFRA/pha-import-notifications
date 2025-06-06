@@ -178,7 +178,7 @@
       ConsignedCountry: null,
       AnimalsCertifiedAs: Registered,
       CommodityIntendedFor: null,
-      CommodityComplement: [
+      CommodityComplements: [
         {
           UniqueComplementId: null,
           CommodityDescription: Live horses, asses, mules and hinnies,
@@ -200,11 +200,11 @@
           IsCdsMatched: null
         }
       ],
-      ComplementParameterSet: [
+      ComplementParameterSets: [
         {
-          UniqueComplementID: 0725b2d1-40f9-40b2-8b52-fd313aabfeb1,
-          ComplementID: 1,
-          SpeciesID: 147603,
+          UniqueComplementId: 0725b2d1-40f9-40b2-8b52-fd313aabfeb1,
+          ComplementId: 1,
+          SpeciesId: 147603,
           KeyDataPair: [
             {
               Key: number_package,

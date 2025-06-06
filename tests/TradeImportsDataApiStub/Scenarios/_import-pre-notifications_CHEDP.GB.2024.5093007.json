@@ -200,7 +200,7 @@
         "consignedCountry": "VN",
         "animalsCertifiedAs": null,
         "commodityIntendedFor": null,
-        "commodityComplement": [
+        "commodityComplements": [
           {
             "uniqueComplementId": null,
             "commodityDescription": "In immediate packings of a net content not exceeding 2kg",
@@ -222,11 +222,11 @@
             "isCdsMatched": null
           }
         ],
-        "complementParameterSet": [
+        "complementParameterSets": [
           {
-            "uniqueComplementID": "e40ade9e-c29b-474f-939e-f409841c3da5",
-            "complementID": 1,
-            "speciesID": "484614",
+            "uniqueComplementId": "e40ade9e-c29b-474f-939e-f409841c3da5",
+            "complementId": 1,
+            "speciesId": "484614",
             "keyDataPair": [
               {
                 "key": "netweight",
