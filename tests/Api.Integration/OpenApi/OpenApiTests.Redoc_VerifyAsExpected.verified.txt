@@ -18,9 +18,7 @@
       ]
     },
     {
-      ETag: [
-        W/"HqQfcZZ5HkANpggxCkpvRS+phmQ="
-      ]
+      ETag: Scrubbed
     }
   ],
   TrailingHeaders: [],
