@@ -17,6 +17,6 @@ public class OpenApiTests(ApiWebApplicationFactory factory) : IClassFixture<ApiW
         var client = factory.CreateClient();
         var response = await client.GetAsync("/redoc/index.html");
 
-        await Verify(response);
+        await Verify(response).ScrubMember("ETag");
     }
 }
