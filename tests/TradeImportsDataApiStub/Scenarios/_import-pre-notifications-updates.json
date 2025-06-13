@@ -40,5 +40,8 @@
       "updated": "2024-12-11T08:13:02.953Z",
       "referenceNumber": "CHEDA.GB.2024.011115000001"
     }
-  ]
+  ],
+  "total": 10,
+  "page": 1,
+  "pageSize": 20
 }
