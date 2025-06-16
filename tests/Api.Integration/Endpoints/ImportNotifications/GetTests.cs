@@ -69,7 +69,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     [Fact]
     public async Task Get_WhenAuthorisedForAllBcps_ShouldSucceed()
     {
-        var chedReferenceNumber = ChedReferenceNumbers.ChedA;
+        var chedReferenceNumber = ChedReferenceNumbers.ChedD;
         var client = CreateClient("fsa");
 
         WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
@@ -103,7 +103,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     }
 
     [Fact]
-    public async Task Get_WhenAuthenticatedButAccessToBcpDenied_ReturnsNotFound()
+    public async Task Get_WhenAuthenticatedButAccessToBcpDenied_ReturnsForbidden()
     {
         var client = CreateClient();
 
@@ -118,7 +118,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
 
         var response = await client.GetAsync(Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedP));
 
-        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
 
     [Fact]

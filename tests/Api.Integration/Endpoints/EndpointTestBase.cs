@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Xunit.Abstractions;
+using ClaimTypes = Defra.PhaImportNotifications.Api.Authentication.ClaimTypes;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints;
@@ -64,7 +65,7 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, clientId),
-            new Claim(PhaClaimTypes.ClientId, clientId),
+            new Claim(ClaimTypes.ClientId, clientId),
         };
 
         var rand = new byte[32];
