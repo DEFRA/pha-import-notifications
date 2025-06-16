@@ -35,6 +35,8 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
             Bcp = ["bcp1", "bcp2"],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+            Page = 5,
+            PageSize = 17,
         };
 
     private TradeImportsDataApiService Subject { get; }
@@ -50,7 +52,9 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
                 .WithParam("from", "2024-12-12T13:10:30.0000000Z")
                 .WithParam("to", "2024-12-12T13:40:30.0000000Z")
                 .WithParam("excludeStatus", "DRAFT")
-                .WithParam("type", "type1", "type2", "type3");
+                .WithParam("type", "type1", "type2", "type3")
+                .WithParam("page", "5")
+                .WithParam("pageSize", "17");
             if (bcps.Length > 0)
             {
                 builder.WithParam("pointOfEntry", "bcp1", "bcp2");
@@ -63,6 +67,8 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
             bcps,
             ValidRequest.From,
             ValidRequest.To,
+            ValidRequest.Page!.Value,
+            ValidRequest.PageSize!.Value,
             CancellationToken.None
         );
 
@@ -83,6 +89,8 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
                 [],
                 DateTime.Now,
                 DateTime.Now,
+                1,
+                10,
                 CancellationToken.None
             );
 

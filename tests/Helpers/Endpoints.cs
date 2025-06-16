@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Defra.PhaImportNotifications.Tests.Helpers;
 
@@ -16,7 +17,13 @@ public static class Endpoints
             string to = "2024-12-11T13:30:00Z"
         ) => GetUpdatedBetween(bcp, from, to);
 
-        public static string GetUpdatedBetween(string[]? bcp, string from, string to)
+        public static string GetUpdatedBetween(
+            string[]? bcp,
+            string from,
+            string to,
+            int? page = null,
+            int? pageSize = null
+        )
         {
             var query = new QueryBuilder();
 
@@ -27,6 +34,12 @@ public static class Endpoints
             query.Add("from", from);
 
             query.Add("to", to);
+
+            if (page != null)
+                query.Add("page", page.Value.ToString());
+
+            if (pageSize != null)
+                query.Add("pageSize", pageSize.Value.ToString());
 
             return $"{Root}{query}";
         }

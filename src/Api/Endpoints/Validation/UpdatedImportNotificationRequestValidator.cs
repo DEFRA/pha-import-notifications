@@ -18,6 +18,12 @@ public class UpdatedImportNotificationRequestValidator : ValidationEndpointFilte
         RuleFor(x => x.To)
             .Must(x => x < DateTime.UtcNow.AddSeconds(-30))
             .WithMessage("Must be more than 30 seconds before UTC now");
+
+        RuleFor(x => x.Page).GreaterThanOrEqualTo(1).WithMessage($"Must be greater than or equal to 1");
+
+        RuleFor(x => x.PageSize)
+            .InclusiveBetween(1, int.Parse(UpdatedImportNotificationRequest.MAX_PAGESIZE))
+            .WithMessage($"Must be between 1 and {UpdatedImportNotificationRequest.MAX_PAGESIZE} (inclusive)");
     }
 
     protected override int ArgumentIndex => 0;

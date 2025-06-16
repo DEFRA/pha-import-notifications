@@ -1,11 +1,22 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 
 public sealed class UpdatedImportNotificationRequest : IDateTimeRangeDefinition
 {
+    private const string DEFAULT_PAGE = "1";
+
+    private const string DEFAULT_PAGESIZE = "100";
+
+    internal const string MAX_PAGESIZE = "1000";
+
+    private int? _page;
+
+    private int? _pageSize;
+
     [Description(
         "Filter import notifications by BCP.  This parameter is optional if the caller is authorised to see all BCPs, mandatory otherwise."
     )]
@@ -27,6 +38,22 @@ public sealed class UpdatedImportNotificationRequest : IDateTimeRangeDefinition
     )]
     [FromQuery(Name = "to")]
     public DateTime To { get; init; }
+
+    [Description($"Page number (1-based). Defaults to {DEFAULT_PAGE} if not specified.")]
+    [FromQuery(Name = "page")]
+    public int? Page
+    {
+        get => _page ?? int.Parse(DEFAULT_PAGE);
+        init => _page = value;
+    }
+
+    [Description($"Number of items per page. Defaults to {DEFAULT_PAGESIZE} if not specified. Max of {MAX_PAGESIZE}.")]
+    [FromQuery(Name = "pageSize")]
+    public int? PageSize
+    {
+        get => _pageSize ?? int.Parse(DEFAULT_PAGESIZE);
+        init => _pageSize = value;
+    }
 }
 
 public interface IDateTimeRangeDefinition

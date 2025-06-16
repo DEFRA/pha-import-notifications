@@ -9,6 +9,8 @@ public interface ITradeImportsDataApiService
         string[] bcp,
         DateTime from,
         DateTime to,
+        int page,
+        int pageSize,
         CancellationToken cancellationToken
     );
     Task<ImportPreNotification?> GetImportNotification(string chedReferenceNumber, CancellationToken cancellationToken);

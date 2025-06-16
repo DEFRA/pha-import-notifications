@@ -68,6 +68,8 @@ public static class EndpointRouteBuilderExtensions
             bcps,
             request.From,
             request.To,
+            request.Page!.Value,
+            request.PageSize!.Value,
             cancellationToken
         );
         var updated = notifications.Select(x => new UpdatedImportNotification

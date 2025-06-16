@@ -12,6 +12,8 @@ public class TradeImportsDataApiService(TradeImportsDataApiHttpClient tradeImpor
         string[] bcp,
         DateTime from,
         DateTime to,
+        int page,
+        int pageSize,
         CancellationToken cancellationToken
     )
     {
@@ -22,6 +24,8 @@ public class TradeImportsDataApiService(TradeImportsDataApiHttpClient tradeImpor
             { "excludeStatus", "DRAFT" },
             { "from", from.ToString("O") },
             { "to", to.ToString("O") },
+            { "page", page.ToString() },
+            { "pageSize", pageSize.ToString() },
         };
         var response =
             await tradeImportsDataApiHttpClient.Client.GetFromJsonAsync<ImportPreNotificationUpdatesResponse>(

@@ -15,6 +15,12 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
 {
     private readonly string[] _importNotificationTypes = ["CVEDA", "CVEDP", "CHEDPP", "CED"];
 
+    private const int DEFAULT_PAGE = 1;
+
+    private const int DEFAULT_PAGESIZE = 100;
+
+    private const int MAX_PAGESIZE = 1000;
+
     private ITradeImportsDataApiService MockTradeImportsDataApiService { get; } =
         Substitute.For<ITradeImportsDataApiService>();
 
@@ -111,6 +117,152 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     }
 
     [Fact]
+    public async Task Get_WhenPagingNotSpecified_DefaultsUsed()
+    {
+        var client = CreateClient();
+        var validRequest = new UpdatedImportNotificationRequest
+        {
+            Bcp = ["bcp1"],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+        };
+
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _importNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To,
+            DEFAULT_PAGE,
+            DEFAULT_PAGESIZE
+        );
+
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
+            validRequest.Bcp,
+            validRequest.From.ToString("O"),
+            validRequest.To.ToString("O"),
+            page: null,
+            pageSize: null
+        );
+
+        var response = await client.GetStringAsync(url);
+        await VerifyJson(response, _verifySettings);
+    }
+
+    [Fact]
+    public async Task Get_WhenPagingSpecified_ValuesPassedThrough()
+    {
+        var client = CreateClient();
+        var validRequest = new UpdatedImportNotificationRequest
+        {
+            Bcp = ["bcp1"],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+            Page = new Random().Next(1, 10),
+            PageSize = new Random().Next(1, MAX_PAGESIZE),
+        };
+
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _importNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To,
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
+            validRequest.Bcp,
+            validRequest.From.ToString("O"),
+            validRequest.To.ToString("O"),
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var response = await client.GetStringAsync(url);
+        await VerifyJson(response, _verifySettings);
+    }
+
+    [Theory()]
+    [InlineData(-1, HttpStatusCode.BadRequest)]
+    [InlineData(0, HttpStatusCode.BadRequest)]
+    [InlineData(1, HttpStatusCode.OK)]
+    [InlineData(99, HttpStatusCode.OK)]
+    [InlineData(999, HttpStatusCode.OK)]
+    public async Task Get_WhenPageSpecified_LimitedToValidRange(int page, HttpStatusCode expectedStatusCode)
+    {
+        var client = CreateClient();
+        var validRequest = new UpdatedImportNotificationRequest
+        {
+            Bcp = ["bcp1"],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+            Page = page,
+            PageSize = 25,
+        };
+
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _importNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To,
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
+            validRequest.Bcp,
+            validRequest.From.ToString("O"),
+            validRequest.To.ToString("O"),
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var response = await client.GetAsync(url);
+        response.StatusCode.Should().Be(expectedStatusCode);
+    }
+
+    [Theory()]
+    [InlineData(-1, HttpStatusCode.BadRequest)]
+    [InlineData(0, HttpStatusCode.BadRequest)]
+    [InlineData(1, HttpStatusCode.OK)]
+    [InlineData(999, HttpStatusCode.OK)]
+    [InlineData(1000, HttpStatusCode.OK)]
+    [InlineData(1001, HttpStatusCode.BadRequest)]
+    [InlineData(99999, HttpStatusCode.BadRequest)]
+    public async Task Get_WhenPageSizeSpecified_LimitedToValidRange(int pageSize, HttpStatusCode expectedStatusCode)
+    {
+        var client = CreateClient();
+        var validRequest = new UpdatedImportNotificationRequest
+        {
+            Bcp = ["bcp1"],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+            Page = new Random().Next(1, 10),
+            PageSize = pageSize,
+        };
+
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _importNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To,
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
+            validRequest.Bcp,
+            validRequest.From.ToString("O"),
+            validRequest.To.ToString("O"),
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var response = await client.GetAsync(url);
+        response.StatusCode.Should().Be(expectedStatusCode);
+    }
+
+    [Fact]
     public async Task Get_WhenNotAuthenticated_ReturnsUnauthorized()
     {
         var client = CreateClient();
@@ -144,7 +296,9 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         string[] importNotificationTypes,
         string[] bcps,
         DateTime from,
-        DateTime to
+        DateTime to,
+        int? page = null,
+        int? pageSize = null
     )
     {
         MockTradeImportsDataApiService
@@ -153,6 +307,8 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
                 Arg.Is<string[]>(x => x.SequenceEqual(bcps)),
                 from,
                 to,
+                page ?? Arg.Any<int>(),
+                pageSize ?? Arg.Any<int>(),
                 Arg.Any<CancellationToken>()
             )
             .Returns(
