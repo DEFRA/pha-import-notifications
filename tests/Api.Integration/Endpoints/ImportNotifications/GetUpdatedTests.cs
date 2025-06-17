@@ -18,28 +18,16 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     private ITradeImportsDataApiService MockTradeImportsDataApiService { get; } =
         Substitute.For<ITradeImportsDataApiService>();
 
-    private static class Clients
-    {
-        public const string ClientWithFullAccess = "defra";
-        public const string ClientWithLimitedBcpAccess = "pha";
-        public const string ClientWithLimitedChedTypeAccess = "fsa";
-    }
-
     [Theory]
-    [InlineData(new[] { "bcp1", "bcp2" }, new string[] { }, Clients.ClientWithLimitedBcpAccess, "With BCP Filter")]
+    [InlineData(new[] { "bcp1", "bcp2" }, new string[] { }, ClientId.WithLimitedBcpAccess, "With BCP Filter")]
     [InlineData(
         new[] { "bcp1", "bcp2" },
         new[] { "CVEDA", "CVEDP" },
-        Clients.ClientWithFullAccess,
+        ClientId.WithFullAccess,
         "With BCP and Type Filter"
     )]
-    [InlineData(
-        new string[] { },
-        new[] { "CED", "CVEDP" },
-        Clients.ClientWithLimitedChedTypeAccess,
-        "With Type Filter"
-    )]
-    [InlineData(new string[] { }, new string[] { }, Clients.ClientWithFullAccess, "With no Filter")]
+    [InlineData(new string[] { }, new[] { "CED", "CVEDP" }, ClientId.WithLimitedChedTypeAccess, "With Type Filter")]
+    [InlineData(new string[] { }, new string[] { }, ClientId.WithFullAccess, "With no Filter")]
     public async Task Get_ShouldSucceed(string[] bcps, string[] chedType, string clientId, string scenarioName)
     {
         var client = CreateClient(clientId);
@@ -83,7 +71,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         string name
     )
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
         var url = new Helpers.Endpoints.UpdateUrlBuilder().WithFrom(from).WithTo(to).WithBcp(bcp).Build();
 
         var response = await client.GetAsync(url);
@@ -95,7 +83,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenRequestParamsAreInvalid_ToTooCloseToUtcNow_ShouldBeBadRequest()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
 
         var now = DateTime.UtcNow;
         var url = new Helpers.Endpoints.UpdateUrlBuilder()
@@ -131,7 +119,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenBcpParameterIsNotProvided_AndNotAuthorisedForAllBcps_ReturnsForbidden()
     {
-        var client = CreateClient(Clients.ClientWithLimitedBcpAccess);
+        var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
         var url = new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDA").Build();
         var response = await client.GetAsync(url);
@@ -142,7 +130,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenBcpParameterIsNotProvided_AndNotAuthorisedForAllChedType_ReturnsForbidden()
     {
-        var client = CreateClient(Clients.ClientWithLimitedChedTypeAccess);
+        var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
 
         var url = new Helpers.Endpoints.UpdateUrlBuilder().WithBcp("bcp-1").WithValidPeriod().Build();
         var response = await client.GetAsync(url);
@@ -153,7 +141,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenNotAuthenticated_ReturnsUnauthorized()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
         client.DefaultRequestHeaders.Authorization = null;
 
         var response = await client.GetAsync(Helpers.Endpoints.UpdateUrlBuilder.GetUpdatedValid());
@@ -164,19 +152,18 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenAuthenticatedButAccessToBcpDenied_ReturnsForbidden()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
         var response = await client.GetAsync(
             new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithBcp("bcp1", "bcp2", "bcp-no-access").Build()
         );
-
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
 
     [Fact]
     public async Task Get_WhenAuthenticatedButAccessToChedTypeDenied_ReturnsForbidden()
     {
-        var client = CreateClient(Clients.ClientWithLimitedChedTypeAccess);
+        var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
 
         var response = await client.GetAsync(
             new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDPP").Build()
@@ -193,7 +180,6 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     }
 
     private void SetUpMockTradeImportsDataApiServiceForSuccess(
-        // ReSharper disable once UnusedParameter.Local
         string[] importNotificationTypes,
         string[] bcps,
         DateTime from,

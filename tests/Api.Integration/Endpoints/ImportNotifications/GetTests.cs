@@ -24,7 +24,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     [Fact]
     public async Task Get_WhenFound_ShouldSucceed()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
 
         WireMock.StubImportNotificationAndSubPaths(ChedReferenceNumbers.ChedA);
 
@@ -48,7 +48,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     [ClassData(typeof(AllStubChedReferenceNumbers))]
     public async Task Get_AllStubs_ShouldSucceed(string chedReferenceNumber)
     {
-        var client = CreateClient("pha");
+        var client = CreateClient(ClientId.WithFullAccess);
 
         WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
 
@@ -70,7 +70,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     public async Task Get_WhenAuthorisedForAllBcps_ShouldSucceed()
     {
         var chedReferenceNumber = ChedReferenceNumbers.ChedD;
-        var client = CreateClient("fsa");
+        var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
 
         WireMock.StubImportNotificationAndSubPaths(chedReferenceNumber: chedReferenceNumber);
 
@@ -82,7 +82,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     [Fact]
     public async Task Get_WhenNotFound_ShouldNotBeFound()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
 
         var response = await client.GetAsync(
             Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedPWithMovement)
@@ -94,7 +94,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     [Fact]
     public async Task Get_WhenNotAuthenticated_ReturnsUnauthorized()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
         client.DefaultRequestHeaders.Authorization = null;
 
         var response = await client.GetAsync(Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedA));
@@ -105,7 +105,7 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     [Fact]
     public async Task Get_WhenAuthenticatedButAccessToBcpDenied_ReturnsForbidden()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
         WireMock.StubImportNotificationAndSubPaths(
             ChedReferenceNumbers.ChedP,
@@ -122,9 +122,21 @@ public class GetTests : EndpointTestBase, IClassFixture<WireMockContext>
     }
 
     [Fact]
+    public async Task Get_WhenAuthenticatedButAccessToChedTypeDenied_ReturnsForbidden()
+    {
+        var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
+
+        WireMock.StubImportNotificationAndSubPaths(ChedReferenceNumbers.ChedPP);
+
+        var response = await client.GetAsync(Helpers.Endpoints.ImportNotifications.Get(ChedReferenceNumbers.ChedPP));
+
+        response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
+    }
+
+    [Fact]
     public async Task Get_WhenCdpRequestId_ShouldPropagate()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
         client.DefaultRequestHeaders.Add("x-cdp-request-id", "REQUEST-ID");
 
         WireMock.StubImportNotificationAndSubPaths(
