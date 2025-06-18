@@ -7,5 +7,10 @@
         "importNotification": "/import-notifications/CHEDA.GB.2024.4792831"
       }
     }
-  ]
+  ],
+  "paging": {
+    "total": 1,
+    "page": 3,
+    "pageSize": 12
+  }
 }

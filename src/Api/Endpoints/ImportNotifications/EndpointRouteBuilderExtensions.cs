@@ -82,7 +82,18 @@ public static class EndpointRouteBuilderExtensions
             },
         });
 
-        return Results.Ok(new UpdatedImportNotificationsResponse { ImportNotifications = updated });
+        return Results.Ok(
+            new UpdatedImportNotificationsResponse
+            {
+                ImportNotifications = updated,
+                Paging = new PagingMetadata
+                {
+                    Page = request.Page,
+                    PageSize = request.PageSize,
+                    Total = updated.Count(),
+                },
+            }
+        );
     }
 
     /// <param name="chedReferenceNumber" example="CHEDA.GB.2024.1020304">CHED Reference Number</param>

@@ -19,8 +19,6 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
 
     private const int DEFAULT_PAGESIZE = 100;
 
-    private const int MAX_PAGESIZE = 1000;
-
     private ITradeImportsDataApiService MockTradeImportsDataApiService { get; } =
         Substitute.For<ITradeImportsDataApiService>();
 
@@ -157,8 +155,8 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             Bcp = ["bcp1"],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
-            PageFromQuery = new Random().Next(1, 10),
-            PageSizeFromQuery = new Random().Next(1, MAX_PAGESIZE),
+            PageFromQuery = 3,
+            PageSizeFromQuery = 12,
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
