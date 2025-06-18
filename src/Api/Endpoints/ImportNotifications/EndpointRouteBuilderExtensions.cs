@@ -30,6 +30,7 @@ public static class EndpointRouteBuilderExtensions
             .Produces<UpdatedImportNotificationsResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status403Forbidden)
             .ProducesProblem(StatusCodes.Status429TooManyRequests)
             .ProducesProblem(StatusCodes.Status500InternalServerError)
             .AddEndpointFilter<UpdatedImportNotificationRequestValidator>();
@@ -43,6 +44,7 @@ public static class EndpointRouteBuilderExtensions
             .Produces<ImportNotificationResponse>()
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .ProducesProblem(StatusCodes.Status401Unauthorized)
+            .ProducesProblem(StatusCodes.Status403Forbidden)
             .ProducesProblem(StatusCodes.Status429TooManyRequests)
             .ProducesProblem(StatusCodes.Status500InternalServerError);
     }
@@ -59,12 +61,14 @@ public static class EndpointRouteBuilderExtensions
         CancellationToken cancellationToken
     )
     {
+        var chedTypes = request.ChedType?.Any() ?? false ? request.ChedType : s_importNotificationTypes;
+
         var bcps = request.Bcp ?? [];
-        if (!httpContext.User.ClientHasAccessTo(bcps.ToList()))
+        if (!httpContext.User.ClientHasAccessTo(bcps.ToList(), chedTypes.ToList()))
             return Results.Forbid();
 
         var notifications = await tradeImportsDataApiService.GetImportNotificationUpdates(
-            s_importNotificationTypes,
+            chedTypes,
             bcps,
             request.From,
             request.To,
@@ -115,11 +119,17 @@ public static class EndpointRouteBuilderExtensions
             chedReferenceNumber,
             cancellationToken
         );
-        var bcp = notification?.PartOne?.PointOfEntry;
 
-        if (bcp is null)
+        if (notification is null)
             return Results.NotFound();
 
-        return !httpContext.User.ClientHasAccessTo([bcp]) ? Results.NotFound() : Results.Ok(notification);
+        var bcp = notification.PartOne?.PointOfEntry;
+
+        if (bcp is null)
+            return Results.Forbid();
+
+        return !httpContext.User.ClientHasAccessTo([bcp], [notification.ImportNotificationType!])
+            ? Results.Forbid()
+            : Results.Ok(notification);
     }
 }

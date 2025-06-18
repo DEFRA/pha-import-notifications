@@ -26,7 +26,7 @@ public class GetTestsWhenError : EndpointTestBase, IClassFixture<WireMockContext
     [Fact]
     public async Task Get_WhenError_ShouldFail()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
 
         WireMock
             .Given(

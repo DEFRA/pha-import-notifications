@@ -1,6 +1,5 @@
 using System.Security.Claims;
 using System.Text.Encodings.Web;
-using Defra.PhaImportNotifications.Api.Authentication;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,7 +20,7 @@ public class PhaJwtAuthenticationHandler(
         {
             var claimsIdentity = new ClaimsIdentity(context.Principal!.Identity);
 
-            var clientId = claimsIdentity.Claims.FirstOrDefault(c => c.Type == PhaClaimTypes.ClientId)?.Value;
+            var clientId = claimsIdentity.Claims.FirstOrDefault(c => c.Type == ClaimTypes.ClientId)?.Value;
             if (clientId == null)
                 return Task.CompletedTask;
 
@@ -29,8 +28,12 @@ public class PhaJwtAuthenticationHandler(
             if (client == null)
                 return Task.CompletedTask;
 
-            foreach (var bcp in client.Bcps)
-                claimsIdentity.AddClaim(new Claim(PhaClaimTypes.Bcp, bcp));
+            claimsIdentity.AddClaims(
+                [
+                    .. client.Bcps.Select(ClaimTypes.CreateBcpClaim),
+                    .. client.ChedTypes.Select(ClaimTypes.CreateChedTypeClaim),
+                ]
+            );
 
             context.Principal = new ClaimsPrincipal(claimsIdentity);
 

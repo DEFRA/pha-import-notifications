@@ -13,7 +13,7 @@ namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNot
 public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper outputHelper)
     : EndpointTestBase(factory, outputHelper)
 {
-    private readonly string[] _importNotificationTypes = ["CVEDA", "CVEDP", "CHEDPP", "CED"];
+    private readonly string[] _allImportNotificationTypes = ["CVEDA", "CVEDP", "CHEDPP", "CED"];
 
     private const int DEFAULT_PAGE = 1;
 
@@ -22,32 +22,46 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     private ITradeImportsDataApiService MockTradeImportsDataApiService { get; } =
         Substitute.For<ITradeImportsDataApiService>();
 
-    [Fact]
-    public async Task Get_ShouldSucceed()
+    [Theory]
+    [InlineData(new[] { "bcp1", "bcp2" }, new string[] { }, ClientId.WithLimitedBcpAccess, "With BCP Filter")]
+    [InlineData(
+        new[] { "bcp1", "bcp2" },
+        new[] { "CVEDA", "CVEDP" },
+        ClientId.WithFullAccess,
+        "With BCP and Type Filter"
+    )]
+    [InlineData(new string[] { }, new[] { "CED", "CVEDP" }, ClientId.WithLimitedChedTypeAccess, "With Type Filter")]
+    [InlineData(new string[] { }, new string[] { }, ClientId.WithFullAccess, "With no Filter")]
+    public async Task Get_ShouldSucceed(string[] bcps, string[] chedType, string clientId, string scenarioName)
     {
-        var client = CreateClient();
+        var client = CreateClient(clientId);
         var validRequest = new UpdatedImportNotificationRequest
         {
-            Bcp = ["bcp1", "bcp2"],
+            Bcp = bcps,
+            ChedType = chedType,
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
-            _importNotificationTypes,
+            validRequest.ChedType.Any() ? validRequest.ChedType : _allImportNotificationTypes,
             validRequest.Bcp,
             validRequest.From,
             validRequest.To
         );
 
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(
-            validRequest.Bcp,
-            validRequest.From.ToString("O"),
-            validRequest.To.ToString("O")
-        );
+        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+            .WithFrom(validRequest.From)
+            .WithTo(validRequest.To)
+            .WithBcp(validRequest.Bcp)
+            .WithChedType(validRequest.ChedType)
+            .Build();
 
-        var response = await client.GetStringAsync(url);
-        await VerifyJson(response, _verifySettings);
+        var response = await client.GetAsync(url);
+        var content = await response.Content.ReadAsStringAsync();
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        await VerifyJson(content, _verifySettings).UseParameters(scenarioName);
     }
 
     [Theory]
@@ -61,8 +75,8 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         string name
     )
     {
-        var client = CreateClient();
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(bcp, from, to);
+        var client = CreateClient(ClientId.WithFullAccess);
+        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithFrom(from).WithTo(to).WithBcp(bcp).Build();
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -73,12 +87,13 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenRequestParamsAreInvalid_ToTooCloseToUtcNow_ShouldBeBadRequest()
     {
-        var client = CreateClient();
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
-            ["bcp1"],
-            DateTime.UtcNow.AddSeconds(-60).ToString("O"),
-            DateTime.UtcNow.AddSeconds(-29).ToString("O")
-        );
+        var client = CreateClient(ClientId.WithFullAccess);
+
+        var now = DateTime.UtcNow;
+        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+            .WithFrom(now.AddSeconds(-60))
+            .WithTo(now.AddSeconds(-29))
+            .Build();
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -93,9 +108,13 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var from = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc);
         var to = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc);
 
-        SetUpMockTradeImportsDataApiServiceForSuccess(_importNotificationTypes, bcps: [], from, to);
+        SetUpMockTradeImportsDataApiServiceForSuccess(importNotificationTypes: ["CVEDP", "CED"], bcps: [], from, to);
 
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
+        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+            .WithChedType("CVEDP", "CED")
+            .WithPeriod(from: from, to: to)
+            .Build();
+
         var response = await client.GetStringAsync(url);
 
         await VerifyJson(response, _verifySettings);
@@ -104,11 +123,20 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenBcpParameterIsNotProvided_AndNotAuthorisedForAllBcps_ReturnsForbidden()
     {
-        var client = CreateClient("pha");
-        var from = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc);
-        var to = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc);
+        var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedValid(from: from.ToString("O"), to: to.ToString("O"));
+        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDA").Build();
+        var response = await client.GetAsync(url);
+
+        response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
+    }
+
+    [Fact]
+    public async Task Get_WhenBcpParameterIsNotProvided_AndNotAuthorisedForAllChedType_ReturnsForbidden()
+    {
+        var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
+
+        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithBcp("bcp-1").WithValidPeriod().Build();
         var response = await client.GetAsync(url);
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
@@ -126,7 +154,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
-            _importNotificationTypes,
+            _allImportNotificationTypes,
             validRequest.Bcp,
             validRequest.From,
             validRequest.To,
@@ -134,13 +162,10 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             DEFAULT_PAGESIZE
         );
 
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
-            validRequest.Bcp,
-            validRequest.From.ToString("O"),
-            validRequest.To.ToString("O"),
-            page: null,
-            pageSize: null
-        );
+        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+            .WithPeriod(validRequest.From, validRequest.To)
+            .WithBcp(validRequest.Bcp)
+            .Build();
 
         var response = await client.GetStringAsync(url);
         await VerifyJson(response, _verifySettings);
@@ -160,7 +185,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
-            _importNotificationTypes,
+            _allImportNotificationTypes,
             validRequest.Bcp,
             validRequest.From,
             validRequest.To,
@@ -168,13 +193,12 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             validRequest.PageSize
         );
 
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
-            validRequest.Bcp,
-            validRequest.From.ToString("O"),
-            validRequest.To.ToString("O"),
-            validRequest.Page,
-            validRequest.PageSize
-        );
+        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+            .WithPeriod(validRequest.From, validRequest.To)
+            .WithBcp(validRequest.Bcp)
+            .WithPage(validRequest.Page)
+            .WithPageSize(validRequest.PageSize)
+            .Build();
 
         var response = await client.GetStringAsync(url);
         await VerifyJson(response, _verifySettings);
@@ -199,7 +223,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
-            _importNotificationTypes,
+            _allImportNotificationTypes,
             validRequest.Bcp,
             validRequest.From,
             validRequest.To,
@@ -207,13 +231,11 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             validRequest.PageSize
         );
 
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
-            validRequest.Bcp,
-            validRequest.From.ToString("O"),
-            validRequest.To.ToString("O"),
-            validRequest.Page,
-            validRequest.PageSize
-        );
+        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+            .WithValidPeriod()
+            .WithPage(validRequest.Page)
+            .WithPageSize(validRequest.PageSize)
+            .Build();
 
         var response = await client.GetAsync(url);
         response.StatusCode.Should().Be(expectedStatusCode);
@@ -235,12 +257,12 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             Bcp = ["bcp1"],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
-            PageFromQuery = new Random().Next(1, 10),
+            PageFromQuery = 1,
             PageSizeFromQuery = pageSize,
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
-            _importNotificationTypes,
+            _allImportNotificationTypes,
             validRequest.Bcp,
             validRequest.From,
             validRequest.To,
@@ -248,13 +270,11 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             validRequest.PageSize
         );
 
-        var url = Helpers.Endpoints.ImportNotifications.GetUpdatedBetween(
-            validRequest.Bcp,
-            validRequest.From.ToString("O"),
-            validRequest.To.ToString("O"),
-            validRequest.Page,
-            validRequest.PageSize
-        );
+        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+            .WithValidPeriod()
+            .WithPage(validRequest.Page)
+            .WithPageSize(validRequest.PageSize)
+            .Build();
 
         var response = await client.GetAsync(url);
         response.StatusCode.Should().Be(expectedStatusCode);
@@ -263,10 +283,10 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenNotAuthenticated_ReturnsUnauthorized()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
         client.DefaultRequestHeaders.Authorization = null;
 
-        var response = await client.GetAsync(Helpers.Endpoints.ImportNotifications.GetUpdatedValid());
+        var response = await client.GetAsync(Helpers.Endpoints.UpdateUrlBuilder.GetUpdatedValid());
 
         response.StatusCode.Should().Be(HttpStatusCode.Unauthorized);
     }
@@ -274,10 +294,21 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     [Fact]
     public async Task Get_WhenAuthenticatedButAccessToBcpDenied_ReturnsForbidden()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
         var response = await client.GetAsync(
-            Helpers.Endpoints.ImportNotifications.GetUpdatedValid(["bcp1", "bcp2", "bcp-no-access"])
+            new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithBcp("bcp1", "bcp2", "bcp-no-access").Build()
+        );
+        response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
+    }
+
+    [Fact]
+    public async Task Get_WhenAuthenticatedButAccessToChedTypeDenied_ReturnsForbidden()
+    {
+        var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
+
+        var response = await client.GetAsync(
+            new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDPP").Build()
         );
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);

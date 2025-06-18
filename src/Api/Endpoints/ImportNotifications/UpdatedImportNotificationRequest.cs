@@ -17,7 +17,13 @@ public sealed class UpdatedImportNotificationRequest : IDateTimeRangeDefinition
         "Filter import notifications by BCP.  This parameter is optional if the caller is authorised to see all BCPs, mandatory otherwise."
     )]
     [FromQuery(Name = "bcp")]
-    public string[]? Bcp { get; init; }
+    public string[]? Bcp { get; init; } = [];
+
+    [Description(
+        "Filter import notifications by CHED Type.  This parameter is optional if the caller is authorised to see all CHED Types, mandatory otherwise."
+    )]
+    [FromQuery(Name = "chedType")]
+    public string[]? ChedType { get; init; } = [];
 
     [Description(
         "Filter import notifications updated at this date and time or after this date and time. "

@@ -8,7 +8,7 @@ using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using ChedReferenceNumbers = Defra.PhaImportNotifications.Tests.Helpers.ChedReferenceNumbers;
 
-namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services.TradeImportsDataApiService;
 
 public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
 {
@@ -17,7 +17,7 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
     public TradeImportsDataApiServiceTests(WireMockContextQueryParameterNoComma context)
         : base(context)
     {
-        Subject = new TradeImportsDataApiService(
+        Subject = new PhaImportNotifications.Api.Services.TradeImportsDataApiService(
             new TradeImportsDataApiHttpClient(new HttpClient { BaseAddress = new Uri(context.Server.Urls[0]) })
         );
         _settings = new VerifySettings();
@@ -39,7 +39,7 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
             PageSizeFromQuery = 17,
         };
 
-    private TradeImportsDataApiService Subject { get; }
+    private PhaImportNotifications.Api.Services.TradeImportsDataApiService Subject { get; }
 
     [Theory]
     [InlineData("noBcps")]

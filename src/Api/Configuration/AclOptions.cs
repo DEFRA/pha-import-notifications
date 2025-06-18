@@ -10,5 +10,8 @@ public class AclOptions
     {
         [Required]
         public required List<string> Bcps { get; init; }
+
+        [Required]
+        public required List<string> ChedTypes { get; init; }
     }
 }

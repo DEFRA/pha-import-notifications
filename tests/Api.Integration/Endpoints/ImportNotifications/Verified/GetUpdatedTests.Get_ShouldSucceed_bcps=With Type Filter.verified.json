@@ -1,0 +1,16 @@
+﻿{
+  "importNotifications": [
+    {
+      "updated": "2024-11-29T23:59:59Z",
+      "referenceNumber": "CHEDA.GB.2024.4792831",
+      "links": {
+        "importNotification": "/import-notifications/CHEDA.GB.2024.4792831"
+      }
+    }
+  ],
+  "paging": {
+    "total": 1,
+    "page": 1,
+    "pageSize": 100
+  }
+}

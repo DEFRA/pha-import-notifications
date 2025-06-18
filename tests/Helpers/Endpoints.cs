@@ -5,43 +5,73 @@ namespace Defra.PhaImportNotifications.Tests.Helpers;
 
 public static class Endpoints
 {
+    private const string Root = "/import-notifications";
+
+    public class UpdateUrlBuilder
+    {
+        private readonly QueryBuilder _query = [];
+
+        public UpdateUrlBuilder WithValidPeriod() => WithFrom("2024-12-11T13:00:00Z").WithTo("2024-12-11T13:30:00Z");
+
+        public UpdateUrlBuilder WithPeriod(DateTime from, DateTime to) => WithFrom(from).WithTo(to);
+
+        public UpdateUrlBuilder WithFrom(DateTime from) => WithFrom(from.ToString("O"));
+
+        public UpdateUrlBuilder WithFrom(string from)
+        {
+            _query.Add("from", from);
+            return this;
+        }
+
+        public UpdateUrlBuilder WithTo(DateTime to) => WithTo(to.ToString("O"));
+
+        public UpdateUrlBuilder WithTo(string to)
+        {
+            _query.Add("to", to);
+            return this;
+        }
+
+        public UpdateUrlBuilder WithBcp(params string[]? bcps)
+        {
+            if (bcps is not null)
+            {
+                foreach (var se in bcps)
+                    _query.Add("bcp", se);
+            }
+
+            return this;
+        }
+
+        public UpdateUrlBuilder WithChedType(params string[]? chedTypes)
+        {
+            if (chedTypes is not null)
+            {
+                foreach (var se in chedTypes)
+                    _query.Add("chedType", se);
+            }
+
+            return this;
+        }
+
+        public UpdateUrlBuilder WithPage(int page)
+        {
+            _query.Add("page", page.ToString());
+            return this;
+        }
+
+        public UpdateUrlBuilder WithPageSize(int pageSize)
+        {
+            _query.Add("pageSize", pageSize.ToString());
+            return this;
+        }
+
+        public static string GetUpdatedValid() => new UpdateUrlBuilder().WithValidPeriod().Build();
+
+        public string Build() => $"{Root}{_query}";
+    }
+
     public static class ImportNotifications
     {
-        private const string Root = "/import-notifications";
-
         public static string Get(string chedReferenceNumber) => $"/import-notifications/{chedReferenceNumber}";
-
-        public static string GetUpdatedValid(
-            string[]? bcp = null,
-            string from = "2024-12-11T13:00:00Z",
-            string to = "2024-12-11T13:30:00Z"
-        ) => GetUpdatedBetween(bcp, from, to);
-
-        public static string GetUpdatedBetween(
-            string[]? bcp,
-            string from,
-            string to,
-            int? page = null,
-            int? pageSize = null
-        )
-        {
-            var query = new QueryBuilder();
-
-            if (bcp is not null)
-                foreach (var se in bcp)
-                    query.Add("bcp", se);
-
-            query.Add("from", from);
-
-            query.Add("to", to);
-
-            if (page != null)
-                query.Add("page", page.Value.ToString());
-
-            if (pageSize != null)
-                query.Add("pageSize", pageSize.Value.ToString());
-
-            return $"{Root}{query}";
-        }
     }
 }

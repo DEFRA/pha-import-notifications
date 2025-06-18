@@ -38,6 +38,18 @@
             }
           },
           {
+            "name": "chedType",
+            "in": "query",
+            "description": "Filter import notifications by CHED Type.  This parameter is optional if the caller is authorised to see all CHED Types, mandatory otherwise.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Filter import notifications by CHED Type.  This parameter is optional if the caller is authorised to see all CHED Types, mandatory otherwise."
+            }
+          },
+          {
             "name": "from",
             "in": "query",
             "description": "Filter import notifications updated at this date and time or after this date and time.  Expected value is UTC using format ISO 8601-1:2019",
@@ -103,6 +115,16 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
             "content": {
               "application/problem+json": {
                 "schema": {
@@ -179,6 +201,16 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
             "content": {
               "application/problem+json": {
                 "schema": {
