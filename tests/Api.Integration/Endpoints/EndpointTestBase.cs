@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Xunit.Abstractions;
+using ClaimTypes = Defra.PhaImportNotifications.Api.Authentication.ClaimTypes;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints;
@@ -45,7 +46,17 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
     /// <param name="services"></param>
     protected virtual void ConfigureTestServices(IServiceCollection services) { }
 
-    protected HttpClient CreateClient(string clientId = "pha")
+    /// <summary>
+    /// ACL defined in appsettings.IntegrationTests.json
+    /// </summary>
+    public static class ClientId
+    {
+        public const string WithFullAccess = "defra";
+        public const string WithLimitedBcpAccess = "pha";
+        public const string WithLimitedChedTypeAccess = "fsa";
+    }
+
+    protected HttpClient CreateClient(string clientId)
     {
         var builder = _factory.WithWebHostBuilder(builder =>
         {
@@ -64,7 +75,7 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, clientId),
-            new Claim(PhaClaimTypes.ClientId, clientId),
+            new Claim(ClaimTypes.ClientId, clientId),
         };
 
         var rand = new byte[32];

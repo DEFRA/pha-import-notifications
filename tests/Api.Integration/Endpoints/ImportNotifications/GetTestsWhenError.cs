@@ -1,6 +1,7 @@
 using System.Net;
 using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Tests.Helpers;
+using Elastic.CommonSchema;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WireMock.RequestBuilders;
@@ -26,7 +27,7 @@ public class GetTestsWhenError : EndpointTestBase, IClassFixture<WireMockContext
     [Fact]
     public async Task Get_WhenError_ShouldFail()
     {
-        var client = CreateClient();
+        var client = CreateClient(ClientId.WithFullAccess);
 
         WireMock
             .Given(
