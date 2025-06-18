@@ -157,8 +157,8 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             Bcp = ["bcp1"],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
-            Page = new Random().Next(1, 10),
-            PageSize = new Random().Next(1, MAX_PAGESIZE),
+            PageFromQuery = new Random().Next(1, 10),
+            PageSizeFromQuery = new Random().Next(1, MAX_PAGESIZE),
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
@@ -196,8 +196,8 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             Bcp = ["bcp1"],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
-            Page = page,
-            PageSize = 25,
+            PageFromQuery = page,
+            PageSizeFromQuery = 25,
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
@@ -237,8 +237,8 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             Bcp = ["bcp1"],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
-            Page = new Random().Next(1, 10),
-            PageSize = pageSize,
+            PageFromQuery = new Random().Next(1, 10),
+            PageSizeFromQuery = pageSize,
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
