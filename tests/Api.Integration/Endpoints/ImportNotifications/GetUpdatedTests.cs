@@ -7,6 +7,7 @@ using Defra.PhaImportNotifications.Tests.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Xunit.Abstractions;
+using static Defra.PhaImportNotifications.Tests.Helpers.Endpoints;
 
 namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNotifications;
 
@@ -50,7 +51,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             validRequest.To
         );
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+        var url = new UpdateUrlBuilder()
             .WithFrom(validRequest.From)
             .WithTo(validRequest.To)
             .WithBcp(validRequest.Bcp)
@@ -76,7 +77,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     )
     {
         var client = CreateClient(ClientId.WithFullAccess);
-        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithFrom(from).WithTo(to).WithBcp(bcp).Build();
+        var url = new UpdateUrlBuilder().WithFrom(from).WithTo(to).WithBcp(bcp).Build();
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -90,10 +91,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient(ClientId.WithFullAccess);
 
         var now = DateTime.UtcNow;
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
-            .WithFrom(now.AddSeconds(-60))
-            .WithTo(now.AddSeconds(-29))
-            .Build();
+        var url = new UpdateUrlBuilder().WithFrom(now.AddSeconds(-60)).WithTo(now.AddSeconds(-29)).Build();
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -110,10 +108,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
 
         SetUpMockTradeImportsDataApiServiceForSuccess(importNotificationTypes: ["CVEDP", "CED"], bcps: [], from, to);
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
-            .WithChedType("CVEDP", "CED")
-            .WithPeriod(from: from, to: to)
-            .Build();
+        var url = new UpdateUrlBuilder().WithChedType("CVEDP", "CED").WithPeriod(from: from, to: to).Build();
 
         var response = await client.GetStringAsync(url);
 
@@ -125,7 +120,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDA").Build();
+        var url = new UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDA").Build();
         var response = await client.GetAsync(url);
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
@@ -136,7 +131,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithBcp("bcp-1").WithValidPeriod().Build();
+        var url = new UpdateUrlBuilder().WithBcp("bcp-1").WithValidPeriod().Build();
         var response = await client.GetAsync(url);
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
@@ -162,7 +157,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             DEFAULT_PAGESIZE
         );
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+        var url = new UpdateUrlBuilder()
             .WithPeriod(validRequest.From, validRequest.To)
             .WithBcp(validRequest.Bcp)
             .Build();
@@ -193,7 +188,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             validRequest.PageSize
         );
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+        var url = new UpdateUrlBuilder()
             .WithPeriod(validRequest.From, validRequest.To)
             .WithBcp(validRequest.Bcp)
             .WithPage(validRequest.Page)
@@ -231,7 +226,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             validRequest.PageSize
         );
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+        var url = new UpdateUrlBuilder()
             .WithValidPeriod()
             .WithPage(validRequest.Page)
             .WithPageSize(validRequest.PageSize)
@@ -270,7 +265,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             validRequest.PageSize
         );
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+        var url = new UpdateUrlBuilder()
             .WithValidPeriod()
             .WithPage(validRequest.Page)
             .WithPageSize(validRequest.PageSize)
@@ -297,7 +292,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
         var response = await client.GetAsync(
-            new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithBcp("bcp1", "bcp2", "bcp-no-access").Build()
+            new UpdateUrlBuilder().WithValidPeriod().WithBcp("bcp1", "bcp2", "bcp-no-access").Build()
         );
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
@@ -307,9 +302,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
 
-        var response = await client.GetAsync(
-            new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDPP").Build()
-        );
+        var response = await client.GetAsync(new UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDPP").Build());
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
@@ -318,7 +311,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         base.ConfigureTestServices(services);
 
-        services.AddTransient<ITradeImportsDataApiService>(_ => MockTradeImportsDataApiService);
+        services.AddTransient(_ => MockTradeImportsDataApiService);
     }
 
     private void SetUpMockTradeImportsDataApiServiceForSuccess(
