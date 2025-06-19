@@ -67,7 +67,7 @@ public static class EndpointRouteBuilderExtensions
         if (!httpContext.User.ClientHasAccessTo(bcps.ToList(), chedTypes.ToList()))
             return Results.Forbid();
 
-        var notifications = await tradeImportsDataApiService.GetImportNotificationUpdates(
+        var response = await tradeImportsDataApiService.GetImportNotificationUpdates(
             chedTypes,
             bcps,
             request.From,
@@ -76,7 +76,7 @@ public static class EndpointRouteBuilderExtensions
             request.PageSize,
             cancellationToken
         );
-        var updated = notifications.Select(x => new UpdatedImportNotification
+        var updated = response.ImportNotifications.Select(x => new UpdatedImportNotification
         {
             Updated = x.UpdatedEntity,
             ReferenceNumber = x.ReferenceNumber,
@@ -92,9 +92,9 @@ public static class EndpointRouteBuilderExtensions
                 ImportNotifications = updated,
                 Paging = new PagingMetadata
                 {
-                    Page = request.Page,
-                    PageSize = request.PageSize,
-                    Total = updated.Count(),
+                    Page = response.Page,
+                    PageSize = response.PageSize,
+                    Total = response.Total,
                 },
             }
         );

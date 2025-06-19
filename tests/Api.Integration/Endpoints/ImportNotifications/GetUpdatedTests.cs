@@ -143,7 +143,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
         var validRequest = new UpdatedImportNotificationRequest
         {
-            Bcp = ["bcp1"],
+            Bcp = [],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
         };
@@ -157,10 +157,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
             DEFAULT_PAGESIZE
         );
 
-        var url = new UpdateUrlBuilder()
-            .WithPeriod(validRequest.From, validRequest.To)
-            .WithBcp(validRequest.Bcp)
-            .Build();
+        var url = new UpdateUrlBuilder().WithPeriod(validRequest.From, validRequest.To).Build();
 
         var response = await client.GetStringAsync(url);
         await VerifyJson(response, _verifySettings);
@@ -172,7 +169,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
         var validRequest = new UpdatedImportNotificationRequest
         {
-            Bcp = ["bcp1"],
+            Bcp = [],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
             PageFromQuery = 3,
@@ -190,7 +187,6 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
 
         var url = new UpdateUrlBuilder()
             .WithPeriod(validRequest.From, validRequest.To)
-            .WithBcp(validRequest.Bcp)
             .WithPage(validRequest.Page)
             .WithPageSize(validRequest.PageSize)
             .Build();
@@ -210,7 +206,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
         var validRequest = new UpdatedImportNotificationRequest
         {
-            Bcp = ["bcp1"],
+            Bcp = [],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
             PageFromQuery = page,
@@ -227,7 +223,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         );
 
         var url = new UpdateUrlBuilder()
-            .WithValidPeriod()
+            .WithPeriod(validRequest.From, validRequest.To)
             .WithPage(validRequest.Page)
             .WithPageSize(validRequest.PageSize)
             .Build();
@@ -249,7 +245,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient();
         var validRequest = new UpdatedImportNotificationRequest
         {
-            Bcp = ["bcp1"],
+            Bcp = [],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
             PageFromQuery = 1,
@@ -266,7 +262,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         );
 
         var url = new UpdateUrlBuilder()
-            .WithValidPeriod()
+            .WithPeriod(validRequest.From, validRequest.To)
             .WithPage(validRequest.Page)
             .WithPageSize(validRequest.PageSize)
             .Build();
@@ -334,13 +330,22 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
                 Arg.Any<CancellationToken>()
             )
             .Returns(
-                [
-                    new Fixture()
-                        .Build<ImportNotificationUpdate>()
-                        .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
-                        .With(x => x.UpdatedEntity, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
-                        .Create(),
-                ]
+                new Fixture()
+                    .Build<ImportNotificationUpdatesPaged>()
+                    .With(
+                        x => x.ImportNotifications,
+                        [
+                            new Fixture()
+                                .Build<ImportNotificationUpdate>()
+                                .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
+                                .With(x => x.UpdatedEntity, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
+                                .Create(),
+                        ]
+                    )
+                    .With(x => x.Page, page ?? 1)
+                    .With(x => x.PageSize, pageSize ?? 100)
+                    .With(x => x.Total, 1)
+                    .Create()
             );
     }
 }

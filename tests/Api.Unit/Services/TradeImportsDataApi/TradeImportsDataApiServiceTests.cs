@@ -73,7 +73,7 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
         );
 
         // If this fails, check the expected filter or fields as it may have changed
-        result.Should().HaveCount(10);
+        result.ImportNotifications.Should().HaveCount(10);
 
         await Verify(result, _settings).UseParameters(testName);
     }
@@ -89,8 +89,8 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
                 [],
                 DateTime.Now,
                 DateTime.Now,
-                1,
-                10,
+                page: 1,
+                pageSize: 10,
                 CancellationToken.None
             );
 

@@ -7,7 +7,7 @@ namespace Defra.PhaImportNotifications.Api.Services;
 public class TradeImportsDataApiService(TradeImportsDataApiHttpClient tradeImportsDataApiHttpClient)
     : ITradeImportsDataApiService
 {
-    public async Task<IEnumerable<ImportNotificationUpdate>> GetImportNotificationUpdates(
+    public async Task<ImportNotificationUpdatesPaged> GetImportNotificationUpdates(
         string[] importNotificationTypes,
         string[] bcp,
         DateTime from,
@@ -33,7 +33,14 @@ public class TradeImportsDataApiService(TradeImportsDataApiHttpClient tradeImpor
                 cancellationToken
             );
 
-        return response?.ImportPreNotificationUpdates.Select(u => u.ToImportNotificationUpdate()) ?? [];
+        return response?.ToImportNotificationUpdatesPaged()
+            ?? new ImportNotificationUpdatesPaged
+            {
+                ImportNotifications = [],
+                Page = page,
+                PageSize = pageSize,
+                Total = 0,
+            };
     }
 
     public async Task<ImportPreNotification?> GetImportNotification(
