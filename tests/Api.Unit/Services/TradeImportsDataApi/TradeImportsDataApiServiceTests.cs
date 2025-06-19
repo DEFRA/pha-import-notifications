@@ -8,7 +8,7 @@ using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using ChedReferenceNumbers = Defra.PhaImportNotifications.Tests.Helpers.ChedReferenceNumbers;
 
-namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services.TradeImportsDataApiService;
+namespace Defra.PhaImportNotifications.Tests.Api.Unit.Services.TradeImportsDataApi;
 
 public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQueryParameterNoComma>
 {
@@ -17,7 +17,7 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
     public TradeImportsDataApiServiceTests(WireMockContextQueryParameterNoComma context)
         : base(context)
     {
-        Subject = new PhaImportNotifications.Api.Services.TradeImportsDataApiService(
+        Subject = new TradeImportsDataApiService(
             new TradeImportsDataApiHttpClient(new HttpClient { BaseAddress = new Uri(context.Server.Urls[0]) })
         );
         _settings = new VerifySettings();
@@ -35,9 +35,11 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
             Bcp = ["bcp1", "bcp2"],
             From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
             To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+            PageFromQuery = 5,
+            PageSizeFromQuery = 17,
         };
 
-    private PhaImportNotifications.Api.Services.TradeImportsDataApiService Subject { get; }
+    private TradeImportsDataApiService Subject { get; }
 
     [Theory]
     [InlineData("noBcps")]
@@ -50,7 +52,9 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
                 .WithParam("from", "2024-12-12T13:10:30.0000000Z")
                 .WithParam("to", "2024-12-12T13:40:30.0000000Z")
                 .WithParam("excludeStatus", "DRAFT")
-                .WithParam("type", "type1", "type2", "type3");
+                .WithParam("type", "type1", "type2", "type3")
+                .WithParam("page", "5")
+                .WithParam("pageSize", "17");
             if (bcps.Length > 0)
             {
                 builder.WithParam("pointOfEntry", "bcp1", "bcp2");
@@ -63,11 +67,13 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
             bcps,
             ValidRequest.From,
             ValidRequest.To,
+            ValidRequest.Page,
+            ValidRequest.PageSize,
             CancellationToken.None
         );
 
         // If this fails, check the expected filter or fields as it may have changed
-        result.Should().HaveCount(10);
+        result.ImportNotifications.Should().HaveCount(10);
 
         await Verify(result, _settings).UseParameters(testName);
     }
@@ -83,6 +89,8 @@ public class TradeImportsDataApiServiceTests : WireMockTestBase<WireMockContextQ
                 [],
                 DateTime.Now,
                 DateTime.Now,
+                page: 1,
+                pageSize: 10,
                 CancellationToken.None
             );
 

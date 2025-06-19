@@ -7,6 +7,7 @@ using Defra.PhaImportNotifications.Tests.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Xunit.Abstractions;
+using static Defra.PhaImportNotifications.Tests.Helpers.Endpoints;
 
 namespace Defra.PhaImportNotifications.Tests.Api.Integration.Endpoints.ImportNotifications;
 
@@ -14,6 +15,10 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     : EndpointTestBase(factory, outputHelper)
 {
     private readonly string[] _allImportNotificationTypes = ["CVEDA", "CVEDP", "CHEDPP", "CED"];
+
+    private const int DEFAULT_PAGE = 1;
+
+    private const int DEFAULT_PAGESIZE = 100;
 
     private ITradeImportsDataApiService MockTradeImportsDataApiService { get; } =
         Substitute.For<ITradeImportsDataApiService>();
@@ -40,13 +45,13 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
-            validRequest.ChedType.Any() ? validRequest.ChedType : _allImportNotificationTypes,
+            validRequest.ChedType.Length > 0 ? validRequest.ChedType : _allImportNotificationTypes,
             validRequest.Bcp,
             validRequest.From,
             validRequest.To
         );
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
+        var url = new UpdateUrlBuilder()
             .WithFrom(validRequest.From)
             .WithTo(validRequest.To)
             .WithBcp(validRequest.Bcp)
@@ -72,7 +77,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     )
     {
         var client = CreateClient(ClientId.WithFullAccess);
-        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithFrom(from).WithTo(to).WithBcp(bcp).Build();
+        var url = new UpdateUrlBuilder().WithFrom(from).WithTo(to).WithBcp(bcp).Build();
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -86,10 +91,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient(ClientId.WithFullAccess);
 
         var now = DateTime.UtcNow;
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
-            .WithFrom(now.AddSeconds(-60))
-            .WithTo(now.AddSeconds(-29))
-            .Build();
+        var url = new UpdateUrlBuilder().WithFrom(now.AddSeconds(-60)).WithTo(now.AddSeconds(-29)).Build();
 
         var response = await client.GetAsync(url);
         var content = await response.Content.ReadAsStringAsync();
@@ -106,10 +108,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
 
         SetUpMockTradeImportsDataApiServiceForSuccess(importNotificationTypes: ["CVEDP", "CED"], bcps: [], from, to);
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder()
-            .WithChedType("CVEDP", "CED")
-            .WithPeriod(from: from, to: to)
-            .Build();
+        var url = new UpdateUrlBuilder().WithChedType("CVEDP", "CED").WithPeriod(from: from, to: to).Build();
 
         var response = await client.GetStringAsync(url);
 
@@ -121,7 +120,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDA").Build();
+        var url = new UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDA").Build();
         var response = await client.GetAsync(url);
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
@@ -132,10 +131,144 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
 
-        var url = new Helpers.Endpoints.UpdateUrlBuilder().WithBcp("bcp-1").WithValidPeriod().Build();
+        var url = new UpdateUrlBuilder().WithBcp("bcp-1").WithValidPeriod().Build();
         var response = await client.GetAsync(url);
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
+    }
+
+    [Fact]
+    public async Task Get_WhenPagingNotSpecified_DefaultsUsed()
+    {
+        var client = CreateClient();
+        var validRequest = new UpdatedImportNotificationRequest
+        {
+            Bcp = [],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+        };
+
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _allImportNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To,
+            DEFAULT_PAGE,
+            DEFAULT_PAGESIZE
+        );
+
+        var url = new UpdateUrlBuilder().WithPeriod(validRequest.From, validRequest.To).Build();
+
+        var response = await client.GetStringAsync(url);
+        await VerifyJson(response, _verifySettings);
+    }
+
+    [Fact]
+    public async Task Get_WhenPagingSpecified_ValuesPassedThrough()
+    {
+        var client = CreateClient();
+        var validRequest = new UpdatedImportNotificationRequest
+        {
+            Bcp = [],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+            PageFromQuery = 3,
+            PageSizeFromQuery = 12,
+        };
+
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _allImportNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To,
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var url = new UpdateUrlBuilder()
+            .WithPeriod(validRequest.From, validRequest.To)
+            .WithPage(validRequest.Page)
+            .WithPageSize(validRequest.PageSize)
+            .Build();
+
+        var response = await client.GetStringAsync(url);
+        await VerifyJson(response, _verifySettings);
+    }
+
+    [Theory()]
+    [InlineData(-1, HttpStatusCode.BadRequest)]
+    [InlineData(0, HttpStatusCode.BadRequest)]
+    [InlineData(1, HttpStatusCode.OK)]
+    [InlineData(99, HttpStatusCode.OK)]
+    [InlineData(999, HttpStatusCode.OK)]
+    public async Task Get_WhenPageSpecified_LimitedToValidRange(int page, HttpStatusCode expectedStatusCode)
+    {
+        var client = CreateClient();
+        var validRequest = new UpdatedImportNotificationRequest
+        {
+            Bcp = [],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+            PageFromQuery = page,
+            PageSizeFromQuery = 25,
+        };
+
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _allImportNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To,
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var url = new UpdateUrlBuilder()
+            .WithPeriod(validRequest.From, validRequest.To)
+            .WithPage(validRequest.Page)
+            .WithPageSize(validRequest.PageSize)
+            .Build();
+
+        var response = await client.GetAsync(url);
+        response.StatusCode.Should().Be(expectedStatusCode);
+    }
+
+    [Theory()]
+    [InlineData(-1, HttpStatusCode.BadRequest)]
+    [InlineData(0, HttpStatusCode.BadRequest)]
+    [InlineData(1, HttpStatusCode.OK)]
+    [InlineData(999, HttpStatusCode.OK)]
+    [InlineData(1000, HttpStatusCode.OK)]
+    [InlineData(1001, HttpStatusCode.BadRequest)]
+    [InlineData(99999, HttpStatusCode.BadRequest)]
+    public async Task Get_WhenPageSizeSpecified_LimitedToValidRange(int pageSize, HttpStatusCode expectedStatusCode)
+    {
+        var client = CreateClient();
+        var validRequest = new UpdatedImportNotificationRequest
+        {
+            Bcp = [],
+            From = new DateTime(2024, 12, 12, 13, 10, 30, DateTimeKind.Utc),
+            To = new DateTime(2024, 12, 12, 13, 40, 30, DateTimeKind.Utc),
+            PageFromQuery = 1,
+            PageSizeFromQuery = pageSize,
+        };
+
+        SetUpMockTradeImportsDataApiServiceForSuccess(
+            _allImportNotificationTypes,
+            validRequest.Bcp,
+            validRequest.From,
+            validRequest.To,
+            validRequest.Page,
+            validRequest.PageSize
+        );
+
+        var url = new UpdateUrlBuilder()
+            .WithPeriod(validRequest.From, validRequest.To)
+            .WithPage(validRequest.Page)
+            .WithPageSize(validRequest.PageSize)
+            .Build();
+
+        var response = await client.GetAsync(url);
+        response.StatusCode.Should().Be(expectedStatusCode);
     }
 
     [Fact]
@@ -155,7 +288,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         var client = CreateClient(ClientId.WithLimitedBcpAccess);
 
         var response = await client.GetAsync(
-            new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithBcp("bcp1", "bcp2", "bcp-no-access").Build()
+            new UpdateUrlBuilder().WithValidPeriod().WithBcp("bcp1", "bcp2", "bcp-no-access").Build()
         );
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
@@ -165,9 +298,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         var client = CreateClient(ClientId.WithLimitedChedTypeAccess);
 
-        var response = await client.GetAsync(
-            new Helpers.Endpoints.UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDPP").Build()
-        );
+        var response = await client.GetAsync(new UpdateUrlBuilder().WithValidPeriod().WithChedType("CHEDPP").Build());
 
         response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
     }
@@ -176,14 +307,16 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
     {
         base.ConfigureTestServices(services);
 
-        services.AddTransient<ITradeImportsDataApiService>(_ => MockTradeImportsDataApiService);
+        services.AddTransient(_ => MockTradeImportsDataApiService);
     }
 
     private void SetUpMockTradeImportsDataApiServiceForSuccess(
         string[] importNotificationTypes,
         string[] bcps,
         DateTime from,
-        DateTime to
+        DateTime to,
+        int? page = null,
+        int? pageSize = null
     )
     {
         MockTradeImportsDataApiService
@@ -192,16 +325,27 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
                 Arg.Is<string[]>(x => x.SequenceEqual(bcps)),
                 from,
                 to,
+                page ?? Arg.Any<int>(),
+                pageSize ?? Arg.Any<int>(),
                 Arg.Any<CancellationToken>()
             )
             .Returns(
-                [
-                    new Fixture()
-                        .Build<ImportNotificationUpdate>()
-                        .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
-                        .With(x => x.UpdatedEntity, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
-                        .Create(),
-                ]
+                new Fixture()
+                    .Build<ImportNotificationUpdatesPaged>()
+                    .With(
+                        x => x.ImportNotifications,
+                        [
+                            new Fixture()
+                                .Build<ImportNotificationUpdate>()
+                                .With(x => x.ReferenceNumber, ChedReferenceNumbers.ChedA)
+                                .With(x => x.UpdatedEntity, new DateTime(2024, 11, 29, 23, 59, 59, DateTimeKind.Utc))
+                                .Create(),
+                        ]
+                    )
+                    .With(x => x.Page, page ?? 1)
+                    .With(x => x.PageSize, pageSize ?? 100)
+                    .With(x => x.Total, 1)
+                    .Create()
             );
     }
 }

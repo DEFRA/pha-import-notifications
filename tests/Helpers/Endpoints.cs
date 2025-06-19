@@ -52,6 +52,18 @@ public static class Endpoints
             return this;
         }
 
+        public UpdateUrlBuilder WithPage(int page)
+        {
+            _query.Add("page", page.ToString());
+            return this;
+        }
+
+        public UpdateUrlBuilder WithPageSize(int pageSize)
+        {
+            _query.Add("pageSize", pageSize.ToString());
+            return this;
+        }
+
         public static string GetUpdatedValid() => new UpdateUrlBuilder().WithValidPeriod().Build();
 
         public string Build() => $"{Root}{_query}";

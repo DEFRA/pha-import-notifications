@@ -56,7 +56,7 @@ public class EndpointTestBase : IClassFixture<ApiWebApplicationFactory>
         public const string WithLimitedChedTypeAccess = "fsa";
     }
 
-    protected HttpClient CreateClient(string clientId)
+    protected HttpClient CreateClient(string clientId = ClientId.WithFullAccess)
     {
         var builder = _factory.WithWebHostBuilder(builder =>
         {

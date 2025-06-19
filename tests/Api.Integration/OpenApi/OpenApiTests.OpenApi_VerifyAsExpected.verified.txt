@@ -70,6 +70,26 @@
               "description": "Filter import notifications updated before this date and time. Expected value is UTC using format ISO 8601-1:2019. If the time period between From and To is greater than 1 hour then the request will be invalid. Expected value also needs to be in the past by 30 seconds if requesting the current UTC date and time.",
               "format": "date-time"
             }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (1-based). Defaults to 1 if not specified.",
+            "schema": {
+              "type": "integer",
+              "description": "Page number (1-based). Defaults to 1 if not specified.",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "Number of items per page. Defaults to 100 if not specified. Max of 1000.",
+            "schema": {
+              "type": "integer",
+              "description": "Number of items per page. Defaults to 100 if not specified. Max of 1000.",
+              "format": "int32"
+            }
           }
         ],
         "responses": {
@@ -2909,6 +2929,32 @@
         },
         "additionalProperties": false
       },
+      "PagingMetadata": {
+        "required": [
+          "page",
+          "pageSize",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer",
+            "description": "The total number of items across all pages",
+            "format": "int32"
+          },
+          "page": {
+            "type": "integer",
+            "description": "The page number (1-based) in this response",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "description": "The maximum number of items per page",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "PartOne": {
         "type": "object",
         "properties": {
@@ -3955,7 +4001,8 @@
       },
       "UpdatedImportNotificationsResponse": {
         "required": [
-          "importNotifications"
+          "importNotifications",
+          "paging"
         ],
         "type": "object",
         "properties": {
@@ -3965,6 +4012,14 @@
               "$ref": "#/components/schemas/UpdatedImportNotification"
             },
             "description": "Import Notifications"
+          },
+          "paging": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PagingMetadata"
+              }
+            ],
+            "description": "Metadata related to the paged response and its content"
           }
         },
         "additionalProperties": false

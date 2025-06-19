@@ -1,7 +1,6 @@
 using System.Net;
 using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Tests.Helpers;
-using Elastic.CommonSchema;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WireMock.RequestBuilders;

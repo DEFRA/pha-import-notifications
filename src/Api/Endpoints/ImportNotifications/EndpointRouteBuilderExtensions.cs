@@ -61,20 +61,22 @@ public static class EndpointRouteBuilderExtensions
         CancellationToken cancellationToken
     )
     {
-        var chedTypes = request.ChedType?.Any() ?? false ? request.ChedType : s_importNotificationTypes;
+        var chedTypes = request.ChedType?.Length > 0 ? request.ChedType : s_importNotificationTypes;
 
         var bcps = request.Bcp ?? [];
         if (!httpContext.User.ClientHasAccessTo(bcps.ToList(), chedTypes.ToList()))
             return Results.Forbid();
 
-        var notifications = await tradeImportsDataApiService.GetImportNotificationUpdates(
+        var response = await tradeImportsDataApiService.GetImportNotificationUpdates(
             chedTypes,
             bcps,
             request.From,
             request.To,
+            request.Page,
+            request.PageSize,
             cancellationToken
         );
-        var updated = notifications.Select(x => new UpdatedImportNotification
+        var updated = response.ImportNotifications.Select(x => new UpdatedImportNotification
         {
             Updated = x.UpdatedEntity,
             ReferenceNumber = x.ReferenceNumber,
@@ -84,7 +86,18 @@ public static class EndpointRouteBuilderExtensions
             },
         });
 
-        return Results.Ok(new UpdatedImportNotificationsResponse { ImportNotifications = updated });
+        return Results.Ok(
+            new UpdatedImportNotificationsResponse
+            {
+                ImportNotifications = updated,
+                Paging = new PagingMetadata
+                {
+                    Page = response.Page,
+                    PageSize = response.PageSize,
+                    Total = response.Total,
+                },
+            }
+        );
     }
 
     /// <param name="chedReferenceNumber" example="CHEDA.GB.2024.1020304">CHED Reference Number</param>
