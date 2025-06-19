@@ -61,7 +61,7 @@ public static class EndpointRouteBuilderExtensions
         CancellationToken cancellationToken
     )
     {
-        var chedTypes = request.ChedType?.Any() ?? false ? request.ChedType : s_importNotificationTypes;
+        var chedTypes = request.ChedType?.Length > 0 ? request.ChedType : s_importNotificationTypes;
 
         var bcps = request.Bcp ?? [];
         if (!httpContext.User.ClientHasAccessTo(bcps.ToList(), chedTypes.ToList()))

@@ -45,7 +45,7 @@ public class GetUpdatedTests(ApiWebApplicationFactory factory, ITestOutputHelper
         };
 
         SetUpMockTradeImportsDataApiServiceForSuccess(
-            validRequest.ChedType.Any() ? validRequest.ChedType : _allImportNotificationTypes,
+            validRequest.ChedType.Length > 0 ? validRequest.ChedType : _allImportNotificationTypes,
             validRequest.Bcp,
             validRequest.From,
             validRequest.To
