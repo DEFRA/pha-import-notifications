@@ -3,14 +3,14 @@
   "isRoot": true,
   "tools": {
     "swashbuckle.aspnetcore.cli": {
-      "version": "9.0.1",
+      "version": "9.0.2",
       "commands": [
         "swagger"
       ],
       "rollForward": false
     },
     "csharpier": {
-      "version": "1.0.2",
+      "version": "1.0.3",
       "commands": [
         "csharpier"
       ],
