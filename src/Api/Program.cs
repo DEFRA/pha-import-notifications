@@ -5,6 +5,7 @@ using System.Text;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Extensions;
+using Defra.PhaImportNotifications.Api.Metrics;
 using Defra.PhaImportNotifications.Api.OpenApi;
 using Defra.PhaImportNotifications.Api.Services;
 using Defra.PhaImportNotifications.Api.Utils;
@@ -154,6 +155,10 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
             }
         );
     });
+
+    builder.Services.AddSingleton<RequestMetrics>();
+    builder.Services.AddTransient<MetricsMiddleware>();
+
     builder.Services.AddHttpClient();
     builder.Services.AddHeaderPropagation(options =>
     {
@@ -197,6 +202,8 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 {
     var app = builder.Build();
 
+    app.UseEmfExporter(builder.Environment.ApplicationName);
+    app.UseMiddleware<MetricsMiddleware>();
     app.UseHeaderPropagation();
     app.UseAuthentication();
     app.UseAuthorization();

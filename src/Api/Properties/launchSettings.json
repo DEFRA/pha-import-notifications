@@ -7,7 +7,8 @@
       "applicationUrl": "http://localhost:8080",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ENVIRONMENT": "Local"
+        "ENVIRONMENT": "Local",
+        "AWS_EMF_ENVIRONMENT": "Local"
       }
     }
   }
