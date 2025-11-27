@@ -734,7 +734,8 @@
     "hmiAutoCleared": null,
     "inspectionRequired": "Not required",
     "inspectionOverride": null,
-    "autoClearedOn": "2024-11-23T10:35:08.53Z"
+    "autoClearedOn": "2024-11-23T10:35:08.53Z",
+    "requestAmendmentAdditionalDetails": null
   },
   "partThree": {
     "controlStatus": null,

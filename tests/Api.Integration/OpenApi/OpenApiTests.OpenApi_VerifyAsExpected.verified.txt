@@ -730,6 +730,13 @@
               "$ref": "#/components/schemas/ClearanceDecisionItem"
             },
             "nullable": true
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClearanceDecisionResult"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -787,6 +794,47 @@
             "items": {
               "$ref": "#/components/schemas/ClearanceDecisionCheck"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClearanceDecisionResult": {
+        "required": [
+          "itemNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "itemNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "importPreNotification": {
+            "type": "string",
+            "nullable": true
+          },
+          "documentReference": {
+            "type": "string",
+            "nullable": true
+          },
+          "documentCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "decisionCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "decisionReason": {
+            "type": "string",
+            "nullable": true
+          },
+          "internalDecisionCode": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -2186,6 +2234,7 @@
             "enum": [
               "Non Acceptable",
               "Acceptable for Internal Market",
+              "Acceptable for Non Internal Market",
               "Acceptable if Channeled",
               "Acceptable for Transhipment",
               "Acceptable for Transit",
@@ -3458,6 +3507,11 @@
             "type": "string",
             "description": "Date of autoclearance",
             "format": "date-time",
+            "nullable": true
+          },
+          "requestAmendmentAdditionalDetails": {
+            "type": "string",
+            "description": "The reason why a notification is put into a modify state.",
             "nullable": true
           }
         },

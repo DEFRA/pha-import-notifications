@@ -95,4 +95,8 @@ public partial record PartTwo
     [JsonPropertyName("autoClearedOn")]
     [Description("Date of autoclearance")]
     public DateTime? AutoClearedOn { get; init; }
+
+    [JsonPropertyName("requestAmendmentAdditionalDetails")]
+    [Description("The reason why a notification is put into a modify state.")]
+    public string? RequestAmendmentAdditionalDetails { get; init; }
 }

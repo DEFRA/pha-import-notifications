@@ -22,4 +22,7 @@ public partial record ClearanceDecision
 
     [JsonPropertyName("items")]
     public required List<ClearanceDecisionItem> Items { get; init; }
+
+    [JsonPropertyName("results")]
+    public List<ClearanceDecisionResult>? Results { get; init; }
 }

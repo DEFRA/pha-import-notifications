@@ -10,4 +10,7 @@ public partial record RelatedImportDeclarationsResponse
 
     [JsonPropertyName("importPreNotifications")]
     public required List<ImportPreNotificationResponse> ImportPreNotifications { get; init; }
+
+    [JsonPropertyName("goodsVehicleMovements")]
+    public required List<GmrResponse> GoodsVehicleMovements { get; init; }
 }

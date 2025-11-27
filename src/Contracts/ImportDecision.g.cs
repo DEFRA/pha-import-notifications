@@ -136,6 +136,7 @@ public partial record ImportDecision
     [JsonPropertyName("decision")]
     [ExampleValue("Non Acceptable")]
     [ExampleValue("Acceptable for Internal Market")]
+    [ExampleValue("Acceptable for Non Internal Market")]
     [ExampleValue("Acceptable if Channeled")]
     [ExampleValue("Acceptable for Transhipment")]
     [ExampleValue("Acceptable for Transit")]

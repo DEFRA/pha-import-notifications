@@ -464,7 +464,8 @@
     HmiAutoCleared: null,
     InspectionRequired: Not required,
     InspectionOverride: null,
-    AutoClearedOn: null
+    AutoClearedOn: null,
+    RequestAmendmentAdditionalDetails: null
   },
   PartThree: {
     ControlStatus: null,
