@@ -10,7 +10,7 @@ public class ExampleValueSchemaFilter : ISchemaFilter
     public void Apply(IOpenApiSchema schema, SchemaFilterContext context)
     {
         var open = schema as OpenApiSchema;
-        
+
         var exampleValueAttributes =
             context.MemberInfo?.GetCustomAttributes(false).OfType<ExampleValueAttribute>().ToList() ?? [];
 
@@ -24,7 +24,7 @@ public class ExampleValueSchemaFilter : ISchemaFilter
             var values = exampleValueAttributes.Select(a => a.Value).Where(v => !string.IsNullOrWhiteSpace(v));
 
             open!.Enum ??= new List<JsonNode>();
-            
+
             foreach (var value in values)
             {
                 open.Enum.Add(value);

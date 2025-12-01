@@ -114,12 +114,10 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
                 },
             }
         );
-        c.AddSecurityRequirement(document =>
-            new OpenApiSecurityRequirement
-            {
-                [new OpenApiSecuritySchemeReference("oAuth", document)] = []
-            }
-        );
+        c.AddSecurityRequirement(document => new OpenApiSecurityRequirement
+        {
+            [new OpenApiSecuritySchemeReference("oAuth", document)] = [],
+        });
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
         c.IncludeXmlComments(typeof(ImportPreNotification).Assembly);
         c.DocumentFilter<TagsDocumentFilter>();
