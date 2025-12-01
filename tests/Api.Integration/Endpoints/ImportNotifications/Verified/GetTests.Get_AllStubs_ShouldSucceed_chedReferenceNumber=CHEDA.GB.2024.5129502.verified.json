@@ -417,7 +417,8 @@
     "hmiAutoCleared": null,
     "inspectionRequired": null,
     "inspectionOverride": null,
-    "autoClearedOn": null
+    "autoClearedOn": null,
+    "requestAmendmentAdditionalDetails": null
   },
   "partThree": null,
   "officialVeterinarian": null,

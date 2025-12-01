@@ -457,7 +457,8 @@
     "hmiAutoCleared": true,
     "inspectionRequired": "Required",
     "inspectionOverride": null,
-    "autoClearedOn": null
+    "autoClearedOn": null,
+    "requestAmendmentAdditionalDetails": null
   },
   "partThree": {
     "controlStatus": null,
