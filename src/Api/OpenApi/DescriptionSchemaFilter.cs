@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Defra.PhaImportNotifications.Api.OpenApi;
@@ -8,7 +8,7 @@ namespace Defra.PhaImportNotifications.Api.OpenApi;
 [ExcludeFromCodeCoverage]
 public class DescriptionSchemaFilter : ISchemaFilter
 {
-    public void Apply(OpenApiSchema schema, SchemaFilterContext context)
+    public void Apply(IOpenApiSchema schema, SchemaFilterContext context)
     {
         if (context.ParameterInfo != null)
         {
@@ -43,4 +43,6 @@ public class DescriptionSchemaFilter : ISchemaFilter
             }
         }
     }
+
+    
 }

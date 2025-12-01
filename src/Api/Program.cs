@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -114,16 +114,10 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
                 },
             }
         );
-        c.AddSecurityRequirement(
+        c.AddSecurityRequirement(document =>
             new OpenApiSecurityRequirement
             {
-                {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "oAuth" },
-                    },
-                    []
-                },
+                [new OpenApiSecuritySchemeReference("oAuth", document)] = []
             }
         );
         c.IncludeXmlComments(Assembly.GetExecutingAssembly());
