@@ -55,7 +55,8 @@
               }
             ]
           }
-        ]
+        ],
+        "results": null
       },
       "finalisation": {
         "externalCorrelationId": "1363025",
@@ -515,7 +516,8 @@
     "hmiAutoCleared": null,
     "inspectionRequired": "Required",
     "inspectionOverride": null,
-    "autoClearedOn": null
+    "autoClearedOn": null,
+    "requestAmendmentAdditionalDetails": null
   },
   "partThree": {
     "controlStatus": null,

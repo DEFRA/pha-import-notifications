@@ -100,7 +100,8 @@
               }
             ]
           }
-        ]
+        ],
+        "results": null
       },
       "finalisation": null
     }
@@ -675,7 +676,8 @@
     "hmiAutoCleared": null,
     "inspectionRequired": "Required",
     "inspectionOverride": null,
-    "autoClearedOn": null
+    "autoClearedOn": null,
+    "requestAmendmentAdditionalDetails": null
   },
   "partThree": {
     "controlStatus": null,
