@@ -1,5 +1,5 @@
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
+using System.Text.Json.Nodes;
+using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Defra.PhaImportNotifications.Api.OpenApi;
@@ -10,22 +10,23 @@ public class TagsDocumentFilter : IDocumentFilter
 
     public void Apply(OpenApiDocument swaggerDoc, DocumentFilterContext context)
     {
-        swaggerDoc.Extensions["tags"] = new OpenApiArray
+        var tag = swaggerDoc.Tags?.FirstOrDefault(t => t.Name == ImportNotificationsTag);
+        if (tag is not null)
         {
-            new OpenApiObject
-            {
-                ["name"] = new OpenApiString(ImportNotificationsTag),
-                ["description"] = new OpenApiString("Get updated import notifications for a PHA"),
-            },
-        };
+            tag.Description = "Get updated import notifications for a PHA";
+        }
 
-        swaggerDoc.Extensions["x-tagGroups"] = new OpenApiArray
-        {
-            new OpenApiObject
+        swaggerDoc.Extensions ??= new Dictionary<string, IOpenApiExtension>();
+
+        swaggerDoc.Extensions["x-tagGroups"] = new JsonNodeExtension(
+            new JsonArray
             {
-                ["name"] = new OpenApiString("Endpoints"),
-                ["tags"] = new OpenApiArray { new OpenApiString(ImportNotificationsTag) },
-            },
-        };
+                new JsonObject
+                {
+                    ["name"] = "Endpoints",
+                    ["tags"] = new JsonArray { ImportNotificationsTag },
+                },
+            }
+        );
     }
 }

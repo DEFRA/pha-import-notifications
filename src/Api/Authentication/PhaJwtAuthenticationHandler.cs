@@ -28,12 +28,10 @@ public class PhaJwtAuthenticationHandler(
             if (client == null)
                 return Task.CompletedTask;
 
-            claimsIdentity.AddClaims(
-                [
-                    .. client.Bcps.Select(ClaimTypes.CreateBcpClaim),
-                    .. client.ChedTypes.Select(ClaimTypes.CreateChedTypeClaim),
-                ]
-            );
+            claimsIdentity.AddClaims([
+                .. client.Bcps.Select(ClaimTypes.CreateBcpClaim),
+                .. client.ChedTypes.Select(ClaimTypes.CreateChedTypeClaim),
+            ]);
 
             context.Principal = new ClaimsPrincipal(claimsIdentity);
 
