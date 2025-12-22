@@ -125,11 +125,13 @@ public static class EndpointRouteBuilderExtensions
 
         var bcp = notification.PartOne?.PointOfEntry;
 
-        if (bcp is null)
+        if (bcp is null || !httpContext.User.ClientHasAccessTo([bcp], [notification.ImportNotificationType!]))
             return Results.Forbid();
 
-        return !httpContext.User.ClientHasAccessTo([bcp], [notification.ImportNotificationType!])
-            ? Results.Forbid()
-            : Results.Ok(notification);
+        // PHAIN-235
+        notification.CustomsDeclarations = [];
+        notification.GoodsMovements = [];
+
+        return Results.Ok(notification);
     }
 }
