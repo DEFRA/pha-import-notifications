@@ -1,4 +1,5 @@
 using System.Text.Json.Nodes;
+using Defra.PhaImportNotifications.Api.Constants;
 using Defra.PhaImportNotifications.Contracts;
 using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -17,7 +18,7 @@ public class ExampleValueSchemaFilter : ISchemaFilter
         if (exampleValueAttributes.Count != 0)
         {
             schema.Description +=
-                $"{Environment.NewLine}{Environment.NewLine}"
+                $"{PlatformFormatting.JsonNewLine}{PlatformFormatting.JsonNewLine}"
                 + "Enum values represent current example values but additional values may also be returned as"
                 + " underlying systems evolve. Consuming clients should cater for this possibility.";
 

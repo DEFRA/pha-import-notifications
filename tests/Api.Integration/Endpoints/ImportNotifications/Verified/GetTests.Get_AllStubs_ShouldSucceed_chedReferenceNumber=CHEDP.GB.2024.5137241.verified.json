@@ -1,4 +1,126 @@
 ﻿{
+  "clearanceRequests": [
+    {
+      "movementReferenceNumber": "24GBDFPD8F0ECL9AR8",
+      "clearanceRequest": {
+        "externalCorrelationId": "1315539",
+        "messageSentAt": "2024-12-04T12:23:32Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "arrivesAt": null,
+        "dispatchCountryCode": "BR",
+        "goodsLocationCode": "LGPLGPLGP",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "1602321990",
+            "goodsDescription": "FROZEN CHICKEN",
+            "consigneeId": "GB246936865000",
+            "consigneeName": "GB246936865000",
+            "netMass": 19493,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "BR",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5137241"
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "correlationId": "1315539",
+        "created": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5137241:161124053356:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ],
+        "results": null
+      },
+      "finalisation": null
+    },
+    {
+      "movementReferenceNumber": "24GBDFPJ28XLD8OAR5",
+      "clearanceRequest": {
+        "externalCorrelationId": "1315561",
+        "messageSentAt": "2024-12-04T12:28:02Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "arrivesAt": null,
+        "dispatchCountryCode": "BR",
+        "goodsLocationCode": "LGPLGPLGP",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "1602321990",
+            "goodsDescription": "FROZEN CHICKEN",
+            "consigneeId": "GB888420879000",
+            "consigneeName": "GB888420879000",
+            "netMass": 667,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "BR",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCVD2024.5137241"
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "correlationId": "1315561",
+        "created": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5137241:161124053356:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "C03",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ],
+        "results": null
+      },
+      "finalisation": null
+    }
+  ],
   "ipaffsId": 4137241,
   "etag": "00000000042C8B7B",
   "externalReferences": null,

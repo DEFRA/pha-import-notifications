@@ -3,6 +3,7 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 using Defra.PhaImportNotifications.Api.Configuration;
+using Defra.PhaImportNotifications.Api.Constants;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.Metrics;
@@ -131,7 +132,7 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
                 Description = """
                 The PHA API enforces a rate limit on requests to avoid excessive usage which, if reached, will return a 429 status code.
                 Please get in touch if you encounter this limit.
-                """,
+                """.ReplaceLineEndings(PlatformFormatting.JsonNewLine),
                 Contact = new OpenApiContact
                 {
                     Email = "tbc@defra.gov.uk",

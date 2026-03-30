@@ -82,7 +82,7 @@ public static class EndpointRouteBuilderExtensions
             ReferenceNumber = x.ReferenceNumber,
             Links = new UpdatedImportNotificationLinks
             {
-                ImportNotification = new Uri($"/import-notifications/{x.ReferenceNumber}"),
+                ImportNotification = new Uri($"/import-notifications/{x.ReferenceNumber}", UriKind.RelativeOrAbsolute),
             },
         });
 

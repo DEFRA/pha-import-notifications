@@ -1,4 +1,93 @@
 ﻿{
+  "clearanceRequests": [
+    {
+      "movementReferenceNumber": "24IEDUB10010972672",
+      "clearanceRequest": {
+        "externalCorrelationId": "1328641",
+        "messageSentAt": "2024-12-09T08:06:23Z",
+        "externalVersion": 1,
+        "previousExternalVersion": null,
+        "arrivesAt": null,
+        "dispatchCountryCode": "HN",
+        "goodsLocationCode": "SOUSTNSOU",
+        "commodities": [
+          {
+            "itemNumber": 1,
+            "customsProcedureCode": "4000000",
+            "taricCommodityCode": "0306179290",
+            "goodsDescription": "FROZEN RAW SHRIMP",
+            "consigneeId": "GB639571015000",
+            "consigneeName": "GB639571015000",
+            "netMass": 20000,
+            "supplementaryUnits": 0,
+            "thirdQuantity": null,
+            "originCountryCode": "HN",
+            "documents": [
+              {
+                "documentCode": "N853",
+                "documentReference": "GBCHD2024.5125476"
+              }
+            ],
+            "checks": [
+              {
+                "checkCode": "H222",
+                "departmentCode": "PHA"
+              }
+            ]
+          }
+        ]
+      },
+      "clearanceDecision": {
+        "correlationId": "1328641",
+        "created": "2025-02-21T13:28:41.129Z",
+        "externalVersionNumber": 1,
+        "decisionNumber": 1,
+        "sourceVersion": "CHEDP.GB.2024.5125476:111124035243:CR-VERSION-1",
+        "items": [
+          {
+            "itemNumber": 1,
+            "checks": [
+              {
+                "checkCode": "H222",
+                "decisionCode": "H01",
+                "decisionsValidUntil": null,
+                "decisionInternalFurtherDetail": null
+              }
+            ]
+          }
+        ],
+        "results": null
+      },
+      "finalisation": null
+    }
+  ],
+  "goodsMovements": [
+    {
+      "id": "GMRA00KBHFE0",
+      "state": "COMPLETED",
+      "updatedSource": "2024-11-11T17:34:50.774Z",
+      "isUnaccompanied": false,
+      "vehicleRegistrationNumber": "241SO1061",
+      "trailerRegistrationNums": null,
+      "containerReferenceNums": null,
+      "plannedCrossing": {
+        "routeId": "109",
+        "departsAt": "2024-11-11T14:45:00"
+      },
+      "actualCrossing": {
+        "routeId": "32",
+        "arrivesAt": "2024-11-11T18:20:00"
+      },
+      "declarations": {
+        "transits": [
+          {
+            "id": "24IEDUB10010972672"
+          }
+        ],
+        "customs": null
+      }
+    }
+  ],
   "ipaffsId": 4125476,
   "etag": "0000000004211E89",
   "externalReferences": [
