@@ -82,7 +82,7 @@ public static class EndpointRouteBuilderExtensions
             ReferenceNumber = x.ReferenceNumber,
             Links = new UpdatedImportNotificationLinks
             {
-                ImportNotification = new Uri($"/import-notifications/{x.ReferenceNumber}"),
+                ImportNotification = new Uri($"/import-notifications/{x.ReferenceNumber}", UriKind.RelativeOrAbsolute),
             },
         });
 
@@ -127,10 +127,6 @@ public static class EndpointRouteBuilderExtensions
 
         if (bcp is null || !httpContext.User.ClientHasAccessTo([bcp], [notification.ImportNotificationType!]))
             return Results.Forbid();
-
-        // PHAIN-235
-        notification.CustomsDeclarations = [];
-        notification.GoodsMovements = [];
 
         return Results.Ok(notification);
     }
