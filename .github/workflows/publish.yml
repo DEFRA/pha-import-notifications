@@ -23,7 +23,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 #v6
       - name: Build and Publish
-        uses: DEFRA/cdp-build-action/build@main
+        uses: DEFRA/cdp-build-action/build@5f3ba75f66a3ef96855322c137727ff996cc2995
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
   ## SonarCloud
