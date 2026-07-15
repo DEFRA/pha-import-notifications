@@ -410,7 +410,14 @@
     },
     ImporterLocalReferenceNumber: 313956a87de9e8042377c4a7c6337873373cb7d640f6f4c1758ff2364bd92cb2,
     Route: null,
-    SealsContainers: null,
+    SealsContainers: [
+      {
+        SealNumber: 8698343229720024c2fdd725ee36c13a4215b28dcd5335598beb016535d409d4,
+        ContainerNumber: 616d736dcb3fa2e05aff6b1ab366fb60a22aa2d2b1a667d1dd75d1fac75fade9,
+        OfficialSeal: true,
+        ResealedSealNumber: null
+      }
+    ],
     StoreTransporterContact: null,
     SubmittedOn: 2024-12-06 08:56:41.05 Utc,
     SubmittedBy: {

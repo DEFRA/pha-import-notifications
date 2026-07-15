@@ -24,7 +24,6 @@ internal static class Ignored
                 "ImportingFromCharity",
                 "IsPlaceOfDestinationThePermanentAddress",
                 "ResponsibleForTransport",
-                "SealsContainers",
                 "ComplexCommoditySelected",
             }
         },

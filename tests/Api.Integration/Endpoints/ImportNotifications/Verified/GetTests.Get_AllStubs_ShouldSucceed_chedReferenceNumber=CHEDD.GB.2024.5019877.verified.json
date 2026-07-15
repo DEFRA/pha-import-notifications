@@ -397,6 +397,14 @@
     },
     "importerLocalReferenceNumber": "9515805e8df862fcc8573850eec78b527711b37ea47b28b976ac7ba6671a8c50",
     "route": null,
+    "sealsContainers": [
+      {
+        "sealNumber": "fb83a12ac268d3a96da7427addf3dc4b504c00a3489320455c6bd94a6e4ee213",
+        "containerNumber": "7eb8d31e00fb1a54c1e48c07ff84da63cda419ae5f11c44547589d683e60f14e",
+        "officialSeal": true,
+        "resealedSealNumber": null
+      }
+    ],
     "storeTransporterContact": null,
     "submittedOn": "2024-12-04T16:14:19.035Z",
     "submittedBy": {

@@ -145,7 +145,6 @@ public partial record PartOne
     public Route? Route { get; init; }
 
     [JsonPropertyName("sealsContainers")]
-    [JsonIgnore]
     [Description("Array that contains pair of seal number and container number")]
     public List<SealContainer>? SealsContainers { get; init; }
 

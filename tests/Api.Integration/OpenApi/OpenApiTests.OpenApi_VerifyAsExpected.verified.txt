@@ -3178,6 +3178,14 @@
             "description": "Contains countries and transfer points that consignment is going through",
             "nullable": true
           },
+          "sealsContainers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SealContainer"
+            },
+            "description": "Array that contains pair of seal number and container number",
+            "nullable": true
+          },
           "storeTransporterContact": {
             "enum": [
               "YES",
