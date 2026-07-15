@@ -300,6 +300,14 @@
     },
     "importerLocalReferenceNumber": null,
     "route": null,
+    "sealsContainers": [
+      {
+        "sealNumber": "6fc54b2d174017897316e9cbad2a56f2d4312f7da04fc8de9d2658820e7cd08c",
+        "containerNumber": "6f36ff90a6777233d1467985dbb90fc5f4a3fa0531e8b0e604e3c44bf2bec43c",
+        "officialSeal": true,
+        "resealedSealNumber": null
+      }
+    ],
     "storeTransporterContact": null,
     "submittedOn": "2024-05-02T12:02:29.255Z",
     "submittedBy": {

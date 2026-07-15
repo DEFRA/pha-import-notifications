@@ -349,6 +349,7 @@
     },
     "importerLocalReferenceNumber": null,
     "route": null,
+    "sealsContainers": null,
     "storeTransporterContact": null,
     "submittedOn": "2024-01-02T11:38:57.009Z",
     "submittedBy": {
