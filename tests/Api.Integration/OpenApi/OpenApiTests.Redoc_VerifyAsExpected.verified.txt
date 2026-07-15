@@ -14,12 +14,12 @@
   Headers: [
     {
       x-redoc-version: [
-        2.5.2
+        2.5.3
       ]
     },
     {
       Cache-Control: [
-        max-age=604800, private
+        max-age=0, private
       ]
     },
     {
