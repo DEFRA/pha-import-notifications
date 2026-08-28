@@ -1,5 +1,5 @@
 ﻿# Base dotnet image
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
@@ -12,7 +12,7 @@ RUN apt update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 
 ARG VACUUM_VERSION=0.25.0
 WORKDIR /tmp/vacuum
@@ -46,7 +46,7 @@ COPY tests tests
 RUN dotnet csharpier check .
 
 RUN dotnet build src/Api/Api.csproj --no-restore -c Release
-RUN dotnet swagger tofile --output openapi.json ./src/Api/bin/Release/net9.0/Defra.PhaImportNotifications.Api.dll v1
+RUN dotnet swagger tofile --output openapi.json ./src/Api/bin/Release/net10.0/Defra.PhaImportNotifications.Api.dll v1
 RUN vacuum lint -d -r .vacuum.yml openapi.json
 
 RUN dotnet test --no-restore tests/PhaImportNotifcations.Tests.csproj
