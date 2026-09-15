@@ -5,6 +5,7 @@ using System.Text;
 using Defra.PhaImportNotifications.Api.Configuration;
 using Defra.PhaImportNotifications.Api.Constants;
 using Defra.PhaImportNotifications.Api.Endpoints.ImportNotifications;
+using Defra.PhaImportNotifications.Api.Endpoints.Token;
 using Defra.PhaImportNotifications.Api.Extensions;
 using Defra.PhaImportNotifications.Api.Metrics;
 using Defra.PhaImportNotifications.Api.OpenApi;
@@ -165,6 +166,8 @@ static void ConfigureWebApplication(WebApplicationBuilder builder, string[] args
         .BindConfiguration("TradeImportsDataApi")
         .ValidateOptions(!generatingOpenApiFromCli);
 
+    builder.Services.AddOptions<LocalDevTokenOptions>().BindConfiguration("LocalDevToken");
+
     builder
         .Services.AddHttpClient<TradeImportsDataApiHttpClient, TradeImportsDataApiHttpClient>(
             (sp, httpClient) =>
@@ -203,6 +206,11 @@ static WebApplication BuildWebApplication(WebApplicationBuilder builder)
 
     app.MapHealthChecks("/health");
     app.MapImportNotificationsEndpoints();
+
+    var localDevToken = app.Services.GetRequiredService<IOptions<LocalDevTokenOptions>>().Value;
+
+    if (app.Environment.IsDevelopment() && localDevToken.Enabled)
+        app.MapLocalDevTokenEndpoints();
 
     app.UseSwagger(options =>
     {
